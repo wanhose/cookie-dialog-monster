@@ -6,7 +6,7 @@
         {
             "all_frames": true,
             "js": ["js/content.js"],
-            "matches": ["<all_urls>"]
+            "matches": ["*://*/*"]
         }
     ],
     "icons": {
@@ -17,6 +17,6 @@
     "page_action": {
         "default_icon": "assets/icon32.png",
         "default_title": "QuantcastAutoRefuser"
-      },
+    },
     "manifest_version": 2
   }
