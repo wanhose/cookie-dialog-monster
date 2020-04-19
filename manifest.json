@@ -1,7 +1,7 @@
 {
     "name": "QuantcastAutoRefuser",
     "version": "1.0",
-    "description": "A Chrome extension which allows you to refuse all Quantcast cookie-consent dialogs automatically",
+    "description": "A Chrome extension that allows you to refuse all Quantcast cookie-consent dialogs automatically",
     "content_scripts": [
         {
             "all_frames": true,
