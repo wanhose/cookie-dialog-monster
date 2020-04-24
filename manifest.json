@@ -1,7 +1,7 @@
 {
     "name": "NoMoreCookies",
     "version": "1.1",
-    "description": "A Chrome extension that allows you to refuse cookie-consent dialogs automatically",
+    "description": "A Chrome extension that allows you to refuse cookie consent dialogs automatically",
     "content_scripts": [
         {
             "all_frames": true,
