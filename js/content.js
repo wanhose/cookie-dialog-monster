@@ -1,16 +1,16 @@
 if (typeof chrome.app.isInstalled !== 'undefined') {
   // Observer
   const observer = new MutationObserver((mutations, observer) => {
-    for (let mutation of mutations) {
+    mutations.forEach(mutation => {
       if (mutation.type === 'childList') {
         observer.disconnect();
         doMagic();
         observe();
       }
-    }
+    });
   });
 
-  // Inject buttons
+  // Remover
   const doMagic = () => {
     // Quantcast
     const notRemovableElements = Array.from(document.getElementsByClassName("qc-cmp-ui-showing"));
@@ -23,8 +23,14 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
       element.remove();
     });
 
+    let removableElement = null;
+
+    // ENS
+    removableElement = document.getElementById("ensNotifyBanner");
+    if (!!removableElement) removableElement.remove();
+
     // OneTrust
-    const removableElement = document.getElementById("onetrust-consent-sdk");
+    removableElement = document.getElementById("onetrust-consent-sdk");
     if (!!removableElement) removableElement.remove();
   };
 
