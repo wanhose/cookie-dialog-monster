@@ -12,13 +12,23 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
 
   // Remover
   const doMagic = () => {
-    // Quantcast
-    const notRemovableElements = Array.from(document.getElementsByClassName("qc-cmp-ui-showing"));
+    const notRemovableElements = Array.from([
+      // Quantcast
+      ...document.getElementsByClassName("qc-cmp-ui-showing"),
+    ]);
+
+    const removableElements = Array.from([
+      // Quantcast
+      ...document.getElementsByClassName("qc-cmp-ui-container"),
+      // Optanon
+      ...document.getElementsByClassName("optanon-alert-box-wrapper"),
+    ]);
+
     notRemovableElements.forEach(element => {
+      // Quantcast
       element.classList.remove("qc-cmp-ui-showing");
     });
     
-    const removableElements = Array.from(document.getElementsByClassName("qc-cmp-ui-container"));
     removableElements.forEach(element => {
       element.remove();
     });
