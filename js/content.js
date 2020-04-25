@@ -18,8 +18,12 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
     ]);
 
     const removableElements = Array.from([
+      // ENS
+      document.getElementById("ensNotifyBanner"),
       // Quantcast
       ...document.getElementsByClassName("qc-cmp-ui-container"),
+      // OneTrust
+      document.getElementById("onetrust-consent-sdk"),
       // Optanon
       ...document.getElementsByClassName("optanon-alert-box-wrapper"),
     ]);
@@ -29,19 +33,7 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
       element.classList.remove("qc-cmp-ui-showing");
     });
     
-    removableElements.forEach(element => {
-      element.remove();
-    });
-
-    let removableElement = null;
-
-    // ENS
-    removableElement = document.getElementById("ensNotifyBanner");
-    if (!!removableElement) removableElement.remove();
-
-    // OneTrust
-    removableElement = document.getElementById("onetrust-consent-sdk");
-    if (!!removableElement) removableElement.remove();
+    removableElements.forEach(element => !!element && element.remove());
   };
 
   // Observer starts observe when call this function
