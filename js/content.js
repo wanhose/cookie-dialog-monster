@@ -48,6 +48,8 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
       document.getElementById("crowdy-privacy-widget-background"),
       // ENS
       document.getElementById("ensNotifyBanner"),
+      // ePrivacy
+      document.getElementById("ePrivacyDisclaimer"),
       // Google
       document.getElementById("cookie-statement"),
       // iubenda
@@ -55,15 +57,20 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
       ...document.getElementsByClassName("iubenda-cs-bottom"),
       ...document.getElementsByClassName("iubenda-cs-container"),
       ...document.getElementsByClassName("iubenda-cs-default"),
-      // Quantcast
-      ...document.getElementsByClassName("qc-cmp-ui-container"),
+      // Moove
+      document.getElementById("moove_gdpr_cookie_info_bar"),
       // OneTrust
       document.getElementById("onetrust-consent-sdk"),
       // Optanon
       ...document.getElementsByClassName("optanon-alert-box-wrapper"),
+      // Quantcast
+      ...document.getElementsByClassName("qc-cmp-ui-container"),
       // Termly
       document.getElementById("consent"),
+      // Wordpress
+      document.getElementById("catapult-cookie-bar"),
       // Miscellaneous
+      ...document.getElementsByClassName("cc-cookies"),
       document.getElementById("cconsent-bar"),
       document.getElementById("cookie-consent-banner"),
       document.getElementById("cookie-law-info-bar"),
@@ -72,7 +79,10 @@ if (typeof chrome.app.isInstalled !== 'undefined') {
       ...document.getElementsByClassName("cookies"),
       document.getElementById("cookieNotice"),
       ...document.getElementsByClassName("fot-fixd"),
+      ...document.getElementsByClassName("gdpr"),
       ...document.getElementsByClassName("js-cookies"),
+      document.getElementById("softMessages-list"),
+      ...document.getElementsByClassName("softMessages-list"),
     ]);
 
     notRemovableElements.forEach(element => {
