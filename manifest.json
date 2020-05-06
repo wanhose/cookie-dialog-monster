@@ -1,6 +1,6 @@
 {
     "name": "No More Cookies",
-    "version": "1.6",
+    "version": "1.7",
     "description": "A Chrome extension that allows you to remove cookie consent dialogs automatically",
     "content_scripts": [
         {
