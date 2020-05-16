@@ -6,7 +6,7 @@ if (!!window.chrome && navigator.vendor.includes("Google")) {
 
   // Create logic script
   const script = document.createElement("script");
-  script.setAttribute("src", chrome.runtime.getURL("modules/script.js"));
+  script.setAttribute("src", chrome.runtime.getURL("js/modules/script.js"));
   script.setAttribute("type", "module");
 
   // Inject logic  script
