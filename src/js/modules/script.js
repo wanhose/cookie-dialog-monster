@@ -1,56 +1,40 @@
-import { notRemovable, removable } from './elements.js';
+import { getNotRemovableElements, getRemovableElements } from './helpers.js';
 
 // Observer
 const observer = new MutationObserver((mutations, observer) => {
-    mutations.forEach(mutation => {
-        if (mutation.type === 'childList') {
-            observer.disconnect();
-            doMagic();
-            observe();
-        }
+    mutations.forEach(() => {
+        observer.disconnect();
+        doMagic();
+        observe();
     });
 });
 
 // Remover
 const doMagic = () => {
-        // Remove irritating styles
-        notRemovable.forEach(element => {
-            // PLO
-            element.classList.remove("plu-no-scroll");
-            // Quantcast
-            element.classList.remove("qc-cmp-ui-showing");
-            // Miscellaneous
-            element.classList.remove("_2LLC6zrbk-vsnF0seit6vi");
-            element.classList.remove("gdpr");
-            element.classList.remove("noScroll");
-        });
+    // Getting elements
+    const notRemovable = getNotRemovableElements(document)
+        .filter(element => !!element);
+    const removable = getRemovableElements(document)
+        .filter(element => !!element);
 
-        // Remove irritating elements
-        removable.forEach(element => {
-            if (!!element) {
-                const exists = 
-                document.getElementById(element.id) 
-                || document.getElementsByName(element.name).length > 0 
-                || document.getElementsByClassName(element.className).length > 0;
+    // Remove irritating all removable elements
+    removable.forEach(element => {
+        const exists = 
+            document.getElementById(element.id) 
+            || document.getElementsByName(element.name).length > 0 
+            || document.getElementsByClassName(element.className).length > 0;
 
-                if (exists) element.remove();
-            };
-        });
+        if (exists) element.remove();
+    });
 
-        // Fix stucked pages
-        if (document.body.style) {
-            document.body.style.removeProperty("overflow");
-            document.body.style.removeProperty("overflowX");
-            document.body.style.removeProperty("overflowY");
-        };
+    // Remove irritating styles from elements not removable
+    notRemovable.forEach(element => element.style.setProperty('overflow', 'unset', 'important'));
 };
 
 // Observer starts observe when call this function
 const observe = () => {
     observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        //...
+        attributes: true,
     });
 };
 

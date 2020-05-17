@@ -1,4 +1,4 @@
-export const notRemovable = Array.from([
+export const getNotRemovableElements = (document) => Array.from([
     // PLO
     ...document.getElementsByClassName("plu-no-scroll"),
     // Quantcast
@@ -9,7 +9,7 @@ export const notRemovable = Array.from([
     ...document.getElementsByClassName("noScroll"),
 ]);
 
-export const removable = Array.from([
+export const getRemovableElements = (document) => Array.from([
     // BLQ
     document.getElementById("blq-global"),
     // CC
@@ -55,6 +55,9 @@ export const removable = Array.from([
     document.getElementById("ensNotifyBanner"),
     // ePrivacy
     document.getElementById("ePrivacyDisclaimer"),
+    // Evidon
+    document.getElementById("_evidon_banner"),
+    ...document.getElementsByClassName("evidon-banner"),
     // Facebook
     ...document.getElementsByClassName("fbPageBanner"),
     // Google
@@ -90,11 +93,13 @@ export const removable = Array.from([
     // Miscellaneous
     ...document.getElementsByClassName("_1ouSF3xnwUjIOquxopuxSZ"),
     ...document.getElementsByClassName("announcements"),
+    ...document.getElementsByClassName("branch-journeys-top"),
     ...document.getElementsByClassName("cc-cookies"),
     document.getElementById("cconsent-bar"),
     document.getElementById("cookie-consent-banner"),
     ...document.getElementsByClassName("cookiedisclaimer"),
     ...document.getElementsByClassName("cookie_box"),
+    ...document.getElementsByClassName("cookie-container"),
     document.getElementById("cookie-div"),
     document.getElementById("cookie-law-info-bar"),
     document.getElementById("cookie-law-info-again"),
@@ -113,6 +118,7 @@ export const removable = Array.from([
     ...document.getElementsByClassName("cookiesms"),
     document.getElementById("cp-dialog"),
     document.getElementById("cp-overlay"),
+    document.getElementById("gdpr-banner"),
     ...document.getElementsByClassName("fot-fixd"),
     document.getElementById("global-cookie-message"),
     ...document.getElementsByClassName("grp-header__cookiedisclaimer"),
@@ -120,7 +126,8 @@ export const removable = Array.from([
     ...document.getElementsByClassName("js-cookies"),
     document.getElementById("js-gdpr-consent-banner"),
     ...document.getElementsByClassName("m-privacy-consent"),
-    ...document.getElementsByClassName("nd t fk vz ai wa wb wc wd we wf wg wh wi wj wk wl wm wn wo wp wq wr li ws wt wu wv ww wx wy wz xa xb xc xd"),
+    ...document.getElementsByClassName("modal-backdrop"),
+    document.getElementById("modal-consent"),
     ...document.getElementsByClassName("pam"),
     document.getElementById("privacy-consent"),
     document.getElementById("scms-cc-cookie-bar"),
