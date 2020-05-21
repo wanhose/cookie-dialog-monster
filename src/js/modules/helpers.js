@@ -1,4 +1,6 @@
 export const getNotRemovableElements = (document) => Array.from([
+    // Didomi
+    ...document.getElementsByClassName("didomi-popup-open"),
     // PLO
     ...document.getElementsByClassName("plu-no-scroll"),
     // Quantcast
@@ -49,11 +51,17 @@ export const getRemovableElements = (document) => Array.from([
     // Cybot
     ...document.getElementsByClassName("CybotCookiebotDialog"),
     ...document.getElementsByName("CybotCookiebotDialog"),
+    document.getElementById("CybotCookiebotDialog"),
+    // Didomi
+    document.getElementById("didomi-host"),
+    document.getElementById("didomi-notice"),
+    document.getElementById("didomi-popup"),
     // eni.com
     document.getElementById("eni-cookie-banner"),
     // ENS
     document.getElementById("ensNotifyBanner"),
     // ePrivacy
+    document.getElementById("eprivacyCookie"),
     document.getElementById("ePrivacyDisclaimer"),
     // Evidon
     document.getElementById("_evidon_banner"),
@@ -76,6 +84,7 @@ export const getRemovableElements = (document) => Array.from([
     // OneTrust
     document.getElementById("onetrust-consent-sdk"),
     // Optanon
+    document.getElementById("optanon"),
     ...document.getElementsByClassName("optanon-alert-box-wrapper"),
     // PLO
     ...document.getElementsByClassName("plo-cookie-overlay"),
@@ -86,6 +95,8 @@ export const getRemovableElements = (document) => Array.from([
     document.getElementById("seers-cx-banner"),
     // Termly
     document.getElementById("consent"),
+    // Twitter
+    ...document.getElementsByClassName("css-1dbjc4n r-aqfbo4 r-1p0dtai r-1d2f490 r-12vffkv r-1xcajam r-zchlnj"),
     // UniConsent
     document.getElementById("uniccmp"),
     // Wordpress
@@ -93,41 +104,58 @@ export const getRemovableElements = (document) => Array.from([
     // Miscellaneous
     ...document.getElementsByClassName("_1ouSF3xnwUjIOquxopuxSZ"),
     ...document.getElementsByClassName("announcements"),
+    ...document.getElementsByClassName("app_gdpr--3hGmb"),
+    document.getElementById("barraaceptacion"),
     ...document.getElementsByClassName("branch-journeys-top"),
+    document.getElementById("cajacookies"),
     ...document.getElementsByClassName("cc-cookies"),
     document.getElementById("cconsent-bar"),
-    document.getElementById("cookie-consent-banner"),
+    ...document.getElementsByClassName("cookie-consent"),
     ...document.getElementsByClassName("cookiedisclaimer"),
     ...document.getElementsByClassName("cookie_box"),
+    document.getElementById("cookie-consent-banner"),
     ...document.getElementsByClassName("cookie-container"),
     document.getElementById("cookie-div"),
     document.getElementById("cookie-law-info-bar"),
     document.getElementById("cookie-law-info-again"),
+    ...document.getElementsByClassName("cookie-message"),
+    ...document.getElementsByClassName("cookie-message-top"),
+    ...document.getElementsByClassName("cookie-notice"),
     document.getElementById("cookie-notice"),
     ...document.getElementsByClassName("cookie-permission"),
     document.getElementById("cookie-policy"),
     document.getElementById("cookie-policy-consent"),
+    document.getElementById("cookie-settings"),
+    document.getElementById("cookies-use-alert"),
     document.getElementById("cookie1"),
+    document.getElementById("cookieBar"),
     ...document.getElementsByClassName("cookiebar"),
     document.getElementById("cookieLayer"),
+    document.getElementById("cookieMessage"),
+    document.getElementById("cookieMessageWrapper"),
     document.getElementById("cookieNotice"),
     document.getElementById("cookieNotificationBannerWrapper"),
+    document.getElementById("cookiePlaceholder"),
     ...document.getElementsByClassName("cookies-notice"),
     ...document.getElementsByClassName("cookies"),
     ...document.getElementsByClassName("cookies-alert"),
     ...document.getElementsByClassName("cookiesms"),
     document.getElementById("cp-dialog"),
     document.getElementById("cp-overlay"),
+    ...document.getElementsByClassName("dimmed"),
+    document.getElementById("eu-cookie-law"),
     document.getElementById("gdpr-banner"),
     ...document.getElementsByClassName("fot-fixd"),
     document.getElementById("global-cookie-message"),
     ...document.getElementsByClassName("grp-header__cookiedisclaimer"),
     document.getElementById("iFrame1"),
+    ...document.getElementsByClassName("js-cookie-consent"),
     ...document.getElementsByClassName("js-cookies"),
     document.getElementById("js-gdpr-consent-banner"),
     ...document.getElementsByClassName("m-privacy-consent"),
     ...document.getElementsByClassName("modal-backdrop"),
     document.getElementById("modal-consent"),
+    ...document.getElementsByClassName("mw-cookiewarning-container"),
     ...document.getElementsByClassName("pam"),
     document.getElementById("privacy-consent"),
     document.getElementById("scms-cc-cookie-bar"),
@@ -135,7 +163,9 @@ export const getRemovableElements = (document) => Array.from([
     document.getElementById("sd-cmp"),
     ...document.getElementsByClassName("security-policy"),
     document.getElementById("sliding-popup"),
+    document.getElementById("sncmp-container"),
     document.getElementById("softMessages-list"),
     ...document.getElementsByClassName("softMessages-list"),
     document.getElementById("u_0_1"),
+    document.getElementById("widget_eu_cookie_law_widget"),
 ]);
