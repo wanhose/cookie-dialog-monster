@@ -35,6 +35,7 @@ const doMagic = () => {
 const observe = () => {
     observer.observe(document.body, {
         attributes: true,
+        childList: true,
     });
 };
 
