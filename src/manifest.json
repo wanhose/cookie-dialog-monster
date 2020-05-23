@@ -1,6 +1,6 @@
 {
     "name": "Do Not Consent",
-    "version": "2.1",
+    "version": "2.2",
     "description": "A Chrome extension that allows you to remove cookie consent dialogs automatically",
     "content_scripts": [
         {
