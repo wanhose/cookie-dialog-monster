@@ -6,7 +6,6 @@ A Chrome extension that allows you to remove cookie consent dialogs automaticall
 
 - Google Chrome 61+.
 - Microsoft Edge 16+ (not tested yet).
-- Mozilla Firefox 60+ (not tested yet).
 - Opera 48+ (not tested yet).
 
 ## Installation (on Google Chrome)
