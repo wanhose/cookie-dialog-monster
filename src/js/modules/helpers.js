@@ -197,6 +197,7 @@ export const getRemovableElements = (document) => Array.from([
     document.querySelector('[data-gdpr-single-choice-overlay]'),
     document.querySelector('[data-id="cookie-policy"]'),
     ...document.getElementsByClassName('dimmed'),
+    document.getElementById('div_bar_cookies_info'),
     document.getElementById('eu-cookie-law'),
     ...document.getElementsByClassName('eupopup-container'),
     document.getElementById('footer_tc_privacy'),
