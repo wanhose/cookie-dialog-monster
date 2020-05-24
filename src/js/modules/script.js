@@ -17,6 +17,11 @@ const doMagic = () => {
     const removable = getRemovableElements(document)
         .filter(element => !!element);
 
+    // Fixing main elements
+    document.documentElement.style.setProperty('overflow', 'auto', 'important');
+    document.documentElement.style.setProperty('overflowX', 'auto', 'important');
+    document.documentElement.style.setProperty('overflowY', 'auto', 'important');
+
     // Remove irritating all removable elements
     removable.forEach(element => {
         const exists = 
@@ -28,7 +33,13 @@ const doMagic = () => {
     });
 
     // Remove irritating styles from elements not removable
-    notRemovable.forEach(element => element.style.setProperty('overflow', 'unset', 'important'));
+    notRemovable.forEach(element => {
+        element.style.setProperty('margin-top', 'unset', 'important');
+        element.style.setProperty('overflow', 'auto', 'important');
+
+        // Miscellaneous
+        element.classList.remove('cli-barmodal-open');
+    });
 };
 
 // Observer starts observe when call this function
