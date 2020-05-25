@@ -26,7 +26,7 @@ const doMagic = () => {
 
     // Remove irritating all removable elements
     removable.forEach(element => {
-        if (element.tagName !== 'body') {
+        if (element.tagName !== 'body' && element.tagName !== 'html') {
             const exists = 
                 document.getElementById(element.id) 
                 || document.getElementsByName(element.name).length > 0 
