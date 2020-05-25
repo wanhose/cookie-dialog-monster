@@ -10,6 +10,6 @@ if (!!window.chrome) {
   script.setAttribute("type", "module");
 
   // Inject logic script
-  head.appendChild(script);
+  (head || document.body).appendChild(script);
 };
 
