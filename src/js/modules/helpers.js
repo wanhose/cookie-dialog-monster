@@ -195,6 +195,8 @@ export const getRemovableElements = (document) => Array.from([
     document.getElementById('cookieNotificationBannerWrapper'),
     document.getElementById('cookiePlaceholder'),
     document.getElementById('CookieReportsBanner'),
+    ...document.getElementsByClassName('cookies'),
+    document.getElementById('cookies'),
     ...document.getElementsByClassName('cookies__wrapper'),
     ...document.getElementsByClassName('cookies-alert'),
     document.getElementById('cookies-consentimiento'),

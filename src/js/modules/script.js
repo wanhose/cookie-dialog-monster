@@ -26,12 +26,14 @@ const doMagic = () => {
 
     // Remove irritating all removable elements
     removable.forEach(element => {
-        const exists = 
-            document.getElementById(element.id) 
-            || document.getElementsByName(element.name).length > 0 
-            || document.getElementsByClassName(element.className).length > 0;
+        if (element.tagName !== 'body') {
+            const exists = 
+                document.getElementById(element.id) 
+                || document.getElementsByName(element.name).length > 0 
+                || document.getElementsByClassName(element.className).length > 0;
 
-        if (exists) element.remove();
+            if (exists) element.remove();
+        }
     });
 
     // Remove irritating styles from elements not removable
