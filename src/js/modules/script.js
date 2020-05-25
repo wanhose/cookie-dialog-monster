@@ -21,6 +21,7 @@ const doMagic = () => {
     // Fixing main elements
     if (!UNTOUCHABLE_SITES.includes(document.location.host)) {
         document.documentElement.style.setProperty('overflow', 'unset', 'important');
+        document.body.style.setProperty('overflow', 'unset', 'important');
     }
 
     // Remove irritating all removable elements
