@@ -40,9 +40,11 @@ const doMagic = () => {
     notRemovable.forEach(element => {
         element.style.setProperty('margin-top', 'unset', 'important');
         element.style.setProperty('overflow', 'unset', 'important');
+        element.style.setProperty('padding-top', 'unset', 'important');
 
         // Miscellaneous
         element.classList.remove('cli-barmodal-open');
+        element.classList.remove('cookiesAccepted');
     });
 };
 
