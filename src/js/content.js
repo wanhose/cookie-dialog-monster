@@ -1,7 +1,6 @@
 'use strict';
 
 if (!!window.chrome) {
-  console.log('hola')
   const head = document.head || document.getElementsByTagName('head')[0];
   
   // Create logic script
