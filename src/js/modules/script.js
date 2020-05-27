@@ -21,6 +21,7 @@ const doMagic = () => {
     // Fixing main elements
     if (!UNTOUCHABLE_SITES.includes(document.location.host)) {
         document.documentElement.style.setProperty('overflow', 'unset', 'important');
+        document.documentElement.style.setProperty('position', 'unset', 'important');
         document.body.style.setProperty('overflow', 'unset', 'important');
     }
 
