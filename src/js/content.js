@@ -1,7 +1,11 @@
 'use strict';
 
 if (!!window.chrome) {
-  const head = document.head || document.getElementsByTagName('head')[0];
+  const target = 
+    document.head 
+    || document.getElementsByTagName('head')[0]
+    || document.body
+    || document.getElementsByTagName('body')[0];
   
   // Create logic script
   const script = document.createElement("script");
@@ -9,6 +13,6 @@ if (!!window.chrome) {
   script.setAttribute("type", "module");
 
   // Inject logic script
-  (head || document.body).appendChild(script);
+  target.appendChild(script);
 };
 
