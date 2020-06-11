@@ -1,6 +1,9 @@
 export const getNotRemovableElements = (document) => Array.from([
     // Didomi
     ...document.getElementsByClassName('didomi-popup-open'),
+    // Mazda
+    document.querySelector('[class^="mxp-main-desktop-navigation"],[class*=" mxp-main-desktop-navigation"]'),
+    document.querySelector('[class^="mxp-main-mobile-navigation"],[class*=" mxp-main-mobile-navigation"]'),
     // PLO
     ...document.getElementsByClassName('plu-no-scroll'),
     // Quantcast
@@ -289,6 +292,7 @@ export const getRemovableElements = (document) => Array.from([
     ...document.getElementsByClassName('cookies-infostyled__Container-ajf3yz-0'),
     ...document.getElementsByClassName('cookies-notice'),
     document.getElementById('cookies-use-alert'),
+    ...document.getElementsByClassName('cookiesbar'),
     document.getElementById('cookiesInfo'),
     document.getElementById('Cookieskript'),
     document.getElementById('CookiesSkript'),
@@ -301,6 +305,7 @@ export const getRemovableElements = (document) => Array.from([
     document.getElementById('ctl11_CookiePanel'),
     document.querySelector('[data-assembly-source="cookie/banner"]'),
     document.querySelector('[data-component-name="cookieNotification"]'),
+    document.querySelector('[data-component-type="cookiePanel"]'),
     document.querySelector('[data-dismissable-id="cookieinfo"]'),
     document.querySelector('[data-etsy-promo-banner]'),
     document.querySelector('[data-gdpr-consent-prompt]'),
@@ -373,6 +378,7 @@ export const getRemovableElements = (document) => Array.from([
     ...document.getElementsByClassName('msg-tray--cookie'),
     document.getElementById('msgTray_0'),
     ...document.getElementsByClassName('mw-cookiewarning-container'),
+    document.querySelector('[class^="mxp-main-cookie-panel-container"],[class*=" mxp-main-cookie-panel-container"]'),
     ...document.getElementsByClassName('no-print'),
     document.getElementById('notice-cookie-block'),
     ...document.getElementsByClassName('notification-banner'),
