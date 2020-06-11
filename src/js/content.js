@@ -15,4 +15,3 @@ if (!!window.chrome) {
   // Inject logic script
   target.appendChild(script);
 };
-

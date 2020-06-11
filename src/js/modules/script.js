@@ -5,10 +5,20 @@ import { getNotRemovableElements, getRemovableElements } from './helpers.js';
 const observer = new MutationObserver((mutations, observer) => {
     mutations.forEach(() => {
         observer.disconnect();
+        disableCookies();
         doMagic();
         observe();
     });
 });
+
+// Cookies disabler
+const disableCookies = () => {
+    const cookies = document.cookie.split(';');
+
+    cookies.forEach(cookie => {
+        document.cookie = `${cookie.split('=')[0]}=; expires=${new Date(null).toUTCString()}; path=/;`;
+    });
+};
 
 // Remover
 const doMagic = () => {
@@ -58,5 +68,6 @@ const observe = () => {
 };
 
 // Then...
+disableCookies();
 doMagic();
 observe();
