@@ -14,9 +14,14 @@ const observer = new MutationObserver((mutations, observer) => {
 // Cookies disabler
 const disableCookies = () => {
     const cookies = document.cookie.split(';');
+    const date = new Date(null).toUTCString();
+    const domain = location.host.replace('www', '');
 
     cookies.forEach(cookie => {
-        document.cookie = `${cookie.split('=')[0]}=; expires=${new Date(null).toUTCString()}; path=/;`;
+        const name = cookie.split('=')[0];
+
+        document.cookie = `${name}=; expires=${date}; path=/;`;
+        document.cookie = `${name}=; expires=${date}; domain=${domain}; path=/;`;
     });
 };
 
