@@ -30,6 +30,7 @@ const doMagic = () => {
 
     // Fixing main elements
     if (!UNTOUCHABLE_SITES.includes(document.location.host)) {
+        document.documentElement.style.setProperty('margin-top', 'unset', 'important');
         document.documentElement.style.setProperty('overflow', 'unset', 'important');
         document.documentElement.style.setProperty('position', 'unset', 'important');
         document.body.style.setProperty('overflow', 'unset', 'important');
@@ -37,7 +38,11 @@ const doMagic = () => {
 
     // Remove irritating all removable elements
     removable.forEach(element => {
-        if (element.tagName !== 'body' && element.tagName !== 'html') {
+        const isRemovable = 
+            element.tagName.toLowerCase() !== 'body'
+            && element.tagName.toLowerCase() !== 'html';
+
+        if (isRemovable) {
             const exists = 
                 document.getElementById(element.id) 
                 || document.getElementsByName(element.name).length > 0 
