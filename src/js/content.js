@@ -13,5 +13,5 @@ if (!!window.chrome) {
   script.setAttribute("type", "module");
 
   // Inject logic script
-  target.appendChild(script);
+  if (!!target) target.appendChild(script);
 };
