@@ -5,25 +5,10 @@ import { getNotRemovableElements, getRemovableElements } from './helpers.js';
 const observer = new MutationObserver((mutations, observer) => {
     mutations.forEach(() => {
         observer.disconnect();
-        disableCookies();
         doMagic();
         observe();
     });
 });
-
-// Cookies disabler
-const disableCookies = () => {
-    const cookies = document.cookie.split(';');
-    const date = new Date(null).toUTCString();
-    const domain = location.host.replace('www', '');
-
-    cookies.forEach(cookie => {
-        const name = cookie.split('=')[0];
-
-        document.cookie = `${name}=; expires=${date}; path=/;`;
-        document.cookie = `${name}=; expires=${date}; domain=${domain}; path=/;`;
-    });
-};
 
 // Remover
 const doMagic = () => {
@@ -66,6 +51,7 @@ const doMagic = () => {
         // Miscellaneous
         element.classList.remove('cli-barmodal-open');
         element.classList.remove('cookiesAccepted');
+        element.classList.remove('cookiewall-active');
     });
 };
 
@@ -78,6 +64,5 @@ const observe = () => {
 };
 
 // Then...
-disableCookies();
 doMagic();
 observe();
