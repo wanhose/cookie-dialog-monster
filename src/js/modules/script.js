@@ -52,6 +52,7 @@ const doMagic = () => {
         element.classList.remove('cli-barmodal-open');
         element.classList.remove('cookiesAccepted');
         element.classList.remove('cookiewall-active');
+        element.classList.remove('noScroll');
     });
 };
 
