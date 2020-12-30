@@ -22,19 +22,15 @@ if (!!window.chrome) {
       const text = await fetch(filtersUrl).then((res) => res.text());
       const filters = text.split("\n");
 
-      filters.forEach((item) => {
-        const [url, match] = item.split("##");
+      filters.forEach((match) => {
+        const element = document.querySelector(match);
 
-        if (url === "" || currentUrl.includes(url)) {
-          const element = document.querySelector(match);
-
-          if (
-            element &&
-            element.tagName !== "BODY" &&
-            element.tagName !== "HTML"
-          ) {
-            element.remove();
-          }
+        if (
+          element &&
+          element.tagName !== "BODY" &&
+          element.tagName !== "HTML"
+        ) {
+          element.remove();
         }
       });
     };
