@@ -311,7 +311,6 @@ div[class="allow-cookie-stripe"]
 .initial-cmp-container-overlay
 .COOKIE_BOX
 #cookiesWarningBackground
-#container
 #cookieAllowWrap
 .cookie-permission
 #dnn_ctr496_View_EUcookie
@@ -1719,7 +1718,6 @@ aza-cookie-message
 .SiteMessage--cookie
 #msg_cookie
 .cookie__message
-#Container
 cookies-requirement
 DCINFO_COOKIE_AGB
 .cookie-notice-root
@@ -3895,7 +3893,6 @@ policy-consent
 .cookie-warning
 #footer_width
 .sp-dsgvo-popup-overlay
-#cn
 #ctl00_privacyCookies_LIPCNB_PrivacyandCookiesNoticePanel
 .pea_cook_wrapper.pea_cook_bottomright
 .lxb_cm-message
@@ -3932,7 +3929,6 @@ policy-consent
 .cookies-warning-footer
 .js_cookie_law
 .cookie_display
-#TextArea
 #cookiePolicy-layer
 #wagento-cp-wrap
 #cookielawinfo
@@ -4733,7 +4729,7 @@ div[id="cookie"]
 #cookieNoticeContainer
 .cookie_consent_holder
 .Common-Privacy-HeaderCookiesMessage
-#header ~ div[aria-label*="cookieconsent"]
+div[aria-label*="cookieconsent"]
 .consent-cookies
 #cookiepolicypopup
 #szoCookieBar
@@ -5206,7 +5202,6 @@ cookiless-div
 .header-wrapper__cookie
 #ccs-notification
 .lg-cookie
-#container
 #hso-cookies-message
 #info-cookies-banner
 .r-cookie-bar
@@ -5905,7 +5900,6 @@ app-cookie
 .cookie-notification__bar
 #cookieMessagelightbox
 .cpnb-outer
-#cn
 #dealersEPrivacyDisclaimer
 #div-cookies
 #cookie-law
@@ -8171,7 +8165,6 @@ div[style^="color: rgb(238, 238, 238); background-color: rgb(102, 102, 51);"]
 #ecd_opt_in_banner
 #vueCookie
 .ngs-cookie-bar
-#privacy div#container
 .stickyfooter-cookie-alert-box-wrapper
 #cookiebanner-wrapper
 .Cookie_Banner
@@ -11078,7 +11071,6 @@ div[data-privacy-consent]
 #HFS_CookieHint
 .om-cookie-agreement
 #cookieTerms
-#Container
 #allowcookieandthirdparty
 #cookieNotice
 .keksbox-overlay-layer
@@ -13658,7 +13650,6 @@ div[data-cookielayer-init]
 #cookie-law-info-bar
 #cookie-acceptance-banner
 .cookie-popUp
-#cn
 .reveal-modal[id*="cookie"]
 .cookie-banner
 #message
