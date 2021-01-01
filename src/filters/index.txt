@@ -80,7 +80,6 @@ div[data-id="cookieBar"]
 .cookies-management-bar
 .m6Cookies_overlay
 #cookie-bar
-.content
 #soi-global-privacy-info
 #cookie_top_info
 .cookie-opt-in
@@ -2942,7 +2941,7 @@ div#cookie-inner-wrapper
 .sb-cookie-info-box
 .wolford-allow-cookies
 .mj-box-cookie-alert
-#root div[class*="cookieMonster-wrapper"]
+div[class*="cookieMonster-wrapper"]
 #permission_request_box
 #gb > .gb_g.gb_gc.gb_md
 #euCookiesLawBar
@@ -3120,7 +3119,7 @@ sd-cookies-widget
 .cookie-fade
 .cnil-message
 #LegalsCookieHinweis
-#root ~ div[class*="consent-banner"]
+div[class*="consent-banner"]
 .ubg-cookies-banner
 #CookieReportsPanel
 #ts_cookie_info
@@ -5198,7 +5197,7 @@ consent-notification
 #ventanaCookies
 #cookie-consent-message
 #compliancecookie
-#root-header div[class*="GdprPopup"]
+div[class*="GdprPopup"]
 #cookiewarn
 .cookie-bar-popover
 .gdrp-wrap.gdrp-show
@@ -5251,7 +5250,7 @@ div[id="_iph_cp_popup"]
 #_cookies-overlay
 .cookies_apply
 .cookies_pdisclaimer
-#root div[class*="cookies-policy"]
+div[class*="cookies-policy"]
 .div_cookie_hint
 #fw_cookie
 #eu-cookie-notify
@@ -5569,7 +5568,7 @@ div[class^="cookie-consent_"]
 #ppCookies
 .notify-cookies
 .notification-wrapper-bottom
-#root div[data-test*="Cookie-Banner"]
+div[data-test*="Cookie-Banner"]
 #alertcookies
 .waGDPR_consentButton
 #cookiepolicy-main-outer
@@ -7203,7 +7202,7 @@ div[data-selen-group="cookies-bar"]
 #consent-manager
 .cookie-hint-container
 #privacy-policy-popup
-#root div[data-dmid*="cookiebar"]
+div[data-dmid*="cookiebar"]
 #cook-cont
 .welcome-privacy
 .allow-cookie-wrapper
@@ -9936,7 +9935,7 @@ div[data-privacy-consent]
 #cookiesBannerContainer
 #coe_cookies_placeholder
 .viacomcookiebar
-#root div[aria-label="cookieconsent"]
+div[aria-label="cookieconsent"]
 #privacy_info_overlay
 #ccm-cookiesDisclosure
 .avertissementCookies
@@ -10946,7 +10945,7 @@ awsui-alert[dismiss*="CookieBanner"]
 #popUpInfosLegal
 .c-cookieContainer
 #cookies-approval-popup
-#root [class*="CookiePolicyWidget"]
+div[class*="CookiePolicyWidget"]
 .cookies--notification
 #acceptCookieContainer
 .cookies_popup
@@ -11764,7 +11763,7 @@ DIV[style^="position: fixed; bottom: 0px; z-index: 10000;"]
 #cookie-overlay-container
 .acceptCookieNotice
 .container-cookie-notice
-#main-content div[class*="CookieWarning"]
+div[class*="CookieWarning"]
 #cookienotify-wrapper
 .cookieNotifierWrapper
 .m-message-banner
@@ -12561,3 +12560,11 @@ amedia-privacybox
 #gdpr_basic
 #npmCookieBanner
 .cookie-mention
+#wt-modal-container
+#sprd-consent
+#sd-cmp
+#cl-consent
+script[src="//clickio.mgr.consensu.org/t/consent_216889.js"]
+#didomi-host
+div[style="position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px; background-color: rgba(0, 0, 0, 0.5);"]
+#didomiConsentOverlay
