@@ -15,7 +15,7 @@
 .cookie-policy-info
 .mp-cookies
 .footer-cookie-notice
-#\5f _ic-notice
+#ic-notice
 #headerCookiesBar
 .info_cookies_banner
 .cookieconsent-container
@@ -676,7 +676,6 @@ cccwr
 #CookieT1Bar
 #cookieMgn
 #cookieInfobox
-#js\.cookie\.banner
 .privacy_div
 #cookies_hint
 #_cookiealert
@@ -722,7 +721,6 @@ cccwr
 .divCookieBanner
 .cm-cookie-geo
 .privacy-notice--simple
-#notForm\:userNot > .notificationBar
 #strawberry-cookiebar
 .framework_cookies
 #cookies_advise
@@ -772,8 +770,6 @@ shb-cookie-accept
 #page-cookies-bar
 .euCookies
 .custom-cookie-msg
-.alert
-.banner
 #cookies-alert
 #ckWarning
 #cc-modal-overlay
@@ -1241,7 +1237,7 @@ cookie-permission
 .mod-overlay[data-topic="consent"]
 #CookieWarning
 .cookie-alert
-#\5f cookieConsentWrapper
+#cookieConsentWrapper
 #cookie_loc
 .page-warning_cookies
 #stickycookiePolicy
@@ -1265,7 +1261,6 @@ cookie-permission
 .gfl-widget-gdpr-wrap
 .consent-container--banner
 div[class^="_CookieNotice_"]
-.pum[data-popmake*="\"slug\":\"cookie\""]
 #cookies-policy-mssg
 #barritacookies
 #cookie_belt
@@ -1445,7 +1440,7 @@ aza-cookie-message
 #bloquecookies
 #modal_cookie
 .cookies_agree
-#id\=ID_COOKIECONSENT_BANDEAU
+#ID_COOKIECONSENT_BANDEAU
 #cookie_msg_2
 .Cookie__container
 #cookieNotifyWrapper
@@ -1955,7 +1950,7 @@ div[id="cookieAcceptContainer"]
 .tt-cookie-bar
 #gdprc_bar
 .cookie-l
-#\5f _ndcc_cookieImpliedConsent
+#ndcc_cookieImpliedConsent
 .CookieOptIn
 .cc-onconsent-analytics
 .gdpr-cookie-bar
@@ -3950,7 +3945,7 @@ hma-cookie-notification
 .cookies_content
 .navbar-fixed-bottom.cookies
 .lp-cookie-consent
-#\5f iph_cp_popup
+#iph_cp_popup
 #cnContainer
 #polityka-prywatnosci
 .fullwidth.cookie
@@ -4607,7 +4602,6 @@ div[data-container-acceptcookies]
 #sutik_hasznalata_figyelmeztetes
 #eCookieMsg
 #mpc_cookie_intro
-#siteHeader > .banner
 #mod-privacy-policy-banner-1
 .bmj-cookie-noticebar-content
 .shareaholic-cookie-consent
@@ -5601,7 +5595,7 @@ div[class^="cookie-banner"]
 .cookie-processed
 .cookieconsent__wrap
 #cookiePopUpId
-#\5f CookieText
+#CookieText
 #cookieConsentPopup
 #cookie-policy-msg
 .cookies[data-plugin-cookie]
@@ -6592,7 +6586,7 @@ ytd-consent-bump-renderer
 #cp_wrap
 .lower-cookie-banner
 #declare-cookies
-#cookieBanner\.banner
+#cookieBanner
 #lemmCookieControlDivContainerBG
 .ui-cookie-notice
 .cookiesbottom
@@ -7739,7 +7733,6 @@ div[data-component="cookie-policy"]
 .cookiebar-container
 .js-cookie-directive
 .js-cookieMessage
-.brand_drawer
 .CookieContainer
 #gServiceCookie
 .gdpr-hellobar
@@ -7951,7 +7944,6 @@ div[data-banner="cookies"]
 #cookie-policy-notice
 .leyCookies
 #euCookieNotify
-#ActionBar
 .consent-container
 #GcCookieBox
 #cookie_consent_playzo
@@ -8116,7 +8108,6 @@ div[ld-scope="cookie-consent"]
 #myModalrgpd
 #footer-cookie-policy
 #polish-cookie-note
-.banner-container
 .dft-cookies.open
 .avertissementCookieContenu
 #popin_cookies
@@ -8477,7 +8468,7 @@ div[data-pov-accept-cookies-message]
 .cookies_notification
 .pod.classic.brd-none.dev-pod
 .explicit-cookie-container-wrapper
-#cookieconsent\:desc
+#cookieconsent
 .section-cookie
 .qb-cookielaw-bar
 #pxa-cookie-bar
@@ -8488,7 +8479,6 @@ div[data-pov-accept-cookies-message]
 #ePrivacy
 #coolermaster-cookie-policy
 [cnn-cookie-policy]
-#\5f _accept_cookie
 .cookie-accept-area
 .cc_consent
 #hs-eu-cookie-confirmation
@@ -8910,7 +8900,6 @@ div[class*="cookie-consent-modal_"]
 .wpgdprc-consent-bar
 #eu_compliance
 .footer-cookies
-.\].js-site.\[.site > .\].js-cookie-notice.\[.site__partial > .zeta.desk-inset-right--enormous.text-left.text-uppercase.box--emphasize--invert.box
 .by_cookie_policy
 .cookiewarningbox
 #MSoftCookieWarn
@@ -12566,5 +12555,8 @@ amedia-privacybox
 #cl-consent
 script[src="//clickio.mgr.consensu.org/t/consent_216889.js"]
 #didomi-host
+#didomi-popup
 div[style="position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px; background-color: rgba(0, 0, 0, 0.5);"]
 #didomiConsentOverlay
+.softMessages-list
+#acceptationCMPWall
