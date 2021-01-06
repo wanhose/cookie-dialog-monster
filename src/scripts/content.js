@@ -1,6 +1,6 @@
 if (!!window.chrome) {
   const fix = () => {
-    document.body.style = "overflow: auto!important;";
+    document.body.style = "overflow-y: unset !important;";
   };
 
   const observe = () => {
