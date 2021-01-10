@@ -40,7 +40,6 @@ div[class*="CookieBanner-"]
 div[data-test-sell-cookie-banner]
 #z-cookie-note
 #popcookie
-.top_message
 #sp-cc[action*="cookiepref"]
 #ribbon-cookies-agree
 cookiePlaceholder
@@ -450,7 +449,6 @@ div[id*="cookie_info_bar"]
 #acceptCookiePolicyPopup
 .cookies-bar
 .cookie-policy-notice
-#banner
 #cookieoptin
 #cookieAlertContainer
 #__cookie_consent
@@ -794,7 +792,6 @@ voc-cookie-warning
 .i-layout__cookie-notification
 #gdprCenter
 .b-cookies_informer
-.alert-info
 .cookieBanner
 .appx-cookie-banner-eu
 .dsgvo-wrapper
@@ -3880,7 +3877,6 @@ div[data-automation="privacy-banner-wrapper"]
 .cookie-policy-bottom
 .cookie-notice
 #cookie-law-consent-section
-.site-wrapper > div > .alert-info.alert
 #cookiesPolicy
 #AdBlockerInfo.cookie-container
 #cookie-info-outer
@@ -4651,7 +4647,7 @@ div[data-container-acceptcookies]
 #ww-cookie-information
 #fdih-cb
 #cookiebarcnt
-DIV[style^="position: fixed; left:0; right:0; bottom:0"]
+div[style^="position: fixed; left:0; right:0; bottom:0"]
 #cookie_toolbar
 #komplett-bescheuerte-cookie-warnung
 #wk_cookiebar
@@ -5049,7 +5045,6 @@ cookie-notification
 .component-consent-banner-consent-banner
 .cookiesTipIframe
 .bloc-cookies
-.page-header > .no-print.alert-info.alert
 .js-cookie-information-popup
 #gdprpopup
 .gdpr-cookies-hint
@@ -5379,7 +5374,6 @@ onl-cookie
 .legal-message-wrapper
 .banner_consenso_cookie
 .alerta-cookies
-.small
 .o-cookies
 .cp-banner
 epaas-consent-drawer-shell
@@ -6009,7 +6003,7 @@ cookie-policy-note
 #hays-cookie-notice
 #cookies-policy-container
 #cookieComplianceNotice
-DIV[style="background:#2A2A2A; color: #fff; left:0px; bottom:0px; right:0px; position: fixed; z-index: 1000;"]
+div[style="background:#2A2A2A; color: #fff; left:0px; bottom:0px; right:0px; position: fixed; z-index: 1000;"]
 #cookie_notices
 #site_footer__cookie_consent
 #m-cookie
@@ -6168,7 +6162,6 @@ div[data-component="cookieContent"]
 .coockie_banner
 [data-cookie-id]
 #cookies_header
-.alert.alert-info.page-alert
 #coockiepopup
 #cookiesDirective
 .cookieNotify
@@ -6423,7 +6416,6 @@ div[data-component="cookieContent"]
 .gdpr_compliance
 #cookieQuestion
 .orakelAdvice
-.alert-info.alert-dismissable.alert
 #TCCInfoCookie
 #cookie-policy-section
 #barra_dei_cookie
@@ -6607,7 +6599,7 @@ ytd-consent-bump-renderer
 .pi-cookie-notice
 .block__content-cookies
 .vw_system_notification_opt_in
-DIV[style="text-align:left;width:550px;background-color:#feefaa;padding:10px;font:12px Arial;position:absolute;z-index:50;undefined"]
+div[style="text-align:left;width:550px;background-color:#feefaa;padding:10px;font:12px Arial;position:absolute;z-index:50;undefined"]
 #cookies_brief_info
 .cookies_wrap
 #cppd
@@ -6815,7 +6807,7 @@ lib-privacy-policy-toast
 .cookiecontrol
 .popupContainer
 .cookie_adv2
-DIV[style="margin-left: 0px; position: fixed; left: 20px; bottom: 20px; width: 300px; height: 250px; background-color: rgb(238, 238, 238); color: rgb(51, 51, 51); border: 1px solid rgb(153, 153, 153); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); line-height: 1.3em; z-index: 99999; padding-top: 10px;"]
+div[style="margin-left: 0px; position: fixed; left: 20px; bottom: 20px; width: 300px; height: 250px; background-color: rgb(238, 238, 238); color: rgb(51, 51, 51); border: 1px solid rgb(153, 153, 153); box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); line-height: 1.3em; z-index: 99999; padding-top: 10px;"]
 .cp-curtain-container
 .js-cookie-consent-overlay
 #wpUsingCookies
@@ -7070,7 +7062,6 @@ dva-m-cookie-flyout
 .cookie-notification-holder
 #adimo-cookie
 #JScookieInfo
-#alertBar
 #cnil_informations
 #cookiePolicyPopupHTML
 .cookies_confirmation
@@ -7099,7 +7090,6 @@ dva-m-cookie-flyout
 div[class*="CookiesBanner_"]
 #cookie-message
 .gdpr-consent-bar
-.inner
 #rwdcookiesinfo
 #datenschutzcontainer
 #cnil_cookies
@@ -7176,7 +7166,6 @@ div[data-selen-group="cookies-bar"]
 #CookieRules
 .cookie-policy-accept
 .co_consent_message_container
-.no-print.alert-info.alert
 #cookieBannerContent_new
 #cookie3arhMsg
 .cookie-banner-msg
@@ -7752,7 +7741,7 @@ div[data-component="cookie-policy"]
 .letus-use-cookies
 .fl-cookie-notice--container
 #divCookieConsentInner
-DIV[class="CookieInfoBox"]
+div[class="CookieInfoBox"]
 .new-cookies-info
 #privacy_law
 .fit-cookieWall-overlay
@@ -9045,7 +9034,7 @@ div[class*="cookie-consent-modal_"]
 #redim-cookiehint
 #_ubuntu-it_cookie_policy
 .js-cookie-consent-module
-DIV[style^="position: fixed; left:0; right:0; bottom:0;"]
+div[style^="position: fixed; left:0; right:0; bottom:0;"]
 #noScriptCookies
 #cookie-policy-div
 #disclaimer-cookie
@@ -9372,7 +9361,6 @@ div[class^="app_gdpr-"]
 #divCookieNotify
 .tCook
 .mw-dsgvo-cookie-slidebar_01
-.alert.alert-info
 .c-app-cookies--ribbon
 #regens-cookie-setting
 #cookie-perm-bar
@@ -9536,7 +9524,6 @@ div[class*="CookieWrapper"]
 .erw-gdpr-notice-footer
 #twcCookieDiv
 .notification_box.cookie
-.message
 .site-header-cookies
 #cea-divCookiePolicy
 .CookieAgreement
@@ -9562,7 +9549,7 @@ div[class*="CookieWrapper"]
 .cookies-concent-dialog
 .cookies_notice
 #pricepirates-cookie-accept
-DIV[class="annotation type-alert type-permanent lspace m-reset-position closableContainer"]
+div[class="annotation type-alert type-permanent lspace m-reset-position closableContainer"]
 #cdweb-cookie-law-info
 #bannerCookiePol
 #gdprPopup
@@ -10093,7 +10080,6 @@ div[class^="cookieBanner_"]
 #cookie-policy-box
 .cookielawHinttop
 div[id="accept-cookie"]
-#form0
 .container.main-content > div:nth-of-type(1) > .noindex > .gatewayNotification.headerNotification > .headerNotification-1
 .nr-cookie-notification__wrapper
 .mb-content-cookie
@@ -11225,7 +11211,7 @@ gdpr-policies
 #jlcookie_controlMsgFirst
 .cookies-disclaimer-bar
 #cookie-law-div
-DIV[style="bottom: 0px;"]
+div[style="bottom: 0px;"]
 .js-cookies-not-accepted
 .ajs-message
 #di-cookie-message
@@ -11748,7 +11734,7 @@ web-cookie-consent
 .f_cookie
 #SWCC3_CookieLawBanner
 .cookie-notice-dialog
-DIV[style^="position: fixed; bottom: 0px; z-index: 10000;"]
+div[style^="position: fixed; bottom: 0px; z-index: 10000;"]
 #cookie-overlay-container
 .acceptCookieNotice
 .container-cookie-notice
@@ -12560,3 +12546,9 @@ div[style="position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px
 #didomiConsentOverlay
 .softMessages-list
 #acceptationCMPWall
+.qc-cmp2-container
+#qc-cmp2-container
+.w-cookies-popup__wrapper
+.w-cookies-popup
+#CybotCookiebotDialogBodyUnderlay
+.tvcmscookies-notice
