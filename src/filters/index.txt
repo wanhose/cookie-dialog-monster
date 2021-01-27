@@ -1758,7 +1758,6 @@ tui-cookie-consent
 #privacy-shield
 .kjfCookieInfoBox
 #policy-cookie-notice
-.ui-dialog
 div[style^="color: rgb(238, 238, 238); background-color: rgb(102, 102, 51);"]
 #accept_cookie
 .global-alert--cookie-notice
@@ -2334,7 +2333,6 @@ suchen-cookie-privacy-toast
 #private-policy
 #bt-privacy-header
 #consent-toolbar
-.info.popup-content
 .disclaimermessage
 .datenschutzhinweis
 #global-cookiewarning
@@ -4024,7 +4022,6 @@ cru-cookie-policy
 .cookiemanager
 .cookie__container
 #CNIL-cookie
-.popup-content
 #noteOnCookies
 .cookieClass
 #cookieAgree
@@ -4745,7 +4742,6 @@ div[data-cmp-no-consent]
 .cookies__layover
 [cookie-unique-name]
 #rodoNotificationWrapper
-#colorbox
 .wp-gdpr-cookie-notice-wrap
 #y-shade
 .cookie_gdpr
@@ -12552,3 +12548,17 @@ div[style="position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px
 .w-cookies-popup
 #CybotCookiebotDialogBodyUnderlay
 .tvcmscookies-notice
+.ui-widget-overlay.ui-front
+#policy-wrapper
+div[id*="sp_message_container_"]
+iframe[src="/legal/acuerdo_cookies.html"]
+#popup[data-component="ePopup"]
+#popupp[style="visibility: visible;"]
+div[data-tracking-opt-in-overlay="true"][style="z-index: 9999999;"]
+#cookie-compliant-conte
+#idxrcookies
+#cookieLoad
+.cookieAcceptDiv
+.fondo-popup-cookies
+#cookie-consent-iframe
+#cookies-caja
