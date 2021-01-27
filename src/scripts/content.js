@@ -19,22 +19,50 @@ if (!!window.chrome) {
     });
   });
 
-  const remove = async () => {
-    const filtersUrl = chrome.runtime.getURL("filters/index.txt");
-    const text = await fetch(filtersUrl).then((res) => res.text());
-    const filters = text.split("\n");
+  const removeFromCache = () => {
+    chrome.storage.sync.get([document.location.hostname], (value) => {
+      const matches = value[document.location.hostname];
 
-    filters.forEach((match) => {
-      const element = document.querySelector(match);
+      if (matches && !!matches.length) {
+        matches.forEach((match) => {
+          const element = document.querySelector(match);
+          const tagName = element ? element.tagName.toUpperCase() : "";
 
-      if (element && element.tagName !== "BODY" && element.tagName !== "HTML") {
-        element.remove();
+          if (element && !["BODY", "HTML"].includes(tagName)) {
+            matches.push(match);
+            element.remove();
+          }
+        });
       }
     });
   };
 
+  const saveToCache = (value) => {
+    chrome.storage.sync.set({ [document.location.hostname]: value });
+  };
+
+  const remove = async () => {
+    const filtersUrl = chrome.runtime.getURL("filters/index.txt");
+    const text = await fetch(filtersUrl).then((res) => res.text());
+    const filters = text.split("\n");
+    const matches = [];
+
+    filters.forEach((match) => {
+      const element = document.querySelector(match);
+      const tagName = element ? element.tagName.toUpperCase() : "";
+
+      if (element && !["BODY", "HTML"].includes(tagName)) {
+        matches.push(match);
+        element.remove();
+      }
+    });
+
+    saveToCache(matches);
+  };
+
   (async () => {
     fix();
+    removeFromCache();
     await remove();
     observe();
   })();
