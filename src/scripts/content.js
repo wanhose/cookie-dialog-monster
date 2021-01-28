@@ -1,6 +1,6 @@
 if (!!window.chrome) {
   let attempts = 0;
-  const filtersUrl = chrome.runtime.getURL("filters/index.txt");
+  let filters = [];
   const options = {
     attributes: true,
     childList: true,
@@ -36,7 +36,6 @@ if (!!window.chrome) {
           const tagName = element ? element.tagName.toUpperCase() : "";
 
           if (element && !["BODY", "HTML"].includes(tagName)) {
-            matches.push(match);
             element.remove();
           }
         });
@@ -48,10 +47,12 @@ if (!!window.chrome) {
     chrome.storage.local.get([document.location.hostname], (store) => {
       const matches = store[document.location.hostname];
 
-      if (matches && !!matches.length && !matches.includes(value)) {
-        chrome.storage.local.set({
-          [document.location.hostname]: [...new Set([...matches, value])],
-        });
+      if (!!matches) {
+        if (!matches.includes(value)) {
+          chrome.storage.local.set({
+            [document.location.hostname]: [...new Set([...matches, value])],
+          });
+        }
       } else {
         chrome.storage.local.set({
           [document.location.hostname]: [value],
@@ -60,11 +61,8 @@ if (!!window.chrome) {
     });
   };
 
-  const removeFromFilters = async () => {
+  const removeFromFilters = () => {
     if (attempts < 3) {
-      const text = await fetch(filtersUrl).then((res) => res.text());
-      const filters = text.split("\n");
-
       filters.forEach((match) => {
         const element = retrieveElement(match);
         const tagName = element ? element.tagName.toUpperCase() : "";
@@ -92,8 +90,14 @@ if (!!window.chrome) {
     observer.observe(document.body, options);
   };
 
-  fix();
-  removeFromCache();
-  removeFromFilters();
-  observe();
+  (async () => {
+    const url = chrome.runtime.getURL("filters/index.txt");
+    const db = await fetch(url).then((res) => res.text());
+    filters = db.split("\n");
+
+    fix();
+    removeFromCache();
+    removeFromFilters();
+    observe();
+  })();
 }
