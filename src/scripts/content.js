@@ -8,15 +8,16 @@ if (!!window.chrome) {
 
   const fix = () => {
     document.body.style = "overflow-y: unset !important;";
+    document.documentElement.style = "overflow-y: unset !important;";
   };
 
   const retrieveElement = (match) => {
     if (!match.includes("[") && !match.includes(">")) {
-      if (match[0] === ".") {
+      if (match.startsWith(".")) {
         return document.getElementsByClassName(match.slice(1))[0];
       }
 
-      if (match[0] === "#") {
+      if (match.startsWith("#")) {
         return document.getElementById(match.slice(1));
       }
     } else {
@@ -62,7 +63,7 @@ if (!!window.chrome) {
   };
 
   const removeFromFilters = () => {
-    if (attempts < 3) {
+    if (attempts < 5) {
       filters.forEach((match) => {
         const element = retrieveElement(match);
         const tagName = element ? element.tagName.toUpperCase() : "";
