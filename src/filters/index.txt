@@ -832,7 +832,6 @@ jsa-cookie
 .j-cookie-message
 #politykaPrywatnosciHolder
 .tx-it24cookies-pi1
-#warning
 #cookieID
 #_cookieNotificationBar
 #banner_cnil
@@ -2973,7 +2972,6 @@ div[class*="cookieMonster-wrapper"]
 #cookieMessageBar
 .bs-gdpr-law
 #cnilcookie
-#policy-div
 .popup_cookies
 .ms-cookie-ok
 #packt_gdpr_container
@@ -10640,7 +10638,6 @@ div[style*='width:800px']
 .cookie_picking_block
 .CookiesBanner
 #__next div[class*="privacy-notification"]
-#policy
 #mcookie
 .cookie_settings_container
 #cookies_ok
@@ -10924,7 +10921,6 @@ div[class*="CookiePolicyWidget"]
 .approveCookiesBar
 #gdpr_overflow
 #ghcookie-wrapper
-#policyPanel
 #cookiehinweisbox_wrapper
 .euCookieContainer
 ._cookies_policy_popup
@@ -11106,7 +11102,6 @@ div[class="eupopup-container eupopup-container-bottom eupopup-color-default"]
 #cookies-accept-bar
 .cookie-image-wrapper
 #uhfCookieAlert
-#message
 .Cookie--bottom
 .widget--enable-cookies-box
 #cookieStandar
@@ -12562,3 +12557,15 @@ div[data-tracking-opt-in-overlay="true"][style="z-index: 9999999;"]
 .fondo-popup-cookies
 #cookie-consent-iframe
 #cookies-caja
+[class*="mxp-CookiePanel-cookie-panel-"]
+[class*="mxp-CookiePanel-cookie-panel-overlay-"]
+#tt-cookie-alert
+#sui-TcfFirstLayerModal
+.sui-MoleculeModal
+.mfp-container
+.mfp-bg
+.mfp-wrap
+div[data-testid="cookie-policy-banner"]
+#cookie-compliant-fondo
+#didomi-host
+#cmpbox
