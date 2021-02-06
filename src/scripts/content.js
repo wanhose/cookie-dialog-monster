@@ -7,8 +7,8 @@ if (!!window.chrome) {
   };
 
   const fix = () => {
-    document.body.style = "overflow-y: unset !important;";
-    document.documentElement.style = "overflow-y: unset !important;";
+    document.body.style.overflowY = "unset";
+    document.documentElement.style.overflowY = "unset";
   };
 
   const retrieveElement = (match) => {
