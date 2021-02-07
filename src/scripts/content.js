@@ -7,8 +7,11 @@ if (!!window.chrome) {
   };
 
   const fix = () => {
-    document.body.style.overflowY = "unset";
-    document.documentElement.style.overflowY = "unset";
+    const body = document.body.style;
+    const html = document.documentElement.style;
+
+    body.setProperty("overflow-y", "unset", "important");
+    html.setProperty("overflow-y", "unset", "important");
   };
 
   const retrieveElement = (match) => {
