@@ -2044,7 +2044,6 @@ div[id="cookieAcceptContainer"]
 #cookie-pop-up
 span.cookie-notice
 .cookies_policy_container
-.b-notification-push__wrapper
 .layer-cookies-wrapper
 #cookie_priv_div
 .cookieFancybox
@@ -5839,7 +5838,6 @@ div[class^="GDPR-module"]
 #mms-cookie-disclaimer
 #wsjconsent
 .c-cookie-consent-banner
-.b-body
 .evo-gdpr-box
 #rbiCookiePolicy_spacer
 .cookie_bar_base
@@ -8529,7 +8527,6 @@ app-banner[arialabel*="Cookies"]
 .cookies-1
 #site-cookie-notice
 .cookies-warn
-.b-header
 #dxCookieConsentContainer
 #cookie_policy_div
 #cookie_box_header_message
@@ -12569,3 +12566,4 @@ div[data-testid="cookie-policy-banner"]
 #cookie-compliant-fondo
 #didomi-host
 #cmpbox
+div[data-component="global/PopUpFromCookie"]
