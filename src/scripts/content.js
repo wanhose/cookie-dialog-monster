@@ -32,23 +32,6 @@ const observe = () => {
   });
 };
 
-const removeFromCache = () => {
-  chrome.storage.local.get([document.location.hostname], (value) => {
-    const matches = value[document.location.hostname];
-
-    if (matches && !!matches.length) {
-      for (let i = 0; i < matches.length; i++) {
-        const element = retrieveElement(matches[i]);
-        const tagName = element ? element.tagName.toUpperCase() : "";
-
-        if (element && !["BODY", "HTML"].includes(tagName)) {
-          element.remove();
-        }
-      }
-    }
-  });
-};
-
 const updateCache = (value) => {
   chrome.storage.local.get([document.location.hostname], (store) => {
     const matches = store[document.location.hostname];
@@ -61,16 +44,33 @@ const updateCache = (value) => {
   });
 };
 
+const removeFromCache = () => {
+  chrome.storage.local.get([document.location.hostname], (value) => {
+    const matches = value[document.location.hostname];
+
+    if (matches && !!matches.length) {
+      for (let i = matches.length; i--; ) {
+        const element = retrieveElement(matches[i]);
+        const tagName = element ? element.tagName.toUpperCase() : "";
+
+        if (element && !["BODY", "HTML"].includes(tagName)) {
+          element.remove();
+        }
+      }
+    }
+  });
+};
+
 const removeFromFilters = () => {
   if (attempts < 5) {
-    for (let i = 0; i < filters.length; i++) {
+    for (let i = filters.length; i--; ) {
       const match = filters[i];
       const element = retrieveElement(match);
       const tagName = element ? element.tagName.toUpperCase() : "";
 
       if (element && !["BODY", "HTML"].includes(tagName)) {
+        element.innerHTML = "";
         updateCache(match);
-        element.remove();
       }
     }
   }

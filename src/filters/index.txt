@@ -12526,6 +12526,7 @@ amedia-privacybox
 #sprd-consent
 #sd-cmp
 #cl-consent
+.cl-consent
 script[src="//clickio.mgr.consensu.org/t/consent_216889.js"]
 #didomi-host
 #didomi-popup
@@ -12566,3 +12567,7 @@ div[data-testid="cookie-policy-banner"]
 #cmpbox
 div[data-component="global/PopUpFromCookie"]
 div[data-testid="cookie-policy-dialog"]
+div[aria-labelledby="cookie_banner_title"]
+.popover-cover zIndex--fixed
+#_evidon-background
+.evidon-background
