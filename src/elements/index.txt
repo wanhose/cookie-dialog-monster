@@ -12571,3 +12571,6 @@ div[aria-labelledby="cookie_banner_title"]
 .popover-cover zIndex--fixed
 #_evidon-background
 .evidon-background
+_evidon-barrier-wrapper
+#mms-consent-portal-container
+div[data-testid="cookie-policy-manage-dialog"]
