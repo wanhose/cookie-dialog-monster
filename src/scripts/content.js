@@ -1,12 +1,11 @@
-let attempts = 0;
-let filters = [];
+let elements = [];
 
 const fix = () => {
-  const body = document.body.style;
-  const html = document.documentElement.style;
+  const html = document.documentElement;
+  const body = document.body;
 
-  body.setProperty("overflow-y", "unset", "important");
-  html.setProperty("overflow-y", "unset", "important");
+  html.style.setProperty("overflow-y", "unset", "important");
+  body.style.setProperty("overflow-y", "unset", "important");
 };
 
 const retrieveElement = (match) => {
@@ -32,68 +31,33 @@ const observe = () => {
   });
 };
 
-const updateCache = (value) => {
-  chrome.storage.local.get([document.location.hostname], (store) => {
-    const matches = store[document.location.hostname];
+const remove = () => {
+  for (let i = elements.length; i--; ) {
+    const match = elements[i];
+    const element = retrieveElement(match);
+    const tagName = element ? element.tagName.toUpperCase() : "";
 
-    chrome.storage.local.set({
-      [document.location.hostname]: matches
-        ? [...new Set([...matches, value])]
-        : [value],
-    });
-  });
-};
-
-const removeFromCache = () => {
-  chrome.storage.local.get([document.location.hostname], (value) => {
-    const matches = value[document.location.hostname];
-
-    if (matches && !!matches.length) {
-      for (let i = matches.length; i--; ) {
-        const element = retrieveElement(matches[i]);
-        const tagName = element ? element.tagName.toUpperCase() : "";
-
-        if (element && !["BODY", "HTML"].includes(tagName)) {
-          element.remove();
-        }
-      }
-    }
-  });
-};
-
-const removeFromFilters = () => {
-  if (attempts < 5) {
-    for (let i = filters.length; i--; ) {
-      const match = filters[i];
-      const element = retrieveElement(match);
-      const tagName = element ? element.tagName.toUpperCase() : "";
-
-      if (element && !["BODY", "HTML"].includes(tagName)) {
-        element.innerHTML = "";
-        updateCache(match);
-      }
+    if (element && !["BODY", "HTML"].includes(tagName)) {
+      element.remove();
     }
   }
 };
 
-const observer = new MutationObserver((mutations, observer) => {
-  mutations.forEach(() => {
-    observer.disconnect();
-    fix();
-    removeFromCache();
-    removeFromFilters();
-    attempts += 1;
-    observe();
-  });
+const observer = new MutationObserver((_, instance) => {
+  instance.disconnect();
+  fix();
+  remove();
+  observe();
 });
 
 (async () => {
-  const url = chrome.runtime.getURL("filters/index.txt");
+  const url = chrome.runtime.getURL("elements/index.txt");
   const db = await fetch(url).then((res) => res.text());
-  filters = db.split("\n");
+  elements = db.split("\n");
 
-  fix();
-  removeFromCache();
-  removeFromFilters();
-  observe();
+  document.addEventListener("DOMContentLoaded", () => {
+    fix();
+    remove();
+    observe();
+  });
 })();
