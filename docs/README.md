@@ -1,27 +1,36 @@
 # Do Not Consent
 
-A Chrome extension that allows you to remove cookie consent dialogs automatically.
+An extension that allows you to remove cookie consent dialogs automatically.
 
 ## Compatibility
 
-- Google Chrome 61+.
+- Google Chrome 26+.
 - Microsoft Edge 79+.
-- Opera 48+ (not tested yet).
+- Mozilla Firefox 48+.
+- Opera 48+.
 
 ## Installation (on Google Chrome)
 
-1. Clone the repository to the folder that you want.
+1. Clone this repository.
 2. Go to [chrome://extensions](chrome://extensions).
 3. Enable **Developer mode** by clicking the toggle switch next to **Developer Mode**.
-4. Then, click the **LOAD UNPACKED** button and select the *src* cloned folder.
+4. Then, click the **LOAD UNPACKED** button and select the _src_ cloned folder.
+5. That's all, you have a development build of this extension.
+
+## Installation (on Mozilla Firefox)
+
+1. Clone this repository.
+2. Go to [about:debugging](about:debugging).
+3. Enter **This Firefox** section.
+4. Then, click the **LOAD TEMPORARY ADD-ON** button and select any file inside _src_ cloned folder.
 5. That's all, you have a development build of this extension.
 
 ## Installation (on Microsoft Edge)
 
-1. Clone the repository to the folder that you want.
+1. Clone this repository.
 2. Go to [edge://extensions](edge://extensions).
 3. Enable **Developer mode** by clicking the toggle switch next to **Developer Mode**.
-4. Then, click the **LOAD UNPACKED** button and select the *src* cloned folder.
+4. Then, click the **LOAD UNPACKED** button and select the _src_ cloned folder.
 5. That's all, you have a development build of this extension.
 
 ## Contributing
