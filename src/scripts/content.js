@@ -1,3 +1,4 @@
+let attempts = 1;
 let elements = [];
 
 const fix = () => {
@@ -8,7 +9,14 @@ const fix = () => {
   body.style.setProperty("overflow-y", "unset", "important");
 };
 
-const retrieveElement = (match) => {
+const observe = () => {
+  observer.observe(document.body, {
+    attributes: true,
+    childList: true,
+  });
+};
+
+const search = (match) => {
   if (!match.includes("[") && !match.includes(">")) {
     if (match.startsWith(".")) {
       return document.getElementsByClassName(match.slice(1))[0];
@@ -24,40 +32,37 @@ const retrieveElement = (match) => {
   return null;
 };
 
-const observe = () => {
-  observer.observe(document.body, {
-    attributes: true,
-    childList: true,
-  });
-};
-
 const remove = () => {
   for (let i = elements.length; i--; ) {
     const match = elements[i];
-    const element = retrieveElement(match);
-    const tagName = element ? element.tagName.toUpperCase() : "";
+    const element = search(match);
 
-    if (element && !["BODY", "HTML"].includes(tagName)) {
-      element.remove();
+    if (element) {
+      const tagName = element.tagName.toUpperCase();
+
+      if (!["BODY", "HTML"].includes(tagName)) element.remove();
     }
   }
 };
 
 const observer = new MutationObserver((_, instance) => {
-  instance.disconnect();
+  if (attempts <= 5) {
+    attempts += 1;
+    instance.disconnect();
+    fix();
+    remove();
+    observe();
+  }
+});
+
+(async () => {
+  const url = chrome.runtime.getURL("data/elements.txt");
+  const db = await fetch(url).then((res) => res.text());
+  elements = db.split("\n");
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
   fix();
   remove();
   observe();
 });
-
-(async () => {
-  const url = chrome.runtime.getURL("elements/index.txt");
-  const db = await fetch(url).then((res) => res.text());
-  elements = db.split("\n");
-
-  document.addEventListener("DOMContentLoaded", () => {
-    fix();
-    remove();
-    observe();
-  });
-})();
