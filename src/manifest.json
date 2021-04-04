@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Do Not Consent",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -9,8 +9,9 @@
     "48": "assets/icon48.png",
     "128": "assets/icon128.png"
   },
-  "page_action": {
+  "browser_action": {
     "default_icon": "assets/icon32.png",
+    "default_popup": "popup.html",
     "default_title": "Do Not Consent"
   },
   "author": "wanhose",
@@ -22,6 +23,5 @@
       "run_at": "document_start"
     }
   ],
-  "permissions": ["storage", "unlimitedStorage"],
-  "web_accessible_resources": ["elements/index.txt"]
+  "web_accessible_resources": ["data/*", "scripts/popup.js", "styles/*"]
 }
