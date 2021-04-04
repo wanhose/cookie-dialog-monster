@@ -12574,3 +12574,4 @@ div[aria-labelledby="cookie_banner_title"]
 _evidon-barrier-wrapper
 #mms-consent-portal-container
 div[data-testid="cookie-policy-manage-dialog"]
+header[style="z-index: 2147483643;"]
