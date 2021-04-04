@@ -1,0 +1,79 @@
+:root {
+  --color-chocolate: #47321e;
+  --color-cookie: #f2e9df;
+  --color-star: #e0a261;
+}
+
+a {
+  color: var(--color-star);
+  display: inline-block;
+}
+
+body {
+  align-items: center;
+  background-color: var(--color-cookie);
+  color: var(--color-chocolate);
+  display: flex;
+  flex-direction: column;
+  height: 5rem;
+  justify-content: center;
+  margin: 1rem;
+  width: 20rem;
+}
+
+h1 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+span {
+  display: inline-block;
+}
+
+#negative,
+#positive {
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+}
+
+.star {
+  fill: none;
+  height: 1.5rem;
+  outline: none;
+  stroke: var(--color-star);
+  width: 1.5rem;
+}
+
+.star:hover {
+  cursor: pointer;
+}
+
+.star:not(:last-child) {
+  padding-right: 0.75rem;
+}
+
+#stars {
+  display: inline-flex;
+}
+
+#stars:hover .star {
+  fill: var(--color-star);
+}
+
+#stars:hover .star:hover ~ .star {
+  fill: none;
+}
+
+#stars .star {
+  fill: none;
+}
+
+#stars[hidden="true"] {
+  display: none;
+}
