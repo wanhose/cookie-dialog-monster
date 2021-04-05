@@ -2,6 +2,11 @@
 
 An extension that allows you to remove cookie consent dialogs automatically.
 
+## Downloads
+
+- [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
+- [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/do-not-consent/)
+
 ## Compatibility
 
 - Google Chrome 26+.
