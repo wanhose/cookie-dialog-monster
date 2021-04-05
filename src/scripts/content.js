@@ -1,4 +1,3 @@
-let attempts = 1;
 let elements = [];
 
 const fix = () => {
@@ -46,13 +45,10 @@ const remove = () => {
 };
 
 const observer = new MutationObserver((_, instance) => {
-  if (attempts <= 5) {
-    attempts += 1;
-    instance.disconnect();
-    fix();
-    remove();
-    observe();
-  }
+  instance.disconnect();
+  fix();
+  remove();
+  observe();
 });
 
 (async () => {
