@@ -1022,7 +1022,6 @@ div[data-notificationid="cookie"]
 #block-cookie-info
 .infocookie
 #CookieMessage
-div[style*='z-index: 1000;']
 #cookie-warning-gdpr
 #archie-widget-privacy
 .cookie-choices--info
@@ -2667,7 +2666,6 @@ div[class^="ccpa-notification-banner"]
 .cookie-snippet
 #COOKPM-BANNER
 .page > .alert-cookies.page-alert.alert-info.alert
-.grecaptcha-badge
 #sanoma-consent-bar-mobile
 .cookie_msg
 #div-cookie-monster
@@ -12575,3 +12573,5 @@ _evidon-barrier-wrapper
 #mms-consent-portal-container
 div[data-testid="cookie-policy-manage-dialog"]
 header[style="z-index: 2147483643;"]
+div[aria-label="cookieconsent"]
+body[style="overflow-y: unset !important; position: relative; min-height: 100%; top: 0px;"] > div#overlay
