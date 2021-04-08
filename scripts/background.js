@@ -59,20 +59,20 @@ const enablePopup = (tabId) => {
  */
 
 chrome.runtime.onMessage.addListener((request, sender) => {
-  sender.tab = { id: undefined };
+  const tabId = sender.tab ? sender.tab.id : undefined;
 
   switch (request.type) {
     case "DISABLE_ICON":
-      disableIcon(sender.tab.id);
+      disableIcon(tabId);
       break;
     case "DISABLE_POPUP":
-      disablePopup(sender.tab.id);
+      disablePopup(tabId);
       break;
     case "ENABLE_ICON":
-      enableIcon(sender.tab.id);
+      enableIcon(tabId);
       break;
     case "ENABLE_POPUP":
-      enablePopup(sender.tab.id);
+      enablePopup(tabId);
       break;
     default:
       break;

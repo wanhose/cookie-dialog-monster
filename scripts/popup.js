@@ -81,7 +81,7 @@ const handleStateButtonClick = async () => {
     () => {
       const stateButton = document.getElementById("state-button");
 
-      stateButton.innerHTML = state.enabled
+      stateButton.textContent = state.enabled
         ? "Enable extension"
         : "Disable extension";
       chrome.runtime.sendMessage({
@@ -134,7 +134,7 @@ const handleContentLoaded = async () => {
   const storeLink = document.getElementById("store-link");
 
   stars.forEach((star) => star.addEventListener("click", handleStarClick));
-  stateButton.innerHTML = state.enabled
+  stateButton.textContent = state.enabled
     ? "Disable extension"
     : "Enable extension";
   stateButton.addEventListener("click", handleStateButtonClick);
