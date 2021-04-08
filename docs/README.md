@@ -9,7 +9,7 @@ An extension that allows you to remove cookie consent dialogs automatically.
 
 ## Compatibility
 
-- Google Chrome 26+.
+- Google Chrome 67+.
 - Microsoft Edge 79+.
 - Mozilla Firefox 48+.
 - Opera 48+.

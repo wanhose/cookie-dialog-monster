@@ -12572,6 +12572,9 @@ div[aria-labelledby="cookie_banner_title"]
 _evidon-barrier-wrapper
 #mms-consent-portal-container
 div[data-testid="cookie-policy-manage-dialog"]
-header[style="z-index: 2147483643;"]
 div[aria-label="cookieconsent"]
 body[style="overflow-y: unset !important; position: relative; min-height: 100%; top: 0px;"] > div#overlay
+.tco-content-dock left tco-content-dock-on
+[class*="AnalyticsFooter-module--container"]
+.subredditvars-r-javascript > div > section
+.popover--oreo-message

@@ -28,9 +28,8 @@ let selectors = [];
  * @type {string}
  */
 
-const url = chrome.runtime.getURL("data/elements.txt");
-/*const url =
-  "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/elements.txt";*/
+const url =
+  "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/elements.txt";
 
 /**
  * @function commit

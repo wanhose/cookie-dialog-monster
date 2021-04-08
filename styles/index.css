@@ -15,7 +15,7 @@ body {
   color: var(--color-chocolate);
   display: flex;
   flex-direction: column;
-  height: 5rem;
+  height: 12rem;
   justify-content: center;
   margin: 1rem;
   width: 20rem;
@@ -56,6 +56,24 @@ span {
 
 .star:not(:last-child) {
   padding-right: 0.75rem;
+}
+
+#state-button {
+  background-color: var(--color-star);
+  border: none;
+  border-radius: 0.25rem;
+  color: var(--color-chocolate);
+  font-size: 0.875rem;
+  line-height: 1;
+  margin: 0 auto 1rem auto;
+  outline: 0;
+  padding: 0.5rem 1rem;
+}
+
+#state-button:focus,
+#state-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 #stars {
