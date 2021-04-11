@@ -47,7 +47,7 @@ const currentTab = () =>
  * @function currentState
  * @description Returns current extension state
  *
- * @returns {Promise<Object<string, { enabled: boolean, matches: string[] }>>}>}
+ * @returns {Promise<{ enabled: boolean, matches: string[] }>}>}
  */
 
 const currentState = async () => {
@@ -61,13 +61,12 @@ const currentState = async () => {
 };
 
 /**
- * @function handleButtonClick
- * @description Disables or enables extension
- *
- * @param {MouseEvent} event
+ * @async
+ * @function handlePowerChange
+ * @description Disables or enables extension on current page
  */
 
-const handleStateButtonClick = async () => {
+const handlePowerChange = async () => {
   const state = await currentState();
   const tab = await currentTab();
 
@@ -79,42 +78,51 @@ const handleStateButtonClick = async () => {
       },
     },
     () => {
-      const stateButton = document.getElementById("state-button");
+      const power = document.getElementById("power");
 
-      stateButton.textContent = state.enabled
-        ? "Enable extension"
-        : "Disable extension";
-      chrome.runtime.sendMessage({
-        type: state.enabled ? "DISABLE_ICON" : "ENABLE:ICON",
-      });
+      if (!state.enabled === true) {
+        power.setAttribute("checked", "checked");
+        chrome.runtime.sendMessage({ type: "ENABLE_ICON" });
+      } else {
+        power.removeAttribute("checked");
+        chrome.runtime.sendMessage({ type: "DISABLE_ICON" });
+      }
+
       chrome.tabs.reload(tab.id, { bypassCache: true });
     }
   );
 };
 
 /**
- * @function handleStarClick
- * @description Hides stars and shows negative or positive messages
+ * @async
+ * @function handleReload
+ * @description Reload current page
+ */
+
+const handleReload = async () => {
+  const tab = await currentTab();
+
+  chrome.tabs.reload(tab.id, { bypassCache: true });
+};
+
+/**
+ * @function handleRate
+ * @description Shows negative or positive messages
  *
  * @param {MouseEvent} event
  */
 
-const handleStarClick = (event) => {
+const handleRate = (event) => {
   const negative = document.getElementById("negative");
   const positive = document.getElementById("positive");
-  const { score } = event.currentTarget.dataset;
-  const stars = document.getElementById("stars");
 
-  switch (score) {
-    case "1":
-    case "2":
-    case "3":
-      stars.setAttribute("hidden", "true");
+  switch (event.currentTarget.id) {
+    case "unlike":
+      positive.setAttribute("hidden", "true");
       negative.removeAttribute("hidden");
       break;
-    case "4":
-    case "5":
-      stars.setAttribute("hidden", "true");
+    case "like":
+      negative.setAttribute("hidden", "true");
       positive.removeAttribute("hidden");
       break;
     default:
@@ -123,22 +131,29 @@ const handleStarClick = (event) => {
 };
 
 /**
+ * @async
  * @function handleContentLoaded
  * @description Setup stars handlers and result message links
  */
 
 const handleContentLoaded = async () => {
-  const stars = Array.from(document.getElementsByClassName("star"));
+  const host = document.getElementById("host");
+  const like = document.getElementById("like");
+  const power = document.getElementById("power");
+  const reload = document.getElementById("reload");
   const state = await currentState();
-  const stateButton = document.getElementById("state-button");
-  const storeLink = document.getElementById("store-link");
+  const store = document.getElementById("store");
+  const tab = await currentTab();
+  const unlike = document.getElementById("unlike");
 
-  stars.forEach((star) => star.addEventListener("click", handleStarClick));
-  stateButton.textContent = state.enabled
-    ? "Disable extension"
-    : "Enable extension";
-  stateButton.addEventListener("click", handleStateButtonClick);
-  storeLink.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
+  like.addEventListener("click", handleRate);
+  power.addEventListener("change", handlePowerChange);
+  reload.addEventListener("click", handleReload);
+  store.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
+  unlike.addEventListener("click", handleRate);
+
+  if (tab.location) host.innerText = tab.location.hostname.replace("www.", "");
+  if (state.enabled) power.setAttribute("checked", "checked");
 };
 
 /**

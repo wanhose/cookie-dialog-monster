@@ -7,7 +7,7 @@
 
 const disableIcon = (tabId) => {
   chrome.browserAction.setIcon({
-    path: "assets/icon-disabled.png",
+    path: "assets/icons/disabled.png",
     tabId: tabId,
   });
 };
@@ -35,7 +35,7 @@ const disablePopup = (tabId) => {
 
 const enableIcon = (tabId) => {
   chrome.browserAction.setIcon({
-    path: "assets/icon-enabled.png",
+    path: "assets/icons/enabled.png",
     tabId: tabId,
   });
 };
@@ -58,23 +58,26 @@ const enablePopup = (tabId) => {
  * @description Listens to content messages
  */
 
-chrome.runtime.onMessage.addListener((request, sender) => {
-  const tabId = sender.tab ? sender.tab.id : undefined;
+chrome.runtime.onMessage.addListener((request) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tab = tabs[0];
+    const tabId = tab.id;
 
-  switch (request.type) {
-    case "DISABLE_ICON":
-      disableIcon(tabId);
-      break;
-    case "DISABLE_POPUP":
-      disablePopup(tabId);
-      break;
-    case "ENABLE_ICON":
-      enableIcon(tabId);
-      break;
-    case "ENABLE_POPUP":
-      enablePopup(tabId);
-      break;
-    default:
-      break;
-  }
+    switch (request.type) {
+      case "DISABLE_ICON":
+        disableIcon(tabId);
+        break;
+      case "DISABLE_POPUP":
+        disablePopup(tabId);
+        break;
+      case "ENABLE_ICON":
+        enableIcon(tabId);
+        break;
+      case "ENABLE_POPUP":
+        enablePopup(tabId);
+        break;
+      default:
+        break;
+    }
+  });
 });
