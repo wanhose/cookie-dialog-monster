@@ -58,9 +58,11 @@ const commit = (selector) => {
 const fix = () => {
   const html = document.documentElement;
   const body = document.body;
+  const facebook = document.querySelector("._31e");
 
   html.style.setProperty("overflow-y", "unset", "important");
   body.style.setProperty("overflow-y", "unset", "important");
+  if (facebook) root.style.setProperty("position", "unset", "important");
 };
 
 /**
