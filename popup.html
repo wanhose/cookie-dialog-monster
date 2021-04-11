@@ -1,106 +1,127 @@
 <html>
   <head>
+    <link rel="stylesheet" href="/styles/fonts.css" />
     <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/globals.css" />
     <meta charset="UTF-8" />
     <meta name="author" content="wanhose" />
     <script src="/scripts/popup.js"></script>
   </head>
   <body>
-    <h1>Looking for disable/enable this extension only in this site?</h1>
-    <button id="state-button"></button>
-    <h1>Please rate this extension!</h1>
-    <div id="stars">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="star"
-        data-score="1"
-      >
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-        />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="star"
-        data-score="2"
-      >
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-        />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="star"
-        data-score="3"
-      >
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-        />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="star"
-        data-score="4"
-      >
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-        />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="star"
-        data-score="5"
-      >
-        <polygon
-          points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-        />
-      </svg>
-    </div>
-    <p hidden="true" id="negative">
-      Ooops! We are sorry for the inconvenience, please
-      <a href="mailto:wanhose.development@gmail.com" target="_blank">
-        contact us
-      </a>
-      and we will help you
-      <span aria-label="Grinning face with sweat" role="img">😅</span>
-    </p>
-    <p hidden="true" id="positive">
-      Thank you very much! Help us to grow rating and reviewing this extension
-      <a id="store-link" target="_blank">here</a>
-      <span aria-label="Smiling face with heart-shaped eyes" role="img">
-        😍
-      </span>
-    </p>
+    <header class="header">
+      <h1 class="header-title">Do Not Consent</h1>
+      <div class="header-actions">
+        <button id="reload">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path
+              d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main>
+      <label class="switch-label">
+        <span>Hide irritating dialogs on <strong id="host"></strong></span>
+        <div class="switch">
+          <input id="power" type="checkbox" />
+          <span class="slider"></span>
+        </div>
+      </label>
+      <div class="separator"></div>
+      <div>
+        <div class="rating">
+          <span>Do you like this extension?</span>
+          <div class="rating-actions">
+            <button id="unlike">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"
+                ></path>
+              </svg>
+            </button>
+            <button id="like">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <p hidden="true" id="negative">
+          Ooops! I am sorry for the inconvenience, please
+          <a href="mailto:wanhose.development@gmail.com" target="_blank">
+            contact me
+          </a>
+          and I will help you
+          <span aria-label="Grinning face with sweat" role="img">😅</span>
+        </p>
+        <p hidden="true" id="positive">
+          Thank you very much! Help me to grow rating and reviewing this
+          extension
+          <a id="store" target="_blank">here</a>
+          <span aria-label="Smiling face with heart-shaped eyes" role="img">
+            😍
+          </span>
+        </p>
+      </div>
+      <div class="separator"></div>
+      <div class="help">
+        <span>Help or issues?</span>
+        <a href="mailto:wanhose.development@gmail.com" target="_blank">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </a>
+      </div>
+    </main>
+    <footer>
+      Made with <span aria-label="Heart" role="img">❤️</span> by
+      <a href="https://github.com/wanhose" target="_blank">wanhose</a>
+    </footer>
   </body>
 </html>
