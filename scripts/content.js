@@ -173,7 +173,7 @@ const removeFromNetwork = () => {
 
 const query = async () => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-cache" });
     const data = await response.text();
 
     if (response.status !== 200) throw new Error();
