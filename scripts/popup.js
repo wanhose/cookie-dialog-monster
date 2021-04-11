@@ -153,7 +153,7 @@ const handleContentLoaded = async () => {
   unlike.addEventListener("click", handleRate);
 
   if (tab.location) host.innerText = tab.location.hostname.replace("www.", "");
-  if (state.enabled) power.setAttribute("checked", "checked");
+  if (!state.enabled) power.removeAttribute("checked");
 };
 
 /**
