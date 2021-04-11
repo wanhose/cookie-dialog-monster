@@ -12578,3 +12578,4 @@ body[style="overflow-y: unset !important; position: relative; min-height: 100%; 
 [class*="AnalyticsFooter-module--container"]
 .subredditvars-r-javascript > div > section
 .popover--oreo-message
+div#main-wrapper[class*="bbc-"] > header > div
