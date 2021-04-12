@@ -745,7 +745,6 @@ cccwr
 #dennis-cookie-notice
 shb-cookie-accept
 #cookiep
-#notifications > .notification
 .cookieMSG
 .cookie-policy-alert
 #cookie-law-enforcer
@@ -7578,7 +7577,6 @@ div[class^="GdprBanner_"]
 #cooker_container
 .banner_cokie
 #dcCookieHelper--bg
-#notifications > .info.notification
 #data_protection_comment
 #mgcookies
 #dni-cookie-banner
