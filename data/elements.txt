@@ -12003,7 +12003,6 @@ div[data-cookielayer-init]
 #cookie-kontrol
 #DivPolicyCookie
 #cookieBlocker
-.is-hidden
 #cookies-privacy-policy-alert
 .notif-bar
 .CookieWarning__wrapper
