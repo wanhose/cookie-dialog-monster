@@ -1575,7 +1575,7 @@ aza-cookie-message
 .gb_Fb.gb_pb.gb_Ra
 #CookiePopup
 #sutidoboz[style*="fixed"]
-.notification-bar uk-cookies
+.notification-bar.uk-cookies
 #privacy_bar
 .footer-cookies-policy
 #cccenter-overlay-fixed
@@ -2447,7 +2447,6 @@ div[class^="cookieBlock"]
 #afCookieControl-notice
 div.site-message--first-pv-consent
 #cookie-div
-.notification
 .push-cnil
 #consentcookie
 #cookies-note
@@ -3786,7 +3785,6 @@ policy-consent
 .fr.cookies-allow
 .b-cookie
 #cookiePolicyNote
-.notification.info
 .banner__overlay--cookie
 #pbAcceptCookies
 #band-cookies
@@ -6810,7 +6808,6 @@ div[style="position: relative; padding: 7px 50px 7px 0px; margin: 14px auto; bor
 .cookiesframe
 #container-cookies
 #cookies-wrapper
-.is-visible.notification_wrap
 #avertissement-cookies
 .ce_rsce_vision_fixed_note
 #datenschutz_hinweis
@@ -9175,7 +9172,6 @@ uc-cookie-notification
 .cookie--wrap__on
 .cookie-gdpr-popup-ovelayer
 .component-cookie-notification
-.notification.notification-error
 header > form > .cookies
 #elux-cookie-consent
 .form--cookie-bar
