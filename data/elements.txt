@@ -12550,9 +12550,6 @@ div[data-tracking-opt-in-overlay="true"][style="z-index: 9999999;"]
 #tt-cookie-alert
 #sui-TcfFirstLayerModal
 .sui-MoleculeModal
-.mfp-container
-.mfp-bg
-.mfp-wrap
 div[data-testid="cookie-policy-banner"]
 #cookie-compliant-fondo
 #cmpbox
@@ -12571,6 +12568,8 @@ body[style="overflow-y: unset !important; position: relative; min-height: 100%; 
 [class*="AnalyticsFooter-module--container"]
 .subredditvars-r-javascript > div > section
 .popover--oreo-message
+.oreo-message
 div#main-wrapper[class*="bbc-"] > header > div
 aside[class*="CookieModalstyles"]
 #cmpbox2
+#j-aliexpress-notice
