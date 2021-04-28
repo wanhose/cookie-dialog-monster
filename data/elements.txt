@@ -12548,7 +12548,6 @@ div[data-tracking-opt-in-overlay="true"][style="z-index: 9999999;"]
 [class*="mxp-CookiePanel-cookie-panel-"]
 [class*="mxp-CookiePanel-cookie-panel-overlay-"]
 #tt-cookie-alert
-#sui-TcfFirstLayerModal
 .sui-MoleculeModal
 div[data-testid="cookie-policy-banner"]
 #cookie-compliant-fondo
@@ -12573,3 +12572,6 @@ div#main-wrapper[class*="bbc-"] > header > div
 aside[class*="CookieModalstyles"]
 #cmpbox2
 #j-aliexpress-notice
+[data-id="dummy-modal"]
+#trustarcNoticeFrame
+.truste_overlay
