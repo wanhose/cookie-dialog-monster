@@ -12575,3 +12575,8 @@ aside[class*="CookieModalstyles"]
 [data-id="dummy-modal"]
 #trustarcNoticeFrame
 .truste_overlay
+#policy-info
+#cookie_consent_layer
+body#Index.Matriculas > div#overlay
+#cookie-popup-with-overlay
+.wt-cli-cookie-bar-container
