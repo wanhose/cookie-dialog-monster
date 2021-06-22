@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Do Not Consent",
-  "version": "3.4.2",
+  "version": "4.0.0",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -20,7 +20,8 @@
   },
   "content_scripts": [
     {
-      "exclude_matches": ["https://accounts.google.com/*"],
+      "all_frames": true,
+      "css": ["styles/content.css"],
       "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"
