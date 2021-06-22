@@ -7,48 +7,36 @@
 let attempts = 1;
 
 /**
- * @var enabled
- * @description Is extension enabled?
+ * @var intervalId
+ * @description Task interval identifier
+ * @type {number}
+ */
+
+let intervalId = 0;
+
+/**
+ * @var ready
+ * @description Is extension ready?
  * @type {boolean}
  */
 
-let enabled = true;
+let ready = false;
 
 /**
- * @var selectors
+ * @var selectorsFromCache
  * @description Array of selectors
  * @type {string[]}
  */
 
-let selectors = [];
+let selectorsFromCache = [];
 
 /**
- * @constant url
- * @description Database link
- * @type {string}
+ * @var selectorsFromNetwork
+ * @description Array of selectors
+ * @type {string[]}
  */
 
-const url =
-  "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/elements.txt";
-
-/**
- * @function commit
- * @description Commits selector to cache
- * @param {string} selector
- */
-
-const commit = (selector) => {
-  chrome.storage.local.get(null, (cache) => {
-    const current = cache[document.location.hostname];
-
-    chrome.storage.local.set({
-      [document.location.hostname]: {
-        ...current,
-        matches: [...new Set([...cache.matches, selector])],
-      },
-    });
-  });
-};
+let selectorsFromNetwork = [];
 
 /**
  * @function fix
@@ -58,11 +46,12 @@ const commit = (selector) => {
 const fix = () => {
   const html = document.documentElement;
   const body = document.body;
-  const facebook = document.querySelector("._31e");
+  const facebook = document.getElementsByClassName("._31e")[0];
 
-  html.style.setProperty("overflow-y", "unset", "important");
-  body.style.setProperty("overflow-y", "unset", "important");
-  if (facebook) root.style.setProperty("position", "unset", "important");
+  if (body) body.style.setProperty("overflow-y", "unset", "important");
+  if (facebook) facebook.style.setProperty("position", "unset", "important");
+  if (html) html.style.setProperty("overflow-y", "unset", "important");
+  if (ready) html.style.setProperty("opacity", "1", "important");
 };
 
 /**
@@ -90,58 +79,24 @@ const search = (selector) => {
 };
 
 /**
- * @async
- * @function check
- * @description Checks if extension is enabled
- * @returns {Promise<boolean>}
- */
-
-const check = () =>
-  new Promise((resolve) => {
-    chrome.storage.local.get(null, (store) => {
-      try {
-        const cache = store[document.location.hostname];
-
-        resolve(cache.enabled);
-      } catch {
-        chrome.storage.local.set(
-          {
-            [document.location.hostname]: {
-              enabled: true,
-              matches: [],
-            },
-          },
-          () => resolve(true)
-        );
-      }
-    });
-  });
-
-/**
  * @function removeFromCache
  * @description Removes matched elements from cache results
  */
 
 const removeFromCache = () => {
-  chrome.storage.local.get(null, (store) => {
-    const cache = store[document.location.hostname];
-    const matches = cache.matches;
+  for (let i = selectorsFromCache.length; i--; ) {
+    const selector = selectorsFromCache[i];
+    const element = search(selector);
 
-    if (!!matches.length) {
-      for (let i = matches.length; i--; ) {
-        const selector = selectors[i];
-        const element = search(selector);
+    if (element) {
+      const tagName = element.tagName.toUpperCase();
 
-        if (element) {
-          const tagName = element.tagName.toUpperCase();
-
-          if (!["BODY", "HTML"].includes(tagName)) {
-            element.remove();
-          }
-        }
+      if (!["BODY", "HTML"].includes(tagName)) {
+        element.remove();
+        ready = true;
       }
     }
-  });
+  }
 };
 
 /**
@@ -150,8 +105,8 @@ const removeFromCache = () => {
  */
 
 const removeFromNetwork = () => {
-  for (let i = selectors.length; i--; ) {
-    const selector = selectors[i];
+  for (let i = selectorsFromNetwork.length; i--; ) {
+    const selector = selectorsFromNetwork[i];
     const element = search(selector);
 
     if (element) {
@@ -159,88 +114,61 @@ const removeFromNetwork = () => {
 
       if (!["BODY", "HTML"].includes(tagName)) {
         element.remove();
-        commit(selector);
+        ready = true;
+        chrome.runtime.sendMessage({
+          hostname: document.location.hostname,
+          selector,
+          type: "UPDATE_CACHE",
+        });
       }
     }
   }
 };
 
 /**
- * @async
- * @function query
- * @description Retrieves selectors list
- *
- * @returns {Promise<string[]>} A selectors list
+ * @function runTasks
+ * @description Starts running tasks
  */
 
-const query = async () => {
-  try {
-    const response = await fetch(url, { cache: "no-cache" });
-    const data = await response.text();
+const runTasks = () => {
+  if (attempts >= 5 || selectorsFromCache.length === 0) ready = true;
 
-    if (response.status !== 200) throw new Error();
+  if (attempts <= 20) {
+    fix();
+    removeFromCache();
+    if (attempts <= 5) removeFromNetwork();
+    attempts += 1;
+  }
 
-    return data.split("\n");
-  } catch {
-    return [];
+  if (attempts > 20) {
+    clearInterval(intervalId);
   }
 };
 
 /**
- * @constant observer
- * @description Observer instance
- * @type {MutationObserver}
+ * @description Setup extension context
  */
 
-const observer = new MutationObserver((_, instance) => {
-  instance.disconnect();
-  fix();
-  removeFromCache();
-  if (attempts <= 5) removeFromNetwork();
-  attempts += 1;
-  observe();
-});
+chrome.runtime.sendMessage(
+  { hostname: document.location.hostname, type: "GET_CACHE" },
+  null,
+  async (cacheResponse) => {
+    console.log(cacheResponse);
+    chrome.runtime.sendMessage({ type: "ENABLE_POPUP" });
 
-/**
- * @function observe
- * @description Starts observing document.body element
- */
-
-const observe = () => {
-  observer.observe(document.body, {
-    attributes: true,
-    childList: true,
-  });
-};
-
-/**
- * @async
- * @function handleContentLoaded
- * @description Cleans, fixes scroll issues and observes document.body element
- */
-
-const handleContentLoaded = async () => {
-  chrome.runtime.sendMessage({ type: "ENABLE_POPUP" });
-  enabled = await check();
-
-  if (enabled) {
-    chrome.runtime.sendMessage({ type: "ENABLE_ICON" });
-    selectors = await query();
-
-    if (selectors.length > 0) {
-      fix();
-      removeFromCache();
-      removeFromNetwork();
-      observe();
+    if (cacheResponse.enabled) {
+      selectorsFromCache = cacheResponse.matches;
+      chrome.runtime.sendMessage({ type: "ENABLE_ICON" });
+      chrome.runtime.sendMessage(
+        { type: "GET_LIST" },
+        null,
+        async (networkResponse) => {
+          selectorsFromNetwork = networkResponse.matches;
+          intervalId = setInterval(runTasks, 500);
+        }
+      );
+    } else {
+      document.documentElement.style.setProperty("opacity", "1", "important");
     }
   }
-};
-
-/**
- * @description Listen to document ready
- *
- * @type {Document}
- * @listens document#ready
- */
-
-document.addEventListener("DOMContentLoaded", handleContentLoaded);
+);
