@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Do Not Consent",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -21,12 +21,11 @@
   "content_scripts": [
     {
       "all_frames": true,
-      "css": ["styles/content.css"],
       "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"
     }
   ],
-  "permissions": ["https://raw.githubusercontent.com/*", "storage", "tabs"],
+  "permissions": ["http://*/*", "https://*/*", "storage", "tabs"],
   "web_accessible_resources": ["assets/fonts/*", "scripts/*", "styles/*"]
 }
