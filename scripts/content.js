@@ -51,7 +51,8 @@ const fix = () => {
   if (body) body.style.setProperty("overflow-y", "unset", "important");
   if (facebook) facebook.style.setProperty("position", "unset", "important");
   if (html) html.style.setProperty("overflow-y", "unset", "important");
-  if (!loading) html.style.setProperty("opacity", "1", "important");
+  if (body && !loading) body.style.setProperty("opacity", "1");
+  if (html && !loading) html.style.setProperty("background-color", "initial");
 };
 
 /**
