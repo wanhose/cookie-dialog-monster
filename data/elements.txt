@@ -12580,3 +12580,4 @@ body#Index.Matriculas > div#overlay
 #cookie-popup-with-overlay
 .wt-cli-cookie-bar-container
 html[id="facebook"] > body > div.__fb-light-mode
+.cookie-notice-message
