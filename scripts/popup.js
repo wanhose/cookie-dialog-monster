@@ -8,6 +8,14 @@ const chromeUrl =
   "https://chrome.google.com/webstore/detail/do-not-consent/djcbfpkdhdkaflcigibkbpboflaplabg";
 
 /**
+ * @constant dispatch
+ * @description Shortcut to send messages to background script
+ * @type {void}
+ */
+
+const dispatch = chrome.runtime.sendMessage;
+
+/**
  * @constant firefoxUrl
  * @description Firefox Add-ons link
  * @type {string}
@@ -31,26 +39,22 @@ const isChromium = chrome.runtime.getURL("").startsWith("chrome-extension://");
  */
 
 const handlePowerChange = async () => {
-  chrome.runtime.sendMessage({ type: "GET_TAB" }, null, ({ hostname, id }) => {
-    chrome.runtime.sendMessage(
-      { hostname, type: "GET_CACHE" },
-      null,
-      ({ enabled }) => {
-        const power = document.getElementById("power");
+  dispatch({ type: "GET_TAB" }, null, ({ hostname, id }) => {
+    dispatch({ hostname, type: "GET_CACHE" }, null, ({ enabled }) => {
+      const power = document.getElementById("power");
 
-        chrome.runtime.sendMessage({
-          hostname,
-          state: { enabled: !enabled },
-          type: "UPDATE_CACHE",
-        });
-        chrome.runtime.sendMessage({
-          type: !enabled === true ? "ENABLE_ICON" : "DISABLE_ICON",
-        });
-        if (!enabled === false) power.removeAttribute("checked");
-        if (!enabled === true) power.setAttribute("checked", "checked");
-        chrome.tabs.reload(id, { bypassCache: true });
-      }
-    );
+      dispatch({
+        hostname,
+        state: { enabled: !enabled },
+        type: "UPDATE_CACHE",
+      });
+      dispatch({
+        type: !enabled === true ? "ENABLE_ICON" : "DISABLE_ICON",
+      });
+      if (!enabled === false) power.removeAttribute("checked");
+      if (!enabled === true) power.setAttribute("checked", "checked");
+      chrome.tabs.reload(id, { bypassCache: true });
+    });
   });
 };
 
@@ -61,7 +65,7 @@ const handlePowerChange = async () => {
  */
 
 const handleReload = async () => {
-  chrome.runtime.sendMessage({ type: "GET_TAB" }, null, ({ id }) => {
+  dispatch({ type: "GET_TAB" }, null, ({ id }) => {
     chrome.tabs.reload(id, { bypassCache: true });
   });
 };
@@ -98,27 +102,23 @@ const handleRate = (event) => {
  */
 
 const handleContentLoaded = async () => {
-  chrome.runtime.sendMessage({ type: "GET_TAB" }, null, ({ hostname, id }) => {
-    chrome.runtime.sendMessage(
-      { hostname, type: "GET_CACHE" },
-      null,
-      ({ enabled }) => {
-        const host = document.getElementById("host");
-        const like = document.getElementById("like");
-        const power = document.getElementById("power");
-        const reload = document.getElementById("reload");
-        const store = document.getElementById("store");
-        const unlike = document.getElementById("unlike");
+  dispatch({ type: "GET_TAB" }, null, ({ hostname, id }) => {
+    dispatch({ hostname, type: "GET_CACHE" }, null, ({ enabled }) => {
+      const host = document.getElementById("host");
+      const like = document.getElementById("like");
+      const power = document.getElementById("power");
+      const reload = document.getElementById("reload");
+      const store = document.getElementById("store");
+      const unlike = document.getElementById("unlike");
 
-        like.addEventListener("click", handleRate);
-        power.addEventListener("change", handlePowerChange);
-        reload.addEventListener("click", handleReload);
-        store.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
-        unlike.addEventListener("click", handleRate);
-        if (location) host.innerText = hostname.replace("www.", "");
-        if (!enabled) power.removeAttribute("checked");
-      }
-    );
+      like.addEventListener("click", handleRate);
+      power.addEventListener("change", handlePowerChange);
+      reload.addEventListener("click", handleReload);
+      store.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
+      unlike.addEventListener("click", handleRate);
+      if (location) host.innerText = hostname.replace("www.", "");
+      if (!enabled) power.removeAttribute("checked");
+    });
   });
 };
 

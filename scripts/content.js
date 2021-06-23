@@ -7,6 +7,14 @@
 let attempts = 1;
 
 /**
+ * @constant dispatch
+ * @description Shortcut to send messages to background script
+ * @type {void}
+ */
+
+const dispatch = chrome.runtime.sendMessage;
+
+/**
  * @var intervalId
  * @description Task interval identifier
  * @type {number}
@@ -51,8 +59,7 @@ const fix = () => {
   if (body) body.style.setProperty("overflow-y", "unset", "important");
   if (facebook) facebook.style.setProperty("position", "unset", "important");
   if (html) html.style.setProperty("overflow-y", "unset", "important");
-  if (body && !loading) body.style.setProperty("opacity", "1");
-  if (html && !loading) html.style.setProperty("background-color", "initial");
+  if (!loading) dispatch({ state: "ready", type: "UPDATE_STATE" });
 };
 
 /**
@@ -116,7 +123,7 @@ const removeFromNetwork = () => {
       if (!["BODY", "HTML"].includes(tagName)) {
         element.remove();
         loading = false;
-        chrome.runtime.sendMessage({
+        dispatch({
           hostname: document.location.hostname,
           state: { matches: [selector] },
           type: "UPDATE_CACHE",
@@ -152,23 +159,20 @@ const runTasks = () => {
  * @description Setup extension context
  */
 
-chrome.runtime.sendMessage(
+dispatch(
   { hostname: document.location.hostname, type: "GET_CACHE" },
   null,
   async ({ enabled, matches }) => {
-    chrome.runtime.sendMessage({ type: "ENABLE_POPUP" });
+    dispatch({ type: "ENABLE_POPUP" });
 
     if (enabled) {
+      dispatch({ state: "loading", type: "UPDATE_STATE" });
       selectorsFromCache = matches;
-      chrome.runtime.sendMessage({ type: "ENABLE_ICON" });
-      chrome.runtime.sendMessage(
-        { type: "GET_LIST" },
-        null,
-        async ({ selectors }) => {
-          selectorsFromNetwork = selectors;
-          intervalId = setInterval(runTasks, 500);
-        }
-      );
+      dispatch({ type: "ENABLE_ICON" });
+      dispatch({ type: "GET_LIST" }, null, async ({ selectors }) => {
+        selectorsFromNetwork = selectors;
+        intervalId = setInterval(runTasks, 500);
+      });
     } else {
       document.documentElement.style.setProperty("opacity", "1", "important");
     }

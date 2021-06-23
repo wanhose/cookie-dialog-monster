@@ -79,7 +79,6 @@ const enablePopup = (tabId) => {
 };
 
 /**
- * @async
  * @function getCache
  * @description Retrieves cache state
  *
@@ -88,7 +87,7 @@ const enablePopup = (tabId) => {
  * @returns {Promise<{ enabled: boolean, matches: string[] }>} Cache state
  */
 
-const getCache = async (hostname, responseCallback) => {
+const getCache = (hostname, responseCallback) => {
   chrome.storage.local.get(null, (store) => {
     try {
       const cache = store[hostname];
@@ -104,7 +103,6 @@ const getCache = async (hostname, responseCallback) => {
 };
 
 /**
- * @async
  * @function getTab
  * @description Retrieves current tab information
  *
@@ -146,7 +144,6 @@ const getList = async (responseCallback) => {
 };
 
 /**
- * @async
  * @function updateCache
  * @description Update cache state
  *
@@ -154,7 +151,7 @@ const getList = async (responseCallback) => {
  * @param {object} [state]
  */
 
-const updateCache = async (hostname, state) => {
+const updateCache = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
 
@@ -171,6 +168,32 @@ const updateCache = async (hostname, state) => {
       },
     });
   });
+};
+
+/**
+ * @function updateState
+ * @description Set an extension state
+ *
+ * @param {string} [tabId]
+ * @param {boolean} [state]
+ */
+
+const updateState = (tabId, state) => {
+  switch (state) {
+    case "loading":
+      chrome.tabs.insertCSS(tabId, {
+        file: "styles/content.css",
+        runAt: "document_start",
+      });
+      break;
+    case "ready":
+      chrome.tabs.removeCSS(tabId, {
+        file: "styles/content.css",
+      });
+      break;
+    default:
+      break;
+  }
 };
 
 /**
@@ -206,6 +229,9 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
         break;
       case "UPDATE_CACHE":
         updateCache(request.hostname, request.state);
+        break;
+      case "UPDATE_STATE":
+        updateState(tabId, request.state);
         break;
       default:
         break;
