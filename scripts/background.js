@@ -175,7 +175,7 @@ const updateCache = (hostname, state) => {
  * @description Set an extension state
  *
  * @param {string} [tabId]
- * @param {boolean} [state]
+ * @param {string} [state]
  */
 
 const updateState = (tabId, state) => {
