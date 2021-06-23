@@ -26,71 +26,32 @@ const isChromium = chrome.runtime.getURL("").startsWith("chrome-extension://");
 
 /**
  * @async
- * @function currentTab
- * @description Returns current tab state
- *
- * @returns {Promise<{ id: string, location: URL }>}
- */
-
-const currentTab = () =>
-  new Promise((resolve) => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      resolve({
-        id: tabs[0].id,
-        location: new URL(tabs[0].url),
-      });
-    });
-  });
-
-/**
- * @async
- * @function currentState
- * @description Returns current extension state
- *
- * @returns {Promise<{ enabled: boolean, matches: string[] }>}>}
- */
-
-const currentState = async () => {
-  const tab = await currentTab();
-
-  return new Promise((resolve) => {
-    chrome.storage.local.get(null, (store) => {
-      resolve(store[tab.location.hostname]);
-    });
-  });
-};
-
-/**
- * @async
  * @function handlePowerChange
  * @description Disables or enables extension on current page
  */
 
 const handlePowerChange = async () => {
-  const state = await currentState();
-  const tab = await currentTab();
+  chrome.runtime.sendMessage({ type: "GET_TAB" }, null, ({ hostname, id }) => {
+    chrome.runtime.sendMessage(
+      { hostname, type: "GET_CACHE" },
+      null,
+      ({ enabled }) => {
+        const power = document.getElementById("power");
 
-  chrome.storage.local.set(
-    {
-      [tab.location.hostname]: {
-        ...state,
-        enabled: !state.enabled,
-      },
-    },
-    () => {
-      const power = document.getElementById("power");
-
-      if (!state.enabled === true) {
-        power.setAttribute("checked", "checked");
-        chrome.runtime.sendMessage({ type: "ENABLE_ICON" });
-      } else {
-        power.removeAttribute("checked");
-        chrome.runtime.sendMessage({ type: "DISABLE_ICON" });
+        chrome.runtime.sendMessage({
+          hostname,
+          state: { enabled: !enabled },
+          type: "UPDATE_CACHE",
+        });
+        chrome.runtime.sendMessage({
+          type: !enabled === true ? "ENABLE_ICON" : "DISABLE_ICON",
+        });
+        if (!enabled === false) power.removeAttribute("checked");
+        if (!enabled === true) power.setAttribute("checked", "checked");
+        chrome.tabs.reload(id, { bypassCache: true });
       }
-
-      chrome.tabs.reload(tab.id, { bypassCache: true });
-    }
-  );
+    );
+  });
 };
 
 /**
@@ -100,9 +61,9 @@ const handlePowerChange = async () => {
  */
 
 const handleReload = async () => {
-  const tab = await currentTab();
-
-  chrome.tabs.reload(tab.id, { bypassCache: true });
+  chrome.runtime.sendMessage({ type: "GET_TAB" }, null, ({ id }) => {
+    chrome.tabs.reload(id, { bypassCache: true });
+  });
 };
 
 /**
@@ -137,23 +98,28 @@ const handleRate = (event) => {
  */
 
 const handleContentLoaded = async () => {
-  const host = document.getElementById("host");
-  const like = document.getElementById("like");
-  const power = document.getElementById("power");
-  const reload = document.getElementById("reload");
-  const state = await currentState();
-  const store = document.getElementById("store");
-  const tab = await currentTab();
-  const unlike = document.getElementById("unlike");
+  chrome.runtime.sendMessage({ type: "GET_TAB" }, null, ({ hostname, id }) => {
+    chrome.runtime.sendMessage(
+      { hostname, type: "GET_CACHE" },
+      null,
+      ({ enabled }) => {
+        const host = document.getElementById("host");
+        const like = document.getElementById("like");
+        const power = document.getElementById("power");
+        const reload = document.getElementById("reload");
+        const store = document.getElementById("store");
+        const unlike = document.getElementById("unlike");
 
-  like.addEventListener("click", handleRate);
-  power.addEventListener("change", handlePowerChange);
-  reload.addEventListener("click", handleReload);
-  store.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
-  unlike.addEventListener("click", handleRate);
-
-  if (tab.location) host.innerText = tab.location.hostname.replace("www.", "");
-  if (!state.enabled) power.removeAttribute("checked");
+        like.addEventListener("click", handleRate);
+        power.addEventListener("change", handlePowerChange);
+        reload.addEventListener("click", handleReload);
+        store.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
+        unlike.addEventListener("click", handleRate);
+        if (location) host.innerText = hostname.replace("www.", "");
+        if (!enabled) power.removeAttribute("checked");
+      }
+    );
+  });
 };
 
 /**

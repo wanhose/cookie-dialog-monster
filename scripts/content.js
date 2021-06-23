@@ -15,12 +15,12 @@ let attempts = 1;
 let intervalId = 0;
 
 /**
- * @var ready
- * @description Is extension ready?
+ * @var loading
+ * @description Is extension loading?
  * @type {boolean}
  */
 
-let ready = false;
+let loading = true;
 
 /**
  * @var selectorsFromCache
@@ -51,7 +51,7 @@ const fix = () => {
   if (body) body.style.setProperty("overflow-y", "unset", "important");
   if (facebook) facebook.style.setProperty("position", "unset", "important");
   if (html) html.style.setProperty("overflow-y", "unset", "important");
-  if (ready) html.style.setProperty("opacity", "1", "important");
+  if (!loading) html.style.setProperty("opacity", "1", "important");
 };
 
 /**
@@ -93,7 +93,7 @@ const removeFromCache = () => {
 
       if (!["BODY", "HTML"].includes(tagName)) {
         element.remove();
-        ready = true;
+        loading = false;
       }
     }
   }
@@ -114,10 +114,10 @@ const removeFromNetwork = () => {
 
       if (!["BODY", "HTML"].includes(tagName)) {
         element.remove();
-        ready = true;
+        loading = false;
         chrome.runtime.sendMessage({
           hostname: document.location.hostname,
-          selector,
+          state: { matches: [selector] },
           type: "UPDATE_CACHE",
         });
       }
@@ -131,13 +131,15 @@ const removeFromNetwork = () => {
  */
 
 const runTasks = () => {
-  if (attempts >= 5 || selectorsFromCache.length === 0) ready = true;
+  if (attempts >= 5 || selectorsFromCache.length === 0) {
+    loading = false;
+  }
 
   if (attempts <= 20) {
     fix();
     removeFromCache();
     if (attempts <= 5) removeFromNetwork();
-    attempts += 1;
+    if (document.readyState !== "loading") attempts += 1;
   }
 
   if (attempts > 20) {
@@ -152,18 +154,17 @@ const runTasks = () => {
 chrome.runtime.sendMessage(
   { hostname: document.location.hostname, type: "GET_CACHE" },
   null,
-  async (cacheResponse) => {
-    console.log(cacheResponse);
+  async ({ enabled, matches }) => {
     chrome.runtime.sendMessage({ type: "ENABLE_POPUP" });
 
-    if (cacheResponse.enabled) {
-      selectorsFromCache = cacheResponse.matches;
+    if (enabled) {
+      selectorsFromCache = matches;
       chrome.runtime.sendMessage({ type: "ENABLE_ICON" });
       chrome.runtime.sendMessage(
         { type: "GET_LIST" },
         null,
-        async (networkResponse) => {
-          selectorsFromNetwork = networkResponse.matches;
+        async ({ selectors }) => {
+          selectorsFromNetwork = selectors;
           intervalId = setInterval(runTasks, 500);
         }
       );

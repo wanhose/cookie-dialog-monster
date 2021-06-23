@@ -12523,7 +12523,6 @@ script[src="//clickio.mgr.consensu.org/t/consent_216889.js"]
 #didomi-popup
 div[style="position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px; background-color: rgba(0, 0, 0, 0.5);"]
 #didomiConsentOverlay
-.softMessages-list
 #acceptationCMPWall
 .qc-cmp2-container
 #qc-cmp2-container
