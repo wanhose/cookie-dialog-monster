@@ -12581,3 +12581,5 @@ body#Index.Matriculas > div#overlay
 .wt-cli-cookie-bar-container
 html[id="facebook"] > body > div.__fb-light-mode
 .cookie-notice-message
+.fc-consent-root
+#cc-banner-wrap
