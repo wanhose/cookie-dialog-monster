@@ -603,7 +603,6 @@ div[data-is-cookieinfo]
 #site-cookie-policy
 #privacy_bandeau
 #AdBlockerInfo
-.fbar
 #cookie--disclaimer
 #cookieNonsense
 #cookie-confirm-box

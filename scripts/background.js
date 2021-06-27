@@ -79,7 +79,6 @@ const enablePopup = (tabId) => {
 };
 
 /**
- * @async
  * @function getCache
  * @description Retrieves cache state
  *
@@ -88,7 +87,7 @@ const enablePopup = (tabId) => {
  * @returns {Promise<{ enabled: boolean, matches: string[] }>} Cache state
  */
 
-const getCache = async (hostname, responseCallback) => {
+const getCache = (hostname, responseCallback) => {
   chrome.storage.local.get(null, (store) => {
     try {
       const cache = store[hostname];
@@ -104,7 +103,6 @@ const getCache = async (hostname, responseCallback) => {
 };
 
 /**
- * @async
  * @function getTab
  * @description Retrieves current tab information
  *
@@ -146,7 +144,6 @@ const getList = async (responseCallback) => {
 };
 
 /**
- * @async
  * @function updateCache
  * @description Update cache state
  *
@@ -154,7 +151,7 @@ const getList = async (responseCallback) => {
  * @param {object} [state]
  */
 
-const updateCache = async (hostname, state) => {
+const updateCache = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
 
