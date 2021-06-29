@@ -1789,7 +1789,6 @@ div[style^="color: rgb(238, 238, 238); background-color: rgb(102, 102, 51);"]
 #tiFy_CookieLaw
 .cpnb[data-cookie-name="cookiesDirective"]
 #GDPRCookieDisclaimer
-.overlay
 #cc-cookie-notice
 #divPolCookies
 .navbar-privacy
@@ -10994,7 +10993,7 @@ div[class="eupopup-container eupopup-container-bottom eupopup-color-default"]
 #divAvisCookies
 .cookie-box-en
 .cp-dialog
-#cookies.overlay-cookies
+.overlay-cookies
 .c-consentLayer__innerBox
 .ecdcCookiePolicy
 .we-use-cookie
