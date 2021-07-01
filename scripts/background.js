@@ -23,59 +23,66 @@ const isValid = (cache) =>
 
 /**
  * @function disableIcon
- * @description Disables icon
+ * @description Disables icon if there is a tab
  *
  * @param {string} [tabId]
- * @returns {boolean}
  */
 
 const disableIcon = (tabId) => {
-  chrome.browserAction.setIcon({
-    path: "assets/icons/disabled.png",
-    tabId,
-  });
+  if (tabId) {
+    chrome.browserAction.setIcon({
+      path: "assets/icons/disabled.png",
+      tabId,
+    });
+  }
 };
 
 /**
  * @function disablePopup
- * @description Disables popup
+ * @description Disables popup if there is a tab
  *
  * @param {string} [tabId]
  */
 
 const disablePopup = (tabId) => {
-  chrome.browserAction.setPopup({
-    popup: "",
-    tabId,
-  });
+  if (tabId) {
+    chrome.browserAction.setPopup({
+      popup: "",
+      tabId,
+    });
+  }
 };
 
 /**
  * @function enableIcon
- * @description Enables icon
+ * @description Enables icon if there is a tab
  *
  * @param {string} [tabId]
  */
 
 const enableIcon = (tabId) => {
-  chrome.browserAction.setIcon({
-    path: "assets/icons/enabled.png",
-    tabId,
-  });
+  if (tabId) {
+    chrome.browserAction.setIcon({
+      path: "assets/icons/enabled.png",
+      tabId,
+    });
+  }
 };
 
 /**
  * @function enablePopup
- * @description Enables popup
+ * @description Enables popup if there is a tab
  *
  * @param {string} [tabId]
  */
 
 const enablePopup = (tabId) => {
-  chrome.browserAction.setPopup({
-    popup: "popup.html",
-    tabId,
-  });
+  if (tabId) {
+    chrome.browserAction.setPopup({
+      popup: "popup.html",
+      tabId,
+    });
+  }
 };
 
 /**
@@ -171,26 +178,53 @@ const updateCache = (hostname, state) => {
 };
 
 /**
+ * @function updateState
+ * @description Set an extension state
+ *
+ * @param {string} [tabId]
+ * @param {string} [state]
+ */
+
+const updateState = (tabId, state) => {
+  switch (state) {
+    case "loading":
+      chrome.tabs.insertCSS(tabId, {
+        file: "styles/content.css",
+        runAt: "document_start",
+      });
+      break;
+    case "ready":
+      chrome.tabs.removeCSS(tabId, {
+        file: "styles/content.css",
+      });
+      break;
+    default:
+      break;
+  }
+};
+
+/**
  * @description Listens to content messages
  */
 
 chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const hasPermission = !sender.frameId || sender.frameId === 0;
     const tab = tabs[0];
-    const tabId = tab.id;
+    const tabId = tab ? tab.id : undefined;
 
     switch (request.type) {
       case "DISABLE_ICON":
-        disableIcon(tabId);
+        if (hasPermission) disableIcon(tabId);
         break;
       case "DISABLE_POPUP":
-        disablePopup(tabId);
+        if (hasPermission) disablePopup(tabId);
         break;
       case "ENABLE_ICON":
-        enableIcon(tabId);
+        if (hasPermission) enableIcon(tabId);
         break;
       case "ENABLE_POPUP":
-        enablePopup(tabId);
+        if (hasPermission) enablePopup(tabId);
         break;
       case "GET_CACHE":
         getCache(request.hostname, responseCallback);
@@ -203,6 +237,9 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
         break;
       case "UPDATE_CACHE":
         updateCache(request.hostname, request.state);
+        break;
+      case "UPDATE_STATE":
+        if (hasPermission) updateState(tabId, request.state);
         break;
       default:
         break;
