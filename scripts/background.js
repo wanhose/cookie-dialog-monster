@@ -209,7 +209,14 @@ const updateState = (tabId, state) => {
 
 chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
   const hasPermission = !sender.frameId || sender.frameId === 0;
-  const tabId = sender.tab.id;
+  let tabId = sender.tab ? sender.tab.id : undefined;
+
+  if (!tabId) {
+    chrome.tabs.query(
+      { active: true, currentWindow: true },
+      (tabs) => (tabId = tabs[0] ? tabs[0].id : 0)
+    );
+  }
 
   switch (request.type) {
     case "DISABLE_ICON":
