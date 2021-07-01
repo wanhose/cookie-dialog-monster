@@ -23,66 +23,58 @@ const isValid = (cache) =>
 
 /**
  * @function disableIcon
- * @description Disables icon if there is a tab
+ * @description Disables icon
  *
  * @param {string} [tabId]
  */
 
 const disableIcon = (tabId) => {
-  if (tabId) {
-    chrome.browserAction.setIcon({
-      path: "assets/icons/disabled.png",
-      tabId,
-    });
-  }
+  chrome.browserAction.setIcon({
+    path: "assets/icons/disabled.png",
+    tabId,
+  });
 };
 
 /**
  * @function disablePopup
- * @description Disables popup if there is a tab
+ * @description Disables popup
  *
  * @param {string} [tabId]
  */
 
 const disablePopup = (tabId) => {
-  if (tabId) {
-    chrome.browserAction.setPopup({
-      popup: "",
-      tabId,
-    });
-  }
+  chrome.browserAction.setPopup({
+    popup: "",
+    tabId,
+  });
 };
 
 /**
  * @function enableIcon
- * @description Enables icon if there is a tab
+ * @description Enables icon
  *
  * @param {string} [tabId]
  */
 
 const enableIcon = (tabId) => {
-  if (tabId) {
-    chrome.browserAction.setIcon({
-      path: "assets/icons/enabled.png",
-      tabId,
-    });
-  }
+  chrome.browserAction.setIcon({
+    path: "assets/icons/enabled.png",
+    tabId,
+  });
 };
 
 /**
  * @function enablePopup
- * @description Enables popup if there is a tab
+ * @description Enables popup
  *
  * @param {string} [tabId]
  */
 
 const enablePopup = (tabId) => {
-  if (tabId) {
-    chrome.browserAction.setPopup({
-      popup: "popup.html",
-      tabId,
-    });
-  }
+  chrome.browserAction.setPopup({
+    popup: "popup.html",
+    tabId,
+  });
 };
 
 /**
@@ -188,15 +180,23 @@ const updateCache = (hostname, state) => {
 const updateState = (tabId, state) => {
   switch (state) {
     case "loading":
-      chrome.tabs.insertCSS(tabId, {
-        file: "styles/content.css",
-        runAt: "document_start",
-      });
+      chrome.tabs.insertCSS(
+        tabId,
+        {
+          file: "styles/content.css",
+          runAt: "document_start",
+        },
+        () => chrome.runtime.lastError
+      );
       break;
     case "ready":
-      chrome.tabs.removeCSS(tabId, {
-        file: "styles/content.css",
-      });
+      chrome.tabs.removeCSS(
+        tabId,
+        {
+          file: "styles/content.css",
+        },
+        () => chrome.runtime.lastError
+      );
       break;
     default:
       break;
@@ -208,43 +208,40 @@ const updateState = (tabId, state) => {
  */
 
 chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const hasPermission = !sender.frameId || sender.frameId === 0;
-    const tab = tabs[0];
-    const tabId = tab ? tab.id : undefined;
+  const hasPermission = !sender.frameId || sender.frameId === 0;
+  const tabId = sender.tab.id;
 
-    switch (request.type) {
-      case "DISABLE_ICON":
-        if (hasPermission) disableIcon(tabId);
-        break;
-      case "DISABLE_POPUP":
-        if (hasPermission) disablePopup(tabId);
-        break;
-      case "ENABLE_ICON":
-        if (hasPermission) enableIcon(tabId);
-        break;
-      case "ENABLE_POPUP":
-        if (hasPermission) enablePopup(tabId);
-        break;
-      case "GET_CACHE":
-        getCache(request.hostname, responseCallback);
-        break;
-      case "GET_LIST":
-        getList(responseCallback);
-        break;
-      case "GET_TAB":
-        getTab(responseCallback);
-        break;
-      case "UPDATE_CACHE":
-        updateCache(request.hostname, request.state);
-        break;
-      case "UPDATE_STATE":
-        if (hasPermission) updateState(tabId, request.state);
-        break;
-      default:
-        break;
-    }
-  });
+  switch (request.type) {
+    case "DISABLE_ICON":
+      if (hasPermission) disableIcon(tabId);
+      break;
+    case "DISABLE_POPUP":
+      if (hasPermission) disablePopup(tabId);
+      break;
+    case "ENABLE_ICON":
+      if (hasPermission) enableIcon(tabId);
+      break;
+    case "ENABLE_POPUP":
+      if (hasPermission) enablePopup(tabId);
+      break;
+    case "GET_CACHE":
+      getCache(request.hostname, responseCallback);
+      break;
+    case "GET_LIST":
+      getList(responseCallback);
+      break;
+    case "GET_TAB":
+      getTab(responseCallback);
+      break;
+    case "UPDATE_CACHE":
+      updateCache(request.hostname, request.state);
+      break;
+    case "UPDATE_STATE":
+      if (hasPermission) updateState(tabId, request.state);
+      break;
+    default:
+      break;
+  }
 
   return true;
 });
