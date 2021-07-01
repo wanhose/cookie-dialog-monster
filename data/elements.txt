@@ -1188,7 +1188,6 @@ div[data-notificationid="cookie"]
 .cookies_alert
 .cookie--form
 div[class*="cookieDisclaimer"]
-.ot-sdk-show-settings
 .basic_features-cookiemessage
 .data-protection-notice
 #CookieReportsButton
@@ -12434,3 +12433,4 @@ html[id="facebook"] > body > div.__fb-light-mode
 .css-1dbjc4n r-1awozwy r-1m3jxhj r-qo02w8 r-18u37iz r-1d7fvdj r-d9fdf6 r-tvv088 r-13qz1uu
 .sibbo-layout
 body > sibbo-cmp-layout
+.cc_banner-wrapper 
