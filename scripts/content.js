@@ -59,8 +59,7 @@ const fix = () => {
   if (body) body.style.setProperty("overflow-y", "unset", "important");
   if (facebook) facebook.style.setProperty("position", "unset", "important");
   if (html) html.style.setProperty("overflow-y", "unset", "important");
-  if (body && !loading) body.style.setProperty("opacity", "1");
-  if (html && !loading) html.style.setProperty("background-color", "initial");
+  if (!loading) dispatch({ state: "ready", type: "UPDATE_STATE" });
 };
 
 /**
@@ -148,7 +147,7 @@ const runTasks = () => {
     fix();
     removeFromCache();
     if (attempts <= 5) removeFromNetwork();
-    if (document.readyState !== "loading") attempts += 1;
+    if (document.readyState === "complete") attempts += 1;
   }
 
   if (attempts > 20) {
@@ -163,19 +162,16 @@ const runTasks = () => {
 dispatch(
   { hostname: document.location.hostname, type: "GET_CACHE" },
   null,
-  async ({ enabled, matches }) => {
+  ({ enabled, matches }) => {
     dispatch({ type: "ENABLE_POPUP" });
 
     if (enabled) {
+      dispatch({ state: "loading", type: "UPDATE_STATE" });
       selectorsFromCache = matches;
       dispatch({ type: "ENABLE_ICON" });
-      dispatch({ type: "GET_LIST" }, null, async ({ selectors }) => {
+      dispatch({ type: "GET_LIST" }, null, ({ selectors }) => {
         selectorsFromNetwork = selectors;
         intervalId = setInterval(runTasks, 500);
-      });
-    } else {
-      document.addEventListener("DOMContentLoaded", () => {
-        document.body.style.setProperty("opacity", "1", "important");
       });
     }
   }
