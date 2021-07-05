@@ -257,7 +257,7 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
  * @description Listens to updates
  */
 
-chrome.runtime.onInstalled.addListener((reason) => {
+chrome.runtime.onInstalled.addListener(({ reason }) => {
   if (reason === chrome.runtime.OnInstalledReason.UPDATE) {
     chrome.storage.local.clear();
   }
