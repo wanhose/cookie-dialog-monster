@@ -204,7 +204,7 @@ const updateState = (tabId, state) => {
 };
 
 /**
- * @description Listens to content messages
+ * @description Listens to messages
  */
 
 chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
@@ -251,4 +251,14 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
   }
 
   return true;
+});
+
+/**
+ * @description Listens to updates
+ */
+
+chrome.runtime.onInstalled.addListener((reason) => {
+  if (reason === chrome.runtime.OnInstalledReason.UPDATE) {
+    chrome.storage.local.clear();
+  }
 });
