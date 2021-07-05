@@ -12435,3 +12435,4 @@ html[id="facebook"] > body > div.__fb-light-mode
 body > sibbo-cmp-layout
 .cc_banner-wrapper
 .Common-Gdpr-CookieConsentV2
+#cookieoptinoverlay
