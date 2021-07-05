@@ -9808,7 +9808,6 @@ div[aria-label="cookieconsent"]
 .jcookie-navbar
 #cookieAcceptation
 .cookieBannerActive
-div[style*='width:550px;background-color:#feefaa;']
 #wrapperMensajeCookie
 #ctl00_Footer_rnCookies_popup
 #bsCookiesBanner
@@ -10381,7 +10380,6 @@ div[spec="cookie-disclaimer"]
 #cookiealertMsg
 #GDPRCookieBox
 .cookies-information
-div[style*='width:800px']
 .G005-global-cookie-notification
 #cookie-warning-plugin
 .oh_cookie_notice_wrapper
