@@ -1,9 +1,0 @@
-body {
-  opacity: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    background-color: #424242;
-  }
-}
