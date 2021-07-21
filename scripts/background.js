@@ -170,40 +170,6 @@ const updateCache = (hostname, state) => {
 };
 
 /**
- * @function updateState
- * @description Set an extension state
- *
- * @param {string} [tabId]
- * @param {string} [state]
- */
-
-const updateState = (tabId, state) => {
-  switch (state) {
-    case "loading":
-      chrome.tabs.insertCSS(
-        tabId,
-        {
-          file: "styles/content.css",
-          runAt: "document_start",
-        },
-        () => chrome.runtime.lastError
-      );
-      break;
-    case "ready":
-      chrome.tabs.removeCSS(
-        tabId,
-        {
-          file: "styles/content.css",
-        },
-        () => chrome.runtime.lastError
-      );
-      break;
-    default:
-      break;
-  }
-};
-
-/**
  * @description Listens to messages
  */
 
@@ -242,9 +208,6 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
       break;
     case "UPDATE_CACHE":
       updateCache(request.hostname, request.state);
-      break;
-    case "UPDATE_STATE":
-      if (hasPermission) updateState(tabId, request.state);
       break;
     default:
       break;

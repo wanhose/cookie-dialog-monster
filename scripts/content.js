@@ -23,14 +23,6 @@ const dispatch = chrome.runtime.sendMessage;
 let intervalId = 0;
 
 /**
- * @var loading
- * @description Is extension loading?
- * @type {boolean}
- */
-
-let loading = true;
-
-/**
  * @var selectorsFromCache
  * @description Array of selectors
  * @type {string[]}
@@ -59,7 +51,6 @@ const fix = () => {
   if (body) body.style.setProperty("overflow-y", "unset", "important");
   if (facebook) facebook.style.setProperty("position", "unset", "important");
   if (html) html.style.setProperty("overflow-y", "unset", "important");
-  if (!loading) dispatch({ state: "ready", type: "UPDATE_STATE" });
 };
 
 /**
@@ -99,10 +90,7 @@ const removeFromCache = () => {
     if (element) {
       const tagName = element.tagName.toUpperCase();
 
-      if (!["BODY", "HTML"].includes(tagName)) {
-        element.remove();
-        loading = false;
-      }
+      if (!["BODY", "HTML"].includes(tagName)) element.remove();
     }
   }
 };
@@ -122,7 +110,6 @@ const removeFromNetwork = () => {
 
       if (!["BODY", "HTML"].includes(tagName)) {
         element.remove();
-        loading = false;
         dispatch({
           hostname: document.location.hostname,
           state: { matches: [selector] },
@@ -139,10 +126,6 @@ const removeFromNetwork = () => {
  */
 
 const runTasks = () => {
-  if (attempts >= 5 || selectorsFromCache.length === 0) {
-    loading = false;
-  }
-
   if (attempts <= 20) {
     fix();
     removeFromCache();
@@ -166,7 +149,6 @@ dispatch(
     dispatch({ type: "ENABLE_POPUP" });
 
     if (enabled) {
-      dispatch({ state: "loading", type: "UPDATE_STATE" });
       selectorsFromCache = matches;
       dispatch({ type: "ENABLE_ICON" });
       dispatch({ type: "GET_LIST" }, null, ({ selectors }) => {
