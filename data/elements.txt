@@ -12435,3 +12435,5 @@ body > sibbo-cmp-layout
 .Common-Gdpr-CookieConsentV2
 #cookieoptinoverlay
 #cookieoverlay-x
+#ta-cc-modal
+.ta-cc-modal
