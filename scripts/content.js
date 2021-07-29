@@ -44,10 +44,12 @@ let selectorsFromNetwork = [];
  */
 
 const fix = () => {
-  const html = document.documentElement;
   const body = document.body;
+  const classListToRemove = ["ta-cc-modal-open"];
   const facebook = document.getElementsByClassName("_31e")[0];
+  const html = document.documentElement;
 
+  if (body) body.classList.remove(...classListToRemove);
   if (body) body.style.setProperty("overflow-y", "unset", "important");
   if (facebook) facebook.style.setProperty("position", "unset", "important");
   if (html) html.style.setProperty("overflow-y", "unset", "important");
