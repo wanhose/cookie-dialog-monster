@@ -11937,7 +11937,6 @@ div[data-section-type="CookiesBanner"]
 .pageCookies
 .block-cipix-cookiecontrol
 #header-coockie
-#notify-container
 #cookie-information-bar
 .mcl-cookie-bar
 #legalWarning
@@ -12465,3 +12464,4 @@ correos-cdk-cookies-module
 #cookies-block
 #cmp-app-container
 #ArsysCookieAcceptance
+#cookie-law-info-bar
