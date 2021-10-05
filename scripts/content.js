@@ -171,6 +171,7 @@ dispatch(
       selectorsFromCache = matches;
       dispatch({ type: "ENABLE_ICON" });
       await Promise.all([setupClasses, setupSelectors]);
+      await runTasks();
       setInterval(runTasks, 500);
     }
   }
