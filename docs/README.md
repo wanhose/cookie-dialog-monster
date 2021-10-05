@@ -1,6 +1,6 @@
-# Do Not Consent
+# Cookie Monster Dialog
 
-An extension that allows you to remove cookie consent dialogs automatically.
+A browser extension that eats cookie consent dialogs.
 
 ## Downloads
 
