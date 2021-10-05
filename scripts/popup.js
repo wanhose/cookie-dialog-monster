@@ -5,7 +5,7 @@
  */
 
 const chromeUrl =
-  "https://chrome.google.com/webstore/detail/do-not-consent/djcbfpkdhdkaflcigibkbpboflaplabg";
+  "https://chrome.google.com/webstore/detail/cookie-dialog-monster/djcbfpkdhdkaflcigibkbpboflaplabg";
 
 /**
  * @constant dispatch
@@ -22,7 +22,7 @@ const dispatch = chrome.runtime.sendMessage;
  */
 
 const firefoxUrl =
-  "https://addons.mozilla.org/es/firefox/addon/do-not-consent/";
+  "https://addons.mozilla.org/es/firefox/addon/cookie-dialog-monster/";
 
 /**
  * @constant isChromium

@@ -5,7 +5,7 @@ A browser extension that eats cookie consent dialogs.
 ## Downloads
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
-- [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/do-not-consent/)
+- [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)
 
 ## Compatibility
 

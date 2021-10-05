@@ -113,7 +113,7 @@ const getCache = (hostname, responseCallback) => {
 const getClasses = async (responseCallback) => {
   try {
     const url =
-      "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/classes.txt";
+      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/classes.txt";
     const response = await fetch(url);
     const data = await response.text();
 
@@ -137,7 +137,7 @@ const getClasses = async (responseCallback) => {
 const getSelectors = async (responseCallback) => {
   try {
     const url =
-      "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/elements.txt";
+      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/elements.txt";
     const response = await fetch(url);
     const data = await response.text();
 
