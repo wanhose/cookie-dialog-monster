@@ -1,18 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "Do Not Consent",
-  "version": "4.3.1",
+  "name": "Cookie Dialog Monster",
+  "version": "5.0.0",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
     "16": "assets/icons/16.png",
-    "32": "assets/icons/32.png",
     "48": "assets/icons/48.png",
     "128": "assets/icons/128.png"
   },
   "browser_action": {
     "default_icon": "assets/icons/disabled.png",
-    "default_title": "Do Not Consent"
+    "default_title": "Cookie Dialog Monster"
   },
   "author": "wanhose",
   "background": {
