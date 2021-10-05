@@ -102,6 +102,54 @@ const getCache = (hostname, responseCallback) => {
 };
 
 /**
+ * @async
+ * @function getClasses
+ * @description Retrieves a selectors list
+ *
+ * @param {void} [responseCallback]
+ * @returns {Promise<{ matches: string[] }>} A selectors list
+ */
+
+const getClasses = async (responseCallback) => {
+  try {
+    const url =
+      "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/classes.txt";
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    responseCallback({ classes: data.split("\n") });
+  } catch {
+    responseCallback({ classes: [] });
+  }
+};
+
+/**
+ * @async
+ * @function getSelectors
+ * @description Retrieves a selectors list
+ *
+ * @param {void} [responseCallback]
+ * @returns {Promise<{ matches: string[] }>} A selectors list
+ */
+
+const getSelectors = async (responseCallback) => {
+  try {
+    const url =
+      "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/elements.txt";
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    responseCallback({ selectors: data.split("\n") });
+  } catch {
+    responseCallback({ selectors: [] });
+  }
+};
+
+/**
  * @function getTab
  * @description Retrieves current tab information
  *
@@ -116,30 +164,6 @@ const getTab = (responseCallback) => {
       hostname: new URL(tabs[0].url).hostname,
     });
   });
-};
-
-/**
- * @async
- * @function getList
- * @description Retrieves selectors list
- *
- * @param {void} [responseCallback]
- * @returns {Promise<{ matches: string[] }>} A selectors list
- */
-
-const getList = async (responseCallback) => {
-  try {
-    const url =
-      "https://raw.githubusercontent.com/wanhose/do-not-consent/master/data/elements.txt";
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    responseCallback({ selectors: data.split("\n") });
-  } catch {
-    responseCallback({ selectors: [] });
-  }
 };
 
 /**
@@ -200,8 +224,11 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
     case "GET_CACHE":
       getCache(request.hostname, responseCallback);
       break;
-    case "GET_LIST":
-      getList(responseCallback);
+    case "GET_CLASSES":
+      getClasses(responseCallback);
+      break;
+    case "GET_SELECTORS":
+      getSelectors(responseCallback);
       break;
     case "GET_TAB":
       getTab(responseCallback);
