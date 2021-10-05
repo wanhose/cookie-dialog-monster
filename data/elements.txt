@@ -12465,3 +12465,10 @@ correos-cdk-cookies-module
 #cmp-app-container
 #ArsysCookieAcceptance
 #cookie-law-info-bar
+#cconsent-bar
+div[data-testid="cookie-wall-modal"]
+correos-cdk-cookies-module
+div[data-module="cookie-notice"]
+.contenedorcookies
+#Transparente
+#widgetCookiesPpal
