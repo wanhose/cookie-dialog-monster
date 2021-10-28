@@ -9,17 +9,17 @@ A browser extension that eats cookie consent dialogs.
 
 ## Compatibility
 
-- Google Chrome 67+.
-- Microsoft Edge 79+.
-- Mozilla Firefox 48+.
-- Opera 48+.
+- Google Chrome 51+.
+- Microsoft Edge 15+.
+- Mozilla Firefox 54+.
+- Opera 38+.
 
 ## Installation (on Google Chrome)
 
 1. Clone this repository.
 2. Go to [chrome://extensions](chrome://extensions).
 3. Enable **Developer mode** by clicking the toggle switch next to **Developer Mode**.
-4. Then, click the **LOAD UNPACKED** button and select the _src_ cloned folder.
+4. Then, click the **LOAD UNPACKED** button and select the cloned folder.
 5. That's all, you have a development build of this extension.
 
 ## Installation (on Mozilla Firefox)
@@ -27,7 +27,7 @@ A browser extension that eats cookie consent dialogs.
 1. Clone this repository.
 2. Go to [about:debugging](about:debugging).
 3. Enter **This Firefox** section.
-4. Then, click the **LOAD TEMPORARY ADD-ON** button and select any file inside _src_ cloned folder.
+4. Then, click the **LOAD TEMPORARY ADD-ON** button and select any file inside the cloned folder.
 5. That's all, you have a development build of this extension.
 
 ## Installation (on Microsoft Edge)
@@ -35,7 +35,7 @@ A browser extension that eats cookie consent dialogs.
 1. Clone this repository.
 2. Go to [edge://extensions](edge://extensions).
 3. Enable **Developer mode** by clicking the toggle switch next to **Developer Mode**.
-4. Then, click the **LOAD UNPACKED** button and select the _src_ cloned folder.
+4. Then, click the **LOAD UNPACKED** button and select the cloned folder.
 5. That's all, you have a development build of this extension.
 
 ## Contributing

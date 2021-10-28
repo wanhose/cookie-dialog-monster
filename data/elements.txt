@@ -12472,3 +12472,8 @@ div[data-module="cookie-notice"]
 .contenedorcookies
 #Transparente
 #widgetCookiesPpal
+#onetrust-policy
+#onetrust-group-container
+#onetrust-banner-sdk
+script[src*="cdn.cookielaw.org"]
+script[src*="evidon.com"]
