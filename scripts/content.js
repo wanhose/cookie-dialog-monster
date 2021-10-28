@@ -64,7 +64,6 @@ const fix = () => {
 };
 
 /**
- * @function removeElements
  * @description Removes matched elements from a selectors array
  * @param {string[]} selectors
  * @param {boolean} updateCache
@@ -79,7 +78,7 @@ const removeElements = (selectors, updateCache) => {
       const tagName = element.tagName.toUpperCase();
 
       if (!["BODY", "HTML"].includes(tagName)) {
-        element.remove();
+        element.outerHTML = "";
 
         if (updateCache) {
           selectorsFromCache = [...selectorsFromCache, selector];
@@ -95,11 +94,11 @@ const removeElements = (selectors, updateCache) => {
 };
 
 /**
- * @function runTasks
- * @description Starts running tasks
+ * @async
+ * @description Runs tasks
  */
 
-const runTasks = async () => {
+const run = async () => {
   if (attempts <= 20) {
     fix();
     removeElements(selectorsFromCache);
@@ -110,13 +109,13 @@ const runTasks = async () => {
       if (attempts <= 5) await Promise.all(selectors.map((fn) => fn()));
       if (document.readyState === "complete") attempts += 1;
     }
+
+    requestAnimationFrame(run);
   }
 };
 
 /**
- * @function search
  * @description Retrieves HTML element if selector exists
- *
  * @param {string} selector
  * @returns {HTMLElement | null} An HTML element or null
  */
@@ -139,27 +138,29 @@ const search = (selector) => {
 
 /**
  * @description Setups classes selectors
- * @type {Promise<boolean>}
+ * @returns {Promise<boolean>}
  */
 
-const setupClasses = new Promise((resolve) => {
-  dispatch({ type: "GET_CLASSES" }, null, ({ classes }) => {
-    classesFromNetwork = classes;
-    resolve(true);
+const setupClasses = () =>
+  new Promise((resolve) => {
+    dispatch({ type: "GET_CLASSES" }, null, ({ classes }) => {
+      classesFromNetwork = classes;
+      resolve(true);
+    });
   });
-});
 
 /**
  * @description Setups elements selectors
- * @type {Promise<boolean>}
+ * @returns {Promise<boolean>}
  */
 
-const setupSelectors = new Promise((resolve) => {
-  dispatch({ type: "GET_SELECTORS" }, null, ({ selectors }) => {
-    selectorsFromNetwork = chunkerize(selectors);
-    resolve(true);
+const setupSelectors = () =>
+  new Promise((resolve) => {
+    dispatch({ type: "GET_SELECTORS" }, null, ({ selectors }) => {
+      selectorsFromNetwork = chunkerize(selectors);
+      resolve(true);
+    });
   });
-});
 
 dispatch(
   { hostname: document.location.hostname, type: "GET_CACHE" },
@@ -170,9 +171,8 @@ dispatch(
     if (enabled) {
       selectorsFromCache = matches;
       dispatch({ type: "ENABLE_ICON" });
-      await Promise.all([setupClasses, setupSelectors]);
-      await runTasks();
-      setInterval(runTasks, 500);
+      await Promise.all([setupClasses(), setupSelectors()]);
+      await run();
     }
   }
 );
