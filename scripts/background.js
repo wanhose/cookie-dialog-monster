@@ -1,30 +1,25 @@
 /**
- * @var cacheInitialState
  * @description Cache initial state
  * @type {{ enabled: boolean, matches: string[] }}
  */
 
-const cacheInitialState = {
+const initial = {
   enabled: true,
   matches: [],
 };
 
 /**
- * @function isValid
  * @description Check cache validity
- *
  * @param {object} [cache]
  */
 
-const isValid = (cache) =>
+const check = (cache) =>
   typeof cache.enabled === "boolean" &&
   Array.isArray(cache.matches) &&
   cache.matches.every((match) => typeof match === "string");
 
 /**
- * @function disableIcon
  * @description Disables icon
- *
  * @param {string} [tabId]
  */
 
@@ -36,9 +31,7 @@ const disableIcon = (tabId) => {
 };
 
 /**
- * @function disablePopup
  * @description Disables popup
- *
  * @param {string} [tabId]
  */
 
@@ -50,9 +43,7 @@ const disablePopup = (tabId) => {
 };
 
 /**
- * @function enableIcon
  * @description Enables icon
- *
  * @param {string} [tabId]
  */
 
@@ -64,9 +55,7 @@ const enableIcon = (tabId) => {
 };
 
 /**
- * @function enablePopup
  * @description Enables popup
- *
  * @param {string} [tabId]
  */
 
@@ -78,39 +67,35 @@ const enablePopup = (tabId) => {
 };
 
 /**
- * @function getCache
  * @description Retrieves cache state
- *
  * @param {string} [hostname]
- * @param {void} [responseCallback]
+ * @param {void} [callback]
  * @returns {Promise<{ enabled: boolean, matches: string[] }>} Cache state
  */
 
-const getCache = (hostname, responseCallback) => {
+const getCache = (hostname, callback) => {
   chrome.storage.local.get(null, (store) => {
     try {
       const cache = store[hostname];
 
-      if (!isValid(cache)) throw new Error();
+      if (!check(cache)) throw new Error();
 
-      responseCallback(cache);
+      callback(cache);
     } catch {
-      chrome.storage.local.set({ [hostname]: cacheInitialState });
-      responseCallback(cacheInitialState);
+      chrome.storage.local.set({ [hostname]: initial });
+      callback(initial);
     }
   });
 };
 
 /**
  * @async
- * @function getClasses
  * @description Retrieves a selectors list
- *
- * @param {void} [responseCallback]
+ * @param {void} [callback]
  * @returns {Promise<{ matches: string[] }>} A selectors list
  */
 
-const getClasses = async (responseCallback) => {
+const getClasses = async (callback) => {
   try {
     const url =
       "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/classes.txt";
@@ -119,22 +104,20 @@ const getClasses = async (responseCallback) => {
 
     if (response.status !== 200) throw new Error();
 
-    responseCallback({ classes: data.split("\n") });
+    callback({ classes: data.split("\n") });
   } catch {
-    responseCallback({ classes: [] });
+    callback({ classes: [] });
   }
 };
 
 /**
  * @async
- * @function getSelectors
  * @description Retrieves a selectors list
- *
- * @param {void} [responseCallback]
+ * @param {void} [callback]
  * @returns {Promise<{ matches: string[] }>} A selectors list
  */
 
-const getSelectors = async (responseCallback) => {
+const getSelectors = async (callback) => {
   try {
     const url =
       "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/elements.txt";
@@ -143,23 +126,21 @@ const getSelectors = async (responseCallback) => {
 
     if (response.status !== 200) throw new Error();
 
-    responseCallback({ selectors: data.split("\n") });
+    callback({ selectors: data.split("\n") });
   } catch {
-    responseCallback({ selectors: [] });
+    callback({ selectors: [] });
   }
 };
 
 /**
- * @function getTab
  * @description Retrieves current tab information
- *
- * @param {void} [responseCallback]
+ * @param {void} [callback]
  * @returns {Promise<{ id: string, location: string }>} Current tab information
  */
 
-const getTab = (responseCallback) => {
+const getTab = (callback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    responseCallback({
+    callback({
       id: tabs[0].id,
       hostname: new URL(tabs[0].url).hostname,
     });
@@ -167,9 +148,7 @@ const getTab = (responseCallback) => {
 };
 
 /**
- * @function updateCache
  * @description Update cache state
- *
  * @param {string} [hostname]
  * @param {object} [state]
  */
@@ -197,7 +176,7 @@ const updateCache = (hostname, state) => {
  * @description Listens to messages
  */
 
-chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
+chrome.runtime.onMessage.addListener((request, sender, callback) => {
   const hasPermission = !sender.frameId || sender.frameId === 0;
   let tabId = sender.tab ? sender.tab.id : undefined;
 
@@ -222,16 +201,16 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
       if (hasPermission) enablePopup(tabId);
       break;
     case "GET_CACHE":
-      getCache(request.hostname, responseCallback);
+      getCache(request.hostname, callback);
       break;
     case "GET_CLASSES":
-      getClasses(responseCallback);
+      getClasses(callback);
       break;
     case "GET_SELECTORS":
-      getSelectors(responseCallback);
+      getSelectors(callback);
       break;
     case "GET_TAB":
-      getTab(responseCallback);
+      getTab(callback);
       break;
     case "UPDATE_CACHE":
       updateCache(request.hostname, request.state);
