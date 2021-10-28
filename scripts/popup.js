@@ -33,7 +33,6 @@ const firefoxUrl =
 const isChromium = chrome.runtime.getURL("").startsWith("chrome-extension://");
 
 /**
- * @function handlePowerChange
  * @description Disables or enables extension on current page
  */
 
@@ -58,7 +57,6 @@ const handlePowerChange = () => {
 };
 
 /**
- * @function handleReload
  * @description Reload current page
  */
 
@@ -69,9 +67,7 @@ const handleReload = () => {
 };
 
 /**
- * @function handleRate
  * @description Shows negative or positive messages
- *
  * @param {MouseEvent} event
  */
 
@@ -94,7 +90,6 @@ const handleRate = (event) => {
 };
 
 /**
- * @function handleContentLoaded
  * @description Setup stars handlers and result message links
  */
 
@@ -121,8 +116,6 @@ const handleContentLoaded = () => {
 
 /**
  * @description Listen to document ready
- *
- * @type {Document}
  * @listens document#ready
  */
 
