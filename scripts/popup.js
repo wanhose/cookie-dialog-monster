@@ -5,7 +5,7 @@
  */
 
 const chromeUrl =
-  "https://chrome.google.com/webstore/detail/cookie-dialog-monster/djcbfpkdhdkaflcigibkbpboflaplabg";
+  "https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg";
 
 /**
  * @constant dispatch
