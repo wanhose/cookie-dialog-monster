@@ -1,16 +1,9 @@
 /**
- * @description Number of attempts
- * @type {number}
- */
-
-let attempts = 1;
-
-/**
  * @description Array of selectors
  * @type {string[]}
  */
 
-let classesFromNetwork = [];
+let classes = [];
 
 /**
  * @description Shortcut to send messages to background script
@@ -20,32 +13,23 @@ let classesFromNetwork = [];
 const dispatch = chrome.runtime.sendMessage;
 
 /**
- * @description Array of selectors
- * @type {string[]}
+ * @description Options provided to observer
  */
 
-let selectorsFromCache = [];
+const options = { childList: true, subtree: true };
 
 /**
- * @description Array of selectors
- * @type {Promise<string[]>[]}
+ * @description Selectors list
+ * @type {string}
  */
 
-let selectorsFromNetwork = [];
+let selectors = "";
 
 /**
- * @description Split large arrays into promises
- * @param {string[]} array
+ * @description Target provided to observer
  */
 
-const chunkerize = (array) =>
-  [...Array(Math.ceil(array.length / 300))].map(
-    (_, index) => () =>
-      new Promise((resolve) => {
-        removeElements(array.slice(index * 300, (index + 1) * 300), true);
-        resolve(true);
-      })
-  );
+const target = document.body || document.documentElement;
 
 /**
  * @description Fixes scroll issues
@@ -53,7 +37,6 @@ const chunkerize = (array) =>
 
 const fix = () => {
   const body = document.body;
-  const classes = classesFromNetwork;
   const facebook = document.getElementsByClassName("_31e")[0];
   const html = document.documentElement;
 
@@ -63,116 +46,61 @@ const fix = () => {
   if (html) html.style.setProperty("overflow-y", "unset", "important");
 };
 
-/**
- * @description Removes matched elements from a selectors array
- * @param {string[]} selectors
- * @param {boolean} updateCache
- */
+const observer = new MutationObserver((mutations, instance) => {
+  instance.disconnect();
+  fix();
 
-const removeElements = (selectors, updateCache) => {
-  for (let i = selectors.length; i--; ) {
-    const selector = selectors[i];
-    const element = search(selector);
+  for (let i = mutations.length; i--; ) {
+    const mutation = mutations[i];
 
-    if (element) {
-      const tagName = element.tagName.toUpperCase();
+    for (let j = mutation.addedNodes.length; j--; ) {
+      const node = mutation.addedNodes[j];
 
-      if (!["BODY", "HTML"].includes(tagName)) {
-        element.outerHTML = "";
+      if (!(node instanceof HTMLElement)) continue;
 
-        if (updateCache) {
-          selectorsFromCache = [...selectorsFromCache, selector];
-          dispatch({
-            hostname: document.location.hostname,
-            state: { matches: [selector] },
-            type: "UPDATE_CACHE",
-          });
-        }
-      }
+      if (node.matches(selectors)) node.outerHTML = "";
     }
   }
-};
 
-/**
- * @async
- * @description Runs tasks
- */
-
-const run = async () => {
-  if (attempts <= 20) {
-    fix();
-    removeElements(selectorsFromCache);
-
-    if (selectorsFromNetwork.length > 0) {
-      const selectors = selectorsFromNetwork;
-
-      if (attempts <= 5) await Promise.all(selectors.map((fn) => fn()));
-      if (document.readyState === "complete") attempts += 1;
-    }
-
-    requestAnimationFrame(run);
-  }
-};
-
-/**
- * @description Retrieves HTML element if selector exists
- * @param {string} selector
- * @returns {HTMLElement | null} An HTML element or null
- */
-
-const search = (selector) => {
-  if (!selector.includes("[") && !selector.includes(">")) {
-    if (selector.startsWith(".")) {
-      return document.getElementsByClassName(selector.slice(1))[0];
-    }
-
-    if (selector.startsWith("#")) {
-      return document.getElementById(selector.slice(1));
-    }
-  } else {
-    return document.querySelector(selector);
-  }
-
-  return null;
-};
+  instance.observe(target, options);
+});
 
 /**
  * @description Setups classes selectors
- * @returns {Promise<boolean>}
+ * @returns {Promise<{ classes: string[] }>}
  */
 
 const setupClasses = () =>
   new Promise((resolve) => {
-    dispatch({ type: "GET_CLASSES" }, null, ({ classes }) => {
-      classesFromNetwork = classes;
-      resolve(true);
-    });
+    dispatch({ type: "GET_CLASSES" }, null, resolve);
   });
 
 /**
  * @description Setups elements selectors
- * @returns {Promise<boolean>}
+ * @returns {Promise<{ selectors: string }>}
  */
 
 const setupSelectors = () =>
   new Promise((resolve) => {
-    dispatch({ type: "GET_SELECTORS" }, null, ({ selectors }) => {
-      selectorsFromNetwork = chunkerize(selectors);
-      resolve(true);
-    });
+    dispatch({ type: "GET_SELECTORS" }, null, resolve);
   });
+
+/**
+ * @description Setups everything and starts to observe if enabled
+ */
 
 dispatch(
   { hostname: document.location.hostname, type: "GET_CACHE" },
   null,
-  async ({ enabled, matches }) => {
+  async ({ enabled }) => {
     dispatch({ type: "ENABLE_POPUP" });
 
     if (enabled) {
-      selectorsFromCache = matches;
       dispatch({ type: "ENABLE_ICON" });
-      await Promise.all([setupClasses(), setupSelectors()]);
-      await run();
+      const results = await Promise.all([setupClasses(), setupSelectors()]);
+      classes = results[0].classes;
+      selectors = results[1].selectors;
+      observer.observe(target, options);
     }
   }
 );
