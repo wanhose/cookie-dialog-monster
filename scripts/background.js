@@ -1,11 +1,10 @@
 /**
  * @description Cache initial state
- * @type {{ enabled: boolean, matches: string[] }}
+ * @type {{ enabled: boolean }}
  */
 
 const initial = {
   enabled: true,
-  matches: [],
 };
 
 /**
@@ -13,10 +12,7 @@ const initial = {
  * @param {object} [cache]
  */
 
-const check = (cache) =>
-  typeof cache.enabled === "boolean" &&
-  Array.isArray(cache.matches) &&
-  cache.matches.every((match) => typeof match === "string");
+const check = (cache) => typeof cache.enabled === "boolean";
 
 /**
  * @description Disables icon
@@ -70,7 +66,7 @@ const enablePopup = (tabId) => {
  * @description Retrieves cache state
  * @param {string} [hostname]
  * @param {void} [callback]
- * @returns {Promise<{ enabled: boolean, matches: string[] }>} Cache state
+ * @returns {Promise<{ enabled: boolean }>}
  */
 
 const getCache = (hostname, callback) => {
@@ -92,7 +88,7 @@ const getCache = (hostname, callback) => {
  * @async
  * @description Retrieves a selectors list
  * @param {void} [callback]
- * @returns {Promise<{ matches: string[] }>} A selectors list
+ * @returns {Promise<{ classes: string[] }>}
  */
 
 const getClasses = async (callback) => {
@@ -114,7 +110,7 @@ const getClasses = async (callback) => {
  * @async
  * @description Retrieves a selectors list
  * @param {void} [callback]
- * @returns {Promise<{ matches: string[] }>} A selectors list
+ * @returns {Promise<{ selectors: string }>}
  */
 
 const getSelectors = async (callback) => {
@@ -126,7 +122,7 @@ const getSelectors = async (callback) => {
 
     if (response.status !== 200) throw new Error();
 
-    callback({ selectors: data.split("\n") });
+    callback({ selectors: data.split("\n").join(",") });
   } catch {
     callback({ selectors: [] });
   }
@@ -135,7 +131,7 @@ const getSelectors = async (callback) => {
 /**
  * @description Retrieves current tab information
  * @param {void} [callback]
- * @returns {Promise<{ id: string, location: string }>} Current tab information
+ * @returns {Promise<{ id: string, location: string }>}
  */
 
 const getTab = (callback) => {
@@ -163,10 +159,6 @@ const updateCache = (hostname, state) => {
           typeof state.enabled === "undefined"
             ? current.enabled
             : state.enabled,
-        matches:
-          typeof state.matches === "undefined"
-            ? current.matches
-            : [...new Set([...current.matches, ...state.matches])],
       },
     });
   });
