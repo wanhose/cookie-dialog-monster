@@ -12477,3 +12477,14 @@ div[data-module="cookie-notice"]
 #onetrust-banner-sdk
 script[src*="cdn.cookielaw.org"]
 script[src*="evidon.com"]
+#infocookies2
+div[title*="Antes de"][aria-modal="true"][role="dialog"]
+div[title*="Before you continue"][aria-modal="true"][role="dialog"]
+div[title*="Bevor Sie"][aria-modal="true"][role="dialog"]
+div[title*="Avant d'accéder"][aria-modal="true"][role="dialog"]
+div[title*="Prima di continuare"][aria-modal="true"][role="dialog"]
+.ytd-consent-bump-v2-lightbox
+.mde-consent-modal-container
+.cmpContainer
+#axeptio_overlay
+.axeptio_mount
