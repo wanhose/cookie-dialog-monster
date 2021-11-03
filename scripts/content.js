@@ -55,8 +55,12 @@ const observer = new MutationObserver((mutations, instance) => {
 
     for (let j = mutation.addedNodes.length; j--; ) {
       const node = mutation.addedNodes[j];
+      const valid =
+        node instanceof HTMLElement &&
+        node.parentElement &&
+        !["BODY", "HTML"].includes(node.tagName);
 
-      if (!(node instanceof HTMLElement)) continue;
+      if (!valid) continue;
 
       if (node.matches(selectors)) node.outerHTML = "";
     }
