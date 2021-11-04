@@ -225,6 +225,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
  */
 
 chrome.contextMenus.create({
+  contexts: ["all"],
   id: contextMenuId,
   title: "Report site...",
 });
@@ -236,7 +237,7 @@ chrome.contextMenus.create({
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId !== contextMenuId) return;
 
-  fetch("https://cdm-report-service.herokuapp.com/rest/v1/report", {
+  fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
     body: JSON.stringify({
       text: tab.url,
       to: "wanhose.development@gmail.com",
