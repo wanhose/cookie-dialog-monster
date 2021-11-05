@@ -1,4 +1,10 @@
 /**
+ * @description Context menu identifier
+ */
+
+const contextMenuId = "CDM_MENU";
+
+/**
  * @description Cache initial state
  * @type {{ enabled: boolean }}
  */
@@ -212,6 +218,36 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   }
 
   return true;
+});
+
+/**
+ * @description Creates context menu
+ */
+
+chrome.contextMenus.create({
+  contexts: ["all"],
+  id: contextMenuId,
+  title: "Report site...",
+});
+
+/**
+ * @description Listens to context menus
+ */
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId !== contextMenuId) return;
+
+  fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
+    body: JSON.stringify({
+      text: tab.url,
+      to: "wanhose.development@gmail.com",
+      subject: "Cookie Dialog Monster Report",
+    }),
+    headers: {
+      "Content-type": "application/json",
+    },
+    method: "POST",
+  });
 });
 
 /**
