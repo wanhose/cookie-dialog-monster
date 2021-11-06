@@ -1,5 +1,7 @@
 blocked
+cbar
 cmp-open
+cu_k_cookie_consent_modal_open
 no-scroll
 sp-message-open
 ta-cc-modal-open

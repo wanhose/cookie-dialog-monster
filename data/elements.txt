@@ -12493,3 +12493,12 @@ div[title*="Prima di continuare"][aria-modal="true"][role="dialog"]
 script[src*="quorn-cmp.min.js"]
 .wwhp-edition-international
 .bbccookies-banner
+#cu_k_modal_main_box
+div[style="opacity: 1; x: 1px; y: 0px; transform: translateY(0px) scale(1, 1); --Toaster-indicatorColor:#24A0ED;"]
+script[src*="live.mrf.io"]
+marfeel-cmp
+body > div[data-nosnippet="true"] > aside
+epaas-consent-drawer-shell
+.epaas-notavailable-banner
+.cbar
+.cbar-overlay
