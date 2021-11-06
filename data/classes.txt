@@ -1,4 +1,5 @@
 blocked
+cmp-open
 no-scroll
 sp-message-open
 ta-cc-modal-open

@@ -12488,3 +12488,8 @@ div[title*="Prima di continuare"][aria-modal="true"][role="dialog"]
 .cmpContainer
 #axeptio_overlay
 .axeptio_mount
+.mmw-cookie-banner
+.cmp
+script[src*="quorn-cmp.min.js"]
+.wwhp-edition-international
+.bbccookies-banner
