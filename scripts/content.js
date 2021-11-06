@@ -32,6 +32,18 @@ let selectors = "";
 const target = document.body || document.documentElement;
 
 /**
+ * @description Cleans DOM
+ */
+
+const clean = () => {
+  if (selectors.length) {
+    const results = document.querySelectorAll(selectors);
+
+    for (let i = results.length; i--; ) results[i].outerHTML = "";
+  }
+};
+
+/**
  * @description Fixes scroll issues
  */
 
@@ -40,10 +52,21 @@ const fix = () => {
   const facebook = document.getElementsByClassName("_31e")[0];
   const html = document.documentElement;
 
-  if (body && classes.length > 0) body.classList.remove(...classes);
-  if (body) body.style.setProperty("overflow-y", "unset", "important");
-  if (facebook) facebook.style.setProperty("position", "unset", "important");
-  if (html) html.style.setProperty("overflow-y", "unset", "important");
+  if (body) {
+    if (classes.length) body.classList.remove(...classes);
+    body.style.setProperty("overflow-y", "initial", "important");
+    body.style.setProperty("position", "initial", "important");
+  }
+
+  if (facebook) {
+    facebook.style.setProperty("position", "initial", "important");
+  }
+
+  if (html) {
+    if (classes.length) html.classList.remove(...classes);
+    html.style.setProperty("position", "initial", "important");
+    html.style.setProperty("overflow-y", "initial", "important");
+  }
 };
 
 const observer = new MutationObserver((mutations, instance) => {
@@ -88,6 +111,17 @@ const setupSelectors = () =>
   new Promise((resolve) => {
     dispatch({ type: "GET_SELECTORS" }, null, resolve);
   });
+
+/**
+ * @description Listens DOM complete state
+ */
+
+document.addEventListener("readystatechange", () => {
+  if (document.readyState === "complete") {
+    clean();
+    setTimeout(clean, 2000);
+  }
+});
 
 /**
  * @description Setups everything and starts to observe if enabled
