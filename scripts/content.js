@@ -13,6 +13,12 @@ let classes = [];
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @description Is consent preview page?
+ */
+
+const isConsentPreview = document.location.host.startsWith("consent.");
+
+/**
  * @description Options provided to observer
  */
 
@@ -50,7 +56,9 @@ const clean = () => {
 const fix = () => {
   const body = document.body;
   const facebook = document.getElementsByClassName("_31e")[0];
+  const google = document.querySelector('form[action*="consent.google"]');
   const html = document.documentElement;
+  const yahoo = document.querySelector("#consent-page");
 
   if (body) {
     if (classes.length) body.classList.remove(...classes);
@@ -62,10 +70,18 @@ const fix = () => {
     facebook.style.setProperty("position", "initial", "important");
   }
 
+  if (google) {
+    google.querySelector("button").click();
+  }
+
   if (html) {
     if (classes.length) html.classList.remove(...classes);
     html.style.setProperty("position", "initial", "important");
     html.style.setProperty("overflow-y", "initial", "important");
+  }
+
+  if (yahoo) {
+    yahoo.querySelector('button[type="submit"]').click();
   }
 };
 
@@ -73,19 +89,21 @@ const observer = new MutationObserver((mutations, instance) => {
   instance.disconnect();
   fix();
 
-  for (let i = mutations.length; i--; ) {
-    const mutation = mutations[i];
+  if (!isConsentPreview) {
+    for (let i = mutations.length; i--; ) {
+      const mutation = mutations[i];
 
-    for (let j = mutation.addedNodes.length; j--; ) {
-      const node = mutation.addedNodes[j];
-      const valid =
-        node instanceof HTMLElement &&
-        node.parentElement &&
-        !["BODY", "HTML"].includes(node.tagName);
+      for (let j = mutation.addedNodes.length; j--; ) {
+        const node = mutation.addedNodes[j];
+        const valid =
+          node instanceof HTMLElement &&
+          node.parentElement &&
+          !["BODY", "HTML"].includes(node.tagName);
 
-      if (!valid) continue;
+        if (!valid) continue;
 
-      if (node.matches(selectors)) node.outerHTML = "";
+        if (node.matches(selectors)) node.outerHTML = "";
+      }
     }
   }
 
@@ -118,8 +136,12 @@ const setupSelectors = () =>
 
 document.addEventListener("readystatechange", () => {
   if (document.readyState === "complete") {
-    clean();
-    setTimeout(clean, 2000);
+    fix();
+
+    if (!isConsentPreview) {
+      clean();
+      setTimeout(clean, 2000);
+    }
   }
 });
 
