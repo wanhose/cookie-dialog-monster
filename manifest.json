@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Cookie Dialog Monster",
-  "version": "5.3.2",
+  "version": "5.3.3",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -20,7 +20,6 @@
   "content_scripts": [
     {
       "all_frames": true,
-      "css": ["styles/fixes.css"],
       "exclude_matches": ["*://*.gfycat.com/*"],
       "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
@@ -34,5 +33,5 @@
     "storage",
     "tabs"
   ],
-  "web_accessible_resources": ["assets/fonts/*", "scripts/*", "styles/*"]
+  "web_accessible_resources": ["assets/fonts/*", "scripts/popup.js", "styles/*"]
 }

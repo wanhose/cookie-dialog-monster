@@ -13,10 +13,16 @@ let classes = [];
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @description Hostname
+ */
+
+const hostname = document.location.hostname;
+
+/**
  * @description Is consent preview page?
  */
 
-const isConsentPreview = document.location.host.startsWith("consent.");
+const isConsentPreview = hostname.startsWith("consent.");
 
 /**
  * @description Options provided to observer
@@ -54,11 +60,21 @@ const clean = () => {
  */
 
 const fix = () => {
+  const automobiel = /automobielmanagement.nl/g.test(hostname);
   const body = document.body;
   const facebook = document.getElementsByClassName("_31e")[0];
   const google = document.querySelector('form[action*="consent.google"]');
   const html = document.documentElement;
+  const play = hostname.startsWith("play.google.");
   const yahoo = document.querySelector("#consent-page");
+
+  if (automobiel && body) {
+    for (let i = body.childNodes.length; i--; ) {
+      const node = body.childNodes[i];
+      if (node instanceof HTMLElement)
+        node.style.setProperty("filter", "initial", "important");
+    }
+  }
 
   if (body) {
     if (classes.length) body.classList.remove(...classes);
@@ -71,7 +87,8 @@ const fix = () => {
   }
 
   if (google) {
-    google.querySelector("button").click();
+    const submit = google.querySelector("button");
+    if (submit) submit.click();
   }
 
   if (html) {
@@ -80,8 +97,14 @@ const fix = () => {
     html.style.setProperty("overflow-y", "initial", "important");
   }
 
+  if (play) {
+    const element = document.querySelector("body > div");
+    if (element) element.style.setProperty("z-index", "initial", "important");
+  }
+
   if (yahoo) {
-    yahoo.querySelector('button[type="submit"]').click();
+    const submit = yahoo.querySelector('button[type="submit"]');
+    if (submit) submit.click();
   }
 };
 
@@ -149,18 +172,14 @@ document.addEventListener("readystatechange", () => {
  * @description Setups everything and starts to observe if enabled
  */
 
-dispatch(
-  { hostname: document.location.hostname, type: "GET_CACHE" },
-  null,
-  async ({ enabled }) => {
-    dispatch({ type: "ENABLE_POPUP" });
+dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
+  dispatch({ type: "ENABLE_POPUP" });
 
-    if (enabled) {
-      dispatch({ type: "ENABLE_ICON" });
-      const results = await Promise.all([setupClasses(), setupSelectors()]);
-      classes = results[0].classes;
-      selectors = results[1].selectors;
-      observer.observe(target, options);
-    }
+  if (enabled) {
+    dispatch({ type: "ENABLE_ICON" });
+    const results = await Promise.all([setupClasses(), setupSelectors()]);
+    classes = results[0].classes;
+    selectors = results[1].selectors;
+    observer.observe(target, options);
   }
-);
+});

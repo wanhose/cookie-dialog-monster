@@ -12502,3 +12502,4 @@ epaas-consent-drawer-shell
 .epaas-notavailable-banner
 .cbar
 .cbar-overlay
+div[style="overflow: hidden; position: absolute; top: 0px; width: 379px; z-index: 991; height: 180px; margin-top: 70px; right: 0px; margin-right: 25px;"]
