@@ -12503,3 +12503,6 @@ epaas-consent-drawer-shell
 .cbar
 .cbar-overlay
 div[style="overflow: hidden; position: absolute; top: 0px; width: 379px; z-index: 991; height: 180px; margin-top: 70px; right: 0px; margin-right: 25px;"]
+div.fixed.mask-untouch
+.cookie-manage-container
+.r-cookie
