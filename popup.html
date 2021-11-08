@@ -11,7 +11,7 @@
     <header class="header">
       <h1 class="header-title">Cookie Dialog Monster</h1>
       <div class="header-actions">
-        <button id="reload">
+        <button aria-label="Reload page" id="reload">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -34,7 +34,10 @@
     </header>
     <main>
       <label class="switch-label">
-        <span>Eating dialogs in <strong id="host"></strong></span>
+        <span>
+          <span data-i18n="toggleText"></span>
+          <strong id="host"></strong>
+        </span>
         <div class="switch">
           <input checked="checked" id="power" type="checkbox" />
           <span class="slider"></span>
@@ -43,9 +46,9 @@
       <div class="separator"></div>
       <div>
         <div class="rating">
-          <span>Do you like this extension?</span>
+          <span data-i18n="reviewText"></span>
           <div class="rating-actions">
-            <button id="unlike">
+            <button aria-label="Unlike" id="unlike">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -62,7 +65,7 @@
                 ></path>
               </svg>
             </button>
-            <button id="like">
+            <button aria-label="Like" id="like">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -81,26 +84,12 @@
             </button>
           </div>
         </div>
-        <p hidden="true" id="negative">
-          Ooops! I am sorry for the inconvenience, please
-          <a href="mailto:wanhose.development@gmail.com" target="_blank">
-            contact me
-          </a>
-          and I will help you
-          <span aria-label="Grinning face with sweat" role="img">😅</span>
-        </p>
-        <p hidden="true" id="positive">
-          Thank you very much! Help me to grow rating and reviewing this
-          extension
-          <a id="store" target="_blank">here</a>
-          <span aria-label="Smiling face with heart-shaped eyes" role="img">
-            😍
-          </span>
-        </p>
+        <p data-i18n="negativeText" hidden="true" id="negative"></p>
+        <p data-i18n="positiveText" hidden="true" id="positive"></p>
       </div>
       <div class="separator"></div>
       <div class="help">
-        <span>Help or issues?</span>
+        <span data-i18n="helpText"></span>
         <a href="mailto:wanhose.development@gmail.com" target="_blank">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +109,7 @@
       </div>
     </main>
     <footer>
-      Made with <span aria-label="Heart" role="img">❤️</span> by
+      <span data-i18n="footerText"></span>
       <a href="https://github.com/wanhose" target="_blank">wanhose</a>
     </footer>
   </body>
