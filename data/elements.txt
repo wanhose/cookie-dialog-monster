@@ -12506,3 +12506,10 @@ div[style="overflow: hidden; position: absolute; top: 0px; width: 379px; z-index
 div.fixed.mask-untouch
 .cookie-manage-container
 .r-cookie
+#ccc
+#cookie-status
+script[src*="cookie-first"]
+#cf-root
+.miniConsent
+div.consent[style="display: none"]
+iframe[src*="cmp.autoweek.nl"]
