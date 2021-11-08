@@ -44,14 +44,30 @@ let selectors = "";
 const target = document.body || document.documentElement;
 
 /**
+ * @description Checks if node element is removable
+ * @param {Element} node
+ */
+
+const check = (node) =>
+  node instanceof HTMLElement &&
+  node.parentElement &&
+  !["APP", "ROOT"].includes(node.id.toUpperCase()) &&
+  !["BODY", "HTML"].includes(node.tagName);
+
+/**
  * @description Cleans DOM
  */
 
 const clean = () => {
   if (selectors.length) {
-    const results = document.querySelectorAll(selectors);
+    const nodes = document.querySelectorAll(selectors);
 
-    for (let i = results.length; i--; ) results[i].outerHTML = "";
+    for (let i = nodes.length; i--; ) {
+      const node = nodes[i];
+      const valid = check(node);
+
+      if (valid) node.outerHTML = "";
+    }
   }
 };
 
@@ -71,8 +87,10 @@ const fix = () => {
   if (automobiel && body) {
     for (let i = body.childNodes.length; i--; ) {
       const node = body.childNodes[i];
-      if (node instanceof HTMLElement)
+
+      if (node instanceof HTMLElement) {
         node.style.setProperty("filter", "initial", "important");
+      }
     }
   }
 
@@ -88,7 +106,10 @@ const fix = () => {
 
   if (google) {
     const submit = google.querySelector("button");
-    if (submit) submit.click();
+
+    if (submit && submit instanceof HTMLElement) {
+      submit.click();
+    }
   }
 
   if (html) {
@@ -98,13 +119,19 @@ const fix = () => {
   }
 
   if (play) {
-    const element = document.querySelector("body > div");
-    if (element) element.style.setProperty("z-index", "initial", "important");
+    const node = document.querySelector("body > div");
+
+    if (node && node instanceof HTMLElement) {
+      node.style.setProperty("z-index", "initial", "important");
+    }
   }
 
   if (yahoo) {
     const submit = yahoo.querySelector('button[type="submit"]');
-    if (submit) submit.click();
+
+    if (submit && submit instanceof HTMLElement) {
+      submit.click();
+    }
   }
 };
 
@@ -118,14 +145,9 @@ const observer = new MutationObserver((mutations, instance) => {
 
       for (let j = mutation.addedNodes.length; j--; ) {
         const node = mutation.addedNodes[j];
-        const valid =
-          node instanceof HTMLElement &&
-          node.parentElement &&
-          !["BODY", "HTML"].includes(node.tagName);
+        const valid = check(node);
 
-        if (!valid) continue;
-
-        if (node.matches(selectors)) node.outerHTML = "";
+        if (valid && node.matches(selectors)) node.outerHTML = "";
       }
     }
   }
@@ -155,6 +177,7 @@ const setupSelectors = () =>
 
 /**
  * @description Listens DOM complete state
+ * @listens document#readystatechange
  */
 
 document.addEventListener("readystatechange", () => {
