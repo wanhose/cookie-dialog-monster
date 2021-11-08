@@ -94,8 +94,10 @@ const handleRate = (event) => {
  */
 
 const handleContentLoaded = () => {
-  dispatch({ type: "GET_TAB" }, null, ({ hostname, id }) => {
+  dispatch({ type: "GET_TAB" }, null, ({ hostname }) => {
     dispatch({ hostname, type: "GET_CACHE" }, null, ({ enabled }) => {
+      translate();
+
       const host = document.getElementById("host");
       const like = document.getElementById("like");
       const power = document.getElementById("power");
@@ -112,6 +114,21 @@ const handleContentLoaded = () => {
       if (!enabled) power.removeAttribute("checked");
     });
   });
+};
+
+/**
+ * @description Applies translations to tags with i18n data attribute
+ */
+
+const translate = () => {
+  const nodes = document.querySelectorAll("[data-i18n]");
+
+  for (let i = nodes.length; i--; ) {
+    const node = nodes[i];
+    const { i18n } = node.dataset;
+
+    node.innerHTML = chrome.i18n.getMessage(i18n);
+  }
 };
 
 /**

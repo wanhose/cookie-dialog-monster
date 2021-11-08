@@ -2,5 +2,33 @@
   "appDesc": {
     "description": "¿Alguien dijo diálogos de consentimiento de cookies? 😋",
     "message": "¿Alguien dijo diálogos de consentimiento de cookies? 😋"
+  },
+  "contextMenuText": {
+    "description": "Reportar sitio...",
+    "message": "Reportar sitio..."
+  },
+  "footerText": {
+    "description": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por",
+    "message": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por"
+  },
+  "helpText": {
+    "description": "¿Ayuda o problemas?",
+    "message": "¿Ayuda o problemas?"
+  },
+  "negativeText": {
+    "description": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>",
+    "message": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>"
+  },
+  "positiveText": {
+    "description": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>",
+    "message": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>"
+  },
+  "reviewText": {
+    "description": "¿Te gusta esta extensión?",
+    "message": "¿Te gusta esta extensión?"
+  },
+  "toggleText": {
+    "description": "Comiendo diálogos en ",
+    "message": "Comiendo diálogos en "
   }
 }

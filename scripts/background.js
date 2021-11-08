@@ -150,6 +150,30 @@ const getTab = (callback) => {
 };
 
 /**
+ * @description Reports active tab URL
+ */
+
+const report = () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tab = tabs[0];
+
+    if (tab) {
+      fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
+        body: JSON.stringify({
+          text: tab.url,
+          to: "wanhose.development@gmail.com",
+          subject: "Cookie Dialog Monster Report",
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+        method: "POST",
+      });
+    }
+  });
+};
+
+/**
  * @description Update cache state
  * @param {string} [hostname]
  * @param {object} [state]
@@ -158,6 +182,8 @@ const getTab = (callback) => {
 const updateCache = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
+
+    if (!state.enabled) report();
 
     chrome.storage.local.set({
       [hostname]: {
@@ -227,35 +253,14 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 chrome.contextMenus.create({
   contexts: ["all"],
   id: contextMenuId,
-  title: "Report site...",
+  title: chrome.i18n.getMessage("contextMenuText"),
 });
 
 /**
  * @description Listens to context menus
  */
 
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+chrome.contextMenus.onClicked.addListener((info) => {
   if (info.menuItemId !== contextMenuId) return;
-
-  fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
-    body: JSON.stringify({
-      text: tab.url,
-      to: "wanhose.development@gmail.com",
-      subject: "Cookie Dialog Monster Report",
-    }),
-    headers: {
-      "Content-type": "application/json",
-    },
-    method: "POST",
-  });
-});
-
-/**
- * @description Listens to updates
- */
-
-chrome.runtime.onInstalled.addListener(({ reason }) => {
-  if (reason === chrome.runtime.OnInstalledReason.UPDATE) {
-    chrome.storage.local.clear();
-  }
+  report();
 });

@@ -2,5 +2,33 @@
   "appDesc": {
     "description": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋",
     "message": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋"
+  },
+  "contextMenuText": {
+    "description": "Segnala sito...",
+    "message": "Segnala sito..."
+  },
+  "footerText": {
+    "description": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da",
+    "message": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da"
+  },
+  "helpText": {
+    "description": "Aiuto o problemi?",
+    "message": "Aiuto o problemi?"
+  },
+  "negativeText": {
+    "description": "Ops! Ci scusiamo per l'inconveniente, per favore <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contattaci</a> <span aria-label=\"Faccina sorridente con il sudore\" role=\"img\">😅</span>",
+    "message": "Ops! Ci scusiamo per l'inconveniente, per favore <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contattaci</a> <span aria-label=\"Faccina sorridente con il sudore\" role=\"img\">😅</span>"
+  },
+  "positiveText": {
+    "description": "Grazie! Valuta la nostra estensione <a id=\"store\" target=\"_blank\">qui</a> <span aria-label=\"Faccina sorridente con occhi a forma di cuore\" role=\"img\">😍</span>",
+    "message": "Grazie! Valuta la nostra estensione <a id=\"store\" target=\"_blank\">qui</a> <span aria-label=\"Faccina sorridente con occhi a forma di cuore\" role=\"img\">😍</span>"
+  },
+  "reviewText": {
+    "description": "Ti piace questa estensione?",
+    "message": "Ti piace questa estensione?"
+  },
+  "toggleText": {
+    "description": "Mangiare dialoghi in ",
+    "message": "Mangiare dialoghi in "
   }
 }

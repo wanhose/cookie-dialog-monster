@@ -2,5 +2,33 @@
   "appDesc": {
     "description": "Did someone say cookie consent dialogs? 😋",
     "message": "Did someone say cookie consent dialogs? 😋"
+  },
+  "contextMenuText": {
+    "description": "Report site...",
+    "message": "Report site..."
+  },
+  "footerText": {
+    "description": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by",
+    "message": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by"
+  },
+  "helpText": {
+    "description": "Help or issues?",
+    "message": "Help or issues?"
+  },
+  "negativeText": {
+    "description": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>",
+    "message": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>"
+  },
+  "positiveText": {
+    "description": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>",
+    "message": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>"
+  },
+  "reviewText": {
+    "description": "Do you like this extension?",
+    "message": "Do you like this extension?"
+  },
+  "toggleText": {
+    "description": "Eating dialogs in ",
+    "message": "Eating dialogs in "
   }
 }
