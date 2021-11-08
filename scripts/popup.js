@@ -110,7 +110,7 @@ const handleContentLoaded = () => {
       reload.addEventListener("click", handleReload);
       store.setAttribute("href", isChromium ? chromeUrl : firefoxUrl);
       unlike.addEventListener("click", handleRate);
-      if (location) host.innerText = hostname.replace("www.", " ");
+      if (location) host.innerText = hostname.replace("www.", "");
       if (!enabled) power.removeAttribute("checked");
     });
   });
