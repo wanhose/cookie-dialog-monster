@@ -79,6 +79,7 @@ const fix = () => {
   const automobiel = /automobielmanagement.nl/g.test(hostname);
   const body = document.body;
   const facebook = document.getElementsByClassName("_31e")[0];
+  const frame = document.location.ancestorOrigins.length;
   const google = document.querySelector('form[action*="consent.google"]');
   const html = document.documentElement;
   const play = hostname.startsWith("play.google.");
@@ -95,9 +96,12 @@ const fix = () => {
   }
 
   if (body) {
-    if (classes.length) body.classList.remove(...classes);
-    body.style.setProperty("overflow-y", "initial", "important");
-    body.style.setProperty("position", "initial", "important");
+    body.classList.remove(...classes);
+
+    if (!frame) {
+      body.style.setProperty("overflow-y", "initial", "important");
+      body.style.setProperty("position", "initial", "important");
+    }
   }
 
   if (facebook) {
@@ -113,9 +117,12 @@ const fix = () => {
   }
 
   if (html) {
-    if (classes.length) html.classList.remove(...classes);
-    html.style.setProperty("position", "initial", "important");
-    html.style.setProperty("overflow-y", "initial", "important");
+    html.classList.remove(...classes);
+
+    if (!frame) {
+      html.style.setProperty("position", "initial", "important");
+      html.style.setProperty("overflow-y", "initial", "important");
+    }
   }
 
   if (play) {
@@ -181,14 +188,13 @@ const setupSelectors = () =>
  */
 
 document.addEventListener("readystatechange", () => {
-  if (document.readyState === "complete") {
-    fix();
-
-    if (!isConsentPreview) {
+  dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
+    if (document.readyState === "complete" && enabled && !isConsentPreview) {
+      fix();
       clean();
       setTimeout(clean, 2000);
     }
-  }
+  });
 });
 
 /**
