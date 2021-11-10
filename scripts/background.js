@@ -116,6 +116,28 @@ const getClasses = async (callback) => {
  * @async
  * @description Retrieves a selectors list
  * @param {void} [callback]
+ * @returns {Promise<{ classes: string[] }>}
+ */
+
+const getFixes = async (callback) => {
+  try {
+    const url =
+      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/fixes.txt";
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    callback({ fixes: data.split("\n") });
+  } catch {
+    callback({ fixes: [] });
+  }
+};
+
+/**
+ * @async
+ * @description Retrieves a selectors list
+ * @param {void} [callback]
  * @returns {Promise<{ selectors: string }>}
  */
 
@@ -128,7 +150,7 @@ const getSelectors = async (callback) => {
 
     if (response.status !== 200) throw new Error();
 
-    callback({ selectors: data.split("\n").join(",") });
+    callback({ selectors: data.split("\n") });
   } catch {
     callback({ selectors: [] });
   }
@@ -156,11 +178,13 @@ const getTab = (callback) => {
 const report = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const tab = tabs[0];
+    const userAgent = window.navigator.userAgent;
+    const version = chrome.runtime.getManifest().version;
 
     if (tab) {
       fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
         body: JSON.stringify({
-          text: tab.url,
+          text: `There's a problem with ${tab.url} using ${userAgent} in CDM ${version}`,
           to: "wanhose.development@gmail.com",
           subject: "Cookie Dialog Monster Report",
         }),
@@ -183,8 +207,6 @@ const updateCache = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
 
-    if (!state.enabled) report();
-
     chrome.storage.local.set({
       [hostname]: {
         enabled:
@@ -204,31 +226,27 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   const hasPermission = !sender.frameId || sender.frameId === 0;
   let tabId = sender.tab ? sender.tab.id : undefined;
 
-  if (!tabId) {
-    chrome.tabs.query(
-      { active: true, currentWindow: true },
-      (tabs) => (tabId = tabs[0] ? tabs[0].id : 0)
-    );
-  }
-
   switch (request.type) {
     case "DISABLE_ICON":
-      if (hasPermission) disableIcon(tabId);
+      if (hasPermission && tabId) disableIcon(tabId);
       break;
     case "DISABLE_POPUP":
-      if (hasPermission) disablePopup(tabId);
+      if (hasPermission && tabId) disablePopup(tabId);
       break;
     case "ENABLE_ICON":
-      if (hasPermission) enableIcon(tabId);
+      if (hasPermission && tabId) enableIcon(tabId);
       break;
     case "ENABLE_POPUP":
-      if (hasPermission) enablePopup(tabId);
+      if (hasPermission && tabId) enablePopup(tabId);
       break;
     case "GET_CACHE":
       getCache(request.hostname, callback);
       break;
     case "GET_CLASSES":
       getClasses(callback);
+      break;
+    case "GET_FIXES":
+      getFixes(callback);
       break;
     case "GET_SELECTORS":
       getSelectors(callback);
