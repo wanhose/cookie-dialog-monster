@@ -178,11 +178,13 @@ const getTab = (callback) => {
 const report = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     const tab = tabs[0];
+    const userAgent = window.navigator.userAgent;
+    const version = chrome.runtime.getManifest().version;
 
     if (tab) {
       fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
         body: JSON.stringify({
-          text: tab.url,
+          text: `There's a problem with ${tab.url} using ${userAgent} in CDM ${version}`,
           to: "wanhose.development@gmail.com",
           subject: "Cookie Dialog Monster Report",
         }),
