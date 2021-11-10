@@ -13,6 +13,13 @@ let classes = [];
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @description Array of instructions
+ * @type {string[]}
+ */
+
+let fixes = [];
+
+/**
  * @description Hostname
  */
 
@@ -22,20 +29,20 @@ const hostname = document.location.hostname;
  * @description Is consent preview page?
  */
 
-const isConsentPreview = hostname.startsWith("consent.");
+const isPreview = hostname.startsWith("consent.");
 
 /**
  * @description Options provided to observer
  */
 
-const options = { childList: true, subtree: true };
+const options = { attributes: true, childList: true, subtree: true };
 
 /**
  * @description Selectors list
- * @type {string}
+ * @type {string[]}
  */
 
-let selectors = "";
+let selectors = [];
 
 /**
  * @description Target provided to observer
@@ -51,8 +58,8 @@ const target = document.body || document.documentElement;
 const check = (node) =>
   node instanceof HTMLElement &&
   node.parentElement &&
-  !["APP", "ROOT"].includes(node.id.toUpperCase()) &&
-  !["BODY", "HTML"].includes(node.tagName);
+  !["BODY", "HTML"].includes(node.tagName) &&
+  !["APP", "ROOT"].includes(node.id.toUpperCase());
 
 /**
  * @description Cleans DOM
@@ -62,12 +69,11 @@ const clean = () => {
   if (selectors.length) {
     const nodes = document.querySelectorAll(selectors);
 
-    for (let i = nodes.length; i--; ) {
-      const node = nodes[i];
+    nodes.forEach((node) => {
       const valid = check(node);
 
       if (valid) node.outerHTML = "";
-    }
+    });
   }
 };
 
@@ -76,108 +82,100 @@ const clean = () => {
  */
 
 const fix = () => {
-  const automobiel = /automobielmanagement.nl/g.test(hostname);
   const body = document.body;
-  const facebook = document.getElementsByClassName("_31e")[0];
-  const frame = document.location.ancestorOrigins.length;
-  const google = document.querySelector('form[action*="consent.google"]');
+  const frame = window.frameElement;
   const html = document.documentElement;
-  const play = hostname.startsWith("play.google.");
-  const yahoo = document.querySelector("#consent-page");
 
-  if (automobiel && body) {
-    for (let i = body.childNodes.length; i--; ) {
-      const node = body.childNodes[i];
-
-      if (node instanceof HTMLElement) {
-        node.style.setProperty("filter", "initial", "important");
-      }
-    }
-  }
-
-  if (body) {
+  if (body && html) {
     body.classList.remove(...classes);
-
-    if (!frame) {
-      body.style.setProperty("overflow-y", "initial", "important");
-      body.style.setProperty("position", "initial", "important");
-    }
-  }
-
-  if (facebook) {
-    facebook.style.setProperty("position", "initial", "important");
-  }
-
-  if (google) {
-    const submit = google.querySelector("button");
-
-    if (submit && submit instanceof HTMLElement) {
-      submit.click();
-    }
-  }
-
-  if (html) {
     html.classList.remove(...classes);
 
     if (!frame) {
+      body.style.setProperty("position", "initial", "important");
+      body.style.setProperty("overflow-y", "initial", "important");
       html.style.setProperty("position", "initial", "important");
       html.style.setProperty("overflow-y", "initial", "important");
     }
   }
 
-  if (play) {
-    const node = document.querySelector("body > div");
+  fixes.forEach((fix) => {
+    const [match, selector, action, property] = fix.split("##");
 
-    if (node && node instanceof HTMLElement) {
-      node.style.setProperty("z-index", "initial", "important");
+    if (hostname.includes(match)) {
+      switch (action) {
+        case "click":
+          const submit = document.querySelector(selector);
+
+          if (submit && submit instanceof HTMLElement) {
+            submit.click();
+          }
+          break;
+        case "reset":
+          const node = document.querySelector(selector);
+
+          if (node && node instanceof HTMLElement) {
+            node.style.setProperty(property, "initial", "important");
+          }
+          break;
+        case "resetAll":
+          const nodes = document.querySelectorAll(selector);
+
+          nodes.forEach((node) => {
+            if (node instanceof HTMLElement) {
+              node.style.setProperty(property, "initial", "important");
+            }
+          });
+          break;
+        default:
+          break;
+      }
     }
-  }
-
-  if (yahoo) {
-    const submit = yahoo.querySelector('button[type="submit"]');
-
-    if (submit && submit instanceof HTMLElement) {
-      submit.click();
-    }
-  }
+  });
 };
 
 const observer = new MutationObserver((mutations, instance) => {
   instance.disconnect();
   fix();
 
-  if (!isConsentPreview) {
-    for (let i = mutations.length; i--; ) {
-      const mutation = mutations[i];
-
-      for (let j = mutation.addedNodes.length; j--; ) {
-        const node = mutation.addedNodes[j];
+  if (!isPreview) {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
         const valid = check(node);
 
         if (valid && node.matches(selectors)) node.outerHTML = "";
-      }
-    }
+      });
+    });
   }
 
   instance.observe(target, options);
 });
 
 /**
- * @description Setups classes selectors
+ * @description Queries classes selectors
  * @returns {Promise<{ classes: string[] }>}
  */
 
-const setupClasses = () =>
+const queryClasses = () =>
   new Promise((resolve) => {
     dispatch({ type: "GET_CLASSES" }, null, resolve);
   });
 
 /**
- * @description Setups elements selectors
+ * @description Queries fixes instructions
+ * @returns {Promise<{ fixes: string[] }>}
+ */
+
+const queryFixes = () =>
+  new Promise((resolve) => {
+    dispatch({ type: "GET_FIXES" }, null, resolve);
+  });
+
+/**
+ * @description Queries elements selectors
  * @returns {Promise<{ selectors: string }>}
  */
 
-const setupSelectors = () =>
+const querySelectors = () =>
   new Promise((resolve) => {
     dispatch({ type: "GET_SELECTORS" }, null, resolve);
   });
@@ -189,7 +187,7 @@ const setupSelectors = () =>
 
 document.addEventListener("readystatechange", () => {
   dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
-    if (document.readyState === "complete" && enabled && !isConsentPreview) {
+    if (document.readyState === "complete" && enabled && !isPreview) {
       fix();
       clean();
       setTimeout(clean, 2000);
@@ -206,9 +204,14 @@ dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
 
   if (enabled) {
     dispatch({ type: "ENABLE_ICON" });
-    const results = await Promise.all([setupClasses(), setupSelectors()]);
+    const results = await Promise.all([
+      queryClasses(),
+      queryFixes(),
+      querySelectors(),
+    ]);
     classes = results[0].classes;
-    selectors = results[1].selectors;
+    fixes = results[1].fixes;
+    selectors = results[2].selectors;
     observer.observe(target, options);
   }
 });
