@@ -59,7 +59,7 @@ const check = (node) =>
   node instanceof HTMLElement &&
   node.parentElement &&
   !["BODY", "HTML"].includes(node.tagName) &&
-  !["APP", "ROOT"].includes(node.id.toUpperCase());
+  !(node.id && ["APP", "ROOT"].includes(node.id.toUpperCase()));
 
 /**
  * @description Cleans DOM
@@ -83,7 +83,7 @@ const clean = () => {
 
 const fix = () => {
   const body = document.body;
-  const frame = window.frameElement;
+  const frame = !(window === window.parent || window.opener);
   const html = document.documentElement;
 
   if (body && html) {
