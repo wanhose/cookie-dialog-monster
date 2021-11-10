@@ -207,8 +207,6 @@ const updateCache = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
 
-    if (!state.enabled) report();
-
     chrome.storage.local.set({
       [hostname]: {
         enabled:
@@ -228,25 +226,18 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   const hasPermission = !sender.frameId || sender.frameId === 0;
   let tabId = sender.tab ? sender.tab.id : undefined;
 
-  if (!tabId) {
-    chrome.tabs.query(
-      { active: true, currentWindow: true },
-      (tabs) => (tabId = tabs[0] ? tabs[0].id : 0)
-    );
-  }
-
   switch (request.type) {
     case "DISABLE_ICON":
-      if (hasPermission) disableIcon(tabId);
+      if (hasPermission && tabId) disableIcon(tabId);
       break;
     case "DISABLE_POPUP":
-      if (hasPermission) disablePopup(tabId);
+      if (hasPermission && tabId) disablePopup(tabId);
       break;
     case "ENABLE_ICON":
-      if (hasPermission) enableIcon(tabId);
+      if (hasPermission && tabId) enableIcon(tabId);
       break;
     case "ENABLE_POPUP":
-      if (hasPermission) enablePopup(tabId);
+      if (hasPermission && tabId) enablePopup(tabId);
       break;
     case "GET_CACHE":
       getCache(request.hostname, callback);
