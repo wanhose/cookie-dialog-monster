@@ -4860,7 +4860,6 @@ div[data-nconvert-cookie]
 #cookie-overlay-wrapper
 .js-terms-of-use-disclaimer
 .cookiebalk
-.yt-consent-banner
 #CookieHead
 .CookieBox
 .GAcookies
@@ -7165,7 +7164,6 @@ form > .infobanner > .content > .info
 .cp-module-info_bar
 .lam-cookie-container
 #sfCookieWarningBar
-.yt-alert yt-alert-actionable yt-alert-info cookie-alert
 .cc_banner-wrapper_FB
 #overlay_pri
 .cookieconsent
@@ -12483,7 +12481,6 @@ div[title*="Before you continue"][aria-modal="true"][role="dialog"]
 div[title*="Bevor Sie"][aria-modal="true"][role="dialog"]
 div[title*="Avant d'accéder"][aria-modal="true"][role="dialog"]
 div[title*="Prima di continuare"][aria-modal="true"][role="dialog"]
-.ytd-consent-bump-v2-lightbox
 .mde-consent-modal-container
 .cmpContainer
 #axeptio_overlay
@@ -12513,3 +12510,7 @@ script[src*="cookie-first"]
 .miniConsent
 div.consent[style="display: none"]
 iframe[src*="cmp.autoweek.nl"]
+div[class*="ConsentBanner"]
+html#facebook > body > div > div > div > div > :nth-child(5)
+.cc-dialog.nl
+#uca_popup_background
