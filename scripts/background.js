@@ -116,6 +116,28 @@ const getClasses = async (callback) => {
  * @async
  * @description Retrieves a selectors list
  * @param {void} [callback]
+ * @returns {Promise<{ classes: string[] }>}
+ */
+
+const getFixes = async (callback) => {
+  try {
+    const url =
+      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/fixes.txt";
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    callback({ fixes: data.split("\n") });
+  } catch {
+    callback({ fixes: [] });
+  }
+};
+
+/**
+ * @async
+ * @description Retrieves a selectors list
+ * @param {void} [callback]
  * @returns {Promise<{ selectors: string }>}
  */
 
@@ -128,7 +150,7 @@ const getSelectors = async (callback) => {
 
     if (response.status !== 200) throw new Error();
 
-    callback({ selectors: data.split("\n").join(",") });
+    callback({ selectors: data.split("\n") });
   } catch {
     callback({ selectors: [] });
   }
@@ -229,6 +251,9 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
       break;
     case "GET_CLASSES":
       getClasses(callback);
+      break;
+    case "GET_FIXES":
+      getFixes(callback);
       break;
     case "GET_SELECTORS":
       getSelectors(callback);
