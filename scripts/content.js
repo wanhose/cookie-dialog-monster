@@ -29,13 +29,14 @@ const hostname = document.location.hostname;
  * @description Is consent preview page?
  */
 
-const isPreview = hostname.startsWith("consent.");
+const isPreview =
+  hostname.startsWith("consent.") || hostname.startsWith("myprivacy.");
 
 /**
  * @description Options provided to observer
  */
 
-const options = { attributes: true, childList: true, subtree: true };
+const options = { childList: true, subtree: true };
 
 /**
  * @description Selectors list
