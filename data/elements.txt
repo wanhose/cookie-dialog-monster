@@ -12468,3 +12468,7 @@ html#facebook > body > div[id*="mount"] > div > div > div > :nth-child(5)
 #glow-cookies-wrapper
 .t-consentPrompt
 .root-container-panel > #snackbar-container > .banner.banner-bottom
+#cmpContainer
+body#Viewport.hide-outline > .default > div[aria-modal="true"][role="dialog"]
+wsp-modal-window[data-type="cookie-modal"]
+#lgcookieslaw_modal
