@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Cookie Dialog Monster",
-  "version": "5.4.2",
+  "version": "5.4.3",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -23,7 +23,8 @@
       "exclude_matches": [
         "*://*.gfycat.com/*",
         "*://*.gmx.com/*",
-        "*://*.rundschau-online.de/*"
+        "*://*.rundschau-online.de/*",
+        "*://*.mediathekviewweb.de/*"
       ],
       "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
