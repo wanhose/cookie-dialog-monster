@@ -139,7 +139,7 @@ const observer = new MutationObserver((mutations, instance) => {
   fix();
 
   if (!isPreview) {
-    const nodes = mutations.map((mutation) => mutation.addedNodes)
+    const nodes = mutations.map((mutation) => [...mutation.addedNodes])
                            .flat()
                            .filter((node) => check(node));
     
