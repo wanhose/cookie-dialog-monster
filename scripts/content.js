@@ -139,13 +139,13 @@ const observer = new MutationObserver((mutations, instance) => {
   fix();
 
   if (!isPreview) {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
         const valid = check(node);
 
         if (valid && node.matches(selectors)) node.outerHTML = "";
-      });
-    });
+      }
+    }
   }
 
   instance.observe(target, options);
