@@ -137,14 +137,13 @@ const fix = () => {
 const observer = new MutationObserver((mutations, instance) => {
   instance.disconnect();
   fix();
-
   if (!isPreview) {
-    const nodes = mutations.map((mutation) => [...mutation.addedNodes])
-                           .flat()
-                           .filter((node) => check(node));
-    
-    for (const node of nodes) {
-      if (node.matches(selectors)) node.outerHTML = "";
+    for (const mutation of mutations) {
+      for (const node of mutation.addedNodes) {
+        const valid = check(node);
+
+        if (valid && node.matches(selectors)) node.outerHTML = "";
+      }
     }
   }
 
