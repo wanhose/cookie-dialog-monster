@@ -182,7 +182,7 @@ const querySelectors = () =>
   });
 
 /**
- * @description Listens DOM complete state
+ * @description Cleans DOM again after all
  * @listens document#readystatechange
  */
 
@@ -195,6 +195,13 @@ document.addEventListener("readystatechange", () => {
     }
   });
 });
+
+/**
+ * @description Fix bfcache issues
+ * @listens window#unload
+ */
+
+window.addEventListener("unload", () => {});
 
 /**
  * @description Setups everything and starts to observe if enabled
