@@ -12474,3 +12474,16 @@ wsp-modal-window[data-type="cookie-modal"]
 #lgcookieslaw_modal
 .no-js > body > .headertopfixed.fixed ~ .bg_popup
 #data-cookie
+.overlay-context.no-banner[data-v-5b5bbc81]
+.cc_css_reboot.cc_dialog.dark.headline
+[data-component-id="banner"]
+._3RhWPJfjpsEoBw52x0fQp2
+.nav-new-cookie-disclaimer
+.js-notification.js-notification-cookie-banner.notification.notification-fixed-bottom.notification-foreground
+.ix.u.kh.ki.kj.kk.kl.km.kn.ko.kp.kq.kr.ks.dj.cw.kt.ku.kv
+[widgetid="PopupSignupForm_0"] > div.mc-modal[data-dojo-attach-point="modalContainer"]
+#mw-mf-viewport #article_courses_banner
+div#termsandconds[data-backdrop="static"]
+div.ec-notices.ec-notices--animation-default.ec-notices--order-direct.ec-notices--fixed.ec-notices--top.ec-notices--right
+div._1MLS_xjiUjam_u2qmURY4i[data-tracking-opt-in-overlay="true"]
+div.notification--1vSvk.entered--3hIPp[role="alert"]
