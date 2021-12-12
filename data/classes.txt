@@ -5,6 +5,7 @@ consent-modal-open
 consent-modal-overflow
 cookies
 cu_k_cookie_consent_modal_open
+modal--is-open
 no-scroll
 sp-message-open
 ta-cc-modal-open

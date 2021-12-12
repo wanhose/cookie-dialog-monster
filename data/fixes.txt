@@ -1,5 +1,6 @@
 automobielmanagement.nl##body > *##resetAll##filter
 consent.yahoo###consent-page button[type="submit"]##click
+golem.de###btnsimplec##click
 google##form[action*="consent.google"] button##click
 facebook##._31e##reset##position
 myprivacy.dpgmedia##.pg-accept-button##click
