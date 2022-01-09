@@ -12456,7 +12456,6 @@ script[src*="cookie-first"]
 div.consent[style="display: none"]
 iframe[src*="cmp.autoweek.nl"]
 div[class*="ConsentBanner"]
-html#facebook > body > div[id*="mount"] > div > div > div > :nth-child(5)
 .cc-dialog.nl
 #uca_popup_background
 .fcc-cookie-consent
@@ -12499,3 +12498,4 @@ body > .page-container > .flex > #header > aside.bg-light.color-main.full-width.
 #uc-cross-domain-bridge
 .tracking-consent-popup
 .cookie-consent-bar-overlay
+.__fb-light-mode
