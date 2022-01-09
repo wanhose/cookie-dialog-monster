@@ -68,13 +68,8 @@ const check = (node) =>
 
 const clean = () => {
   if (selectors.length) {
-    const nodes = document.querySelectorAll(selectors);
-
-    nodes.forEach((node) => {
-      const valid = check(node);
-
-      if (valid) node.outerHTML = "";
-    });
+    const nodes = Array.from(document.querySelectorAll(selectors));
+    nodes.filter(check).forEach((node) => (node.outerHTML = ""));
   }
 };
 
@@ -84,20 +79,14 @@ const clean = () => {
 
 const fix = () => {
   const body = document.body;
-  const frame = !(window === window.parent || window.opener);
   const html = document.documentElement;
 
-  if (body && html) {
-    body.classList.remove(...classes);
-    html.classList.remove(...classes);
-
-    if (!frame) {
-      body.style.setProperty("position", "initial", "important");
-      body.style.setProperty("overflow-y", "initial", "important");
-      html.style.setProperty("position", "initial", "important");
-      html.style.setProperty("overflow-y", "initial", "important");
-    }
-  }
+  body?.classList.remove(...classes);
+  body?.style.setProperty("position", "initial", "important");
+  body?.style.setProperty("overflow-y", "initial", "important");
+  html?.classList.remove(...classes);
+  html?.style.setProperty("position", "initial", "important");
+  html?.style.setProperty("overflow-y", "initial", "important");
 
   fixes.forEach((fix) => {
     const [match, selector, action, property] = fix.split("##");
@@ -106,26 +95,17 @@ const fix = () => {
       switch (action) {
         case "click":
           const submit = document.querySelector(selector);
-
-          if (submit && submit instanceof HTMLElement) {
-            submit.click();
-          }
+          submit?.click?.();
           break;
         case "reset":
           const node = document.querySelector(selector);
-
-          if (node && node instanceof HTMLElement) {
-            node.style.setProperty(property, "initial", "important");
-          }
+          node?.style?.setProperty?.(property, "initial", "important");
           break;
         case "resetAll":
           const nodes = document.querySelectorAll(selector);
-
-          nodes.forEach((node) => {
-            if (node instanceof HTMLElement) {
-              node.style.setProperty(property, "initial", "important");
-            }
-          });
+          nodes.forEach((node) =>
+            node?.style?.setProperty?.(property, "initial", "important")
+          );
           break;
         default:
           break;
@@ -211,15 +191,13 @@ dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
   dispatch({ type: "ENABLE_POPUP" });
 
   if (enabled) {
-    dispatch({ type: "ENABLE_ICON" });
-    const results = await Promise.all([
-      queryClasses(),
-      queryFixes(),
-      querySelectors(),
-    ]);
-    classes = results[0].classes;
-    fixes = results[1].fixes;
-    selectors = results[2].selectors;
+    const promises = [queryClasses(), queryFixes(), querySelectors()];
+    const results = await Promise.all(promises);
+
+    classes = results[0]?.classes ?? [];
+    fixes = results[1]?.fixes ?? [];
+    selectors = results[2]?.selectors ?? [];
     observer.observe(target, options);
+    dispatch({ type: "ENABLE_ICON" });
   }
 });
