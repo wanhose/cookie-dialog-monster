@@ -1,8 +1,10 @@
 automobielmanagement.nl##body > *##resetAll##filter
 consent.yahoo###consent-page button[type="submit"]##click
+facebook##._31e##reset##position
+gettr.com##button.bold##click
 golem.de###btnsimplec##click
 google##form[action*="consent.google"] button##click
-facebook##._31e##reset##position
+musicmeter.nl##body##remove##position
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index
 youtube##div.buttons.ytd-consent-bump-v2-lightbox ytd-button-renderer:last-child tp-yt-paper-button##click

@@ -12499,3 +12499,13 @@ body > .page-container > .flex > #header > aside.bg-light.color-main.full-width.
 .tracking-consent-popup
 .cookie-consent-bar-overlay
 .__fb-light-mode
+.enhanced-privacy-cookie-policy
+.gdprModal.gdprModal--visible
+#cmplz-cookiebanner-container
+#pdcc-modal-bg
+#twcc__mechanism
+.cookie-consent-dialog-container
+[data-js="cookie-disclaimer"]
+.zbottom-cookie-container-outer
+module-rgpd-component
+.consent.consent__side--right-bottom
