@@ -5,6 +5,8 @@ consent-modal-open
 consent-modal-overflow
 cookies
 cu_k_cookie_consent_modal_open
+gdprbanner_consent_gdpr_consent
+gdprCookieBanner-acceptedAll
 hasCookieBanner
 modal--is-open
 no-scroll
