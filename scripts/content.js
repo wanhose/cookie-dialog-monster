@@ -93,20 +93,23 @@ const fix = () => {
 
     if (hostname.includes(match)) {
       switch (action) {
-        case "click":
-          const submit = document.querySelector(selector);
-          submit?.click?.();
-          break;
-        case "reset":
+        case "click": {
           const node = document.querySelector(selector);
-          node?.style?.setProperty?.(property, "initial", "important");
-          break;
-        case "resetAll":
+          node?.click();
+        }
+        case "remove": {
+          const node = document.querySelector(selector);
+          node?.style?.removeProperty(property);
+        }
+        case "reset": {
+          const node = document.querySelector(selector);
+          node?.style?.setProperty(property, "initial", "important");
+        }
+        case "resetAll": {
           const nodes = document.querySelectorAll(selector);
-          nodes.forEach((node) =>
-            node?.style?.setProperty?.(property, "initial", "important")
-          );
-          break;
+          // prettier-ignore
+          nodes.forEach((node) => node?.style?.setProperty(property, "initial", "important"));
+        }
         default:
           break;
       }
