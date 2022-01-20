@@ -60,7 +60,7 @@ const check = (node) =>
   node instanceof HTMLElement &&
   node.parentElement &&
   !["BODY", "HTML"].includes(node.tagName) &&
-  !(node.id && ["APP", "ROOT"].includes(node.id.toUpperCase()));
+  !(node.id && ["APP", "ROOT"].includes(node.id.toUpperCase?.()));
 
 /**
  * @description Cleans DOM
