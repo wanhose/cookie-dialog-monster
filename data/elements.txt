@@ -12509,3 +12509,4 @@ body > .page-container > .flex > #header > aside.bg-light.color-main.full-width.
 .zbottom-cookie-container-outer
 module-rgpd-component
 .consent.consent__side--right-bottom
+iframe[src="https://www.tumblr.com/dashboard/iframe/consent"]
