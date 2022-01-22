@@ -12510,3 +12510,16 @@ body > .page-container > .flex > #header > aside.bg-light.color-main.full-width.
 module-rgpd-component
 .consent.consent__side--right-bottom
 iframe[src="https://www.tumblr.com/dashboard/iframe/consent"]
+#cookieNoticePro
+.wf-museosans-n3-active.wf-museosans-i3-active.wf-museosans-n7-active.wf-museosans-i7-active.wf-museoslab-n3-active.wf-museoslab-i3-active.wf-museoslab-n7-active.wf-museoslab-i7-active.wf-museoslab-n8-active.wf-museoslab-i8-active.wf-active.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqldatabase.indexeddb.hashchange.history.draganddrop.websockets.rgba.hsla.multiplebgs.backgroundsize.borderimage.borderradius.boxshadow.textshadow.opacity.cssanimations.csscolumns.cssgradients.cssreflections.csstransforms.csstransforms3d.csstransitions.fontface.generatedcontent.video.audio.localstorage.sessionstorage.webworkers.no-applicationcache.svg.inlinesvg.smil.svgclippaths .modal-backdrop
+.nk-body #cc_div
+#capa_galleta
+#stm ~ [title="Dimmer"]
+#xbcc_modal
+ck-user-cookie-consent-modal
+#cc--main
+#usercentrics-button
+.lgcookieslaw-overlay
+.popin-cookie
+.iAgreePopup
+[data-component="CookiesConcernModal"]
