@@ -12520,3 +12520,5 @@ ck-user-cookie-consent-modal
 #cc--main
 #usercentrics-button
 .lgcookieslaw-overlay
+.popin-cookie
+.iAgreePopup
