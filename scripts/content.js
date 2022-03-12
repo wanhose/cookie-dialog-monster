@@ -3,7 +3,7 @@
  * @type {string[]}
  */
 
-let classes = [];
+const classes = [];
 
 /**
  * @description Shortcut to send messages to background script
@@ -13,11 +13,18 @@ let classes = [];
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @description Array of domains to skip
+ * @type {string[]}
+ */
+
+const domains = [];
+
+/**
  * @description Array of instructions
  * @type {string[]}
  */
 
-let fixes = [];
+const fixes = [];
 
 /**
  * @description Hostname
@@ -29,8 +36,7 @@ const hostname = document.location.hostname;
  * @description Is consent preview page?
  */
 
-const isPreview =
-  hostname.startsWith("consent.") || hostname.startsWith("myprivacy.");
+const preview = hostname.startsWith("consent.") || hostname.startsWith("myprivacy.");
 
 /**
  * @description Options provided to observer
@@ -43,7 +49,7 @@ const options = { childList: true, subtree: true };
  * @type {string[]}
  */
 
-let selectors = [];
+const selectors = [];
 
 /**
  * @description Target provided to observer
@@ -53,42 +59,39 @@ const target = document.body || document.documentElement;
 
 /**
  * @description Checks if node element is removable
- * @param {Element} node
+ * @param {NodeList} node
+ * @returns {boolean}
  */
 
 const check = (node) =>
-  node instanceof HTMLElement &&
+  node instanceof Element &&
   node.parentElement &&
   !["BODY", "HTML"].includes(node.tagName) &&
-  !(node.id && ["APP", "ROOT"].includes(node.id.toUpperCase?.()));
+  !(node.id && ["APP", "ROOT"].includes(node.id.toUpperCase?.())) &&
+  node.matches(selectors);
 
 /**
  * @description Cleans DOM
+ * @param {NodeList[]} nodes
+ * @returns {void}
  */
 
-const clean = () => {
-  if (selectors.length) {
-    const nodes = Array.from(document.querySelectorAll(selectors));
-    nodes.filter(check).forEach((node) => (node.outerHTML = ""));
-  }
-};
+const clean = (nodes) => nodes.filter(check).forEach((node) => (node.outerHTML = ""));
 
 /**
  * @description Fixes scroll issues
  */
 
 const fix = () => {
-  const body = document.body;
-  const html = document.documentElement;
+  for (const item of [document.body, document.documentElement]) {
+    if (domains.length && !domains.includes(hostname)) {
+      item?.classList.remove(...classes);
+      item?.style.setProperty("position", "initial", "important");
+      item?.style.setProperty("overflow-y", "initial", "important");
+    }
+  }
 
-  body?.classList.remove(...classes);
-  body?.style.setProperty("position", "initial", "important");
-  body?.style.setProperty("overflow-y", "initial", "important");
-  html?.classList.remove(...classes);
-  html?.style.setProperty("position", "initial", "important");
-  html?.style.setProperty("overflow-y", "initial", "important");
-
-  fixes.forEach((fix) => {
+  for (const fix of fixes) {
     const [match, selector, action, property] = fix.split("##");
 
     if (hostname.includes(match)) {
@@ -107,74 +110,54 @@ const fix = () => {
         }
         case "resetAll": {
           const nodes = document.querySelectorAll(selector);
-          // prettier-ignore
           nodes.forEach((node) => node?.style?.setProperty(property, "initial", "important"));
         }
         default:
           break;
       }
     }
-  });
+  }
 };
 
+/**
+ * @description Mutation Observer instance
+ * @type {MutationObserver}
+ */
+
 const observer = new MutationObserver((mutations, instance) => {
+  const nodes = mutations.map((mutation) => mutation.addedNodes).flat(1);
+
   instance.disconnect();
   fix();
-
-  if (!isPreview) {
-    for (const mutation of mutations) {
-      for (const node of mutation.addedNodes) {
-        const valid = check(node);
-
-        if (valid && node.matches(selectors)) node.outerHTML = "";
-      }
-    }
-  }
-
+  if (!preview) clean(nodes);
   instance.observe(target, options);
 });
 
 /**
- * @description Queries classes selectors
- * @returns {Promise<{ classes: string[] }>}
+ * @description Gets data
+ * @returns {Promise<any[]>}
  */
 
-const queryClasses = () =>
-  new Promise((resolve) => {
-    dispatch({ type: "GET_CLASSES" }, null, resolve);
-  });
-
-/**
- * @description Queries fixes instructions
- * @returns {Promise<{ fixes: string[] }>}
- */
-
-const queryFixes = () =>
-  new Promise((resolve) => {
-    dispatch({ type: "GET_FIXES" }, null, resolve);
-  });
-
-/**
- * @description Queries elements selectors
- * @returns {Promise<{ selectors: string }>}
- */
-
-const querySelectors = () =>
-  new Promise((resolve) => {
-    dispatch({ type: "GET_SELECTORS" }, null, resolve);
-  });
-
+const promiseAll = () =>
+  Promise.all([
+    new Promise((resolve) => dispatch({ type: "GET_CLASSES" }, null, resolve)),
+    new Promise((resolve) => dispatch({ type: "GET_DOMAINS" }, null, resolve)),
+    new Promise((resolve) => dispatch({ type: "GET_FIXES" }, null, resolve)),
+    new Promise((resolve) => dispatch({ type: "GET_SELECTORS" }, null, resolve)),
+  ]);
 /**
  * @description Cleans DOM again after all
- * @listens document#readystatechange
+ * @listens document#pageshow
  */
 
-document.addEventListener("readystatechange", () => {
+document.addEventListener("pageshow", () => {
   dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
-    if (document.readyState === "complete" && enabled && !isPreview) {
+    if (enabled) {
+      const nodes = target.querySelectorAll(selectors);
+
       fix();
-      clean();
-      setTimeout(clean, 2000);
+      if (!preview) clean(nodes);
+      setTimeout(() => clean(nodes), 2000);
     }
   });
 });
@@ -194,12 +177,12 @@ dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
   dispatch({ type: "ENABLE_POPUP" });
 
   if (enabled) {
-    const promises = [queryClasses(), queryFixes(), querySelectors()];
-    const results = await Promise.all(promises);
+    const results = await promiseAll();
 
-    classes = results[0]?.classes ?? [];
-    fixes = results[1]?.fixes ?? [];
-    selectors = results[2]?.selectors ?? [];
+    classes.push(...(results[0]?.classes ?? []));
+    domains.push(...(results[1]?.domains ?? []));
+    fixes.push(...(results[2]?.fixes ?? []));
+    selectors.push(...(results[3]?.selectors ?? []));
     observer.observe(target, options);
     dispatch({ type: "ENABLE_ICON" });
   }

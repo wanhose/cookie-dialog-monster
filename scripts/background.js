@@ -1,5 +1,6 @@
 /**
  * @description Context menu identifier
+ * @type {string}
  */
 
 const contextMenuId = "CDM_MENU";
@@ -9,16 +10,7 @@ const contextMenuId = "CDM_MENU";
  * @type {{ enabled: boolean }}
  */
 
-const initial = {
-  enabled: true,
-};
-
-/**
- * @description Check cache validity
- * @param {object} [cache]
- */
-
-const check = (cache) => typeof cache.enabled === "boolean";
+const initial = { enabled: true };
 
 /**
  * @description Disables icon
@@ -77,16 +69,7 @@ const enablePopup = (tabId) => {
 
 const getCache = (hostname, callback) => {
   chrome.storage.local.get(null, (store) => {
-    try {
-      const cache = store[hostname];
-
-      if (!check(cache)) throw new Error();
-
-      callback(cache);
-    } catch {
-      chrome.storage.local.set({ [hostname]: initial });
-      callback(initial);
-    }
+    callback(store[hostname] ?? initial);
   });
 };
 
@@ -109,6 +92,28 @@ const getClasses = async (callback) => {
     callback({ classes: data.split("\n") });
   } catch {
     callback({ classes: [] });
+  }
+};
+
+/**
+ * @async
+ * @description Retrieves a domains list
+ * @param {void} [callback]
+ * @returns {Promise<{ domains: string[] }>}
+ */
+
+const getDomains = async (callback) => {
+  try {
+    const url =
+      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/domains.txt";
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    callback({ domains: data.split("\n") });
+  } catch {
+    callback({ domains: [] });
   }
 };
 
@@ -209,10 +214,7 @@ const updateCache = (hostname, state) => {
 
     chrome.storage.local.set({
       [hostname]: {
-        enabled:
-          typeof state.enabled === "undefined"
-            ? current.enabled
-            : state.enabled,
+        enabled: typeof state.enabled === "undefined" ? current.enabled : state.enabled,
       },
     });
   });
@@ -223,27 +225,31 @@ const updateCache = (hostname, state) => {
  */
 
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
-  const hasPermission = !sender.frameId || sender.frameId === 0;
-  let tabId = sender.tab ? sender.tab.id : undefined;
+  const hostname = request.hostname;
+  const state = request.state;
+  const tabId = sender.tab?.id;
 
   switch (request.type) {
     case "DISABLE_ICON":
-      if (hasPermission && tabId) disableIcon(tabId);
+      if (tabId) disableIcon(tabId);
       break;
     case "DISABLE_POPUP":
-      if (hasPermission && tabId) disablePopup(tabId);
+      if (tabId) disablePopup(tabId);
       break;
     case "ENABLE_ICON":
-      if (hasPermission && tabId) enableIcon(tabId);
+      if (tabId) enableIcon(tabId);
       break;
     case "ENABLE_POPUP":
-      if (hasPermission && tabId) enablePopup(tabId);
+      if (tabId) enablePopup(tabId);
       break;
     case "GET_CACHE":
-      getCache(request.hostname, callback);
+      getCache(hostname, callback);
       break;
     case "GET_CLASSES":
       getClasses(callback);
+      break;
+    case "GET_DOMAINS":
+      getDomains(callback);
       break;
     case "GET_FIXES":
       getFixes(callback);
@@ -255,7 +261,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
       getTab(callback);
       break;
     case "UPDATE_CACHE":
-      updateCache(request.hostname, request.state);
+      updateCache(hostname, state);
       break;
     default:
       break;
