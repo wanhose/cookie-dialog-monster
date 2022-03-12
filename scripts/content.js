@@ -59,7 +59,7 @@ const target = document.body || document.documentElement;
 
 /**
  * @description Checks if node element is removable
- * @param {NodeList} node
+ * @param {any} node
  * @returns {boolean}
  */
 
@@ -72,7 +72,7 @@ const check = (node) =>
 
 /**
  * @description Cleans DOM
- * @param {NodeList[]} nodes
+ * @param {any[]} nodes
  * @returns {void}
  */
 
@@ -83,8 +83,8 @@ const clean = (nodes) => nodes.filter(check).forEach((node) => (node.outerHTML =
  */
 
 const fix = () => {
-  for (const item of [document.body, document.documentElement]) {
-    if (domains.length && !domains.includes(hostname)) {
+  if (domains.length && !domains.includes(hostname)) {
+    for (const item of [document.body, document.documentElement]) {
       item?.classList.remove(...classes);
       item?.style.setProperty("position", "initial", "important");
       item?.style.setProperty("overflow-y", "initial", "important");
@@ -125,7 +125,7 @@ const fix = () => {
  */
 
 const observer = new MutationObserver((mutations, instance) => {
-  const nodes = mutations.map((mutation) => mutation.addedNodes).flat(1);
+  const nodes = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
 
   instance.disconnect();
   fix();
@@ -145,22 +145,6 @@ const promiseAll = () =>
     new Promise((resolve) => dispatch({ type: "GET_FIXES" }, null, resolve)),
     new Promise((resolve) => dispatch({ type: "GET_SELECTORS" }, null, resolve)),
   ]);
-/**
- * @description Cleans DOM again after all
- * @listens document#pageshow
- */
-
-document.addEventListener("pageshow", () => {
-  dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
-    if (enabled) {
-      const nodes = target.querySelectorAll(selectors);
-
-      fix();
-      if (!preview) clean(nodes);
-      setTimeout(() => clean(nodes), 2000);
-    }
-  });
-});
 
 /**
  * @description Fix bfcache issues
@@ -182,7 +166,7 @@ dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
     classes.push(...(results[0]?.classes ?? []));
     domains.push(...(results[1]?.domains ?? []));
     fixes.push(...(results[2]?.fixes ?? []));
-    selectors.push(...(results[3]?.selectors ?? []));
+    selectors.push(...(results[3]?.elements ?? []));
     observer.observe(target, options);
     dispatch({ type: "ENABLE_ICON" });
   }

@@ -13,57 +13,39 @@ const contextMenuId = "CDM_MENU";
 const initial = { enabled: true };
 
 /**
- * @description Disables icon
- * @param {string} [tabId]
+ * @description Repository URL
+ * @type {string}
  */
 
-const disableIcon = (tabId) => {
-  chrome.browserAction.setIcon({
-    path: "assets/icons/disabled.png",
-    tabId,
-  });
-};
+const repositoryUrl = "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data";
 
 /**
- * @description Disables popup
- * @param {string} [tabId]
+ * @description Disables icon
+ * @param {string} tabId
  */
 
-const disablePopup = (tabId) => {
-  chrome.browserAction.setPopup({
-    popup: "",
-    tabId,
-  });
-};
+const disableIcon = (tabId) =>
+  chrome.browserAction.setIcon({ path: "assets/icons/disabled.png", tabId });
 
 /**
  * @description Enables icon
- * @param {string} [tabId]
+ * @param {string} tabId
  */
 
-const enableIcon = (tabId) => {
-  chrome.browserAction.setIcon({
-    path: "assets/icons/enabled.png",
-    tabId,
-  });
-};
+const enableIcon = (tabId) =>
+  chrome.browserAction.setIcon({ path: "assets/icons/enabled.png", tabId });
 
 /**
  * @description Enables popup
- * @param {string} [tabId]
+ * @param {string} tabId
  */
 
-const enablePopup = (tabId) => {
-  chrome.browserAction.setPopup({
-    popup: "popup.html",
-    tabId,
-  });
-};
+const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: "popup.html", tabId });
 
 /**
  * @description Retrieves cache state
- * @param {string} [hostname]
- * @param {void} [callback]
+ * @param {string} hostname
+ * @param {void} callback
  * @returns {Promise<{ enabled: boolean }>}
  */
 
@@ -75,89 +57,23 @@ const getCache = (hostname, callback) => {
 
 /**
  * @async
- * @description Retrieves a selectors list
- * @param {void} [callback]
- * @returns {Promise<{ classes: string[] }>}
+ * @description Retrieves data from GitHub
+ * @param {string} key
+ * @param {void} callback
+ * @returns {Promise<{ any: string[] }>}
  */
 
-const getClasses = async (callback) => {
+const query = async (key, callback) => {
   try {
-    const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/classes.txt";
+    const url = `${repositoryUrl}/${key}.txt`;
     const response = await fetch(url);
     const data = await response.text();
 
     if (response.status !== 200) throw new Error();
 
-    callback({ classes: data.split("\n") });
+    callback({ [key]: data.split("\n") });
   } catch {
-    callback({ classes: [] });
-  }
-};
-
-/**
- * @async
- * @description Retrieves a domains list
- * @param {void} [callback]
- * @returns {Promise<{ domains: string[] }>}
- */
-
-const getDomains = async (callback) => {
-  try {
-    const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/domains.txt";
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    callback({ domains: data.split("\n") });
-  } catch {
-    callback({ domains: [] });
-  }
-};
-
-/**
- * @async
- * @description Retrieves a selectors list
- * @param {void} [callback]
- * @returns {Promise<{ classes: string[] }>}
- */
-
-const getFixes = async (callback) => {
-  try {
-    const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/fixes.txt";
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    callback({ fixes: data.split("\n") });
-  } catch {
-    callback({ fixes: [] });
-  }
-};
-
-/**
- * @async
- * @description Retrieves a selectors list
- * @param {void} [callback]
- * @returns {Promise<{ selectors: string }>}
- */
-
-const getSelectors = async (callback) => {
-  try {
-    const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/elements.txt";
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    callback({ selectors: data.split("\n") });
-  } catch {
-    callback({ selectors: [] });
+    callback({ [key]: [] });
   }
 };
 
@@ -233,9 +149,6 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     case "DISABLE_ICON":
       if (tabId) disableIcon(tabId);
       break;
-    case "DISABLE_POPUP":
-      if (tabId) disablePopup(tabId);
-      break;
     case "ENABLE_ICON":
       if (tabId) enableIcon(tabId);
       break;
@@ -246,16 +159,16 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
       getCache(hostname, callback);
       break;
     case "GET_CLASSES":
-      getClasses(callback);
+      query("classes", callback);
       break;
     case "GET_DOMAINS":
-      getDomains(callback);
+      query("domains", callback);
       break;
     case "GET_FIXES":
-      getFixes(callback);
+      query("fixes", callback);
       break;
     case "GET_SELECTORS":
-      getSelectors(callback);
+      query("elements", callback);
       break;
     case "GET_TAB":
       getTab(callback);
