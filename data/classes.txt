@@ -14,3 +14,4 @@ no-scroll
 no_scroll
 sp-message-open
 ta-cc-modal-open
+touchevents-false
