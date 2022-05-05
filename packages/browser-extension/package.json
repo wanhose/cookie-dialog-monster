@@ -1,18 +1,19 @@
 {
-    "name": "browser-extension",
-    "version": "1.0.0",
-    "scripts": {
-        "build": "exit 1",
-        "lint": "eslint src/**/*.js --fix"
-    },
-    "devDependencies": {
-        "eslint": "^8.8.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-prettier": "^4.0.0"
-    },
-    "engines": {
-        "node": "16.x"
-    },
-    "packageManager": "yarn@3.2.0",
-    "license": "MIT"
+  "name": "browser-extension",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "exit 1",
+    "lint": "eslint src/**/*.js --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "packageManager": "yarn@3.2.0",
+  "license": "MIT"
 }

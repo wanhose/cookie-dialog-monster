@@ -1,6 +1,6 @@
 import fastify from 'fastify';
-import cors from 'fastify-cors';
-import rateLimit from 'fastify-rate-limit';
+import cors from '@fastify/cors';
+import rateLimit from '@fastify/rate-limit';
 import v1ReportRoutes from 'routes/v1/report';
 import environment from 'services/environment';
 

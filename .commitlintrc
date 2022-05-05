@@ -16,6 +16,8 @@
       "always",
       [
         "browser-extension",
+        "data",
+        "docs",
         "packages",
         "report-service"
       ]

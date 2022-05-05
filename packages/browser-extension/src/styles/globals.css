@@ -15,7 +15,7 @@ body {
   color: var(--color-chocolate);
   display: flex;
   flex-direction: column;
-  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
   height: 25rem;
   width: 20rem;
 }
@@ -227,7 +227,7 @@ footer {
 .slider:before {
   background-color: var(--color-white);
   bottom: 0.25rem;
-  content: "";
+  content: '';
   height: 0.75rem;
   left: 0.25rem;
   position: absolute;

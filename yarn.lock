@@ -262,10 +262,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fastify/cors@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@fastify/cors@npm:7.0.0"
+  dependencies:
+    fastify-plugin: ^3.0.0
+    vary: ^1.1.2
+  checksum: 1885eb60b6a64dc91c8ca47708b60de371982d8224e801d7ed60bf821bd045d0c99917c0cb7544dccd9ad1a3dd72368244f2ec2f58bc5fa46d10fe95ad43283a
+  languageName: node
+  linkType: hard
+
 "@fastify/error@npm:^2.0.0":
   version: 2.0.0
   resolution: "@fastify/error@npm:2.0.0"
   checksum: ecf0834966b2bfb33ff834e3d55fe4dc04cbe9f822fda6c937b12cce4f162be4f8b0577ee665bc856d7012b1640c12472a1829a22ae38d287342c90b0f33a595
+  languageName: node
+  linkType: hard
+
+"@fastify/rate-limit@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@fastify/rate-limit@npm:6.0.0"
+  dependencies:
+    fastify-plugin: ^3.0.1
+    ms: ^2.1.3
+    tiny-lru: ^8.0.1
+  checksum: 7b24b8ea1836771ab06e3c332a2d89a0927774ca9fc21a4e9b595ddd86e74638e5ceb0dda245c2fd84bc6f3d8d5565b42056ca8483d361afa72de44ae890bd6a
   languageName: node
   linkType: hard
 
@@ -399,13 +420,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json5@npm:^0.0.29":
-  version: 0.0.29
-  resolution: "@types/json5@npm:0.0.29"
-  checksum: e60b153664572116dfea673c5bda7778dbff150498f44f998e34b5886d8afc47f16799280e4b6e241c0472aef1bc36add771c569c68fc5125fc2ae519a3eb9ac
-  languageName: node
-  linkType: hard
-
 "@types/keyv@npm:^3.1.1":
   version: 3.1.4
   resolution: "@types/keyv@npm:3.1.4"
@@ -422,10 +436,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:^17.0.16":
+"@types/node@npm:*, @types/node@npm:>=12":
   version: 17.0.31
   resolution: "@types/node@npm:17.0.31"
   checksum: 704618350f8420d5c47db0f7778398e821b7724369946f5c441a7e6b9343295553936400eb8309f0b07d5e39c240988ab3456b983712ca86265dabc9aee4ad3d
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.33":
+  version: 16.11.33
+  resolution: "@types/node@npm:16.11.33"
+  checksum: 5c86d3f1e3b996607b41405d368d2e19d410eee0054595cef73d230368a609a2863926e75ad19f5091f0fd742cd018b667d54c51292018dd8020a202a5b29fa9
   languageName: node
   linkType: hard
 
@@ -461,7 +482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:^5.11.0":
+"@typescript-eslint/eslint-plugin@npm:^5.22.0":
   version: 5.22.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.22.0"
   dependencies:
@@ -484,7 +505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.11.0":
+"@typescript-eslint/parser@npm:^5.22.0":
   version: 5.22.0
   resolution: "@typescript-eslint/parser@npm:5.22.0"
   dependencies:
@@ -900,6 +921,7 @@ __metadata:
     eslint: ^8.8.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^4.0.0
+    rimraf: ^3.0.2
   languageName: unknown
   linkType: soft
 
@@ -1528,7 +1550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:^8.3.0":
+"eslint-config-prettier@npm:^8.3.0, eslint-config-prettier@npm:^8.5.0":
   version: 8.5.0
   resolution: "eslint-config-prettier@npm:8.5.0"
   peerDependencies:
@@ -1599,7 +1621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.8.0":
+"eslint@npm:^8.14.0, eslint@npm:^8.8.0":
   version: 8.14.0
   resolution: "eslint@npm:8.14.0"
   dependencies:
@@ -1785,26 +1807,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-cors-deprecated@npm:fastify-cors@6.0.3":
-  version: 6.0.3
-  resolution: "fastify-cors@npm:6.0.3"
-  dependencies:
-    fastify-plugin: ^3.0.0
-    vary: ^1.1.2
-  checksum: 054cf4e1cf0b20778ac24d9995a99f44e9b026ca9a028db0cbb6093922bcc931dff5f5bb185d19e881014392bb5886a8b5f9da6af3d3ab5e62b7a68f4eca33c4
-  languageName: node
-  linkType: hard
-
-"fastify-cors@npm:^6.0.2":
-  version: 6.1.0
-  resolution: "fastify-cors@npm:6.1.0"
-  dependencies:
-    fastify-cors-deprecated: "npm:fastify-cors@6.0.3"
-    process-warning: ^1.0.0
-  checksum: dca7c39b4e515ea896aa07ad5c05c70100f427e4c92e3e0fae7cab7d8ccfc824c946723a7e90b4859a5802244932d0af5ee70d753f686092e8c47fca6700e370
-  languageName: node
-  linkType: hard
-
 "fastify-plugin@npm:^3.0.0, fastify-plugin@npm:^3.0.1":
   version: 3.0.1
   resolution: "fastify-plugin@npm:3.0.1"
@@ -1812,28 +1814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-rate-limit-deprecated@npm:fastify-rate-limit@5.8.0":
-  version: 5.8.0
-  resolution: "fastify-rate-limit@npm:5.8.0"
-  dependencies:
-    fastify-plugin: ^3.0.1
-    ms: ^2.1.3
-    tiny-lru: ^8.0.1
-  checksum: fe78e84d31f03e039d55225c8aa89e13541ae13f3066bccda34661939a966e4725bae38406e080a52acf74c83afc35fb338ad6529f52e460f76eace7fdcb20e8
-  languageName: node
-  linkType: hard
-
-"fastify-rate-limit@npm:^5.7.0":
-  version: 5.9.0
-  resolution: "fastify-rate-limit@npm:5.9.0"
-  dependencies:
-    fastify-rate-limit-deprecated: "npm:fastify-rate-limit@5.8.0"
-    process-warning: ^1.0.0
-  checksum: cf1d8a808e68e9dd8042f0623903a4fcc45b61123f67736371ec51862ba7535cbadaaf2dbfb27791ef76d32162754a889103516092478751e1ed4faa338c2d2c
-  languageName: node
-  linkType: hard
-
-"fastify@npm:^3.27.1":
+"fastify@npm:^3.29.0":
   version: 3.29.0
   resolution: "fastify@npm:3.29.0"
   dependencies:
@@ -2609,14 +2590,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "json5@npm:1.0.1"
-  dependencies:
-    minimist: ^1.2.0
+"json5@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "json5@npm:2.2.1"
   bin:
     json5: lib/cli.js
-  checksum: e76ea23dbb8fc1348c143da628134a98adf4c5a4e8ea2adaa74a80c455fc2cdf0e2e13e6398ef819bfe92306b610ebb2002668ed9fc1af386d593691ef346fc3
+  checksum: 74b8a23b102a6f2bf2d224797ae553a75488b5adbaee9c9b6e5ab8b510a2fc6e38f876d4c77dea672d4014a44b2399e15f2051ac2b37b87f74c0c7602003543b
   languageName: node
   linkType: hard
 
@@ -3101,14 +3080,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:^6.7.2":
+"nodemailer@npm:^6.7.5":
   version: 6.7.5
   resolution: "nodemailer@npm:6.7.5"
   checksum: d361a107b9eb264856852e32d3deb9bda1f69fdef6087ba20aaf58f98aacf4cd16c3633583ddbc1f23df25ad87c86bcca98511aaadfb447fe35a1e0eca6a7796
   languageName: node
   linkType: hard
 
-"nodemon@npm:^2.0.15":
+"nodemon@npm:^2.0.16":
   version: 2.0.16
   resolution: "nodemon@npm:2.0.16"
   dependencies:
@@ -3638,24 +3617,24 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "report-service@workspace:packages/report-service"
   dependencies:
+    "@fastify/cors": ^7.0.0
+    "@fastify/rate-limit": ^6.0.0
     "@tsconfig/node16": ^1.0.2
-    "@types/node": ^17.0.16
+    "@types/node": ^16.11.33
     "@types/nodemailer": ^6.4.4
-    "@typescript-eslint/eslint-plugin": ^5.11.0
-    "@typescript-eslint/parser": ^5.11.0
+    "@typescript-eslint/eslint-plugin": ^5.22.0
+    "@typescript-eslint/parser": ^5.22.0
     dotenv: ^16.0.0
-    eslint: ^8.8.0
-    eslint-config-prettier: ^8.3.0
+    eslint: ^8.14.0
+    eslint-config-prettier: ^8.5.0
     eslint-plugin-prettier: ^4.0.0
-    fastify: ^3.27.1
-    fastify-cors: ^6.0.2
-    fastify-rate-limit: ^5.7.0
-    nodemailer: ^6.7.2
-    nodemon: ^2.0.15
+    fastify: ^3.29.0
+    nodemailer: ^6.7.5
+    nodemon: ^2.0.16
     rimraf: ^3.0.2
-    ts-node: ^10.5.0
-    tsconfig-paths: ^3.12.0
-    typescript: ^4.5.5
+    ts-node: ^10.7.0
+    tsconfig-paths: ^4.0.0
+    typescript: ^4.6.4
   languageName: unknown
   linkType: soft
 
@@ -4256,7 +4235,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^10.5.0, ts-node@npm:^10.7.0":
+"ts-node@npm:^10.7.0":
   version: 10.7.0
   resolution: "ts-node@npm:10.7.0"
   dependencies:
@@ -4294,15 +4273,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig-paths@npm:^3.12.0":
-  version: 3.14.1
-  resolution: "tsconfig-paths@npm:3.14.1"
+"tsconfig-paths@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "tsconfig-paths@npm:4.0.0"
   dependencies:
-    "@types/json5": ^0.0.29
-    json5: ^1.0.1
+    json5: ^2.2.1
     minimist: ^1.2.6
     strip-bom: ^3.0.0
-  checksum: 8afa01c673ebb4782ba53d3a12df97fa837ce524f8ad38ee4e2b2fd57f5ac79abc21c574e9e9eb014d93efe7fe8214001b96233b5c6ea75bd1ea82afe17a4c6d
+  checksum: a8cf746ffe438513a71c70c1bcdee8da7d62ab2af286efbe2728ff55c4d4c92c2aea80a0822982ded6d0a13c7686c24632934d7c0f4f564be9e1b2cdc3d65eea
   languageName: node
   linkType: hard
 
@@ -4384,7 +4362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.4.3, typescript@npm:^4.5.5":
+"typescript@npm:^4.4.3, typescript@npm:^4.6.4":
   version: 4.6.4
   resolution: "typescript@npm:4.6.4"
   bin:
@@ -4394,7 +4372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.5.5#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
   version: 4.6.4
   resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
   bin:
