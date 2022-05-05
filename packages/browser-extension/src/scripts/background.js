@@ -2,7 +2,7 @@
  * @description Context menu identifier
  */
 
-const contextMenuId = "CDM_MENU";
+const contextMenuId = 'CDM_MENU';
 
 /**
  * @description Cache initial state
@@ -18,7 +18,7 @@ const initial = {
  * @param {object} [cache]
  */
 
-const check = (cache) => typeof cache.enabled === "boolean";
+const check = (cache) => typeof cache.enabled === 'boolean';
 
 /**
  * @description Disables icon
@@ -27,7 +27,7 @@ const check = (cache) => typeof cache.enabled === "boolean";
 
 const disableIcon = (tabId) => {
   chrome.browserAction.setIcon({
-    path: "assets/icons/disabled.png",
+    path: 'assets/icons/disabled.png',
     tabId,
   });
 };
@@ -39,7 +39,7 @@ const disableIcon = (tabId) => {
 
 const disablePopup = (tabId) => {
   chrome.browserAction.setPopup({
-    popup: "",
+    popup: '',
     tabId,
   });
 };
@@ -51,7 +51,7 @@ const disablePopup = (tabId) => {
 
 const enableIcon = (tabId) => {
   chrome.browserAction.setIcon({
-    path: "assets/icons/enabled.png",
+    path: 'assets/icons/enabled.png',
     tabId,
   });
 };
@@ -63,7 +63,7 @@ const enableIcon = (tabId) => {
 
 const enablePopup = (tabId) => {
   chrome.browserAction.setPopup({
-    popup: "popup.html",
+    popup: 'popup.html',
     tabId,
   });
 };
@@ -100,13 +100,13 @@ const getCache = (hostname, callback) => {
 const getClasses = async (callback) => {
   try {
     const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/classes.txt";
+      'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/classes.txt';
     const response = await fetch(url);
     const data = await response.text();
 
     if (response.status !== 200) throw new Error();
 
-    callback({ classes: data.split("\n") });
+    callback({ classes: data.split('\n') });
   } catch {
     callback({ classes: [] });
   }
@@ -122,13 +122,13 @@ const getClasses = async (callback) => {
 const getFixes = async (callback) => {
   try {
     const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/fixes.txt";
+      'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/fixes.txt';
     const response = await fetch(url);
     const data = await response.text();
 
     if (response.status !== 200) throw new Error();
 
-    callback({ fixes: data.split("\n") });
+    callback({ fixes: data.split('\n') });
   } catch {
     callback({ fixes: [] });
   }
@@ -144,13 +144,13 @@ const getFixes = async (callback) => {
 const getSelectors = async (callback) => {
   try {
     const url =
-      "https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/elements.txt";
+      'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/elements.txt';
     const response = await fetch(url);
     const data = await response.text();
 
     if (response.status !== 200) throw new Error();
 
-    callback({ selectors: data.split("\n") });
+    callback({ selectors: data.split('\n') });
   } catch {
     callback({ selectors: [] });
   }
@@ -182,16 +182,16 @@ const report = () => {
     const version = chrome.runtime.getManifest().version;
 
     if (tab) {
-      fetch("https://cdm-report-service.herokuapp.com/rest/v1/report/", {
+      fetch('https://cdm-report-service.herokuapp.com/rest/v1/report/', {
         body: JSON.stringify({
           text: `There's a problem with ${tab.url} using ${userAgent} in CDM ${version}`,
-          to: "wanhose.development@gmail.com",
-          subject: "Cookie Dialog Monster Report",
+          to: 'wanhose.development@gmail.com',
+          subject: 'Cookie Dialog Monster Report',
         }),
         headers: {
-          "Content-type": "application/json",
+          'Content-type': 'application/json',
         },
-        method: "POST",
+        method: 'POST',
       });
     }
   });
@@ -210,7 +210,7 @@ const updateCache = (hostname, state) => {
     chrome.storage.local.set({
       [hostname]: {
         enabled:
-          typeof state.enabled === "undefined"
+          typeof state.enabled === 'undefined'
             ? current.enabled
             : state.enabled,
       },
@@ -227,34 +227,34 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
   let tabId = sender.tab ? sender.tab.id : undefined;
 
   switch (request.type) {
-    case "DISABLE_ICON":
+    case 'DISABLE_ICON':
       if (hasPermission && tabId) disableIcon(tabId);
       break;
-    case "DISABLE_POPUP":
+    case 'DISABLE_POPUP':
       if (hasPermission && tabId) disablePopup(tabId);
       break;
-    case "ENABLE_ICON":
+    case 'ENABLE_ICON':
       if (hasPermission && tabId) enableIcon(tabId);
       break;
-    case "ENABLE_POPUP":
+    case 'ENABLE_POPUP':
       if (hasPermission && tabId) enablePopup(tabId);
       break;
-    case "GET_CACHE":
+    case 'GET_CACHE':
       getCache(request.hostname, callback);
       break;
-    case "GET_CLASSES":
+    case 'GET_CLASSES':
       getClasses(callback);
       break;
-    case "GET_FIXES":
+    case 'GET_FIXES':
       getFixes(callback);
       break;
-    case "GET_SELECTORS":
+    case 'GET_SELECTORS':
       getSelectors(callback);
       break;
-    case "GET_TAB":
+    case 'GET_TAB':
       getTab(callback);
       break;
-    case "UPDATE_CACHE":
+    case 'UPDATE_CACHE':
       updateCache(request.hostname, request.state);
       break;
     default:
@@ -269,9 +269,9 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
  */
 
 chrome.contextMenus.create({
-  contexts: ["all"],
+  contexts: ['all'],
   id: contextMenuId,
-  title: chrome.i18n.getMessage("contextMenuText"),
+  title: chrome.i18n.getMessage('contextMenuText'),
 });
 
 /**

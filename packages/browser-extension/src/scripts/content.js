@@ -30,7 +30,7 @@ const hostname = document.location.hostname;
  */
 
 const isPreview =
-  hostname.startsWith("consent.") || hostname.startsWith("myprivacy.");
+  hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
  * @description Options provided to observer
@@ -59,8 +59,8 @@ const target = document.body || document.documentElement;
 const check = (node) =>
   node instanceof HTMLElement &&
   node.parentElement &&
-  !["BODY", "HTML"].includes(node.tagName) &&
-  !(node.id && ["APP", "ROOT"].includes(node.id.toUpperCase?.()));
+  !['BODY', 'HTML'].includes(node.tagName) &&
+  !(node.id && ['APP', 'ROOT'].includes(node.id.toUpperCase?.()));
 
 /**
  * @description Cleans DOM
@@ -69,7 +69,7 @@ const check = (node) =>
 const clean = () => {
   if (selectors.length) {
     const nodes = Array.from(document.querySelectorAll(selectors));
-    nodes.filter(check).forEach((node) => (node.outerHTML = ""));
+    nodes.filter(check).forEach((node) => (node.outerHTML = ''));
   }
 };
 
@@ -82,30 +82,30 @@ const fix = () => {
   const html = document.documentElement;
 
   body?.classList.remove(...classes);
-  body?.style.setProperty("position", "initial", "important");
-  body?.style.setProperty("overflow-y", "initial", "important");
+  body?.style.setProperty('position', 'initial', 'important');
+  body?.style.setProperty('overflow-y', 'initial', 'important');
   html?.classList.remove(...classes);
-  html?.style.setProperty("position", "initial", "important");
-  html?.style.setProperty("overflow-y", "initial", "important");
+  html?.style.setProperty('position', 'initial', 'important');
+  html?.style.setProperty('overflow-y', 'initial', 'important');
 
   fixes.forEach((fix) => {
-    const [match, selector, action, property] = fix.split("##");
+    const [match, selector, action, property] = fix.split('##');
 
     if (hostname.includes(match)) {
       switch (action) {
-        case "click": {
+        case 'click': {
           const node = document.querySelector(selector);
           node?.click();
         }
-        case "remove": {
+        case 'remove': {
           const node = document.querySelector(selector);
           node?.style?.removeProperty(property);
         }
-        case "reset": {
+        case 'reset': {
           const node = document.querySelector(selector);
-          node?.style?.setProperty(property, "initial", "important");
+          node?.style?.setProperty(property, 'initial', 'important');
         }
-        case "resetAll": {
+        case 'resetAll': {
           const nodes = document.querySelectorAll(selector);
           // prettier-ignore
           nodes.forEach((node) => node?.style?.setProperty(property, "initial", "important"));
@@ -126,7 +126,7 @@ const observer = new MutationObserver((mutations, instance) => {
       for (const node of mutation.addedNodes) {
         const valid = check(node);
 
-        if (valid && node.matches(selectors)) node.outerHTML = "";
+        if (valid && node.matches(selectors)) node.outerHTML = '';
       }
     }
   }
@@ -141,7 +141,7 @@ const observer = new MutationObserver((mutations, instance) => {
 
 const queryClasses = () =>
   new Promise((resolve) => {
-    dispatch({ type: "GET_CLASSES" }, null, resolve);
+    dispatch({ type: 'GET_CLASSES' }, null, resolve);
   });
 
 /**
@@ -151,7 +151,7 @@ const queryClasses = () =>
 
 const queryFixes = () =>
   new Promise((resolve) => {
-    dispatch({ type: "GET_FIXES" }, null, resolve);
+    dispatch({ type: 'GET_FIXES' }, null, resolve);
   });
 
 /**
@@ -161,7 +161,7 @@ const queryFixes = () =>
 
 const querySelectors = () =>
   new Promise((resolve) => {
-    dispatch({ type: "GET_SELECTORS" }, null, resolve);
+    dispatch({ type: 'GET_SELECTORS' }, null, resolve);
   });
 
 /**
@@ -169,9 +169,9 @@ const querySelectors = () =>
  * @listens document#readystatechange
  */
 
-document.addEventListener("readystatechange", () => {
-  dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
-    if (document.readyState === "complete" && enabled && !isPreview) {
+document.addEventListener('readystatechange', () => {
+  dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
+    if (document.readyState === 'complete' && enabled && !isPreview) {
       fix();
       clean();
       setTimeout(clean, 2000);
@@ -184,14 +184,14 @@ document.addEventListener("readystatechange", () => {
  * @listens window#unload
  */
 
-window.addEventListener("unload", () => {});
+window.addEventListener('unload', () => {});
 
 /**
  * @description Setups everything and starts to observe if enabled
  */
 
-dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
-  dispatch({ type: "ENABLE_POPUP" });
+dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
+  dispatch({ type: 'ENABLE_POPUP' });
 
   if (enabled) {
     const promises = [queryClasses(), queryFixes(), querySelectors()];
@@ -201,6 +201,6 @@ dispatch({ hostname, type: "GET_CACHE" }, null, async ({ enabled }) => {
     fixes = results[1]?.fixes ?? [];
     selectors = results[2]?.selectors ?? [];
     observer.observe(target, options);
-    dispatch({ type: "ENABLE_ICON" });
+    dispatch({ type: 'ENABLE_ICON' });
   }
 });

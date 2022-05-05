@@ -1,0 +1,6 @@
+{
+  "packages/**/*.{js,ts}": [
+    "prettier --loglevel=silent --write",
+    "yarn lint"
+  ]
+}

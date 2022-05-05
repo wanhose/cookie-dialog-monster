@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "@commitlint/config-conventional"
+  ],
+  "rules": {
+    "scope-case": [
+      0
+    ],
+    "header-max-length": [
+      0,
+      "always",
+      110
+    ],
+    "scope-enum": [
+      2,
+      "always",
+      [
+        "browser-extension",
+        "packages",
+        "report-service"
+      ]
+    ]
+  }
+}

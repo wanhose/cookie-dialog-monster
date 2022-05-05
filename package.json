@@ -1,0 +1,21 @@
+{
+  "name": "cookie-dialog-monster",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "yarn workspaces foreach -p run build",
+    "lint": "yarn workspaces foreach -p run lint",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@3.2.0"
+}

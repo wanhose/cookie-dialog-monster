@@ -1,2 +1,6 @@
 .DS_Store
-release
+.pnp.*
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+build
