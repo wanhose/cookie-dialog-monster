@@ -7,11 +7,7 @@ type PostReportBody = {
   to: string;
 };
 
-export default (
-  server: FastifyInstance,
-  options: RouteShorthandOptions,
-  done: () => void
-) => {
+export default (server: FastifyInstance, options: RouteShorthandOptions, done: () => void) => {
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {

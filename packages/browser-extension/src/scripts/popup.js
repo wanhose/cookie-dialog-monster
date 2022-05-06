@@ -4,8 +4,7 @@
  * @type {string}
  */
 
-const chromeUrl =
-  'https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg';
+const chromeUrl = 'https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg';
 
 /**
  * @constant dispatch
@@ -21,8 +20,7 @@ const dispatch = chrome.runtime.sendMessage;
  * @type {string}
  */
 
-const firefoxUrl =
-  'https://addons.mozilla.org/es/firefox/addon/cookie-dialog-monster/';
+const firefoxUrl = 'https://addons.mozilla.org/es/firefox/addon/cookie-dialog-monster/';
 
 /**
  * @constant isChromium
