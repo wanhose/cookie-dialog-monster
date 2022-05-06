@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Cookie Dialog Monster",
-  "version": "5.4.6",
+  "version": "5.5.0",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -31,12 +31,6 @@
       "run_at": "document_start"
     }
   ],
-  "permissions": [
-    "contextMenus",
-    "http://*/*",
-    "https://*/*",
-    "storage",
-    "tabs"
-  ],
+  "permissions": ["contextMenus", "http://*/*", "https://*/*", "storage", "tabs"],
   "web_accessible_resources": ["assets/fonts/*", "scripts/popup.js", "styles/*"]
 }
