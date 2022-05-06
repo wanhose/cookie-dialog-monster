@@ -1,5 +1,13 @@
 /**
+ * @description Base data URL
+ * @type {string}
+ */
+
+const baseDataUrl = 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/data';
+
+/**
  * @description Context menu identifier
+ * @type {string}
  */
 
 const contextMenuId = 'CDM_MENU';
@@ -9,150 +17,63 @@ const contextMenuId = 'CDM_MENU';
  * @type {{ enabled: boolean }}
  */
 
-const initial = {
-  enabled: true,
-};
-
-/**
- * @description Check cache validity
- * @param {object} [cache]
- */
-
-const check = (cache) => typeof cache.enabled === 'boolean';
+const initial = { enabled: true };
 
 /**
  * @description Disables icon
- * @param {string} [tabId]
+ * @param {string} tabId
  */
 
-const disableIcon = (tabId) => {
-  chrome.browserAction.setIcon({
-    path: 'assets/icons/disabled.png',
-    tabId,
-  });
-};
-
-/**
- * @description Disables popup
- * @param {string} [tabId]
- */
-
-const disablePopup = (tabId) => {
-  chrome.browserAction.setPopup({
-    popup: '',
-    tabId,
-  });
-};
+const disableIcon = (tabId) =>
+  chrome.browserAction.setIcon({ path: 'assets/icons/disabled.png', tabId });
 
 /**
  * @description Enables icon
- * @param {string} [tabId]
+ * @param {string} tabId
  */
 
-const enableIcon = (tabId) => {
-  chrome.browserAction.setIcon({
-    path: 'assets/icons/enabled.png',
-    tabId,
-  });
-};
+const enableIcon = (tabId) =>
+  chrome.browserAction.setIcon({ path: 'assets/icons/enabled.png', tabId });
 
 /**
  * @description Enables popup
- * @param {string} [tabId]
+ * @param {string} tabId
  */
 
-const enablePopup = (tabId) => {
-  chrome.browserAction.setPopup({
-    popup: 'popup.html',
-    tabId,
-  });
-};
+const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: 'popup.html', tabId });
 
 /**
  * @description Retrieves cache state
- * @param {string} [hostname]
- * @param {void} [callback]
+ * @param {string} hostname
+ * @param {void} callback
  * @returns {Promise<{ enabled: boolean }>}
  */
 
 const getCache = (hostname, callback) => {
   chrome.storage.local.get(null, (store) => {
-    try {
-      const cache = store[hostname];
-
-      if (!check(cache)) throw new Error();
-
-      callback(cache);
-    } catch {
-      chrome.storage.local.set({ [hostname]: initial });
-      callback(initial);
-    }
+    callback(store[hostname] ?? initial);
   });
 };
 
 /**
  * @async
- * @description Retrieves a selectors list
- * @param {void} [callback]
- * @returns {Promise<{ classes: string[] }>}
+ * @description Retrieves data from GitHub
+ * @param {string} key
+ * @param {void} callback
+ * @returns {Promise<{ any: string[] }>}
  */
 
-const getClasses = async (callback) => {
+const query = async (key, callback) => {
   try {
-    const url =
-      'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/classes.txt';
+    const url = `${baseDataUrl}/${key}.txt`;
     const response = await fetch(url);
     const data = await response.text();
 
     if (response.status !== 200) throw new Error();
 
-    callback({ classes: data.split('\n') });
+    callback({ [key]: data.split('\n') });
   } catch {
-    callback({ classes: [] });
-  }
-};
-
-/**
- * @async
- * @description Retrieves a selectors list
- * @param {void} [callback]
- * @returns {Promise<{ classes: string[] }>}
- */
-
-const getFixes = async (callback) => {
-  try {
-    const url =
-      'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/fixes.txt';
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    callback({ fixes: data.split('\n') });
-  } catch {
-    callback({ fixes: [] });
-  }
-};
-
-/**
- * @async
- * @description Retrieves a selectors list
- * @param {void} [callback]
- * @returns {Promise<{ selectors: string }>}
- */
-
-const getSelectors = async (callback) => {
-  try {
-    const url =
-      'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/master/data/elements.txt';
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    callback({ selectors: data.split('\n') });
-  } catch {
-    callback({ selectors: [] });
+    callback({ [key]: [] });
   }
 };
 
@@ -162,7 +83,7 @@ const getSelectors = async (callback) => {
  * @returns {Promise<{ id: string, location: string }>}
  */
 
-const getTab = (callback) => {
+const queryTab = (callback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     callback({
       id: tabs[0].id,
@@ -209,10 +130,7 @@ const updateCache = (hostname, state) => {
 
     chrome.storage.local.set({
       [hostname]: {
-        enabled:
-          typeof state.enabled === 'undefined'
-            ? current.enabled
-            : state.enabled,
+        enabled: typeof state.enabled === 'undefined' ? current.enabled : state.enabled,
       },
     });
   });
@@ -223,39 +141,40 @@ const updateCache = (hostname, state) => {
  */
 
 chrome.runtime.onMessage.addListener((request, sender, callback) => {
-  const hasPermission = !sender.frameId || sender.frameId === 0;
-  let tabId = sender.tab ? sender.tab.id : undefined;
+  const hostname = request.hostname;
+  const state = request.state;
+  const tabId = sender.tab?.id;
 
   switch (request.type) {
     case 'DISABLE_ICON':
-      if (hasPermission && tabId) disableIcon(tabId);
-      break;
-    case 'DISABLE_POPUP':
-      if (hasPermission && tabId) disablePopup(tabId);
+      if (tabId) disableIcon(tabId);
       break;
     case 'ENABLE_ICON':
-      if (hasPermission && tabId) enableIcon(tabId);
+      if (tabId) enableIcon(tabId);
       break;
     case 'ENABLE_POPUP':
-      if (hasPermission && tabId) enablePopup(tabId);
+      if (tabId) enablePopup(tabId);
       break;
     case 'GET_CACHE':
-      getCache(request.hostname, callback);
+      getCache(hostname, callback);
       break;
     case 'GET_CLASSES':
-      getClasses(callback);
+      query('classes', callback);
+      break;
+    case 'GET_SKIPS':
+      query('skips', callback);
       break;
     case 'GET_FIXES':
-      getFixes(callback);
+      query('fixes', callback);
       break;
     case 'GET_SELECTORS':
-      getSelectors(callback);
+      query('elements', callback);
       break;
     case 'GET_TAB':
-      getTab(callback);
+      queryTab(callback);
       break;
     case 'UPDATE_CACHE':
-      updateCache(request.hostname, request.state);
+      updateCache(hostname, state);
       break;
     default:
       break;
