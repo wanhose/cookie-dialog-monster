@@ -46,7 +46,7 @@ const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: 'popup.htm
  * @description Retrieves cache state
  * @param {string} hostname
  * @param {void} callback
- * @returns {Promise<{ enabled: boolean }>}
+ * @returns {{ enabled: boolean }}
  */
 
 const getCache = (hostname, callback) => {

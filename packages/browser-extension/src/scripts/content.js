@@ -30,7 +30,7 @@ const fixes = [];
  * @description Hostname
  */
 
-const hostname = document.location.hostname;
+const hostname = document.location.hostname.split('.').slice(-2).join('.');
 
 /**
  * @description Is consent preview page?
@@ -157,7 +157,7 @@ const promiseAll = () =>
 
 document.addEventListener('readystatechange', () => {
   dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
-    if (document.readyState === 'complete' && enabled && !preview) {
+    if (document.readyState === 'complete' && enabled && !preview && selectors.length) {
       const nodes = Array.from(document.querySelectorAll(selectors));
 
       fix();
