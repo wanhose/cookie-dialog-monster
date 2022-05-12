@@ -3,7 +3,7 @@
  * @type {string}
  */
 
-const apiUrl = 'https://api.cookie-dialog-monster-com/rest/v1';
+const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v1';
 
 /**
  * @description Base data URL
