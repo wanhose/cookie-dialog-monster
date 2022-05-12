@@ -1,4 +1,11 @@
 /**
+ * @description API URL
+ * @type {string}
+ */
+
+const apiUrl = 'https://api.cookie-dialog-monster-com/rest/v1';
+
+/**
  * @description Base data URL
  * @type {string}
  */
@@ -46,7 +53,7 @@ const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: 'popup.htm
  * @description Retrieves cache state
  * @param {string} hostname
  * @param {void} callback
- * @returns {Promise<{ enabled: boolean }>}
+ * @returns {{ enabled: boolean }}
  */
 
 const getCache = (hostname, callback) => {
@@ -103,7 +110,7 @@ const report = () => {
     const version = chrome.runtime.getManifest().version;
 
     if (tab) {
-      fetch('https://cdm-report-service.herokuapp.com/rest/v1/report/', {
+      fetch(`${apiUrl}/report/`, {
         body: JSON.stringify({
           text: `There's a problem with ${tab.url} using ${userAgent} in CDM ${version}`,
           to: 'wanhose.development@gmail.com',

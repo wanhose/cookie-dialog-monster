@@ -30,7 +30,7 @@ const fixes = [];
  * @description Hostname
  */
 
-const hostname = document.location.hostname;
+const hostname = document.location.hostname.split('.').slice(-2).join('.');
 
 /**
  * @description Is consent preview page?
@@ -76,7 +76,11 @@ const check = (node) =>
  * @returns {void}
  */
 
-const clean = (nodes) => nodes.filter(check).forEach((node) => (node.outerHTML = ''));
+const clean = (nodes) => {
+  if (selectors.length) {
+    nodes.filter(check).forEach((node) => (node.outerHTML = ''));
+  }
+};
 
 /**
  * @description Fixes scroll issues
@@ -157,7 +161,7 @@ const promiseAll = () =>
 
 document.addEventListener('readystatechange', () => {
   dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
-    if (document.readyState === 'complete' && enabled && !preview) {
+    if (document.readyState === 'complete' && enabled && !preview && selectors.length) {
       const nodes = Array.from(document.querySelectorAll(selectors));
 
       fix();
