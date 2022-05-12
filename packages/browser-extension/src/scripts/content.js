@@ -76,7 +76,11 @@ const check = (node) =>
  * @returns {void}
  */
 
-const clean = (nodes) => nodes.filter(check).forEach((node) => (node.outerHTML = ''));
+const clean = (nodes) => {
+  if (selectors.length) {
+    nodes.filter(check).forEach((node) => (node.outerHTML = ''));
+  }
+};
 
 /**
  * @description Fixes scroll issues
