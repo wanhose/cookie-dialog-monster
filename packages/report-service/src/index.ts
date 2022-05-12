@@ -8,18 +8,16 @@ const server = fastify({ logger: true });
 
 server.register(cors, {
   origin: (origin, callback) => {
+    const chrome = /chrome-extension:\/\/[a-z]{32}/g;
     const moz =
       /moz-extension:\/\/[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}/g;
 
-    switch (true) {
-      case environment.extension.chrome === origin:
-      case moz.test(origin):
-        callback(null, true);
-        break;
-      default:
-        callback(new Error('Not allowed'), false);
-        break;
+    if (chrome.test(origin) || moz.test(origin)) {
+      callback(null, true);
+      return;
     }
+
+    callback(new Error('Not allowed'), false);
   },
 });
 
