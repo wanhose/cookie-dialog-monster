@@ -2,8 +2,9 @@ import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import { sendMail } from 'services/mailing';
 
 type PostReportBody = {
+  html?: string;
   subject: string;
-  text: string;
+  text?: string;
   to: string;
 };
 
@@ -14,6 +15,9 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
       schema: {
         body: {
           properties: {
+            html: {
+              type: 'string',
+            },
             subject: {
               type: 'string',
             },
@@ -24,15 +28,15 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
               type: 'string',
             },
           },
-          required: ['subject', 'text', 'to'],
+          required: ['subject', 'to'],
           type: 'object',
         },
       },
     },
     async (request, reply) => {
-      const { subject, text, to } = request.body;
+      const { html, subject, text, to } = request.body;
 
-      sendMail({ text, to, subject });
+      sendMail({ html, text, to, subject });
       reply.send({ success: true });
     }
   );
