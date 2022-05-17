@@ -78,7 +78,9 @@ const check = (node) =>
 
 const clean = (nodes) => {
   if (selectors.length) {
-    nodes.filter(check).forEach((node) => (node.outerHTML = ''));
+    nodes.filter(check).forEach((node) => {
+      if (node.parentElement) node.outerHTML = '';
+    });
   }
 };
 
