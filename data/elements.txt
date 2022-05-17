@@ -12525,3 +12525,4 @@ ck-user-cookie-consent-modal
 [data-component="CookiesConcernModal"]
 #modal-host
 #tacRoot
+.cookie-popups__container
