@@ -93,8 +93,8 @@ const query = async (key, callback) => {
 const queryTab = (callback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     callback({
-      id: tabs[0].id,
-      hostname: new URL(tabs[0].url).hostname,
+      id: tabs[0]?.id,
+      hostname: new URL(tabs[0].url).hostname.split('.').slice(-2).join('.'),
     });
   });
 };
@@ -112,7 +112,7 @@ const report = () => {
     if (tab) {
       fetch(`${apiUrl}/report/`, {
         body: JSON.stringify({
-          text: `There's a problem with ${tab.url} using ${userAgent} in CDM ${version}`,
+          html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/> <b>Version:</b> ${version}`,
           to: 'wanhose.development@gmail.com',
           subject: 'Cookie Dialog Monster Report',
         }),

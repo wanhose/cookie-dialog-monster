@@ -44,9 +44,6 @@ const handlePowerChange = () => {
         state: { enabled: !enabled },
         type: 'UPDATE_CACHE',
       });
-      dispatch({
-        type: !enabled === true ? 'ENABLE_ICON' : 'DISABLE_ICON',
-      });
       if (!enabled === false) power.removeAttribute('checked');
       if (!enabled === true) power.setAttribute('checked', 'checked');
       chrome.tabs.reload(id, { bypassCache: true });

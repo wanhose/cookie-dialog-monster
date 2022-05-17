@@ -40,9 +40,10 @@ const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivac
 
 /**
  * @description Options provided to observer
+ * @type {MutationObserverInit}
  */
 
-const options = { childList: true, subtree: true };
+const options = { attributes: true, childList: true, subtree: true };
 
 /**
  * @description Selectors list
@@ -76,11 +77,7 @@ const check = (node) =>
  * @returns {void}
  */
 
-const clean = (nodes) => {
-  if (selectors.length) {
-    nodes.filter(check).forEach((node) => (node.outerHTML = ''));
-  }
-};
+const clean = (nodes) => nodes.filter(check).forEach((node) => (node.outerHTML = ''));
 
 /**
  * @description Fixes scroll issues
@@ -137,7 +134,7 @@ const observer = new MutationObserver((mutations, instance) => {
 
   instance.disconnect();
   fix();
-  if (!preview) clean(nodes);
+  if (!preview && selectors.length) clean(nodes);
   instance.observe(target, options);
 });
 
@@ -161,8 +158,8 @@ const promiseAll = () =>
 
 document.addEventListener('readystatechange', () => {
   dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
-    if (document.readyState === 'complete' && enabled && !preview && selectors.length) {
-      const nodes = Array.from(document.querySelectorAll(selectors));
+    if (document.readyState === 'complete' && enabled && !preview) {
+      const nodes = selectors.length ? Array.from(document.querySelectorAll(selectors)) : [];
 
       fix();
       clean(nodes);
