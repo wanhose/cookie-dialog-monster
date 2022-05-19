@@ -13,6 +13,13 @@ const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v1';
 const baseDataUrl = 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/data';
 
 /**
+ * @description Cache data
+ * @type {{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: string[] }}
+ */
+
+let cache = undefined;
+
+/**
  * @description Context menu identifier
  * @type {string}
  */
@@ -50,13 +57,13 @@ const enableIcon = (tabId) =>
 const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: 'popup.html', tabId });
 
 /**
- * @description Retrieves cache state
+ * @description Retrieves store
  * @param {string} hostname
  * @param {void} callback
  * @returns {{ enabled: boolean }}
  */
 
-const getCache = (hostname, callback) => {
+const getStore = (hostname, callback) => {
   chrome.storage.local.get(null, (store) => {
     callback(store[hostname] ?? initial);
   });
@@ -64,24 +71,48 @@ const getCache = (hostname, callback) => {
 
 /**
  * @async
- * @description Retrieves data from GitHub
- * @param {string} key
+ * @description Get all data from GitHub
  * @param {void} callback
- * @returns {Promise<{ any: string[] }>}
+ * @returns {Promise<{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: string[] }>}
  */
 
-const query = async (key, callback) => {
-  try {
-    const url = `${baseDataUrl}/${key}.txt`;
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    callback({ [key]: data.split('\n') });
-  } catch {
-    callback({ [key]: [] });
+const getData = async (callback) => {
+  if (cache) {
+    callback(cache);
+    return;
   }
+
+  const data = await Promise.all([
+    query('classes'),
+    query('elements'),
+    query('fixes'),
+    query('skips'),
+  ]);
+
+  const result = {
+    attributes: [
+      ...new Set(
+        data[1].elements.flatMap((element) => {
+          const attributes = element.match(/(?<=\[)[^(){}[\]]+(?=\])/g);
+
+          return attributes?.length
+            ? [
+                ...attributes.flatMap((attribute) => {
+                  return attribute ? [attribute.replace(/\".*\"|(=|\^|\*|\$)/g, '')] : [];
+                }),
+              ]
+            : [];
+        })
+      ),
+    ],
+    classes: data[0].classes,
+    fixes: data[2].fixes,
+    selectors: data[1].elements,
+    skips: data[3].skips,
+  };
+
+  if (Object.keys(result).every((key) => result[key].length > 0)) cache = result;
+  callback(result);
 };
 
 /**
@@ -90,13 +121,34 @@ const query = async (key, callback) => {
  * @returns {Promise<{ id: string, location: string }>}
  */
 
-const queryTab = (callback) => {
+const getTab = (callback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     callback({
       id: tabs[0]?.id,
       hostname: new URL(tabs[0].url).hostname.split('.').slice(-2).join('.'),
     });
   });
+};
+
+/**
+ * @async
+ * @description Retrieves data from GitHub
+ * @param {string} key
+ * @returns {Promise<{ [key]: string[] }>}
+ */
+
+const query = async (key) => {
+  try {
+    const url = `${baseDataUrl}/${key}.txt`;
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    return { [key]: [...new Set(data.split('\n'))] };
+  } catch {
+    return { [key]: [] };
+  }
 };
 
 /**
@@ -112,7 +164,7 @@ const report = () => {
     if (tab) {
       fetch(`${apiUrl}/report/`, {
         body: JSON.stringify({
-          html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/> <b>Version:</b> ${version}`,
+          html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/><b>Version:</b> ${version}`,
           to: 'wanhose.development@gmail.com',
           subject: 'Cookie Dialog Monster Report',
         }),
@@ -126,12 +178,12 @@ const report = () => {
 };
 
 /**
- * @description Update cache state
+ * @description Update store
  * @param {string} [hostname]
  * @param {object} [state]
  */
 
-const updateCache = (hostname, state) => {
+const updateStore = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
 
@@ -162,26 +214,17 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     case 'ENABLE_POPUP':
       if (tabId) enablePopup(tabId);
       break;
-    case 'GET_CACHE':
-      getCache(hostname, callback);
+    case 'GET_DATA':
+      getData(callback);
       break;
-    case 'GET_CLASSES':
-      query('classes', callback);
-      break;
-    case 'GET_SKIPS':
-      query('skips', callback);
-      break;
-    case 'GET_FIXES':
-      query('fixes', callback);
-      break;
-    case 'GET_SELECTORS':
-      query('elements', callback);
+    case 'GET_STORE':
+      getStore(hostname, callback);
       break;
     case 'GET_TAB':
-      queryTab(callback);
+      getTab(callback);
       break;
-    case 'UPDATE_CACHE':
-      updateCache(hostname, state);
+    case 'UPDATE_STORE':
+      updateStore(hostname, state);
       break;
     default:
       break;
@@ -196,6 +239,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 
 chrome.contextMenus.create({
   contexts: ['all'],
+  documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
   id: contextMenuId,
   title: chrome.i18n.getMessage('contextMenuText'),
 });
