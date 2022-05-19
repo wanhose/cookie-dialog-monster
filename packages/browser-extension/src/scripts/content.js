@@ -33,17 +33,17 @@ const fixes = [];
 const hostname = document.location.hostname.split('.').slice(-2).join('.');
 
 /**
- * @description Is consent preview page?
- */
-
-const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
-
-/**
  * @description Options provided to observer
  * @type {MutationObserverInit}
  */
 
-const options = { attributes: true, childList: true, subtree: true };
+const options = { childList: true, subtree: true };
+
+/**
+ * @description Is consent preview page?
+ */
+
+const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
  * @description Selectors list
@@ -139,19 +139,6 @@ const observer = new MutationObserver((mutations, instance) => {
 });
 
 /**
- * @description Gets data
- * @returns {Promise<any[]>}
- */
-
-const promiseAll = () =>
-  Promise.all([
-    new Promise((resolve) => dispatch({ type: 'GET_CLASSES' }, null, resolve)),
-    new Promise((resolve) => dispatch({ type: 'GET_FIXES' }, null, resolve)),
-    new Promise((resolve) => dispatch({ type: 'GET_SELECTORS' }, null, resolve)),
-    new Promise((resolve) => dispatch({ type: 'GET_SKIPS' }, null, resolve)),
-  ]);
-
-/**
  * @description Cleans DOM again after all
  * @listens document#readystatechange
  */
@@ -179,17 +166,18 @@ window.addEventListener('unload', () => {});
  * @description Setups everything and starts to observe if enabled
  */
 
-dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
+dispatch({ hostname, type: 'GET_CACHE' }, null, ({ enabled }) => {
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (enabled) {
-    const results = await promiseAll();
-
-    classes.push(...(results[0]?.classes ?? []));
-    fixes.push(...(results[1]?.fixes ?? []));
-    selectors.push(...(results[2]?.elements ?? []));
-    skips.push(...(results[3]?.skips ?? []));
-    observer.observe(target, options);
-    dispatch({ type: 'ENABLE_ICON' });
+    dispatch({ type: 'GET_DATA' }, null, (data) => {
+      classes.push(...data.classes);
+      fixes.push(...data.fixes);
+      options.attributeFilter = data.attributes;
+      selectors.push(...data.selectors);
+      skips.push(...data.skips);
+      observer.observe(target, options);
+      dispatch({ type: 'ENABLE_ICON' });
+    });
   }
 });

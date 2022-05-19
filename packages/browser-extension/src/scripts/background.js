@@ -64,24 +64,36 @@ const getCache = (hostname, callback) => {
 
 /**
  * @async
- * @description Retrieves data from GitHub
- * @param {string} key
+ * @description Get all data from GitHub
  * @param {void} callback
- * @returns {Promise<{ any: string[] }>}
+ * @returns {Promise<{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: [] }>}
  */
 
-const query = async (key, callback) => {
-  try {
-    const url = `${baseDataUrl}/${key}.txt`;
-    const response = await fetch(url);
-    const data = await response.text();
+const getData = async (callback) => {
+  const data = await Promise.all([
+    query('classes'),
+    query('elements'),
+    query('fixes'),
+    query('skips'),
+  ]);
 
-    if (response.status !== 200) throw new Error();
+  callback({
+    attributes: [
+      ...new Set(
+        data[1].elements.flatMap((element) => {
+          const attributes = element.match(/(?<=\[)[^(){}[\]]+(?=\])/g);
 
-    callback({ [key]: data.split('\n') });
-  } catch {
-    callback({ [key]: [] });
-  }
+          return attributes?.length
+            ? [...attributes.map((attribute) => attribute.replace(/\".*\"|(=|\^|\*|\$)/g, ''))]
+            : [];
+        })
+      ),
+    ],
+    classes: data[0].classes,
+    fixes: data[2].fixes,
+    selectors: data[1].elements,
+    skips: data[3].skips,
+  });
 };
 
 /**
@@ -90,13 +102,34 @@ const query = async (key, callback) => {
  * @returns {Promise<{ id: string, location: string }>}
  */
 
-const queryTab = (callback) => {
+const getTab = (callback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     callback({
       id: tabs[0]?.id,
       hostname: new URL(tabs[0].url).hostname.split('.').slice(-2).join('.'),
     });
   });
+};
+
+/**
+ * @async
+ * @description Retrieves data from GitHub
+ * @param {string} key
+ * @returns {Promise<{ [key]: string[] }>}
+ */
+
+const query = async (key) => {
+  try {
+    const url = `${baseDataUrl}/${key}.txt`;
+    const response = await fetch(url);
+    const data = await response.text();
+
+    if (response.status !== 200) throw new Error();
+
+    return { [key]: [...new Set(data.split('\n'))] };
+  } catch {
+    return { [key]: [] };
+  }
 };
 
 /**
@@ -165,20 +198,11 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     case 'GET_CACHE':
       getCache(hostname, callback);
       break;
-    case 'GET_CLASSES':
-      query('classes', callback);
-      break;
-    case 'GET_SKIPS':
-      query('skips', callback);
-      break;
-    case 'GET_FIXES':
-      query('fixes', callback);
-      break;
-    case 'GET_SELECTORS':
-      query('elements', callback);
+    case 'GET_DATA':
+      getData(callback);
       break;
     case 'GET_TAB':
-      queryTab(callback);
+      getTab(callback);
       break;
     case 'UPDATE_CACHE':
       updateCache(hostname, state);
