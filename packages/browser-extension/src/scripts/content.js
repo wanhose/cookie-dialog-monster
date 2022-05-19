@@ -61,23 +61,26 @@ const target = document.body || document.documentElement;
 /**
  * @description Checks if node element is removable
  * @param {any} node
+ * @param {boolean} skipMatch
  * @returns {boolean}
  */
 
-const check = (node) =>
+const check = (node, skipMatch) =>
   node instanceof HTMLElement &&
   node.parentElement &&
   !['BODY', 'HTML'].includes(node.tagName) &&
   !(node.id && ['APP', 'ROOT'].includes(node.id.toUpperCase?.())) &&
-  node.matches(selectors);
+  (skipMatch || node.matches(selectors));
 
 /**
  * @description Cleans DOM
  * @param {HTMLElement[]} nodes
+ * @param {boolean} skipMatch
  * @returns {void}
  */
 
-const clean = (nodes) => nodes.filter(check).forEach((node) => (node.outerHTML = ''));
+const clean = (nodes, skipMatch) =>
+  nodes.filter((node) => check(node, skipMatch)).forEach((node) => (node.outerHTML = ''));
 
 /**
  * @description Fixes scroll issues
@@ -149,8 +152,8 @@ document.addEventListener('readystatechange', () => {
       const nodes = selectors.length ? Array.from(document.querySelectorAll(selectors)) : [];
 
       fix();
-      clean(nodes);
-      setTimeout(() => clean(nodes), 2000);
+      clean(nodes, true);
+      setTimeout(() => clean(nodes, true), 2000);
     }
   });
 });
