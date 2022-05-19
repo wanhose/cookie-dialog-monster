@@ -13,6 +13,13 @@ const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v1';
 const baseDataUrl = 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/data';
 
 /**
+ * @description Cache data
+ * @type {{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: string[] }}
+ */
+
+let cache = undefined;
+
+/**
  * @description Context menu identifier
  * @type {string}
  */
@@ -66,10 +73,15 @@ const getCache = (hostname, callback) => {
  * @async
  * @description Get all data from GitHub
  * @param {void} callback
- * @returns {Promise<{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: [] }>}
+ * @returns {Promise<{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: string[] }>}
  */
 
 const getData = async (callback) => {
+  if (cache) {
+    callback(cache);
+    return;
+  }
+
   const data = await Promise.all([
     query('classes'),
     query('elements'),
@@ -77,14 +89,18 @@ const getData = async (callback) => {
     query('skips'),
   ]);
 
-  callback({
+  const result = {
     attributes: [
       ...new Set(
         data[1].elements.flatMap((element) => {
           const attributes = element.match(/(?<=\[)[^(){}[\]]+(?=\])/g);
 
           return attributes?.length
-            ? [...attributes.map((attribute) => attribute.replace(/\".*\"|(=|\^|\*|\$)/g, ''))]
+            ? [
+                ...attributes.flatMap((attribute) => {
+                  return attribute ? [attribute.replace(/\".*\"|(=|\^|\*|\$)/g, '')] : [];
+                }),
+              ]
             : [];
         })
       ),
@@ -93,7 +109,10 @@ const getData = async (callback) => {
     fixes: data[2].fixes,
     selectors: data[1].elements,
     skips: data[3].skips,
-  });
+  };
+
+  if (Object.keys(result).every((key) => result[key].length > 0)) cache = result;
+  callback(result);
 };
 
 /**
@@ -145,7 +164,7 @@ const report = () => {
     if (tab) {
       fetch(`${apiUrl}/report/`, {
         body: JSON.stringify({
-          html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/> <b>Version:</b> ${version}`,
+          html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/><b>Version:</b> ${version}`,
           to: 'wanhose.development@gmail.com',
           subject: 'Cookie Dialog Monster Report',
         }),
