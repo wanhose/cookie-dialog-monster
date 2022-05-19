@@ -3,6 +3,7 @@
 ## Downloads
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
+- [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii)
 - [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)
 
 ## Compatibility
