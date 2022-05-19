@@ -147,7 +147,7 @@ const observer = new MutationObserver((mutations, instance) => {
  */
 
 document.addEventListener('readystatechange', () => {
-  dispatch({ hostname, type: 'GET_CACHE' }, null, async ({ enabled }) => {
+  dispatch({ hostname, type: 'GET_STORE' }, null, async ({ enabled }) => {
     if (document.readyState === 'complete' && enabled && !preview) {
       const nodes = selectors.length ? Array.from(document.querySelectorAll(selectors)) : [];
 
@@ -169,7 +169,7 @@ window.addEventListener('unload', () => {});
  * @description Setups everything and starts to observe if enabled
  */
 
-dispatch({ hostname, type: 'GET_CACHE' }, null, ({ enabled }) => {
+dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (enabled) {

@@ -36,14 +36,10 @@ const isChromium = chrome.runtime.getURL('').startsWith('chrome-extension://');
 
 const handlePowerChange = () => {
   dispatch({ type: 'GET_TAB' }, null, ({ hostname, id }) => {
-    dispatch({ hostname, type: 'GET_CACHE' }, null, ({ enabled }) => {
+    dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
       const power = document.getElementById('power');
 
-      dispatch({
-        hostname,
-        state: { enabled: !enabled },
-        type: 'UPDATE_CACHE',
-      });
+      dispatch({ hostname, state: { enabled: !enabled }, type: 'UPDATE_STORE' });
       if (!enabled === false) power.removeAttribute('checked');
       if (!enabled === true) power.setAttribute('checked', 'checked');
       chrome.tabs.reload(id, { bypassCache: true });
@@ -90,7 +86,7 @@ const handleRate = (event) => {
 
 const handleContentLoaded = () => {
   dispatch({ type: 'GET_TAB' }, null, ({ hostname }) => {
-    dispatch({ hostname, type: 'GET_CACHE' }, null, ({ enabled }) => {
+    dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
       translate();
 
       const host = document.getElementById('host');

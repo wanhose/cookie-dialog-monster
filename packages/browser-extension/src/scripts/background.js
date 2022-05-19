@@ -57,13 +57,13 @@ const enableIcon = (tabId) =>
 const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: 'popup.html', tabId });
 
 /**
- * @description Retrieves cache state
+ * @description Retrieves store
  * @param {string} hostname
  * @param {void} callback
  * @returns {{ enabled: boolean }}
  */
 
-const getCache = (hostname, callback) => {
+const getStore = (hostname, callback) => {
   chrome.storage.local.get(null, (store) => {
     callback(store[hostname] ?? initial);
   });
@@ -178,12 +178,12 @@ const report = () => {
 };
 
 /**
- * @description Update cache state
+ * @description Update store
  * @param {string} [hostname]
  * @param {object} [state]
  */
 
-const updateCache = (hostname, state) => {
+const updateStore = (hostname, state) => {
   chrome.storage.local.get(null, (cache) => {
     const current = cache[hostname];
 
@@ -214,17 +214,17 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
     case 'ENABLE_POPUP':
       if (tabId) enablePopup(tabId);
       break;
-    case 'GET_CACHE':
-      getCache(hostname, callback);
-      break;
     case 'GET_DATA':
       getData(callback);
+      break;
+    case 'GET_STORE':
+      getStore(hostname, callback);
       break;
     case 'GET_TAB':
       getTab(callback);
       break;
-    case 'UPDATE_CACHE':
-      updateCache(hostname, state);
+    case 'UPDATE_STORE':
+      updateStore(hostname, state);
       break;
     default:
       break;
@@ -239,6 +239,7 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 
 chrome.contextMenus.create({
   contexts: ['all'],
+  documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
   id: contextMenuId,
   title: chrome.i18n.getMessage('contextMenuText'),
 });
