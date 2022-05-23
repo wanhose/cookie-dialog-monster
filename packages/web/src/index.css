@@ -10,7 +10,7 @@
 
 @layer components {
   .button {
-    @apply font-bold md:bg-2x md:hover:animate-gradient md:hover:shadow-md rounded-lg text-white px-8 py-4;
+    @apply font-bold md:bg-2x md:hover:shadow-md rounded-lg text-white px-8 py-4;
   }
 
   .icon-box {

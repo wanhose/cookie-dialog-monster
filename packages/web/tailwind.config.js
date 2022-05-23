@@ -12,9 +12,9 @@ module.exports = {
         gradient: 'gradient 3s ease infinite',
       },
       colors: {
-        'chrome-1': '#fe4e40',
+        'chrome-1': '#01a258',
         'chrome-2': '#008cf8',
-        'chrome-3': '#01a258',
+        'chrome-3': '#fe4e40',
         'edge-1': '#197bc4',
         'edge-2': '#2ec2e0',
         'edge-3': '#52dc6c',
