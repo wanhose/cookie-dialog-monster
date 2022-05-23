@@ -5,7 +5,6 @@
     "build": "rimraf build && tsc",
     "dev": "nodemon",
     "lint": "eslint src/**/*.ts --fix",
-    "prepare": "husky install",
     "start": "NODE_PATH=build node build/index.js"
   },
   "dependencies": {

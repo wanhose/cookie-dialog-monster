@@ -36,50 +36,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          backgroundSize: {
-            ...tailwind.defaultTheme.backgroundSize,
-            '2x': '200%',
-          },
-          extend: {
-            animation: {
-              gradient: 'gradient 3s ease infinite',
-            },
-            colors: {
-              'chrome-1': '#fe4e40',
-              'chrome-2': '#008cf8',
-              'chrome-3': '#01a258',
-              'edge-1': '#197bc4',
-              'edge-2': '#2ec2e0',
-              'edge-3': '#52dc6c',
-              'firefox-1': '#fe3b45',
-              'firefox-2': '#775aea',
-              'firefox-3': '#fee545',
-              primary: '#3dd9eb',
-              secondary: '#34495e',
-            },
-            fontFamily: {
-              sans: ['Inter', ...tailwind.defaultTheme.fontFamily.sans],
-            },
-            keyframes: {
-              gradient: {
-                '0%, 100%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'left center',
-                },
-                '50%': {
-                  'background-size': '200% 200%',
-                  'background-position': 'right center',
-                },
-              },
-            },
-          },
-        },
-      };
-    </script>
+    <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
     <header>
