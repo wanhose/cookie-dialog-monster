@@ -15,12 +15,12 @@
       2,
       "always",
       [
+        "api",
         "browser-extension",
         "data",
         "docs",
         "landing-page",
-        "packages",
-        "report-service"
+        "packages"
       ]
     ]
   }

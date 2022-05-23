@@ -1,5 +1,5 @@
 {
-  "name": "report-service",
+  "name": "api",
   "version": "1.0.0",
   "scripts": {
     "build": "rimraf build && tsc",

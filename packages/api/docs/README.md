@@ -1,4 +1,4 @@
-# Cookie Monster Dialog Report Service
+# Cookie Monster Dialog API
 
 ## Contributing
 
