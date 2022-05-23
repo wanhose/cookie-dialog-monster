@@ -18,6 +18,7 @@
         "browser-extension",
         "data",
         "docs",
+        "landing-page",
         "packages",
         "report-service"
       ]
