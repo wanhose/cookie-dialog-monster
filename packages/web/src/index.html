@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth">
+<html class="scroll-smooth" lang="en">
   <head>
     <title>Cookie Consent Dialog | Did someone say cookie consent dialogs?</title>
     <meta charset="UTF-8" />
@@ -42,7 +42,12 @@
     <header>
       <nav class="bg-secondary text-white">
         <div class="flex items-center max-w-5xl mx-auto p-4">
-          <svg class="h-8 mr-4 shrink-0 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+          <svg
+            aria-hidden="true"
+            class="h-8 mr-4 shrink-0 w-8"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
+          >
             <path
               class="fill-primary"
               d="M45,22.5C45,32,36,41,24,41S3,33,3,22.5C3,14.492,14.059,12,24,12S45,14.492,45,22.5z"
@@ -79,7 +84,7 @@
           <p class="font-medium">Cookie Dialog Monster</p>
           <div class="ml-auto">
             <div class="flex gap-4 text-white">
-              <a class="contents" href="mailto:wanhose.development@gmail.com">
+              <a class="contents" href="mailto:wanhose.development@gmail.com" title="Email">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-6 w-6"
@@ -97,6 +102,7 @@
                 class="contents"
                 href="https://www.github.com/wanhose/cookie-dialog-monster"
                 target="_blank"
+                title="GitHub"
               >
                 <svg
                   class="h-6 w-6"
@@ -128,13 +134,11 @@
           A browser extension that helps you to remove those irritating cookie consent dialogs
           automatically
         </p>
-        <div class="flex flex-col gap-4 justify-center md:flex-row md:gap-8 mt-8">
-          <a
-            class="bg-gradient-to-r from-primary font-bold md:bg-2x md:hover:animate-gradient rounded-lg text-white to-blue-500 px-8 py-4"
-            href="#downloads"
-          >
+        <div class="flex flex-col gap-4 justify-center md:flex-row md:gap-8 mt-16">
+          <a class="bg-gradient-to-r button from-primary to-blue-500 px-8 py-4" href="#downloads">
             Download now
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 inline md:hidden w-5"
               viewBox="0 0 20 20"
@@ -151,29 +155,19 @@
       </div>
       <div class="flex flex-col gap-8 md:flex-row md:gap-20 md:py-20 py-10">
         <div class="md:mt-14">
-          <h2 class="font-bold text-secondary text-3xl">
-            A powerful popup to manage all from a single place
-          </h2>
+          <h2>A powerful popup to manage all from a single place</h2>
           <p class="mt-8 text-gray-500 text-xl">
             Disable our extension if you would like to accept cookies in a specific page, rate us,
             refresh the current page cleaning the cache or start a conversation because you need
             help.
           </p>
         </div>
-        <img
-          alt="Extension Popup"
-          class="self-center max-w-sm md:self-start rounded-lg shadow-2xl shrink-0 w-full"
-          src="/images/popup.png"
-        />
+        <img alt="Extension Popup" class="image" src="/images/popup.png" />
       </div>
       <div class="flex flex-col-reverse gap-8 md:flex-row md:gap-20 md:py-20 py-10">
-        <img
-          alt="Extension Report Button"
-          class="self-center max-w-sm md:self-start rounded-lg shadow-2xl shrink-0 w-full"
-          src="/images/report.png"
-        />
+        <img alt="Extension Report Button" class="image" src="/images/report.png" />
         <div class="md:mt-14">
-          <h2 class="font-bold text-secondary text-3xl">We are not perfect but we try</h2>
+          <h2>We are not perfect but we try</h2>
           <p class="mt-8 text-gray-500 text-xl">
             Report any page that works bad with our extension, just right-click anywhere on the page
             and press the report button. This will send us an email with all the information we need
@@ -187,18 +181,18 @@
       </div>
       <div class="md:py-20 py-10">
         <div class="md:text-center">
-          <h2 class="font-bold text-secondary text-3xl">A better way to surf the Internet</h2>
+          <h2>A better way to surf the Internet</h2>
           <p class="max-w-3xl mt-8 mx-auto text-gray-500 text-xl">
             Improve your experience as user surfing the Internet avoiding to click on those
             irritating cookie consent dialogs
           </p>
         </div>
         <div class="grid gap-12 md:grid-cols-3 mt-16">
-          <div>
-            <div class="bg-secondary h-12 relative rounded-lg text-white w-12">
+          <div aria-hidden="true">
+            <div class="icon-box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2"
+                class="icon-box-icon"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -214,11 +208,11 @@
               Using the most performant and newest APIs in the market
             </p>
           </div>
-          <div>
-            <div class="bg-secondary h-12 relative rounded-lg text-white w-12">
+          <div aria-hidden="true">
+            <div class="icon-box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2"
+                class="icon-box-icon"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -230,11 +224,11 @@
             <h3 class="font-medium mt-4 text-lg text-secondary">Cross-browser</h3>
             <p class="mt-2 text-gray-500">Available on Chromium-based browsers and Firefox</p>
           </div>
-          <div>
-            <div class="bg-secondary h-12 relative rounded-lg text-white w-12">
+          <div aria-hidden="true">
+            <div class="icon-box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2"
+                class="icon-box-icon"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -246,11 +240,11 @@
             <h3 class="font-medium mt-4 text-lg text-secondary">Extremely light</h3>
             <p class="mt-2 text-gray-500">Less than 200KiB</p>
           </div>
-          <div>
-            <div class="bg-secondary h-12 relative rounded-lg text-white w-12">
+          <div aria-hidden="true">
+            <div class="icon-box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2"
+                class="icon-box-icon"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -264,11 +258,11 @@
             <h3 class="font-medium mt-4 text-lg text-secondary">Internationalization</h3>
             <p class="mt-2 text-gray-500">Available in 9 different languages</p>
           </div>
-          <div>
-            <div class="bg-secondary h-12 relative rounded-lg text-white w-12">
+          <div aria-hidden="true">
+            <div class="icon-box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2"
+                class="icon-box-icon"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -286,11 +280,11 @@
               High cross-site support thanks to our almost 13000 database entries
             </p>
           </div>
-          <div>
-            <div class="bg-secondary h-12 relative rounded-lg text-white w-12">
+          <div aria-hidden="true">
+            <div class="icon-box">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2"
+                class="icon-box-icon"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -312,15 +306,16 @@
         </div>
       </div>
       <div class="md:pb-20 pb-10 pt-10 md:text-center" id="downloads">
-        <h2 class="font-semibold text-4xl text-secondary">Available now on</h2>
-        <div class="flex flex-col gap-4 justify-center md:flex-row md:gap-8 mt-8">
+        <h2>Available now on</h2>
+        <div class="flex flex-col gap-4 justify-center md:flex-row md:gap-8 mt-16">
           <a
-            class="bg-gradient-to-r from-chrome-1 via-chrome-2 to-chrome-3 font-bold md:bg-2x md:hover:animate-gradient rounded-lg text-white px-8 py-4"
+            class="bg-gradient-to-r button from-chrome-1 to-chrome-3 via-chrome-2"
             href="https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg"
             target="_blank"
           >
             Chrome Web Store
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 inline md:hidden w-5"
               viewBox="0 0 20 20"
@@ -334,12 +329,13 @@
             </svg>
           </a>
           <a
-            class="bg-gradient-to-r from-edge-1 via-edge-2 to-edge-3 font-bold md:bg-2x md:hover:animate-gradient rounded-lg text-white px-8 py-4"
+            class="bg-gradient-to-r button from-edge-1 to-edge-3 via-edge-2"
             href="https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii"
             target="_blank"
           >
             Edge Add-ons
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 inline md:hidden w-5"
               viewBox="0 0 20 20"
@@ -353,12 +349,13 @@
             </svg>
           </a>
           <a
-            class="bg-gradient-to-r from-firefox-1 via-firefox-2 to-firefox-3 font-bold md:bg-2x md:hover:animate-gradient rounded-lg text-white px-8 py-4"
+            class="bg-gradient-to-r button from-firefox-1 to-firefox-3 via-firefox-2"
             href="https://addons.mozilla.org/firefox/addon/cookie-dialog-monster"
             target="_blank"
           >
             Firefox Add-ons
             <svg
+              aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 inline md:hidden w-5"
               viewBox="0 0 20 20"

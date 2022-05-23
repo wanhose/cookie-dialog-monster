@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h2 {
+    @apply font-bold text-secondary text-3xl;
+  }
+}
+
+@layer components {
+  .button {
+    @apply font-bold md:bg-2x md:hover:animate-gradient md:hover:shadow-md rounded-lg text-white px-8 py-4;
+  }
+
+  .icon-box {
+    @apply bg-secondary h-12 relative rounded-lg text-white w-12;
+  }
+
+  .icon-box-icon {
+    @apply absolute h-5 left-1/2 top-1/2 transform w-5 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .image {
+    @apply self-center max-w-sm md:self-start rounded-lg shadow-2xl shrink-0 w-full;
+  }
+}
