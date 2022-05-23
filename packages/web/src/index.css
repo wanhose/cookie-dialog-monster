@@ -10,7 +10,11 @@
 
 @layer components {
   .button {
-    @apply font-bold md:bg-2x md:hover:shadow-md rounded-lg text-white px-8 py-4;
+    @apply font-bold gap-2 inline-flex items-center md:bg-2x md:hover:shadow-md rounded-lg text-white px-8 py-4;
+  }
+
+  .icon {
+    @apply h-5 inline w-5;
   }
 
   .icon-box {
