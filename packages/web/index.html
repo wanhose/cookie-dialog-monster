@@ -326,8 +326,7 @@
             </div>
             <h3 class="font-medium mt-4 text-lg text-secondary">Large database</h3>
             <p class="mt-2 text-gray-500">
-              High cross-site support thanks to our almost <span id="entries"></span> database
-              entries
+              High cross-site support thanks to our almost 13000 database entries
             </p>
           </div>
           <div>
@@ -439,19 +438,5 @@
         <a class="hover:underline" href="https://www.github.com/wanhose" target="_blank">wanhose</a>
       </h5>
     </footer>
-    <script>
-      const entriesElement = document.getElementById('entries');
-      const repositoryUrl = 'https://www.github.com/wanhose/cookie-dialog-monster';
-
-      (async () => {
-        try {
-          const entriesUrl = `${repositoryUrl}/data/elements.txt`;
-          const entriesLength = (await (await fetch(entriesUrl)).text()).split('\n').length;
-          entriesElement.textContent = entriesLength;
-        } catch {
-          entriesElement.textContent = 13000;
-        }
-      })();
-    </script>
   </body>
 </html>
