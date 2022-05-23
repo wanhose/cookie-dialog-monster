@@ -1,12 +1,12 @@
 {
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
     "baseUrl": "src",
     "outDir": "build",
     "rootDir": "src"
   },
   "extends": "@tsconfig/node16/tsconfig.json",
-  "include": ["src/**/*.ts"],
-  "ts-node": {
-    "files": true
-  }
+  "include": ["src/**/*.ts"]
 }

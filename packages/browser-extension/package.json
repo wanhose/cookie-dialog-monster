@@ -6,8 +6,8 @@
     "lint": "eslint src/**/*.js --fix"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.186",
-    "eslint": "^8.15.0",
+    "@types/chrome": "^0.0.188",
+    "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "minify": "^8.0.4",
