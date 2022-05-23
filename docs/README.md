@@ -6,3 +6,4 @@ A browser extension that eats cookie consent dialogs.
 
 - [API](/packages/api/)
 - [Browser extension](/packages/browser-extension/)
+- [Web](/packages/web/)
