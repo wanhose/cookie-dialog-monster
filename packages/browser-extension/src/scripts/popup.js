@@ -37,11 +37,7 @@ const isChromium = chrome.runtime.getURL('').startsWith('chrome-extension://');
 const handlePowerChange = () => {
   dispatch({ type: 'GET_TAB' }, null, ({ hostname, id }) => {
     dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
-      const power = document.getElementById('power');
-
       dispatch({ hostname, state: { enabled: !enabled }, type: 'UPDATE_STORE' });
-      if (!enabled === false) power.removeAttribute('checked');
-      if (!enabled === true) power.setAttribute('checked', 'checked');
       chrome.tabs.reload(id, { bypassCache: true });
     });
   });

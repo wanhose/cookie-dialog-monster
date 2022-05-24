@@ -1,18 +1,27 @@
 :root {
-  --color-chocolate: #47321e;
-  --color-cookie: #f2e9df;
   --color-error: #cc0000;
+  --color-primary: #3dd9eb;
+  --color-secondary: #34495e;
   --color-success: #5cb85c;
+  --color-tertiary: #6b7280;
   --color-white: #ffffff;
 }
 
 a {
-  color: var(--color-star);
+  color: inherit;
   display: inline-block;
+  font-weight: bold;
+  outline: none;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
 }
 
 body {
-  color: var(--color-chocolate);
+  color: var(--color-tertiary);
   display: flex;
   flex-direction: column;
   font-family: 'Lato', Arial, Helvetica, sans-serif;
@@ -21,15 +30,48 @@ body {
 }
 
 button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
+  outline: none;
 }
 
-button:focus {
-  outline: none;
+footer {
+  font-size: 0.75rem;
+  margin-top: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+header {
+  align-items: center;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  display: flex;
+  font-size: 1rem;
+  height: 3rem;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+hr {
+  margin-bottom: 1rem;
+}
+
+input:checked + .slider {
+  background-color: var(--color-secondary);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 0.0625rem var(--color-secondary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.25rem);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
 }
 
 span {
@@ -45,19 +87,6 @@ svg {
   width: 1rem;
 }
 
-/* Header */
-
-.header {
-  align-items: center;
-  background-color: var(--color-cookie);
-  display: flex;
-  font-size: 1rem;
-  font-weight: bold;
-  height: 3rem;
-  justify-content: space-between;
-  padding: 0 1rem;
-}
-
 .header-actions {
   align-items: center;
   display: flex;
@@ -65,42 +94,20 @@ svg {
 
 .header-actions > button {
   border-radius: 0.125rem;
-  color: var(--color-chocolate);
+  color: var(--color-white);
   padding: 0.25rem;
   transition: 0.4s;
 }
 
 .header-actions > button:focus,
 .header-actions > button:hover {
-  background-color: var(--color-chocolate);
-  color: var(--color-cookie);
+  background-color: var(--color-white);
+  color: var(--color-secondary);
 }
 
 .header-title {
   font-size: 1rem;
-  font-weight: bold;
-  margin: 0;
 }
-
-/* Main */
-
-main {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-}
-
-/* Footer */
-
-footer {
-  border-top: 0.0625rem solid var(--color-cookie);
-  font-size: 0.75rem;
-  margin-top: auto;
-  padding: 1rem;
-  text-align: center;
-}
-
-/* Help */
 
 .help {
   align-items: center;
@@ -109,47 +116,21 @@ footer {
 }
 
 .help > a {
+  color: var(--color-secondary);
   padding: 0.25rem;
-  text-decoration: none;
   transition: 0.4s;
 }
 
 .help > a:focus,
 .help > a:hover {
-  background-color: var(--color-chocolate);
+  background-color: var(--color-secondary);
   border-radius: 0.125rem;
-  color: var(--color-cookie);
+  color: var(--color-white);
   outline: none;
 }
 
 .help > span {
   font-size: 0.875rem;
-}
-
-/* Rating */
-
-#like,
-#unlike {
-  color: var(--color-chocolate);
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: 0.4s;
-}
-
-#like:focus,
-#like:hover {
-  color: var(--color-success);
-}
-
-#negative,
-#positive {
-  background-color: var(--color-cookie);
-  border-radius: 0.125rem;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  margin-bottom: 0;
-  margin-top: 1rem;
-  padding: 1rem;
 }
 
 .rating {
@@ -170,22 +151,6 @@ footer {
 .rating-actions > button {
   margin-left: 1rem;
 }
-
-#unlike:focus,
-#unlike:hover {
-  color: var(--color-error);
-}
-
-/* Separator */
-
-.separator {
-  border-bottom: 0.0625rem solid var(--color-cookie);
-  height: 0;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-
-/* Switch */
 
 .switch {
   display: inline-block;
@@ -214,7 +179,7 @@ footer {
 }
 
 .slider {
-  background-color: var(--color-cookie);
+  background-color: var(--color-tertiary);
   bottom: 0;
   cursor: pointer;
   left: 0;
@@ -235,14 +200,32 @@ footer {
   width: 0.75rem;
 }
 
-input:checked + .slider {
-  background-color: var(--color-chocolate);
+#like,
+#unlike {
+  color: var(--color-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: 0.4s;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 0.0625rem var(--color-chocolate);
+#like:focus,
+#like:hover {
+  color: var(--color-success);
 }
 
-input:checked + .slider:before {
-  transform: translateX(1.25rem);
+#negative,
+#positive {
+  background-color: var(--color-secondary);
+  border-radius: 0.125rem;
+  color: var(--color-white);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+#unlike:focus,
+#unlike:hover {
+  color: var(--color-error);
 }

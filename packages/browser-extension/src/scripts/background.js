@@ -123,9 +123,11 @@ const getData = async (callback) => {
 
 const getTab = (callback) => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tab = tabs[0];
+
     callback({
-      id: tabs[0]?.id,
-      hostname: new URL(tabs[0].url).hostname.split('.').slice(-2).join('.'),
+      id: tab?.id,
+      hostname: tab ? new URL(tab.url).hostname.split('.').slice(-2).join('.') : undefined,
     });
   });
 };
