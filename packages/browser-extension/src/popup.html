@@ -8,7 +8,7 @@
     <script src="/scripts/popup.js"></script>
   </head>
   <body>
-    <header class="header">
+    <header>
       <h1 class="header-title">Cookie Dialog Monster</h1>
       <div class="header-actions">
         <button aria-label="Reload page" id="reload">
@@ -41,7 +41,6 @@
           <span class="slider"></span>
         </div>
       </label>
-      <div class="separator"></div>
       <div>
         <div class="rating">
           <span data-i18n="reviewText"></span>
@@ -85,7 +84,6 @@
         <p data-i18n="negativeText" hidden="true" id="negative"></p>
         <p data-i18n="positiveText" hidden="true" id="positive"></p>
       </div>
-      <div class="separator"></div>
       <div class="help">
         <span data-i18n="helpText"></span>
         <a href="mailto:wanhose.development@gmail.com" target="_blank">
@@ -107,6 +105,7 @@
       </div>
     </main>
     <footer>
+      <hr />
       <span data-i18n="footerText"></span>
       <a href="https://github.com/wanhose" target="_blank">wanhose</a>
     </footer>

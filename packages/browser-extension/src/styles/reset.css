@@ -30,8 +30,22 @@ th,
 td,
 caption {
   font-weight: normal;
+  margin: 0;
 }
 
 img {
   border: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
 }
