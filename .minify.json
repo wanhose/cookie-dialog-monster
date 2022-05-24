@@ -1,0 +1,8 @@
+{
+  "html": {
+    "removeOptionalTags": false
+  },
+  "img": {
+    "maxSize": 0
+  }
+}
