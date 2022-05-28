@@ -12526,3 +12526,9 @@ ck-user-cookie-consent-modal
 #modal-host
 #tacRoot
 .cookie-popups__container
+.mt-SharedCmp
+#vs-cookies-policy
+.vs-info-cookies-modal
+dile-cookies-consent
+#modal_cookies
+[c_data="c_cookie_main"]
