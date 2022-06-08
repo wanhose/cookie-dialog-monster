@@ -12,6 +12,7 @@ hasCookieBanner
 modal--is-open
 no-scroll
 no_scroll
+shopee-no-scroll
 sp-message-open
 ta-cc-modal-open
 touchevents-false

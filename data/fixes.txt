@@ -4,6 +4,7 @@ dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##c
 facebook##._31e##reset##position
 gettr.com##button.bold##click
 golem.de###btnsimplec##click
+google.com##button:last-child:not([role])##click
 google##form[action*="consent.google"] button##click
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index

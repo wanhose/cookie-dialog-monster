@@ -12532,3 +12532,13 @@ ck-user-cookie-consent-modal
 dile-cookies-consent
 #modal_cookies
 [c_data="c_cookie_main"]
+#main > div > footer ~ [style="z-index: 100000;"]
+#sell-process + #order-confirmation + .footer + #popup_wrapper
+.gc-cookie-bar
+.plo-overlay
+#js_cookie-consent__main
+.cc_cookie-consent__main
+#js_consent-modal
+.cc_consent-modal
+[modalid="AvisoCookies"]
+[namecookie="correosCookies"]
