@@ -12542,3 +12542,11 @@ dile-cookies-consent
 .cc_consent-modal
 [modalid="AvisoCookies"]
 [namecookie="correosCookies"]
+.fancybox-overlay
+.privacyAlertBox
+.theme.light > [style="z-index: 4;"]
+.experiencefragment-cookie
+#freeprivacypolicy-com---nb
+#cookies-legal-advice
+.ibeugdpr-banner
+.ibeugdpr-overlay
