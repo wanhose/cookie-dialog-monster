@@ -16,8 +16,8 @@
     "message": "Aide ou problèmes?"
   },
   "negativeText": {
-    "description": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>",
-    "message": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>"
+    "description": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>",
+    "message": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>"
   },
   "positiveText": {
     "description": "Merci! Veuillez évaluer notre extension <a id=\"store\" target=\"_blank\">ici</a> <span aria-label=\"Visage souriant avec des yeux en forme de coeur\" role=\"img\">😍</span>",
