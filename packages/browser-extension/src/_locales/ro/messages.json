@@ -16,8 +16,8 @@
     "message": "Ajutor sau probleme?"
   },
   "negativeText": {
-    "description": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>",
-    "message": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>"
+    "description": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>",
+    "message": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>"
   },
   "positiveText": {
     "description": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>",

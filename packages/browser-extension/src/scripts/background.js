@@ -167,7 +167,7 @@ const report = () => {
       fetch(`${apiUrl}/report/`, {
         body: JSON.stringify({
           html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/><b>Version:</b> ${version}`,
-          to: 'wanhose.development@gmail.com',
+          to: 'hello@wanhose.dev',
           subject: 'Cookie Dialog Monster Report',
         }),
         headers: {

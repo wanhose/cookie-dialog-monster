@@ -15,6 +15,15 @@ const chromeUrl = 'https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigib
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @constant edgeUrl
+ * @description Edge Add-ons link
+ * @type {string}
+ */
+
+const edgeUrl =
+  'https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii';
+
+/**
  * @constant firefoxUrl
  * @description Firefox Add-ons link
  * @type {string}
@@ -28,7 +37,23 @@ const firefoxUrl = 'https://addons.mozilla.org/es/firefox/addon/cookie-dialog-mo
  * @type {boolean}
  */
 
-const isChromium = chrome.runtime.getURL('').startsWith('chrome-extension://');
+const isChromium = navigator.userAgent.indexOf('Chrome') !== -1;
+
+/**
+ * @constant isEdge
+ * @description Is current browser an instance of Edge?
+ * @type {boolean}
+ */
+
+const isEdge = navigator.userAgent.indexOf('Edg') !== -1;
+
+/**
+ * @constant isFirefox
+ * @description Is current browser an instance of Firefox?
+ * @type {boolean}
+ */
+
+const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
 /**
  * @description Disables or enables extension on current page
@@ -95,7 +120,9 @@ const handleContentLoaded = () => {
       like.addEventListener('click', handleRate);
       power.addEventListener('change', handlePowerChange);
       reload.addEventListener('click', handleReload);
-      store.setAttribute('href', isChromium ? chromeUrl : firefoxUrl);
+      if (isEdge) store.setAttribute('href', edgeUrl);
+      else if (isChromium) store.setAttribute('href', chromeUrl);
+      else if (isFirefox) store.setAttribute('href', firefoxUrl);
       unlike.addEventListener('click', handleRate);
       if (location) host.innerText = hostname.replace('www.', '');
       if (!enabled) power.removeAttribute('checked');

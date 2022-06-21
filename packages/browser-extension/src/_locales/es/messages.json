@@ -16,8 +16,8 @@
     "message": "¿Ayuda o problemas?"
   },
   "negativeText": {
-    "description": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>",
-    "message": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:wanhose.development@gmail.com\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>"
+    "description": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>",
+    "message": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>"
   },
   "positiveText": {
     "description": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>",
