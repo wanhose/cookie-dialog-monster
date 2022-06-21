@@ -20,7 +20,7 @@ server.register(rateLimit, { max: 1, timeWindow: 30000 });
 server.register(v1EntriesRoutes, { prefix: '/rest/v1' });
 server.register(v1ReportRoutes, { prefix: '/rest/v1' });
 
-server.listen(environment.port, '0.0.0.0', (error, address) => {
+server.listen({ host: '0.0.0.0', port: environment.port }, (error, address) => {
   if (error) {
     console.error(error);
     process.exit(1);
