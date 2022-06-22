@@ -1,7 +1,36 @@
+/node_modules
+/.pnp
+/.yarn
+.pnp.js
+
+# testing
+/coverage
+
+#cache
+.turbo
+
+# misc
 .DS_Store
-.pnp.*
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-build
-node_modules
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*
+
+out/
+build/
+dist/
+
+# plasmo - https://www.plasmo.com
+.plasmo
+
+# bpp - http://bpp.browser.market/
+keys.json
+
+# typescript
+.tsbuildinfo
