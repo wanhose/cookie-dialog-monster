@@ -1,0 +1,34 @@
+{
+  "appDesc": {
+    "description": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋",
+    "message": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋"
+  },
+  "contextMenuText": {
+    "description": "Webseite melden...",
+    "message": "Webseite melden..."
+  },
+  "footerText": {
+    "description": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von",
+    "message": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von"
+  },
+  "helpText": {
+    "description": "Hilfe oder Probleme?",
+    "message": "Hilfe oder Probleme?"
+  },
+  "negativeText": {
+    "description": "Ups! Wir entschuldigen uns für die Unannehmlichkeiten, bitte <a href=\"mailto:$1\" target=\"_blank\">kontaktieren Sie uns</a> <span aria-label=\"Grinsendes Gesicht mit Schweiß\" role=\"img\">😅</span>",
+    "message": "Ups! Wir entschuldigen uns für die Unannehmlichkeiten, bitte <a href=\"mailto:$1\" target=\"_blank\">kontaktieren Sie uns</a> <span aria-label=\"Grinsendes Gesicht mit Schweiß\" role=\"img\">😅</span>"
+  },
+  "positiveText": {
+    "description": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a href=\"$1\" id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>",
+    "message": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a href=\"$1\" id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>"
+  },
+  "reviewText": {
+    "description": "Gefällt dir diese Erweiterung?",
+    "message": "Gefällt dir diese Erweiterung?"
+  },
+  "toggleText": {
+    "description": "Essensdialoge in ",
+    "message": "Essensdialoge in "
+  }
+}

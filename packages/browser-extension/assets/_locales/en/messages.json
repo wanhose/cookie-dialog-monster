@@ -16,12 +16,12 @@
     "message": "Help or issues?"
   },
   "negativeText": {
-    "description": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>",
-    "message": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>"
+    "description": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:$1\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>",
+    "message": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:$1\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>"
   },
   "positiveText": {
-    "description": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>",
-    "message": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>"
+    "description": "Thank you! Please rate our extension <a href=\"$1\" id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>",
+    "message": "Thank you! Please rate our extension <a href=\"$1\" id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>"
   },
   "reviewText": {
     "description": "Do you like this extension?",

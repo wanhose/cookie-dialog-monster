@@ -1,20 +1,66 @@
 {
   "name": "browser-extension",
-  "version": "1.0.0",
+  "version": "6.0.0",
+  "author": "wanhose",
   "scripts": {
-    "build": "rimraf build && sh scripts/build.sh",
-    "lint": "eslint src/**/*.js --fix"
+    "build": "plasmo build --zip",
+    "dev": "plasmo dev",
+    "lint": "tsc --noEmit && eslint ./**/*.{ts,tsx} --fix",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.190",
+    "@types/jest": "^28.1.3",
+    "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "minify": "^9.1.0",
-    "rimraf": "^3.0.2"
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^28.1.1",
+    "jest-webextension-mock": "^3.7.22",
+    "plasmo": "^0.43.4"
+  },
+  "dependencies": {
+    "@plasmohq/storage": "^0.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10"
   },
   "engines": {
     "node": "16.x"
+  },
+  "manifest": {
+    "manifest_version": 2,
+    "name": "Cookie Dialog Monster",
+    "default_locale": "en",
+    "description": "__MSG_appDesc__",
+    "browser_action": {
+      "default_icon": "/assets/icons/disabled.png",
+      "default_title": "Cookie Dialog Monster"
+    },
+    "content_scripts": {
+      "exclude_matches": [
+        "*://*.gfycat.com/*",
+        "*://*.gmx.com/*",
+        "*://*.mediathekviewweb.de/*",
+        "*://*.rundschau-online.de/*",
+        "*://*.youtube.com/embed/*"
+      ]
+    },
+    "permissions": [
+      "contextMenus",
+      "http://*/*",
+      "https://*/*",
+      "storage",
+      "tabs"
+    ]
   },
   "packageManager": "yarn@3.2.1",
   "license": "MIT"
