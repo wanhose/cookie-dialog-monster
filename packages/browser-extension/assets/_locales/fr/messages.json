@@ -8,8 +8,8 @@
     "message": "Signaler le site..."
   },
   "footerText": {
-    "description": "Fabriqué avec <span aria-label=\"Amour\" role=\"img\">❤️</span> par",
-    "message": "Fabriqué avec <span aria-label=\"Amour\" role=\"img\">❤️</span> par"
+    "description": "Fabriqué avec <span aria-label=\"Amour\" role=\"img\">❤️</span> par ",
+    "message": "Fabriqué avec <span aria-label=\"Amour\" role=\"img\">❤️</span> par "
   },
   "helpText": {
     "description": "Aide ou problèmes?",

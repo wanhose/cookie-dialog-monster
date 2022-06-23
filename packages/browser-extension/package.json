@@ -33,32 +33,35 @@
     "react-dom": "^18.2.0",
     "react-feather": "^2.0.10"
   },
-  "engines": {
-    "node": "16.x"
-  },
   "manifest": {
-    "manifest_version": 2,
     "name": "Cookie Dialog Monster",
     "default_locale": "en",
     "description": "__MSG_appDesc__",
-    "browser_action": {
-      "default_icon": "/assets/icons/disabled.png",
-      "default_title": "Cookie Dialog Monster"
-    },
-    "content_scripts": {
-      "exclude_matches": [
-        "*://*.gfycat.com/*",
-        "*://*.gmx.com/*",
-        "*://*.mediathekviewweb.de/*",
-        "*://*.rundschau-online.de/*",
-        "*://*.youtube.com/embed/*"
-      ]
-    },
+    "content_scripts": [
+      {
+        "exclude_matches": [
+          "*://*.gfycat.com/*",
+          "*://*.gmx.com/*",
+          "*://*.mediathekviewweb.de/*",
+          "*://*.rundschau-online.de/*",
+          "*://*.youtube.com/embed/*"
+        ],
+        "matches": [
+          "http://*/*",
+          "https://*/*"
+        ],
+        "js": [
+          "../content/index.ts"
+        ],
+        "run_at": "document_start"
+      }
+    ],
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ],
     "permissions": [
       "contextMenus",
-      "http://*/*",
-      "https://*/*",
-      "storage",
       "tabs"
     ]
   },

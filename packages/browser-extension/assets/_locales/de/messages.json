@@ -8,8 +8,8 @@
     "message": "Webseite melden..."
   },
   "footerText": {
-    "description": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von",
-    "message": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von"
+    "description": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von ",
+    "message": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von "
   },
   "helpText": {
     "description": "Hilfe oder Probleme?",

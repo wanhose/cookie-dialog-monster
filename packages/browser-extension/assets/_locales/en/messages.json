@@ -8,8 +8,8 @@
     "message": "Report site..."
   },
   "footerText": {
-    "description": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by",
-    "message": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by"
+    "description": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by ",
+    "message": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by "
   },
   "helpText": {
     "description": "Help or issues?",

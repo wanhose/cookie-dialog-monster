@@ -8,8 +8,8 @@
     "message": "Raportați site-ul..."
   },
   "footerText": {
-    "description": "Realizat cu <span aria-label=\"Dragoste\" role=\"img\">❤️</span> de",
-    "message": "Realizat cu <span aria-label=\"Dragoste\" role=\"img\">❤️</span> de"
+    "description": "Realizat cu <span aria-label=\"Dragoste\" role=\"img\">❤️</span> de ",
+    "message": "Realizat cu <span aria-label=\"Dragoste\" role=\"img\">❤️</span> de "
   },
   "helpText": {
     "description": "Ajutor sau probleme?",

@@ -8,8 +8,8 @@
     "message": "Сообщить о сайте..."
   },
   "footerText": {
-    "description": "Сделано с <span aria-label=\"любовью\" role=\"img\">❤️</span>",
-    "message": "Сделано с <span aria-label=\"любовью\" role=\"img\">❤️</span>"
+    "description": "Сделано с <span aria-label=\"любовью\" role=\"img\">❤️</span> ",
+    "message": "Сделано с <span aria-label=\"любовью\" role=\"img\">❤️</span> "
   },
   "helpText": {
     "description": "Помощь или проблемы?",

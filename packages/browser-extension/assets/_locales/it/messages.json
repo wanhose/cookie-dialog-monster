@@ -8,8 +8,8 @@
     "message": "Segnala sito..."
   },
   "footerText": {
-    "description": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da",
-    "message": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da"
+    "description": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da ",
+    "message": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da "
   },
   "helpText": {
     "description": "Aiuto o problemi?",

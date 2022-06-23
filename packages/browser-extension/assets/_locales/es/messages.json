@@ -8,8 +8,8 @@
     "message": "Reportar sitio..."
   },
   "footerText": {
-    "description": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por",
-    "message": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por"
+    "description": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por ",
+    "message": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por "
   },
   "helpText": {
     "description": "¿Ayuda o problemas?",
