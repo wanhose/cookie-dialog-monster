@@ -40,7 +40,7 @@ div[class*="CookieBanner-"]
 div[data-test-sell-cookie-banner]
 #z-cookie-note
 #popcookie
-#sp-cc[action*="cookiepref"]
+#sp-cc
 #ribbon-cookies-agree
 .panel_cookie
 #hmcf_cookie_notice
@@ -12313,7 +12313,6 @@ div[data-module="cookie_banner"]
 #sd-cmp
 #cl-consent
 .cl-consent
-script[src="//clickio.mgr.consensu.org/t/consent_216889.js"]
 #didomi-host
 #didomi-popup
 div[style="position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px; background-color: rgba(0, 0, 0, 0.5);"]
@@ -12399,7 +12398,6 @@ div[data-cookie-consent-overlay]
 #cookie-rgpd
 #dl_cookieBanner
 #gdpr-consent-tool-wrapper
-script[src*="dpg"]
 #rgpd_pp
 #usercentrics-root
 .cookies-advice-bar
@@ -12418,8 +12416,6 @@ div[data-module="cookie-notice"]
 #onetrust-policy
 #onetrust-group-container
 #onetrust-banner-sdk
-script[src*="cdn.cookielaw.org"]
-script[src*="evidon.com"]
 #infocookies2
 div[title*="Antes de"][aria-modal="true"][role="dialog"]
 div[title*="Before you continue"][aria-modal="true"][role="dialog"]
@@ -12432,12 +12428,10 @@ div[title*="Prima di continuare"][aria-modal="true"][role="dialog"]
 .axeptio_mount
 .mmw-cookie-banner
 .cmp
-script[src*="quorn-cmp.min.js"]
 .wwhp-edition-international
 .bbccookies-banner
 #cu_k_modal_main_box
 div[style="opacity: 1; x: 1px; y: 0px; transform: translateY(0px) scale(1, 1); --Toaster-indicatorColor:#24A0ED;"]
-script[src*="live.mrf.io"]
 marfeel-cmp
 body > div[data-nosnippet="true"] > aside
 epaas-consent-drawer-shell
@@ -12450,7 +12444,6 @@ div.fixed.mask-untouch
 .r-cookie
 #ccc
 #cookie-status
-script[src*="cookie-first"]
 #cf-root
 .miniConsent
 div.consent[style="display: none"]
@@ -12500,7 +12493,6 @@ body > .page-container > .flex > #header > aside.bg-light.color-main.full-width.
 .cookie-consent-bar-overlay
 .__fb-light-mode
 .enhanced-privacy-cookie-policy
-.gdprModal.gdprModal--visible
 #cmplz-cookiebanner-container
 #pdcc-modal-bg
 #twcc__mechanism
@@ -12550,3 +12542,10 @@ dile-cookies-consent
 #cookies-legal-advice
 .ibeugdpr-banner
 .ibeugdpr-overlay
+tiktok-cookie-banner
+.gdprModal
+#m-cookienotice
+#cookie-information-template-wrapper
+#cookies_preferences
+#BannerRegion
+.ensNotifyBannerWrapper

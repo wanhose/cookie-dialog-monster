@@ -1,7 +1,6 @@
 automobielmanagement.nl##body > *##resetAll##filter
 consent.yahoo###consent-page button[type="submit"]##click
 dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##click
-facebook##._31e##reset##position
 fiberplane.dev##button[aria-label="Close Banner"]##click
 gettr.com##button.bold##click
 golem.de###btnsimplec##click
