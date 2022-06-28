@@ -7,17 +7,9 @@ const classes = [];
 
 /**
  * @description Shortcut to send messages to background script
- * @type {void}
  */
 
 const dispatch = chrome.runtime.sendMessage;
-
-/**
- * @description Array of skips to skip
- * @type {string[]}
- */
-
-const skips = [];
 
 /**
  * @description Array of instructions
@@ -27,7 +19,8 @@ const skips = [];
 const fixes = [];
 
 /**
- * @description Hostname
+ * @description Current hostname
+ * @type {string}
  */
 
 const hostname = document.location.hostname.split('.').slice(-2).join('.');
@@ -53,10 +46,11 @@ const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivac
 const selectors = [];
 
 /**
- * @description Target provided to observer
+ * @description Array of skips to skip
+ * @type {string[]}
  */
 
-const target = document.body || document.documentElement;
+const skips = [];
 
 /**
  * @description Checks if node element is removable
@@ -68,25 +62,32 @@ const target = document.body || document.documentElement;
 const check = (node, skipMatch) =>
   node instanceof HTMLElement &&
   node.parentElement &&
-  !['BODY', 'HTML'].includes(node.tagName) &&
+  !node.getAttribute('data-cookie-dialog-monster') &&
   !(node.id && ['APP', 'ROOT'].includes(node.id.toUpperCase?.())) &&
+  node.outerHTML.match(/banner|cmp|consent|cookie|gdpr|modal|overlay|popup|privacy/gi) &&
   (skipMatch || node.matches(selectors));
 
 /**
  * @description Cleans DOM
  * @param {HTMLElement[]} nodes
- * @param {boolean} skipMatch
  * @returns {void}
  */
 
 const clean = (nodes, skipMatch) =>
-  nodes.filter((node) => check(node, skipMatch)).forEach((node) => (node.outerHTML = ''));
+  nodes
+    .filter((node) => check(node, skipMatch))
+    .forEach((node) => {
+      node.setAttribute('data-cookie-dialog-monster', 'true');
+      node.remove();
+    });
 
 /**
  * @description Fixes scroll issues
  */
 
 const fix = () => {
+  document.getElementsByClassName('_31e')[0]?.classList.remove('_31e');
+
   if (skips.length && !skips.includes(hostname)) {
     for (const item of [document.body, document.documentElement]) {
       item?.classList.remove(...classes);
@@ -103,6 +104,11 @@ const fix = () => {
         case 'click': {
           const node = document.querySelector(selector);
           node?.click();
+          break;
+        }
+        case 'hide': {
+          const node = document.querySelector(selector);
+          node?.style?.setProperty('display', 'none', 'important');
           break;
         }
         case 'remove': {
@@ -132,30 +138,36 @@ const fix = () => {
  * @type {MutationObserver}
  */
 
-const observer = new MutationObserver((mutations, instance) => {
+const observer = new MutationObserver((mutations) => {
   const nodes = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
-
-  instance.disconnect();
   fix();
   if (!preview && selectors.length) clean(nodes);
-  instance.observe(target, options);
 });
 
 /**
- * @description Cleans DOM again after all
- * @listens document#readystatechange
+ * @description Fix bfcache issues
+ * @listens window#DOMContentLoaded
  */
 
-document.addEventListener('readystatechange', () => {
-  dispatch({ hostname, type: 'GET_STORE' }, null, async ({ enabled }) => {
-    if (document.readyState === 'complete' && enabled && !preview) {
-      const nodes = selectors.length ? Array.from(document.querySelectorAll(selectors)) : [];
+window.addEventListener('DOMContentLoaded', async () => {
+  let data = await dispatch({ type: 'GET_DATA' });
+  const state = await dispatch({ hostname, type: 'GET_STATE' });
 
-      fix();
-      clean(nodes, true);
-      setTimeout(() => clean(nodes, true), 2000);
-    }
-  });
+  if (data && state?.enabled) {
+    const nodes = [...document.querySelectorAll(data.elements)];
+    clean(nodes, true);
+    dispatch({ type: 'ENABLE_ICON' });
+  } else if (!data) {
+    await dispatch({ type: 'REFRESH_DATA' });
+    data = await dispatch({ type: 'GET_DATA' });
+  }
+
+  dispatch({ type: 'ENABLE_POPUP' });
+  classes.push(...(data?.classes ?? []));
+  fixes.push(...(data?.fixes ?? []));
+  selectors.push(...(data?.elements ?? []));
+  skips.push(...(data?.skips ?? []));
+  observer.observe(document.body, options);
 });
 
 /**
@@ -164,23 +176,3 @@ document.addEventListener('readystatechange', () => {
  */
 
 window.addEventListener('unload', () => {});
-
-/**
- * @description Setups everything and starts to observe if enabled
- */
-
-dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
-  dispatch({ type: 'ENABLE_POPUP' });
-
-  if (enabled) {
-    dispatch({ type: 'GET_DATA' }, null, (data) => {
-      classes.push(...data.classes);
-      fixes.push(...data.fixes);
-      options.attributeFilter = data.attributes;
-      selectors.push(...data.selectors);
-      skips.push(...data.skips);
-      observer.observe(target, options);
-      dispatch({ type: 'ENABLE_ICON' });
-    });
-  }
-});
