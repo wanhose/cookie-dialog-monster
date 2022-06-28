@@ -20,14 +20,13 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
       reply.send({
         data: {
           classes: (await results[0].text()).split('\n'),
-          fixes: (await results[1].text()).split('\n'),
-          elements: (await results[2].text()).split('\n'),
+          elements: (await results[1].text()).split('\n'),
+          fixes: (await results[2].text()).split('\n'),
           skips: (await results[3].text()).split('\n'),
         },
         success: true,
       });
-    } catch (error) {
-      console.error(error);
+    } catch {
       reply.send({ success: false });
     }
   });
