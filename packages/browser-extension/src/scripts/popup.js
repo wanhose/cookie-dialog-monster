@@ -1,5 +1,4 @@
 /**
- * @constant chromeUrl
  * @description Chrome Web Store link
  * @type {string}
  */
@@ -7,15 +6,12 @@
 const chromeUrl = 'https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg';
 
 /**
- * @constant dispatch
  * @description Shortcut to send messages to background script
- * @type {void}
  */
 
 const dispatch = chrome.runtime.sendMessage;
 
 /**
- * @constant edgeUrl
  * @description Edge Add-ons link
  * @type {string}
  */
@@ -24,7 +20,6 @@ const edgeUrl =
   'https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii';
 
 /**
- * @constant firefoxUrl
  * @description Firefox Add-ons link
  * @type {string}
  */
@@ -32,7 +27,13 @@ const edgeUrl =
 const firefoxUrl = 'https://addons.mozilla.org/es/firefox/addon/cookie-dialog-monster/';
 
 /**
- * @constant isChromium
+ * @description Current hostname
+ * @type {string}
+ */
+
+let hostname = '?';
+
+/**
  * @description Is current browser an instance of Chromium?
  * @type {boolean}
  */
@@ -40,7 +41,6 @@ const firefoxUrl = 'https://addons.mozilla.org/es/firefox/addon/cookie-dialog-mo
 const isChromium = navigator.userAgent.indexOf('Chrome') !== -1;
 
 /**
- * @constant isEdge
  * @description Is current browser an instance of Edge?
  * @type {boolean}
  */
@@ -48,7 +48,6 @@ const isChromium = navigator.userAgent.indexOf('Chrome') !== -1;
 const isEdge = navigator.userAgent.indexOf('Edg') !== -1;
 
 /**
- * @constant isFirefox
  * @description Is current browser an instance of Firefox?
  * @type {boolean}
  */
@@ -59,23 +58,10 @@ const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
  * @description Disables or enables extension on current page
  */
 
-const handlePowerChange = () => {
-  dispatch({ type: 'GET_TAB' }, null, ({ hostname, id }) => {
-    dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
-      dispatch({ hostname, state: { enabled: !enabled }, type: 'UPDATE_STORE' });
-      chrome.tabs.reload(id, { bypassCache: true });
-    });
-  });
-};
-
-/**
- * @description Reload current page
- */
-
-const handleReload = () => {
-  dispatch({ type: 'GET_TAB' }, null, ({ id }) => {
-    chrome.tabs.reload(id, { bypassCache: true });
-  });
+const handlePowerChange = async () => {
+  const state = await dispatch({ hostname, type: 'GET_STATE' });
+  dispatch({ hostname, state: { enabled: !state.enabled }, type: 'UPDATE_STATE' });
+  chrome.tabs.reload({ bypassCache: true });
 };
 
 /**
@@ -105,29 +91,30 @@ const handleRate = (event) => {
  * @description Setup stars handlers and result message links
  */
 
-const handleContentLoaded = () => {
-  dispatch({ type: 'GET_TAB' }, null, ({ hostname }) => {
-    dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
-      translate();
+const handleContentLoaded = async () => {
+  const tab = await dispatch({ type: 'GET_TAB' });
+  hostname = tab?.url ? new URL(tab.url).hostname.split('.').slice(-2).join('.') : undefined;
+  const state = await dispatch({ hostname, type: 'GET_STATE' });
 
-      const host = document.getElementById('host');
-      const like = document.getElementById('like');
-      const power = document.getElementById('power');
-      const reload = document.getElementById('reload');
-      const store = document.getElementById('store');
-      const unlike = document.getElementById('unlike');
+  translate();
 
-      like.addEventListener('click', handleRate);
-      power.addEventListener('change', handlePowerChange);
-      reload.addEventListener('click', handleReload);
-      if (isEdge) store.setAttribute('href', edgeUrl);
-      else if (isChromium) store.setAttribute('href', chromeUrl);
-      else if (isFirefox) store.setAttribute('href', firefoxUrl);
-      unlike.addEventListener('click', handleRate);
-      if (location) host.innerText = hostname.replace('www.', '');
-      if (!enabled) power.removeAttribute('checked');
-    });
-  });
+  const host = document.getElementById('host');
+  const like = document.getElementById('like');
+  const power = document.getElementById('power');
+  const reload = document.getElementById('reload');
+  const store = document.getElementById('store');
+  const unlike = document.getElementById('unlike');
+
+  like.addEventListener('click', handleRate);
+  power.addEventListener('change', handlePowerChange);
+  reload.addEventListener('click', () => chrome.tabs.reload({ bypassCache: true }));
+  unlike.addEventListener('click', handleRate);
+
+  host.innerText = hostname?.replace('www.', '');
+  if (isEdge) store?.setAttribute('href', edgeUrl);
+  else if (isChromium) store?.setAttribute('href', chromeUrl);
+  else if (isFirefox) store?.setAttribute('href', firefoxUrl);
+  if (!state.enabled) power.removeAttribute('checked');
 };
 
 /**
