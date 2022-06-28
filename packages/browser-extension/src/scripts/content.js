@@ -145,34 +145,30 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
- * @description Fix bfcache issues
- * @listens window#DOMContentLoaded
+ * @description Fixes bfcache issues
+ * @listens window#unload
  */
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('unload', () => {});
+
+/**
+ * @description Sets up everything
+ */
+
+(async () => {
   let data = await dispatch({ type: 'GET_DATA' });
   const state = await dispatch({ hostname, type: 'GET_STATE' });
 
-  if (data && state?.enabled) {
-    const nodes = [...document.querySelectorAll(data.elements)];
-    clean(nodes, true);
-    dispatch({ type: 'ENABLE_ICON' });
-  } else if (!data) {
+  if (!data) {
     await dispatch({ type: 'REFRESH_DATA' });
     data = await dispatch({ type: 'GET_DATA' });
   }
 
+  if (state?.enabled) dispatch({ type: 'ENABLE_ICON' });
   dispatch({ type: 'ENABLE_POPUP' });
   classes.push(...(data?.classes ?? []));
   fixes.push(...(data?.fixes ?? []));
   selectors.push(...(data?.elements ?? []));
   skips.push(...(data?.skips ?? []));
-  observer.observe(document.body, options);
-});
-
-/**
- * @description Fix bfcache issues
- * @listens window#unload
- */
-
-window.addEventListener('unload', () => {});
+  observer.observe(document.body ?? document.documentElement, options);
+})();
