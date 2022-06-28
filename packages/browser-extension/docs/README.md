@@ -8,10 +8,10 @@
 
 ## Compatibility
 
-- Google Chrome 51+.
-- Microsoft Edge 15+.
-- Mozilla Firefox 54+.
-- Opera 38+.
+- Google Chrome 88+.
+- Microsoft Edge 88+.
+- Mozilla Firefox 101+.
+- Opera 74+.
 
 ## Installation (on Google Chrome)
 
