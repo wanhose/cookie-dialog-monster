@@ -3,154 +3,30 @@
  * @type {string}
  */
 
-const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v1';
+const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v2';
 
 /**
- * @description Base data URL
- * @type {string}
- */
-
-const baseDataUrl = 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/data';
-
-/**
- * @description Cache data
- * @type {{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: string[] }}
- */
-
-let cache = undefined;
-
-/**
- * @description Context menu identifier
- * @type {string}
- */
-
-const contextMenuId = 'CDM_MENU';
-
-/**
- * @description Cache initial state
+ * @description Initial state
  * @type {{ enabled: boolean }}
  */
 
 const initial = { enabled: true };
 
 /**
- * @description Disables icon
- * @param {string} tabId
+ * @description Context menu identifier
+ * @type {string}
  */
 
-const disableIcon = (tabId) =>
-  chrome.browserAction.setIcon({ path: 'assets/icons/disabled.png', tabId });
+const reportMenuItemId = 'REPORT';
 
 /**
- * @description Enables icon
- * @param {string} tabId
+ * @description Refreshes data
  */
 
-const enableIcon = (tabId) =>
-  chrome.browserAction.setIcon({ path: 'assets/icons/enabled.png', tabId });
-
-/**
- * @description Enables popup
- * @param {string} tabId
- */
-
-const enablePopup = (tabId) => chrome.browserAction.setPopup({ popup: 'popup.html', tabId });
-
-/**
- * @description Retrieves store
- * @param {string} hostname
- * @param {void} callback
- * @returns {{ enabled: boolean }}
- */
-
-const getStore = (hostname, callback) => {
-  chrome.storage.local.get(null, (store) => {
-    callback(store[hostname] ?? initial);
-  });
-};
-
-/**
- * @async
- * @description Get all data from GitHub
- * @param {void} callback
- * @returns {Promise<{ attributes: string[], classes: string[], fixes: string[], selectors: string[], skips: string[] }>}
- */
-
-const getData = async (callback) => {
-  if (cache) {
-    callback(cache);
-    return;
-  }
-
-  const data = await Promise.all([
-    query('classes'),
-    query('elements'),
-    query('fixes'),
-    query('skips'),
-  ]);
-
-  const result = {
-    attributes: [
-      ...new Set(
-        data[1].elements.flatMap((element) => {
-          const attributes = element.match(/(?<=\[)[^(){}[\]]+(?=\])/g);
-
-          return attributes?.length
-            ? [
-                ...attributes.flatMap((attribute) => {
-                  return attribute ? [attribute.replace(/\".*\"|(=|\^|\*|\$)/g, '')] : [];
-                }),
-              ]
-            : [];
-        })
-      ),
-    ],
-    classes: data[0].classes,
-    fixes: data[2].fixes,
-    selectors: data[1].elements,
-    skips: data[3].skips,
-  };
-
-  if (Object.keys(result).every((key) => result[key].length > 0)) cache = result;
-  callback(result);
-};
-
-/**
- * @description Retrieves current tab information
- * @param {void} [callback]
- * @returns {Promise<{ id: string, location: string }>}
- */
-
-const getTab = (callback) => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tab = tabs[0];
-
-    callback({
-      id: tab?.id,
-      hostname: tab ? new URL(tab.url).hostname.split('.').slice(-2).join('.') : undefined,
-    });
-  });
-};
-
-/**
- * @async
- * @description Retrieves data from GitHub
- * @param {string} key
- * @returns {Promise<{ [key]: string[] }>}
- */
-
-const query = async (key) => {
-  try {
-    const url = `${baseDataUrl}/${key}.txt`;
-    const response = await fetch(url);
-    const data = await response.text();
-
-    if (response.status !== 200) throw new Error();
-
-    return { [key]: [...new Set(data.split('\n'))] };
-  } catch {
-    return { [key]: [] };
-  }
+const refreshData = async () => {
+  const result = await fetch(`${apiUrl}/data/`);
+  const { data } = await result.json();
+  await chrome.storage.local.set({ data });
 };
 
 /**
@@ -163,70 +39,73 @@ const report = () => {
     const userAgent = window.navigator.userAgent;
     const version = chrome.runtime.getManifest().version;
 
-    if (tab) {
-      fetch(`${apiUrl}/report/`, {
-        body: JSON.stringify({
-          html: `<b>Browser:</b> ${userAgent}<br/><b>Site:</b> ${tab.url}<br/><b>Version:</b> ${version}`,
-          to: 'hello@wanhose.dev',
-          subject: 'Cookie Dialog Monster Report',
-        }),
-        headers: {
-          'Content-type': 'application/json',
-        },
-        method: 'POST',
-      });
-    }
-  });
-};
-
-/**
- * @description Update store
- * @param {string} [hostname]
- * @param {object} [state]
- */
-
-const updateStore = (hostname, state) => {
-  chrome.storage.local.get(null, (cache) => {
-    const current = cache[hostname];
-
-    chrome.storage.local.set({
-      [hostname]: {
-        enabled: typeof state.enabled === 'undefined' ? current.enabled : state.enabled,
-      },
+    fetch(`${apiUrl}/report/`, {
+      body: JSON.stringify({ tabUrl: tab.url, userAgent, version }),
+      headers: { 'Content-type': 'application/json' },
+      method: 'POST',
     });
   });
 };
 
 /**
+ * @description Listens to context menus
+ */
+
+chrome.contextMenus.onClicked.addListener((info) => {
+  switch (info.menuItemId) {
+    case reportMenuItemId:
+      report();
+      break;
+    default:
+      break;
+  }
+});
+
+/**
+ * @description Listens to extension installed/updated
+ */
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    contexts: ['all'],
+    documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+    id: reportMenuItemId,
+    title: chrome.i18n.getMessage('contextMenuText'),
+  });
+});
+
+/**
  * @description Listens to messages
  */
 
-chrome.runtime.onMessage.addListener((request, sender, callback) => {
-  const hostname = request.hostname;
-  const state = request.state;
+chrome.runtime.onMessage.addListener((message, sender, callback) => {
+  const hostname = message.hostname;
   const tabId = sender.tab?.id;
 
-  switch (request.type) {
+  switch (message.type) {
     case 'DISABLE_ICON':
-      if (tabId) disableIcon(tabId);
+      if (tabId) chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId });
       break;
     case 'ENABLE_ICON':
-      if (tabId) enableIcon(tabId);
+      if (tabId) chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId });
       break;
     case 'ENABLE_POPUP':
-      if (tabId) enablePopup(tabId);
+      if (tabId) chrome.action.setPopup({ popup: 'popup.html', tabId });
       break;
     case 'GET_DATA':
-      getData(callback);
+      chrome.storage.local.get('data', ({ data }) => callback(data));
       break;
-    case 'GET_STORE':
-      getStore(hostname, callback);
+    case 'GET_STATE':
+      chrome.storage.local.get(hostname, (state) => callback(state[hostname] ?? initial));
       break;
     case 'GET_TAB':
-      getTab(callback);
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
       break;
-    case 'UPDATE_STORE':
-      updateStore(hostname, state);
+    case 'REFRESH_DATA':
+      refreshData();
+      break;
+    case 'UPDATE_STATE':
+      chrome.storage.local.set({ [hostname]: message.state });
       break;
     default:
       break;
@@ -236,21 +115,9 @@ chrome.runtime.onMessage.addListener((request, sender, callback) => {
 });
 
 /**
- * @description Creates context menu
+ * @description Listens to first start
  */
 
-chrome.contextMenus.create({
-  contexts: ['all'],
-  documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
-  id: contextMenuId,
-  title: chrome.i18n.getMessage('contextMenuText'),
-});
-
-/**
- * @description Listens to context menus
- */
-
-chrome.contextMenus.onClicked.addListener((info) => {
-  if (info.menuItemId !== contextMenuId) return;
-  report();
+chrome.runtime.onStartup.addListener(() => {
+  refreshData();
 });
