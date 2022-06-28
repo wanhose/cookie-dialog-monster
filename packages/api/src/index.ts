@@ -3,6 +3,7 @@ import cors from '@fastify/cors';
 import rateLimit from '@fastify/rate-limit';
 import v1EntriesRoutes from 'routes/v1/entries';
 import v1ReportRoutes from 'routes/v1/report';
+import v2DataRoutes from 'routes/v2/data';
 import environment from 'services/environment';
 
 const server = fastify({ logger: true });
@@ -19,6 +20,7 @@ server.register(rateLimit, { max: 1, timeWindow: 30000 });
 
 server.register(v1EntriesRoutes, { prefix: '/rest/v1' });
 server.register(v1ReportRoutes, { prefix: '/rest/v1' });
+server.register(v2DataRoutes, { prefix: '/rest/v2' });
 
 server.listen({ host: '0.0.0.0', port: environment.port }, (error, address) => {
   if (error) {
