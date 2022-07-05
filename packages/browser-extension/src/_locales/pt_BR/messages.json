@@ -23,6 +23,10 @@
     "description": "Obrigado! Avalie nossa extensão <a id=\"store\" target=\"_blank\">aqui</a> <span aria-label=\"Rosto sorridente com olhos em formato de coração\" role =\"img\">😍</span>",
     "message": "Obrigado! Avalie nossa extensão <a id=\"store\" target=\"_blank\">aqui</a> <span aria-label=\"Rosto sorridente com olhos em formato de coração\" role =\"img\">😍</span>"
   },
+  "reportText": {
+    "description": "Relatório enviado!",
+    "message": "Relatório enviado!"
+  },
   "reviewText": {
     "description": "Você gosta desta extensão?",
     "message": "Você gosta desta extensão?"

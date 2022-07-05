@@ -23,6 +23,10 @@
     "description": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>",
     "message": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>"
   },
+  "reportText": {
+    "description": "¡Reporte enviado!",
+    "message": "¡Reporte enviado!"
+  },
   "reviewText": {
     "description": "¿Te gusta esta extensión?",
     "message": "¿Te gusta esta extensión?"

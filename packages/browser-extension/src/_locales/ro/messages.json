@@ -23,6 +23,10 @@
     "description": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>",
     "message": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>"
   },
+  "reportText": {
+    "description": "Raport trimis!",
+    "message": "Raport trimis!"
+  },
   "reviewText": {
     "description": "Îți place această extensie?",
     "message": "Îți place această extensie?"

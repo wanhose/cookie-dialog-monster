@@ -23,6 +23,10 @@
     "description": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>",
     "message": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>"
   },
+  "reportText": {
+    "description": "Bericht gesendet!",
+    "message": "Bericht gesendet!"
+  },
   "reviewText": {
     "description": "Gefällt dir diese Erweiterung?",
     "message": "Gefällt dir diese Erweiterung?"
