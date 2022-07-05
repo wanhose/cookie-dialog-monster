@@ -31,30 +31,27 @@ const refreshData = async () => {
 
 /**
  * @description Reports active tab URL
+ * @param {chrome.tabs.Tab} tab
  */
 
-const report = () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tab = tabs[0];
-    const userAgent = window.navigator.userAgent;
-    const version = chrome.runtime.getManifest().version;
+const report = async (tab) => {
+  const version = chrome.runtime.getManifest().version;
+  const body = JSON.stringify({ tabUrl: tab?.url, version });
+  const headers = { 'Content-type': 'application/json' };
+  const url = `${apiUrl}/report/`;
 
-    fetch(`${apiUrl}/report/`, {
-      body: JSON.stringify({ tabUrl: tab.url, userAgent, version }),
-      headers: { 'Content-type': 'application/json' },
-      method: 'POST',
-    });
-  });
+  await fetch(url, { body, headers, method: 'POST' });
+  chrome.tabs.sendMessage(tab?.id, { type: 'SHOW_REPORT_CONFIRMATION' });
 };
 
 /**
  * @description Listens to context menus
  */
 
-chrome.contextMenus.onClicked.addListener((info) => {
+chrome.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
     case reportMenuItemId:
-      report();
+      if (tab) report(tab);
       break;
     default:
       break;
