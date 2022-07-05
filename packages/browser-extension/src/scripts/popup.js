@@ -93,7 +93,9 @@ const handleRate = (event) => {
 
 const handleContentLoaded = async () => {
   const tab = await dispatch({ type: 'GET_TAB' });
-  hostname = tab?.url ? new URL(tab.url).hostname.split('.').slice(-2).join('.') : undefined;
+  hostname = tab?.url
+    ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
+    : undefined;
   const state = await dispatch({ hostname, type: 'GET_STATE' });
 
   translate();

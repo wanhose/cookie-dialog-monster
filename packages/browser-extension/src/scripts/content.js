@@ -23,7 +23,7 @@ const fixes = [];
  * @type {string}
  */
 
-const hostname = document.location.hostname.split('.').slice(-2).join('.');
+const hostname = document.location.hostname.split('.').slice(-3).join('.').replace('www.', '');
 
 /**
  * @description Options provided to observer
