@@ -33,7 +33,7 @@
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["contextMenus", "storage", "tabs"],
+  "permissions": ["contextMenus", "storage", "tabs", "unlimitedStorage"],
   "web_accessible_resources": [
     {
       "matches": ["http://*/*", "https://*/*"],
