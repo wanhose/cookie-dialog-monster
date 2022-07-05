@@ -54,17 +54,17 @@ const skips = [];
 
 /**
  * @description Checks if node element is removable
- * @param {any} node
- * @param {boolean} skipMatch
+ * @param {Element} node
+ * @param {boolean?} skipMatch
  * @returns {boolean}
  */
 
 const check = (node, skipMatch) =>
   node instanceof HTMLElement &&
   node.parentElement &&
-  !node.getAttribute('data-cookie-dialog-monster') &&
   !(node.id && ['APP', 'ROOT'].includes(node.id.toUpperCase?.())) &&
-  node.outerHTML.match(/banner|cmp|consent|cookie|gdpr|modal|overlay|popup|privacy/gi) &&
+  // prettier-ignore
+  node.outerHTML.match(/banner|cmp|consent|cookie|dialog|gdpr|modal|notice|overlay|popup|privacy/gi) &&
   (skipMatch || node.matches(selectors));
 
 /**
@@ -74,12 +74,7 @@ const check = (node, skipMatch) =>
  */
 
 const clean = (nodes, skipMatch) =>
-  nodes
-    .filter((node) => check(node, skipMatch))
-    .forEach((node) => {
-      node.setAttribute('data-cookie-dialog-monster', 'true');
-      node.remove();
-    });
+  nodes.filter((node) => check(node, skipMatch)).forEach((node) => node.remove());
 
 /**
  * @description Fixes scroll issues

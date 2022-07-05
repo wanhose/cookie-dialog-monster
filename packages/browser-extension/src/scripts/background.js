@@ -36,7 +36,7 @@ const refreshData = async () => {
 
 const report = async (tab) => {
   const version = chrome.runtime.getManifest().version;
-  const body = JSON.stringify({ tabUrl: tab?.url, version });
+  const body = JSON.stringify({ url: tab?.url, version });
   const headers = { 'Content-type': 'application/json' };
   const url = `${apiUrl}/report/`;
 
