@@ -1,5 +1,6 @@
 blocked
 cbar
+c24-cc-visible
 cmp-open
 consent-modal-open
 consent-modal-overflow

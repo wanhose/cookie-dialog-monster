@@ -12549,3 +12549,7 @@ tiktok-cookie-banner
 #cookies_preferences
 #BannerRegion
 .ensNotifyBannerWrapper
+.c24-cookie-consent-wrapper
+.modal--agreements__curtain
+a[dont][style*="z-index: 2147483647"]
+#bnp_cookie_banner
