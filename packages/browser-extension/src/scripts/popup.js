@@ -112,7 +112,7 @@ const handleContentLoaded = async () => {
   reload.addEventListener('click', () => chrome.tabs.reload({ bypassCache: true }));
   unlike.addEventListener('click', handleRate);
 
-  host.innerText = hostname?.replace('www.', '');
+  host.innerText = hostname ?? 'unknown';
   if (isEdge) store?.setAttribute('href', edgeUrl);
   else if (isChromium) store?.setAttribute('href', chromeUrl);
   else if (isFirefox) store?.setAttribute('href', firefoxUrl);
