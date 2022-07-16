@@ -7,9 +7,9 @@
     "description": "Raportați site-ul...",
     "message": "Raportați site-ul..."
   },
-  "footerText": {
-    "description": "Realizat cu <span aria-label=\"Dragoste\" role=\"img\">❤️</span> de",
-    "message": "Realizat cu <span aria-label=\"Dragoste\" role=\"img\">❤️</span> de"
+  "contributeText": {
+    "description": "Contribuie la acest proiect",
+    "message": "Contribuie la acest proiect"
   },
   "helpText": {
     "description": "Ajutor sau probleme?",
@@ -22,6 +22,10 @@
   "positiveText": {
     "description": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>",
     "message": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>"
+  },
+  "reportText": {
+    "description": "Raport trimis!",
+    "message": "Raport trimis!"
   },
   "reviewText": {
     "description": "Îți place această extensie?",
