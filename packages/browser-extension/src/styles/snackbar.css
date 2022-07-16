@@ -1,0 +1,65 @@
+#report-confirmation {
+  bottom: 30px;
+  font-family: 'Lato', Arial, Helvetica, sans-serif !important;
+  min-width: 250px;
+  position: fixed;
+  right: 10px;
+  text-align: left;
+  visibility: hidden;
+  z-index: 99999;
+}
+
+#report-confirmation:not([hidden]) {
+  animation: fadeIn 0.5s, fadeOut 0.5s 3.5s;
+  visibility: visible !important;
+}
+
+#report-confirmation:not([hidden]) #report-confirmation-bar {
+  animation: roundTime 3.5s linear forwards;
+}
+
+#report-confirmation-content {
+  align-items: center;
+  background-color: #34495e !important;
+  border-radius: 2px;
+  color: #fff !important;
+  display: flex;
+  font-size: 14px !important;
+  gap: 16px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+#report-confirmation-bar {
+  background-color: #3dd9eb !important;
+  height: 4px;
+  transform-origin: left center;
+}
+
+@keyframes fadeIn {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes roundTime {
+  to {
+    transform: scaleX(0);
+  }
+}
