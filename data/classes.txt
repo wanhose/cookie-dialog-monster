@@ -1,3 +1,4 @@
+b-modal-banner--disabled
 blocked
 cbar
 c24-cc-visible
@@ -10,6 +11,7 @@ gcdc-locked
 gdprbanner_consent_gdpr_consent
 gdprCookieBanner-acceptedAll
 hasCookieBanner
+ibeugdpr-disabled
 modal--is-open
 no-scroll
 no_scroll

@@ -11550,7 +11550,7 @@ div[class*="CookieWarning"]
 #simple-eu-cookiecontrol
 .z-cookieBar_text
 #stk-cookie-bar
-#ensModalWrapper[aria-labelledby*="Consent"]
+#ensModalWrapper
 #adult-and-cookies
 .cookie-pane
 #noty-cnil
@@ -12553,3 +12553,8 @@ tiktok-cookie-banner
 .modal--agreements__curtain
 a[dont][style*="z-index: 2147483647"]
 #bnp_cookie_banner
+#cx_bottom_banner
+#mde-consent-modal-container
+ofi-cookie-box-widget
+[data-test="cookie-policy-sheet"]
+[data-t="cookiesMessage"]
