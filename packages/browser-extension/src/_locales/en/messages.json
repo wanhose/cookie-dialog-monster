@@ -7,9 +7,9 @@
     "description": "Report site...",
     "message": "Report site..."
   },
-  "footerText": {
-    "description": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by",
-    "message": "Made with <span aria-label=\"Love\" role=\"img\">❤️</span> by"
+  "contributeText": {
+    "description": "Contribute to this project",
+    "message": "Contribute to this project"
   },
   "helpText": {
     "description": "Help or issues?",
@@ -22,6 +22,10 @@
   "positiveText": {
     "description": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>",
     "message": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>"
+  },
+  "reportText": {
+    "description": "Report sent!",
+    "message": "Report sent!"
   },
   "reviewText": {
     "description": "Do you like this extension?",

@@ -7,9 +7,9 @@
     "description": "Webseite melden...",
     "message": "Webseite melden..."
   },
-  "footerText": {
-    "description": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von",
-    "message": "Mit <span aria-label=\"Liebe\" role=\"img\">❤️</span> gemacht von"
+  "contributeText": {
+    "description": "Tragen Sie zu diesem Projekt bei",
+    "message": "Tragen Sie zu diesem Projekt bei"
   },
   "helpText": {
     "description": "Hilfe oder Probleme?",
@@ -22,6 +22,10 @@
   "positiveText": {
     "description": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>",
     "message": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>"
+  },
+  "reportText": {
+    "description": "Bericht gesendet!",
+    "message": "Bericht gesendet!"
   },
   "reviewText": {
     "description": "Gefällt dir diese Erweiterung?",
