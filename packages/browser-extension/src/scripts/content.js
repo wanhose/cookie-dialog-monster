@@ -1,36 +1,28 @@
 /**
- * @description Array of selectors
- * @type {string[]}
+ * @description Data properties
+ * @type {{ classes: string[], fixes: string[], elements: string[], skips: string[] }?}
  */
 
-const classes = [];
+let data = null;
 
 /**
  * @description Shortcut to send messages to background script
- * @type {void}
  */
 
 const dispatch = chrome.runtime.sendMessage;
 
 /**
- * @description Array of skips to skip
- * @type {string[]}
+ * @description Forbidden tags to ignore in the DOM
  */
 
-const skips = [];
+const forbiddenTags = ['BASE', 'BODY', 'HEAD', 'HTML', 'LINK', 'META', 'SCRIPT', 'STYLE', 'TITLE'];
 
 /**
- * @description Array of instructions
- * @type {string[]}
+ * @description Current hostname
+ * @type {string}
  */
 
-const fixes = [];
-
-/**
- * @description Hostname
- */
-
-const hostname = document.location.hostname.split('.').slice(-2).join('.');
+const hostname = document.location.hostname.split('.').slice(-3).join('.').replace('www.', '');
 
 /**
  * @description Options provided to observer
@@ -46,56 +38,43 @@ const options = { childList: true, subtree: true };
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
- * @description Selectors list
- * @type {string[]}
- */
-
-const selectors = [];
-
-/**
- * @description Target provided to observer
- */
-
-const target = document.body || document.documentElement;
-
-/**
- * @description Checks if node element is removable
- * @param {any} node
- * @param {boolean} skipMatch
+ * @description Matches if node element is removable
+ * @param {Element} node
  * @returns {boolean}
  */
 
-const check = (node, skipMatch) =>
+const match = (node) =>
   node instanceof HTMLElement &&
   node.parentElement &&
-  !['BODY', 'HTML'].includes(node.tagName) &&
-  !(node.id && ['APP', 'ROOT'].includes(node.id.toUpperCase?.())) &&
-  (skipMatch || node.matches(selectors));
+  !forbiddenTags.includes(node.tagName?.toUpperCase?.()) &&
+  node.matches(data?.elements ?? []);
 
 /**
  * @description Cleans DOM
  * @param {HTMLElement[]} nodes
- * @param {boolean} skipMatch
+ * @param {boolean?} skipMatch
  * @returns {void}
  */
 
 const clean = (nodes, skipMatch) =>
-  nodes.filter((node) => check(node, skipMatch)).forEach((node) => (node.outerHTML = ''));
+  nodes.filter((node) => skipMatch || match(node)).forEach((node) => node.remove());
 
 /**
  * @description Fixes scroll issues
  */
 
 const fix = () => {
-  if (skips.length && !skips.includes(hostname)) {
+  document.getElementsByClassName('_31e')[0]?.classList.remove('_31e');
+
+  if (data?.skips.length && !data.skips.includes(hostname)) {
     for (const item of [document.body, document.documentElement]) {
-      item?.classList.remove(...classes);
+      item?.classList.remove(...(data?.classes ?? []));
       item?.style.setProperty('position', 'initial', 'important');
       item?.style.setProperty('overflow-y', 'initial', 'important');
     }
   }
 
-  for (const fix of fixes) {
+  for (const fix of data?.fixes ?? []) {
     const [match, selector, action, property] = fix.split('##');
 
     if (hostname.includes(match)) {
@@ -132,54 +111,40 @@ const fix = () => {
  * @type {MutationObserver}
  */
 
-const observer = new MutationObserver((mutations, instance) => {
+const observer = new MutationObserver((mutations) => {
   const nodes = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
 
-  instance.disconnect();
   fix();
-  if (!preview && selectors.length) clean(nodes);
-  instance.observe(target, options);
+  if (data?.elements.length && !preview) clean(nodes);
 });
 
 /**
- * @description Cleans DOM again after all
- * @listens document#readystatechange
+ * @description Fixes bfcache issues
+ * @listens window#pageshow
  */
 
-document.addEventListener('readystatechange', () => {
-  dispatch({ hostname, type: 'GET_STORE' }, null, async ({ enabled }) => {
-    if (document.readyState === 'complete' && enabled && !preview) {
-      const nodes = selectors.length ? Array.from(document.querySelectorAll(selectors)) : [];
-
-      fix();
-      clean(nodes, true);
-      setTimeout(() => clean(nodes, true), 2000);
-    }
-  });
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    dispatch({ hostname, type: 'GET_STATE' }, null, (state) => {
+      if (data?.elements.length && state?.enabled && !preview) {
+        fix();
+        clean(Array.from(document.querySelectorAll(data.elements)), true);
+      }
+    });
+  }
 });
 
 /**
- * @description Fix bfcache issues
- * @listens window#unload
+ * @description Sets up everything
  */
 
-window.addEventListener('unload', () => {});
-
-/**
- * @description Setups everything and starts to observe if enabled
- */
-
-dispatch({ hostname, type: 'GET_STORE' }, null, ({ enabled }) => {
+dispatch({ hostname, type: 'GET_STATE' }, null, (state) => {
   dispatch({ type: 'ENABLE_POPUP' });
 
-  if (enabled) {
-    dispatch({ type: 'GET_DATA' }, null, (data) => {
-      classes.push(...data.classes);
-      fixes.push(...data.fixes);
-      options.attributeFilter = data.attributes;
-      selectors.push(...data.selectors);
-      skips.push(...data.skips);
-      observer.observe(target, options);
+  if (state?.enabled) {
+    dispatch({ hostname, type: 'GET_DATA' }, null, (result) => {
+      data = result;
+      observer.observe(document.body ?? document.documentElement, options);
       dispatch({ type: 'ENABLE_ICON' });
     });
   }
