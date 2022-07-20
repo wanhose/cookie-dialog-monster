@@ -25,7 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Lato', Arial, Helvetica, sans-serif;
-  height: 25rem;
+  height: 24rem;
   width: 20rem;
 }
 
@@ -34,9 +34,10 @@ button {
 }
 
 footer {
+  background-color: var(--color-secondary);
   font-size: 0.75rem;
+  height: 0.25rem;
   margin-top: auto;
-  padding: 1rem;
   text-align: center;
 }
 
@@ -109,18 +110,23 @@ svg {
   font-size: 1rem;
 }
 
+.contribute,
 .help {
   align-items: center;
   display: flex;
+  font-size: 0.875rem;
   justify-content: space-between;
 }
 
+.contribute > a,
 .help > a {
   color: var(--color-secondary);
   padding: 0.25rem;
   transition: 0.4s;
 }
 
+.contribute > a:focus,
+.contribute > a:hover,
 .help > a:focus,
 .help > a:hover {
   background-color: var(--color-secondary);
@@ -129,18 +135,11 @@ svg {
   outline: none;
 }
 
-.help > span {
-  font-size: 0.875rem;
-}
-
 .rating {
   align-items: center;
   display: flex;
-  justify-content: space-between;
-}
-
-.rating > span {
   font-size: 0.875rem;
+  justify-content: space-between;
 }
 
 .rating-actions {
