@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Cookie Dialog Monster",
-  "version": "5.5.5",
+  "version": "5.5.6",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -19,6 +19,7 @@
   },
   "content_scripts": [
     {
+      "css": ["styles/snackbar.css"],
       "exclude_matches": [
         "*://*.gfycat.com/*",
         "*://*.gmx.com/*",
@@ -26,7 +27,7 @@
         "*://*.rundschau-online.de/*",
         "*://*.youtube.com/embed/*"
       ],
-      "js": ["scripts/content.js"],
+      "js": ["scripts/content.js", "scripts/snackbar.js"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"
     }

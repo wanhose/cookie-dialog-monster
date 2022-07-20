@@ -7,9 +7,9 @@
     "description": "Segnala sito...",
     "message": "Segnala sito..."
   },
-  "footerText": {
-    "description": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da",
-    "message": "Realizzato con <span aria-label=\"Amore\" role=\"img\">❤️</span> da"
+  "contributeText": {
+    "description": "Contribuisci a questo progetto",
+    "message": "Contribuisci a questo progetto"
   },
   "helpText": {
     "description": "Aiuto o problemi?",
@@ -22,6 +22,10 @@
   "positiveText": {
     "description": "Grazie! Valuta la nostra estensione <a id=\"store\" target=\"_blank\">qui</a> <span aria-label=\"Faccina sorridente con occhi a forma di cuore\" role=\"img\">😍</span>",
     "message": "Grazie! Valuta la nostra estensione <a id=\"store\" target=\"_blank\">qui</a> <span aria-label=\"Faccina sorridente con occhi a forma di cuore\" role=\"img\">😍</span>"
+  },
+  "reportText": {
+    "description": "Rapporto inviato!",
+    "message": "Rapporto inviato!"
   },
   "reviewText": {
     "description": "Ti piace questa estensione?",

@@ -7,9 +7,9 @@
     "description": "Reportar sitio...",
     "message": "Reportar sitio..."
   },
-  "footerText": {
-    "description": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por",
-    "message": "Hecho con <span aria-label=\"Amor\" role=\"img\">❤️</span> por"
+  "contributeText": {
+    "description": "Contribuye a este proyecto",
+    "message": "Contribuye a este proyecto"
   },
   "helpText": {
     "description": "¿Ayuda o problemas?",
@@ -22,6 +22,10 @@
   "positiveText": {
     "description": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>",
     "message": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>"
+  },
+  "reportText": {
+    "description": "¡Reporte enviado!",
+    "message": "¡Reporte enviado!"
   },
   "reviewText": {
     "description": "¿Te gusta esta extensión?",
