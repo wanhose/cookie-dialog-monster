@@ -64,16 +64,14 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 /**
- * @description Listens to extension installed/updated
+ * @description Creates the context menu
  */
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    contexts: ['all'],
-    documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
-    id: reportMenuItemId,
-    title: chrome.i18n.getMessage('contextMenuText'),
-  });
+chrome.contextMenus.create({
+  contexts: ['all'],
+  documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+  id: reportMenuItemId,
+  title: chrome.i18n.getMessage('contextMenuText'),
 });
 
 /**
