@@ -1,39 +1,39 @@
 #report-confirmation {
-  bottom: 30px;
+  bottom: 30px !important;
   font-family: 'Lato', Arial, Helvetica, sans-serif !important;
-  min-width: 250px;
+  min-width: 250px !important;
   position: fixed;
-  right: 10px;
-  text-align: left;
-  visibility: hidden;
-  z-index: 99999;
+  right: 10px !important;
+  text-align: left !important;
+  visibility: hidden !important;
+  z-index: 99999 !important;
 }
 
 #report-confirmation:not([hidden]) {
-  animation: fadeIn 0.5s, fadeOut 0.5s 3.5s;
+  animation: fadeIn 0.5s, fadeOut 0.5s 3.5s !important;
   visibility: visible !important;
 }
 
 #report-confirmation:not([hidden]) #report-confirmation-bar {
-  animation: roundTime 3.5s linear forwards;
+  animation: roundTime 3.5s linear forwards !important;
 }
 
 #report-confirmation-content {
-  align-items: center;
+  align-items: center !important;
   background-color: #34495e !important;
-  border-radius: 2px;
+  border-radius: 2px !important;
   color: #fff !important;
-  display: flex;
+  display: flex !important;
   font-size: 14px !important;
-  gap: 16px;
-  overflow: hidden;
-  padding: 16px;
+  gap: 16px !important;
+  overflow: hidden !important;
+  padding: 16px !important;
 }
 
 #report-confirmation-bar {
   background-color: #3dd9eb !important;
-  height: 4px;
-  transform-origin: left center;
+  height: 4px !important;
+  transform-origin: left center !important;
 }
 
 @keyframes fadeIn {

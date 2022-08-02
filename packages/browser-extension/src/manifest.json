@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "5.5.7",
+  "version": "6.0.0",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -9,13 +9,13 @@
     "48": "assets/icons/48.png",
     "128": "assets/icons/128.png"
   },
-  "browser_action": {
+  "action": {
     "default_icon": "assets/icons/disabled.png",
     "default_title": "Cookie Dialog Monster"
   },
   "author": "wanhose",
   "background": {
-    "scripts": ["scripts/background.js"]
+    "service_worker": "scripts/background.js"
   },
   "content_scripts": [
     {
@@ -32,6 +32,6 @@
       "run_at": "document_start"
     }
   ],
-  "permissions": ["contextMenus", "http://*/*", "https://*/*", "storage", "tabs"],
-  "web_accessible_resources": ["assets/fonts/*", "scripts/popup.js", "styles/*"]
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "permissions": ["contextMenus", "storage", "tabs"]
 }

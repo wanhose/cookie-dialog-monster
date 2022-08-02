@@ -50,7 +50,7 @@ const report = async (tab) => {
 };
 
 /**
- * @description Listens to context menus
+ * @description Listens to context menus clicked
  */
 
 chrome.contextMenus.onClicked.addListener((info, tab) => {
@@ -64,25 +64,6 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 /**
- * @description Creates the context menu
- */
-
-chrome.contextMenus.create({
-  contexts: ['all'],
-  documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
-  id: reportMenuItemId,
-  title: chrome.i18n.getMessage('contextMenuText'),
-});
-
-/**
- * @description Listens to first start
- */
-
-chrome.runtime.onStartup.addListener(() => {
-  refreshData();
-});
-
-/**
  * @description Listens to messages
  */
 
@@ -92,13 +73,13 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
 
   switch (message.type) {
     case 'DISABLE_ICON':
-      if (tabId) chrome.browserAction.setIcon({ path: 'assets/icons/disabled.png', tabId });
+      if (tabId) chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId });
       break;
     case 'ENABLE_ICON':
-      if (tabId) chrome.browserAction.setIcon({ path: 'assets/icons/enabled.png', tabId });
+      if (tabId) chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId });
       break;
     case 'ENABLE_POPUP':
-      if (tabId) chrome.browserAction.setPopup({ popup: 'popup.html', tabId });
+      if (tabId) chrome.action.setPopup({ popup: '/popup.html', tabId });
       break;
     case 'GET_DATA':
       chrome.storage.local.get('data', ({ data }) => {
@@ -121,4 +102,25 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
   }
 
   return true;
+});
+
+/**
+ * @description Listens to extension installed
+ */
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    contexts: ['all'],
+    documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+    id: reportMenuItemId,
+    title: chrome.i18n.getMessage('contextMenuText'),
+  });
+});
+
+/**
+ * @description Listens to first start
+ */
+
+chrome.runtime.onStartup.addListener(() => {
+  refreshData();
 });

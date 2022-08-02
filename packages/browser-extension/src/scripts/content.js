@@ -119,33 +119,36 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
+ * @async
  * @description Fixes bfcache issues
  * @listens window#pageshow
  */
 
-window.addEventListener('pageshow', (event) => {
+window.addEventListener('pageshow', async (event) => {
   if (event.persisted) {
-    dispatch({ hostname, type: 'GET_STATE' }, null, (state) => {
-      if (data?.elements.length && state?.enabled && !preview) {
-        fix();
-        clean(Array.from(document.querySelectorAll(data.elements)), true);
-      }
-    });
+    const state = dispatch({ hostname, type: 'GET_STATE' });
+
+    if (data?.elements?.length && state?.enabled && !preview) {
+      const nodes = [...document.querySelectorAll(data.elements)];
+
+      fix();
+      if (nodes.length) clean(nodes, true);
+    }
   }
 });
 
 /**
+ * @async
  * @description Sets up everything
  */
 
-dispatch({ hostname, type: 'GET_STATE' }, null, (state) => {
+(async () => {
+  const state = await dispatch({ hostname, type: 'GET_STATE' });
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (state?.enabled) {
-    dispatch({ hostname, type: 'GET_DATA' }, null, (result) => {
-      data = result;
-      observer.observe(document.body ?? document.documentElement, options);
-      dispatch({ type: 'ENABLE_ICON' });
-    });
+    data = await dispatch({ hostname, type: 'GET_DATA' });
+    observer.observe(document.body ?? document.documentElement, options);
+    dispatch({ type: 'ENABLE_ICON' });
   }
-});
+})();
