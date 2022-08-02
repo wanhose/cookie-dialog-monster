@@ -8,34 +8,21 @@
 
 ## Compatibility
 
-- Google Chrome 51+.
-- Microsoft Edge 15+.
-- Mozilla Firefox 54+.
-- Opera 38+.
+- All browsers based on Chromium 88+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
+- Google Chrome 88+
+- Microsoft Edge 88+
+- ~~Mozilla Firefox 54+~~ (development stalled until further notice, you can still download and use this extension in its **5.5.5** version)
 
-## Installation (on Google Chrome)
+## Installation (only for developers)
 
-1. Clone this repository.
-2. Go to [chrome://extensions](chrome://extensions).
-3. Enable **Developer mode** by clicking the toggle switch next to **Developer Mode**.
-4. Then, click the **LOAD UNPACKED** button and select the cloned folder.
-5. That's all, you have a development build of this extension.
+1. Clone this repository and then run `yarn install`
+2. Build this repository running the command `yarn workspace browser-extension run build`
+3. Go to [yourbrowser://extensions](yourbrowser://extensions) (different URL based on your browser)
+4. Enable **Developer mode**
+5. Then, click the **Load unpacked** button and select the generated `build` folder
+6. That's all, you have a development build of this extension
 
-## Installation (on Mozilla Firefox)
-
-1. Clone this repository.
-2. Go to [about:debugging](about:debugging).
-3. Enter **This Firefox** section.
-4. Then, click the **LOAD TEMPORARY ADD-ON** button and select any file inside the cloned folder.
-5. That's all, you have a development build of this extension.
-
-## Installation (on Microsoft Edge)
-
-1. Clone this repository.
-2. Go to [edge://extensions](edge://extensions).
-3. Enable **Developer mode** by clicking the toggle switch next to **Developer Mode**.
-4. Then, click the **LOAD UNPACKED** button and select the cloned folder.
-5. That's all, you have a development build of this extension.
+Please note, each time you want to see changes made in the code you will need to rebuild and refresh the extension
 
 ## Contributing
 
