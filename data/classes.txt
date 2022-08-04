@@ -19,3 +19,5 @@ shopee-no-scroll
 sp-message-open
 ta-cc-modal-open
 touchevents-false
+wt-cli-eu-country
+wt-cli-geoip-on

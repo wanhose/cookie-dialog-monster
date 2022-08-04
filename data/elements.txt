@@ -12564,3 +12564,16 @@ ofi-cookie-box-widget
 .fd-cc-root
 #cmpwrapper
 .Cookie--dark-lime
+#cookiePrefPopup
+.js-cookie-banner-container
+.c-cookie-banner-container
+.js-cookie-banner-active
+.gdpr-visibility-on
+.consent-banner__content--gdpr-v2
+.artdeco-global-alert
+#uc-categories
+[data-action="Sites-CashConvertersSpain-Site"] ~ .modal-backdrop.fade.show
+#oemaceptacion
+#cookie-consent-content
+.cookie-banner-inner
+.cookies-messages-wrapper

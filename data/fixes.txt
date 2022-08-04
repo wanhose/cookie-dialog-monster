@@ -5,8 +5,12 @@ fiberplane.dev##button[aria-label="Close Banner"]##click
 gettr.com##button.bold##click
 golem.de###btnsimplec##click
 google##form[action*="consent.google"] button##click
+hagglezon.com##[data-test="cookie-submit"]##click
+motorolasound.com###cookie-btn-denied##click
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index
+staylibere.com##[class*="LayoutCookieBanner_buttons"] > button:last-child##click
+twitch.tv##[data-a-target="consent-banner-accept"]##click
 web.dev##a[href*="cookies"] + button##click
 youtube##div.buttons.ytd-consent-bump-v2-lightbox ytd-button-renderer:last-child tp-yt-paper-button##click
 zdf.de###aria-dialog-cmp-error-dialog > .dialog-close##click
