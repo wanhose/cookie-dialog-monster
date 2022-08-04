@@ -59,10 +59,10 @@ const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
  */
 
 const handlePowerChange = async () => {
-  dispatch({ hostname, type: 'GET_STATE' }, null, (state) => {
-    dispatch({ hostname, state: { enabled: !state?.enabled }, type: 'UPDATE_STATE' });
-    chrome.tabs.reload({ bypassCache: true });
-  });
+  const state = await dispatch({ hostname, type: 'GET_STATE' });
+
+  dispatch({ hostname, state: { enabled: !state?.enabled }, type: 'UPDATE_STATE' });
+  chrome.tabs.reload({ bypassCache: true });
 };
 
 /**
@@ -89,37 +89,35 @@ const handleRate = (event) => {
 };
 
 /**
+ * @async
  * @description Setup stars handlers and result message links
  */
 
-const handleContentLoaded = () => {
-  dispatch({ type: 'GET_TAB' }, null, (tab) => {
-    hostname = tab?.url
-      ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
-      : undefined;
+const handleContentLoaded = async () => {
+  const state = await dispatch({ hostname, type: 'GET_STATE' });
+  const tab = await dispatch({ type: 'GET_TAB' });
 
-    dispatch({ hostname, type: 'GET_STATE' }, null, (state) => {
-      translate();
+  hostname = tab?.url
+    ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
+    : undefined;
 
-      const host = document.getElementById('host');
-      const like = document.getElementById('like');
-      const power = document.getElementById('power');
-      const reload = document.getElementById('reload');
-      const store = document.getElementById('store');
-      const unlike = document.getElementById('unlike');
+  translate();
 
-      like.addEventListener('click', handleRate);
-      power.addEventListener('change', handlePowerChange);
-      reload.addEventListener('click', () => chrome.tabs.reload({ bypassCache: true }));
-      unlike.addEventListener('click', handleRate);
+  const host = document.getElementById('host');
+  const like = document.getElementById('like');
+  const power = document.getElementById('power');
+  const store = document.getElementById('store');
+  const unlike = document.getElementById('unlike');
 
-      host.innerText = hostname ?? 'unknown';
-      if (isEdge) store?.setAttribute('href', edgeUrl);
-      else if (isChromium) store?.setAttribute('href', chromeUrl);
-      else if (isFirefox) store?.setAttribute('href', firefoxUrl);
-      if (!state.enabled) power.removeAttribute('checked');
-    });
-  });
+  like.addEventListener('click', handleRate);
+  power.addEventListener('change', handlePowerChange);
+  unlike.addEventListener('click', handleRate);
+
+  host.innerText = hostname ?? 'unknown';
+  if (isEdge) store?.setAttribute('href', edgeUrl);
+  else if (isChromium) store?.setAttribute('href', chromeUrl);
+  else if (isFirefox) store?.setAttribute('href', firefoxUrl);
+  if (!state.enabled) power.removeAttribute('checked');
 };
 
 /**
