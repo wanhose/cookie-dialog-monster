@@ -1,6 +1,6 @@
 /**
  * @description Data properties
- * @type {{ classes: string[], fixes: string[], elements: string[], skips: string[] }?}
+ * @type {{ classes: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
  */
 
 let data = null;
@@ -10,12 +10,6 @@ let data = null;
  */
 
 const dispatch = chrome.runtime.sendMessage;
-
-/**
- * @description Forbidden tags to ignore in the DOM
- */
-
-const forbiddenTags = ['BASE', 'BODY', 'HEAD', 'HTML', 'LINK', 'META', 'SCRIPT', 'STYLE', 'TITLE'];
 
 /**
  * @description Current hostname
@@ -51,7 +45,7 @@ const match = (node) => {
   const isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
 
   return (
-    !forbiddenTags.includes(node.tagName?.toUpperCase?.()) &&
+    !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
     (isFullscreen || isVisible) &&
     (node.offsetParent || window.getComputedStyle(node).position === 'fixed') &&
     node.parentElement &&
