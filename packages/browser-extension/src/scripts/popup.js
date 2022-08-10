@@ -60,8 +60,9 @@ const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
 const handlePowerChange = async () => {
   const state = await dispatch({ hostname, type: 'GET_STATE' });
+  const enabled = typeof state?.enabled === 'undefined' ? false : !state.enabled;
 
-  dispatch({ hostname, state: { enabled: !state?.enabled }, type: 'UPDATE_STATE' });
+  dispatch({ hostname, state: { enabled }, type: 'UPDATE_STATE' });
   chrome.tabs.reload({ bypassCache: true });
 };
 
