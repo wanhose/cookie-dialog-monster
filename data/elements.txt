@@ -12577,3 +12577,13 @@ ofi-cookie-box-widget
 #cookie-consent-content
 .cookie-banner-inner
 .cookies-messages-wrapper
+.fxr-notice
+[aria-label="Before you continue to Google Search"]
+.cookie-consent-modal
+#consCookie
+.cky-consent-bar
+.cky-consent-container
+.cky-notice
+.m_privacy_statement
+dialog.consent.js-consent
+.modal-cookies-info
