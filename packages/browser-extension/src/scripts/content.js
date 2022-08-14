@@ -32,6 +32,13 @@ const options = { childList: true, subtree: true };
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
+ * @description Extension state
+ * @type {{ enabled: boolean }}
+ */
+
+let state = { enabled: true };
+
+/**
  * @description Matches if node element is removable
  * @param {Element} node
  * @returns {boolean}
@@ -128,16 +135,12 @@ const observer = new MutationObserver((mutations) => {
  * @listens window#pageshow
  */
 
-window.addEventListener('pageshow', async (event) => {
-  if (event.persisted) {
-    const state = await dispatch({ hostname, type: 'GET_STATE' });
+window.addEventListener('pageshow', (event) => {
+  if (data?.elements.length && event.persisted && state.enabled && !preview) {
+    const nodes = [...document.querySelectorAll(data.elements)];
 
-    if (data?.elements?.length && state?.enabled && !preview) {
-      const nodes = [...document.querySelectorAll(data.elements)];
-
-      fix();
-      if (nodes.length) clean(nodes, true);
-    }
+    fix();
+    if (nodes.length) clean(nodes, true);
   }
 });
 
@@ -147,10 +150,10 @@ window.addEventListener('pageshow', async (event) => {
  */
 
 (async () => {
-  const state = await dispatch({ hostname, type: 'GET_STATE' });
+  state = (await dispatch({ hostname, type: 'GET_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
-  if (state?.enabled) {
+  if (state.enabled) {
     data = await dispatch({ hostname, type: 'GET_DATA' });
     observer.observe(document.body ?? document.documentElement, options);
     dispatch({ type: 'ENABLE_ICON' });
