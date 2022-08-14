@@ -55,15 +55,54 @@ const isEdge = navigator.userAgent.indexOf('Edg') !== -1;
 const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
 /**
+ * @description Extension state
+ * @type {{ enabled: boolean }}
+ */
+
+let state = { enabled: true };
+
+/**
+ * @async
+ * @description Setup stars handlers and result message links
+ */
+
+const handleContentLoaded = async () => {
+  const tab = await dispatch({ type: 'GET_TAB' });
+
+  hostname = tab?.url
+    ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
+    : undefined;
+  state = (await dispatch({ hostname, type: 'GET_STATE' })) ?? state;
+
+  const host = document.getElementById('host');
+  host.innerText = hostname ?? 'unknown';
+
+  const like = document.getElementById('like');
+  like.addEventListener('click', handleRate);
+
+  const power = document.getElementById('power');
+  power.addEventListener('change', handlePowerChange);
+  if (!state.enabled) power.removeAttribute('checked');
+
+  const store = document.getElementById('store');
+  if (isEdge) store?.setAttribute('href', edgeUrl);
+  else if (isChromium) store?.setAttribute('href', chromeUrl);
+  else if (isFirefox) store?.setAttribute('href', firefoxUrl);
+
+  const unlike = document.getElementById('unlike');
+  unlike.addEventListener('click', handleRate);
+
+  translate();
+};
+
+/**
  * @description Disables or enables extension on current page
  */
 
 const handlePowerChange = async () => {
-  const state = await dispatch({ hostname, type: 'GET_STATE' });
-  const enabled = typeof state?.enabled === 'undefined' ? false : !state.enabled;
-
-  dispatch({ hostname, state: { enabled }, type: 'UPDATE_STATE' });
-  chrome.tabs.reload({ bypassCache: true });
+  state = { enabled: !state.enabled };
+  dispatch({ hostname, state, type: 'UPDATE_STATE' });
+  await chrome.tabs.reload({ bypassCache: true });
 };
 
 /**
@@ -90,38 +129,6 @@ const handleRate = (event) => {
 };
 
 /**
- * @async
- * @description Setup stars handlers and result message links
- */
-
-const handleContentLoaded = async () => {
-  const state = await dispatch({ hostname, type: 'GET_STATE' });
-  const tab = await dispatch({ type: 'GET_TAB' });
-
-  hostname = tab?.url
-    ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
-    : undefined;
-
-  translate();
-
-  const host = document.getElementById('host');
-  const like = document.getElementById('like');
-  const power = document.getElementById('power');
-  const store = document.getElementById('store');
-  const unlike = document.getElementById('unlike');
-
-  like.addEventListener('click', handleRate);
-  power.addEventListener('change', handlePowerChange);
-  unlike.addEventListener('click', handleRate);
-
-  host.innerText = hostname ?? 'unknown';
-  if (isEdge) store?.setAttribute('href', edgeUrl);
-  else if (isChromium) store?.setAttribute('href', chromeUrl);
-  else if (isFirefox) store?.setAttribute('href', firefoxUrl);
-  if (!state.enabled) power.removeAttribute('checked');
-};
-
-/**
  * @description Applies translations to tags with i18n data attribute
  */
 
@@ -138,7 +145,7 @@ const translate = () => {
 
 /**
  * @description Listen to document ready
- * @listens document#ready
+ * @listens document#DOMContentLoaded
  */
 
 document.addEventListener('DOMContentLoaded', handleContentLoaded);
