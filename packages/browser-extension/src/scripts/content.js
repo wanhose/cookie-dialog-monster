@@ -32,11 +32,52 @@ const options = { childList: true, subtree: true };
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
+ * @description Element that were being removed count
+ * @type {number}
+ */
+
+let elementCount = 0;
+
+/**
  * @description Extension state
  * @type {{ enabled: boolean }}
  */
 
 let state = { enabled: true };
+
+/**
+ * @description Cleans DOM
+ * @param {Element[]} nodes
+ * @param {boolean?} skipMatch
+ * @returns {void}
+ */
+
+const clean = (nodes, skipMatch) => {
+  const targets = nodes.filter((node) => skipMatch || match(node));
+
+  targets.forEach((node) => {
+    console.log(node);
+    node.remove();
+    elementCount += 1;
+  });
+};
+
+/**
+ * @description Cleans DOM
+ * @returns {void}
+ */
+
+const forceClean = () => {
+  if (data?.elements.length && state.enabled && !preview) {
+    const nodes = [...document.querySelectorAll(data.elements)];
+
+    if (nodes.length) {
+      fix();
+      clean(nodes, true);
+      elementCount += nodes.length;
+    }
+  }
+};
 
 /**
  * @description Matches if node element is removable
@@ -59,16 +100,6 @@ const match = (node) => {
     node.matches(data?.elements ?? [])
   );
 };
-
-/**
- * @description Cleans DOM
- * @param {Element[]} nodes
- * @param {boolean?} skipMatch
- * @returns {void}
- */
-
-const clean = (nodes, skipMatch) =>
-  nodes.filter((node) => skipMatch || match(node)).forEach((node) => node.remove());
 
 /**
  * @description Fixes scroll issues
@@ -130,18 +161,21 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
- * @async
+ * @description Fixes already existing element when page load issues
+ * @listens window#load
+ */
+
+window.addEventListener('load', () => {
+  if (elementCount < 2) forceClean();
+});
+
+/**
  * @description Fixes bfcache issues
  * @listens window#pageshow
  */
 
 window.addEventListener('pageshow', (event) => {
-  if (data?.elements.length && event.persisted && state.enabled && !preview) {
-    const nodes = [...document.querySelectorAll(data.elements)];
-
-    fix();
-    if (nodes.length) clean(nodes, true);
-  }
+  if (event.persisted) forceClean();
 });
 
 /**
