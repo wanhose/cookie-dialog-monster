@@ -56,7 +56,6 @@ const clean = (nodes, skipMatch) => {
   const targets = nodes.filter((node) => skipMatch || match(node));
 
   targets.forEach((node) => {
-    console.log(node);
     node.remove();
     elementCount += 1;
   });
