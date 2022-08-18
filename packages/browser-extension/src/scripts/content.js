@@ -53,7 +53,7 @@ let state = { enabled: true };
  */
 
 const clean = (nodes, skipMatch) => {
-  const targets = nodes.filter((node) => skipMatch || match(node));
+  const targets = nodes.filter((node) => match(node, skipMatch));
 
   targets.forEach((node) => {
     node.remove();
@@ -81,10 +81,11 @@ const forceClean = () => {
 /**
  * @description Matches if node element is removable
  * @param {Element} node
+ * @param {boolean?} skipMatch
  * @returns {boolean}
  */
 
-const match = (node) => {
+const match = (node, skipMatch) => {
   if (!(node instanceof HTMLElement)) return false;
 
   const rect = node.getBoundingClientRect();
@@ -96,7 +97,7 @@ const match = (node) => {
     (isFullscreen || isVisible) &&
     (node.offsetParent || window.getComputedStyle(node).position === 'fixed') &&
     node.parentElement &&
-    node.matches(data?.elements ?? [])
+    (skipMatch || node.matches(data?.elements ?? []))
   );
 };
 
