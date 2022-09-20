@@ -12504,7 +12504,6 @@ module-rgpd-component
 iframe[src="https://www.tumblr.com/dashboard/iframe/consent"]
 #cookieNoticePro
 .wf-museosans-n3-active.wf-museosans-i3-active.wf-museosans-n7-active.wf-museosans-i7-active.wf-museoslab-n3-active.wf-museoslab-i3-active.wf-museoslab-n7-active.wf-museoslab-i7-active.wf-museoslab-n8-active.wf-museoslab-i8-active.wf-active.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqldatabase.indexeddb.hashchange.history.draganddrop.websockets.rgba.hsla.multiplebgs.backgroundsize.borderimage.borderradius.boxshadow.textshadow.opacity.cssanimations.csscolumns.cssgradients.cssreflections.csstransforms.csstransforms3d.csstransitions.fontface.generatedcontent.video.audio.localstorage.sessionstorage.webworkers.no-applicationcache.svg.inlinesvg.smil.svgclippaths .modal-backdrop
-.nk-body #cc_div
 #capa_galleta
 #stm ~ [title="Dimmer"]
 #xbcc_modal
@@ -12587,3 +12586,48 @@ ofi-cookie-box-widget
 .m_privacy_statement
 dialog.consent.js-consent
 .modal-cookies-info
+#shopify-section-fixed-message
+#st-cmp-v2
+#st_gdpr_iframe
+#noty_bottom_layout_container.i-am-new
+#qc-cmp2-main
+.qc-cmp2-cleanslate
+#qc-cmp2-ui
+[title="TrustArc Cookie Consent Manager"]
+.truste_box_overlay_inner
+[data-testid="uc-default-banner"]
+#usercentrics-root
+.tco-content-dock.left.tco-content-dock-on
+#lab-slide-bottom-popup
+#vcm-v-consent-sdk
+#vcm-v-banner-sdk
+#cookieAdviseContainer
+#modifyCookiesModal
+#layout-uec-container
+#layout-uec-banner
+.cookie-msg-wrap
+#cc_div
+#cm
+.CybotEdge
+.CybotCookiebotDialogActive
+.CybotCookiebotDialogContentWrapper
+app-cookies
+.re-SharedCmp
+.cookiefirst-root
+#cookiefirst-root
+#opbox-gdpr-consents-modal
+#cmp-modal
+#react-root #layers [data-testid="BottomBar"]
+ytd-consent-bump-v2-lightbox
+.ytd-consent-bump-v2-lightbox
+.ytd-consent-bump-v2-renderer
+#shopify-privacy-banner-div
+#shopify-privacy-banner-wrapper
+#shopify-privacy-banner
+#shopify-privacy-banner-overlay
+solvia-cookies-policy
+.simple-modal--consents
+.policy-modal
+.as-policy-modal
+div[style="bottom: 24px; position: fixed; left: 0px; width: 100%; display: flex; z-index: 1000000; opacity: 1;"]
+#cookie-consents

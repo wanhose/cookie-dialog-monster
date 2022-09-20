@@ -1,14 +1,18 @@
 automobielmanagement.nl##body > *##resetAll##filter
+bilbaomuseoa.eus##.alert_message .btn-confirm##click
 consent.yahoo###consent-page button[type="submit"]##click
+consent.google##[aria-label="Reject all"]##click
 dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##click
 fiberplane.dev##button[aria-label="Close Banner"]##click
 gettr.com##button.bold##click
+gmx.com###onetrust-accept-btn-handler##click
 golem.de###btnsimplec##click
 google##form[action*="consent.google"] button##click
 hagglezon.com##[data-test="cookie-submit"]##click
 motorolasound.com###cookie-btn-denied##click
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index
+producthunt.com##[data-test="dismiss-CookiePopup"] button##click
 staylibere.com##[class*="LayoutCookieBanner_buttons"] > button:last-child##click
 twitch.tv##[data-a-target="consent-banner-accept"]##click
 web.dev##a[href*="cookies"] + button##click

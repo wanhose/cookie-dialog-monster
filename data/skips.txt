@@ -2,6 +2,7 @@ canvasjs.com
 chessmadra.com
 correos.es
 flickr.com
+godotforums.org
 key-shortcut.com
 lever.co
 mantisbt.org
@@ -9,5 +10,6 @@ musicmeter.nl
 personio.com
 restaurantguru.com
 stackage.org
+steamcommunity.com
 sucuri.net
 youtube.com
