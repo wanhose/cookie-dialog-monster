@@ -12631,3 +12631,18 @@ solvia-cookies-policy
 .as-policy-modal
 div[style="bottom: 24px; position: fixed; left: 0px; width: 100%; display: flex; z-index: 1000000; opacity: 1;"]
 #cookie-consents
+[data-testid="cookie-banner"]
+#cookieLB
+#legalNotice
+.gdpr-lmd-wall
+[class="absolute top-0 left-0 w-full h-full z-[10000] bg-Text03 bg-opacity-[0.24] content-end items-center"]
+.opc-cookie-message
+.DVWebNode-cookie-banner-wrapper
+.modal-gdpr-full
+.otcn
+.otcn-modal
+#cookiesV2
+section.ch2
+[style*="opacity: 1; x: 1px; y: 0px; transform: translateY(0px) scale(1, 1); --Toaster-indicatorColor:#"]
+[class*="cookieBanner-module--outer--"]
+[style="bottom: 24px; position: fixed; left: 0px; width: 100%; display: flex; z-index: 1000000; opacity: 1;"]
