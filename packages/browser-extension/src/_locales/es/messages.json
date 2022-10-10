@@ -1,38 +1,53 @@
 {
   "appDesc": {
-    "description": "¿Alguien dijo diálogos de consentimiento de cookies? 😋",
     "message": "¿Alguien dijo diálogos de consentimiento de cookies? 😋"
   },
-  "contextMenuText": {
-    "description": "Reportar sitio...",
+  "contextMenu_reportOption": {
     "message": "Reportar sitio..."
   },
   "contributeText": {
-    "description": "Contribuye a este proyecto",
     "message": "Contribuye a este proyecto"
   },
   "helpText": {
-    "description": "¿Ayuda o problemas?",
     "message": "¿Ayuda o problemas?"
   },
   "negativeText": {
-    "description": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>",
     "message": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>"
   },
   "positiveText": {
-    "description": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>",
     "message": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>"
   },
-  "reportText": {
-    "description": "¡Reporte enviado!",
+  "reportDialog_blankPageOption": {
+    "message": "La página está en blanco"
+  },
+  "reportDialog_bodyText": {
+    "message": "Por favor selecciona una opción"
+  },
+  "reportDialog_cannotClick": {
+    "message": "No se puede hacer clic"
+  },
+  "reportDialog_laggyPageOption": {
+    "message": "La página tarda mucho en cargar"
+  },
+  "reportDialog_pageNotRespondingOption": {
+    "message": "La página no responde"
+  },
+  "reportDialog_pageVisualGlitchOption": {
+    "message": "La página está mal visualmente"
+  },
+  "reportDialog_popupShowUpOption": {
+    "message": "Ha aparecido un diálogo"
+  },
+  "reportDialog_submitExtraText": {
+    "message": "Le recomendamos encarecidamente que desactive la extensión en este sitio hasta que solucionemos el problema"
+  },
+  "reportDialog_submitText": {
     "message": "¡Reporte enviado!"
   },
   "reviewText": {
-    "description": "¿Te gusta esta extensión?",
     "message": "¿Te gusta esta extensión?"
   },
   "toggleText": {
-    "description": "Comiendo diálogos en ",
     "message": "Comiendo diálogos en "
   }
 }

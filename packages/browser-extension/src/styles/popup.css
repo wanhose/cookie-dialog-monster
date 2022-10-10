@@ -83,11 +83,6 @@ strong {
   font-weight: bold;
 }
 
-svg {
-  height: 1rem;
-  width: 1rem;
-}
-
 .header-actions {
   align-items: center;
   display: flex;

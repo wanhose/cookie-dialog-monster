@@ -1,38 +1,53 @@
 {
   "appDesc": {
-    "description": "A spus cineva dialoguri de consimțământ pentru cookie? 😋",
     "message": "A spus cineva dialoguri de consimțământ pentru cookie? 😋"
   },
-  "contextMenuText": {
-    "description": "Raportați site-ul...",
+  "contextMenu_reportOption": {
     "message": "Raportați site-ul..."
   },
   "contributeText": {
-    "description": "Contribuie la acest proiect",
     "message": "Contribuie la acest proiect"
   },
   "helpText": {
-    "description": "Ajutor sau probleme?",
     "message": "Ajutor sau probleme?"
   },
   "negativeText": {
-    "description": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>",
     "message": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>"
   },
   "positiveText": {
-    "description": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>",
     "message": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>"
   },
-  "reportText": {
-    "description": "Raport trimis!",
+  "reportDialog_blankPageOption": {
+    "message": "Pagina este goală"
+  },
+  "reportDialog_bodyText": {
+    "message": "Vă rugăm să selectați o opțiune de mai jos"
+  },
+  "reportDialog_cannotClick": {
+    "message": "Nu se poate face clic"
+  },
+  "reportDialog_laggyPageOption": {
+    "message": "Pagina este întârziată"
+  },
+  "reportDialog_pageNotRespondingOption": {
+    "message": "Pagina nu răspunde"
+  },
+  "reportDialog_pageVisualGlitchOption": {
+    "message": "Pagina conține erori vizuale"
+  },
+  "reportDialog_popupShowUpOption": {
+    "message": "A apărut o fereastră pop-up"
+  },
+  "reportDialog_submitExtraText": {
+    "message": "Îți recomandăm insistent să dezactivați extensia de pe acest site până când remediam problema"
+  },
+  "reportDialog_submitText": {
     "message": "Raport trimis!"
   },
   "reviewText": {
-    "description": "Îți place această extensie?",
     "message": "Îți place această extensie?"
   },
   "toggleText": {
-    "description": "Mâncând dialoguri în ",
     "message": "Mâncând dialoguri în "
   }
 }

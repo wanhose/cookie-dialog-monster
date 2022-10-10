@@ -28,7 +28,7 @@ const refreshData = (callback) => {
   fetch(`${apiUrl}/data/`).then((result) => {
     result.json().then(({ data }) => {
       chrome.storage.local.set({ data });
-      callback(data);
+      callback?.(data);
     });
   });
 };
@@ -36,17 +36,19 @@ const refreshData = (callback) => {
 /**
  * @async
  * @description Reports active tab URL
+ * @param {any} message
  * @param {chrome.tabs.Tab} tab
  */
 
-const report = async (tab) => {
+const report = async (message, tab) => {
+  const reason = message.reason;
+  const userAgent = message.userAgent;
   const version = chrome.runtime.getManifest().version;
-  const body = JSON.stringify({ url: tab?.url, version });
+  const body = JSON.stringify({ reason, url: tab.url, userAgent, version });
   const headers = { 'Content-type': 'application/json' };
   const url = `${apiUrl}/report/`;
 
   await fetch(url, { body, headers, method: 'POST' });
-  chrome.tabs.sendMessage(tab.id, { type: 'SHOW_REPORT_CONFIRMATION' });
 };
 
 /**
@@ -56,7 +58,7 @@ const report = async (tab) => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
     case reportMenuItemId:
-      if (tab) report(tab);
+      if (tab) chrome.tabs.sendMessage(tab.id, { type: 'SHOW_REPORT_DIALOG' });
       break;
     default:
       break;
@@ -94,6 +96,9 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
     case 'GET_TAB':
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
       break;
+    case 'REPORT':
+      if (tabId) report(message, sender.tab);
+      break;
     case 'UPDATE_STATE':
       if (hostname) chrome.storage.local.set({ [hostname]: message.state });
       break;
@@ -113,7 +118,7 @@ chrome.runtime.onInstalled.addListener(() => {
     contexts: ['all'],
     documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
     id: reportMenuItemId,
-    title: chrome.i18n.getMessage('contextMenuText'),
+    title: chrome.i18n.getMessage('contextMenu_reportOption'),
   });
 });
 
