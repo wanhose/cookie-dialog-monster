@@ -35,7 +35,7 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
     },
     async (request, reply) => {
       const { reason = 'Unknown', url, userAgent = 'Unknown', version } = request.body;
-      const html = `<b>Site:</b> ${url}<br/><b>Reason: ${reason}<br/></b><b>User-Agent:</b> ${userAgent}<br/><b>Version:</b> ${version}`;
+      const html = `<b>Site:</b> ${url}<br/><b>Reason:</b> ${reason}<br/></b><b>User-Agent:</b> ${userAgent}<br/><b>Version:</b> ${version}`;
       const subject = 'Cookie Dialog Monster Report';
       const to = 'hello@wanhose.dev';
 
