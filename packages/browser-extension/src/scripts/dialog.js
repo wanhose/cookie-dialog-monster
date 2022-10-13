@@ -25,7 +25,7 @@ const reportDialogId = 'report-dialog';
 const reportDialogHtml = `
   <dialog id="${reportDialogId}" tabindex="0">
     <report-dialog-header>
-      <span>Cookie Dialog Monster</span>
+      <report-dialog-header-title>Cookie Dialog Monster</report-dialog-header-title>
       <report-dialog-close-button role="button" tabindex="0">
         <svg 
           viewBox="0 0 24 24" 
@@ -170,9 +170,13 @@ const showReportDialog = () => {
   const result = parser.parseFromString(reportDialogHtml, 'text/html');
   const dialog = result.body.firstElementChild;
   const closeButton = dialog.getElementsByTagName('report-dialog-close-button')[0];
+  const link = document.createElement('link');
   const radios = dialog.getElementsByTagName('report-dialog-radio');
 
   closeButton.addEventListener('click', closeButtonClickHandler);
+  link.setAttribute('href', 'https://fonts.googleapis.com/css?family=Inter');
+  link.setAttribute('id', 'report-dialog-font');
+  link.setAttribute('rel', 'stylesheet');
 
   for (const radio of radios) {
     radio.addEventListener('click', radioClickHandler);
@@ -180,6 +184,10 @@ const showReportDialog = () => {
 
   document.body.appendChild(dialog);
   dialog.showModal();
+
+  if (!document.getElementById('report-dialog-font')) {
+    document.head.appendChild(link);
+  }
 };
 
 /**

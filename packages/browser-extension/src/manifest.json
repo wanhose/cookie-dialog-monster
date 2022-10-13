@@ -32,5 +32,11 @@
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["contextMenus", "storage", "tabs"]
+  "permissions": ["contextMenus", "storage", "tabs"],
+  "web_accessible_resources": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "resources": ["https://fonts.googleapis.com/css?family=Inter"]
+    }
+  ]
 }

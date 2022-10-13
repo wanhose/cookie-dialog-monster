@@ -12,7 +12,7 @@
   border-radius: 4px;
   box-sizing: border-box;
   color: var(--cookie-dialog-monster-color-secondary);
-  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 100%;
   margin: auto !important;
   padding: 0px !important;
@@ -76,6 +76,10 @@ report-dialog-header {
   justify-content: space-between;
   line-height: 16px;
   padding: 16px;
+}
+
+report-dialog-header-title {
+  font-weight: 500;
 }
 
 report-dialog-radio {
