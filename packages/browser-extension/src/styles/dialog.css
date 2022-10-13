@@ -51,7 +51,7 @@ report-dialog-close-button {
   display: inline-flex;
   justify-content: center;
   margin: 0px;
-  outline: none;
+  outline: none !important;
   padding: 0px;
   transition: 0.4s;
 }
@@ -87,7 +87,7 @@ report-dialog-radio {
   cursor: pointer;
   display: block;
   margin-top: 18px;
-  outline: none;
+  outline: none !important;
   padding-left: 24px;
   position: relative;
 }
@@ -153,7 +153,7 @@ report-dialog-submit-button {
   height: 39px;
   justify-content: center;
   margin-top: 24px;
-  outline: none;
+  outline: none !important;
   padding: 8px 16px;
   text-align: center;
   transition: 0.4s;
