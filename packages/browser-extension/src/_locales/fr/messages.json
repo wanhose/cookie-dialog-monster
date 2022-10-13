@@ -1,38 +1,53 @@
 {
   "appDesc": {
-    "description": "Quelqu'un a-t-il dit boîtes de dialogue de consentement aux cookies? 😋",
     "message": "Quelqu'un a-t-il dit boîtes de dialogue de consentement aux cookies? 😋"
   },
-  "contextMenuText": {
-    "description": "Signaler le site...",
+  "contextMenu_reportOption": {
     "message": "Signaler le site..."
   },
   "contributeText": {
-    "description": "Contribuez à ce projet",
     "message": "Contribuez à ce projet"
   },
   "helpText": {
-    "description": "Aide ou problèmes?",
     "message": "Aide ou problèmes?"
   },
   "negativeText": {
-    "description": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>",
     "message": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>"
   },
   "positiveText": {
-    "description": "Merci! Veuillez évaluer notre extension <a id=\"store\" target=\"_blank\">ici</a> <span aria-label=\"Visage souriant avec des yeux en forme de coeur\" role=\"img\">😍</span>",
     "message": "Merci! Veuillez évaluer notre extension <a id=\"store\" target=\"_blank\">ici</a> <span aria-label=\"Visage souriant avec des yeux en forme de coeur\" role=\"img\">😍</span>"
   },
-  "reportText": {
-    "description": "Rapport envoyé!",
+  "reportDialog_blankPageOption": {
+    "message": "La page est vide"
+  },
+  "reportDialog_bodyText": {
+    "message": "Veuillez sélectionner une option ci-dessous"
+  },
+  "reportDialog_cannotClickOption": {
+    "message": "Impossible de cliquer"
+  },
+  "reportDialog_laggyPageOption": {
+    "message": "La page est lente"
+  },
+  "reportDialog_pageNotRespondingOption": {
+    "message": "La page ne répond pas"
+  },
+  "reportDialog_pageVisualGlitchOption": {
+    "message": "La page contient des problèmes visuels"
+  },
+  "reportDialog_popupShowUpOption": {
+    "message": "La fenêtre contextuelle s'est affichée"
+  },
+  "reportDialog_submitExtraText": {
+    "message": "Nous vous recommandons vivement de désactiver l'extension sur ce site jusqu'à ce que nous résolvions le problème"
+  },
+  "reportDialog_submitText": {
     "message": "Rapport envoyé!"
   },
   "reviewText": {
-    "description": "Aimez-vous cette extension?",
     "message": "Aimez-vous cette extension?"
   },
   "toggleText": {
-    "description": "Manger des dialogues dans ",
     "message": "Manger des dialogues dans "
   }
 }

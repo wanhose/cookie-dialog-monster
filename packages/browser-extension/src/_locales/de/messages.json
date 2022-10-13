@@ -1,38 +1,53 @@
 {
   "appDesc": {
-    "description": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋",
     "message": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋"
   },
-  "contextMenuText": {
-    "description": "Webseite melden...",
+  "contextMenu_reportOption": {
     "message": "Webseite melden..."
   },
   "contributeText": {
-    "description": "Tragen Sie zu diesem Projekt bei",
     "message": "Tragen Sie zu diesem Projekt bei"
   },
   "helpText": {
-    "description": "Hilfe oder Probleme?",
     "message": "Hilfe oder Probleme?"
   },
   "negativeText": {
-    "description": "Ups! Wir entschuldigen uns für die Unannehmlichkeiten, bitte <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">kontaktieren Sie uns</a> <span aria-label=\"Grinsendes Gesicht mit Schweiß\" role=\"img\">😅</span>",
     "message": "Ups! Wir entschuldigen uns für die Unannehmlichkeiten, bitte <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">kontaktieren Sie uns</a> <span aria-label=\"Grinsendes Gesicht mit Schweiß\" role=\"img\">😅</span>"
   },
   "positiveText": {
-    "description": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>",
     "message": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>"
   },
-  "reportText": {
-    "description": "Bericht gesendet!",
+  "reportDialog_blankPageOption": {
+    "message": "Seite ist leer"
+  },
+  "reportDialog_bodyText": {
+    "message": "Bitte wählen Sie unten eine Option aus"
+  },
+  "reportDialog_cannotClickOption": {
+    "message": "Kann nicht klicken"
+  },
+  "reportDialog_laggyPageOption": {
+    "message": "Seite ist verzögert"
+  },
+  "reportDialog_pageNotRespondingOption": {
+    "message": "Seite antwortet nicht"
+  },
+  "reportDialog_pageVisualGlitchOption": {
+    "message": "Seite enthält visuelle Störungen"
+  },
+  "reportDialog_popupShowUpOption": {
+    "message": "Popup ist aufgetaucht"
+  },
+  "reportDialog_submitExtraText": {
+    "message": "Wir empfehlen Ihnen dringend, die Erweiterung auf dieser Website zu deaktivieren, bis wir das Problem behoben haben."
+  },
+  "reportDialog_submitText": {
     "message": "Bericht gesendet!"
   },
   "reviewText": {
-    "description": "Gefällt dir diese Erweiterung?",
     "message": "Gefällt dir diese Erweiterung?"
   },
   "toggleText": {
-    "description": "Essensdialoge in ",
     "message": "Essensdialoge in "
   }
 }

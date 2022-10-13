@@ -1,38 +1,53 @@
 {
   "appDesc": {
-    "description": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋",
     "message": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋"
   },
-  "contextMenuText": {
-    "description": "Segnala sito...",
+  "contextMenu_reportOption": {
     "message": "Segnala sito..."
   },
   "contributeText": {
-    "description": "Contribuisci a questo progetto",
     "message": "Contribuisci a questo progetto"
   },
   "helpText": {
-    "description": "Aiuto o problemi?",
     "message": "Aiuto o problemi?"
   },
   "negativeText": {
-    "description": "Ops! Ci scusiamo per l'inconveniente, per favore <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contattaci</a> <span aria-label=\"Faccina sorridente con il sudore\" role=\"img\">😅</span>",
     "message": "Ops! Ci scusiamo per l'inconveniente, per favore <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contattaci</a> <span aria-label=\"Faccina sorridente con il sudore\" role=\"img\">😅</span>"
   },
   "positiveText": {
-    "description": "Grazie! Valuta la nostra estensione <a id=\"store\" target=\"_blank\">qui</a> <span aria-label=\"Faccina sorridente con occhi a forma di cuore\" role=\"img\">😍</span>",
     "message": "Grazie! Valuta la nostra estensione <a id=\"store\" target=\"_blank\">qui</a> <span aria-label=\"Faccina sorridente con occhi a forma di cuore\" role=\"img\">😍</span>"
   },
-  "reportText": {
-    "description": "Rapporto inviato!",
+  "reportDialog_blankPageOption": {
+    "message": "La pagina è vuota"
+  },
+  "reportDialog_bodyText": {
+    "message": "Seleziona un'opzione qui sotto"
+  },
+  "reportDialog_cannotClickOption": {
+    "message": "Não é possível clicar"
+  },
+  "reportDialog_laggyPageOption": {
+    "message": "La pagina è in ritardo"
+  },
+  "reportDialog_pageNotRespondingOption": {
+    "message": "La pagina non risponde"
+  },
+  "reportDialog_pageVisualGlitchOption": {
+    "message": "La pagina contiene difetti visivi"
+  },
+  "reportDialog_popupShowUpOption": {
+    "message": "È apparso il popup"
+  },
+  "reportDialog_submitExtraText": {
+    "messaggio": "Ti consigliamo vivamente di disattivare l'estensione in questo sito finché non risolviamo il problema"
+  },
+  "reportDialog_submitText": {
     "message": "Rapporto inviato!"
   },
   "reviewText": {
-    "description": "Ti piace questa estensione?",
     "message": "Ti piace questa estensione?"
   },
   "toggleText": {
-    "description": "Mangiare dialoghi in ",
     "message": "Mangiare dialoghi in "
   }
 }

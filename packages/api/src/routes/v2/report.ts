@@ -2,7 +2,9 @@ import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import { sendMail } from 'services/mailing';
 
 type PostReportBody = {
+  reason?: string;
   url: string;
+  userAgent?: string;
   version: string;
 };
 
@@ -13,7 +15,13 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
       schema: {
         body: {
           properties: {
+            reason: {
+              type: 'string',
+            },
             url: {
+              type: 'string',
+            },
+            userAgent: {
               type: 'string',
             },
             version: {
@@ -26,8 +34,8 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
       },
     },
     async (request, reply) => {
-      const { url, version } = request.body;
-      const html = `<b>Site:</b> ${url}<br/><b>Version:</b> ${version}`;
+      const { reason = 'Unknown', url, userAgent = 'Unknown', version } = request.body;
+      const html = `<b>Site:</b> ${url}<br/><b>Reason: ${reason}<br/></b><b>User-Agent:</b> ${userAgent}<br/><b>Version:</b> ${version}`;
       const subject = 'Cookie Dialog Monster Report';
       const to = 'hello@wanhose.dev';
 

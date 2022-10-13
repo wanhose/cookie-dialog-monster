@@ -24,7 +24,7 @@ body {
   color: var(--color-tertiary);
   display: flex;
   flex-direction: column;
-  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   height: 24rem;
   width: 20rem;
 }
@@ -81,11 +81,6 @@ span {
 
 strong {
   font-weight: bold;
-}
-
-svg {
-  height: 1rem;
-  width: 1rem;
 }
 
 .header-actions {
