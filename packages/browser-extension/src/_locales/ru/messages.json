@@ -23,7 +23,7 @@
   "reportDialog_blankPageOption": {
     "message": "Страница пуста"
   },
-  "reportDialog_cannotClick": {
+  "reportDialog_cannotClickOption": {
     "message": "Невозможно нажать"
   },
   "reportDialog_laggyPageOption": {

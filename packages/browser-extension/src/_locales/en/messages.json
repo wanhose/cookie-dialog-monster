@@ -23,7 +23,7 @@
   "reportDialog_bodyText": {
     "message": "Please select an option below"
   },
-  "reportDialog_cannotClick": {
+  "reportDialog_cannotClickOption": {
     "message": "Cannot click"
   },
   "reportDialog_laggyPageOption": {
