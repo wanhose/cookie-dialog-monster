@@ -6,130 +6,192 @@
   --cookie-dialog-monster-color-white: #ffffff;
 }
 
-.report-dialog {
-  background-color: var(--cookie-dialog-monster-color-white) !important;
-  border: none !important;
-  border-radius: 4px !important;
-  box-sizing: border-box !important;
-  color: var(--cookie-dialog-monster-color-secondary) !important;
-  font-family: 'Lato', Arial, Helvetica, sans-serif !important;
-  font-size: 14px !important;
-  font-weight: normal !important;
+#report-dialog {
+  background-color: var(--cookie-dialog-monster-color-white);
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--cookie-dialog-monster-color-secondary);
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
+  font-size: 100%;
   margin: auto !important;
-  height: 380px !important;
   padding: 0px !important;
-  width: 320px !important;
+  width: 320px;
 }
 
-.report-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.75) !important;
+#report-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.report-dialog * {
-  box-sizing: border-box !important;
+#report-dialog * {
+  box-sizing: border-box;
 }
 
-.report-dialog [data-view][hidden] {
-  display: none !important;
+report-dialog-body {
+  display: block;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 16px;
 }
 
-.report-dialog-body {
-  height: 326px !important;
-  padding: 16px !important;
+report-dialog-body-text {
+  display: block;
+  margin: 0px;
+  padding: 0px;
 }
 
-.report-dialog-body-text {
-  margin: 0px !important;
-  padding: 0px !important;
+report-dialog-close-button {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0px;
+  outline: none;
+  padding: 0px;
+  transition: 0.4s;
 }
 
-.report-dialog-close-button {
-  align-items: center !important;
-  background-color: transparent !important;
-  border: none !important;
-  border-radius: 4px !important;
-  color: inherit !important;
-  cursor: pointer !important;
-  display: inline-flex !important;
-  justify-content: center !important;
-  margin: 0px !important;
-  outline: none !important;
-  padding: 0px !important;
-  transition: 0.4s !important;
+report-dialog-close-button:focus,
+report-dialog-close-button:hover {
+  background-color: var(--cookie-dialog-monster-color-white);
+  color: var(--cookie-dialog-monster-color-secondary);
 }
 
-.report-dialog-close-button:focus,
-.report-dialog-close-button:hover {
-  background-color: var(--cookie-dialog-monster-color-white) !important;
-  color: var(--cookie-dialog-monster-color-secondary) !important;
+report-dialog-form-view[hidden] {
+  display: none;
 }
 
-#report-dialog-form > label {
-  color: var(--cookie-dialog-monster-color-tertiary) !important;
-  cursor: pointer !important;
-  display: block !important;
-  margin-top: 16px !important;
-}
-
-.report-dialog-header {
-  align-items: center !important;
-  background-color: var(--cookie-dialog-monster-color-secondary) !important;
-  color: var(--cookie-dialog-monster-color-white) !important;
-  display: flex !important;
-  font-size: 16px !important;
+report-dialog-header {
+  align-items: center;
+  background-color: var(--cookie-dialog-monster-color-secondary);
+  color: var(--cookie-dialog-monster-color-white);
+  display: flex;
+  font-size: 16px;
   height: 54px;
-  justify-content: space-between !important;
-  padding: 16px !important;
+  justify-content: space-between;
+  line-height: 16px;
+  padding: 16px;
 }
 
-.report-dialog-submit-button {
-  background-color: var(--cookie-dialog-monster-color-secondary) !important;
-  border: 1px solid var(--cookie-dialog-monster-color-secondary) !important;
-  border-radius: 4px !important;
-  color: var(--cookie-dialog-monster-color-white) !important;
-  cursor: pointer !important;
-  display: block !important;
-  font-family: inherit !important;
-  font-size: inherit !important;
-  margin-top: 32px !important;
-  outline: none !important;
-  padding: 8px 16px !important;
-  text-align: center !important;
-  transition: 0.4s !important;
-  width: 100% !important;
+report-dialog-radio {
+  color: var(--cookie-dialog-monster-color-tertiary);
+  cursor: pointer;
+  display: block;
+  margin-top: 18px;
+  outline: none;
+  padding-left: 24px;
+  position: relative;
 }
 
-.report-dialog-submit-button:focus,
-.report-dialog-submit-button:hover {
-  background-color: var(--cookie-dialog-monster-color-white) !important;
-  color: var(--cookie-dialog-monster-color-secondary) !important;
+report-dialog-radio[aria-checked='true']:after {
+  opacity: 1;
+  transform: scale(1, 1);
 }
 
-.report-dialog-submit-button:disabled {
-  background-color: var(--cookie-dialog-monster-color-tertiary) !important;
-  border: 1px solid var(--cookie-dialog-monster-color-tertiary) !important;
-  color: var(--cookie-dialog-monster-color-white) !important;
-  cursor: not-allowed !important;
+report-dialog-radio:after {
+  background-color: var(--cookie-dialog-monster-color-primary);
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: '';
+  display: block;
+  height: 8px;
+  left: 3px;
+  opacity: 0;
+  position: absolute;
+  top: 3px;
+  transform: scale(0, 0);
+  transition: all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  width: 8px;
 }
 
-.report-dialog-submit-extra-text {
-  font-size: 14px !important;
-  margin: 0px !important;
-  margin-top: 16px !important;
-  text-align: center !important;
+report-dialog-radio:focus:not([aria-checked='true']):after,
+report-dialog-radio:hover:not([aria-checked='true']):after {
+  background: var(--cookie-dialog-monster-color-tertiary);
+  opacity: 1;
+  transform: scale(1, 1);
 }
 
-.report-dialog-submit-text {
-  font-size: 18px !important;
-  margin: 0px !important;
-  margin-top: 24px !important;
-  text-align: center !important;
+report-dialog-radio:before {
+  background: var(--cookie-dialog-monster-color-white);
+  border: 1px solid var(--cookie-dialog-monster-color-tertiary);
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: '';
+  display: block;
+  height: 14px;
+  left: 0px;
+  margin-right: 5px;
+  position: absolute;
+  top: 0px;
+  width: 14px;
 }
 
-.report-dialog-submit-view {
-  align-items: center !important;
-  display: flex !important;
-  flex-direction: column !important;
-  height: 100% !important;
-  justify-content: center !important;
+report-dialog-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+report-dialog-submit-button {
+  align-items: center;
+  background-color: var(--cookie-dialog-monster-color-secondary);
+  border: 1px solid var(--cookie-dialog-monster-color-secondary);
+  border-radius: 4px;
+  color: var(--cookie-dialog-monster-color-white);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: 14px;
+  height: 39px;
+  justify-content: center;
+  margin-top: 24px;
+  outline: none;
+  padding: 8px 16px;
+  text-align: center;
+  transition: 0.4s;
+  width: 100%;
+}
+
+report-dialog-submit-button:focus,
+report-dialog-submit-button:hover {
+  background-color: var(--cookie-dialog-monster-color-white);
+  color: var(--cookie-dialog-monster-color-secondary);
+}
+
+report-dialog-submit-button[aria-disabled='true'] {
+  background-color: var(--cookie-dialog-monster-color-tertiary);
+  border: 1px solid var(--cookie-dialog-monster-color-tertiary);
+  color: var(--cookie-dialog-monster-color-white);
+  cursor: not-allowed;
+}
+
+report-dialog-submit-extra-text {
+  font-size: 14px;
+  line-height: 14px;
+  margin: 0px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+report-dialog-submit-text {
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+report-dialog-submit-view {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 269px;
+}
+
+report-dialog-submit-view[hidden] {
+  display: none;
 }
