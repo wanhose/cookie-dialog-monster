@@ -170,6 +170,7 @@ strong {
 
 .switch-label > span {
   line-height: 1.25rem;
+  word-break: break-all;
 }
 
 .slider {
