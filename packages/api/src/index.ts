@@ -17,7 +17,11 @@ server.register(cors, {
   ],
 });
 
-server.register(rateLimit, { max: 1, timeWindow: 30000 });
+server.register(rateLimit, {
+  global: false,
+  max: 1,
+  timeWindow: 30000,
+});
 
 server.register(v1EntriesRoutes, { prefix: '/rest/v1' });
 server.register(v1ReportRoutes, { prefix: '/rest/v1' });
