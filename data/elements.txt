@@ -12646,3 +12646,10 @@ section.ch2
 [style*="opacity: 1; x: 1px; y: 0px; transform: translateY(0px) scale(1, 1); --Toaster-indicatorColor:#"]
 [class*="cookieBanner-module--outer--"]
 [style="bottom: 24px; position: fixed; left: 0px; width: 100%; display: flex; z-index: 1000000; opacity: 1;"]
+[class*="cookie-consent-CookieConsent-bottomSheet"]
+#quantcast
+amp-consent
+[data-testid="uc-default-banner"]
+#cookie_law_notification
+.cookielaw1
+.cookie-animation-show
