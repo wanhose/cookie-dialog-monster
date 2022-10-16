@@ -29,6 +29,7 @@ h6,
 th,
 td,
 caption {
+  font-size: inherit;
   font-weight: normal;
   margin: 0;
 }

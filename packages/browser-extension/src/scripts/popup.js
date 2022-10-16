@@ -24,7 +24,7 @@ const edgeUrl =
  * @type {string}
  */
 
-const firefoxUrl = 'https://addons.mozilla.org/es/firefox/addon/cookie-dialog-monster/';
+const firefoxUrl = 'https://addons.mozilla.org/firefox/addon/cookie-dialog-monster';
 
 /**
  * @description Current hostname
@@ -77,55 +77,51 @@ const handleContentLoaded = async () => {
   const host = document.getElementById('host');
   host.innerText = hostname ?? 'unknown';
 
-  const like = document.getElementById('like');
-  like.addEventListener('click', handleRate);
+  const contribute = document.getElementById('contribute-option');
+  contribute?.addEventListener('click', handleLinkRedirect);
 
-  const power = document.getElementById('power');
-  power.addEventListener('change', handlePowerChange);
-  if (!state.enabled) power.removeAttribute('checked');
+  const help = document.getElementById('help-option');
+  help?.addEventListener('click', handleLinkRedirect);
 
-  const store = document.getElementById('store');
-  if (isEdge) store?.setAttribute('href', edgeUrl);
-  else if (isChromium) store?.setAttribute('href', chromeUrl);
-  else if (isFirefox) store?.setAttribute('href', firefoxUrl);
+  const power = document.getElementById('power-option');
+  power?.addEventListener('click', handlePowerToggle);
+  if (state.enabled) power?.setAttribute('data-value', 'on');
+  else power?.setAttribute('data-value', 'off');
 
-  const unlike = document.getElementById('unlike');
-  unlike.addEventListener('click', handleRate);
+  const rate = document.getElementById('rate-option');
+  rate?.addEventListener('click', handleLinkRedirect);
+  if (isEdge) rate?.setAttribute('data-href', edgeUrl);
+  else if (isChromium) rate?.setAttribute('data-href', chromeUrl);
+  else if (isFirefox) rate?.setAttribute('data-href', firefoxUrl);
 
   translate();
 };
 
 /**
- * @description Disables or enables extension on current page
- */
-
-const handlePowerChange = async () => {
-  state = { enabled: !state.enabled };
-  dispatch({ hostname, state, type: 'UPDATE_STATE' });
-  await chrome.tabs.reload({ bypassCache: true });
-};
-
-/**
- * @description Shows negative or positive messages
+ * @async
+ * @description Opens a new tab
  * @param {MouseEvent} event
  */
 
-const handleRate = (event) => {
-  const negative = document.getElementById('negative');
-  const positive = document.getElementById('positive');
+const handleLinkRedirect = async (event) => {
+  const { href } = event.currentTarget.dataset;
 
-  switch (event.currentTarget.id) {
-    case 'unlike':
-      positive.setAttribute('hidden', 'true');
-      negative.removeAttribute('hidden');
-      break;
-    case 'like':
-      negative.setAttribute('hidden', 'true');
-      positive.removeAttribute('hidden');
-      break;
-    default:
-      break;
+  if (href) {
+    await chrome.tabs.create({ url: href });
   }
+};
+
+/**
+ * @description Disables or enables extension on current page
+ * @param {MouseEvent} event
+ */
+
+const handlePowerToggle = async (event) => {
+  state = { enabled: !state.enabled };
+  dispatch({ hostname, state, type: 'UPDATE_STATE' });
+  if (state.enabled) event.currentTarget.setAttribute('data-value', 'on');
+  else event.currentTarget.setAttribute('data-value', 'off');
+  await chrome.tabs.reload({ bypassCache: true });
 };
 
 /**

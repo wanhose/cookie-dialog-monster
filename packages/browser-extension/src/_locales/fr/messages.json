@@ -5,17 +5,14 @@
   "contextMenu_reportOption": {
     "message": "Signaler le site..."
   },
-  "contributeText": {
+  "popup_contributeOption": {
     "message": "Contribuez à ce projet"
   },
-  "helpText": {
+  "popup_helpOption": {
     "message": "Aide ou problèmes?"
   },
-  "negativeText": {
-    "message": "Oups! Nous nous excusons pour la gêne occasionnée, veuillez <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">nous contacter</a> <span aria-label=\"Visage souriant de sueur\" role=\"img\">😅</span>"
-  },
-  "positiveText": {
-    "message": "Merci! Veuillez évaluer notre extension <a id=\"store\" target=\"_blank\">ici</a> <span aria-label=\"Visage souriant avec des yeux en forme de coeur\" role=\"img\">😍</span>"
+  "popup_rateOption": {
+    "message": "Évaluez cette extension"
   },
   "reportDialog_blankPageOption": {
     "message": "La page est vide"
@@ -43,11 +40,5 @@
   },
   "reportDialog_submitText": {
     "message": "Rapport envoyé!"
-  },
-  "reviewText": {
-    "message": "Aimez-vous cette extension?"
-  },
-  "toggleText": {
-    "message": "Manger des dialogues dans "
   }
 }

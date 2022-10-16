@@ -12,99 +12,82 @@
       <h1 class="header-title">Cookie Dialog Monster</h1>
     </header>
     <main>
-      <label class="switch-label">
-        <span>
-          <span data-i18n="toggleText"></span>
-          <strong id="host"></strong>
-        </span>
-        <div class="switch">
-          <input checked="checked" id="power" type="checkbox" />
-          <span class="slider"></span>
-        </div>
-      </label>
-      <div>
-        <div class="rating">
-          <span data-i18n="reviewText"></span>
-          <div class="rating-actions">
-            <button aria-label="Unlike" id="unlike">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"
-                />
-              </svg>
-            </button>
-            <button aria-label="Like" id="like">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <p data-i18n="negativeText" hidden="true" id="negative"></p>
-        <p data-i18n="positiveText" hidden="true" id="positive"></p>
-      </div>
-      <div class="contribute">
-        <span data-i18n="contributeText"></span>
-        <a href="https://www.github.com/wanhose/cookie-dialog-monster" target="_blank">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="18" cy="18" r="3" />
-            <circle cx="6" cy="6" r="3" />
-            <path d="M13 6h3a2 2 0 0 1 2 2v7" />
-            <line x1="6" y1="9" x2="6" y2="21" />
-          </svg>
-        </a>
-      </div>
-      <div class="help">
-        <span data-i18n="helpText"></span>
-        <a href="mailto:hello@wanhose.dev" target="_blank">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="22" y1="2" x2="11" y2="13" />
-            <polygon points="22 2 15 22 11 13 2 9 22 2" />
-          </svg>
-        </a>
-      </div>
+      <popup-button id="power-option" role="button" tabindex="0">
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="32"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="32"
+        >
+          <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
+          <line x1="12" y1="2" x2="12" y2="12" />
+        </svg>
+        <span id="host"></span>
+      </popup-button>
+      <popup-button data-href="mailto:hello@wanhose.dev" id="help-option" role="link" tabindex="0">
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="32"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="32"
+        >
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+          />
+        </svg>
+        <span data-i18n="popup_helpOption"></span>
+      </popup-button>
+      <popup-button
+        data-href="https://www.github.com/wanhose/cookie-dialog-monster"
+        id="contribute-option"
+        role="link"
+        tabindex="0"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="32"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="32"
+        >
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          />
+        </svg>
+        <span data-i18n="popup_contributeOption"></span>
+      </popup-button>
+      <popup-button data-href="#" id="rate-option" role="link" tabindex="0">
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="32"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="32"
+        >
+          <polygon
+            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+          />
+        </svg>
+        <span data-i18n="popup_rateOption"></span>
+      </popup-button>
     </main>
     <footer></footer>
   </body>

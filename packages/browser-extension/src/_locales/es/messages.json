@@ -5,17 +5,14 @@
   "contextMenu_reportOption": {
     "message": "Reportar sitio..."
   },
-  "contributeText": {
+  "popup_contributeOption": {
     "message": "Contribuye a este proyecto"
   },
-  "helpText": {
+  "popup_helpOption": {
     "message": "¿Ayuda o problemas?"
   },
-  "negativeText": {
-    "message": "¡Vaya! Sentimos lo ocurrido, por favor <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contacta con nosotros</a> <span aria-label=\"Cara sonriente con sudor\" role=\"img\">😅</span>"
-  },
-  "positiveText": {
-    "message": "¡Gracias! Por favor valora la extensión <a id=\"store\" target=\"_blank\">aquí</a> <span aria-label=\"Cara sonriente con ojos en forma de corazón\" role=\"img\">😍</span>"
+  "popup_rateOption": {
+    "message": "Califica esta extensión"
   },
   "reportDialog_blankPageOption": {
     "message": "La página está en blanco"
@@ -43,11 +40,5 @@
   },
   "reportDialog_submitText": {
     "message": "¡Reporte enviado!"
-  },
-  "reviewText": {
-    "message": "¿Te gusta esta extensión?"
-  },
-  "toggleText": {
-    "message": "Comiendo diálogos en "
   }
 }
