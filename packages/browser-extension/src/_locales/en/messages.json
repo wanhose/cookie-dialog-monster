@@ -5,17 +5,14 @@
   "contextMenu_reportOption": {
     "message": "Report site..."
   },
-  "contributeText": {
+  "popup_contributeOption": {
     "message": "Contribute to this project"
   },
-  "helpText": {
+  "popup_helpOption": {
     "message": "Help or issues?"
   },
-  "negativeText": {
-    "message": "Ooops! We apologize for the inconvenience, please <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contact us</a> <span aria-label=\"Grinning face with sweat\" role=\"img\">😅</span>"
-  },
-  "positiveText": {
-    "message": "Thank you! Please rate our extension <a id=\"store\" target=\"_blank\">here</a> <span aria-label=\"Smiling face with heart-shaped eyes\" role=\"img\">😍</span>"
+  "popup_rateOption": {
+    "message": "Rate this extension"
   },
   "reportDialog_blankPageOption": {
     "message": "Page is blank"
@@ -43,11 +40,5 @@
   },
   "reportDialog_submitText": {
     "message": "Report sent!"
-  },
-  "reviewText": {
-    "message": "Do you like this extension?"
-  },
-  "toggleText": {
-    "message": "Eating dialogs in "
   }
 }

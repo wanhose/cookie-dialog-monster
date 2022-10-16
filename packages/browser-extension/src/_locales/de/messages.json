@@ -5,17 +5,14 @@
   "contextMenu_reportOption": {
     "message": "Webseite melden..."
   },
-  "contributeText": {
+  "popup_contributeOption": {
     "message": "Tragen Sie zu diesem Projekt bei"
   },
-  "helpText": {
+  "popup_helpOption": {
     "message": "Hilfe oder Probleme?"
   },
-  "negativeText": {
-    "message": "Ups! Wir entschuldigen uns für die Unannehmlichkeiten, bitte <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">kontaktieren Sie uns</a> <span aria-label=\"Grinsendes Gesicht mit Schweiß\" role=\"img\">😅</span>"
-  },
-  "positiveText": {
-    "message": "Dankeschön! Bitte bewerten Sie unsere Erweiterung <a id=\"store\" target=\"_blank\">hier</a> <span aria-label=\"Lächelndes Gesicht mit herzförmigen Augen\" role=\"img\">😍</span>"
+  "popup_rateOption": {
+    "message": "Diese Erweiterung bewerten"
   },
   "reportDialog_blankPageOption": {
     "message": "Seite ist leer"
@@ -43,11 +40,5 @@
   },
   "reportDialog_submitText": {
     "message": "Bericht gesendet!"
-  },
-  "reviewText": {
-    "message": "Gefällt dir diese Erweiterung?"
-  },
-  "toggleText": {
-    "message": "Essensdialoge in "
   }
 }

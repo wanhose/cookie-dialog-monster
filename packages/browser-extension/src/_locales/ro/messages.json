@@ -5,17 +5,14 @@
   "contextMenu_reportOption": {
     "message": "Raportați site-ul..."
   },
-  "contributeText": {
+  "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
   },
-  "helpText": {
+  "popup_helpOption": {
     "message": "Ajutor sau probleme?"
   },
-  "negativeText": {
-    "message": "Hopa! Ne cerem scuze pentru inconvenient, vă rugăm să ne <a href=\"mailto:hello@wanhose.dev\" target=\"_blank\">contactați-ne</a> <span aria-label=\"Chipul rânjit de sudoare\" role=\"img\">😅</span>"
-  },
-  "positiveText": {
-    "message": "Mulțumesc! Vă rugăm să evaluați extensia noastră <a id=\"store\" target=\"_blank\">aici</a> <span aria-label=\"Față zâmbitoare cu ochi în formă de inimă\" role=\"img\">😍</span>"
+  "popup_rateOption": {
+    "message": "Evaluați această extensie"
   },
   "reportDialog_blankPageOption": {
     "message": "Pagina este goală"
@@ -43,11 +40,5 @@
   },
   "reportDialog_submitText": {
     "message": "Raport trimis!"
-  },
-  "reviewText": {
-    "message": "Îți place această extensie?"
-  },
-  "toggleText": {
-    "message": "Mâncând dialoguri în "
   }
 }
