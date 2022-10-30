@@ -10,6 +10,7 @@ gmx.com###onetrust-accept-btn-handler##click
 golem.de##[title="Zustimmen und weiter"]##click
 google##form[action*="consent.google"] button##click
 hagglezon.com##[data-test="cookie-submit"]##click
+instagram.com##[role="dialog"] > [style="display: flex; flex-direction: column; height: 100%; max-width: 100%;"] > button##click
 motorolasound.com###cookie-btn-denied##click
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index
