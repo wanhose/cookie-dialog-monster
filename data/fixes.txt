@@ -13,6 +13,7 @@ hagglezon.com##[data-test="cookie-submit"]##click
 motorolasound.com###cookie-btn-denied##click
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index
+popeyes.es##.cookie-buttons > .cookie-buttons-column > div:last-child##click
 producthunt.com##[data-test="dismiss-CookiePopup"] button##click
 staylibere.com##[class*="LayoutCookieBanner_buttons"] > button:last-child##click
 twitch.tv##[data-a-target="consent-banner-accept"]##click
