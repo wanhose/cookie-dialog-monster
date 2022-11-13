@@ -12662,3 +12662,4 @@ amp-consent
 [data-assembly-source="cookie/banner"]
 [data-test="cookie-overlay"]
 #pecr-cookie-banner-wrapper
+#wsConsentLayer
