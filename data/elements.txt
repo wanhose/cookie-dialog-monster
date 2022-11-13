@@ -12657,3 +12657,4 @@ amp-consent
 #ensModalBG
 #package_travel_directive_warning
 .hi-cookie-block
+.cookie-collapsible
