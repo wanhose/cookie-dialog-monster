@@ -12659,3 +12659,6 @@ amp-consent
 .hi-cookie-block
 .cookie-collapsible
 #ac87d9815-4775-43d1-bc7d-88f4f6d7e0c7
+[data-assembly-source="cookie/banner"]
+[data-test="cookie-overlay"]
+#pecr-cookie-banner-wrapper
