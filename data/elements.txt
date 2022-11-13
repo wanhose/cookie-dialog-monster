@@ -12596,7 +12596,6 @@ dialog.consent.js-consent
 [title="TrustArc Cookie Consent Manager"]
 .truste_box_overlay_inner
 [data-testid="uc-default-banner"]
-#usercentrics-root
 .tco-content-dock.left.tco-content-dock-on
 #lab-slide-bottom-popup
 #vcm-v-consent-sdk
@@ -12654,3 +12653,5 @@ amp-consent
 .cookielaw1
 .cookie-animation-show
 .cdp-cookies-alerta
+#ensBannerBG
+#ensModalBG
