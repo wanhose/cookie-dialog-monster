@@ -12655,3 +12655,4 @@ amp-consent
 .cdp-cookies-alerta
 #ensBannerBG
 #ensModalBG
+#package_travel_directive_warning
