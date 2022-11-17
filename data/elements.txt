@@ -12665,3 +12665,4 @@ amp-consent
 #wsConsentLayer
 #alma-cmpv2-event-handler
 #alma-cmpv2-container
+.flatsome-cookies
