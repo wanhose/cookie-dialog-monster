@@ -12666,3 +12666,4 @@ amp-consent
 #alma-cmpv2-event-handler
 #alma-cmpv2-container
 .flatsome-cookies
+.popover-cover.zIndex--modal
