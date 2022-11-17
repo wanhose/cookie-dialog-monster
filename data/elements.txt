@@ -12663,3 +12663,5 @@ amp-consent
 [data-test="cookie-overlay"]
 #pecr-cookie-banner-wrapper
 #wsConsentLayer
+#alma-cmpv2-event-handler
+#alma-cmpv2-container
