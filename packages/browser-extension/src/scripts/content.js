@@ -79,27 +79,38 @@ const forceClean = () => {
 };
 
 /**
+ * @description Checks if an element is visible in the viewport
+ * @param {HTMLElement} node
+ * @returns {boolean}
+ */
+
+const isInViewport = (node) => {
+  const bounding = node.getBoundingClientRect();
+
+  return (
+    bounding.top >= -node.offsetHeight &&
+    bounding.left >= -node.offsetWidth &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth) + node.offsetWidth &&
+    bounding.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) + node.offsetHeight
+  );
+};
+
+/**
  * @description Matches if node element is removable
  * @param {Element} node
  * @param {boolean?} skipMatch
  * @returns {boolean}
  */
 
-const match = (node, skipMatch) => {
-  if (!(node instanceof HTMLElement)) return false;
-
-  const rect = node.getBoundingClientRect();
-  const isFullscreen = rect.bottom + rect.top > 0 && rect.bottom - rect.top === 0;
-  const isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
-
-  return (
-    !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-    (isFullscreen || isVisible) &&
-    (node.offsetParent || window.getComputedStyle(node).position === 'fixed') &&
-    node.parentElement &&
-    (skipMatch || node.matches(data?.elements ?? []))
-  );
-};
+const match = (node, skipMatch) =>
+  node instanceof HTMLElement &&
+  !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
+  isInViewport(node) &&
+  (!!node.offsetParent || window.getComputedStyle(node).position === 'fixed') &&
+  !!node.parentElement &&
+  (skipMatch || node.matches(data?.elements ?? []));
 
 /**
  * @description Fixes scroll issues
