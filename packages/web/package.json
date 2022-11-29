@@ -8,8 +8,8 @@
   "devDependencies": {
     "minify": "^9.1.0",
     "rimraf": "^3.0.2",
-    "serve": "^14.0.1",
-    "tailwindcss": "^3.1.8"
+    "serve": "^14.1.2",
+    "tailwindcss": "^3.2.4"
   },
   "engines": {
     "node": "16.x"
