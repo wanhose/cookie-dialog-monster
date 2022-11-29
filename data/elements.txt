@@ -12668,3 +12668,4 @@ amp-consent
 .flatsome-cookies
 .popover-cover.zIndex--modal
 [style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 999; background-color: rgba(0, 0, 0, 0.3);"]
+cmm-cookie-banner
