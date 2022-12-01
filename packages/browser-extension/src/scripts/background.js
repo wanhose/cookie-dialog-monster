@@ -21,7 +21,7 @@ const reportMenuItemId = 'REPORT';
 
 /**
  * @description A shortcut for chrome.scripting
- * @type {chrome.storage.LocalStorageArea}
+ * @type {chrome.scripting}
  */
 
 const script = chrome.scripting;
@@ -85,17 +85,18 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 chrome.runtime.onMessage.addListener((message, sender, callback) => {
   const hostname = message.hostname;
+  const isPage = sender.frameId === 0;
   const tabId = sender.tab?.id;
 
   switch (message.type) {
     case 'DISABLE_ICON':
-      if (tabId) chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId });
+      if (isPage && tabId) chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId });
       break;
     case 'ENABLE_ICON':
-      if (tabId) chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId });
+      if (isPage && tabId) chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId });
       break;
     case 'ENABLE_POPUP':
-      if (tabId) chrome.action.setPopup({ popup: '/popup.html', tabId });
+      if (isPage && tabId) chrome.action.setPopup({ popup: '/popup.html', tabId });
       break;
     case 'GET_DATA':
       storage.get('data', ({ data }) => (data ? callback(data) : refreshData(callback)));
@@ -107,10 +108,10 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
       return true;
     case 'INSERT_CONTENT_CSS':
-      if (tabId) script.insertCSS({ files: ['styles/content.css'], target: { tabId } });
+      if (isPage && tabId) script.insertCSS({ files: ['styles/content.css'], target: { tabId } });
       break;
     case 'INSERT_DIALOG_CSS':
-      if (tabId) script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
+      if (isPage && tabId) script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       break;
     case 'REPORT':
       if (tabId) report(message, sender.tab);
