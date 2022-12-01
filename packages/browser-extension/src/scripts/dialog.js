@@ -182,6 +182,7 @@ const showReportDialog = () => {
     radio.addEventListener('click', radioClickHandler);
   }
 
+  dispatch({ type: 'INSERT_DIALOG_CSS' });
   document.body.appendChild(dialog);
   dialog.showModal();
 

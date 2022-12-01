@@ -104,13 +104,26 @@ const isInViewport = (node) => {
  * @returns {boolean}
  */
 
-const match = (node, skipMatch) =>
-  node instanceof HTMLElement &&
-  !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-  isInViewport(node) &&
-  (!!node.offsetParent || window.getComputedStyle(node).position === 'fixed') &&
-  !!node.parentElement &&
-  (skipMatch || node.matches(data?.elements ?? []));
+const match = (node, skipMatch) => {
+  if (node instanceof HTMLElement) {
+    const style = window.getComputedStyle(node);
+    const skipIsInViewport =
+      style.display === 'none' ||
+      style.height === '0px' ||
+      style.opacity === '0' ||
+      style.visibility === 'hidden';
+
+    return (
+      !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
+      (skipIsInViewport || isInViewport(node)) &&
+      (!!node.offsetParent || style.position === 'fixed') &&
+      !!node.parentElement &&
+      (skipMatch || node.matches(data?.elements ?? []))
+    );
+  }
+
+  return false;
+};
 
 /**
  * @description Fixes scroll issues
@@ -200,7 +213,8 @@ window.addEventListener('pageshow', (event) => {
 
   if (state.enabled) {
     data = await dispatch({ hostname, type: 'GET_DATA' });
-    observer.observe(document.body ?? document.documentElement, options);
     dispatch({ type: 'ENABLE_ICON' });
+    dispatch({ type: 'INSERT_CONTENT_CSS' });
+    observer.observe(document.body ?? document.documentElement, options);
   }
 })();
