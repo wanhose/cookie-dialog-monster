@@ -12671,3 +12671,5 @@ amp-consent
 cmm-cookie-banner
 .td-menu-background
 [class*="sd-cmp-"]
+[class*="Cookiesstyles__Overlay-sc"]
+.cookies-authorize
