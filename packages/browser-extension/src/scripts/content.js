@@ -131,22 +131,17 @@ const match = (node, skipMatch) => {
 
 const fix = () => {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
+  const facebook = document.getElementsByClassName('_31e')[0];
+  const fixes = data?.fixes ?? [];
+  const skips = data?.skips ?? [];
 
-  if (backdrop && backdrop.children.length === 0) {
+  if (backdrop?.children.length === 0) {
     backdrop.remove();
   }
 
-  document.getElementsByClassName('_31e')[0]?.classList.remove('_31e');
+  facebook?.classList.remove('_31e');
 
-  if (data?.skips.length && !data.skips.includes(hostname)) {
-    for (const item of [document.body, document.documentElement]) {
-      item?.classList.remove(...(data?.classes ?? []));
-      item?.style.setProperty('position', 'initial', 'important');
-      item?.style.setProperty('overflow-y', 'initial', 'important');
-    }
-  }
-
-  for (const fix of data?.fixes ?? []) {
+  for (const fix of fixes) {
     const [match, selector, action, property] = fix.split('##');
 
     if (hostname.includes(match)) {
@@ -174,6 +169,16 @@ const fix = () => {
         default:
           break;
       }
+    }
+  }
+
+  if (!skips.includes(hostname)) {
+    dispatch({ type: 'INSERT_CONTENT_CSS' });
+
+    for (const item of [document.body, document.documentElement]) {
+      item?.classList.remove(...(data?.classes ?? []));
+      item?.style.setProperty('position', 'initial', 'important');
+      item?.style.setProperty('overflow-y', 'initial', 'important');
     }
   }
 };
@@ -220,7 +225,6 @@ window.addEventListener('pageshow', (event) => {
   if (state.enabled) {
     data = await dispatch({ hostname, type: 'GET_DATA' });
     dispatch({ type: 'ENABLE_ICON' });
-    dispatch({ type: 'INSERT_CONTENT_CSS' });
     observer.observe(document.body ?? document.documentElement, options);
   }
 })();

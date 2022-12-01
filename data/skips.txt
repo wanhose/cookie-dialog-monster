@@ -1,3 +1,4 @@
+accounts.google.com
 canvasjs.com
 chessmadra.com
 correos.es
@@ -5,6 +6,7 @@ flickr.com
 godotforums.org
 key-shortcut.com
 lever.co
+login.microsoftonline.com
 mantisbt.org
 musicmeter.nl
 personio.com
