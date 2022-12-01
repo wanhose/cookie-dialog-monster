@@ -99,13 +99,13 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
       break;
     case 'GET_DATA':
       storage.get('data', ({ data }) => (data ? callback(data) : refreshData(callback)));
-      break;
+      return true;
     case 'GET_STATE':
       if (hostname) storage.get(hostname, (state) => callback(state[hostname] ?? initial));
-      break;
+      return true;
     case 'GET_TAB':
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
-      break;
+      return true;
     case 'INSERT_CONTENT_CSS':
       if (tabId) script.insertCSS({ files: ['styles/content.css'], target: { tabId } });
       break;
@@ -121,8 +121,6 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
     default:
       break;
   }
-
-  return true;
 });
 
 /**
