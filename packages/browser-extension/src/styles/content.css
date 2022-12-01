@@ -1,0 +1,7 @@
+*,
+*:before,
+*:after {
+  animation: none !important;
+  /* transform: none !important; */
+  transition-property: none !important;
+}

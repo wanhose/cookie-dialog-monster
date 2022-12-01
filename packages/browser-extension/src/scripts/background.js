@@ -20,6 +20,20 @@ const initial = { enabled: true };
 const reportMenuItemId = 'REPORT';
 
 /**
+ * @description A shortcut for chrome.scripting
+ * @type {chrome.storage.LocalStorageArea}
+ */
+
+const script = chrome.scripting;
+
+/**
+ * @description The storage to use
+ * @type {chrome.storage.LocalStorageArea}
+ */
+
+const storage = chrome.storage.local;
+
+/**
  * @description Refreshes data
  * @param {void?} callback
  */
@@ -84,29 +98,29 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
       if (tabId) chrome.action.setPopup({ popup: '/popup.html', tabId });
       break;
     case 'GET_DATA':
-      chrome.storage.local.get('data', ({ data }) => {
-        if (data) callback(data);
-        else refreshData(callback);
-      });
-      break;
+      storage.get('data', ({ data }) => (data ? callback(data) : refreshData(callback)));
+      return true;
     case 'GET_STATE':
-      // prettier-ignore
-      if (hostname) chrome.storage.local.get(hostname, (state) => callback(state[hostname] ?? initial));
-      break;
+      if (hostname) storage.get(hostname, (state) => callback(state[hostname] ?? initial));
+      return true;
     case 'GET_TAB':
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
+      return true;
+    case 'INSERT_CONTENT_CSS':
+      if (tabId) script.insertCSS({ files: ['styles/content.css'], target: { tabId } });
+      break;
+    case 'INSERT_DIALOG_CSS':
+      if (tabId) script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       break;
     case 'REPORT':
       if (tabId) report(message, sender.tab);
       break;
     case 'UPDATE_STATE':
-      if (hostname) chrome.storage.local.set({ [hostname]: message.state });
+      if (hostname) storage.set({ [hostname]: message.state });
       break;
     default:
       break;
   }
-
-  return true;
 });
 
 /**

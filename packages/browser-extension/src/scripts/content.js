@@ -79,6 +79,25 @@ const forceClean = () => {
 };
 
 /**
+ * @description Checks if an element is visible in the viewport
+ * @param {HTMLElement} node
+ * @returns {boolean}
+ */
+
+const isInViewport = (node) => {
+  const bounding = node.getBoundingClientRect();
+
+  return (
+    bounding.top >= -node.offsetHeight &&
+    bounding.left >= -node.offsetWidth &&
+    bounding.right <=
+      (window.innerWidth || document.documentElement.clientWidth) + node.offsetWidth &&
+    bounding.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) + node.offsetHeight
+  );
+};
+
+/**
  * @description Matches if node element is removable
  * @param {Element} node
  * @param {boolean?} skipMatch
@@ -86,19 +105,24 @@ const forceClean = () => {
  */
 
 const match = (node, skipMatch) => {
-  if (!(node instanceof HTMLElement)) return false;
+  if (node instanceof HTMLElement) {
+    const style = window.getComputedStyle(node);
+    const skipIsInViewport =
+      style.display === 'none' ||
+      style.height === '0px' ||
+      style.opacity === '0' ||
+      style.visibility === 'hidden';
 
-  const rect = node.getBoundingClientRect();
-  const isFullscreen = rect.bottom + rect.top > 0 && rect.bottom - rect.top === 0;
-  const isVisible = rect.top <= (window.innerHeight || document.documentElement.clientHeight);
+    return (
+      !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
+      (skipIsInViewport || isInViewport(node)) &&
+      (!!node.offsetParent || style.position === 'fixed') &&
+      !!node.parentElement &&
+      (skipMatch || node.matches(data?.elements ?? []))
+    );
+  }
 
-  return (
-    !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-    (isFullscreen || isVisible) &&
-    (node.offsetParent || window.getComputedStyle(node).position === 'fixed') &&
-    node.parentElement &&
-    (skipMatch || node.matches(data?.elements ?? []))
-  );
+  return false;
 };
 
 /**
@@ -106,6 +130,12 @@ const match = (node, skipMatch) => {
  */
 
 const fix = () => {
+  const backdrop = document.getElementsByClassName('modal-backdrop')[0];
+
+  if (backdrop && backdrop.children.length === 0) {
+    backdrop.remove();
+  }
+
   document.getElementsByClassName('_31e')[0]?.classList.remove('_31e');
 
   if (data?.skips.length && !data.skips.includes(hostname)) {
@@ -189,7 +219,8 @@ window.addEventListener('pageshow', (event) => {
 
   if (state.enabled) {
     data = await dispatch({ hostname, type: 'GET_DATA' });
-    observer.observe(document.body ?? document.documentElement, options);
     dispatch({ type: 'ENABLE_ICON' });
+    dispatch({ type: 'INSERT_CONTENT_CSS' });
+    observer.observe(document.body ?? document.documentElement, options);
   }
 })();
