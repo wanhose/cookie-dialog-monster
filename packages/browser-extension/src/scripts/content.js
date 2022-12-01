@@ -130,6 +130,12 @@ const match = (node, skipMatch) => {
  */
 
 const fix = () => {
+  const backdrop = document.getElementsByClassName('modal-backdrop')[0];
+
+  if (backdrop && backdrop.children.length === 0) {
+    backdrop.remove();
+  }
+
   document.getElementsByClassName('_31e')[0]?.classList.remove('_31e');
 
   if (data?.skips.length && !data.skips.includes(hostname)) {
