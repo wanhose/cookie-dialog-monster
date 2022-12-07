@@ -12673,3 +12673,6 @@ cmm-cookie-banner
 [class*="sd-cmp-"]
 [class*="Cookiesstyles__Overlay-sc"]
 .cookies-authorize
+#consentManagerOverlay
+.enzuzo-cookiebanner-container
+.enzuzo-notification-text
