@@ -7,6 +7,7 @@ dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##c
 fiberplane.dev##button[aria-label="Close Banner"]##click
 gettr.com##button.bold##click
 gmx.com###onetrust-accept-btn-handler##click
+gmx.net##[data-section="accept"]##click
 golem.de##[title="Zustimmen und weiter"]##click
 google##form[action*="consent.google"] button##click
 hagglezon.com##[data-test="cookie-submit"]##click
