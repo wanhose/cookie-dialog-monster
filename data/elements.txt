@@ -12685,3 +12685,4 @@ cmm-cookie-banner
 .osano-cm-dialog--type_bar
 #CapaBloqueoAceptarCookies
 .capaCookie
+.user_popup
