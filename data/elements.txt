@@ -12687,3 +12687,4 @@ cmm-cookie-banner
 .capaCookie
 .user_popup
 .mfp-ready
+#tie-body style + #popup
