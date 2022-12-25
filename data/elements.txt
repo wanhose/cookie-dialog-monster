@@ -12676,3 +12676,4 @@ cmm-cookie-banner
 #consentManagerOverlay
 .enzuzo-cookiebanner-container
 .enzuzo-notification-text
+.cookie-disclaimer__overlay
