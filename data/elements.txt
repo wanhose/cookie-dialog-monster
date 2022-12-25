@@ -12677,3 +12677,4 @@ cmm-cookie-banner
 .enzuzo-cookiebanner-container
 .enzuzo-notification-text
 .cookie-disclaimer__overlay
+.lgcookieslaw_overlay
