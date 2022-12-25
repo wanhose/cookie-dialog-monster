@@ -12686,3 +12686,4 @@ cmm-cookie-banner
 #CapaBloqueoAceptarCookies
 .capaCookie
 .user_popup
+.mfp-ready
