@@ -12678,3 +12678,8 @@ cmm-cookie-banner
 .enzuzo-notification-text
 .cookie-disclaimer__overlay
 .lgcookieslaw_overlay
+.osano-cm-window
+.osano-cm-window__dialog
+.osano-cm-dialog
+.osano-cm-dialog--position_bottom
+.osano-cm-dialog--type_bar
