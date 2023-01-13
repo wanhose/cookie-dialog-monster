@@ -216,12 +216,14 @@ const submitButtonClickHandler = (event) => {
  */
 
 chrome.runtime.onMessage.addListener((message) => {
+  const isPage = window === window.top;
+
   switch (message.type) {
     case 'HIDE_REPORT_DIALOG':
-      hideReportDialog();
+      if (isPage) hideReportDialog();
       break;
     case 'SHOW_REPORT_DIALOG':
-      showReportDialog();
+      if (isPage) showReportDialog();
       break;
     default:
       break;
