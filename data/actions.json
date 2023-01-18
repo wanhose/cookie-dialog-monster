@@ -1,0 +1,320 @@
+[
+  {
+    "where": ["*"],
+    "tokens": ["body", "html"],
+    "actions": [
+      {
+        "name": "classList.remove",
+        "params": [
+          "b-modal-banner--disabled",
+          "blocked",
+          "cbar",
+          "c24-cc-visible",
+          "cmp-open",
+          "consent-modal-open",
+          "consent-modal-overflow",
+          "cookies",
+          "cu_k_cookie_consent_modal_open",
+          "gcdc-locked",
+          "gdpr-infobar-visible",
+          "gdprbanner_consent_gdpr_consent",
+          "gdprCookieBanner-acceptedAll",
+          "hasCookieBanner",
+          "ibeugdpr-disabled",
+          "modal--is-open",
+          "no-scroll",
+          "no_scroll",
+          "shopee-no-scroll",
+          "sp-message-open",
+          "ta-cc-modal-open",
+          "touchevents-false",
+          "wt-cli-eu-country",
+          "wt-cli-geoip-on"
+        ]
+      }
+    ]
+  },
+  {
+    "where": [
+      "*",
+      "!accounts.google.com",
+      "!canvasjs.com",
+      "!chessmadra.com",
+      "!correos.es",
+      "!flickr.com",
+      "!godotforums.org",
+      "!key-shortcut.com",
+      "!lever.co",
+      "!login.microsoftonline.com",
+      "!mantisbt.org",
+      "!musicmeter.nl",
+      "!personio.com",
+      "!restaurantguru.com",
+      "!retroachievements.org",
+      "!stackage.org",
+      "!steamcommunity.com",
+      "!sucuri.net",
+      "!youtube.com"
+    ],
+    "tokens": ["body", "html"],
+    "actions": [
+      {
+        "name": "style.setProperty",
+        "params": [
+          ["overflow-y", "initial"],
+          ["position", "initial"]
+        ]
+      }
+    ]
+  },
+  {
+    "where": ["automobielmanagement.nl"],
+    "tokens": ["body > *"],
+    "actions": [
+      {
+        "name": "style.setProperty",
+        "params": [["filter", "initial"]]
+      }
+    ]
+  },
+  {
+    "where": ["bilbaomuseoa.eus"],
+    "tokens": [".alert_message .btn-confirm"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["buscotelefonosgratis.es"],
+    "tokens": ["#cookie_action_close_header_reject"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["consent.yahoo"],
+    "tokens": ["#consent-page button[type=\"submit\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["consent.google"],
+    "tokens": ["[aria-label=\"Reject all\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["dailymotion.com"],
+    "tokens": ["[class*=\"TCF2Popup__containerButtons\"] > button:nth-child(2)"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["facebook.*"],
+    "tokens": ["._31e"],
+    "actions": [
+      {
+        "name": "classList.remove",
+        "params": ["_31e"]
+      }
+    ]
+  },
+  {
+    "where": ["fiberplane.dev"],
+    "tokens": ["button[aria-label=\"Close Banner\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["gettr.com"],
+    "tokens": ["button.bold"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["gmx.*"],
+    "tokens": ["#onetrust-accept-btn-handler", "[data-section=\"accept\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["golem.de"],
+    "tokens": ["[title=\"Zustimmen und weiter\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["google.*"],
+    "tokens": ["form[action*=\"consent.google\"] button"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["hagglezon.com"],
+    "tokens": ["[data-test=\"cookie-submit\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["instagram.com"],
+    "tokens": [
+      "[role=\"dialog\"] > [style=\"display: flex; flex-direction: column; height: 100%; max-width: 100%;\"] > button"
+    ],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["motorolasound.com"],
+    "tokens": ["#cookie-btn-denied"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["myprivacy.dpgmedia.*"],
+    "tokens": [".pg-accept-button"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["play.google.*"],
+    "tokens": ["div"],
+    "actions": [
+      {
+        "name": "style.setProperty",
+        "params": [["z-index", "initial"]]
+      }
+    ]
+  },
+  {
+    "where": ["popeyes.*"],
+    "tokens": [".cookie-buttons > .cookie-buttons-column > div:last-child"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["producthunt.com"],
+    "tokens": ["[data-test=\"dismiss-CookiePopup\"] button"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["staylibere.com"],
+    "tokens": ["[class*=\"LayoutCookieBanner_buttons\"] > button:last-child"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["twitch.tv"],
+    "tokens": ["[data-a-target=\"consent-banner-accept\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["usnews.com"],
+    "tokens": ["#gdpr-modal-agree"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["web.de"],
+    "tokens": ["#reminder"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["web.dev"],
+    "tokens": ["a[href*=\"cookies\"] + button"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["youtube.*"],
+    "tokens": [
+      "div.buttons.ytd-consent-bump-v2-lightbox ytd-button-renderer:last-child tp-yt-paper-button"
+    ],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["zdf.de"],
+    "tokens": ["#aria-dialog-cmp-error-dialog > .dialog-close"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  },
+  {
+    "where": ["zeit.de"],
+    "tokens": ["[title=\"ACCEPT AND CONTINUE\"]"],
+    "actions": [
+      {
+        "name": "click"
+      }
+    ]
+  }
+]
