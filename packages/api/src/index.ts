@@ -5,6 +5,8 @@ import v1EntriesRoutes from 'routes/v1/entries';
 import v1ReportRoutes from 'routes/v1/report';
 import v2DataRoutes from 'routes/v2/data';
 import v2ReportRoutes from 'routes/v2/report';
+import v3DataRoutes from 'routes/v3/data';
+import v3ReportRoutes from 'routes/v3/report';
 import environment from 'services/environment';
 
 const server = fastify({ logger: true });
@@ -27,6 +29,8 @@ server.register(v1EntriesRoutes, { prefix: '/rest/v1' });
 server.register(v1ReportRoutes, { prefix: '/rest/v1' });
 server.register(v2DataRoutes, { prefix: '/rest/v2' });
 server.register(v2ReportRoutes, { prefix: '/rest/v2' });
+server.register(v3DataRoutes, { prefix: '/rest/v3' });
+server.register(v3ReportRoutes, { prefix: '/rest/v3' });
 
 server.listen({ host: '0.0.0.0', port: environment.port }, (error, address) => {
   if (error) {
