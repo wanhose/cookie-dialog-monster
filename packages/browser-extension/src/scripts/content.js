@@ -1,6 +1,6 @@
 /**
  * @description Data properties
- * @type {{ classes: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
+ * @type {{ actions: { where: string[], selectors: string[], actions: { name: string[], params: string[][]? }[] }[], tokens: { where: string[], selectors: string[] }[] }?}
  */
 
 let data = null;
@@ -46,6 +46,15 @@ let elementCount = 0;
 let state = { enabled: true };
 
 /**
+ * @description Access object using dot notation
+ * @param {{ [key: string]: any }} target
+ * @param {string} path
+ * @returns {any}
+ */
+
+const access = (target, path) => path.split('.').reduce((acc, curr) => acc[curr], target);
+
+/**
  * @description Cleans DOM
  * @param {Element[]} nodes
  * @param {boolean?} skipMatch
@@ -71,11 +80,31 @@ const forceClean = () => {
     const nodes = [...document.querySelectorAll(data.elements)];
 
     if (nodes.length) {
-      fix();
+      runActions();
       clean(nodes, true);
       elementCount += nodes.length;
     }
   }
+};
+
+/**
+ * @description Checks if an action can run in the current site
+ * @param {string} site
+ * @returns {boolean}
+ */
+
+const isInSite = (site) => {
+  const regExp = new RegExp(site.replace('*', '.*'));
+
+  if (site === '*') {
+    return true;
+  }
+
+  if (site.startsWith('!')) {
+    return !regExp.test(site.substring(1));
+  }
+
+  return regExp.test(site);
 };
 
 /**
@@ -113,12 +142,24 @@ const match = (node, skipMatch) => {
       style.opacity === '0' ||
       style.visibility === 'hidden';
 
+    if (
+      !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
+      (skipIsInViewport || isInViewport(node)) &&
+      (!!node.offsetParent || style.position === 'fixed') &&
+      !!node.parentElement
+    ) {
+      console.log('Cookie Dialog Monster: ', node);
+    }
+
     return (
       !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
       (skipIsInViewport || isInViewport(node)) &&
       (!!node.offsetParent || style.position === 'fixed') &&
       !!node.parentElement &&
-      (skipMatch || node.matches(data?.elements ?? []))
+      (skipMatch ||
+        data?.tokens?.some(
+          (token) => token.where.some(isInSite) && node.matches(token.selectors ?? [])
+        ))
     );
   }
 
@@ -126,59 +167,29 @@ const match = (node, skipMatch) => {
 };
 
 /**
- * @description Fixes scroll issues
+ * @description Executes data actions (fixes)
  */
 
-const fix = () => {
+const runActions = () => {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
-  const facebook = document.getElementsByClassName('_31e')[0];
-  const fixes = data?.fixes ?? [];
-  const skips = data?.skips ?? [];
 
   if (backdrop?.children.length === 0) {
     backdrop.remove();
   }
 
-  facebook?.classList.remove('_31e');
-
-  for (const fix of fixes) {
-    const [match, selector, action, property] = fix.split('##');
-
-    if (hostname.includes(match)) {
-      switch (action) {
-        case 'click': {
-          const node = document.querySelector(selector);
-          node?.click();
-          break;
-        }
-        case 'remove': {
-          const node = document.querySelector(selector);
-          node?.style?.removeProperty(property);
-          break;
-        }
-        case 'reset': {
-          const node = document.querySelector(selector);
-          node?.style?.setProperty(property, 'initial', 'important');
-          break;
-        }
-        case 'resetAll': {
-          const nodes = document.querySelectorAll(selector);
-          nodes.forEach((node) => node?.style?.setProperty(property, 'initial', 'important'));
-          break;
-        }
-        default:
-          break;
-      }
-    }
+  if (data?.tokens?.some((token) => token.where.some(isInSite))) {
+    dispatch({ type: 'INSERT_CONTENT_CSS' });
   }
 
-  if (!skips.includes(hostname)) {
-    dispatch({ type: 'INSERT_CONTENT_CSS' });
+  for (const action of data?.actions ?? []) {
+    if (action.where.every(isInSite)) {
+      const nodes = [...document.querySelectorAll(action.selectors)];
 
-    for (const item of [document.body, document.documentElement]) {
-      item?.classList.remove(...(data?.classes ?? []));
-      item?.style.setProperty('position', 'initial', 'important');
-      item?.style.setProperty('overflow-y', 'initial', 'important');
+      for (const { name, params } of action.actions) {
+        for (const node of nodes) {
+          access(node, name)?.(...(params ?? []));
+        }
+      }
     }
   }
 };
@@ -191,7 +202,7 @@ const fix = () => {
 const observer = new MutationObserver((mutations) => {
   const nodes = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
 
-  fix();
+  runActions();
   if (data?.elements.length && !preview) clean(nodes);
 });
 
