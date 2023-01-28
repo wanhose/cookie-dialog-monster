@@ -12689,3 +12689,4 @@ cmm-cookie-banner
 .mfp-ready
 #tie-body style + #popup
 #rgpd-cookies-modal
+[title="cookie iFrame"]
