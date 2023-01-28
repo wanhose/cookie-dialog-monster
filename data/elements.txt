@@ -12696,3 +12696,4 @@ cmm-cookie-banner
 .privacy-cp-wall
 .next-cookie-bar
 [class*="CookieConsent_root__"]
+.block-cookiesactive-blockcode
