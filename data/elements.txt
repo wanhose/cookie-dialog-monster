@@ -12691,3 +12691,4 @@ cmm-cookie-banner
 #rgpd-cookies-modal
 [title="cookie iFrame"]
 .cc_dialog
+.cookie-notifier-section
