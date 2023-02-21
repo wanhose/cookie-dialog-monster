@@ -12697,3 +12697,4 @@ cmm-cookie-banner
 .next-cookie-bar
 [class*="CookieConsent_root__"]
 .block-cookiesactive-blockcode
+.cookiealert
