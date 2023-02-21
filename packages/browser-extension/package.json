@@ -6,12 +6,12 @@
     "lint": "eslint src/**/*.js --fix"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.208",
-    "eslint": "^8.31.0",
+    "@types/chrome": "^0.0.217",
+    "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "minify": "^9.1.0",
-    "rimraf": "^3.0.2"
+    "minify": "^9.2.0",
+    "rimraf": "^4.1.2"
   },
   "engines": {
     "node": "16.x"
