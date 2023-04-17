@@ -12705,3 +12705,4 @@ cmm-cookie-banner
 [data-analytics-category="Cookies Consent"]
 .hu-wrapper
 [aria-labelledby="hu-cookies-notice-message"]
+#cookiesjsr
