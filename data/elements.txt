@@ -12720,3 +12720,5 @@ amedia-privacybox
 #window_cookie_consent_1_overlay
 .modal-cookies
 .teamCex > .fullscreen-container[style="opacity: 1; display: block;"]
+[data-component="cookiesgdpr"]
+.cookiesgdpr
