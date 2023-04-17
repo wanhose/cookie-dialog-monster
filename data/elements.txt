@@ -12715,3 +12715,4 @@ amedia-privacybox
 [data-project="mol-fe-cmp"]
 .cookies-elixregtech
 [data-name="mediavine-gdpr-cmp"]
+#cookieslayer
