@@ -12718,3 +12718,4 @@ amedia-privacybox
 #cookieslayer
 #cookiebot
 #window_cookie_consent_1_overlay
+.modal-cookies
