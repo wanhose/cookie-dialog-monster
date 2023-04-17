@@ -12708,3 +12708,6 @@ cmm-cookie-banner
 #cookiesjsr
 #disclaimer-container[style="opacity: 1; display: flex;"]
 amedia-privacybox
+#consentUI
+.cm-repop-element
+.consent__outer_wrapper
