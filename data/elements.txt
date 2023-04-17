@@ -12700,3 +12700,6 @@ cmm-cookie-banner
 .cookiealert
 #pieCookies
 .FlightsSearch > #react-root-dialog ~ div
+[title="Cookie Settings"]
+[data-cc="c-settings"]
+[data-analytics-category="Cookies Consent"]
