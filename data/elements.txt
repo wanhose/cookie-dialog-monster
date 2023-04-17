@@ -12703,3 +12703,5 @@ cmm-cookie-banner
 [title="Cookie Settings"]
 [data-cc="c-settings"]
 [data-analytics-category="Cookies Consent"]
+.hu-wrapper
+[aria-labelledby="hu-cookies-notice-message"]
