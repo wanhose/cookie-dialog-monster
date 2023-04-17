@@ -1,4 +1,5 @@
 accounts.google.com
+blog.sapegin.me
 canvasjs.com
 chessmadra.com
 correos.es
