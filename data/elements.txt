@@ -12706,3 +12706,4 @@ cmm-cookie-banner
 .hu-wrapper
 [aria-labelledby="hu-cookies-notice-message"]
 #cookiesjsr
+#disclaimer-container[style="opacity: 1; display: flex;"]
