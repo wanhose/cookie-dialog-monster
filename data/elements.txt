@@ -12713,3 +12713,4 @@ amedia-privacybox
 .consent__outer_wrapper
 #transcend-consent-manager
 [data-project="mol-fe-cmp"]
+.cookies-elixregtech
