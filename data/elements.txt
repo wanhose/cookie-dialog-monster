@@ -12717,3 +12717,4 @@ amedia-privacybox
 [data-name="mediavine-gdpr-cmp"]
 #cookieslayer
 #cookiebot
+#window_cookie_consent_1_overlay
