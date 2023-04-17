@@ -12714,3 +12714,4 @@ amedia-privacybox
 #transcend-consent-manager
 [data-project="mol-fe-cmp"]
 .cookies-elixregtech
+[data-name="mediavine-gdpr-cmp"]
