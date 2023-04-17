@@ -12722,3 +12722,4 @@ amedia-privacybox
 .teamCex > .fullscreen-container[style="opacity: 1; display: block;"]
 [data-component="cookiesgdpr"]
 .cookiesgdpr
+#warn-cook
