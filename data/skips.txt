@@ -10,6 +10,7 @@ key-shortcut.com
 lever.co
 login.microsoftonline.com
 mantisbt.org
+mossgreen.github.io
 musicmeter.nl
 personio.com
 restaurantguru.com
