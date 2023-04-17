@@ -12716,3 +12716,4 @@ amedia-privacybox
 .cookies-elixregtech
 [data-name="mediavine-gdpr-cmp"]
 #cookieslayer
+#cookiebot
