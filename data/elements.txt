@@ -12711,3 +12711,4 @@ amedia-privacybox
 #consentUI
 .cm-repop-element
 .consent__outer_wrapper
+#transcend-consent-manager
