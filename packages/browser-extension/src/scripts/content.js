@@ -53,12 +53,22 @@ let state = { enabled: true };
  */
 
 const clean = (nodes, skipMatch) => {
-  const targets = nodes.filter((node) => match(node, skipMatch));
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i];
 
-  targets.forEach((node) => {
-    node.remove();
-    elementCount += 1;
-  });
+    if (match(node, skipMatch)) {
+      const observer = new MutationObserver(() => {
+        node.style.setProperty('display', 'none', 'important');
+      });
+
+      if (!node.hasAttribute('data-cookie-dialog-monster')) {
+        elementCount += 1;
+        node.setAttribute('data-cookie-dialog-monster', 'true');
+        node.style.setProperty('display', 'none', 'important');
+        observer.observe(node, { attributes: true, attributeFilter: ['style'] });
+      }
+    }
+  }
 };
 
 /**
@@ -108,9 +118,11 @@ const match = (node, skipMatch) => {
   if (node instanceof HTMLElement) {
     const style = window.getComputedStyle(node);
     const skipIsInViewport =
+      (style.animationName !== 'none' && style.animationPlayState === 'running') ||
       style.display === 'none' ||
       style.height === '0px' ||
       style.opacity === '0' ||
+      style.transitionProperty !== 'none' ||
       style.visibility === 'hidden';
 
     return (
@@ -172,9 +184,7 @@ const fix = () => {
     }
   }
 
-  if (!skips.includes(hostname)) {
-    dispatch({ type: 'INSERT_CONTENT_CSS' });
-
+  if (!skips.some((skip) => skip.includes(hostname))) {
     for (const item of [document.body, document.documentElement]) {
       item?.classList.remove(...(data?.classes ?? []));
       item?.style.setProperty('position', 'initial', 'important');

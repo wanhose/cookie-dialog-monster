@@ -107,9 +107,6 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
     case 'GET_TAB':
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
       return true;
-    case 'INSERT_CONTENT_CSS':
-      if (isPage && tabId) script.insertCSS({ files: ['styles/content.css'], target: { tabId } });
-      break;
     case 'INSERT_DIALOG_CSS':
       if (isPage && tabId) script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       break;

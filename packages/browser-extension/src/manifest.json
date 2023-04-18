@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "6.2.3",
+  "version": "6.3.0",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -21,11 +21,9 @@
     {
       "all_frames": true,
       "exclude_matches": [
-        "*://*.gfycat.com/*",
-        "*://*.mediathekviewweb.de/*",
-        "*://*.rundschau-online.de/*",
-        "*://*.youtube.com/embed/*",
-        "*://drive.google.com/*"
+        "*://*.googleapis.com/embed/*",
+        "*://*.sharepoint.com/*",
+        "*://*.youtube.com/embed/*"
       ],
       "js": ["scripts/content.js", "scripts/dialog.js"],
       "matches": ["http://*/*", "https://*/*"],
