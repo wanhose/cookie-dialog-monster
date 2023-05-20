@@ -12727,3 +12727,4 @@ amedia-privacybox
 #gdpr-options
 .cookies_overlay
 [class*="CookieBanner"]
+#__blockNavigationOverlay
