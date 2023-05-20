@@ -32,13 +32,6 @@ const options = { childList: true, subtree: true };
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
- * @description Element that were being removed count
- * @type {number}
- */
-
-let elementCount = 0;
-
-/**
  * @description Extension state
  * @type {{ enabled: boolean }}
  */
@@ -62,7 +55,6 @@ const clean = (nodes, skipMatch) => {
       });
 
       if (!node.hasAttribute('data-cookie-dialog-monster')) {
-        elementCount += 1;
         node.setAttribute('data-cookie-dialog-monster', 'true');
         node.style.setProperty('display', 'none', 'important');
         observer.observe(node, { attributes: true, attributeFilter: ['style'] });
@@ -72,7 +64,7 @@ const clean = (nodes, skipMatch) => {
 };
 
 /**
- * @description Cleans DOM
+ * @description Forces a DOM clean
  * @returns {void}
  */
 
@@ -83,7 +75,6 @@ const forceClean = () => {
     if (nodes.length) {
       fix();
       clean(nodes, true);
-      elementCount += nodes.length;
     }
   }
 };
@@ -95,47 +86,26 @@ const forceClean = () => {
  */
 
 const isInViewport = (node) => {
-  const bounding = node.getBoundingClientRect();
+  const height = window.innerHeight || document.documentElement.clientHeight;
+  const position = node.getBoundingClientRect();
+  const scroll = window.scrollY || window.pageYOffset;
 
-  return (
-    bounding.top >= -node.offsetHeight &&
-    bounding.left >= -node.offsetWidth &&
-    bounding.right <=
-      (window.innerWidth || document.documentElement.clientWidth) + node.offsetWidth &&
-    bounding.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) + node.offsetHeight
-  );
+  return scroll + position.top <= scroll + height && scroll + position.bottom >= scroll;
 };
 
 /**
- * @description Matches if node element is removable
+ * @description Checks if node element is removable
  * @param {Element} node
  * @param {boolean?} skipMatch
  * @returns {boolean}
  */
 
-const match = (node, skipMatch) => {
-  if (node instanceof HTMLElement) {
-    const style = window.getComputedStyle(node);
-    const skipIsInViewport =
-      (style.animationName !== 'none' && style.animationPlayState === 'running') ||
-      style.display === 'none' ||
-      style.height === '0px' ||
-      style.opacity === '0' ||
-      style.transitionProperty !== 'none' ||
-      style.visibility === 'hidden';
-
-    return (
-      !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-      (skipIsInViewport || isInViewport(node)) &&
-      (!!node.offsetParent || style.position === 'fixed') &&
-      !!node.parentElement &&
-      (skipMatch || node.matches(data?.elements ?? []))
-    );
-  }
-
-  return false;
-};
+const match = (node, skipMatch) =>
+  node instanceof HTMLElement &&
+  !node.getAttribute('data-cookie-dialog-monster') &&
+  !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
+  isInViewport(node) &&
+  (skipMatch || node.matches(data?.elements ?? []));
 
 /**
  * @description Fixes scroll issues
@@ -184,7 +154,7 @@ const fix = () => {
     }
   }
 
-  if (!skips.some((skip) => skip.includes(hostname))) {
+  if (skips.indexOf(hostname) === -1) {
     for (const item of [document.body, document.documentElement]) {
       item?.classList.remove(...(data?.classes ?? []));
       item?.style.setProperty('position', 'initial', 'important');
@@ -207,11 +177,11 @@ const observer = new MutationObserver((mutations) => {
 
 /**
  * @description Fixes already existing element when page load issues
- * @listens window#load
+ * @listens window#DOMContentLoaded
  */
 
-window.addEventListener('load', () => {
-  if (elementCount < 2) forceClean();
+window.addEventListener('DOMContentLoaded', () => {
+  forceClean();
 });
 
 /**
@@ -220,7 +190,9 @@ window.addEventListener('load', () => {
  */
 
 window.addEventListener('pageshow', (event) => {
-  if (event.persisted) forceClean();
+  if (event.persisted) {
+    forceClean();
+  }
 });
 
 /**
