@@ -90,7 +90,10 @@ const isInViewport = (node) => {
   const position = node.getBoundingClientRect();
   const scroll = window.scrollY || window.pageYOffset;
 
-  return scroll + position.top <= scroll + height && scroll + position.bottom >= scroll;
+  return (
+    position.bottom === position.top ||
+    (scroll + position.top <= scroll + height && scroll + position.bottom >= scroll)
+  );
 };
 
 /**
