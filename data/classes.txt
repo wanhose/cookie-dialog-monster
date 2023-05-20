@@ -5,6 +5,7 @@ c24-cc-visible
 cmp-open
 consent-modal-open
 consent-modal-overflow
+CookiePolicy--show
 cookies
 cu_k_cookie_consent_modal_open
 gcdc-locked
