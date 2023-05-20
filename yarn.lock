@@ -1338,6 +1338,7 @@ __metadata:
     nodemailer: ^6.9.2
     nodemon: ^2.0.22
     octokit: ^2.0.16
+    rimraf: ^5.0.1
     ts-node: ^10.9.1
     tsconfig-paths: ^4.2.0
     typescript: ^5.0.4
@@ -1537,6 +1538,7 @@ __metadata:
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^4.2.1
     minify: ^10.0.0
+    rimraf: ^5.0.1
   languageName: unknown
   linkType: soft
 
@@ -1976,7 +1978,6 @@ __metadata:
     husky: ^8.0.3
     lint-staged: ^13.2.2
     prettier: ^2.8.8
-    rimraf: ^5.0.1
   languageName: unknown
   linkType: soft
 
@@ -6007,6 +6008,7 @@ __metadata:
   resolution: "web@workspace:packages/web"
   dependencies:
     minify: ^10.0.0
+    rimraf: ^5.0.1
     serve: ^14.2.0
     tailwindcss: ^3.3.2
   languageName: unknown
