@@ -12731,3 +12731,5 @@ amedia-privacybox
 .nelio-popup-wrapper-40786
 [data-testid="main-cookies-banner-container"]
 .cmp-root-container
+.cookie-backdrop
+#nhfp_didomi_block_page
