@@ -12723,3 +12723,4 @@ amedia-privacybox
 [data-component="cookiesgdpr"]
 .cookiesgdpr
 #warn-cook
+.bnp_cookie_banner
