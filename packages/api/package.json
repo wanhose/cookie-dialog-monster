@@ -8,29 +8,28 @@
     "start": "NODE_PATH=build node build/index.js"
   },
   "dependencies": {
-    "@fastify/cors": "^8.2.0",
-    "@fastify/rate-limit": "^7.6.0",
+    "@fastify/cors": "^8.2.1",
+    "@fastify/rate-limit": "^8.0.0",
     "dotenv": "^16.0.3",
-    "fastify": "^4.13.0",
+    "fastify": "^4.17.0",
     "node-fetch": "^2.6.7",
-    "nodemailer": "^6.9.1",
-    "octokit": "^2.0.14"
+    "nodemailer": "^6.9.2",
+    "octokit": "^2.0.16"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.3",
+    "@tsconfig/node16": "^1.0.4",
     "@types/node": "^16.18.11",
-    "@types/node-fetch": "^2.6.2",
-    "@types/nodemailer": "^6.4.6",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
+    "@types/node-fetch": "^2.6.4",
+    "@types/nodemailer": "^6.4.8",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^2.0.20",
-    "rimraf": "^4.1.2",
+    "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
-    "typescript": "^4.9.5"
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": "16.x"

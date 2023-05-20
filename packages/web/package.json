@@ -6,10 +6,9 @@
     "start": "NODE_PATH=build serve build"
   },
   "devDependencies": {
-    "minify": "^9.2.0",
-    "rimraf": "^4.1.2",
+    "minify": "^10.0.0",
     "serve": "^14.2.0",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.3.2"
   },
   "engines": {
     "node": "16.x"
