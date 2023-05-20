@@ -12726,3 +12726,4 @@ amedia-privacybox
 .bnp_cookie_banner
 #gdpr-options
 .cookies_overlay
+[class*="CookieBanner"]
