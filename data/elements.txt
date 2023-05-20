@@ -12729,3 +12729,4 @@ amedia-privacybox
 [class*="CookieBanner"]
 #__blockNavigationOverlay
 .nelio-popup-wrapper-40786
+[data-testid="main-cookies-banner-container"]
