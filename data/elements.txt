@@ -12733,3 +12733,4 @@ amedia-privacybox
 .cmp-root-container
 .cookie-backdrop
 #nhfp_didomi_block_page
+.popover.popover--default.zIndex--modal.popover--layout-fixed.popover--layout-fixed-bottomSheet.popover--visible
