@@ -630,13 +630,13 @@ __metadata:
   linkType: hard
 
 "@octokit/graphql@npm:^5.0.0":
-  version: 5.0.5
-  resolution: "@octokit/graphql@npm:5.0.5"
+  version: 5.0.6
+  resolution: "@octokit/graphql@npm:5.0.6"
   dependencies:
     "@octokit/request": ^6.0.0
     "@octokit/types": ^9.0.0
     universal-user-agent: ^6.0.0
-  checksum: eb2d1a6305a3d1f55ff0ce92fb88b677f0bb789757152d58a79ef61171fb65ecf6fe18d6c27e236c0cee6a0c2600c2cb8370f5ac7184f8e9361c085aa4555bb1
+  checksum: 7be545d348ef31dcab0a2478dd64d5746419a2f82f61459c774602bcf8a9b577989c18001f50b03f5f61a3d9e34203bdc021a4e4d75ff2d981e8c9c09cf8a65c
   languageName: node
   linkType: hard
 
@@ -803,13 +803,6 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 6ad6a00fc4f2f2cfc6bff76fb1d88b8ee20bc0601e18ebb01b6d4be583733a860239a521a7fbca73b612e66705078809483549d2b18f370eb346c5155c8e4a0f
-  languageName: node
-  linkType: hard
-
-"@putout/minify@npm:^1.0.4":
-  version: 1.16.5
-  resolution: "@putout/minify@npm:1.16.5"
-  checksum: 2456c73316ca5305c7593b3923884bc97198711fde68e8db68ecba27743c4059ab7f366855b3dfed44c931937c1daf3bc92f26e31ad4ed6757b67be59627009e
   languageName: node
   linkType: hard
 
@@ -1537,7 +1530,7 @@ __metadata:
     eslint: ^8.41.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^4.2.1
-    minify: ^10.0.0
+    minify: ^9.2.0
     rimraf: ^5.0.1
   languageName: unknown
   linkType: soft
@@ -2882,17 +2875,17 @@ __metadata:
   linkType: hard
 
 "glob@npm:^10.2.5":
-  version: 10.2.5
-  resolution: "glob@npm:10.2.5"
+  version: 10.2.6
+  resolution: "glob@npm:10.2.6"
   dependencies:
     foreground-child: ^3.1.0
     jackspeak: ^2.0.3
-    minimatch: ^9.0.0
+    minimatch: ^9.0.1
     minipass: ^5.0.0 || ^6.0.2
     path-scurry: ^1.7.0
   bin:
     glob: dist/cjs/src/bin.js
-  checksum: 54d2b629c467953317c175903a049819577bcce679d437ff1ad43bf654091d3564e796351d705463b26a0194234acdea7f4de64993b0544ea86275c000498026
+  checksum: 94c5964bfa9df95207a69a3bd9b07b99ea7b5ba1f36dd73a8914378cee9436a205b9b5bdff58872abc238684ea7f4b4936e932155b8885250818bcc8d5321ddf
   languageName: node
   linkType: hard
 
@@ -3358,15 +3351,15 @@ __metadata:
   linkType: hard
 
 "jackspeak@npm:^2.0.3":
-  version: 2.2.0
-  resolution: "jackspeak@npm:2.2.0"
+  version: 2.2.1
+  resolution: "jackspeak@npm:2.2.1"
   dependencies:
     "@isaacs/cliui": ^8.0.2
     "@pkgjs/parseargs": ^0.11.0
   dependenciesMeta:
     "@pkgjs/parseargs":
       optional: true
-  checksum: d8cd5be4f0e89cef04add5b0b068162a086bdb1ca68113ed729e99489b7865ca3edcc6430d6fd20c430e15382929ef5f3c7ec36e6aa7c17be23cac116f92dcff
+  checksum: e29291c0d0f280a063fa18fbd1e891ab8c2d7519fd34052c0ebde38538a15c603140d60c2c7f432375ff7ee4c5f1c10daa8b2ae19a97c3d4affe308c8360c1df
   languageName: node
   linkType: hard
 
@@ -3869,11 +3862,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minify@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "minify@npm:10.0.0"
+"minify@npm:^9.2.0":
+  version: 9.2.0
+  resolution: "minify@npm:9.2.0"
   dependencies:
-    "@putout/minify": ^1.0.4
     clean-css: ^5.0.1
     css-b64-images: ~0.2.5
     debug: ^4.1.0
@@ -3881,11 +3873,12 @@ __metadata:
     html-minifier-terser: ^7.1.0
     readjson: ^2.2.2
     simport: ^1.2.0
+    terser: ^5.3.2
     try-catch: ^3.0.0
     try-to-catch: ^3.0.0
   bin:
     minify: bin/minify.js
-  checksum: bd82a998ee4e739d87a1cdb6c67a21797dec468c7c772b416ceae2186cb99454a11d4499404f30a1f52eb82a278f1e30ae32afb374fd3cbbde4b3dcefcc00fd9
+  checksum: ecf16b13ecd18c57ee5da7d64408a1ef253300ea90e6c866e545577ce737cdafd5777a489800c29de2af56198d60c99d7aabc617b6cf01ca5c2c21fb7d0556ab
   languageName: node
   linkType: hard
 
@@ -3907,12 +3900,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "minimatch@npm:9.0.0"
+"minimatch@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "minimatch@npm:9.0.1"
   dependencies:
     brace-expansion: ^2.0.1
-  checksum: 7bd57899edd1d1b0560f50b5b2d1ea4ad2a366c5a2c8e0a943372cf2f200b64c256bae45a87a80915adbce27fa36526264296ace0da57b600481fe5ea3e372e5
+  checksum: 97f5f5284bb57dc65b9415dec7f17a0f6531a33572193991c60ff18450dcfad5c2dad24ffeaf60b5261dccd63aae58cc3306e2209d57e7f88c51295a532d8ec3
   languageName: node
   linkType: hard
 
@@ -5619,7 +5612,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"terser@npm:^5.15.1":
+"terser@npm:^5.15.1, terser@npm:^5.3.2":
   version: 5.17.4
   resolution: "terser@npm:5.17.4"
   dependencies:
@@ -6007,7 +6000,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "web@workspace:packages/web"
   dependencies:
-    minify: ^10.0.0
+    minify: ^9.2.0
     rimraf: ^5.0.1
     serve: ^14.2.0
     tailwindcss: ^3.3.2

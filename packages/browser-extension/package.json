@@ -10,7 +10,7 @@
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "minify": "^10.0.0",
+    "minify": "^9.2.0",
     "rimraf": "^5.0.1"
   },
   "engines": {
