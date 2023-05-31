@@ -12583,6 +12583,8 @@ ofi-cookie-box-widget
 .cky-consent-bar
 .cky-consent-container
 .cky-notice
+.cky-overlay
+.cky-modal
 .m_privacy_statement
 dialog.consent.js-consent
 .modal-cookies-info
