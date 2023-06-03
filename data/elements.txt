@@ -1227,7 +1227,6 @@ div[class*="cookieDisclaimer"]
 #pm15_cookie_info
 .aa-cookie-alert
 .policy-banner
-[data-testid="main-cookies-banner-container"]
 #confirmCookiePolicy
 #netgraf_cookie_alert
 #modal-cookies-policy
@@ -12736,3 +12735,4 @@ amedia-privacybox
 .cookie-backdrop
 #nhfp_didomi_block_page
 .popover.popover--default.zIndex--modal.popover--layout-fixed.popover--layout-fixed-bottomSheet.popover--visible
+[data-test-id="cookies-wrapper"]
