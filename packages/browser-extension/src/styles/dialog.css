@@ -12,7 +12,6 @@
   border-radius: 4px;
   box-sizing: border-box;
   color: var(--cookie-dialog-monster-color-secondary);
-  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 100%;
   margin: auto !important;
   padding: 0px !important;
@@ -37,6 +36,7 @@ report-dialog-body {
 
 report-dialog-body-text {
   display: block;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   margin: 0px;
   padding: 0px;
 }
@@ -46,7 +46,6 @@ report-dialog-close-button {
   background-color: transparent;
   border: none;
   border-radius: 4px;
-  color: inherit;
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
@@ -56,10 +55,18 @@ report-dialog-close-button {
   transition: 0.4s;
 }
 
+report-dialog-close-button {
+  stroke: var(--cookie-dialog-monster-color-white);
+}
+
+report-dialog-close-button:focus,
+report-dialog-close-button:hover > svg {
+  stroke: var(--cookie-dialog-monster-color-secondary);
+}
+
 report-dialog-close-button:focus,
 report-dialog-close-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
-  color: var(--cookie-dialog-monster-color-secondary);
 }
 
 report-dialog-form-view[hidden] {
@@ -69,7 +76,6 @@ report-dialog-form-view[hidden] {
 report-dialog-header {
   align-items: center;
   background-color: var(--cookie-dialog-monster-color-secondary);
-  color: var(--cookie-dialog-monster-color-white);
   display: flex;
   font-size: 16px;
   height: 54px;
@@ -79,6 +85,8 @@ report-dialog-header {
 }
 
 report-dialog-header-title {
+  color: var(--cookie-dialog-monster-color-white);
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
 
@@ -86,6 +94,7 @@ report-dialog-radio {
   color: var(--cookie-dialog-monster-color-tertiary);
   cursor: pointer;
   display: block;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   margin-top: 18px;
   outline: none !important;
   padding-left: 24px;
@@ -148,7 +157,7 @@ report-dialog-submit-button {
   color: var(--cookie-dialog-monster-color-white);
   cursor: pointer;
   display: flex;
-  font-family: inherit;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 14px;
   height: 39px;
   justify-content: center;
@@ -174,6 +183,7 @@ report-dialog-submit-button[aria-disabled='true'] {
 }
 
 report-dialog-submit-extra-text {
+  font-family: inherit !important;
   font-size: 14px;
   line-height: 14px;
   margin: 0px;
@@ -182,6 +192,7 @@ report-dialog-submit-extra-text {
 }
 
 report-dialog-submit-text {
+  font-family: inherit !important;
   font-size: 18px;
   line-height: 18px;
   margin: 0px;
@@ -193,6 +204,7 @@ report-dialog-submit-view {
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   justify-content: center;
   min-height: 269px;
 }
