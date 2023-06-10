@@ -1,6 +1,6 @@
 /**
  * @description Data properties
- * @type {{ classes: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
+ * @type {{ classes: string[], commonWords?: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
  */
 
 let data = null;
@@ -64,13 +64,14 @@ const clean = (nodes, skipMatch) => {
 };
 
 /**
- * @description Forces a DOM clean
+ * @description Forces a DOM clean in the specific node
+ * @param {HTMLElement} node
  * @returns {void}
  */
 
-const forceClean = () => {
+const forceClean = (node) => {
   if (data?.elements.length && state.enabled && !preview) {
-    const nodes = [...document.querySelectorAll(data.elements)];
+    const nodes = [...node.querySelectorAll(data.elements)];
 
     if (nodes.length) {
       fix();
@@ -103,12 +104,28 @@ const isInViewport = (node) => {
  * @returns {boolean}
  */
 
-const match = (node, skipMatch) =>
-  node instanceof HTMLElement &&
-  !node.getAttribute('data-cookie-dialog-monster') &&
-  !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-  isInViewport(node) &&
-  (skipMatch || node.matches(data?.elements ?? []));
+const match = (node, skipMatch) => {
+  if (node instanceof HTMLElement) {
+    if (node.hasAttributes()) {
+      return (
+        // 2023-06-10: twitch.tv temporary fix
+        node.className !== 'chat-line__message' &&
+        // ...
+        !node.getAttribute('data-cookie-dialog-monster') &&
+        !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
+        isInViewport(node) &&
+        (skipMatch || node.matches(data?.elements ?? []))
+      );
+    } else {
+      // 2023-06-10: fix edge case force cleaning on children if no attributes
+      if (data?.commonWords && node.outerHTML.match(new RegExp(commonWords?.join('|')))) {
+        forceClean(node);
+      }
+    }
+  }
+
+  return false;
+};
 
 /**
  * @description Fixes scroll issues
@@ -184,7 +201,7 @@ const observer = new MutationObserver((mutations) => {
  */
 
 window.addEventListener('DOMContentLoaded', () => {
-  forceClean();
+  forceClean(document.documentElement);
 });
 
 /**
@@ -194,7 +211,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('pageshow', (event) => {
   if (event.persisted) {
-    forceClean();
+    forceClean(document.documentElement);
   }
 });
 
@@ -210,6 +227,6 @@ window.addEventListener('pageshow', (event) => {
   if (state.enabled) {
     data = await dispatch({ hostname, type: 'GET_DATA' });
     dispatch({ type: 'ENABLE_ICON' });
-    observer.observe(document.body ?? document.documentElement, options);
+    observer.observe(document.documentElement, options);
   }
 })();
