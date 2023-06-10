@@ -25,6 +25,7 @@
 
 #report-dialog * {
   box-sizing: border-box;
+  visibility: visible !important;
 }
 
 report-dialog-body {
