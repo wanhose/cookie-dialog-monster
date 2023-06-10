@@ -218,15 +218,6 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
- * @description Fixes already existing element when page load issues
- * @listens window#DOMContentLoaded
- */
-
-window.addEventListener('DOMContentLoaded', () => {
-  forceClean(document.documentElement);
-});
-
-/**
  * @description Fixes bfcache issues
  * @listens window#pageshow
  */
