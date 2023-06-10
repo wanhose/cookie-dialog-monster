@@ -118,7 +118,7 @@ const match = (node, skipMatch) => {
       );
     } else {
       // 2023-06-10: fix edge case force cleaning on children if no attributes
-      if (data?.commonWords && node.outerHTML.match(new RegExp(commonWords?.join('|')))) {
+      if (data?.commonWords && node.outerHTML.match(new RegExp(data.commonWords.join('|')))) {
         forceClean(node);
       }
     }
