@@ -133,7 +133,7 @@ function match(node, skipMatch) {
   if (node.hasAttributes()) {
     return (
       // 2023-06-10: twitch.tv temporary fix
-      node.className !== 'chat-line__message' &&
+      !node.classList.contains('chat-line__message') &&
       // ...
       !node.getAttribute('data-cookie-dialog-monster') &&
       isInViewport(node) &&
