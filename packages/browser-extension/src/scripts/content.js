@@ -42,10 +42,9 @@ let state = { enabled: true };
  * @description Cleans DOM
  * @param {Element[]} nodes
  * @param {boolean?} skipMatch
- * @returns {void}
  */
 
-const clean = (nodes, skipMatch) => {
+function clean(nodes, skipMatch) {
   for (let i = 0; i < nodes.length; i++) {
     const node = nodes[i];
 
@@ -61,15 +60,29 @@ const clean = (nodes, skipMatch) => {
       }
     }
   }
-};
+}
+
+/**
+ * @description Flat child nodes
+ * @param {HTMLElement} node
+ * @param {HTMLElement[] | undefined} children
+ * @returns {number[]}
+ */
+
+function flatNode(node) {
+  return [...node.childNodes].flatMap((childNode) =>
+    childNode.nodeType === Node.TEXT_NODE
+      ? [childNode.nodeType]
+      : [...[...childNode.childNodes].map((x) => x.nodeType)]
+  );
+}
 
 /**
  * @description Forces a DOM clean in the specific node
  * @param {HTMLElement} node
- * @returns {void}
  */
 
-const forceClean = (node) => {
+function forceClean(node) {
   if (data?.elements.length && state.enabled && !preview) {
     const nodes = [...node.querySelectorAll(data.elements)];
 
@@ -78,7 +91,7 @@ const forceClean = (node) => {
       clean(nodes, true);
     }
   }
-};
+}
 
 /**
  * @description Checks if an element is visible in the viewport
@@ -86,16 +99,16 @@ const forceClean = (node) => {
  * @returns {boolean}
  */
 
-const isInViewport = (node) => {
+function isInViewport(node) {
   const height = window.innerHeight || document.documentElement.clientHeight;
   const position = node.getBoundingClientRect();
-  const scroll = window.scrollY || window.pageYOffset;
+  const scroll = window.scrollY;
 
   return (
     position.bottom === position.top ||
     (scroll + position.top <= scroll + height && scroll + position.bottom >= scroll)
   );
-};
+}
 
 /**
  * @description Checks if node element is removable
@@ -104,34 +117,43 @@ const isInViewport = (node) => {
  * @returns {boolean}
  */
 
-const match = (node, skipMatch) => {
-  if (node instanceof HTMLElement) {
-    if (node.hasAttributes()) {
-      return (
-        // 2023-06-10: twitch.tv temporary fix
-        node.className !== 'chat-line__message' &&
-        // ...
-        !node.getAttribute('data-cookie-dialog-monster') &&
-        !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-        isInViewport(node) &&
-        (skipMatch || node.matches(data?.elements ?? []))
-      );
-    } else {
-      // 2023-06-10: fix edge case force cleaning on children if no attributes
-      if (data?.commonWords && node.outerHTML.match(new RegExp(data.commonWords.join('|')))) {
-        forceClean(node);
-      }
+function match(node, skipMatch) {
+  if (!node instanceof HTMLElement) {
+    return false;
+  }
+
+  if (data?.tags.includes(node.tagName?.toUpperCase?.())) {
+    return false;
+  }
+
+  if (flatNode(node).every((x) => x === Node.TEXT_NODE)) {
+    return false;
+  }
+
+  if (node.hasAttributes()) {
+    return (
+      // 2023-06-10: twitch.tv temporary fix
+      node.className !== 'chat-line__message' &&
+      // ...
+      !node.getAttribute('data-cookie-dialog-monster') &&
+      isInViewport(node) &&
+      (skipMatch || node.matches(data?.elements ?? []))
+    );
+  } else {
+    // 2023-06-10: fix edge case force cleaning on children if no attributes
+    if (data?.commonWords && node.outerHTML.match(new RegExp(data.commonWords.join('|')))) {
+      forceClean(node);
     }
   }
 
   return false;
-};
+}
 
 /**
  * @description Fixes scroll issues
  */
 
-const fix = () => {
+function fix() {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
   const facebook = document.getElementsByClassName('_31e')[0];
   const fixes = data?.fixes ?? [];
@@ -181,7 +203,7 @@ const fix = () => {
       item?.style.setProperty('overflow-y', 'initial', 'important');
     }
   }
-};
+}
 
 /**
  * @description Mutation Observer instance
