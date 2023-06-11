@@ -118,7 +118,7 @@ function isInViewport(node) {
  */
 
 function match(node, skipMatch) {
-  if (!node instanceof HTMLElement) {
+  if (!node instanceof HTMLElement || !node.tagName) {
     return false;
   }
 
@@ -126,7 +126,7 @@ function match(node, skipMatch) {
     return false;
   }
 
-  if (flatNode(node).every((x) => x === Node.TEXT_NODE)) {
+  if (node.childNodes.length && flatNode(node).every((x) => x === Node.TEXT_NODE)) {
     return false;
   }
 
