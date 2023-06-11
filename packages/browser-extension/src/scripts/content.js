@@ -1,6 +1,6 @@
 /**
  * @description Data properties
- * @type {{ classes: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
+ * @type {{ classes: string[], commonWords?: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
  */
 
 let data = null;
@@ -40,81 +40,125 @@ let state = { enabled: true };
 
 /**
  * @description Cleans DOM
- * @param {Element[]} nodes
+ * @param {Element[]} elements
  * @param {boolean?} skipMatch
- * @returns {void}
  */
 
-const clean = (nodes, skipMatch) => {
-  for (let i = 0; i < nodes.length; i++) {
-    const node = nodes[i];
+function clean(elements, skipMatch) {
+  for (const element of elements) {
+    if (match(element, skipMatch)) {
+      const observer = new MutationObserver(() => forceElementStyles(element));
 
-    if (match(node, skipMatch)) {
-      const observer = new MutationObserver(() => {
-        node.style.setProperty('display', 'none', 'important');
-      });
-
-      if (!node.hasAttribute('data-cookie-dialog-monster')) {
-        node.setAttribute('data-cookie-dialog-monster', 'true');
-        node.style.setProperty('display', 'none', 'important');
-        observer.observe(node, { attributes: true, attributeFilter: ['style'] });
-      }
+      element.setAttribute('data-cookie-dialog-monster', 'true');
+      element.style.setProperty('display', 'none', 'important');
+      observer.observe(element, { attributes: true, attributeFilter: ['class', 'style'] });
     }
   }
-};
+}
 
 /**
- * @description Forces a DOM clean
- * @returns {void}
+ * @description Flat child nodes for a given element
+ * @param {HTMLElement} element
+ * @returns {number[]}
  */
 
-const forceClean = () => {
-  if (data?.elements.length && state.enabled && !preview) {
-    const nodes = [...document.querySelectorAll(data.elements)];
+function flatElement(element) {
+  return [...element.childNodes].flatMap((childNode) =>
+    childNode.nodeType === Node.TEXT_NODE
+      ? [childNode.nodeType]
+      : [...[...childNode.childNodes].map((x) => x.nodeType)]
+  );
+}
 
-    if (nodes.length) {
+/**
+ * @description Forces a DOM clean in the specific element
+ * @param {HTMLElement} element
+ */
+
+function forceClean(element) {
+  if (data?.elements.length && state.enabled && !preview) {
+    const elements = [...element.querySelectorAll(data.elements)];
+
+    if (elements.length) {
       fix();
-      clean(nodes, true);
+      clean(elements, true);
     }
   }
-};
+}
+
+/**
+ * @description Forces element to have these styles
+ * @param {HTMLElement} element
+ */
+
+function forceElementStyles(element) {
+  element.style.setProperty('display', 'none', 'important');
+}
 
 /**
  * @description Checks if an element is visible in the viewport
- * @param {HTMLElement} node
+ * @param {HTMLElement} element
  * @returns {boolean}
  */
 
-const isInViewport = (node) => {
+function isInViewport(element) {
   const height = window.innerHeight || document.documentElement.clientHeight;
-  const position = node.getBoundingClientRect();
-  const scroll = window.scrollY || window.pageYOffset;
+  const position = element.getBoundingClientRect();
+  const scroll = window.scrollY;
 
   return (
     position.bottom === position.top ||
     (scroll + position.top <= scroll + height && scroll + position.bottom >= scroll)
   );
-};
+}
 
 /**
- * @description Checks if node element is removable
- * @param {Element} node
+ * @description Checks if element element is removable
+ * @param {Element} element
  * @param {boolean?} skipMatch
  * @returns {boolean}
  */
 
-const match = (node, skipMatch) =>
-  node instanceof HTMLElement &&
-  !node.getAttribute('data-cookie-dialog-monster') &&
-  !data?.tags.includes(node.tagName?.toUpperCase?.()) &&
-  isInViewport(node) &&
-  (skipMatch || node.matches(data?.elements ?? []));
+function match(element, skipMatch) {
+  if (!element instanceof HTMLElement || !element.tagName) {
+    return false;
+  }
+
+  if (element.getAttribute('data-cookie-dialog-monster')) {
+    return false;
+  }
+
+  if (data?.tags.includes(element.tagName?.toUpperCase?.())) {
+    return false;
+  }
+
+  if (element.childNodes.length && flatElement(element).every((x) => x === Node.TEXT_NODE)) {
+    return false;
+  }
+
+  if (element.hasAttributes()) {
+    return (
+      // 2023-06-10: twitch.tv temporary fix
+      !element.classList.contains('chat-line__message') &&
+      // ...
+      isInViewport(element) &&
+      (skipMatch || element.matches(data?.elements ?? []))
+    );
+  } else {
+    // 2023-06-10: fix edge case force cleaning on children if no attributes
+    if (data?.commonWords && element.outerHTML.match(new RegExp(data.commonWords.join('|')))) {
+      forceClean(element);
+    }
+  }
+
+  return false;
+}
 
 /**
  * @description Fixes scroll issues
  */
 
-const fix = () => {
+function fix() {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
   const facebook = document.getElementsByClassName('_31e')[0];
   const fixes = data?.fixes ?? [];
@@ -131,26 +175,20 @@ const fix = () => {
 
     if (hostname.includes(match)) {
       switch (action) {
-        case 'click': {
-          const node = document.querySelector(selector);
-          node?.click();
+        case 'click':
+          document.querySelector(selector)?.click();
           break;
-        }
-        case 'remove': {
-          const node = document.querySelector(selector);
-          node?.style?.removeProperty(property);
+        case 'remove':
+          document.querySelector(selector)?.style?.removeProperty(property);
           break;
-        }
-        case 'reset': {
-          const node = document.querySelector(selector);
-          node?.style?.setProperty(property, 'initial', 'important');
+        case 'reset':
+          document.querySelector(selector)?.style?.setProperty(property, 'initial', 'important');
           break;
-        }
-        case 'resetAll': {
-          const nodes = document.querySelectorAll(selector);
-          nodes.forEach((node) => node?.style?.setProperty(property, 'initial', 'important'));
+        case 'resetAll':
+          document.querySelectorAll(selector).forEach((element) => {
+            element?.style?.setProperty(property, 'initial', 'important');
+          });
           break;
-        }
         default:
           break;
       }
@@ -158,13 +196,27 @@ const fix = () => {
   }
 
   if (skips.indexOf(hostname) === -1) {
-    for (const item of [document.body, document.documentElement]) {
-      item?.classList.remove(...(data?.classes ?? []));
-      item?.style.setProperty('position', 'initial', 'important');
-      item?.style.setProperty('overflow-y', 'initial', 'important');
+    for (const element of [document.body, document.documentElement]) {
+      element?.classList.remove(...(data?.classes ?? []));
+      element?.style.setProperty('position', 'initial', 'important');
+      element?.style.setProperty('overflow-y', 'initial', 'important');
     }
   }
-};
+}
+
+/**
+ * @description Calculates reading time for the current page to avoid lags in large pages
+ * @returns {number}
+ */
+
+function readingTime() {
+  const text = document.body.innerText;
+  const wpm = 225;
+  const words = text.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+
+  return time;
+}
 
 /**
  * @description Mutation Observer instance
@@ -172,10 +224,12 @@ const fix = () => {
  */
 
 const observer = new MutationObserver((mutations) => {
-  const nodes = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
+  const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
 
-  fix();
-  if (data?.elements.length && !preview) clean(nodes);
+  if (data?.elements.length && !preview) {
+    fix();
+    clean(elements);
+  }
 });
 
 /**
@@ -184,7 +238,9 @@ const observer = new MutationObserver((mutations) => {
  */
 
 window.addEventListener('DOMContentLoaded', () => {
-  forceClean();
+  if (readingTime() < 4) {
+    forceClean(document.body);
+  }
 });
 
 /**
@@ -194,7 +250,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('pageshow', (event) => {
   if (event.persisted) {
-    forceClean();
+    forceClean(document.body);
   }
 });
 
