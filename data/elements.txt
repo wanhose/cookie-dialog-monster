@@ -12736,3 +12736,4 @@ amedia-privacybox
 #nhfp_didomi_block_page
 .popover.popover--default.zIndex--modal.popover--layout-fixed.popover--layout-fixed-bottomSheet.popover--visible
 [data-test-id="cookies-wrapper"]
+[style*="cookie-consent-zindex"]
