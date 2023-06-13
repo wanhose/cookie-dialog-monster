@@ -24,6 +24,7 @@
         "*://*.googleapis.com/embed/*",
         "*://*.sharepoint.com/*",
         "*://*.youtube.com/embed/*",
+        "*://*.youtube-nocookie.com/embed/*",
         "https://www.cookie-dialog-monster.com/*"
       ],
       "js": ["scripts/content.js", "scripts/dialog.js"],
