@@ -57,32 +57,16 @@ function clean(elements, skipMatch) {
 }
 
 /**
- * @description Flat child nodes for a given element
- * @param {HTMLElement} element
- * @returns {number[]}
- */
-
-function flatElement(element) {
-  return [...element.childNodes].flatMap((childNode) =>
-    childNode.nodeType === Node.TEXT_NODE
-      ? [childNode.nodeType]
-      : [...[...childNode.childNodes].map((x) => x.nodeType)]
-  );
-}
-
-/**
  * @description Forces a DOM clean in the specific element
  * @param {HTMLElement} element
  */
 
 function forceClean(element) {
-  if (data?.elements.length && state.enabled && !preview) {
-    const elements = [...element.querySelectorAll(data.elements)];
+  const elements = [...element.querySelectorAll(data.elements)];
 
-    if (elements.length) {
-      fix();
-      clean(elements, true);
-    }
+  if (elements.length) {
+    fix();
+    clean(elements, true);
   }
 }
 
@@ -129,10 +113,6 @@ function match(element, skipMatch) {
   }
 
   if (data?.tags.includes(element.tagName?.toUpperCase?.())) {
-    return false;
-  }
-
-  if (element.childNodes.length && flatElement(element).every((x) => x === Node.TEXT_NODE)) {
     return false;
   }
 
@@ -233,14 +213,12 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
- * @description Fixes already existing element when page load issues
- * @listens window#DOMContentLoaded
+ * @description Fixes still existing elements when page fully load
+ * @listens window#load
  */
 
-window.addEventListener('DOMContentLoaded', () => {
-  if (readingTime() < 4) {
-    forceClean(document.body);
-  }
+window.addEventListener('load', () => {
+  window.dispatchEvent(new Event('run'));
 });
 
 /**
@@ -250,7 +228,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('pageshow', (event) => {
   if (event.persisted) {
-    forceClean(document.body);
+    window.dispatchEvent(new Event('run'));
+  }
+});
+
+/**
+ * @description Forces a clean when this event is fired
+ * @listens window#run
+ */
+
+window.addEventListener('run', () => {
+  if (data?.elements.length && state.enabled && !preview) {
+    if (readingTime() < 4) {
+      forceClean(document.body);
+    } else {
+      // 2023-06-13: look into the first level of the document body, there are dialogs there very often
+      clean([...document.body.children]);
+    }
   }
 });
 
@@ -265,6 +259,12 @@ window.addEventListener('pageshow', (event) => {
 
   if (state.enabled) {
     data = await dispatch({ hostname, type: 'GET_DATA' });
+
+    // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
+    if (document.readyState === 'complete') {
+      window.dispatchEvent(new Event('run'));
+    }
+
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
   }
