@@ -7,7 +7,7 @@ flickr.com
 godotforums.org
 iea.org
 key-shortcut.com
-lever.co
+jobs.lever.co
 login.microsoftonline.com
 mantisbt.org
 mossgreen.github.io
