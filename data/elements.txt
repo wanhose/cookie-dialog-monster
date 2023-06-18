@@ -12740,3 +12740,4 @@ amedia-privacybox
 .container_cookies_alert
 .pantalla-negra-cookies
 .fiCMScookieNotice
+#as24-cmp-popup
