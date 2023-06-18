@@ -12739,3 +12739,4 @@ amedia-privacybox
 [style*="cookie-consent-zindex"]
 .container_cookies_alert
 .pantalla-negra-cookies
+.fiCMScookieNotice
