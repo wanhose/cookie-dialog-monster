@@ -12738,3 +12738,4 @@ amedia-privacybox
 [data-test-id="cookies-wrapper"]
 [style*="cookie-consent-zindex"]
 .container_cookies_alert
+.pantalla-negra-cookies
