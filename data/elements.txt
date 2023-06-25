@@ -12746,3 +12746,4 @@ amedia-privacybox
 .clym-widget-button
 .clym-notice-discrete
 .clym-notice-has-button
+#klaro
