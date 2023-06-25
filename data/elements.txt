@@ -12743,3 +12743,6 @@ amedia-privacybox
 #as24-cmp-popup
 #cc-main
 .ct-drawer-canvas
+.clym-widget-button
+.clym-notice-discrete
+.clym-notice-has-button
