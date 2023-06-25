@@ -12742,3 +12742,4 @@ amedia-privacybox
 .fiCMScookieNotice
 #as24-cmp-popup
 #cc-main
+.ct-drawer-canvas
