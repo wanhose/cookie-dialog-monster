@@ -112,7 +112,7 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (data?.tags.includes(element.tagName?.toUpperCase?.())) {
+  if (!data?.tags?.length || data.tags.includes(element.tagName?.toUpperCase?.())) {
     return false;
   }
 
