@@ -67,7 +67,7 @@ let state = { enabled: true };
  * @returns {Promise<void>}
  */
 
-const handleContentLoaded = async () => {
+async function handleContentLoaded() {
   const tab = await dispatch({ type: 'GET_TAB' });
 
   hostname = tab?.url
@@ -99,7 +99,7 @@ const handleContentLoaded = async () => {
   settingsButtonElement.addEventListener('click', handleSettingsClick);
 
   translate();
-};
+}
 
 /**
  * @async
@@ -108,13 +108,13 @@ const handleContentLoaded = async () => {
  * @returns {Promise<void>}
  */
 
-const handleLinkRedirect = async (event) => {
+async function handleLinkRedirect(event) {
   const { href } = event.currentTarget.dataset;
 
   if (href) {
     await chrome.tabs.create({ url: href });
   }
-};
+}
 
 /**
  * @async
@@ -123,49 +123,45 @@ const handleLinkRedirect = async (event) => {
  * @returns {Promise<void>}
  */
 
-const handlePowerToggle = async (event) => {
+async function handlePowerToggle(event) {
   state = { enabled: !state.enabled };
   dispatch({ hostname, state, type: 'SET_HOSTNAME_STATE' });
   if (state.enabled) event.currentTarget.setAttribute('data-value', 'on');
   else event.currentTarget.setAttribute('data-value', 'off');
   await chrome.tabs.reload({ bypassCache: true });
   window.close();
-};
+}
 
 /**
  * @description Opens options page
  * @returns {void}
  */
 
-const handleSettingsClick = () => {
+function handleSettingsClick() {
   chrome.runtime.openOptionsPage();
-};
+}
 
 /**
  * @description Applies translations to tags with i18n data attribute
  * @returns {void}
  */
 
-const translate = () => {
-  const nodes = document.querySelectorAll('[data-i18n]');
+function translate() {
+  const nodes = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
 
   for (let i = nodes.length; i--; ) {
     const node = nodes[i];
-    const { i18n, i18nAriaLabel, i18nPlaceholder } = node.dataset;
+    const { i18n, i18nPlaceholder } = node.dataset;
 
     if (i18n) {
       node.innerHTML = chrome.i18n.getMessage(i18n);
     }
 
-    if (i18nAriaLabel) {
-      node.setAttribute('aria-label', i18nAriaLabel);
-    }
-
     if (i18nPlaceholder) {
-      node.setAttribute('placeholder', i18nPlaceholder);
+      node.setAttribute('placeholder', chrome.i18n.getMessage(i18nPlaceholder));
     }
   }
-};
+}
 
 /**
  * @description Listen to document ready

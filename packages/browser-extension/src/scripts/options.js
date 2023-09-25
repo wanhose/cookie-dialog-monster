@@ -16,7 +16,7 @@ let exclusionList = [];
  * @returns {void}
  */
 
-const createList = () => {
+function createList() {
   const emptyItemElement = document.getElementById('exclusion-list-item-empty');
   const exclusionListElement = document.getElementById('exclusion-list');
   const exclusionListItemTemplateElement = document.getElementById('exclusion-list-item-template');
@@ -44,7 +44,7 @@ const createList = () => {
     emptyItemElement.innerText = "You don't have any exclusions yet";
     emptyItemElement.style.removeProperty('display');
   }
-};
+}
 
 /**
  * @async
@@ -52,7 +52,7 @@ const createList = () => {
  * @returns {Promise<void>}
  */
 
-const handleClearClick = async () => {
+async function handleClearClick() {
   const filterInputElement = document.getElementById('filter-input');
 
   for (const exclusionValue of exclusionList) {
@@ -63,14 +63,14 @@ const handleClearClick = async () => {
   exclusionList = [];
   createList();
   updateList(filterInputElement.value.trim());
-};
+}
 
 /**
  * @async
  * @description Setup handlers and items
  */
 
-const handleContentLoaded = async () => {
+async function handleContentLoaded() {
   exclusionList = await dispatch({ type: 'GET_EXCLUSION_LIST' });
   createList();
 
@@ -90,7 +90,7 @@ const handleContentLoaded = async () => {
   importButtonElement.addEventListener('click', handleImportClick);
 
   translate();
-};
+}
 
 /**
  * @async
@@ -99,7 +99,7 @@ const handleContentLoaded = async () => {
  * @returns {Promise<void>}
  */
 
-const handleDeleteClick = async (event) => {
+async function handleDeleteClick(event) {
   const filterInputElement = document.getElementById('filter-input');
   const { value } = event.currentTarget.parentElement.dataset;
   const state = { enabled: true };
@@ -108,14 +108,14 @@ const handleDeleteClick = async (event) => {
   exclusionList = exclusionList.filter((exclusionValue) => exclusionValue !== value);
   itemElement.remove();
   updateList(filterInputElement.value.trim());
-};
+}
 
 /**
  * @description Exports a file with the current exclusion list
  * @returns {void}
  */
 
-const handleExportClick = () => {
+function handleExportClick() {
   const anchor = document.createElement('a');
   const text = exclusionList.join('\n');
   const blob = new Blob([text], { type: 'octet/stream' });
@@ -125,7 +125,7 @@ const handleExportClick = () => {
   anchor.download = `${new Date().valueOf()}.cdm`;
   anchor.click();
   window.URL.revokeObjectURL(url);
-};
+}
 
 /**
  * @description Processes a file and sends the updates
@@ -133,7 +133,7 @@ const handleExportClick = () => {
  * @returns {void}
  */
 
-const handleFileChange = (event) => {
+function handleFileChange(event) {
   const file = event.currentTarget.files[0];
   const filterInputElement = document.getElementById('filter-input');
   const reader = new FileReader();
@@ -155,7 +155,7 @@ const handleFileChange = (event) => {
 
   event.currentTarget.value = '';
   reader.readAsText(file);
-};
+}
 
 /**
  * @description Applies filter to the exclusion list when the user presses ENTER key
@@ -163,48 +163,44 @@ const handleFileChange = (event) => {
  * @returns {void}
  */
 
-const handleFilterKeyDown = (event) => {
+function handleFilterKeyDown(event) {
   if (event.key === 'Enter') {
     const filterValue = event.currentTarget.value.trim();
     updateList(filterValue);
   }
-};
+}
 
 /**
  * @description Shallow clicks an hidden input to open the file explorer
  * @returns {void}
  */
 
-const handleImportClick = () => {
+function handleImportClick() {
   const fileInputElement = document.getElementById('file-input');
   fileInputElement.click();
-};
+}
 
 /**
  * @description Applies translations to tags with i18n data attribute
  * @returns {void}
  */
 
-const translate = () => {
-  const nodes = document.querySelectorAll('[data-i18n]');
+function translate() {
+  const nodes = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
 
   for (let i = nodes.length; i--; ) {
     const node = nodes[i];
-    const { i18n, i18nAriaLabel, i18nPlaceholder } = node.dataset;
+    const { i18n, i18nPlaceholder } = node.dataset;
 
     if (i18n) {
       node.innerHTML = chrome.i18n.getMessage(i18n);
     }
 
-    if (i18nAriaLabel) {
-      node.setAttribute('aria-label', i18nAriaLabel);
-    }
-
     if (i18nPlaceholder) {
-      node.setAttribute('placeholder', i18nPlaceholder);
+      node.setAttribute('placeholder', chrome.i18n.getMessage(i18nPlaceholder));
     }
   }
-};
+}
 
 /**
  * @description Updates exclusion items in DOM
@@ -212,7 +208,7 @@ const translate = () => {
  * @returns {void}
  */
 
-const updateList = (filterValue) => {
+function updateList(filterValue) {
   const emptyItemElement = document.getElementById('exclusion-list-item-empty');
   const exclusionListElement = document.getElementById('exclusion-list');
   const exclusionListElements = exclusionListElement.querySelectorAll(`[data-value]`);
@@ -238,7 +234,7 @@ const updateList = (filterValue) => {
     emptyItemElement.innerText = "You don't have any exclusions yet";
     emptyItemElement.style.removeProperty('display');
   }
-};
+}
 
 /**
  * @description Listen to document ready
