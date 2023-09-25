@@ -26,6 +26,7 @@
         "*://*.sharepoint.com/*",
         "*://*.youtube.com/embed/*",
         "*://*.youtube-nocookie.com/embed/*",
+        "https://translate.google.com/*",
         "https://www.cookie-dialog-monster.com/*"
       ],
       "js": ["scripts/content.js", "scripts/dialog.js"],
