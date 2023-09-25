@@ -254,7 +254,7 @@ window.addEventListener('run', () => {
  */
 
 (async () => {
-  state = (await dispatch({ hostname, type: 'GET_STATE' })) ?? state;
+  state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (state.enabled) {

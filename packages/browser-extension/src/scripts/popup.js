@@ -64,6 +64,7 @@ let state = { enabled: true };
 /**
  * @async
  * @description Setup stars handlers and result message links
+ * @returns {Promise<void>}
  */
 
 const handleContentLoaded = async () => {
@@ -72,27 +73,30 @@ const handleContentLoaded = async () => {
   hostname = tab?.url
     ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
     : undefined;
-  state = (await dispatch({ hostname, type: 'GET_STATE' })) ?? state;
+  state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
 
-  const host = document.getElementById('host');
-  host.innerText = hostname ?? 'unknown';
+  const hostTextElement = document.getElementById('host');
+  hostTextElement.innerText = hostname ?? 'unknown';
 
-  const contribute = document.getElementById('contribute-option');
-  contribute?.addEventListener('click', handleLinkRedirect);
+  const contributeButtonElement = document.getElementById('contribute-option');
+  contributeButtonElement?.addEventListener('click', handleLinkRedirect);
 
-  const help = document.getElementById('help-option');
-  help?.addEventListener('click', handleLinkRedirect);
+  const helpButtonElement = document.getElementById('help-option');
+  helpButtonElement?.addEventListener('click', handleLinkRedirect);
 
-  const power = document.getElementById('power-option');
-  power?.addEventListener('click', handlePowerToggle);
-  if (state.enabled) power?.setAttribute('data-value', 'on');
-  else power?.setAttribute('data-value', 'off');
+  const powerButtonElement = document.getElementById('power-option');
+  powerButtonElement?.addEventListener('click', handlePowerToggle);
+  if (state.enabled) powerButtonElement?.setAttribute('data-value', 'on');
+  else powerButtonElement?.setAttribute('data-value', 'off');
 
-  const rate = document.getElementById('rate-option');
-  rate?.addEventListener('click', handleLinkRedirect);
-  if (isEdge) rate?.setAttribute('data-href', edgeUrl);
-  else if (isChromium) rate?.setAttribute('data-href', chromeUrl);
-  else if (isFirefox) rate?.setAttribute('data-href', firefoxUrl);
+  const rateButtonElement = document.getElementById('rate-option');
+  rateButtonElement?.addEventListener('click', handleLinkRedirect);
+  if (isEdge) rateButtonElement?.setAttribute('data-href', edgeUrl);
+  else if (isChromium) rateButtonElement?.setAttribute('data-href', chromeUrl);
+  else if (isFirefox) rateButtonElement?.setAttribute('data-href', firefoxUrl);
+
+  const settingsButtonElement = document.getElementById('settings-button');
+  settingsButtonElement.addEventListener('click', handleSettingsClick);
 
   translate();
 };
@@ -101,6 +105,7 @@ const handleContentLoaded = async () => {
  * @async
  * @description Opens a new tab
  * @param {MouseEvent} event
+ * @returns {Promise<void>}
  */
 
 const handleLinkRedirect = async (event) => {
@@ -112,20 +117,32 @@ const handleLinkRedirect = async (event) => {
 };
 
 /**
+ * @async
  * @description Disables or enables extension on current page
  * @param {MouseEvent} event
+ * @returns {Promise<void>}
  */
 
 const handlePowerToggle = async (event) => {
   state = { enabled: !state.enabled };
-  dispatch({ hostname, state, type: 'UPDATE_STATE' });
+  dispatch({ hostname, state, type: 'SET_HOSTNAME_STATE' });
   if (state.enabled) event.currentTarget.setAttribute('data-value', 'on');
   else event.currentTarget.setAttribute('data-value', 'off');
   await chrome.tabs.reload({ bypassCache: true });
 };
 
 /**
+ * @description Opens options page
+ * @returns {void}
+ */
+
+const handleSettingsClick = () => {
+  chrome.runtime.openOptionsPage();
+};
+
+/**
  * @description Applies translations to tags with i18n data attribute
+ * @returns {void}
  */
 
 const translate = () => {
@@ -133,9 +150,19 @@ const translate = () => {
 
   for (let i = nodes.length; i--; ) {
     const node = nodes[i];
-    const { i18n } = node.dataset;
+    const { i18n, i18nAriaLabel, i18nPlaceholder } = node.dataset;
 
-    node.innerHTML = chrome.i18n.getMessage(i18n);
+    if (i18n) {
+      node.innerHTML = chrome.i18n.getMessage(i18n);
+    }
+
+    if (i18nAriaLabel) {
+      node.setAttribute('aria-label', i18nAriaLabel);
+    }
+
+    if (i18nPlaceholder) {
+      node.setAttribute('placeholder', i18nPlaceholder);
+    }
   }
 };
 

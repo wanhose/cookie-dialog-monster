@@ -5,6 +5,21 @@
   "contextMenu_reportOption": {
     "message": "Raportați site-ul..."
   },
+  "options_clearButton": {
+    "message": "Ștergeți lista"
+  },
+  "options_exclusionListTitle": {
+    "message": "Listă de excludere"
+  },
+  "options_exportButton": {
+    "message": "Exportați lista"
+  },
+  "options_filterPlaceholder": {
+    "message": "Apăsați ENTER pentru a filtra după ce ați tastat"
+  },
+  "options_importButton": {
+    "message": "Importați lista"
+  },
   "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
   },
