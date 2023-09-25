@@ -129,6 +129,7 @@ const handlePowerToggle = async (event) => {
   if (state.enabled) event.currentTarget.setAttribute('data-value', 'on');
   else event.currentTarget.setAttribute('data-value', 'off');
   await chrome.tabs.reload({ bypassCache: true });
+  window.close();
 };
 
 /**

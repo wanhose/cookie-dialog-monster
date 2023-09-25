@@ -42,6 +42,7 @@ let state = { enabled: true };
  * @description Cleans DOM
  * @param {Element[]} elements
  * @param {boolean?} skipMatch
+ * @returns {void}
  */
 
 function clean(elements, skipMatch) {
@@ -59,6 +60,7 @@ function clean(elements, skipMatch) {
 /**
  * @description Forces a DOM clean in the specific element
  * @param {HTMLElement} element
+ * @returns {void}
  */
 
 function forceClean(element) {
@@ -73,6 +75,7 @@ function forceClean(element) {
 /**
  * @description Forces element to have these styles
  * @param {HTMLElement} element
+ * @returns {void}
  */
 
 function forceElementStyles(element) {
@@ -136,6 +139,7 @@ function match(element, skipMatch) {
 
 /**
  * @description Fixes scroll issues
+ * @returns {void}
  */
 
 function fix() {
@@ -199,61 +203,11 @@ function readingTime() {
 }
 
 /**
- * @description Mutation Observer instance
- * @type {MutationObserver}
- */
-
-const observer = new MutationObserver((mutations) => {
-  const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
-
-  if (data?.elements.length && !preview) {
-    fix();
-    clean(elements);
-  }
-});
-
-/**
- * @description Fixes still existing elements when page fully load
- * @listens window#load
- */
-
-window.addEventListener('load', () => {
-  window.dispatchEvent(new Event('run'));
-});
-
-/**
- * @description Fixes bfcache issues
- * @listens window#pageshow
- */
-
-window.addEventListener('pageshow', (event) => {
-  if (event.persisted) {
-    window.dispatchEvent(new Event('run'));
-  }
-});
-
-/**
- * @description Forces a clean when this event is fired
- * @listens window#run
- */
-
-window.addEventListener('run', () => {
-  if (data?.elements.length && state.enabled && !preview) {
-    if (readingTime() < 4) {
-      forceClean(document.body);
-    } else {
-      // 2023-06-13: look into the first level of the document body, there are dialogs there very often
-      clean([...document.body.children]);
-    }
-  }
-});
-
-/**
  * @async
  * @description Sets up everything
  */
 
-(async () => {
+async function runSetup() {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -268,4 +222,79 @@ window.addEventListener('run', () => {
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
   }
-})();
+}
+
+/**
+ * @description Mutation Observer instance
+ * @type {MutationObserver}
+ */
+
+const observer = new MutationObserver((mutations) => {
+  const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
+
+  if (data?.elements.length && !preview) {
+    fix();
+    clean(elements);
+  }
+});
+
+/**
+ * @description Runs setup if the page wasn't focused yet
+ * @listens window#focus
+ * @returns {void}
+ */
+
+window.addEventListener('focus', () => {
+  if (!data) {
+    runSetup();
+  }
+});
+
+/**
+ * @description Fixes still existing elements when page fully load
+ * @listens window#load
+ * @returns {void}
+ */
+
+window.addEventListener('load', () => {
+  if (document.hasFocus()) {
+    window.dispatchEvent(new Event('run'));
+  }
+});
+
+/**
+ * @description Fixes bfcache issues
+ * @listens window#pageshow
+ * @returns {void}
+ */
+
+window.addEventListener('pageshow', (event) => {
+  if (document.hasFocus() && event.persisted) {
+    window.dispatchEvent(new Event('run'));
+  }
+});
+
+/**
+ * @description Forces a clean when this event is fired
+ * @listens window#run
+ * @returns {void}
+ */
+
+window.addEventListener('run', () => {
+  if (data?.elements.length && state.enabled && !preview) {
+    if (readingTime() < 4) {
+      forceClean(document.body);
+    } else {
+      // 2023-06-13: look into the first level of the document body, there are dialogs there very often
+      clean([...document.body.children]);
+    }
+  }
+});
+
+/**
+ * @description As this extension do really expensive work, it only runs if the user is on the page
+ */
+
+if (document.hasFocus()) {
+  runSetup();
+}
