@@ -6,13 +6,6 @@
 const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v2';
 
 /**
- * @description Initial state
- * @type {{ enabled: boolean }}
- */
-
-const initial = { enabled: true };
-
-/**
  * @description Context menu identifier
  * @type {string}
  */
@@ -90,31 +83,65 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
 
   switch (message.type) {
     case 'DISABLE_ICON':
-      if (isPage && tabId) chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId });
+      if (isPage && tabId) {
+        chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId });
+      }
       break;
     case 'ENABLE_ICON':
-      if (isPage && tabId) chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId });
+      if (isPage && tabId) {
+        chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId });
+      }
       break;
     case 'ENABLE_POPUP':
-      if (isPage && tabId) chrome.action.setPopup({ popup: '/popup.html', tabId });
+      if (isPage && tabId) {
+        chrome.action.setPopup({ popup: '/popup.html', tabId });
+      }
       break;
     case 'GET_DATA':
-      storage.get('data', ({ data }) => (data ? callback(data) : refreshData(callback)));
+      storage.get('data', ({ data }) => {
+        if (data) {
+          callback(data);
+        } else {
+          refreshData(callback);
+        }
+      });
       return true;
-    case 'GET_STATE':
-      if (hostname) storage.get(hostname, (state) => callback(state[hostname] ?? initial));
+    case 'GET_EXCLUSION_LIST':
+      storage.get(null, (exclusions) => {
+        const exclusionList = Object.entries(exclusions || {}).flatMap((x) =>
+          x[0] !== 'data' && !x[1]?.enabled ? [x[0]] : []
+        );
+        callback(exclusionList);
+      });
+      return true;
+    case 'GET_HOSTNAME_STATE':
+      if (hostname) {
+        storage.get(hostname, (state) => {
+          callback(state[hostname] ?? { enabled: true });
+        });
+      }
       return true;
     case 'GET_TAB':
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => callback(tabs[0]));
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        callback(tabs[0]);
+      });
       return true;
     case 'INSERT_DIALOG_CSS':
-      if (isPage && tabId) script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
+      if (isPage && tabId) {
+        script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
+      }
       break;
     case 'REPORT':
-      if (tabId) report(message, sender.tab);
+      if (tabId) {
+        report(message, sender.tab);
+      }
       break;
-    case 'UPDATE_STATE':
-      if (hostname) storage.set({ [hostname]: message.state });
+    case 'SET_HOSTNAME_STATE':
+      if (hostname && message.state.enabled === false) {
+        storage.set({ [hostname]: message.state });
+      } else if (hostname) {
+        storage.remove(hostname);
+      }
       break;
     default:
       break;

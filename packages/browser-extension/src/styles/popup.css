@@ -21,6 +21,25 @@ body * {
   box-sizing: border-box;
 }
 
+button {
+  align-items: center;
+  background-color: var(--color-secondary);
+  border: none;
+  border-radius: 4px;
+  color: var(--color-white);
+  display: inline-flex;
+  gap: 4px;
+  outline: none;
+  padding: 2px;
+  transition: 0.4s;
+}
+
+button:focus,
+button:hover {
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+}
+
 footer {
   background-color: var(--color-secondary);
   font-size: 12px;

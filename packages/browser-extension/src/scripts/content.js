@@ -42,6 +42,7 @@ let state = { enabled: true };
  * @description Cleans DOM
  * @param {Element[]} elements
  * @param {boolean?} skipMatch
+ * @returns {void}
  */
 
 function clean(elements, skipMatch) {
@@ -59,6 +60,7 @@ function clean(elements, skipMatch) {
 /**
  * @description Forces a DOM clean in the specific element
  * @param {HTMLElement} element
+ * @returns {void}
  */
 
 function forceClean(element) {
@@ -73,6 +75,7 @@ function forceClean(element) {
 /**
  * @description Forces element to have these styles
  * @param {HTMLElement} element
+ * @returns {void}
  */
 
 function forceElementStyles(element) {
@@ -112,7 +115,7 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (data?.tags.includes(element.tagName?.toUpperCase?.())) {
+  if (!data?.tags?.length || data.tags.includes(element.tagName?.toUpperCase?.())) {
     return false;
   }
 
@@ -136,6 +139,7 @@ function match(element, skipMatch) {
 
 /**
  * @description Fixes scroll issues
+ * @returns {void}
  */
 
 function fix() {
@@ -199,6 +203,29 @@ function readingTime() {
 }
 
 /**
+ * @async
+ * @description Sets up everything
+ * @param {boolean} skipReadyStateHack
+ */
+
+async function runSetup(skipReadyStateHack) {
+  state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
+  dispatch({ type: 'ENABLE_POPUP' });
+
+  if (state.enabled) {
+    data = await dispatch({ hostname, type: 'GET_DATA' });
+
+    // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
+    if (document.readyState === 'complete' && !skipReadyStateHack) {
+      window.dispatchEvent(new Event('run'));
+    }
+
+    dispatch({ type: 'ENABLE_ICON' });
+    observer.observe(document.body ?? document.documentElement, options);
+  }
+}
+
+/**
  * @description Mutation Observer instance
  * @type {MutationObserver}
  */
@@ -213,21 +240,39 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
+ * @async
+ * @description Runs setup if the page wasn't focused yet
+ * @listens window#focus
+ * @returns {void}
+ */
+
+window.addEventListener('focus', async () => {
+  if (!data) {
+    await runSetup(true);
+    forceClean(document.body);
+  }
+});
+
+/**
  * @description Fixes still existing elements when page fully load
  * @listens window#load
+ * @returns {void}
  */
 
 window.addEventListener('load', () => {
-  window.dispatchEvent(new Event('run'));
+  if (document.hasFocus()) {
+    window.dispatchEvent(new Event('run'));
+  }
 });
 
 /**
  * @description Fixes bfcache issues
  * @listens window#pageshow
+ * @returns {void}
  */
 
 window.addEventListener('pageshow', (event) => {
-  if (event.persisted) {
+  if (document.hasFocus() && event.persisted) {
     window.dispatchEvent(new Event('run'));
   }
 });
@@ -235,6 +280,7 @@ window.addEventListener('pageshow', (event) => {
 /**
  * @description Forces a clean when this event is fired
  * @listens window#run
+ * @returns {void}
  */
 
 window.addEventListener('run', () => {
@@ -249,23 +295,9 @@ window.addEventListener('run', () => {
 });
 
 /**
- * @async
- * @description Sets up everything
+ * @description As this extension do really expensive work, it only runs if the user is on the page
  */
 
-(async () => {
-  state = (await dispatch({ hostname, type: 'GET_STATE' })) ?? state;
-  dispatch({ type: 'ENABLE_POPUP' });
-
-  if (state.enabled) {
-    data = await dispatch({ hostname, type: 'GET_DATA' });
-
-    // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
-    if (document.readyState === 'complete') {
-      window.dispatchEvent(new Event('run'));
-    }
-
-    dispatch({ type: 'ENABLE_ICON' });
-    observer.observe(document.body ?? document.documentElement, options);
-  }
-})();
+if (document.hasFocus()) {
+  runSetup();
+}

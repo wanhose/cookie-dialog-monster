@@ -5,6 +5,21 @@
   "contextMenu_reportOption": {
     "message": "Webseite melden..."
   },
+  "options_clearButton": {
+    "message": "Liste leeren"
+  },
+  "options_exclusionListTitle": {
+    "message": "Ausschlussliste"
+  },
+  "options_exportButton": {
+    "message": "Liste exportieren"
+  },
+  "options_filterPlaceholder": {
+    "message": "Nach dem Eintippen ENTER drücken, um zu filtern"
+  },
+  "options_importButton": {
+    "message": "Liste importieren"
+  },
   "popup_contributeOption": {
     "message": "Tragen Sie zu diesem Projekt bei"
   },

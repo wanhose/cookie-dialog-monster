@@ -5,6 +5,21 @@
   "contextMenu_reportOption": {
     "message": "Сообщить о сайте..."
   },
+  "options_clearButton": {
+    "message": "Очистить список"
+  },
+  "options_exclusionListTitle": {
+    "message": "Список исключений"
+  },
+  "options_exportButton": {
+    "message": "Экспорт списка"
+  },
+  "options_filterPlaceholder": {
+    "message": "Нажмите ENTER для фильтрации после ввода"
+  },
+  "options_importButton": {
+    "message": "Импорт списка"
+  },
   "popup_contributeOption": {
     "message": "Внести свой вклад в этот проект"
   },

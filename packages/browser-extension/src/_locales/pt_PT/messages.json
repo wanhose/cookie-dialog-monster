@@ -5,6 +5,21 @@
   "contextMenu_reportOption": {
     "message": "Reportar site..."
   },
+  "options_clearButton": {
+    "message": "Limpar lista"
+  },
+  "options_exclusionListTitle": {
+    "message": "Lista de exclusão"
+  },
+  "options_exportButton": {
+    "message": "Exportar lista"
+  },
+  "options_filterPlaceholder": {
+    "message": "Pressione ENTER para filtrar após digitar"
+  },
+  "options_importButton": {
+    "message": "Importar lista"
+  },
   "popup_contributeOption": {
     "message": "Contribua para este projeto"
   },
