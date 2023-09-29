@@ -205,9 +205,10 @@ function readingTime() {
 /**
  * @async
  * @description Sets up everything
+ * @param {boolean} skipReadyStateHack
  */
 
-async function runSetup() {
+async function runSetup(skipReadyStateHack) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -215,7 +216,7 @@ async function runSetup() {
     data = await dispatch({ hostname, type: 'GET_DATA' });
 
     // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
-    if (document.readyState === 'complete') {
+    if (document.readyState === 'complete' && !skipReadyStateHack) {
       window.dispatchEvent(new Event('run'));
     }
 
@@ -239,14 +240,16 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
+ * @async
  * @description Runs setup if the page wasn't focused yet
  * @listens window#focus
  * @returns {void}
  */
 
-window.addEventListener('focus', () => {
+window.addEventListener('focus', async () => {
   if (!data) {
-    runSetup();
+    await runSetup(true);
+    forceClean(document.body);
   }
 });
 
