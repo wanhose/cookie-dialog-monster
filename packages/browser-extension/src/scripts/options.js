@@ -102,11 +102,12 @@ async function handleContentLoaded() {
 async function handleDeleteClick(event) {
   const filterInputElement = document.getElementById('filter-input');
   const { value } = event.currentTarget.parentElement.dataset;
+  const itemElement = document.querySelector(`[data-value="${value}"]`);
   const state = { enabled: true };
 
   await dispatch({ hostname: value, state, type: 'SET_HOSTNAME_STATE' });
   exclusionList = exclusionList.filter((exclusionValue) => exclusionValue !== value);
-  itemElement.remove();
+  itemElement?.remove();
   updateList(filterInputElement.value.trim());
 }
 
@@ -117,12 +118,16 @@ async function handleDeleteClick(event) {
 
 function handleExportClick() {
   const anchor = document.createElement('a');
+  const now = new Date();
+  const day = now.getUTCDay().toString().padStart(2, '0');
+  const month = now.getUTCMonth().toString().padStart(2, '0');
+  const year = now.getUTCFullYear();
   const text = exclusionList.join('\n');
   const blob = new Blob([text], { type: 'octet/stream' });
   const url = window.URL.createObjectURL(blob);
 
   anchor.href = url;
-  anchor.download = `${new Date().valueOf()}.cdm`;
+  anchor.download = `${year}${month}${day}.cdm`;
   anchor.click();
   window.URL.revokeObjectURL(url);
 }

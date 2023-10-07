@@ -66,10 +66,8 @@ function clean(elements, skipMatch) {
 function forceClean(element) {
   const elements = [...element.querySelectorAll(data.elements)];
 
-  if (elements.length) {
-    fix();
-    clean(elements, true);
-  }
+  fix();
+  if (elements.length && !preview) clean(elements, true);
 }
 
 /**
@@ -138,7 +136,7 @@ function match(element, skipMatch) {
 }
 
 /**
- * @description Fixes scroll issues
+ * @description Fixes data, consent page and scroll issues
  * @returns {void}
  */
 
@@ -233,10 +231,8 @@ async function runSetup(skipReadyStateHack) {
 const observer = new MutationObserver((mutations) => {
   const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
 
-  if (data?.elements.length && !preview) {
-    fix();
-    clean(elements);
-  }
+  fix();
+  if (data?.elements.length && !preview) clean(elements);
 });
 
 /**

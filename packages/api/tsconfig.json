@@ -8,6 +8,6 @@
     "rootDir": "src",
     "useUnknownInCatchVariables": false
   },
-  "extends": "@tsconfig/node16/tsconfig.json",
+  "extends": "@tsconfig/node20/tsconfig.json",
   "include": ["src/**/*.ts"]
 }
