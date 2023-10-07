@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "6.4.0",
+  "version": "6.4.1",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -26,7 +26,17 @@
         "*://*.sharepoint.com/*",
         "*://*.youtube.com/embed/*",
         "*://*.youtube-nocookie.com/embed/*",
+        "https://translate.google.ca/*",
+        "https://translate.google.co.in/*",
+        "https://translate.google.co.jp/*",
+        "https://translate.google.co.uk/*",
+        "https://translate.google.com.au/*",
+        "https://translate.google.com.br/*",
         "https://translate.google.com/*",
+        "https://translate.google.de/*",
+        "https://translate.google.es/*",
+        "https://translate.google.fr/*",
+        "https://translate.google.it/*",
         "https://www.cookie-dialog-monster.com/*"
       ],
       "js": ["scripts/content.js", "scripts/dialog.js"],
