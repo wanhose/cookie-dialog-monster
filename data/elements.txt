@@ -12756,3 +12756,5 @@ s4s-privacy-module
 [class*="cookie-notice__"]
 [data-testid="gateway-container"][aria-hidden="true"]
 [style="background: rgba(0, 0, 0, 0.38); backdrop-filter: blur(2px); position: fixed; inset: 0px; z-index: 999999; pointer-events: all; display: block; filter: none; max-width: 100vw; max-height: 100vh;"]
+.consent_screen
+[aria-label="Cookie consent"]
