@@ -12762,3 +12762,4 @@ s4s-privacy-module
 #lanyard_root
 #ketch-consent-overlay
 .duet--cta--cookie-banner
+#adevinta_consents_cookies_universal_widget
