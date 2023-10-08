@@ -12754,3 +12754,4 @@ s4s-privacy-module
 [bundlename="reddit_cookie_banner"]
 [class*="cookie-sidemenu__"]
 [class*="cookie-notice__"]
+[data-testid="gateway-container"][aria-hidden="true"]
