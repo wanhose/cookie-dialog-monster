@@ -12759,3 +12759,5 @@ s4s-privacy-module
 .consent_screen
 [aria-label="Cookie consent"]
 [data-testid="wa_cookies_banner_modal"]
+#lanyard_root
+#ketch-consent-overlay
