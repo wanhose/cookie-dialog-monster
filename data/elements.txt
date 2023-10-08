@@ -12763,3 +12763,5 @@ s4s-privacy-module
 #ketch-consent-overlay
 .duet--cta--cookie-banner
 #adevinta_consents_cookies_universal_widget
+.fullOpacity[data-cy]
+[data-cy="Popup cookies"]
