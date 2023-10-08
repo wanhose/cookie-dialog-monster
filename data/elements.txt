@@ -12761,3 +12761,4 @@ s4s-privacy-module
 [data-testid="wa_cookies_banner_modal"]
 #lanyard_root
 #ketch-consent-overlay
+.duet--cta--cookie-banner
