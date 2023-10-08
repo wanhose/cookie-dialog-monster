@@ -12752,3 +12752,5 @@ s4s-privacy-module
 .s4s-privacy-module
 [element="privacy-modal"]
 [bundlename="reddit_cookie_banner"]
+[class*="cookie-sidemenu__"]
+[class*="cookie-notice__"]
