@@ -12766,3 +12766,4 @@ s4s-privacy-module
 .fullOpacity[data-cy]
 [data-cy="Popup cookies"]
 tp-yt-iron-overlay-backdrop
+#wxp_gdpr_container
