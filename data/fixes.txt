@@ -1,3 +1,4 @@
+amazon.de###sp-cc-rejectall-link##click
 automobielmanagement.nl##body > *##resetAll##filter
 bilbaomuseoa.eus##.alert_message .btn-confirm##click
 buscotelefonosgratis.es###cookie_action_close_header_reject##click
