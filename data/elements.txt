@@ -12765,3 +12765,4 @@ s4s-privacy-module
 #adevinta_consents_cookies_universal_widget
 .fullOpacity[data-cy]
 [data-cy="Popup cookies"]
+tp-yt-iron-overlay-backdrop
