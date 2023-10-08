@@ -12748,3 +12748,6 @@ amedia-privacybox
 .clym-notice-has-button
 #klaro
 .position-fixed.bottom-0.end-0.border-top.p-3.p-md-4.container-fluid.border-bottom.bg-white[style="z-index: 1310;"]
+s4s-privacy-module
+.s4s-privacy-module
+[element="privacy-modal"]
