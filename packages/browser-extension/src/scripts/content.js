@@ -245,7 +245,7 @@ const observer = new MutationObserver((mutations) => {
 window.addEventListener('focus', async () => {
   if (!data) {
     await runSetup(true);
-    forceClean(document.body);
+    clean([...document.body.children]);
   }
 });
 
