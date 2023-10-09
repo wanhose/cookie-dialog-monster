@@ -12767,3 +12767,4 @@ s4s-privacy-module
 [data-cy="Popup cookies"]
 tp-yt-iron-overlay-backdrop
 #wxp_gdpr_container
+#cheerfy-cookies-modal
