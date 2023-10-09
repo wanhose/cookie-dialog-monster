@@ -27,3 +27,4 @@ web.dev##a[href*="cookies"] + button##click
 youtube##div.buttons.ytd-consent-bump-v2-lightbox ytd-button-renderer:last-child tp-yt-paper-button##click
 zdf.de###aria-dialog-cmp-error-dialog > .dialog-close##click
 zeit.de##[title="ACCEPT AND CONTINUE"]##click
+.modalstyle__Modal-sc-ui2nvy-0.hIkGWg
