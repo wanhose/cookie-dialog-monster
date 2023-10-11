@@ -15,6 +15,7 @@ gdprCookieBanner-acceptedAll
 hasCookieBanner
 ibeugdpr-disabled
 modal--is-open
+modal-open
 no-scroll
 no_scroll
 shopee-no-scroll
