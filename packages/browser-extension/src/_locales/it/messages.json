@@ -3,7 +3,10 @@
     "message": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋"
   },
   "contextMenu_reportOption": {
-    "message": "Segnala sito..."
+    "message": "Segnala questo sito web"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Gestisci elenco di esclusione"
   },
   "options_clearButton": {
     "message": "Cancella elenco"
