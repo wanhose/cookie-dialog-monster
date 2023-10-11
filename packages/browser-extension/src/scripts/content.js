@@ -177,7 +177,7 @@ function fix() {
     }
   }
 
-  if (skips.some((x) => hostname.match(x.replace(/\*/g, '[^ ]*')))) {
+  if (skips.some((x) => !hostname.match(x.replace(/\*/g, '[^ ]*')))) {
     for (const element of [document.body, document.documentElement]) {
       element?.classList.remove(...(data?.classes ?? []));
       element?.style.setProperty('position', 'initial', 'important');
