@@ -12769,3 +12769,8 @@ tp-yt-iron-overlay-backdrop
 #wxp_gdpr_container
 .privacy-consent--modal
 .privacy-consent--backdrop
+#cheerfy-cookies-modal--wrapper
+script[src*="wirkaufendeinauto.de"] + div.modal-root > div
+#bcc-outer
+#StickieCookies
+[class="block z-50 w-full max-w-full md:max-w-small fixed bottom-0 left-0 md:bottom-[20px] md:left-[20px]"]
