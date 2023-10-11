@@ -144,7 +144,7 @@ function fix() {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
   const facebook = document.getElementsByClassName('_31e')[0];
   const fixes = data?.fixes ?? [];
-  const skips = data?.skips ?? [];
+  const skips = (data?.skips ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   if (backdrop?.children.length === 0) {
     backdrop.remove();
@@ -177,7 +177,7 @@ function fix() {
     }
   }
 
-  if (skips.indexOf(hostname) === -1) {
+  if (skips.some((x) => hostname.match(x.replace(/\*/g, '[^ ]*')))) {
     for (const element of [document.body, document.documentElement]) {
       element?.classList.remove(...(data?.classes ?? []));
       element?.style.setProperty('position', 'initial', 'important');
@@ -245,7 +245,7 @@ const observer = new MutationObserver((mutations) => {
 window.addEventListener('focus', async () => {
   if (!data) {
     await runSetup(true);
-    forceClean(document.body);
+    clean([...document.body.children]);
   }
 });
 
