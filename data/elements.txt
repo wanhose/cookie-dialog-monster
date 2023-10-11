@@ -12767,6 +12767,7 @@ s4s-privacy-module
 [data-cy="Popup cookies"]
 tp-yt-iron-overlay-backdrop
 #wxp_gdpr_container
+#cheerfy-cookies-modal--wrapper
 script[src*="wirkaufendeinauto.de"] + div.modal-root > div
 #bcc-outer
 #StickieCookies
