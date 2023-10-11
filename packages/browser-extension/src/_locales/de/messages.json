@@ -3,7 +3,10 @@
     "message": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋"
   },
   "contextMenu_reportOption": {
-    "message": "Webseite melden..."
+    "message": "Diese Website melden"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Ausnahmeliste verwalten"
   },
   "options_clearButton": {
     "message": "Liste leeren"

@@ -21,7 +21,7 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
 
       reply.send({
         data: {
-          classes: (await results[0].text()).split('\n'),
+          classes: (await results[0].text()).split('\n').filter((x) => !!x),
           commonWords: [
             'banner',
             'cc',
@@ -37,10 +37,10 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
             'popup',
             'privacy',
           ],
-          elements: (await results[1].text()).split('\n'),
-          fixes: (await results[2].text()).split('\n'),
-          skips: (await results[3].text()).split('\n'),
-          tags: (await results[4].text()).split('\n'),
+          elements: (await results[1].text()).split('\n').filter((x) => !!x),
+          fixes: (await results[2].text()).split('\n').filter((x) => !!x),
+          skips: (await results[3].text()).split('\n').filter((x) => !!x),
+          tags: (await results[4].text()).split('\n').filter((x) => !!x),
         },
         success: true,
       });
