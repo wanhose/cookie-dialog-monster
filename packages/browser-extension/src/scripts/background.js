@@ -10,7 +10,21 @@ const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v2';
  * @type {string}
  */
 
-const reportMenuItemId = 'REPORT';
+const extensionMenuItemId = 'CDM-MENU';
+
+/**
+ * @description Context menu identifier
+ * @type {string}
+ */
+
+const reportMenuItemId = 'CDM-REPORT';
+
+/**
+ * @description Context menu identifier
+ * @type {string}
+ */
+
+const settingsMenuItemId = 'CDM-SETTINGS';
 
 /**
  * @description A shortcut for chrome.scripting
@@ -66,6 +80,9 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   switch (info.menuItemId) {
     case reportMenuItemId:
       if (tab) chrome.tabs.sendMessage(tab.id, { type: 'SHOW_REPORT_DIALOG' });
+      break;
+    case settingsMenuItemId:
+      chrome.runtime.openOptionsPage();
       break;
     default:
       break;
@@ -156,7 +173,21 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     contexts: ['all'],
     documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+    id: extensionMenuItemId,
+    title: 'Cookie Dialog Monster',
+  });
+  chrome.contextMenus.create({
+    contexts: ['all'],
+    documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+    id: settingsMenuItemId,
+    parentId: extensionMenuItemId,
+    title: chrome.i18n.getMessage('contextMenu_settingsOption'),
+  });
+  chrome.contextMenus.create({
+    contexts: ['all'],
+    documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
     id: reportMenuItemId,
+    parentId: extensionMenuItemId,
     title: chrome.i18n.getMessage('contextMenu_reportOption'),
   });
 });
