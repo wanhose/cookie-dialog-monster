@@ -12768,3 +12768,5 @@ s4s-privacy-module
 tp-yt-iron-overlay-backdrop
 #wxp_gdpr_container
 #_cqConsentPanel
+#__cqButton
+#__cmpLocator
