@@ -3,7 +3,10 @@
     "message": "A spus cineva dialoguri de consimțământ pentru cookie? 😋"
   },
   "contextMenu_reportOption": {
-    "message": "Raportați site-ul..."
+    "message": "Raportați acest site web"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Gestionați lista de excludere"
   },
   "options_clearButton": {
     "message": "Ștergeți lista"
