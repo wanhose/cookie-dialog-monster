@@ -3,7 +3,10 @@
     "message": "Alguém disse diálogos de consentimento de cookies? 😋"
   },
   "contextMenu_reportOption": {
-    "message": "Reportar site..."
+    "message": "Denunciar este site"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Gerenciar lista de exclusão"
   },
   "options_clearButton": {
     "message": "Limpar lista"

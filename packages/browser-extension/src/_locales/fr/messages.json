@@ -3,7 +3,10 @@
     "message": "Quelqu'un a-t-il dit boîtes de dialogue de consentement aux cookies? 😋"
   },
   "contextMenu_reportOption": {
-    "message": "Signaler le site..."
+    "message": "Signaler ce site web"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Gérer la liste d'exclusion"
   },
   "options_clearButton": {
     "message": "Effacer la liste"
