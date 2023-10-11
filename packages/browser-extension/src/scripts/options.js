@@ -119,15 +119,17 @@ async function handleDeleteClick(event) {
 function handleExportClick() {
   const anchor = document.createElement('a');
   const now = new Date();
-  const day = now.getUTCDay().toString().padStart(2, '0');
-  const month = now.getUTCMonth().toString().padStart(2, '0');
+  const day = now.getDate().toString().padStart(2, '0');
+  const month = now.getMonth().toString().padStart(2, '0');
   const year = now.getUTCFullYear();
   const text = exclusionList.join('\n');
+  const defaultTitle = `${year}${month}${day}`;
+  const customTitle = window.prompt('Enter a file name', defaultTitle);
   const blob = new Blob([text], { type: 'octet/stream' });
   const url = window.URL.createObjectURL(blob);
 
   anchor.href = url;
-  anchor.download = `${year}${month}${day}.cdm`;
+  anchor.download = `${customTitle || defaultTitle}.cdm`;
   anchor.click();
   window.URL.revokeObjectURL(url);
 }
