@@ -1,7 +1,7 @@
 b-modal-banner--disabled
 blocked
-cbar
 c24-cc-visible
+cbar
 cmp-open
 consent-modal-open
 consent-modal-overflow
@@ -16,8 +16,8 @@ hasCookieBanner
 ibeugdpr-disabled
 modal--is-open
 modal-open
-no-scroll
 no_scroll
+no-scroll
 shopee-no-scroll
 show-cookie-policy-info
 sp-message-open

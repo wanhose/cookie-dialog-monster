@@ -3,8 +3,9 @@ automobielmanagement.nl##body > *##resetAll##filter
 bilbaomuseoa.eus##.alert_message .btn-confirm##click
 buscotelefonosgratis.es###cookie_action_close_header_reject##click
 compact-online.de##[id*="bnnr-body-rightSide-"] div + div > span##click
-consent.yahoo###consent-page button[type="submit"]##click
 consent.google##[aria-label="Reject all"]##click
+consent.yahoo###consent-page button[type="submit"]##click
+consent.youtube##[aria-label="Reject all"]##click
 dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##click
 fiberplane.dev##button[aria-label="Close Banner"]##click
 gettr.com##button.bold##click

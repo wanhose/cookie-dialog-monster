@@ -5,9 +5,10 @@ chessmadra.com
 correos.es
 flickr.com
 godotforums.org
+godotvr.github.io
 iea.org
-key-shortcut.com
 jobs.lever.co
+key-shortcut.com
 login.microsoftonline.com
 mantisbt.org
 mossgreen.github.io
@@ -21,6 +22,5 @@ stackage.org
 steamcommunity.com
 substack.com
 sucuri.net
-youtube.com
-godotvr.github.io
 tesla.com
+youtube.com
