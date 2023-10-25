@@ -6,16 +6,16 @@
     "lint": "eslint src/**/*.js --fix"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.246",
-    "eslint": "^8.50.0",
+    "@types/chrome": "^0.0.248",
+    "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
     "minify": "^9.2.0",
     "rimraf": "^5.0.5"
   },
   "engines": {
-    "node": "20.8.0"
+    "node": "20.x"
   },
-  "packageManager": "yarn@3.6.3",
+  "packageManager": "yarn@4.0.0",
   "license": "MIT"
 }
