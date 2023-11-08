@@ -16,7 +16,7 @@ const dispatch = chrome.runtime.sendMessage;
  * @type {string}
  */
 
-const hostname = document.location.hostname.split('.').slice(-3).join('.').replace('www.', '');
+const hostname = getHostname();
 
 /**
  * @description Options provided to observer
@@ -78,6 +78,22 @@ function forceClean(element) {
 
 function forceElementStyles(element) {
   element.style.setProperty('display', 'none', 'important');
+}
+
+/**
+ * @description Calculates current hostname
+ * @returns {string}
+ */
+
+function getHostname() {
+  let hostname = document.location.hostname;
+  const referrer = document.referrer;
+
+  if (referrer) {
+    hostname = new URL(referrer).hostname;
+  }
+
+  return hostname.split('.').slice(-3).join('.').replace('www.', '');
 }
 
 /**
@@ -177,7 +193,7 @@ function fix() {
     }
   }
 
-  if (skips.some((x) => !hostname.match(x.replace(/\*/g, '[^ ]*')))) {
+  if (skips.every((x) => !hostname.match(x.replace(/\*/g, '[^ ]*')))) {
     for (const element of [document.body, document.documentElement]) {
       element?.classList.remove(...(data?.classes ?? []));
       element?.style.setProperty('position', 'initial', 'important');
@@ -280,7 +296,7 @@ window.addEventListener('pageshow', (event) => {
  */
 
 window.addEventListener('run', () => {
-  if (data?.elements.length && state.enabled && !preview) {
+  if (data?.elements.length && document.body && state.enabled && !preview) {
     if (readingTime() < 4) {
       forceClean(document.body);
     } else {

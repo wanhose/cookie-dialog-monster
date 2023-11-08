@@ -46,12 +46,16 @@ const storage = chrome.storage.local;
  */
 
 const refreshData = (callback) => {
-  fetch(`${apiUrl}/data/`).then((result) => {
-    result.json().then(({ data }) => {
-      chrome.storage.local.set({ data });
-      callback?.(data);
+  try {
+    fetch(`${apiUrl}/data/`).then((result) => {
+      result.json().then(({ data }) => {
+        chrome.storage.local.set({ data });
+        callback?.(data);
+      });
     });
-  });
+  } catch {
+    refreshData(callback);
+  }
 };
 
 /**
