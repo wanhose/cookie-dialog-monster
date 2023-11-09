@@ -8,6 +8,12 @@
   "contextMenu_settingsOption": {
     "message": "Gerenciar lista de exclusão"
   },
+  "options_addButton": {
+    "message": "Adicionar exclusão"
+  },
+  "options_addPrompt": {
+    "message": "Digite o domínio"
+  },
   "options_clearButton": {
     "message": "Limpar lista"
   },

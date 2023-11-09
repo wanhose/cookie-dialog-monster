@@ -89,7 +89,7 @@ function getHostname() {
   let hostname = document.location.hostname;
   const referrer = document.referrer;
 
-  if (referrer) {
+  if (referrer && window.self !== window.top) {
     hostname = new URL(referrer).hostname;
   }
 

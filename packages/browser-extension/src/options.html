@@ -17,6 +17,22 @@
     </header>
     <main>
       <div class="button-group">
+        <button data-variant="large" id="add-button">
+          <span data-i18n="options_addButton"></span>
+          <svg
+            fill="none"
+            height="14"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            width="14"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
         <button data-variant="large" id="clear-button">
           <span data-i18n="options_clearButton"></span>
           <svg
@@ -76,7 +92,6 @@
           </svg>
         </button>
       </div>
-
       <input id="filter-input" data-i18n-placeholder="options_filterPlaceholder" />
       <ul id="exclusion-list">
         <li id="exclusion-list-item-template" style="display: none">

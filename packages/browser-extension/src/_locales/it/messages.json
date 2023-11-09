@@ -8,6 +8,12 @@
   "contextMenu_settingsOption": {
     "message": "Gestisci elenco di esclusione"
   },
+  "options_addButton": {
+    "message": "Aggiungi esclusione"
+  },
+  "options_addPrompt": {
+    "message": "Inserisci il dominio"
+  },
   "options_clearButton": {
     "message": "Cancella elenco"
   },

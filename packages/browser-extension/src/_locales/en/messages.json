@@ -8,6 +8,12 @@
   "contextMenu_settingsOption": {
     "message": "Manage exclusion list"
   },
+  "options_addButton": {
+    "message": "Add exclusion"
+  },
+  "options_addPrompt": {
+    "message": "Enter domain"
+  },
   "options_clearButton": {
     "message": "Clear list"
   },
