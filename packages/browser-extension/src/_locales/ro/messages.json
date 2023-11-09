@@ -8,6 +8,12 @@
   "contextMenu_settingsOption": {
     "message": "Gestionați lista de excludere"
   },
+  "options_addButton": {
+    "message": "Adăugați excludere"
+  },
+  "options_addPrompt": {
+    "message": "Introduceți domeniul"
+  },
   "options_clearButton": {
     "message": "Ștergeți lista"
   },

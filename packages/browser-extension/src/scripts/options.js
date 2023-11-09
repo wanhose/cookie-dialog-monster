@@ -5,6 +5,12 @@
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @description Domain RegExp
+ */
+
+const domainRx = /^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/g;
+
+/**
  * @description Exclusion list, URLs where the user prefers to disable the extension
  * @type {string[]}
  */
@@ -48,6 +54,26 @@ function createList() {
 
 /**
  * @async
+ * @description Add a new item to the exclusion list
+ * @returns {Promise<void>}
+ */
+
+async function handleAddClick() {
+  const exclusionValue = window.prompt(chrome.i18n.getMessage('options_addPrompt'));
+
+  if (exclusionValue?.trim() && (domainRx.test(exclusionValue) || exclusionValue === 'localhost')) {
+    const filterInputElement = document.getElementById('filter-input');
+    const state = { enabled: false };
+    await dispatch({ hostname: exclusionValue, state, type: 'SET_HOSTNAME_STATE' });
+
+    exclusionList = [...new Set([...exclusionList, exclusionValue])].sort();
+    createList();
+    updateList(filterInputElement.value.trim());
+  }
+}
+
+/**
+ * @async
  * @description Clear all items from the exclusion list
  * @returns {Promise<void>}
  */
@@ -73,6 +99,9 @@ async function handleClearClick() {
 async function handleContentLoaded() {
   exclusionList = await dispatch({ type: 'GET_EXCLUSION_LIST' });
   createList();
+
+  const addButtonElement = document.getElementById('add-button');
+  addButtonElement.addEventListener('click', handleAddClick);
 
   const clearButtonElement = document.getElementById('clear-button');
   clearButtonElement.addEventListener('click', handleClearClick);

@@ -8,6 +8,12 @@
   "contextMenu_settingsOption": {
     "message": "Управление списком исключений"
   },
+  "options_addButton": {
+    "message": "Добавить исключение"
+  },
+  "options_addPrompt": {
+    "message": "Введите домен"
+  },
   "options_clearButton": {
     "message": "Очистить список"
   },
