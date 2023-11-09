@@ -1,4 +1,5 @@
 accounts.google.com
+app.diagrams.net
 blog.sapegin.me
 canvasjs.com
 chessmadra.com
