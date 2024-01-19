@@ -3,7 +3,6 @@ _evidon-barrier-wrapper
 .__cookie_policy
 .__cookieNotice
 .__cookies
-.__fb-light-mode
 .__gdprConfirmOverlay
 ._3RhWPJfjpsEoBw52x0fQp2
 ._cookie-advanced--active
