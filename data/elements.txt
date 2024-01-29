@@ -12445,6 +12445,7 @@ amedia-privacybox
 amp-consent
 app-banner[arialabel*="Cookies"]
 app-cookies
+app-cookies-bar
 app-root app-cookie-acceptance
 aside[class*="CookieModalstyles"]
 aside[class^="cookie-banner__Wrapper-"]
