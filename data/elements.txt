@@ -1746,6 +1746,7 @@ _evidon-barrier-wrapper
 .cookie-popup__heading
 .cookie-popup-bar
 .cookie-popup-container
+.cookie-popup-eu
 .cookie-popup-overlay
 .cookie-popup-wrapper
 .cookie-popups__container
@@ -8425,6 +8426,7 @@ _evidon-barrier-wrapper
 #cookiePopupBar
 #cookiepopupbg
 #cookiePopupBG
+#cookiePopupBlockEu
 #cookiePopupContainer
 #cookiePopupContent
 #cookiepopupdiv
@@ -9911,6 +9913,11 @@ _evidon-barrier-wrapper
 #farmacja_cookie_alert
 #fascia-cookie
 #fascia-ue-popup
+#fast-cmp-backdrop
+#fast-cmp-iframe
+#fast-cmp-root
+#fast-cmp-settings
+#fast-cmp-tracing
 #fb-cookie-law
 #fb-pixel-consent
 #fc-cookies-notification
@@ -12648,5 +12655,3 @@ tp-yt-iron-overlay-backdrop
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
-#cookiePopupBlockEu
-.cookie-popup-eu
