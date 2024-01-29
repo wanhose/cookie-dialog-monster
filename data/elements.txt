@@ -12634,3 +12634,4 @@ tp-yt-iron-overlay-backdrop
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
+.page-bottom-fixed[style="position: fixed; width: 100%; left: 0px; bottom: 0px; background-color: transparent; z-index: 777;"]
