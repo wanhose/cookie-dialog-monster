@@ -3306,6 +3306,8 @@ _evidon-barrier-wrapper
 .fr-cookie-disclaimer
 .framework_cookies
 .frontendPrivacy__consentBanner
+.fs-cc-banner3_component
+.fs-cc-components
 .fs-cookie-bar
 .ft__cookies
 .fucking-eu-cookies
