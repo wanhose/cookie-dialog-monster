@@ -4228,6 +4228,7 @@ _evidon-barrier-wrapper
 .modal-cookies
 .modal-cookies-info
 .modal-cookies-warning
+.modal-dialog-cmp1
 .modal-gdpr-full
 .modal-ley-cookies
 .modal-mask-class
@@ -6435,7 +6436,11 @@ _evidon-barrier-wrapper
 #cckBanner
 #ccm_notification
 #ccm-banner-wrap
+#ccm-control-panel
 #ccm-cookiesDisclosure
+#ccm-root
+#ccm-settings-summoner
+#ccm-widget
 #ccMessage
 #CCompliance
 #cconsent
@@ -12640,7 +12645,3 @@ tp-yt-iron-overlay-backdrop
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
-#ccm-root
-#ccm-widget
-#ccm-control-panel
-#ccm-settings-summoner
