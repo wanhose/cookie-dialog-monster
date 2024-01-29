@@ -19,6 +19,7 @@ modal--is-open
 modal-open
 no_scroll
 no-scroll
+popin-gdpr-no-scroll
 shopee-no-scroll
 show-cookie-policy-info
 sp-message-open

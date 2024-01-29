@@ -3433,6 +3433,8 @@ _evidon-barrier-wrapper
 .gdpr-header
 .gdpr-hellobar
 .gdpr-info
+.gdpr-lmd-standard
+.gdpr-lmd-standard--transparent-deny
 .gdpr-lmd-wall
 .gdpr-message
 .gdpr-message-banner
