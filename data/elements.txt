@@ -814,6 +814,7 @@ _evidon-barrier-wrapper
 .cmp-app_gdpr
 .cmp-cookie
 .cmp-cookie-stmt
+.cmp-desktop
 .cmp-modal
 .cmp-popup-cookies
 .cmp-root-container
@@ -6569,6 +6570,8 @@ _evidon-barrier-wrapper
 #cmp-faktor-io-parent
 #cmp-iframe
 #cmp-modal
+#cmp-style-reset
+#cmp-wetter
 #cmpbox
 #cmpbox2
 #cmpContainer
