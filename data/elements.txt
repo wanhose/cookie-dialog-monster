@@ -5152,6 +5152,7 @@ _evidon-barrier-wrapper
 .stlCookieToast
 .stn_cookieoptin
 .stn-cookies
+.storefront-cookie-policy
 .storm-cookie
 .stormdigital-cookieWall-overlay
 .stripe_cookies
@@ -5640,6 +5641,7 @@ _evidon-barrier-wrapper
 [data-js="cookie-disclaimer"]
 [data-key="cookies-warning"]
 [data-module="cookies"]
+[data-name="cookie-policy"]
 [data-name="cookieNotice"]
 [data-name="mediavine-gdpr-cmp"]
 [data-notification="CookiePolicyAgreement"]
