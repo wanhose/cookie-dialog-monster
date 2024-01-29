@@ -3509,6 +3509,8 @@ _evidon-barrier-wrapper
 .GdprCookieConsent-ConsentContainerOverlay
 .gdprCookieLaw
 .gdprCookieWrapper
+.gdprcp-modal
+.gdprcp-overlay
 .gdprfooter
 .gdprLegalNotification
 .gdprManagerMessage
@@ -4563,6 +4565,7 @@ _evidon-barrier-wrapper
 .page__gdpr
 .page--cookie
 .page-banner__cookie
+.page-bottom-fixed[style="position: fixed; width: 100%; left: 0px; bottom: 0px; background-color: transparent; z-index: 777;"]
 .page-cookies
 .Page-cookies
 .page-cookies-info
@@ -12634,4 +12637,3 @@ tp-yt-iron-overlay-backdrop
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
-.page-bottom-fixed[style="position: fixed; width: 100%; left: 0px; bottom: 0px; background-color: transparent; z-index: 777;"]
