@@ -52,7 +52,6 @@ _evidon-barrier-wrapper
 .accept-cookie-warning-box
 .accept-cookie-window
 .accept-cookies
-.accept-cookies alert alert-info
 .accept-cookies-banner
 .accept-cookies-container
 .accept-cookies-policy
@@ -91,7 +90,7 @@ _evidon-barrier-wrapper
 .acepta_cookies
 .aceptar_cookies
 .acris-cookie-consent:not(.is--modal)
-.active cookie
+.active-cookie
 .active-cookie-menu
 .activebar-container
 .activity-cookie
@@ -134,13 +133,9 @@ _evidon-barrier-wrapper
 .ak-cookies-banner
 .akf__cookie
 .akismet_comment_form_privacy_notice
-.alert alert-block alert-info fade in
-.alert alert-info alert-wrap jui info-cookie
 .alert__cookie
-.alert_container cookie
 .alert_cookie
 .alert_cookies
-.alert_wrapper cookie
 .alert--cookie
 .alert--cookies
 .alert-bandeau-cookie
@@ -158,11 +153,8 @@ _evidon-barrier-wrapper
 .alert-cookies-banner
 .alert-cookies-bar
 .alert-cookiewarning
-.alert-dismissible cookie_alert alert
 .alert-dismissible[id*="cookiechoice"]
 .alert-gdpr
-.alert-message cookie
-.alert-msg-yellow cookie-block
 .alert-rgpd
 .alert-site-cookie
 .alert-wrapper-cookie
@@ -226,12 +218,10 @@ _evidon-barrier-wrapper
 .andcookie
 .animate-cookie-message
 .annotation.type-alert.type-permanent.lspace.m-reset-position.closableContainer
-.announcement
-.announcement cookies
+.announcement-cookies
 .announcement-eu-cookie
 .announcement[class*="cookies"]
 .announcement[data-id*="cookie_notice"]
-.annoying notice
 .anonymousToSConsent_mask
 .aod-cookie-consent
 .AP_mod-bm-cookies
@@ -243,7 +233,7 @@ _evidon-barrier-wrapper
 .app_cookie_alert
 .app_gdpr--2
 .app-cookie
-.app-cookies unaccepted
+.app-cookies
 .app-disclaimer-rgpd
 .app-header > .cookie-policy-form
 .app-message[class*="cookie-consent"]
@@ -272,7 +262,7 @@ _evidon-barrier-wrapper
 .auskunft-cookies
 .austria_cookie_law
 .avalanche-message
-.avanzabank_cookie_message cookieMessage
+.avanzabank_cookie_message
 .avCookieLaw
 .avertissement-cookies
 .avertissementCookie
@@ -359,8 +349,6 @@ _evidon-barrier-wrapper
 .baner-cookie
 .bankid-cookie
 .bann-cookie
-.banner banner-cookies
-.Banner eu-cookie-notice
 .banner__cookies
 .banner__overlay--cookie
 .banner_accept_cookies
@@ -386,7 +374,7 @@ _evidon-barrier-wrapper
 .banner-gdpr
 .banner-lgpd-consent
 .banner-message-cpopup
-.banner-notification notify
+.banner-notification
 .banner-policy-wrap
 .banner[data-banner="cookies"]
 .bannerCookie
@@ -396,7 +384,6 @@ _evidon-barrier-wrapper
 .BannerPrivacyInformation
 .banniere_cookie
 .bannierecookie
-.bar cookie
 .bar--cookie-bar
 .bar--cookienote
 .bar-cookie
@@ -448,7 +435,6 @@ _evidon-barrier-wrapper
 .bh-layerCookieLaw
 .bica-inline
 .bipPasekCookie
-.biscotto sc-bottom
 .biscuit-message
 .biscuit-usage
 .biscuits-usage
@@ -466,7 +452,6 @@ _evidon-barrier-wrapper
 .bloccookie
 .blocCookie
 .blocCookies
-.block cookies
 .block__content-cookies
 .block_consent
 .block_cookie
@@ -588,7 +573,6 @@ _evidon-barrier-wrapper
 .c-cookie__message--middle
 .c-cookie--disclaimer
 .c-cookie-banner
-.c-cookie-banner is-visible
 .c-cookie-banner--default
 .c-cookie-banner-container
 .c-cookie-bar
@@ -656,7 +640,6 @@ _evidon-barrier-wrapper
 .calibr8-cookie-compliance
 .can_gdpr_fixed_banner
 .capa_cookie
-.capa_cookie hide
 .capa_cookies
 .capa-cookies
 .capaAvisoCookies
@@ -680,7 +663,6 @@ _evidon-barrier-wrapper
 .cc__wrapper
 .cc_baner-wrapper
 .cc_banner
-.cc_banner cc_container cc_container--open
 .cc_banner_FB
 .cc_banner-wrapper
 .cc_banner-wrapper_FB
@@ -698,8 +680,6 @@ _evidon-barrier-wrapper
 .cc_overlay_lock
 .cc-banner
 .cc-banner-wrapper
-.cc-bottom cc-theme-block cc-type-info cc-banner cc-window
-.cc-color-override--1676790063 cc-bottom cc-theme-block cc-type-info cc-banner cc-window
 .cc-container
 .cc-cookie-consent-banner-modal
 .cc-cookiecontainer
@@ -725,13 +705,12 @@ _evidon-barrier-wrapper
 .cc-policy
 .cc-revoke
 .cc-stop-overlay
-.cc-window cookie
 .cc-window-banner
 .cc-window[aria-label="cookieconsent"]
 .cc-wrapper > .cc-inner
 .cc[data-notice="cookies"]
-.ccbar ccpane
-.ccbarbody ccpane
+.ccbar
+.ccbarbody
 .ccc_banner-wrapper
 .ccc-widget
 .cccenter-show-banner
@@ -740,17 +719,18 @@ _evidon-barrier-wrapper
 .cck-consent-bar
 .cck-msg
 .cckBannerInner
-.cclist ccpane
+.cclist
 .ccm-banner-small
 .ccm-bottom-slide
-.ccm-widget ccm-modal
+.ccm-modal
+.ccm-widget
 .ccmcss_oic
 .ccp-overlay-fullscreen
 .ccpa-banner-container
+.ccpane
 .ccwrap
 .cczcook_banner-wrapper
 .cd__cookie
-.cdp-cookies-alerta
 .cdp-cookies-alerta
 .ce_rsce_tao_fixed_note
 .ce_rsce_vision_fixed_note
@@ -802,11 +782,12 @@ _evidon-barrier-wrapper
 .cky-notice
 .cky-overlay
 .cl_bar
+.cl_bottom
 .cl_cookie_privacy_layer
-.cl_dark cl_bottom cl_bar
+.cl_dark
 .cl_gdpr_banner
 .cl-consent
-.cl-container cookies
+.cl-container
 .CLawBanner
 .clearfy-cookie
 .clever-cookielaw
@@ -831,8 +812,9 @@ _evidon-barrier-wrapper
 .cmp
 .cmp_cookies_usage_wr
 .cmp-app_gdpr
-.cmp-cookie cmp-modal
+.cmp-cookie
 .cmp-cookie-stmt
+.cmp-modal
 .cmp-popup-cookies
 .cmp-root-container
 .cmpContainer
@@ -886,10 +868,10 @@ _evidon-barrier-wrapper
 .common-header-gdpr
 .Common-Privacy-HeaderCookiesMessage
 .communikat_cookie
-.comp comp-notification
 .comp-cookie_banner
 .comp-cookie-policy-banner
 .comp-modal-cookie
+.comp-notification
 .compliance-eu-cookie-banner
 .component_eu_eprivacy_option
 .component_gdprMessage__container
@@ -907,7 +889,6 @@ _evidon-barrier-wrapper
 .component-cookies-popup
 .Component[data-component="CookieFooter"]
 .components-cookie-law-basic
-.con-large cpr-bar
 .ConCookieInfo
 .cond_utilis_cookie
 .confidentialite_header
@@ -916,7 +897,6 @@ _evidon-barrier-wrapper
 .confirm-cookies-container
 .ConfirmCookieMessageBox
 .connect-cookie-bar
-.consent cookies
 .consent__alert
 .consent__cookies
 .consent__outer_wrapper
@@ -979,7 +959,6 @@ _evidon-barrier-wrapper
 .container-cookies
 .container-cookiesBar
 .container-floating-notifications
-.container-fluid cookies
 .container-notifications
 .container.main-content > div:nth-of-type(1) > .noindex > .gatewayNotification.headerNotification > .headerNotification-1
 .container[data-js*="cookie-message"]
@@ -1029,29 +1008,6 @@ _evidon-barrier-wrapper
 .cooki-container
 .cookie
 .Cookie
-.cookie alert
-.cookie anchored-toast
-.cookie bg-white
-.cookie change-message--on-click
-.cookie container-fluid
-.cookie cookie-fullfat
-.cookie cookie-lowfat
-.cookie custom
-.cookie fixed
-.cookie fixed-bottom
-.cookie is-show
-.cookie is-visible
-.cookie isVisible
-.cookie jquery-notify-bar
-.cookie kozepre_igazit
-.cookie message
-.cookie messages
-.cookie navbar-fixed-bottom
-.cookie opt-in
-.cookie policy
-.cookie row
-.cookie top-info
-.cookie visible
 .cookie__accept
 .cookie__banner
 .Cookie__banner
@@ -1394,9 +1350,6 @@ _evidon-barrier-wrapper
 .cookie-confirmation
 .cookie-consent
 .Cookie-Consent
-.cookie-consent invers
-.cookie-consent show
-.cookie-consent shown
 .cookie-consent__dialog
 .cookie-consent--normal
 .Cookie-Consent--show
@@ -1523,7 +1476,6 @@ _evidon-barrier-wrapper
 .cookie-img
 .cookie-info
 .cookie-info > .cookie-info-inner
-.cookie-info cookie
 .cookie-info__panel
 .cookie-info__panel--show
 .cookie-info__transition
@@ -1574,7 +1526,6 @@ _evidon-barrier-wrapper
 .cookie-lasche
 .cookie-lasche-hp
 .cookie-law
-.cookie-law col-md-12
 .cookie-law__container
 .cookie-law-alert
 .cookie-law-approval-wrapper
@@ -1640,10 +1591,10 @@ _evidon-barrier-wrapper
 .cookie-module
 .cookie-module-wrapper
 .cookie-monster
-.cookie-monster js-cookie-monster cookie-monster-show
 .cookie-monster__container
 .cookie-monster-dialog
 .cookie-monster-overlay
+.cookie-monster-show
 .cookie-msg
 .cookie-msg-bar
 .cookie-msg-box
@@ -1828,7 +1779,7 @@ _evidon-barrier-wrapper
 .cookie-section
 .cookie-section l-section
 .cookie-set-pop-up
-.cookie-settings is-visible
+.cookie-settings
 .cookie-settings__container
 .cookie-settings__overlay
 .cookie-settings-band
@@ -1943,7 +1894,6 @@ _evidon-barrier-wrapper
 .CookieAgreement
 .cookiealarm
 .cookiealert
-.cookiealert
 .cookieAlert
 .CookieAlert
 .cookieAlertBarContainer
@@ -2025,7 +1975,6 @@ _evidon-barrier-wrapper
 .CookieChecker
 .cookieCheckMainPanel
 .CookieChoiceContainer
-.CookieChoiceContainer nocontent
 .cookieChoiceInfo
 .cookieClass
 .cookieclose
@@ -2160,7 +2109,6 @@ _evidon-barrier-wrapper
 .cookielabel
 .cookielaw
 .cookieLaw
-.cookielaw js
 .cookielaw_wrapper
 .cookielaw-alert
 .cookielaw-banner
@@ -2228,7 +2176,6 @@ _evidon-barrier-wrapper
 .cookieModalBox
 .cookiemonster
 .cookieMonster
-.cookiemonster kleverig
 .cookiemonster-container
 .cookieMonster-info
 .CookieMonsterBox
@@ -2245,6 +2192,7 @@ _evidon-barrier-wrapper
 .cookieNoti
 .cookienotice
 .cookieNotice
+.CookieNotice
 .COOKIENOTICE
 .cookieNotice__container
 .cookienotice-bar
@@ -2370,25 +2318,6 @@ _evidon-barrier-wrapper
 .cookieRow
 .cookies
 .Cookies
-.cookies active
-.cookies alert
-.cookies alert-dismissible
-.cookies bottom
-.cookies callout
-.cookies dark
-.cookies dialog
-.cookies info
-.cookies is-open
-.cookies is-shown
-.cookies print-hidden
-.cookies privacyLaw
-.cookies row
-.cookies show
-.cookies site-msg
-.cookies slideInUp
-.cookies sv-layout
-.cookies sv-vertical
-.cookies text-center
 .cookies__banner
 .cookies__banner__wrapper
 .cookies__container
@@ -2499,7 +2428,6 @@ _evidon-barrier-wrapper
 .cookies-agreement-class
 .cookies-agreement-wrapper
 .cookies-alert
-.cookies-alert container-fluid
 .cookies-alert__wrapper
 .cookies-alert-alerta
 .cookies-alert-bar
@@ -2595,7 +2523,6 @@ _evidon-barrier-wrapper
 .cookies-messages-wrapper
 .cookies-mod
 .cookies-mod-bar
-.cookies-mod-bar cookies-mod
 .cookies-modal
 .cookies-modal__background
 .cookies-modal__overlay
@@ -2693,7 +2620,7 @@ _evidon-barrier-wrapper
 .cookiesbar
 .cookiesBar
 .CookiesBar
-.CookiesBar js-cookies CookiesBar--visible
+.CookiesBar--visible
 .cookiesBar-holder
 .cookiesBgCls
 .cookiesBloc
@@ -2982,15 +2909,16 @@ _evidon-barrier-wrapper
 .debat-cookies
 .debilni-eu-susenky
 .defaultCookie
-.delayed-module alert-cookie alert
+.delayed-module
 .delta_domain_cookie
 .dentro-cookie
 .depo-cookies
 .desktop_cookie_block
+.devsite-dialog
 .devsite-notification-eu-cookie
-.devsite-notification-eu-cookie devsite-dialog devsite-notification-promo
+.devsite-notification-promo
 .dfc-cookie-info-bar-container
-.dft-cookies open
+.dft-cookies
 .dgp-consent
 .dgpr-drop-down
 .dhl-cgk
@@ -3001,7 +2929,7 @@ _evidon-barrier-wrapper
 .digimadi-cc-wrapper
 .dina-cookiebanner
 .direttiva2009_136_CE
-.disclaimer disclaimer--info js-cookie-disclaimer
+.disclaimer
 .disclaimer_cookies
 .disclaimer_wrapper
 .disclaimer-cookie
@@ -3020,7 +2948,6 @@ _evidon-barrier-wrapper
 .dismissable-cookie-policy
 .display_cookie_btn
 .display_cookies
-.div_alert cookie
 .div_cookie_bg
 .div_cookie_hint
 .div_cookie_top
@@ -3155,8 +3082,7 @@ _evidon-barrier-wrapper
 .eprjcookie
 .epson_cookienotice
 .epublishing-eu-cookies
-.epublishing-priority epublishing-eu-cookies
-.error cookie
+.epublishing-priority
 .erw-gdpr-notice-footer
 .espcookie
 .esri-cookie
@@ -3206,6 +3132,7 @@ _evidon-barrier-wrapper
 .eu-cookies-show
 .eu-cookies-wrapper
 .eu-law-container
+.eu-policy
 .eu-pruda-cookies
 .eu-suck-my-cookie
 .EUc
@@ -3213,7 +3140,6 @@ _evidon-barrier-wrapper
 .eucookie
 .euCookie
 .EUCookie
-.euCookie mscom-alertitem
 .eucookie_disclaimer
 .eucookie_wrapper
 .euCookie-outer
@@ -3267,7 +3193,7 @@ _evidon-barrier-wrapper
 .ew-cookie-note
 .EWSCookieConsentOverlay
 .exp-cookies
-.expanded gdpr
+.expanded
 .experiencefragment-cookie
 .explicit-cookie-container
 .explicit-cookie-container-wrapper
@@ -3283,7 +3209,6 @@ _evidon-barrier-wrapper
 .f-eu-cookies
 .F6-cookies_w_js-entrypoint
 .fa-cookie
-.fade sticky alert-cnil msgAlert
 .fadeInUp.animated.js-cookies.v-cookie-message
 .fancybox-overlay
 .fasciaCookie
@@ -3302,10 +3227,8 @@ _evidon-barrier-wrapper
 .fiCMScookieNotice
 .fil-cookie-policy
 .filCookiesCnil
-.fillColor cookieWrapper
 .fingerprint-wrapper[onclick*="cookieman"]
 .fit-cookieWall-overlay
-.fixed cookie
 .fixed-bottom[class*="gdpr"]
 .fixed-cookie
 .fixed-cookie-prl
@@ -3314,10 +3237,10 @@ _evidon-barrier-wrapper
 .fixedCookiePolicy
 .fl-cookie-notice
 .fl-cookie-notice--container
-.flash cookies
 .flash--cookie
 .flash--cookie-banner
-.flash-message flash-message-announcement
+.flash-message
+.flash-message-announcement
 .flash-rgpd
 .flash[data-cookie="eu_cookie"]
 .flashmessage-cookies
@@ -3375,7 +3298,6 @@ _evidon-barrier-wrapper
 .fp_cookies
 .fp-cookie-bar
 .fp-cookie-consent
-.fr cookies-allow
 .fr_showCookieLegalInfo
 .fr-cookie-disclaimer
 .framework_cookies
@@ -3383,9 +3305,8 @@ _evidon-barrier-wrapper
 .fs-cookie-bar
 .ft__cookies
 .fucking-eu-cookies
-.fucking-priority fucking-eu-cookies
+.fucking-priority
 .fullOpacity[data-cy]
-.fullwidth cookie
 .func-cookie
 .fusion-privacy-bar
 .future-cookie-bar
@@ -3423,8 +3344,6 @@ _evidon-barrier-wrapper
 .gdn-wrap-mobile
 .gdp_cookie_widget
 .gdpr
-.gdpr consent
-.gdpr page-window
 .gdpr__A
 .gdpr__container
 .gdpr__cookie_consent
@@ -3535,8 +3454,8 @@ _evidon-barrier-wrapper
 .gdpr-overlay-container
 .gdpr-panel
 .gdpr-pn-container
+.gdpr-policy
 .Gdpr-policy
-.gdpr-policy toaster
 .gdpr-policy-bar
 .Gdpr-policy-desktop
 .gdpr-pop-over
@@ -3700,9 +3619,6 @@ _evidon-barrier-wrapper
 .herbyCookieConsent
 .hfs_pageCookieHint
 .hi-cookie-block
-.hidden-print container-fluid interim-banner
-.hidden-print show-cookie-consent cookie-consent-wrapper
-.hidden-xs eu-policy
 .hide-cookie-setting-button
 .hideFirstLoadPopUpCookiePolicy
 .hirma-cookies
@@ -3766,7 +3682,6 @@ _evidon-barrier-wrapper
 .info_cookie_popup
 .info_cookies
 .info_cookies_banner
-.info-banner js-info-banner
 .info-banner__cookie-policy
 .info-content-cookies
 .info-cookie
@@ -3792,20 +3707,16 @@ _evidon-barrier-wrapper
 .intercept-content
 .intercept-cookies
 .intercept-spacer
+.interim-banner
 .IP__CookieConsent
 .ip-cookie-banner
 .ipx_cookie_overlay
 .ir_cookiehint
-.is-active c-cookies
-.is-active CookieWarning
 .is-cookie
 .is-cookie-banner
 .is-cookie-message
 .is-cookies
 .is-landingPage.page--b.page > .header--b.header > .wrapper.pageNotification:nth-of-type(1)
-.is-open EuCookieSheet
-.is-open nocontent js-CookieCompliance CookieCompliance
-.is-visible js-cookie-notice CookieNotice
 .it_privacy_notice
 .itbl-c-cookies-consent
 .iubenda-cs-content
@@ -3813,7 +3724,6 @@ _evidon-barrier-wrapper
 .iv-ui-website-cookie-compliance
 .iw-cookie-overlay
 .iw-cookie-window
-.ix.u.kh.ki.kj.kk.kl.km.kn.ko.kp.kq.kr.ks.dj.cw.kt.ku.kv
 .ixi_accept_cookies
 .izee-cookie-alert
 .J_agreeCookieModal
@@ -3825,10 +3735,9 @@ _evidon-barrier-wrapper
 .j-cookieLaw
 .j-cookieModal
 .j-gdpr-message
-.j-tos-update-banner tos-update-banner
+.j-tos-update-banner
 .j-welcome-privacy
 .ja-cookie-consent
-.jb cookie
 .jcb-cookie-disclaimer
 .jCookie
 .jcookie-navbar
@@ -3844,7 +3753,6 @@ _evidon-barrier-wrapper
 .johnnys-cookie-warning
 .jq_cookiePolicy
 .jq_cookies_msg
-.jq_cookies_msg wgt-cookies
 .jqCookieAcceptContainer
 .jqmAlertWindow
 .jqmOverlay
@@ -3898,7 +3806,6 @@ _evidon-barrier-wrapper
 .js-cookie-banner-active
 .js-cookie-banner-container
 .js-cookie-bar
-.js-cookie-bar row-table cookies
 .js-cookie-close
 .js-cookie-compliance
 .js-cookie-confirm
@@ -3922,6 +3829,7 @@ _evidon-barrier-wrapper
 .js-cookie-information-popup
 .js-cookie-law
 .js-cookie-message
+.js-cookie-monster
 .js-cookie-monster-overlay
 .js-cookie-msg
 .js-cookie-notice
@@ -4021,7 +3929,6 @@ _evidon-barrier-wrapper
 .js-terms-of-use-disclaimer
 .js-tm-cookie-container
 .js-toast-cookies
-.js-toast-cookies js-component-toast component-toast
 .js-tracking-popup
 .js-ug-alert-cookie
 .js-visitorNotice
@@ -4033,13 +3940,11 @@ _evidon-barrier-wrapper
 .jsCookieWarning
 .jsCustomCloseCookie
 .jsCustomCookieWrap
-.jsEnabled alertbar-bottom alertbar
 .jsEUCookieInfobarDisplay
 .jsGdprBar
 .jubCookWarn
 .jum-notification-cookie
 .jumbotron--cookielayer
-.jumbtron-black message-cookie
 .junith-cookienote
 .jw-widget-show-cookies-policy
 .k4-cookie
@@ -4165,7 +4070,7 @@ _evidon-barrier-wrapper
 .m-cookiebar
 .m-cookiehint
 .m-cookieInfo
-.m-cookies visible
+.m-cookies
 .m-cookies-alert
 .m-cookies-bar
 .m-gdpr-alert-banner
@@ -4184,7 +4089,7 @@ _evidon-barrier-wrapper
 .m6Cookies_overlay
 .ma_cookie_popover
 .mac-header-cookie-banner-section
-.maia-notification maia-stage display
+.maia-notification
 .main-cookie-title
 .main-cookie-warning
 .main-cookies-warning
@@ -4293,14 +4198,12 @@ _evidon-barrier-wrapper
 .mod-cookielayer
 .mod-CookieMessage
 .mod-cookiepolicy
-.mod-cookiepolicy mod
 .mod-cookies
 .mod-cookiewarning
 .mod-disclaimer
 .mod-overlay[data-topic="consent"]
 .mod-privacypolicy
 .mod-website-cookies
-.modal sm_optin_bg
 .modal__content--cookies
 .modal__cookie--message
 .modal--agreements__curtain
@@ -4360,7 +4263,6 @@ _evidon-barrier-wrapper
 .mrpix--cookie-permission--overhead-container
 .mrtn-cookie-policy-noty
 .ms-cookie-ok
-.msg cookies
 .msg_cookie
 .msg_cookies
 .msg-cookie
@@ -4370,7 +4272,6 @@ _evidon-barrier-wrapper
 .msgbox-CookieConsent
 .msgcookie
 .msgCookie
-.msgwrapper gdpr
 .msl2CookieNotice
 .msn-cookies
 .msr-cookie-notification
@@ -4410,7 +4311,6 @@ _evidon-barrier-wrapper
 .navbar-cookie
 .Navbar-cookieCompliance
 .navbar-cookies
-.navbar-fixed-bottom cookies
 .navbar-gdpr
 .navbar-privacy
 .Navbar-toastContainer
@@ -4437,7 +4337,6 @@ _evidon-barrier-wrapper
 .nf-js-cookiebox
 .ng-cookie-footer
 .ng-isolate-scope[data-cookie-message]
-.ng-scope notification-bar cookie-notification
 .ng-scope[data-cookie-policy-directive]
 .ng-scope[data-ng-controller="CookieSignController"]
 .ng-scope[data-ng-show="showCookieBanner"]
@@ -4470,7 +4369,6 @@ _evidon-barrier-wrapper
 .no-cookie-consent-warning
 .no-cookie-wrapper
 .no-cookies
-.no-js > body > .headertopfixed.fixed ~ .bg_popup
 .noat-cookie-consent__banner
 .noe_cookie_cnil
 .normativa-cookies
@@ -4481,7 +4379,6 @@ _evidon-barrier-wrapper
 .notice--cookies-policy
 .notice--int-cookies
 .notice-bar
-.notice-block cookies
 .notice-cookie
 .notice-tou
 .noticeCookiesContent
@@ -4491,17 +4388,10 @@ _evidon-barrier-wrapper
 .notifCookie
 .notifica_cookiebar
 .notificacion-cookies
-.notification cookie
-.notification cookie-consent
-.notification cookies
-.notification show-cookie
 .notification__box--persistentcookie
 .notification__content-cookie
 .notification__item--cookie
-.notification__message cookies
 .notification__wrapper[data-id="cookies"]
-.notification_box cookie
-.notification_box ng-isolate-scope cookie
 .notification_cookie
 .notification_wrap[data-cookie-notification]
 .notification--CNIL
@@ -4510,19 +4400,16 @@ _evidon-barrier-wrapper
 .notification--cookies
 .notification--GDPR
 .notification-banner--cookie
-.notification-bar uk-cookies
 .notification-bar--cookie
 .notification-bar[data-bar-type="gdpr"]
 .notification-bar[data-id="cookiedisclaimer"]
 .notification-box[data-toggler*="cookie-policy"]
-.notification-container cookie
 .notification-cookie
 .notification-cookie__wrapper
 .notification-cookie-policy
 .notification-cookiehint
 .notification-cookies
 .notification-layout[ng-class="cookie-bar"]
-.notification-widget cookie
 .notification-wrapper-bottom
 .notification[data-cookie-name*="AcceptCookies"]
 .Notification[data-js-id*="CookieConsent"]
@@ -4556,7 +4443,7 @@ _evidon-barrier-wrapper
 .ns-cookie-consent
 .ns-cookies-accept
 .ns-type-cookies
-.nsg--cookies nsg--notification
+.nsg--cookies
 .nt-footer-cookie-statement
 .ntfCookie
 .nts-notification-cookie
@@ -4606,7 +4493,6 @@ _evidon-barrier-wrapper
 .oly-web-ui_cookie-container
 .om-cookie-agreement
 .omnium_cookies_popup_wrapper
-.on cookie
 .once-upon-ga-consent
 .one-alert--cookie
 .oneindia-cookie-notification
@@ -4632,7 +4518,6 @@ _evidon-barrier-wrapper
 .osano-cm-dialog
 .osano-cm-dialog--position_bottom
 .osano-cm-dialog--type_bar
-.osano-cm-window
 .osano-cm-window
 .osano-cm-window__dialog
 .osb-cmp
@@ -4664,9 +4549,6 @@ _evidon-barrier-wrapper
 .p-max-width_cookie
 .p-notification-bar-cookieconsent
 .padding_gdpr
-.padding--slim box cookiePush
-.page > .alert-cookies.page-alert.alert-info.alert
-.page > .disclaimer > .disclaimer__content
 .page__cookie
 .page__disclaimer--cookies
 .page__gdpr
@@ -4683,7 +4565,6 @@ _evidon-barrier-wrapper
 .pageFooter-acceptCookies
 .pageHCookie
 .pageinfo-cookie
-.pam fbPageBanner _3d9x uiBoxGray bottomborder
 .pane-cookie-disclaimer
 .panel_cookie
 .panel--cookie
@@ -4710,10 +4591,8 @@ _evidon-barrier-wrapper
 .pci-global-cookies
 .pcookie
 .pcy_cookie_notice
-.pea_cook_bottomright pea_cook_wrapper
 .pea_cook_more_info_popover
 .pea_cook_wrapper
-.pea_cook_wrapper pea_cook_bottomright
 .penci-gprd-law
 .penci-wrap-gprd-law
 .per-cookies-and-terms
@@ -4742,14 +4621,11 @@ _evidon-barrier-wrapper
 .plugin_cookie
 .plugin-cookieconsent
 .pmc-cookie-consent-block
-.pmd-alert pmd-alert-dismissible pmd-alert-fixed
 .pn-cookies-banner
 .pnl-cookie
 .pnlCookiemelding
 .pnotify-cookies
-.pod classic brd-none dev-pod
 .polcookies
-.policy cookie
 .policy_footer
 .policy_notification
 .policy-alert
@@ -4757,7 +4633,7 @@ _evidon-barrier-wrapper
 .policy-bar
 .policy-box
 .policy-cookie
-.policy-message cookie
+.policy-message
 .policy-modal
 .policy-notification--privacy-policy
 .policy-window
@@ -4789,14 +4665,8 @@ _evidon-barrier-wrapper
 .popin-cookies-modal
 .popinCookie
 .popinCookies
-.PopMessage cookie
 .popover--oreo-message
 .popover-cookie
-.popover-cover zIndex--fixed
-.popover-cover.zIndex--modal
-.popover-md cookie
-.popover.popover--default.zIndex--modal.popover--layout-fixed.popover--layout-fixed-bottomSheet.popover--visible
-.popup cookie-consent
 .popup_block_cookie
 .popup_block_Cookies
 .popup_cookie
@@ -4804,7 +4674,6 @@ _evidon-barrier-wrapper
 .popup_cookies
 .popup_policies
 .popup--cookie
-.popup--cookie popup-1
 .popup--cookie-handling
 .popup-alert-notice
 .popup-aviso-cookies
@@ -4817,7 +4686,6 @@ _evidon-barrier-wrapper
 .popup-cookie-policy
 .popup-cookie-show
 .popup-cookies
-.popup-message cookie
 .popup-overlay-cookies
 .popup-rodo
 .popup[data-popup="popup-cookie"]
@@ -4843,7 +4711,6 @@ _evidon-barrier-wrapper
 .pre-header-cookie-notice
 .preventAcceptance
 .primo-cookie-compliance-placeholder
-.printNone usermsgCookie
 .privacy__popup
 .privacy_consent
 .privacy_cookies_policy
@@ -4861,7 +4728,7 @@ _evidon-barrier-wrapper
 .privacy_prompt
 .privacy_prompt_bottom
 .privacy_protection_cookie_banner
-.privacy_settings_interface popup
+.privacy_settings_interface
 .privacy-alert
 .privacy-and-cookies
 .privacy-banner
@@ -4957,7 +4824,7 @@ _evidon-barrier-wrapper
 .privacywire-wrapper
 .privasypolicy-info
 .privatePolicy
-.proffice_cookieinfo js-controller cookie-info
+.proffice_cookieinfo
 .promoAlert-cookiepops
 .prompt-cookielaw
 .propeller-cookieconsent
@@ -4986,7 +4853,6 @@ _evidon-barrier-wrapper
 .qb-cookielaw-bar
 .qc-cmp-showing
 .qc-cmp-ui-container
-.qc-cmp-ui-container qc-cmp-showing
 .qc-cmp-ui-showing
 .qc-cmp2-cleanslate
 .qc-cmp2-container
@@ -5017,7 +4883,6 @@ _evidon-barrier-wrapper
 .react-cookie-gdpr-dialog
 .react-reveal[class*="cookie-banner"]
 .readcookie
-.ReadPolicy browsehappy
 .recocliv2
 .recurly-gdpr
 .redhat-cookie-banner
@@ -5028,7 +4893,7 @@ _evidon-barrier-wrapper
 .region-gdpr
 .region-rodo-info
 .regional-cookie-warning
-.remarketing-banner show
+.remarketing-banner
 .requestCookies
 .resCookiecon-wrapper
 .responsive-app__cookies
@@ -5037,7 +4902,7 @@ _evidon-barrier-wrapper
 .reveal-modal-bg-cookie
 .reveal-modal-cookie
 .reveal-modal[id*="cookie"]
-.rgpd view show
+.rgpd
 .rgpd_backdrop
 .rgpd_box
 .rgpd_message
@@ -5077,11 +4942,8 @@ _evidon-barrier-wrapper
 .roh-cookies
 .root-container-panel > #snackbar-container > .banner.banner-bottom
 .RootContainerClassName div[class*="CookieNotificationPopup"]
-.row bandeau-cookies
-.row well info-msg
 .row--cookie-compliance
 .row-cookies
-.row-fluid cookie-notification
 .row[data-test-selector*="cookie-banner"]
 .rp-CookiesConsent
 .rs-alert-cookie
@@ -5097,7 +4959,6 @@ _evidon-barrier-wrapper
 .rxtcookiedisclaimer__container
 .ry-cookie-permission
 .s--message[class*="cookie-notice"]
-.s--show cookies
 .s-10-cookie-consent
 .s-cookie-hint
 .s-cookie-notification-bar
@@ -5195,17 +5056,12 @@ _evidon-barrier-wrapper
 .site-footer-cookiebanner
 .site-header-cookies
 .site-header-react__cookies-notice-desktop
-.site-message cookie
-.site-message site-message--cookies
 .site-message--cookies
-.site-message--cookies site-message--banner js-site-message site-message
 .site-message--first-pv-consent
-.site-message--permanent site-message--first-pv-consent site-message--banner js-site-message site-message
 .site-module--site-cookie
 .site-msg-cookie
 .site-needs-cookies
 .site-notice-wrapper
-.site-popup consent
 .site-privacypolicy
 .site-stripe
 .site-wide-notice--gdpr
@@ -5222,7 +5078,6 @@ _evidon-barrier-wrapper
 .sjs-eu-cookie
 .skryptcookies-pl
 .sky-component-cookie-notice
-.slideIn cookie
 .slideout-cookies
 .sliding-privacy-popup
 .SLNotificationBar
@@ -5280,7 +5135,6 @@ _evidon-barrier-wrapper
 .stn-cookies
 .storm-cookie
 .stormdigital-cookieWall-overlay
-.strip strip-black cookie no-expansion cookie_banner-handled
 .stripe_cookies
 .striscia-cookies
 .stt-cookie
@@ -5295,7 +5149,6 @@ _evidon-barrier-wrapper
 .surs-cookies-wrapper
 .sutiwarning
 .sv-cookie-notification
-.sv-text-portlet cookie
 .sw-cookie-container
 .sw-cookies-banner
 .swnza_banner
@@ -5306,7 +5159,6 @@ _evidon-barrier-wrapper
 .syno_cookie_element
 .sys_cc-cookies
 .sys_header_toolbar_cookie_text
-.system-notice cookie
 .sz-meta__cookies
 .szc_widebox
 .t-consentPrompt
@@ -5325,7 +5177,6 @@ _evidon-barrier-wrapper
 .tc-privacy-banner
 .tc-privacy-overlay
 .tcCookiesDialogWrapper
-.tco-content-dock left tco-content-dock-on
 .tco-content-dock.left.tco-content-dock-on
 .tCook
 .tCookiesInfoblock
@@ -5339,12 +5190,10 @@ _evidon-barrier-wrapper
 .tenc-header__cookies
 .tendina-cookie
 .terms-conditions-bottom-line
-.terms-of-use show-for-large-up
 .terms-policy-bar
 .tesco-cookie
 .test-cookie-notification
 .testoCookiePolicy
-.text-center cookie
 .text-cookie
 .text-cookies-notification
 .texteAlerteCookie
@@ -5392,7 +5241,6 @@ _evidon-barrier-wrapper
 .topCookiesMsg
 .topInfo > .alert-warning.alert
 .topmessage-cookie
-.topslidein cookies
 .tos-banner
 .tos-Banner-dismissable
 .tos-footer
@@ -5415,7 +5263,6 @@ _evidon-barrier-wrapper
 .tracking-contenant
 .tracking-widget[data-tracking-widget]
 .trackingCookiesDisclaimer
-.trackingCookiesDisclaimer panel-blue
 .trackingNoticeOverlay
 .transbox
 .tre-cookie-disclaimer
@@ -5465,7 +5312,6 @@ _evidon-barrier-wrapper
 .UECookie
 .ueltje-cookie-accept
 .ug3-cookie-info-container
-.ui cookie nag
 .ui-cookie-blocked-page-cover
 .ui-cookie-blocked-warning-container
 .ui-cookie-notice
@@ -5477,7 +5323,6 @@ _evidon-barrier-wrapper
 .ui-cookies
 .ui-cookies-banner
 .ui-dialog-cookies
-.ui-widget-overlay ui-front
 .UICookieBanner
 .uiCookiesHint
 .uitk-gdpr-banner
@@ -5486,7 +5331,6 @@ _evidon-barrier-wrapper
 .uk-cookies
 .uk-notify-message
 .uk-notify-message-info
-.uk-position-fixed cookies
 .ukCookiePolicy
 .ulCookiePol
 .ultimize_cookie_notification_container
@@ -5509,7 +5353,7 @@ _evidon-barrier-wrapper
 .useofcookies-tip
 .user_popup
 .user-alerts__cookies
-.user-consent ui-dialog
+.user-consent.ui-dialog
 .user-cookie-notice
 .user-msg
 .usercookiemanagement
@@ -5543,8 +5387,6 @@ _evidon-barrier-wrapper
 .view-gdpr
 .viewport > .page > .cookie-agreement
 .viia-cookie
-.visible cookie
-.visible cookies
 .visible-cookies
 .visitorcookie
 .vk_cookie_compliance
@@ -5577,16 +5419,13 @@ _evidon-barrier-wrapper
 .wami_cookie_div
 .wander-cookie
 .warn-cookie
-.warning cookie
 .warning_EU_cookiemsg
 .warning--policy
 .warning-cookie
 .warning-cookie-law
 .warning-cookies
-.warning-message cookie
 .warning-policy
 .warningCookieWrap
-.warningMessagePanel cookies
 .warp_cookie_warning_barrier
 .wasa_cookies
 .wbu_cookie-wrapper
@@ -5745,10 +5584,19 @@ _evidon-barrier-wrapper
 [class*="cookieBanner-module--outer--"]
 [class*="CookieBanner"]
 [class*="CookieConsent_root__"]
+[class*="CookieConsent"]
+[class*="CookieNotice"]
 [class*="Cookiesstyles__Overlay-sc"]
+[class*="CookieWidget"]
+[class*="GdprBanner"]
+[class*="GdprParentWrapper"]
 [class*="mxp-CookiePanel-cookie-panel-"]
 [class*="mxp-CookiePanel-cookie-panel-overlay-"]
+[class*="privacy-notification"]
+[class*="PrivacyNotification"]
+[class*="PrivacyPolicy"]
 [class*="sd-cmp-"]
+[class*="StyledCookieLayer"]
 [class="absolute top-0 left-0 w-full h-full z-[10000] bg-Text03 bg-opacity-[0.24] content-end items-center"]
 [class="block z-50 w-full max-w-full md:max-w-small fixed bottom-0 left-0 md:bottom-[20px] md:left-[20px]"]
 [cnn-cookie-policy]
@@ -5790,7 +5638,6 @@ _evidon-barrier-wrapper
 [data-testid="cookienotice-container"]
 [data-testid="gateway-container"][aria-hidden="true"]
 [data-testid="main-cookies-banner-container"]
-[data-testid="uc-default-banner"]
 [data-testid="uc-default-banner"]
 [data-testid="wa_cookies_banner_modal"]
 [data-token="gdpr_cookie_notice"]
@@ -5836,15 +5683,6 @@ _evidon-barrier-wrapper
 #__layout div[class*="cookie-popup"]
 #__loadCookie
 #__ndcc_cookieImpliedConsent
-#__next div[class*="CookieConsent"]
-#__next div[class*="CookieNotice"]
-#__next div[class*="CookieWidget"]
-#__next div[class*="GdprBanner"]
-#__next div[class*="GdprParentWrapper"]
-#__next div[class*="privacy-notification"]
-#__next div[class*="PrivacyNotification"]
-#__next div[class*="PrivacyPolicy"]
-#__next div[class*="StyledCookieLayer"]
 #__ntk_banner_cookie
 #__shopwired_consent_cookie_container
 #__tealiumGDPRcpPrefs
@@ -6859,7 +6697,6 @@ _evidon-barrier-wrapper
 #consentUI
 #consentWrapper
 #cont_cookies
-#container > .ut_cookie_privacy_c1 > .jsReady.noUserConsent.modUt_cookie_privacy_1.mod > dd
 #container_cookie
 #container_cookies
 #container_info_cnil
@@ -12045,7 +11882,6 @@ _evidon-barrier-wrapper
 #SRP_Cookie_Barre
 #st_box
 #st_cookie
-#st_gdpr_iframe
 #st_gdpr_iframe
 #st-cmp-v2
 #sta-gdpr-modal-overlay
