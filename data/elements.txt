@@ -3094,6 +3094,7 @@ _evidon-barrier-wrapper
 .estrategy-cookie-popup
 .estrategy-cookie-popup-mobile
 .et_cookie_consent
+.ets_cookie_banber_block
 .eu_cc_law
 .eu_cookie
 .eu_cookie_warning_popup
