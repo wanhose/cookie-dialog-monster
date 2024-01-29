@@ -16,6 +16,7 @@ gdprbanner_consent_gdpr_consent
 gdprCookieBanner-acceptedAll
 hasCookieBanner
 ibeugdpr-disabled
+idxrcookies-block-user-nav
 modal--is-open
 modal-open
 no_scroll
