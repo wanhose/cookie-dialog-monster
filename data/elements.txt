@@ -5720,6 +5720,7 @@ _evidon-barrier-wrapper
 #__loadCookie
 #__ndcc_cookieImpliedConsent
 #__ntk_banner_cookie
+#__nuxt > div > div.w-full.bg-white.z-50.p-4.px-8.lg:px-4.lg:rounded.flex.flex-col.fixed.left-0.bottom-0.overflow-scroll
 #__shopwired_consent_cookie_container
 #__tealiumGDPRcpPrefs
 #__tealiumGDPRecModal
