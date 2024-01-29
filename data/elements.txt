@@ -4583,6 +4583,7 @@ _evidon-barrier-wrapper
 .pageinfo-cookie
 .pane-cookie-disclaimer
 .panel_cookie
+.panel_cookies
 .panel--cookie
 .panel-cookie
 .panel-cookies
@@ -4685,6 +4686,7 @@ _evidon-barrier-wrapper
 .popover-cookie
 .popup_block_cookie
 .popup_block_Cookies
+.popup_confirmacion
 .popup_cookie
 .popup_cookie_position_left
 .popup_cookies
@@ -9315,6 +9317,8 @@ _evidon-barrier-wrapper
 #ctl00_pnlCookieMessage
 #ctl00_pnlCookieSettings
 #ctl00_pnlInformativaCookies
+#ctl00_pnlPedirConfirmacionCookies
+#ctl00_pnlPedirConfirmacionCookies_Info
 #ctl00_privacyCookies_LIPCNB_PrivacyandCookiesNoticePanel
 #ctl00_privacyUpdate
 #ctl00_theseusCookiePolicy_cookiePol
