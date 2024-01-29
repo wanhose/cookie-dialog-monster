@@ -12637,3 +12637,4 @@ tp-yt-iron-overlay-backdrop
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
+#modal-info-adblock
