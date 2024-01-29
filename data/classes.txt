@@ -26,6 +26,7 @@ popin-gdpr-no-scroll
 shopee-no-scroll
 show-cookie-policy-info
 sp-message-open
+start-cookies
 ta-cc-modal-open
 touchevents-false
 wt-cli-eu-country

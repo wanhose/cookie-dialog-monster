@@ -541,6 +541,8 @@ _evidon-barrier-wrapper
 .butterBar
 .butterBar--privacy
 .butterBar-message
+.button-extra-cookies
+.button-extra-cookies_sder
 .bvCookiesBar
 .bw-cookie
 .bwCookieMessage
@@ -3265,6 +3267,7 @@ _evidon-barrier-wrapper
 .fnn-cookiemanager
 .fo-cookies-policy
 .fond_bandeau_coockies
+.fondo-cookies
 .fondo-popup-cookies
 .fool_text_cookie
 .footer > .footer__cookie-info
@@ -4719,6 +4722,7 @@ _evidon-barrier-wrapper
 .popupCookie
 .portlet_cookie_policy
 .PortletGestionDesCookiesCNIL
+.posicion-cookies-abajo
 .position-fixed.bottom-0.end-0.border-top.p-3.p-md-4.container-fluid.border-bottom.bg-white[style="z-index: 1310;"]
 .position-relative.overflow-hidden + .Toastify
 .povoleniCookies
@@ -6039,6 +6043,7 @@ _evidon-barrier-wrapper
 #authPopupPolicyBanner
 #autoescapecookie
 #autorisationCookie
+#AvanzaCookie
 #avcn_notification
 #avcn_wrapperOuter
 #avcns-wrapper
