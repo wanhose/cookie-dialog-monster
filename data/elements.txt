@@ -3995,6 +3995,7 @@ _evidon-barrier-wrapper
 .layout__cookies-policy-notification
 .layout__disclaimer
 .layout__overlays__cookieNotice
+.layout-cookies-modal
 .layoutFloating[is="basis-cookie"]
 .lb-eucl
 .ld-cookie-notice
