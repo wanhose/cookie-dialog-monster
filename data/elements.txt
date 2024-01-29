@@ -11171,6 +11171,7 @@ _evidon-barrier-wrapper
 #obt_ga_banner
 #obvestilo-piskotki
 #obvstilo-piskotki
+#ocn-cookie-overlay
 #ocn-cookie-wrap
 #ocw_conteneur
 #oddcookie
