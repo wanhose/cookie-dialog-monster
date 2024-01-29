@@ -5271,6 +5271,7 @@ _evidon-barrier-wrapper
 .touchdesign-cookie-privacy
 .tp_cookie
 .tp-cookie-law
+.tpl-cookie
 .tpl-cookies
 .tpl-g-cookies
 .tplis-cl-cookies
@@ -5594,6 +5595,7 @@ _evidon-barrier-wrapper
 [aria-label="Before you continue to Google Search"]
 [aria-label="Cookie consent"]
 [aria-label="cookieconsent"]
+[aria-label="open cookies"]
 [aria-labelledby="hu-cookies-notice-message"]
 [aria-labelledby="ui-dialog-title-cookiebox"]
 [bundlename="reddit_cookie_banner"]
@@ -11930,6 +11932,7 @@ _evidon-barrier-wrapper
 #st_cookie
 #st_gdpr_iframe
 #st-cmp-v2
+#sta-cookies
 #sta-gdpr-modal-overlay
 #stampenCookieInformationContainer
 #stars-cookie-notification
