@@ -5673,6 +5673,7 @@ _evidon-barrier-wrapper
 [data-test="cookie-overlay"]
 [data-test="cookie-policy-sheet"]
 [data-testid="cookie-banner-strict"]
+[data-testid="cookie-banner-wrapper"]
 [data-testid="cookie-banner"]
 [data-testid="cookienotice-container"]
 [data-testid="dl-cookieBanner"]
