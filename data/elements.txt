@@ -4223,6 +4223,7 @@ _evidon-barrier-wrapper
 .modal__cookie--message
 .modal--agreements__curtain
 .Modal--cookie-message
+.modal--cookies-alert
 .modal-accept-cookies
 .modal-bannercookies
 .modal-box-cookie-policy-message
@@ -6391,6 +6392,7 @@ _evidon-barrier-wrapper
 #capaAceptaCookies
 #capaAvisoCookie
 #capaAvisoCookies
+#capaAvisoPoliticaCookies
 #capaAvisoPoliticaCookies_superior_mensajes
 #CapaBloqueoAceptarCookies
 #capaefectos-cookie
