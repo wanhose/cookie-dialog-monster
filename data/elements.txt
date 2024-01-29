@@ -5624,6 +5624,7 @@ _evidon-barrier-wrapper
 [data-cookie-validity-days]
 [data-cookie^="cookie.disclaimer"]
 [data-cookie="uso-accept-cookies"]
+[data-csa-c-func-deps="aui-da-sp-cc"]
 [data-cy="Popup cookies"]
 [data-hook="consent-banner-root"]
 [data-id="dummy-modal"]
