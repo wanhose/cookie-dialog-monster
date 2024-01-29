@@ -11861,6 +11861,7 @@ _evidon-barrier-wrapper
 #smile-cookie-wrapper
 #smileCookieControl
 #sn_cookies
+#snigel-cmp-framework
 #snippet--cookies
 #snippet-cookieAllow-cookieAllow
 #snippet-cookiesAgreementControl-bar
