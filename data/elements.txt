@@ -2989,6 +2989,7 @@ _evidon-barrier-wrapper
 .dot-cookie-prompt
 .doyoulikecookies
 .dp-cookie-legal
+.dr_cookies_v2_container
 .dr-cookie-info-box
 .dr-infobox
 .dr-message-cookie
@@ -4690,6 +4691,10 @@ _evidon-barrier-wrapper
 .popup_block_Cookies
 .popup_confirmacion
 .popup_cookie
+.popup_cookie_backdrop
+.popup_cookie_container
+.popup_cookie_DR
+.popup_cookie_fade_in
 .popup_cookie_position_left
 .popup_cookies
 .popup_policies
