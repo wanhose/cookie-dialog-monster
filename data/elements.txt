@@ -5595,6 +5595,7 @@ _evidon-barrier-wrapper
 [aria-label="Before you continue to Google Search"]
 [aria-label="Cookie consent"]
 [aria-label="cookieconsent"]
+[aria-label="cookies"]
 [aria-label="open cookies"]
 [aria-labelledby="hu-cookies-notice-message"]
 [aria-labelledby="ui-dialog-title-cookiebox"]
@@ -12640,12 +12641,10 @@ div[title*="Bevor Sie"][aria-modal="true"][role="dialog"]
 div[title*="Prima di continuare"][aria-modal="true"][role="dialog"]
 div#cookie-inner-wrapper
 div#cookieMessageOuter
-div#kolac
 div#main-wrapper[class*="bbc-"] > header > div
 div#termsandconds[data-backdrop="static"]
 epaas-consent-drawer-shell
 form > .infobanner
-form > .infobanner > .content > .info
 form[name="FormLeggeCookies"]
 header > form > .cookies
 iframe[src*="cmp.autoweek.nl"]
@@ -12656,7 +12655,6 @@ module-rgpd-component
 ofi-cookie-box-widget
 s4s-privacy-module
 script[src*="wirkaufendeinauto.de"] + div.modal-root > div
-section.ch2
 section[class*="_CookieNotice"]
 section[data-test-id="cookie-notice"]
 section[data-tms-id="TMS_COOKIE_MESSAGE"]
