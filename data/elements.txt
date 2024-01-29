@@ -5652,6 +5652,7 @@ _evidon-barrier-wrapper
 [data-qa="txtGdprCookiePopup"]
 [data-react-class="EUCookieBanner"]
 [data-selector="cookie-policy"]
+[data-slug="SimpleNews"] > [data-nosnippet="data-nosnippet"]
 [data-t="cookiesMessage"]
 [data-target="coockie"]
 [data-test-id="cookie-consent-banner"]
