@@ -5087,6 +5087,7 @@ _evidon-barrier-wrapper
 .sml_cookiepolicy
 .smoothie-consent
 .smrt-ncookies-alert
+.smsCookie
 .smt-cookie-note
 .sncmp-app_gdpr
 .so-cookie-wrapper
