@@ -858,6 +858,7 @@ _evidon-barrier-wrapper
 .coi-consent-banner
 .cokieAlert
 .cokWrap
+.colormag-cookie-policy
 .com-cookie
 .com-cookie-policy
 .combined_consent_js_inited
