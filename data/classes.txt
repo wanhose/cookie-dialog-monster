@@ -3,6 +3,7 @@ blocked
 bodyBlocked
 c24-cc-visible
 cbar
+ccm-blocked
 cmp-open
 consent-modal-open
 consent-modal-overflow
