@@ -1767,6 +1767,7 @@ _evidon-barrier-wrapper
 .cookie-question
 .cookie-region
 .cookie-regulation
+.cookie-remind-warpper
 .cookie-request-ctn
 .cookie-richtlinie
 .cookie-rodo
