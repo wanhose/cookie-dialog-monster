@@ -4131,6 +4131,7 @@ _evidon-barrier-wrapper
 .mdstrCookieLocation
 .mdx-std-cookie-popup
 .med-cookies
+.mensajecokies
 .mentionCookie
 .menu-con-cookies
 .message_cookie
@@ -9288,6 +9289,7 @@ _evidon-barrier-wrapper
 #ctl00_ctlCookieDisclaimer_pnlDisclaimer
 #ctl00_ctrlUserStaticMenu_cookieDialogTopDiv
 #ctl00_divCookieMsg
+#ctl00_divcookies
 #ctl00_DivCookies
 #ctl00_EUCookiesWarning
 #ctl00_Footer_rnCookies_popup
@@ -10938,6 +10940,7 @@ _evidon-barrier-wrapper
 #modal-cookies-policy
 #modal-gdpr
 #modal-host
+#modal-info-adblock
 #modal-ley-cookies
 #modal-rodo-info
 #modal-root .RgpdPopup
@@ -12637,4 +12640,3 @@ tp-yt-iron-overlay-backdrop
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
-#modal-info-adblock
