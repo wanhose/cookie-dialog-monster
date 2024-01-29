@@ -3204,6 +3204,9 @@ _evidon-barrier-wrapper
 .extra-cookies-popup
 .extreme-cookie
 .eyg-cookie-policy-msg
+.ez_banner
+.ez-main-cmp-wrapper
+.ez-twentytwentytwo
 .f_cookie
 .f-data-policy
 .f-eu-cookies
@@ -9873,6 +9876,8 @@ _evidon-barrier-wrapper
 #exposeMask
 #expresso-cookies
 #external-cookie-bar
+#ez-cmpv2-container
+#ez-cookie-dialog
 #ez-cookie-dialog-wrapper
 #ez-cookies-wrap
 #f_cookie
