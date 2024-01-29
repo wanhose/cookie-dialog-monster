@@ -11647,6 +11647,7 @@ _evidon-barrier-wrapper
 #rc-ley-cookies-dialogo
 #rcCookiePopUp
 #rcCookies
+#rdc > body > #modalTpl
 #rdm-cookie-consent
 #react_element__cookiebar
 #react-cookie-approval
