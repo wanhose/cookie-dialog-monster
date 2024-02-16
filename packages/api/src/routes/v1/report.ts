@@ -1,5 +1,4 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
-import { sendMail } from 'services/mailing';
 
 type PostReportBody = {
   html?: string;
@@ -14,30 +13,17 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
     {
       schema: {
         body: {
-          properties: {
-            html: {
-              type: 'string',
-            },
-            subject: {
-              type: 'string',
-            },
-            text: {
-              type: 'string',
-            },
-            to: {
-              type: 'string',
-            },
-          },
-          required: ['subject', 'to'],
+          properties: {},
+          required: [],
           type: 'object',
         },
       },
     },
-    async (request, reply) => {
-      const { html, subject, text, to } = request.body;
-
-      sendMail({ html, text, to, subject });
-      reply.send({ success: true });
+    async (_request, reply) => {
+      reply.status(500).send({
+        success: false,
+        errors: ['This API route is no longer supported in Mozilla Firefox'],
+      });
     }
   );
 
