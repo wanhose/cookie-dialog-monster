@@ -8,14 +8,16 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
 - [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii)
-- [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)
+- ~~[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)~~ ¹
+
+¹ Due to technical issues with the Firefox Team, our extension's support on Mozilla Add-ons has ended with version 5.5.5. However, you can still run a development copy of the last version of the extension. Steps for this are available in our GitHub repository. We appreciate your understanding and patience.
 
 ## Compatibility
 
 - All browsers based on Chromium 88+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
 - Google Chrome 88+
 - Microsoft Edge 88+
-- ~~Mozilla Firefox~~ (development stalled until further notice)
+- Mozilla Firefox 85+
 
 ## Installation (only for developers or Mozilla Firefox users)
 
