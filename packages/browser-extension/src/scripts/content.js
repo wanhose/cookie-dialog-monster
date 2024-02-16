@@ -121,7 +121,7 @@ function isInViewport(element) {
  */
 
 function match(element, skipMatch) {
-  if (!element instanceof HTMLElement || !element.tagName) {
+  if (!(element instanceof HTMLElement) || !element.tagName) {
     return false;
   }
 
