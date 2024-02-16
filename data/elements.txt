@@ -3201,7 +3201,6 @@ _evidon-barrier-wrapper
 .ew-cookie-note
 .EWSCookieConsentOverlay
 .exp-cookies
-.expanded
 .experiencefragment-cookie
 .explicit-cookie-container
 .explicit-cookie-container-wrapper
