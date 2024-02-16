@@ -2,7 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "scripts": {
-    "build": "rimraf build; sh scripts/build.sh; sh scripts/pack.sh",
+    "build": "rimraf build; sh scripts/build.sh",
     "pack": "sh scripts/pack.sh",
     "start": "NODE_PATH=build serve build"
   },
