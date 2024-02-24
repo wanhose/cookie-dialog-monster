@@ -476,6 +476,7 @@ _evidon-barrier-wrapper
 .block-cookies-dialog-block
 .block-cookies-information
 .block-cookies-popup
+.block-cookies-ui-block
 .block-cookiesactive-blockcode
 .block-info-cookie
 .block-lsw-cookie
@@ -6267,6 +6268,7 @@ _evidon-barrier-wrapper
 #block-cookiepolicyblock
 #block-cookies-police
 #block-cookiesnotice
+#block-cookiesui
 #block-csm-user-cookie-consent-message
 #block-custom_cookies-custom_cookies_eu
 #block-db-cookie-compliance-cookie-compliance-block
