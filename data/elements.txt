@@ -3661,6 +3661,7 @@ _evidon-barrier-wrapper
 .hu-wrapper
 .huawei-cookie
 .hv_privacy_prompt
+.hw-cc-main
 .hw-cookie-popup
 .hx_cookie-banner
 .hx_cookie-banner-main
