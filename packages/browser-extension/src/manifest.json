@@ -26,7 +26,7 @@
         "*://*.facebook.com/*",
         "*://*.googleapis.com/embed/*",
         "*://*.messenger.com/*",
-        "*://*.office365.com*",
+        "*://*.office365.com/*",
         "*://*.officeapps.live.com/*",
         "*://*.sharepoint.com/*",
         "*://*.suite.office.com/*",

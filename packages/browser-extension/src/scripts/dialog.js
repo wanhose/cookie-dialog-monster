@@ -2,7 +2,6 @@
  * @description Report reasons
  * @type {string[]}
  */
-
 const reasons = [
   'Cannot click',
   'Page contains visual glitches',
@@ -15,13 +14,11 @@ const reasons = [
 /**
  * @description Report dialog ID
  */
-
 const reportDialogId = 'report-dialog';
 
 /**
  * @description Report dialog outer HTML
  */
-
 const reportDialogHtml = `
   <dialog id="${reportDialogId}" tabindex="0">
     <report-dialog-header>
@@ -124,7 +121,6 @@ const reportDialogHtml = `
  * @description Dialog close button click handler
  * @param {MouseEvent} event
  */
-
 const closeButtonClickHandler = (event) => {
   const dialog = document.getElementById(reportDialogId);
 
@@ -133,9 +129,8 @@ const closeButtonClickHandler = (event) => {
 };
 
 /**
- * @description Hides report dialog
+ * @description Hide report dialog
  */
-
 const hideReportDialog = () => {
   document.getElementById(reportDialogId)?.remove();
 };
@@ -144,7 +139,6 @@ const hideReportDialog = () => {
  * @description Dialog radio input click handler
  * @param {MouseEvent} event
  */
-
 const radioClickHandler = (event) => {
   const dialog = document.getElementById(reportDialogId);
   const radios = dialog.getElementsByTagName('report-dialog-radio');
@@ -161,9 +155,8 @@ const radioClickHandler = (event) => {
 };
 
 /**
- * @description Shows report dialog
+ * @description Show report dialog
  */
-
 const showReportDialog = () => {
   const parser = new DOMParser();
   const result = parser.parseFromString(reportDialogHtml, 'text/html');
@@ -194,7 +187,6 @@ const showReportDialog = () => {
  * @description Dialog submit button click handler
  * @param {MouseEvent} event
  */
-
 const submitButtonClickHandler = (event) => {
   const dialog = document.getElementById(reportDialogId);
   const formView = dialog?.getElementsByTagName('report-dialog-form-view')[0];
@@ -211,9 +203,8 @@ const submitButtonClickHandler = (event) => {
 };
 
 /**
- * @description Listens to messages
+ * @description Listen to messages
  */
-
 chrome.runtime.onMessage.addListener((message) => {
   const isPage = window === window.top;
 

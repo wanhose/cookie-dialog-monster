@@ -2,20 +2,17 @@
  * @description Chrome Web Store link
  * @type {string}
  */
-
 const chromeUrl = 'https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg';
 
 /**
  * @description Shortcut to send messages to background script
  */
-
 const dispatch = chrome.runtime.sendMessage;
 
 /**
  * @description Edge Add-ons link
  * @type {string}
  */
-
 const edgeUrl =
   'https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii';
 
@@ -23,42 +20,36 @@ const edgeUrl =
  * @description Firefox Add-ons link
  * @type {string}
  */
-
 const firefoxUrl = 'https://addons.mozilla.org/firefox/addon/cookie-dialog-monster';
 
 /**
  * @description Current hostname
  * @type {string}
  */
-
 let hostname = '?';
 
 /**
  * @description Is current browser an instance of Chromium?
  * @type {boolean}
  */
-
 const isChromium = navigator.userAgent.indexOf('Chrome') !== -1;
 
 /**
  * @description Is current browser an instance of Edge?
  * @type {boolean}
  */
-
 const isEdge = navigator.userAgent.indexOf('Edg') !== -1;
 
 /**
  * @description Is current browser an instance of Firefox?
  * @type {boolean}
  */
-
 const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
 /**
  * @description Extension state
  * @type {{ enabled: boolean }}
  */
-
 let state = { enabled: true };
 
 /**
@@ -66,7 +57,6 @@ let state = { enabled: true };
  * @description Setup stars handlers and result message links
  * @returns {Promise<void>}
  */
-
 async function handleContentLoaded() {
   const tab = await dispatch({ type: 'GET_TAB' });
 
@@ -103,11 +93,10 @@ async function handleContentLoaded() {
 
 /**
  * @async
- * @description Opens a new tab
+ * @description Open a new tab
  * @param {MouseEvent} event
  * @returns {Promise<void>}
  */
-
 async function handleLinkRedirect(event) {
   const { href } = event.currentTarget.dataset;
 
@@ -118,11 +107,10 @@ async function handleLinkRedirect(event) {
 
 /**
  * @async
- * @description Disables or enables extension on current page
+ * @description Disable or enable extension on current page
  * @param {MouseEvent} event
  * @returns {Promise<void>}
  */
-
 async function handlePowerToggle(event) {
   state = { enabled: !state.enabled };
   dispatch({ hostname, state, type: 'SET_HOSTNAME_STATE' });
@@ -133,19 +121,17 @@ async function handlePowerToggle(event) {
 }
 
 /**
- * @description Opens options page
+ * @description Open options page
  * @returns {void}
  */
-
 function handleSettingsClick() {
   chrome.runtime.openOptionsPage();
 }
 
 /**
- * @description Applies translations to tags with i18n data attribute
+ * @description Apply translations to tags with i18n data attribute
  * @returns {void}
  */
-
 function translate() {
   const nodes = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
 
@@ -167,5 +153,4 @@ function translate() {
  * @description Listen to document ready
  * @listens document#DOMContentLoaded
  */
-
 document.addEventListener('DOMContentLoaded', handleContentLoaded);

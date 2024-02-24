@@ -2,49 +2,42 @@
  * @description Data properties
  * @type {{ classes: string[], commonWords?: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
  */
-
 let data = null;
 
 /**
  * @description Shortcut to send messages to background script
  */
-
 const dispatch = chrome.runtime.sendMessage;
 
 /**
  * @description Current hostname
  * @type {string}
  */
-
 const hostname = getHostname();
 
 /**
  * @description Options provided to observer
  * @type {MutationObserverInit}
  */
-
 const options = { childList: true, subtree: true };
 
 /**
  * @description Is consent preview page?
  */
-
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
  * @description Extension state
  * @type {{ enabled: boolean }}
  */
-
 let state = { enabled: true };
 
 /**
- * @description Cleans DOM
+ * @description Clean DOM
  * @param {Element[]} elements
  * @param {boolean?} skipMatch
  * @returns {void}
  */
-
 function clean(elements, skipMatch) {
   for (const element of elements) {
     if (match(element, skipMatch)) {
@@ -58,11 +51,10 @@ function clean(elements, skipMatch) {
 }
 
 /**
- * @description Forces a DOM clean in the specific element
+ * @description Force a DOM clean in the specific element
  * @param {HTMLElement} element
  * @returns {void}
  */
-
 function forceClean(element) {
   const elements = [...element.querySelectorAll(data.elements)];
 
@@ -71,20 +63,18 @@ function forceClean(element) {
 }
 
 /**
- * @description Forces element to have these styles
+ * @description Force element to have these styles
  * @param {HTMLElement} element
  * @returns {void}
  */
-
 function forceElementStyles(element) {
   element.style.setProperty('display', 'none', 'important');
 }
 
 /**
- * @description Calculates current hostname
+ * @description Calculate current hostname
  * @returns {string}
  */
-
 function getHostname() {
   let hostname = document.location.hostname;
   const referrer = document.referrer;
@@ -97,11 +87,10 @@ function getHostname() {
 }
 
 /**
- * @description Checks if an element is visible in the viewport
+ * @description Check if an element is visible in the viewport
  * @param {HTMLElement} element
  * @returns {boolean}
  */
-
 function isInViewport(element) {
   const height = window.innerHeight || document.documentElement.clientHeight;
   const position = element.getBoundingClientRect();
@@ -114,12 +103,11 @@ function isInViewport(element) {
 }
 
 /**
- * @description Checks if element element is removable
+ * @description Check if element element is removable
  * @param {Element} element
  * @param {boolean?} skipMatch
  * @returns {boolean}
  */
-
 function match(element, skipMatch) {
   if (!(element instanceof HTMLElement) || !element.tagName) {
     return false;
@@ -152,10 +140,9 @@ function match(element, skipMatch) {
 }
 
 /**
- * @description Fixes data, consent page and scroll issues
+ * @description Fix data, consent page and scroll issues
  * @returns {void}
  */
-
 function fix() {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
   const fixes = data?.fixes ?? [];
@@ -200,10 +187,9 @@ function fix() {
 }
 
 /**
- * @description Calculates reading time for the current page to avoid lags in large pages
+ * @description Calculate reading time for the current page to avoid lags in large pages
  * @returns {number}
  */
-
 function readingTime() {
   const text = document.body.innerText;
   const wpm = 225;
@@ -215,10 +201,9 @@ function readingTime() {
 
 /**
  * @async
- * @description Sets up everything
+ * @description Set up everything
  * @param {boolean} skipReadyStateHack
  */
-
 async function runSetup(skipReadyStateHack) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
@@ -240,7 +225,6 @@ async function runSetup(skipReadyStateHack) {
  * @description Mutation Observer instance
  * @type {MutationObserver}
  */
-
 const observer = new MutationObserver((mutations) => {
   const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
 
@@ -250,24 +234,22 @@ const observer = new MutationObserver((mutations) => {
 
 /**
  * @async
- * @description Runs setup if the page wasn't focused yet
+ * @description Run setup if the page wasn't focused yet
  * @listens window#focus
  * @returns {void}
  */
-
 window.addEventListener('focus', async () => {
-  if (!data) {
+  if (document.body && !data) {
     await runSetup(true);
     clean([...document.body.children]);
   }
 });
 
 /**
- * @description Fixes still existing elements when page fully load
+ * @description Fix still existing elements when page fully load
  * @listens window#load
  * @returns {void}
  */
-
 window.addEventListener('load', () => {
   if (document.hasFocus()) {
     window.dispatchEvent(new Event('run'));
@@ -275,11 +257,10 @@ window.addEventListener('load', () => {
 });
 
 /**
- * @description Fixes bfcache issues
+ * @description Fix bfcache issues
  * @listens window#pageshow
  * @returns {void}
  */
-
 window.addEventListener('pageshow', (event) => {
   if (document.hasFocus() && event.persisted) {
     window.dispatchEvent(new Event('run'));
@@ -287,11 +268,10 @@ window.addEventListener('pageshow', (event) => {
 });
 
 /**
- * @description Forces a clean when this event is fired
+ * @description Force clean when this event is fired
  * @listens window#run
  * @returns {void}
  */
-
 window.addEventListener('run', () => {
   if (data?.elements.length && document.body && state.enabled && !preview) {
     if (readingTime() < 4) {
@@ -302,10 +282,6 @@ window.addEventListener('run', () => {
     }
   }
 });
-
-/**
- * @description As this extension do really expensive work, it only runs if the user is on the page
- */
 
 if (document.hasFocus()) {
   runSetup();

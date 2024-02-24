@@ -1,27 +1,23 @@
 /**
  * @description Shortcut to send messages to background script
  */
-
 const dispatch = chrome.runtime.sendMessage;
 
 /**
  * @description Domain RegExp
  */
-
 const domainRx = /^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/g;
 
 /**
  * @description Exclusion list, URLs where the user prefers to disable the extension
  * @type {string[]}
  */
-
 let exclusionList = [];
 
 /**
- * @description Renders exclusion items into exclusion list
+ * @description Render exclusion items into exclusion list
  * @returns {void}
  */
-
 function createList() {
   const emptyItemElement = document.getElementById('exclusion-list-item-empty');
   const exclusionListElement = document.getElementById('exclusion-list');
@@ -57,7 +53,6 @@ function createList() {
  * @description Add a new item to the exclusion list
  * @returns {Promise<void>}
  */
-
 async function handleAddClick() {
   const exclusionValue = window.prompt(chrome.i18n.getMessage('options_addPrompt'));
 
@@ -77,7 +72,6 @@ async function handleAddClick() {
  * @description Clear all items from the exclusion list
  * @returns {Promise<void>}
  */
-
 async function handleClearClick() {
   const filterInputElement = document.getElementById('filter-input');
 
@@ -95,7 +89,6 @@ async function handleClearClick() {
  * @async
  * @description Setup handlers and items
  */
-
 async function handleContentLoaded() {
   exclusionList = await dispatch({ type: 'GET_EXCLUSION_LIST' });
   createList();
@@ -123,11 +116,10 @@ async function handleContentLoaded() {
 
 /**
  * @async
- * @description Deletes the clicked element from the exclusion list
+ * @description Delete the clicked element from the exclusion list
  * @param {MouseEvent} event
  * @returns {Promise<void>}
  */
-
 async function handleDeleteClick(event) {
   const filterInputElement = document.getElementById('filter-input');
   const { value } = event.currentTarget.parentElement.dataset;
@@ -141,10 +133,9 @@ async function handleDeleteClick(event) {
 }
 
 /**
- * @description Exports a file with the current exclusion list
+ * @description Export a file with the current exclusion list
  * @returns {void}
  */
-
 function handleExportClick() {
   const anchor = document.createElement('a');
   const now = new Date();
@@ -164,11 +155,10 @@ function handleExportClick() {
 }
 
 /**
- * @description Processes a file and sends the updates
+ * @description Process a file and send the updates
  * @param {InputEvent} event
  * @returns {void}
  */
-
 function handleFileChange(event) {
   const file = event.currentTarget.files[0];
   const filterInputElement = document.getElementById('filter-input');
@@ -194,11 +184,10 @@ function handleFileChange(event) {
 }
 
 /**
- * @description Applies filter to the exclusion list when the user presses ENTER key
+ * @description Apply filter to the exclusion list when the user presses ENTER key
  * @param {KeyboardEvent} event
  * @returns {void}
  */
-
 function handleFilterKeyDown(event) {
   if (event.key === 'Enter') {
     const filterValue = event.currentTarget.value.trim();
@@ -207,20 +196,18 @@ function handleFilterKeyDown(event) {
 }
 
 /**
- * @description Shallow clicks an hidden input to open the file explorer
+ * @description Shallow click an hidden input to open the file explorer
  * @returns {void}
  */
-
 function handleImportClick() {
   const fileInputElement = document.getElementById('file-input');
   fileInputElement.click();
 }
 
 /**
- * @description Applies translations to tags with i18n data attribute
+ * @description Apply translations to tags with i18n data attribute
  * @returns {void}
  */
-
 function translate() {
   const nodes = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
 
@@ -239,11 +226,10 @@ function translate() {
 }
 
 /**
- * @description Updates exclusion items in DOM
+ * @description Update exclusion items in DOM
  * @param {string | undefined} filterValue
  * @returns {void}
  */
-
 function updateList(filterValue) {
   const emptyItemElement = document.getElementById('exclusion-list-item-empty');
   const exclusionListElement = document.getElementById('exclusion-list');
@@ -276,5 +262,4 @@ function updateList(filterValue) {
  * @description Listen to document ready
  * @listens document#DOMContentLoaded
  */
-
 document.addEventListener('DOMContentLoaded', handleContentLoaded);
