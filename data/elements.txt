@@ -2708,6 +2708,7 @@ _evidon-barrier-wrapper
 .cookiesPiskot
 .cookiesplash
 .cookiesplus-modal
+.cookiesplus-modal
 .cookiespolicy
 .cookiesPolicy
 .CookiesPolicy-banner
@@ -9037,6 +9038,7 @@ _evidon-barrier-wrapper
 #cookiesPanelWrapper
 #cookiesPermission
 #cookiesplease
+#cookiesplus-bas
 #cookiesplus-basic
 #cookiesplus-modal-container
 #cookiesplus-overlay
