@@ -193,7 +193,7 @@ function fix() {
     }
   }
 
-  if (skips.every((x) => !hostname.match(x.replace(/\*/g, '[^ ]*')))) {
+  if (skips.every((x) => !hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
     for (const element of [document.body, document.documentElement]) {
       element?.classList.remove(...(data?.classes ?? []));
       element?.style.setProperty('position', 'initial', 'important');
