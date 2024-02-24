@@ -158,15 +158,12 @@ function match(element, skipMatch) {
 
 function fix() {
   const backdrop = document.getElementsByClassName('modal-backdrop')[0];
-  const facebook = document.getElementsByClassName('_31e')[0];
   const fixes = data?.fixes ?? [];
   const skips = (data?.skips ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   if (backdrop?.children.length === 0) {
     backdrop.remove();
   }
-
-  facebook?.classList.remove('_31e');
 
   for (const fix of fixes) {
     const [match, selector, action, property] = fix.split('##');
