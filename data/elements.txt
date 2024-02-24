@@ -6014,6 +6014,7 @@ _evidon-barrier-wrapper
 #app-cookie-policy
 #app-page-site-cookies
 #app.app > .ma-LayoutBasic > .ma-SharedTcf > .sui-TcfFirstLayer
+#appconsent
 #AppCookieBar
 #appify-cookie-bar
 #applet_p_50000174

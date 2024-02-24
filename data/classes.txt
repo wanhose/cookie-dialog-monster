@@ -1,3 +1,4 @@
+appconsent_noscroll
 b-modal-banner--disabled
 blocked
 bodyBlocked
