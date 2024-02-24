@@ -5169,6 +5169,8 @@ _evidon-barrier-wrapper
 .storefront-cookie-policy
 .storm-cookie
 .stormdigital-cookieWall-overlay
+.stpd_cmp
+.stpd_cmp_wrapper
 .stripe_cookies
 .striscia-cookies
 .stt-cookie
