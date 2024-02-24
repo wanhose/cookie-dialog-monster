@@ -3142,6 +3142,7 @@ _evidon-barrier-wrapper
 .eu-cookies-wrapper
 .eu-law-container
 .eu-policy
+.eu-popup
 .eu-pruda-cookies
 .eu-suck-my-cookie
 .EUc
