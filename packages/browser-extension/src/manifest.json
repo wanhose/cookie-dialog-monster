@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "6.4.6",
+  "version": "6.4.7",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -23,7 +23,9 @@
       "all_frames": true,
       "exclude_matches": [
         "*://*.codesandbox.io/*",
+        "*://*.facebook.com/*",
         "*://*.googleapis.com/embed/*",
+        "*://*.messenger.com/*",
         "*://*.officeapps.live.com/*",
         "*://*.sharepoint.com/*",
         "*://*.suite.office.com/*",

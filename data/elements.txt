@@ -9929,8 +9929,6 @@ _evidon-barrier-wrapper
 #f_cookie
 #f-cookie-policy
 #f6-cp-cookiebanner
-#facebook > body > div.__fb-light-mode
-#facebook-tracking-notice
 #facerig-cookies
 #faldon-cookies
 #fancybox-overlay
