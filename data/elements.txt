@@ -5618,6 +5618,7 @@ _evidon-barrier-wrapper
 [aria-labelledby="ui-dialog-title-cookiebox"]
 [bundlename="reddit_cookie_banner"]
 [c_data="c_cookie_main"]
+[class*="_gdpr-cookie-popup_"]
 [class*="AnalyticsFooter-module--container"]
 [class*="cookie-consent-CookieConsent-bottomSheet"]
 [class*="cookie-notice__"]
