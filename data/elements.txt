@@ -4226,6 +4226,7 @@ _evidon-barrier-wrapper
 .modal__content--cookies
 .modal__cookie--message
 .modal--agreements__curtain
+.modal--cookie-banner
 .Modal--cookie-message
 .modal--cookies-alert
 .modal-accept-cookies
@@ -7852,6 +7853,7 @@ _evidon-barrier-wrapper
 #cookiebnr
 #cookieBnr
 #cookiebot
+#Cookiebot
 #cookiebottomgradient
 #cookiebox
 #cookieBox
