@@ -6313,6 +6313,8 @@ _evidon-barrier-wrapper
 #boite_dialog_cookie
 #bonaCookies
 #bootcooker-banner
+#BorlabsCookieBox
+#BorlabsCookieBoxWrap
 #BortosCookie
 #bottom_cookie
 #bottom_info_cookies
