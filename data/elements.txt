@@ -5640,6 +5640,7 @@ _evidon-barrier-wrapper
 [class="block z-50 w-full max-w-full md:max-w-small fixed bottom-0 left-0 md:bottom-[20px] md:left-[20px]"]
 [cnn-cookie-policy]
 [cookie-unique-name]
+[css-main-site] #policy-div
 [data-action="Sites-CashConvertersSpain-Site"] ~ .modal-backdrop.fade.show
 [data-analytics-category="Cookies Consent"]
 [data-assembly-source="cookie/banner"]
