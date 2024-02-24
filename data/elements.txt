@@ -982,6 +982,7 @@ _evidon-barrier-wrapper
 .content--cookie-js
 .content-alert-browser
 .content-alert-cookie
+.content-bottom-drawer[style="background-color: rgba(14, 0, 23, 0.9);"]
 .content-con-cookie
 .content-cookie
 .content-legale-cookie
