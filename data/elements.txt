@@ -3261,6 +3261,7 @@ _evidon-barrier-wrapper
 .flazio-cookie
 .flc-cookie-notice
 .FlightsSearch > #react-root-dialog ~ div
+.float-cookie-wrapper
 .floating-bar[data-cookie-name="cookie_notice"]
 .floating-cookie-info
 .floating-cookie-policy
