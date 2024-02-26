@@ -6433,7 +6433,6 @@ _evidon-barrier-wrapper
 #cbcookies-top
 #cboxOverlay
 #cbt-consent-banner-wrapper
-#cc
 #cc_bandeau
 #cc_banner
 #cc_banner-wrapper
