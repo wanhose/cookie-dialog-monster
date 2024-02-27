@@ -1,3 +1,4 @@
+action.com###CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll##click
 amazon.de###sp-cc-rejectall-link##click
 automobielmanagement.nl##body > *##resetAll##filter
 bilbaomuseoa.eus##.alert_message .btn-confirm##click
