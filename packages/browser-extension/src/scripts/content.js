@@ -209,8 +209,10 @@ function fix() {
   const fixes = data?.fixes ?? [];
   const skips = (data?.skips ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
-  if (backdrop?.children.length === 0) {
+  if (backdrop?.children.length === 0 && backdrop.style.display !== 'none') {
     backdrop.style.setProperty('display', 'none');
+    count += 1;
+    dispatch({ type: 'SET_BADGE', value: `${count}` });
   }
 
   for (const fix of fixes) {
