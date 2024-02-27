@@ -107,6 +107,7 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
     case 'DISABLE_ICON':
       if (isPage && tabId) {
         chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId }, suppressLastError);
+        chrome.action.setBadgeText({ tabId, text: '' });
       }
       break;
     case 'ENABLE_ICON':
@@ -156,6 +157,12 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
     case 'REPORT':
       if (tabId) {
         report(message, sender.tab);
+      }
+      break;
+    case 'SET_BADGE':
+      if (tabId) {
+        chrome.action.setBadgeBackgroundColor({ color: '#6b7280' });
+        chrome.action.setBadgeText({ tabId, text: message.value });
       }
       break;
     case 'SET_HOSTNAME_STATE':
