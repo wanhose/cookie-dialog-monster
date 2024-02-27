@@ -27,6 +27,12 @@ const options = { childList: true, subtree: true };
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
+ * @description Elements that were already seen
+ * @type {HTMLElement[]}
+ */
+const seen = [];
+
+/**
  * @description Extension state
  * @type {{ enabled: boolean }}
  */
@@ -117,16 +123,29 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (!data?.tags?.length || data.tags.includes(element.tagName?.toUpperCase?.())) {
+  const tagName = element.tagName?.toUpperCase?.();
+
+  if (!data?.tags?.length || data.tags.includes(tagName)) {
     return false;
   }
 
+  if (seen.includes(element)) {
+    return false;
+  }
+
+  seen.push(element);
+
   if (element.hasAttributes()) {
+    // 2023-06-10: twitch.tv temporary fix
+    if (element.classList.contains('chat-line__message')) {
+      return false;
+    }
+
+    const isDialog = tagName === 'DIALOG' && element.getAttribute('open') === 'true';
+    const isFakeDialog = tagName === 'DIV' && element.className.includes('cmp');
+
     return (
-      // 2023-06-10: twitch.tv temporary fix
-      !element.classList.contains('chat-line__message') &&
-      // ...
-      isInViewport(element) &&
+      (isDialog || isFakeDialog || isInViewport(element)) &&
       (skipMatch || element.matches(data?.elements ?? []))
     );
   } else {
@@ -226,7 +245,7 @@ async function runSetup(skipReadyStateHack) {
  * @type {MutationObserver}
  */
 const observer = new MutationObserver((mutations) => {
-  const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat();
+  const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat(1);
 
   fix();
   if (data?.elements.length && !preview) clean(elements);
