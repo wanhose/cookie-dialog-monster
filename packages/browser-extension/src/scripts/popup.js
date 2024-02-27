@@ -5,11 +5,6 @@
 const chromeUrl = 'https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg';
 
 /**
- * @description Shortcut to send messages to background script
- */
-const dispatch = chrome.runtime.sendMessage;
-
-/**
  * @description Edge Add-ons link
  * @type {string}
  */
@@ -48,9 +43,9 @@ const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
 /**
  * @description Extension state
- * @type {{ enabled: boolean }}
+ * @type {{ enabled: boolean, tabId: number | undefined }}
  */
-let state = { enabled: true };
+let state = { enabled: true, tabId: undefined };
 
 /**
  * @async
@@ -58,12 +53,14 @@ let state = { enabled: true };
  * @returns {Promise<void>}
  */
 async function handleContentLoaded() {
-  const tab = await dispatch({ type: 'GET_TAB' });
+  const tab = await chrome.runtime.sendMessage({ type: 'GET_TAB' });
 
   hostname = tab?.url
     ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
     : undefined;
-  state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
+
+  const next = await chrome.runtime.sendMessage({ hostname, type: 'GET_HOSTNAME_STATE' });
+  state = { ...(next ?? state), tabId: tab?.id };
 
   const hostTextElement = document.getElementById('host');
   hostTextElement.innerText = hostname ?? 'unknown';
@@ -112,11 +109,13 @@ async function handleLinkRedirect(event) {
  * @returns {Promise<void>}
  */
 async function handlePowerToggle(event) {
-  state = { enabled: !state.enabled };
-  dispatch({ hostname, state, type: 'SET_HOSTNAME_STATE' });
-  if (state.enabled) event.currentTarget.setAttribute('data-value', 'on');
-  else event.currentTarget.setAttribute('data-value', 'off');
-  await chrome.tabs.reload({ bypassCache: true });
+  const element = event.currentTarget;
+  const next = { enabled: !state.enabled };
+
+  chrome.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
+  chrome.tabs.sendMessage(state.tabId, { type: next.enabled ? 'RUN' : 'RESTORE' });
+  element.setAttribute('disabled', 'true');
+  element.setAttribute('data-value', next.enabled ? 'on' : 'off');
   window.close();
 }
 
