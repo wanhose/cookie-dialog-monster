@@ -1,4 +1,15 @@
 /**
+ * @description Attribute name
+ */
+const dataAttributeName = 'data-cookie-dialog-monster';
+
+/**
+ * @description Matched elements count
+ * @type {number}
+ */
+let count = 0;
+
+/**
  * @description Data properties
  * @type {{ classes: string[], commonWords?: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
  */
@@ -10,10 +21,21 @@ let data = null;
 const dispatch = chrome.runtime.sendMessage;
 
 /**
+ * @description Event name
+ */
+const setupEventName = 'cookie-dialog-monster';
+
+/**
  * @description Current hostname
  * @type {string}
  */
 const hostname = getHostname();
+
+/**
+ * @description Elements that were already matched and are removable
+ * @type {HTMLElement[]}
+ */
+const removables = [];
 
 /**
  * @description Options provided to observer
@@ -47,12 +69,22 @@ let state = { enabled: true };
 function clean(elements, skipMatch) {
   for (const element of elements) {
     if (match(element, skipMatch)) {
-      const observer = new MutationObserver(() => forceElementStyles(element));
+      const observer = new MutationObserver(forceElementStyles);
+      const options = { attributes: true, attributeFilter: [dataAttributeName, 'class', 'style'] };
 
-      element.setAttribute('data-cookie-dialog-monster', 'true');
+      element.setAttribute(dataAttributeName, 'true');
       element.style.setProperty('display', 'none', 'important');
-      observer.observe(element, { attributes: true, attributeFilter: ['class', 'style'] });
+      observer.observe(element, options);
+
+      count += 1;
+      dispatch({ type: 'SET_BADGE', value: `${count}` });
+
+      if (!removables.includes(element)) {
+        removables.push(element);
+      }
     }
+
+    seen.push(element);
   }
 }
 
@@ -70,11 +102,23 @@ function forceClean(element) {
 
 /**
  * @description Force element to have these styles
- * @param {HTMLElement} element
- * @returns {void}
+ * @type {MutationCallback}
  */
-function forceElementStyles(element) {
-  element.style.setProperty('display', 'none', 'important');
+function forceElementStyles(mutations, observer) {
+  for (const mutation of mutations) {
+    if (mutation.type === 'attributes' && dataAttributeName === mutation.attributeName) {
+      const element = mutation.target;
+      const value = element.getAttribute(dataAttributeName);
+
+      if (value === null) {
+        observer.disconnect();
+        element.removeAttribute(dataAttributeName);
+        element.style.removeProperty('display');
+      } else {
+        element.style.setProperty('display', 'none', 'important');
+      }
+    }
+  }
 }
 
 /**
@@ -119,7 +163,11 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (element.getAttribute('data-cookie-dialog-monster')) {
+  if (element.getAttribute(dataAttributeName)) {
+    return false;
+  }
+
+  if (seen.includes(element)) {
     return false;
   }
 
@@ -128,12 +176,6 @@ function match(element, skipMatch) {
   if (!data?.tags?.length || data.tags.includes(tagName)) {
     return false;
   }
-
-  if (seen.includes(element)) {
-    return false;
-  }
-
-  seen.push(element);
 
   if (element.hasAttributes()) {
     // 2023-06-10: twitch.tv temporary fix
@@ -168,7 +210,7 @@ function fix() {
   const skips = (data?.skips ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   if (backdrop?.children.length === 0) {
-    backdrop.remove();
+    backdrop.style.setProperty('display', 'none');
   }
 
   for (const fix of fixes) {
@@ -176,22 +218,26 @@ function fix() {
 
     if (hostname.includes(match)) {
       switch (action) {
-        case 'click':
-          document.querySelector(selector)?.click();
+        case 'click': {
+          const element = document.querySelector(selector);
+          element?.click();
           break;
-        case 'remove':
-          document.querySelector(selector)?.style?.removeProperty(property);
+        }
+        case 'remove': {
+          const element = document.querySelector(selector);
+          element?.style?.removeProperty(property);
           break;
-        case 'reset':
-          document.querySelector(selector)?.style?.setProperty(property, 'initial', 'important');
+        }
+        case 'reset': {
+          const element = document.querySelector(selector);
+          element?.style?.setProperty(property, 'initial', 'important');
           break;
-        case 'resetAll':
-          document.querySelectorAll(selector).forEach((element) => {
-            element?.style?.setProperty(property, 'initial', 'important');
-          });
+        }
+        case 'resetAll': {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach((e) => e?.style?.setProperty(property, 'initial', 'important'));
           break;
-        default:
-          break;
+        }
       }
     }
   }
@@ -219,11 +265,37 @@ function readingTime() {
 }
 
 /**
+ * @description Restore DOM to its previous state
+ * @returns {void}
+ */
+function restoreDOM() {
+  const backdrop = document.getElementsByClassName('modal-backdrop')[0];
+
+  if (backdrop?.children.length === 0) {
+    backdrop.style.removeProperty('display');
+  }
+
+  const elements = [...document.querySelectorAll(`[${dataAttributeName}]`)];
+
+  for (const element of elements) {
+    element.removeAttribute(dataAttributeName);
+  }
+
+  for (const element of [document.body, document.documentElement]) {
+    element?.style.removeProperty('position');
+    element?.style.removeProperty('overflow-y');
+  }
+
+  count = 0;
+  seen.splice(0, seen.length);
+}
+
+/**
  * @async
  * @description Set up everything
  * @param {boolean} skipReadyStateHack
  */
-async function runSetup(skipReadyStateHack) {
+async function setup(skipReadyStateHack) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -232,11 +304,14 @@ async function runSetup(skipReadyStateHack) {
 
     // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
     if (document.readyState === 'complete' && !skipReadyStateHack) {
-      window.dispatchEvent(new Event('run'));
+      window.dispatchEvent(new Event(setupEventName));
     }
 
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
+  } else {
+    dispatch({ type: 'DISABLE_ICON' });
+    observer.disconnect();
   }
 }
 
@@ -252,14 +327,33 @@ const observer = new MutationObserver((mutations) => {
 });
 
 /**
+ * @description Listen to messages from any other scripts
+ * @listens chrome.tabs#onMessage
+ */
+chrome.runtime.onMessage.addListener((message) => {
+  switch (message.type) {
+    case 'RESTORE': {
+      restoreDOM();
+      break;
+    }
+    case 'RUN': {
+      if (removables.length) clean(removables, true);
+      break;
+    }
+  }
+
+  setup();
+});
+
+/**
  * @async
- * @description Run setup if the page wasn't focused yet
- * @listens window#focus
+ * @description Run setup if the page wasn't visible yet
+ * @listens window#visibilitychange
  * @returns {void}
  */
-window.addEventListener('focus', async () => {
-  if (document.body && !data) {
-    await runSetup(true);
+window.addEventListener('visibilitychange', async () => {
+  if (document.body?.children.length && !data) {
+    await setup(true);
     clean([...document.body.children]);
   }
 });
@@ -270,8 +364,8 @@ window.addEventListener('focus', async () => {
  * @returns {void}
  */
 window.addEventListener('load', () => {
-  if (document.hasFocus()) {
-    window.dispatchEvent(new Event('run'));
+  if (document.visibilityState === 'visible') {
+    window.dispatchEvent(new Event(setupEventName));
   }
 });
 
@@ -281,8 +375,8 @@ window.addEventListener('load', () => {
  * @returns {void}
  */
 window.addEventListener('pageshow', (event) => {
-  if (document.hasFocus() && event.persisted) {
-    window.dispatchEvent(new Event('run'));
+  if (document.visibilityState === 'visible' && event.persisted) {
+    window.dispatchEvent(new Event(setupEventName));
   }
 });
 
@@ -291,8 +385,8 @@ window.addEventListener('pageshow', (event) => {
  * @listens window#run
  * @returns {void}
  */
-window.addEventListener('run', () => {
-  if (data?.elements.length && document.body && state.enabled && !preview) {
+window.addEventListener(setupEventName, () => {
+  if (data?.elements.length && document.body?.children.length && state.enabled && !preview) {
     if (readingTime() < 4) {
       forceClean(document.body);
     } else {
@@ -302,6 +396,6 @@ window.addEventListener('run', () => {
   }
 });
 
-if (document.hasFocus()) {
-  runSetup();
+if (document.visibilityState === 'visible') {
+  setup();
 }
