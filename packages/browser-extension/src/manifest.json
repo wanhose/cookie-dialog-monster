@@ -22,6 +22,7 @@
     {
       "all_frames": true,
       "exclude_matches": [
+        "*://*.bauhaus.cz/*",
         "*://*.codesandbox.io/*",
         "*://*.facebook.com/*",
         "*://*.googleapis.com/embed/*",
