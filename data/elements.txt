@@ -6755,6 +6755,7 @@ _evidon-barrier-wrapper
 #consentform_wrapper
 #ConsentLayerWrapper
 #consentlyr
+#consentManagerContent
 #consentManagerOverlay
 #consentModal
 #consentPopup
