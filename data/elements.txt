@@ -5730,6 +5730,7 @@ _evidon-barrier-wrapper
 #__cookies_
 #__cookies__
 #__cqButton
+#__docusaurus_skipToContent_fallback + footer + [class*="banner_"]
 #__fr_cookie_notifier
 #__ic-notice
 #__layout div[class*="cookie-popup"]
