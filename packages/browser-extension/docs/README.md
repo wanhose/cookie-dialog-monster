@@ -21,14 +21,21 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 
 ## Installation (only for developers or Mozilla Firefox users)
 
-1. Clone this repository and then run `yarn install`
-2. Build this repository running the command `yarn workspace browser-extension run build`
-3. Go to [yourbrowser://extensions](yourbrowser://extensions) (different URL based on your browser)
-4. Enable **Developer mode**
-5. Then, click the **Load unpacked** button and select the generated `build` folder
-6. That's all, you have a development build of this extension
+1. Start by cloning the repository to your local machine using the command `git clone <repository-url>` or downloading it from the assets section of a release.
+2. Navigate to the cloned repository's directory with `cd <repository-name>`.
+3. Open your browser's extensions page:
+   - For Chrome, navigate to [chrome://extensions](chrome://extensions)
+   - For Firefox, navigate to [about:addons](about:addons)
+   - For Edge, navigate to [edge://extensions](edge://extensions)
+     (Replace with the correct URL based on your browser)
+4. Enable **Developer mode** (usually a toggle switch in the top right corner of the extensions page).
+5. Click on the **Load unpacked** button.
+6. A file dialog will open. Navigate to and select the `packages/browser-extension/src` folder from the cloned repository.
+7. Congratulations! You've successfully loaded the development build of this extension.
 
-Please note, each time you want to see changes made in the code you will need to rebuild and refresh the extension
+To ensure you're using the latest version of the extension, it's important to regularly pull the latest changes from the repository. You can do this by navigating to the repository's directory in your terminal and running the command `git pull`. This will fetch and download the latest changes from the remote repository and merge them into your local repository.
+
+In some cases, after pulling the latest changes and rebuilding the extension, your browser may not immediately reflect the updates. This is because browsers typically cache extensions for performance reasons. To manually update the extension, navigate to your browser's extensions page. Look for a button or option to "Update" or "Reload" the extension. This forces the browser to reload the extension, ensuring it's running the latest version. Remember, this process may vary slightly depending on the browser you're using. Always refer to your browser's specific instructions for managing extensions.
 
 ## Contributing
 
