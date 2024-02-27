@@ -5737,6 +5737,7 @@ _evidon-barrier-wrapper
 #__loadCookie
 #__ndcc_cookieImpliedConsent
 #__ntk_banner_cookie
+#__nuxt > div > div.w-full.bg-white.z-50.p-4.px-8.flex.flex-col.fixed.left-0.bottom-0.overflow-scroll[style="box-shadow: rgba(0, 0, 0, 0.2) 0px -5px 5px; z-index: 100;"]
 #__shopwired_consent_cookie_container
 #__tealiumGDPRcpPrefs
 #__tealiumGDPRecModal
