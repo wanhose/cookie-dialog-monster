@@ -5698,6 +5698,7 @@ _evidon-barrier-wrapper
 [data-veci="cookies-policy"]
 [element="privacy-modal"]
 [id="cm:cookieWrapper"]
+[mat-host="cadenaser.com"] > div[data-nosnippet="data-nosnippet"]
 [modalid="AvisoCookies"]
 [name="cookie-info"]
 [namecookie="correosCookies"]
