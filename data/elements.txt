@@ -3240,6 +3240,8 @@ _evidon-barrier-wrapper
 .fhCookieLaw
 .fi-cookie-banner
 .fiCMScookieNotice
+.fides-banner
+.fides-banner-bottom
 .fil-cookie-policy
 .filCookiesCnil
 .fingerprint-wrapper[onclick*="cookieman"]
@@ -5684,6 +5686,7 @@ _evidon-barrier-wrapper
 [data-test="cookie-banner"]
 [data-test="cookie-overlay"]
 [data-test="cookie-policy-sheet"]
+[data-testid="consent-modal"]
 [data-testid="cookie-banner-strict"]
 [data-testid="cookie-banner-wrapper"]
 [data-testid="cookie-banner"]
@@ -9978,6 +9981,9 @@ _evidon-barrier-wrapper
 #fhr-cookie-bar
 #fhw_cookiehinweis
 #fi-cookieconsent
+#fides-banner-container
+#fides-modal
+#fides-overlay
 #filter_gdpr
 #firstLogNanobar
 #FISLCC
