@@ -3050,6 +3050,7 @@ _evidon-barrier-wrapper
 .eds-notification-bar
 .edx-cookie-banner-wrapper
 .ee-intro-banner__consent
+.efilli-layout-default
 .eg-cc-banner
 .egm-cookie-flyout
 .egmont-cookie-alert
@@ -12676,6 +12677,7 @@ div#cookie-inner-wrapper
 div#cookieMessageOuter
 div#main-wrapper[class*="bbc-"] > header > div
 div#termsandconds[data-backdrop="static"]
+efilli-layout-default
 epaas-consent-drawer-shell
 form > .infobanner
 form[name="FormLeggeCookies"]
