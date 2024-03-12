@@ -9278,6 +9278,7 @@ _evidon-barrier-wrapper
 #cooMessage
 #coopCookieLayer
 #cop_confirm_cookie
+#core > [data-controller="remove-element"]
 #corpCookieBanner
 #council_Cookies
 #coupling-media-hinweis-cookie-richtlinie
