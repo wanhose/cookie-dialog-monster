@@ -4597,6 +4597,7 @@ _evidon-barrier-wrapper
 .pageFooter-acceptCookies
 .pageHCookie
 .pageinfo-cookie
+.panduit-cookie-banner
 .pane-cookie-disclaimer
 .panel_cookie
 .panel_cookies
