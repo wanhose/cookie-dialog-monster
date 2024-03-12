@@ -2709,7 +2709,6 @@ _evidon-barrier-wrapper
 .cookiesPiskot
 .cookiesplash
 .cookiesplus-modal
-.cookiesplus-modal
 .cookiespolicy
 .cookiesPolicy
 .CookiesPolicy-banner
@@ -6465,6 +6464,7 @@ _evidon-barrier-wrapper
 #cc-notification
 #cc-notification-gutter
 #cc-notification-wrapper
+#cc-overlay
 #cc-tag
 #cc-wrapper
 #cca-cookies-holder
