@@ -5718,7 +5718,6 @@ _evidon-barrier-wrapper
 [title="Cookie Settings"]
 [title="TrustArc Cookie Consent Manager"]
 [type="cookie-notification"]
-[widgetid="PopupSignupForm_0"] > div.mc-modal[data-dojo-attach-point="modalContainer"]
 #___gatsby ~ div[class*="consent-banner"]
 #___gatsby div[class*="cookieBox"]
 #___gatsby div[class*="CookieBox"]
@@ -10477,6 +10476,7 @@ _evidon-barrier-wrapper
 #iframe_cookie
 #iframe_cookie_site
 #iframe-wrap-netinfo-consent
+#igdpr_cookie
 #ige-cookie-policy
 #igoweb_cookiepolicy_optout_info
 #iib-cookies
