@@ -106,17 +106,15 @@ function forceClean(element) {
  */
 function forceElementStyles(mutations, observer) {
   for (const mutation of mutations) {
-    if (mutation.type === 'attributes' && dataAttributeName === mutation.attributeName) {
-      const element = mutation.target;
-      const value = element.getAttribute(dataAttributeName);
+    const element = mutation.target;
+    const value = element.getAttribute(dataAttributeName);
 
-      if (value === null) {
-        observer.disconnect();
-        element.removeAttribute(dataAttributeName);
-        element.style.removeProperty('display');
-      } else {
-        element.style.setProperty('display', 'none', 'important');
-      }
+    if (value === null) {
+      observer.disconnect();
+      element.removeAttribute(dataAttributeName);
+      element.style.removeProperty('display');
+    } else {
+      element.style.setProperty('display', 'none', 'important');
     }
   }
 }
