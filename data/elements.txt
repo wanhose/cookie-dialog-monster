@@ -5292,6 +5292,7 @@ _evidon-barrier-wrapper
 .toucanCookie
 .touchdesign-cookie-privacy
 .tp_cookie
+.tp-cookie-eu
 .tp-cookie-law
 .tpl-cookie
 .tpl-cookies
@@ -12143,6 +12144,7 @@ _evidon-barrier-wrapper
 #ToSPPAlert
 #toucanCookie
 #townside-cookiebar-outer
+#tp-cookie
 #tpl-cookie-policy
 #trackCookieBar
 #tracker-banner
