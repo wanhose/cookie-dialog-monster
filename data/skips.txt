@@ -3,6 +3,7 @@ blog.sapegin.me
 canvasjs.com
 chessmadra.com
 correos.es
+diariodeunlondinense.com
 flickr.com
 godotforums.org
 godotvr.github.io
