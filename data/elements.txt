@@ -5064,6 +5064,7 @@ _evidon-barrier-wrapper
 .shareaholic-cookie-consent
 .shared-alert__cookie
 .shb-accept-cookies-box
+.shopify-pc__banner__dialog
 .show_cookie
 .show-cookie
 .show-cookie-consent
@@ -11868,6 +11869,7 @@ _evidon-barrier-wrapper
 #shaim_cks
 #shareProfileLink
 #shop-cookie
+#shopify-pc__banner
 #shopify-privacy-banner
 #shopify-privacy-banner-div
 #shopify-privacy-banner-overlay
