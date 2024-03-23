@@ -9961,8 +9961,6 @@ _evidon-barrier-wrapper
 #f6-cp-cookiebanner
 #facerig-cookies
 #faldon-cookies
-#fancybox-overlay
-#fancybox-wrap
 #farmacja_cookie_alert
 #fascia-cookie
 #fascia-ue-popup
