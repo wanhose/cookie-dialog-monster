@@ -2192,6 +2192,7 @@ _evidon-barrier-wrapper
 .cookieMsg
 .cookieMSG
 .CookieMsg
+.cookiemsgbox
 .cookieMsgContainer
 .cookienav
 .cookienote
