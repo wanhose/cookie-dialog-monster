@@ -12711,6 +12711,7 @@ section[data-view="cookiePolicy"]
 solvia-cookies-policy
 tiktok-cookie-banner
 tp-yt-iron-overlay-backdrop
+tsl-required-user-kind-modal
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
