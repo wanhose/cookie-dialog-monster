@@ -8,7 +8,7 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
       const commonWordsUrl = `${dataUrl}/common-words.json`;
       const fixesUrl = `${dataUrl}/fixes.txt`;
       const skipsUrl = `${dataUrl}/skips.json`;
-      const tokensUrl = `${dataUrl}/tokens.txt`;
+      const tokensUrl = `${dataUrl}/tokens.json`;
 
       const results = await Promise.all([
         fetch(commonWordsUrl),
@@ -16,19 +16,22 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
         fetch(skipsUrl),
         fetch(tokensUrl),
       ]);
+      const skips = await results[2].json();
+      const tokens = await results[3].json();
 
       reply.send({
         data: {
-          classes: (await results[3].json()).classes,
+          classes: tokens.classes,
           commonWords: await results[0].json(),
-          elements: (await results[3].json()).selectors,
+          elements: tokens.selectors,
           fixes: (await results[1].text()).split('\n').filter((x) => !!x),
-          skips: (await results[2].json()).domains,
-          tags: (await results[2].json()).tags,
+          skips: skips.domains,
+          tags: skips.tags,
         },
         success: true,
       });
-    } catch {
+    } catch (e) {
+      console.error(e);
       reply.send({ success: false });
     }
   });
