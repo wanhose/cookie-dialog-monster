@@ -1,4 +1,12 @@
 /**
+ * @typedef {Object} ExtensionData
+ * @property {string[]} commonWords
+ * @property {string[]} fixes
+ * @property {{ domains: string[], tags: string[] }} skips
+ * @property {{ classes: string[], selectors: string[] }} tokens
+ */
+
+/**
  * @description Attribute name
  */
 const dataAttributeName = 'data-cookie-dialog-monster';
@@ -11,9 +19,9 @@ let count = 0;
 
 /**
  * @description Data properties
- * @type {{ classes: string[], commonWords?: string[], fixes: string[], elements: string[], skips: string[], tags: string[] }?}
+ * @type {ExtensionData}
  */
-let data = null;
+let { commonWords, fixes = [], skips, tokens } = {};
 
 /**
  * @description Shortcut to send messages to background script
@@ -94,7 +102,7 @@ function clean(elements, skipMatch) {
  * @returns {void}
  */
 function forceClean(element) {
-  const elements = [...element.querySelectorAll(data.elements)];
+  const elements = [...element.querySelectorAll(tokens.selectors)];
 
   fix();
   if (elements.length && !preview) clean(elements, true);
@@ -157,6 +165,10 @@ function isInViewport(element) {
  * @returns {boolean}
  */
 function match(element, skipMatch) {
+  if (!tokens?.classes.length || !tokens?.selectors.length) {
+    return false;
+  }
+
   if (!(element instanceof HTMLElement) || !element.tagName) {
     return false;
   }
@@ -171,7 +183,7 @@ function match(element, skipMatch) {
 
   const tagName = element.tagName?.toUpperCase?.();
 
-  if (!data?.tags?.length || data.tags.includes(tagName)) {
+  if (skips.tags.includes(tagName)) {
     return false;
   }
 
@@ -186,11 +198,11 @@ function match(element, skipMatch) {
 
     return (
       (isDialog || isFakeDialog || isInViewport(element)) &&
-      (skipMatch || element.matches(data?.elements ?? []))
+      (skipMatch || element.matches(tokens.selectors))
     );
   } else {
     // 2023-06-10: fix edge case force cleaning on children if no attributes
-    if (data?.commonWords && element.outerHTML.match(new RegExp(data.commonWords.join('|')))) {
+    if (commonWords && element.outerHTML.match(new RegExp(commonWords.join('|')))) {
       forceClean(element);
     }
   }
@@ -203,14 +215,15 @@ function match(element, skipMatch) {
  * @returns {void}
  */
 function fix() {
-  const backdrop = document.getElementsByClassName('modal-backdrop')[0];
-  const fixes = data?.fixes ?? [];
-  const skips = (data?.skips ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
+  const backdrops = document.getElementsByClassName('modal-backdrop');
+  const domains = (skips?.domains ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
-  if (backdrop?.children.length === 0 && backdrop.style.display !== 'none') {
-    backdrop.style.setProperty('display', 'none');
-    count += 1;
-    dispatch({ type: 'SET_BADGE', value: `${count}` });
+  for (const backdrop of backdrops) {
+    if (backdrop.children.length === 0 && backdrop.style.display !== 'none') {
+      backdrop.style.setProperty('display', 'none');
+      count += 1;
+      dispatch({ type: 'SET_BADGE', value: `${count}` });
+    }
   }
 
   for (const fix of fixes) {
@@ -242,9 +255,9 @@ function fix() {
     }
   }
 
-  if (skips.every((x) => !hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
+  if (domains.every((x) => !hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
     for (const element of [document.body, document.documentElement]) {
-      element?.classList.remove(...(data?.classes ?? []));
+      element?.classList.remove(...(tokens?.classes ?? []));
       element?.style.setProperty('position', 'initial', 'important');
       element?.style.setProperty('overflow-y', 'initial', 'important');
     }
@@ -300,7 +313,12 @@ async function setup(skipReadyStateHack) {
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (state.enabled) {
-    data = await dispatch({ hostname, type: 'GET_DATA' });
+    const data = await dispatch({ hostname, type: 'GET_DATA' });
+
+    commonWords = data?.commonWords;
+    fixes = data?.fixes;
+    skips = data?.skips;
+    tokens = data?.tokens;
 
     // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
     if (document.readyState === 'complete' && !skipReadyStateHack) {
@@ -320,10 +338,14 @@ async function setup(skipReadyStateHack) {
  * @type {MutationObserver}
  */
 const observer = new MutationObserver((mutations) => {
-  const elements = mutations.map((mutation) => Array.from(mutation.addedNodes)).flat(1);
+  if (preview || !state.enabled || !tokens?.selectors.length) {
+    return;
+  }
+
+  const elements = mutations.flatMap((mutation) => Array.from(mutation.addedNodes));
 
   fix();
-  if (data?.elements.length && !preview) clean(elements);
+  clean(elements);
 });
 
 /**
@@ -352,7 +374,7 @@ chrome.runtime.onMessage.addListener((message) => {
  * @returns {void}
  */
 window.addEventListener('visibilitychange', async () => {
-  if (document.body?.children.length && !data) {
+  if (document.body?.children.length && !tokens) {
     await setup(true);
     clean([...document.body.children]);
   }
@@ -386,7 +408,7 @@ window.addEventListener('pageshow', (event) => {
  * @returns {void}
  */
 window.addEventListener(setupEventName, () => {
-  if (data?.elements.length && document.body?.children.length && state.enabled && !preview) {
+  if (document.body?.children.length && state.enabled && tokens?.selectors.length && !preview) {
     if (readingTime() < 4) {
       forceClean(document.body);
     } else {
