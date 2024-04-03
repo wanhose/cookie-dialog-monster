@@ -70,6 +70,18 @@ report-dialog-close-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
 }
 
+report-dialog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+report-dialog-form-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 report-dialog-form-view[hidden] {
   display: none;
 }
@@ -96,7 +108,6 @@ report-dialog-radio {
   cursor: pointer;
   display: block;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  margin-top: 18px;
   outline: none !important;
   padding-left: 24px;
   position: relative;
@@ -148,8 +159,10 @@ report-dialog-radio:before {
 report-dialog-radio-group {
   display: flex;
   flex-direction: column;
+  gap: 18px;
 }
 
+report-dialog-issue-button,
 report-dialog-submit-button {
   align-items: center;
   background-color: var(--cookie-dialog-monster-color-secondary);
@@ -162,7 +175,6 @@ report-dialog-submit-button {
   font-size: 14px;
   height: 39px;
   justify-content: center;
-  margin-top: 24px;
   outline: none !important;
   padding: 8px 16px;
   text-align: center;
@@ -170,12 +182,15 @@ report-dialog-submit-button {
   width: 100%;
 }
 
+report-dialog-issue-button:focus,
+report-dialog-issue-button:hover,
 report-dialog-submit-button:focus,
 report-dialog-submit-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
   color: var(--cookie-dialog-monster-color-secondary);
 }
 
+report-dialog-issue-button[aria-disabled='true'],
 report-dialog-submit-button[aria-disabled='true'] {
   background-color: var(--cookie-dialog-monster-color-tertiary);
   border: 1px solid var(--cookie-dialog-monster-color-tertiary);
@@ -186,18 +201,16 @@ report-dialog-submit-button[aria-disabled='true'] {
 report-dialog-submit-extra-text {
   font-family: inherit !important;
   font-size: 14px;
-  line-height: 14px;
+  line-height: 16px;
   margin: 0px;
-  margin-top: 16px;
-  text-align: center;
+  text-align: justify;
 }
 
 report-dialog-submit-text {
   font-family: inherit !important;
   font-size: 18px;
-  line-height: 18px;
+  line-height: 20px;
   margin: 0px;
-  margin-top: 24px;
   text-align: center;
 }
 
@@ -206,8 +219,9 @@ report-dialog-submit-view {
   display: flex;
   flex-direction: column;
   font-family: Inter, Arial, Helvetica, sans-serif;
+  gap: 24px;
   justify-content: center;
-  min-height: 269px;
+  margin-top: 16px;
 }
 
 report-dialog-submit-view[hidden] {

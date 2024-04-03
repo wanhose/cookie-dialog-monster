@@ -112,6 +112,9 @@ const reportDialogHtml = `
         <report-dialog-submit-extra-text>
           ${chrome.i18n.getMessage('reportDialog_submitExtraText')}
         </report-dialog-submit-extra-text>
+        <report-dialog-issue-button role="button" tabindex="0">
+            ${chrome.i18n.getMessage('contextMenu_issueOption')}
+        </report-dialog-issue-button>
       </report-dialog-submit-view>
     </report-dialog-body>
   </dialog>
@@ -121,25 +124,25 @@ const reportDialogHtml = `
  * @description Dialog close button click handler
  * @param {MouseEvent} event
  */
-const closeButtonClickHandler = (event) => {
+function closeButtonClickHandler(event) {
   const dialog = document.getElementById(reportDialogId);
 
   event.preventDefault();
   dialog?.remove();
-};
+}
 
 /**
  * @description Hide report dialog
  */
-const hideReportDialog = () => {
+function hideReportDialog() {
   document.getElementById(reportDialogId)?.remove();
-};
+}
 
 /**
  * @description Dialog radio input click handler
  * @param {MouseEvent} event
  */
-const radioClickHandler = (event) => {
+function radioClickHandler(event) {
   const dialog = document.getElementById(reportDialogId);
   const radios = dialog.getElementsByTagName('report-dialog-radio');
   const submitButton = dialog?.getElementsByTagName('report-dialog-submit-button')[0];
@@ -152,12 +155,12 @@ const radioClickHandler = (event) => {
   event.currentTarget.setAttribute('aria-checked', 'true');
   submitButton.setAttribute('aria-disabled', 'false');
   submitButton.addEventListener('click', submitButtonClickHandler);
-};
+}
 
 /**
  * @description Show report dialog
  */
-const showReportDialog = () => {
+function showReportDialog() {
   const parser = new DOMParser();
   const result = parser.parseFromString(reportDialogHtml, 'text/html');
   const dialog = result.body.firstElementChild;
@@ -181,26 +184,30 @@ const showReportDialog = () => {
   if (!document.getElementById('report-dialog-font')) {
     document.head.appendChild(link);
   }
-};
+}
 
 /**
  * @description Dialog submit button click handler
  * @param {MouseEvent} event
  */
-const submitButtonClickHandler = (event) => {
+async function submitButtonClickHandler(event) {
+  event.preventDefault();
+
   const dialog = document.getElementById(reportDialogId);
   const formView = dialog?.getElementsByTagName('report-dialog-form-view')[0];
+  const issueButton = dialog?.getElementsByTagName('report-dialog-issue-button')[0];
   const option = dialog?.querySelector('report-dialog-radio[aria-checked="true"]');
   const reasonIndex = option?.dataset.value;
   const reason = Number.isNaN(reasonIndex) ? 'Unknown' : reasons[reasonIndex];
   const submitView = dialog?.getElementsByTagName('report-dialog-submit-view')[0];
   const userAgent = window.navigator.userAgent;
 
-  event.preventDefault();
-  dispatch({ userAgent, reason, type: 'REPORT' });
+  const issueUrl = await dispatch({ userAgent, reason, type: 'REPORT' });
+
   formView?.setAttribute('hidden', 'true');
+  issueButton?.addEventListener('click', () => window.open(issueUrl, '_blank'));
   submitView?.removeAttribute('hidden');
-};
+}
 
 /**
  * @description Listen to messages
