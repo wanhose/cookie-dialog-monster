@@ -5,7 +5,7 @@
     "build": "rimraf build; tsc",
     "dev": "nodemon",
     "lint": "eslint src/**/*.ts --fix",
-    "start": "NODE_PATH=build node build/index.js --env-file .env"
+    "start": "NODE_PATH=build node build/index.js"
   },
   "dependencies": {
     "@fastify/cors": "^9.0.1",
