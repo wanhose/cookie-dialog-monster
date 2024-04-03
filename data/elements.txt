@@ -795,6 +795,7 @@ _evidon-barrier-wrapper
 .CLawBanner
 .clearfy-cookie
 .clever-cookielaw
+.cli-popupbar-overlay
 .clm-cookie-banner
 .clone-cookie-alert
 .close-cookies
@@ -5704,6 +5705,7 @@ _evidon-barrier-wrapper
 [data-type="cookie-addsense"]
 [data-unique-cookie-name]
 [data-veci="cookies-policy"]
+[data-widget="cookieBubble"]
 [element="privacy-modal"]
 [id="cm:cookieWrapper"]
 [mat-host="cadenaser.com"] > div[data-nosnippet="data-nosnippet"]
@@ -12715,4 +12717,3 @@ tsl-required-user-kind-modal
 wsp-modal-window[data-type="cookie-modal"]
 ytd-app ~ iron-overlay-backdrop
 ytd-consent-bump-v2-lightbox
-.cli-popupbar-overlay
