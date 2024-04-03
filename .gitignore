@@ -5,3 +5,4 @@
 !.yarn/plugins
 build
 node_modules
+.env
