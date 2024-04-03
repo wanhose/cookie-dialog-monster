@@ -1,4 +1,3 @@
-_evidon-barrier-wrapper
 .___eucookiePopup
 .__cookie_policy
 .__cookieNotice
@@ -11187,16 +11186,13 @@ _evidon-barrier-wrapper
 #noticeAboutCookies
 #noticePanel
 #noticePopup
-#Notices
 #notices-cookie-policy-warning
-#notif_197
 #notif--privacy
 #notifCookie
 #Notifica_cookie
 #notificacio-cookies
 #notificacion_mensaje_cookies
 #notificare-cookies
-#notification
 #notification__cookie
 #notification_cookie
 #notification_cookies
