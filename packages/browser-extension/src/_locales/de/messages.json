@@ -2,6 +2,9 @@
   "appDesc": {
     "message": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋"
   },
+  "contextMenu_issueOption": {
+    "message": "Folgen Sie diesem Problem in GitHub"
+  },
   "contextMenu_reportOption": {
     "message": "Diese Website melden"
   },
@@ -60,7 +63,7 @@
     "message": "Popup ist aufgetaucht"
   },
   "reportDialog_submitExtraText": {
-    "message": "Wir empfehlen Ihnen dringend, die Erweiterung auf dieser Website zu deaktivieren, bis wir das Problem behoben haben."
+    "message": "Während wir daran arbeiten, können Sie diese Website zur Ausschlussliste in den Erweiterungseinstellungen hinzufügen oder die Erweiterung für diese Website einfach deaktivieren, indem Sie auf das Erweiterungssymbol in Ihrer Browser-Symbolleiste klicken"
   },
   "reportDialog_submitText": {
     "message": "Bericht gesendet!"

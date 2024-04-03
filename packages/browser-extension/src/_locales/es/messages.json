@@ -2,6 +2,9 @@
   "appDesc": {
     "message": "¿Alguien dijo diálogos de consentimiento de cookies? 😋"
   },
+  "contextMenu_issueOption": {
+    "message": "Sigue este problema en GitHub"
+  },
   "contextMenu_reportOption": {
     "message": "Reportar este sitio web"
   },
@@ -60,7 +63,7 @@
     "message": "Ha aparecido un diálogo"
   },
   "reportDialog_submitExtraText": {
-    "message": "Le recomendamos encarecidamente que desactive la extensión en este sitio hasta que solucionemos el problema"
+    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador"
   },
   "reportDialog_submitText": {
     "message": "¡Reporte enviado!"

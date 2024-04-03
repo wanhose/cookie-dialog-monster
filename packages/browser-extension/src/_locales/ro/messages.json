@@ -2,6 +2,9 @@
   "appDesc": {
     "message": "A spus cineva dialoguri de consimțământ pentru cookie? 😋"
   },
+  "contextMenu_issueOption": {
+    "message": "Urmați această problemă pe GitHub"
+  },
   "contextMenu_reportOption": {
     "message": "Raportați acest site web"
   },
@@ -60,7 +63,7 @@
     "message": "A apărut o fereastră pop-up"
   },
   "reportDialog_submitExtraText": {
-    "message": "Îți recomandăm insistent să dezactivați extensia de pe acest site până când remediam problema"
+    "message": "În timp ce lucrăm la acest lucru, puteți adăuga acest site web la lista de excludere în setările extensiei sau pur și simplu dezactivați extensia pentru acest site web făcând clic pe iconița extensiei din bara de instrumente a browserului dvs"
   },
   "reportDialog_submitText": {
     "message": "Raport trimis!"

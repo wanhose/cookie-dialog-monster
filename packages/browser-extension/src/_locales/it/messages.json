@@ -2,6 +2,9 @@
   "appDesc": {
     "message": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋"
   },
+  "contextMenu_issueOption": {
+    "message": "Segui questo problema su GitHub"
+  },
   "contextMenu_reportOption": {
     "message": "Segnala questo sito web"
   },
@@ -60,7 +63,7 @@
     "message": "È apparso il popup"
   },
   "reportDialog_submitExtraText": {
-    "message": "Ti consigliamo vivamente di disattivare l'estensione in questo sito finché non risolviamo il problema"
+    "message": "Mentre stiamo lavorando su questo, puoi aggiungere questo sito web all'elenco di esclusione nelle impostazioni dell'estensione o semplicemente disabilitare l'estensione per questo sito web facendo clic sull'icona dell'estensione nella barra degli strumenti del tuo browser"
   },
   "reportDialog_submitText": {
     "message": "Rapporto inviato!"

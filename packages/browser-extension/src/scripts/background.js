@@ -2,7 +2,7 @@
  * @description API URL
  * @type {string}
  */
-const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v2';
+const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v3';
 
 /**
  * @description Context menu identifier
@@ -56,8 +56,9 @@ const refreshData = (callback) => {
  * @description Report active tab URL
  * @param {any} message
  * @param {chrome.tabs.Tab} tab
+ * @param {void?} callback
  */
-const report = async (message, tab) => {
+const report = async (message, tab, callback) => {
   try {
     const reason = message.reason;
     const userAgent = message.userAgent;
@@ -66,7 +67,8 @@ const report = async (message, tab) => {
     const headers = { 'Content-type': 'application/json' };
     const url = `${apiUrl}/report/`;
 
-    await fetch(url, { body, headers, method: 'POST' });
+    const response = await fetch(url, { body, headers, method: 'POST' });
+    callback?.((await response.json()).data);
   } catch {
     console.error("Can't send report");
   }
@@ -142,8 +144,9 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
         storage.get(hostname, (state) => {
           callback(state[hostname] ?? { enabled: true });
         });
+        return true;
       }
-      return true;
+      break;
     case 'GET_TAB':
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         callback(tabs[0]);
@@ -156,7 +159,8 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
       break;
     case 'REPORT':
       if (tabId) {
-        report(message, sender.tab);
+        report(message, sender.tab, callback);
+        return true;
       }
       break;
     case 'SET_BADGE':

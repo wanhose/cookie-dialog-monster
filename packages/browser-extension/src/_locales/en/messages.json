@@ -2,6 +2,9 @@
   "appDesc": {
     "message": "Did someone say cookie consent dialogs? 😋"
   },
+  "contextMenu_issueOption": {
+    "message": "Follow this issue in GitHub"
+  },
   "contextMenu_reportOption": {
     "message": "Report this website"
   },
@@ -60,7 +63,7 @@
     "message": "Popup showed up"
   },
   "reportDialog_submitExtraText": {
-    "message": "We strongly recommend you to turn off the extension in this site until we fix the issue"
+    "message": "While we are working on this, you can add this website to the exclusion list in the extension settings or just disable the extension for this website clicking on the extension icon in your browser toolbar"
   },
   "reportDialog_submitText": {
     "message": "Report sent!"
