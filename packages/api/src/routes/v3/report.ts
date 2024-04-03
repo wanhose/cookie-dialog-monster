@@ -35,18 +35,19 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       },
     },
     async (request, reply) => {
-      try {
-        const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
-          owner: environment.github.owner,
-          repo: environment.github.repo,
-        });
-        const url = new URL(request.body.url).hostname
-          .split('.')
-          .slice(-3)
-          .join('.')
-          .replace('www.', '');
+      const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
+        owner: environment.github.owner,
+        repo: environment.github.repo,
+      });
+      const url = new URL(request.body.url).hostname
+        .split('.')
+        .slice(-3)
+        .join('.')
+        .replace('www.', '');
+      const existingIssue = issues.data.find((issue) => issue.title.includes(url));
 
-        if (issues.data.some((issue) => issue.title.includes(url))) {
+      try {
+        if (existingIssue) {
           throw new Error('Issue already exists');
         }
 
@@ -73,6 +74,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
         reply.send({
           errors: [error.message],
           success: false,
+          data: existingIssue?.html_url,
         });
       }
     }
