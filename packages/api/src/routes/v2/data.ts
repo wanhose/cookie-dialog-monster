@@ -5,42 +5,26 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
   server.get('/data/', async (request, reply) => {
     try {
       const dataUrl = 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/data';
-      const classesUrl = `${dataUrl}/classes.txt`;
-      const elementsUrl = `${dataUrl}/elements.txt`;
+      const commonWordsUrl = `${dataUrl}/common-words.json`;
       const fixesUrl = `${dataUrl}/fixes.txt`;
-      const skipsUrl = `${dataUrl}/skips.txt`;
-      const tagsUrl = `${dataUrl}/tags.txt`;
+      const skipsUrl = `${dataUrl}/skips.json`;
+      const tokensUrl = `${dataUrl}/tokens.txt`;
 
       const results = await Promise.all([
-        fetch(classesUrl),
-        fetch(elementsUrl),
+        fetch(commonWordsUrl),
         fetch(fixesUrl),
         fetch(skipsUrl),
-        fetch(tagsUrl),
+        fetch(tokensUrl),
       ]);
 
       reply.send({
         data: {
-          classes: (await results[0].text()).split('\n').filter((x) => !!x),
-          commonWords: [
-            'banner',
-            'cc',
-            'cmp',
-            'compliance',
-            'consent',
-            'cookie',
-            'dialog',
-            'disclaimer',
-            'gdpr',
-            'law',
-            'policy',
-            'popup',
-            'privacy',
-          ],
-          elements: (await results[1].text()).split('\n').filter((x) => !!x),
-          fixes: (await results[2].text()).split('\n').filter((x) => !!x),
-          skips: (await results[3].text()).split('\n').filter((x) => !!x),
-          tags: (await results[4].text()).split('\n').filter((x) => !!x),
+          classes: (await results[3].json()).classes,
+          commonWords: await results[0].json(),
+          elements: (await results[3].json()).selectors,
+          fixes: (await results[1].text()).split('\n').filter((x) => !!x),
+          skips: (await results[2].json()).domains,
+          tags: (await results[2].json()).tags,
         },
         success: true,
       });

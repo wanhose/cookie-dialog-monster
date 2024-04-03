@@ -22,7 +22,7 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
     async (_request, reply) => {
       reply.status(500).send({
         success: false,
-        errors: ['This API route is no longer supported in Mozilla Firefox'],
+        errors: ['This API route is no longer supported. Please upgrade to the latest version'],
       });
     }
   );
