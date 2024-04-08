@@ -2,6 +2,9 @@
   "appDesc": {
     "message": "Quelqu'un a-t-il dit boîtes de dialogue de consentement aux cookies? 😋"
   },
+  "contextMenu_issueOption": {
+    "message": "Suivez ce problème sur GitHub"
+  },
   "contextMenu_reportOption": {
     "message": "Signaler ce site web"
   },
@@ -60,7 +63,7 @@
     "message": "La fenêtre contextuelle s'est affichée"
   },
   "reportDialog_submitExtraText": {
-    "message": "Nous vous recommandons vivement de désactiver l'extension sur ce site jusqu'à ce que nous résolvions le problème"
+    "message": "Pendant que nous travaillons sur cela, vous pouvez ajouter ce site Web à la liste d'exclusion dans les paramètres de l'extension ou simplement désactiver l'extension pour ce site Web en cliquant sur l'icône de l'extension dans la barre d'outils de votre navigateur"
   },
   "reportDialog_submitText": {
     "message": "Rapport envoyé!"
