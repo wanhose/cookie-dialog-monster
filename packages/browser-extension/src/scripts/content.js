@@ -354,7 +354,7 @@ const observer = new MutationObserver((mutations) => {
 
 /**
  * @description Listen to messages from any other scripts
- * @listens browser.tabs#onMessage
+ * @listens browser.runtime#onMessage
  */
 browser.runtime.onMessage.addListener((message) => {
   switch (message.type) {
