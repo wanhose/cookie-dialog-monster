@@ -1,7 +1,11 @@
+if (typeof browser === 'undefined') {
+  browser = chrome;
+}
+
 /**
  * @description Shortcut to send messages to background script
  */
-const dispatch = chrome.runtime.sendMessage;
+const dispatch = browser.runtime.sendMessage;
 
 /**
  * @description Domain RegExp
@@ -54,7 +58,7 @@ function createList() {
  * @returns {Promise<void>}
  */
 async function handleAddClick() {
-  const exclusionValue = window.prompt(chrome.i18n.getMessage('options_addPrompt'));
+  const exclusionValue = window.prompt(browser.i18n.getMessage('options_addPrompt'));
 
   if (exclusionValue?.trim() && (domainRx.test(exclusionValue) || exclusionValue === 'localhost')) {
     const filterInputElement = document.getElementById('filter-input');
@@ -216,11 +220,11 @@ function translate() {
     const { i18n, i18nPlaceholder } = node.dataset;
 
     if (i18n) {
-      node.innerHTML = chrome.i18n.getMessage(i18n);
+      node.innerHTML = browser.i18n.getMessage(i18n);
     }
 
     if (i18nPlaceholder) {
-      node.setAttribute('placeholder', chrome.i18n.getMessage(i18nPlaceholder));
+      node.setAttribute('placeholder', browser.i18n.getMessage(i18nPlaceholder));
     }
   }
 }

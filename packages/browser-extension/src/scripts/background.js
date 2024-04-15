@@ -1,3 +1,7 @@
+if (typeof browser === 'undefined') {
+  browser = chrome;
+}
+
 /**
  * @description API URL
  * @type {string}
@@ -23,16 +27,16 @@ const reportMenuItemId = 'CDM-REPORT';
 const settingsMenuItemId = 'CDM-SETTINGS';
 
 /**
- * @description A shortcut for chrome.scripting
- * @type {chrome.scripting}
+ * @description A shortcut for browser.scripting
+ * @type {browser.scripting}
  */
-const script = chrome.scripting;
+const script = browser.scripting;
 
 /**
  * @description The storage to use
- * @type {chrome.storage.LocalStorageArea}
+ * @type {browser.storage.LocalStorageArea}
  */
-const storage = chrome.storage.local;
+const storage = browser.storage.local;
 
 /**
  * @description Refresh data
@@ -42,7 +46,7 @@ const refreshData = (callback) => {
   try {
     fetch(`${apiUrl}/data/`).then((result) => {
       result.json().then(({ data }) => {
-        chrome.storage.local.set({ data }, suppressLastError);
+        storage.set({ data }, suppressLastError);
         callback?.(data);
       });
     });
@@ -55,14 +59,14 @@ const refreshData = (callback) => {
  * @async
  * @description Report active tab URL
  * @param {any} message
- * @param {chrome.tabs.Tab} tab
+ * @param {browser.tabs.Tab} tab
  * @param {void?} callback
  */
 const report = async (message, tab, callback) => {
   try {
     const reason = message.reason;
     const userAgent = message.userAgent;
-    const version = chrome.runtime.getManifest().version;
+    const version = browser.runtime.getManifest().version;
     const body = JSON.stringify({ reason, url: tab.url, userAgent, version });
     const headers = { 'Content-type': 'application/json' };
     const url = `${apiUrl}/report/`;
@@ -75,22 +79,22 @@ const report = async (message, tab, callback) => {
 };
 
 /**
- * @description Supress `chrome.runtime.lastError`
+ * @description Supress `browser.runtime.lastError`
  */
-const suppressLastError = () => void chrome.runtime.lastError;
+const suppressLastError = () => void browser.runtime.lastError;
 
 /**
  * @description Listen to context menus clicked
  */
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+browser.contextMenus.onClicked.addListener((info, tab) => {
   const tabId = tab?.id;
 
   switch (info.menuItemId) {
     case reportMenuItemId:
-      if (tabId) chrome.tabs.sendMessage(tabId, { type: 'SHOW_REPORT_DIALOG' }, suppressLastError);
+      if (tabId) browser.tabs.sendMessage(tabId, { type: 'SHOW_REPORT_DIALOG' }, suppressLastError);
       break;
     case settingsMenuItemId:
-      chrome.runtime.openOptionsPage();
+      browser.runtime.openOptionsPage();
       break;
     default:
       break;
@@ -100,7 +104,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 /**
  * @description Listens to messages
  */
-chrome.runtime.onMessage.addListener((message, sender, callback) => {
+browser.runtime.onMessage.addListener((message, sender, callback) => {
   const hostname = message.hostname;
   const isPage = sender.frameId === 0;
   const tabId = sender.tab?.id;
@@ -108,18 +112,18 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
   switch (message.type) {
     case 'DISABLE_ICON':
       if (isPage && tabId) {
-        chrome.action.setIcon({ path: '/assets/icons/disabled.png', tabId }, suppressLastError);
-        chrome.action.setBadgeText({ tabId, text: '' });
+        browser.action.setIcon({ path: '/assets/icons/disabled.png', tabId }, suppressLastError);
+        browser.action.setBadgeText({ tabId, text: '' });
       }
       break;
     case 'ENABLE_ICON':
       if (isPage && tabId) {
-        chrome.action.setIcon({ path: '/assets/icons/enabled.png', tabId }, suppressLastError);
+        browser.action.setIcon({ path: '/assets/icons/enabled.png', tabId }, suppressLastError);
       }
       break;
     case 'ENABLE_POPUP':
       if (isPage && tabId) {
-        chrome.action.setPopup({ popup: '/popup.html', tabId }, suppressLastError);
+        browser.action.setPopup({ popup: '/popup.html', tabId }, suppressLastError);
       }
       break;
     case 'GET_DATA':
@@ -148,7 +152,7 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'GET_TAB':
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         callback(tabs[0]);
       });
       return true;
@@ -165,8 +169,8 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
       break;
     case 'SET_BADGE':
       if (tabId) {
-        chrome.action.setBadgeBackgroundColor({ color: '#6b7280' });
-        chrome.action.setBadgeText({ tabId, text: message.value });
+        browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
+        browser.action.setBadgeText({ tabId, text: message.value });
       }
       break;
     case 'SET_HOSTNAME_STATE':
@@ -184,33 +188,33 @@ chrome.runtime.onMessage.addListener((message, sender, callback) => {
 /**
  * @description Listens to extension installed
  */
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create(
+browser.runtime.onInstalled.addListener(() => {
+  browser.contextMenus.create(
     {
       contexts: ['all'],
-      documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+      documentUrlPatterns: browser.runtime.getManifest().content_scripts[0].matches,
       id: extensionMenuItemId,
       title: 'Cookie Dialog Monster',
     },
     suppressLastError
   );
-  chrome.contextMenus.create(
+  browser.contextMenus.create(
     {
       contexts: ['all'],
-      documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+      documentUrlPatterns: browser.runtime.getManifest().content_scripts[0].matches,
       id: settingsMenuItemId,
       parentId: extensionMenuItemId,
-      title: chrome.i18n.getMessage('contextMenu_settingsOption'),
+      title: browser.i18n.getMessage('contextMenu_settingsOption'),
     },
     suppressLastError
   );
-  chrome.contextMenus.create(
+  browser.contextMenus.create(
     {
       contexts: ['all'],
-      documentUrlPatterns: chrome.runtime.getManifest().content_scripts[0].matches,
+      documentUrlPatterns: browser.runtime.getManifest().content_scripts[0].matches,
       id: reportMenuItemId,
       parentId: extensionMenuItemId,
-      title: chrome.i18n.getMessage('contextMenu_reportOption'),
+      title: browser.i18n.getMessage('contextMenu_reportOption'),
     },
     suppressLastError
   );
@@ -219,6 +223,6 @@ chrome.runtime.onInstalled.addListener(() => {
 /**
  * @description Listen to first start
  */
-chrome.runtime.onStartup.addListener(() => {
+browser.runtime.onStartup.addListener(() => {
   refreshData();
 });
