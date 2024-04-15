@@ -10,7 +10,16 @@
 
 @layer components {
   .button {
-    @apply font-bold gap-2 inline-flex items-center md:bg-2x md:hover:shadow-md rounded-lg text-white px-8 py-4;
+    @apply block font-bold items-center md:bg-2x md:hover:shadow-md lg:px-8 overflow-x-hidden rounded-lg text-ellipsis text-white px-4 py-4 whitespace-nowrap;
+  }
+
+  .button > img,
+  .button > span {
+    @apply mr-2;
+  }
+
+  .button > svg {
+    @apply float-right;
   }
 
   .icon {
