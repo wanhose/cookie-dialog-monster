@@ -8,9 +8,12 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
 - [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii)
-- ~~[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)~~ ¹
+- ~~[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)~~ ¹ ²
+- Advanced users or non-listed browsers ²
 
 ¹ Due to technical issues with the Firefox Team, our extension's support on Mozilla Add-ons has ended with version 5.5.5. However, you can still run a development copy of the last version of the extension. Steps for this are available in our GitHub repository. We appreciate your understanding and patience.
+
+² Scroll down to [this section](#installation-for-mozilla-firefox-and-non-listed-browser-users) and follow the instructions to install the latest version of this extension in your browser.
 
 ## Compatibility
 
@@ -19,7 +22,21 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 - Microsoft Edge 88+
 - Mozilla Firefox 85+
 
-## Installation (only for developers or Mozilla Firefox users)
+## Installation (for Mozilla Firefox and non-listed browser users)
+
+1. Start by downloading the latest zip file [from here](https://www.cookie-dialog-monster.com/releases/latest.zip).
+2. Extract the downloaded zip file to a location on your local machine.
+3. Open your browser's extensions page:
+   - For Chrome, navigate to [chrome://extensions](chrome://extensions)
+   - For Firefox, navigate to [about:addons](about:addons)
+   - For Edge, navigate to [edge://extensions](edge://extensions)
+     (Replace with the correct URL based on your browser)
+4. Enable **Developer mode** (usually a toggle switch in the top right corner of the extensions page).
+5. Click on the **Load Temporary Add-on…** button in Firefox or **Load unpacked** in other browsers.
+6. A file dialog will open. Navigate to and select the extracted folder (or `manifest.json` file inside this folder if needed).
+7. Congratulations! You've successfully loaded the latest build of this extension.
+
+## Installation (only for developers)
 
 1. Start by cloning the repository to your local machine using the command `git clone <repository-url>` or downloading it from the assets section of a release.
 2. Navigate to the cloned repository's directory with `cd <repository-name>`.
