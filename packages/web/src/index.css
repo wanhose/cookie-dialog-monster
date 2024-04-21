@@ -10,7 +10,7 @@
 
 @layer components {
   .button {
-    @apply block font-bold items-center md:bg-2x md:hover:shadow-md lg:px-8 overflow-x-hidden rounded-lg text-ellipsis text-white px-4 py-4 whitespace-nowrap;
+    @apply block font-bold items-center md:bg-2x md:hover:shadow-md overflow-x-hidden rounded-lg text-ellipsis text-white px-4 py-4 whitespace-nowrap;
   }
 
   .button > img,
