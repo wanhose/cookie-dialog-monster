@@ -1,3 +1,7 @@
+if (typeof browser === 'undefined') {
+  browser = chrome;
+}
+
 /**
  * @typedef {Object} ExtensionData
  * @property {string[]} commonWords
@@ -26,7 +30,7 @@ let { commonWords, fixes = [], skips, tokens } = {};
 /**
  * @description Shortcut to send messages to background script
  */
-const dispatch = chrome.runtime.sendMessage;
+const dispatch = browser.runtime.sendMessage;
 
 /**
  * @description Event name
@@ -350,9 +354,9 @@ const observer = new MutationObserver((mutations) => {
 
 /**
  * @description Listen to messages from any other scripts
- * @listens chrome.tabs#onMessage
+ * @listens browser.runtime#onMessage
  */
-chrome.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener((message) => {
   switch (message.type) {
     case 'RESTORE': {
       restoreDOM();

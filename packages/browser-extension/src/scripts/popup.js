@@ -1,3 +1,7 @@
+if (typeof browser === 'undefined') {
+  browser = chrome;
+}
+
 /**
  * @description Chrome Web Store link
  * @type {string}
@@ -53,13 +57,13 @@ let state = { enabled: true, tabId: undefined };
  * @returns {Promise<void>}
  */
 async function handleContentLoaded() {
-  const tab = await chrome.runtime.sendMessage({ type: 'GET_TAB' });
+  const tab = await browser.runtime.sendMessage({ type: 'GET_TAB' });
 
   hostname = tab?.url
     ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
     : undefined;
 
-  const next = await chrome.runtime.sendMessage({ hostname, type: 'GET_HOSTNAME_STATE' });
+  const next = await browser.runtime.sendMessage({ hostname, type: 'GET_HOSTNAME_STATE' });
   state = { ...(next ?? state), tabId: tab?.id };
 
   const hostTextElement = document.getElementById('host');
@@ -98,7 +102,7 @@ async function handleLinkRedirect(event) {
   const { href } = event.currentTarget.dataset;
 
   if (href) {
-    await chrome.tabs.create({ url: href });
+    await browser.tabs.create({ url: href });
   }
 }
 
@@ -112,8 +116,8 @@ async function handlePowerToggle(event) {
   const element = event.currentTarget;
   const next = { enabled: !state.enabled };
 
-  chrome.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
-  chrome.tabs.sendMessage(state.tabId, { type: next.enabled ? 'RUN' : 'RESTORE' });
+  browser.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
+  browser.tabs.sendMessage(state.tabId, { type: next.enabled ? 'RUN' : 'RESTORE' });
   element.setAttribute('disabled', 'true');
   element.setAttribute('data-value', next.enabled ? 'on' : 'off');
   window.close();
@@ -124,7 +128,7 @@ async function handlePowerToggle(event) {
  * @returns {void}
  */
 function handleSettingsClick() {
-  chrome.runtime.openOptionsPage();
+  browser.runtime.openOptionsPage();
 }
 
 /**
@@ -139,11 +143,11 @@ function translate() {
     const { i18n, i18nPlaceholder } = node.dataset;
 
     if (i18n) {
-      node.innerHTML = chrome.i18n.getMessage(i18n);
+      node.innerHTML = browser.i18n.getMessage(i18n);
     }
 
     if (i18nPlaceholder) {
-      node.setAttribute('placeholder', chrome.i18n.getMessage(i18nPlaceholder));
+      node.setAttribute('placeholder', browser.i18n.getMessage(i18nPlaceholder));
     }
   }
 }

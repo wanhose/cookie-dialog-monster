@@ -1,3 +1,7 @@
+if (typeof browser === 'undefined') {
+  browser = chrome;
+}
+
 /**
  * @description Report reasons
  * @type {string[]}
@@ -41,7 +45,7 @@ const reportDialogHtml = `
     <report-dialog-body>
       <report-dialog-form-view>
         <report-dialog-body-text>
-          ${chrome.i18n.getMessage('reportDialog_bodyText')}
+          ${browser.i18n.getMessage('reportDialog_bodyText')}
         </report-dialog-body-text>
         <report-dialog-form>
           <report-dialog-radio-group>
@@ -49,46 +53,46 @@ const reportDialogHtml = `
               aria-checked="false" 
               data-value="0" role="radio" 
               tabindex="0">
-              ${chrome.i18n.getMessage('reportDialog_cannotClickOption')}
+              ${browser.i18n.getMessage('reportDialog_cannotClickOption')}
             </report-dialog-radio>
             <report-dialog-radio 
               aria-checked="false" 
               data-value="1" 
               role="radio" 
               tabindex="0">
-              ${chrome.i18n.getMessage('reportDialog_pageVisualGlitchOption')}
+              ${browser.i18n.getMessage('reportDialog_pageVisualGlitchOption')}
             </report-dialog-radio>
             <report-dialog-radio 
               aria-checked="false" 
               data-value="2" 
               role="radio" 
               tabindex="0">
-              ${chrome.i18n.getMessage('reportDialog_blankPageOption')}
+              ${browser.i18n.getMessage('reportDialog_blankPageOption')}
             </report-dialog-radio>
             <report-dialog-radio 
               aria-checked="false" 
               data-value="3" 
               role="radio" 
               tabindex="0">
-              ${chrome.i18n.getMessage('reportDialog_laggyPageOption')}
+              ${browser.i18n.getMessage('reportDialog_laggyPageOption')}
             </report-dialog-radio>
             <report-dialog-radio 
               aria-checked="false" 
               data-value="4" 
               role="radio" 
               tabindex="0">
-              ${chrome.i18n.getMessage('reportDialog_pageNotRespondingOption')}
+              ${browser.i18n.getMessage('reportDialog_pageNotRespondingOption')}
             </report-dialog-radio>
             <report-dialog-radio 
               aria-checked="false" 
               data-value="5" 
               role="radio" 
               tabindex="0">
-              ${chrome.i18n.getMessage('reportDialog_popupShowUpOption')}
+              ${browser.i18n.getMessage('reportDialog_popupShowUpOption')}
             </report-dialog-radio>
           </report-dialog-radio-group>
           <report-dialog-submit-button aria-disabled="true" role="button" tabindex="0">
-            ${chrome.i18n.getMessage('contextMenu_reportOption')?.replace('...', '')}
+            ${browser.i18n.getMessage('contextMenu_reportOption')?.replace('...', '')}
           </report-dialog-submit-button>
         </report-dialog-form>
       </report-dialog-form-view>
@@ -107,13 +111,13 @@ const reportDialogHtml = `
           <polyline points="22 4 12 14.01 9 11.01" />
         </svg>
         <report-dialog-submit-text>
-          ${chrome.i18n.getMessage('reportDialog_submitText')}
+          ${browser.i18n.getMessage('reportDialog_submitText')}
         </report-dialog-submit-text>
         <report-dialog-submit-extra-text>
-          ${chrome.i18n.getMessage('reportDialog_submitExtraText')}
+          ${browser.i18n.getMessage('reportDialog_submitExtraText')}
         </report-dialog-submit-extra-text>
         <report-dialog-issue-button role="button" tabindex="0">
-            ${chrome.i18n.getMessage('contextMenu_issueOption')}
+            ${browser.i18n.getMessage('contextMenu_issueOption')}
         </report-dialog-issue-button>
       </report-dialog-submit-view>
     </report-dialog-body>
@@ -212,7 +216,7 @@ async function submitButtonClickHandler(event) {
 /**
  * @description Listen to messages
  */
-chrome.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener((message) => {
   const isPage = window === window.top;
 
   switch (message.type) {
