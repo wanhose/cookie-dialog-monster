@@ -12,12 +12,14 @@
     "@fastify/rate-limit": "^9.1.0",
     "fastify": "^4.26.2",
     "node-fetch": "^2.7.0",
-    "octokit": "^3.2.1"
+    "octokit": "^3.2.1",
+    "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.8",
     "@types/node-fetch": "2.6.11",
+    "@types/ua-parser-js": "^0.7.39",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "eslint": "^8.57.0",
