@@ -1,6 +1,7 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import environment from 'services/environment';
 import { octokit } from 'services/octokit';
+import { UAParser } from 'ua-parser-js';
 
 type PostReportBody = {
   reason?: string;
@@ -40,6 +41,7 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
           owner: environment.github.owner,
           repo: environment.github.repo,
         });
+        const ua = new UAParser(request.body.userAgent ?? '').getResult();
         const url = new URL(request.body.url).hostname
           .split('.')
           .slice(-3)
@@ -54,10 +56,16 @@ export default (server: FastifyInstance, options: RouteShorthandOptions, done: (
           assignees: [environment.github.owner],
           body: [
             '## Specifications',
-            `- <b>Reason:</b> ${request.body.reason ?? '-'}`,
-            `- <b>URL:</b> ${request.body.url}`,
-            `- <b>User-Agent:</b> ${request.body.userAgent ?? '-'}`,
-            `- <b>Version:</b> ${request.body.version}`,
+            '#### Browser',
+            `${ua.browser.name ? `${ua.browser.name} ${ua.browser.version || ''}` : '-'}`,
+            '#### Device',
+            `${ua.device.type && ua.device.vendor ? `${ua.device.vendor} (${ua.device.type})` : '-'}`,
+            '#### Reason',
+            request.body.reason ?? '-',
+            '#### URL',
+            request.body.url,
+            '#### Version',
+            request.body.version,
           ].join('\n'),
           labels: ['bug'],
           owner: environment.github.owner,

@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rimraf build; sh scripts/build.sh; sh scripts/pack.sh",
-    "lint": "eslint src/**/*.js --fix"
+    "lint": "eslint --fix"
   },
   "devDependencies": {
-    "@types/firefox-webext-browser": "^0.0.260",
-    "eslint": "^8.56.0",
+    "@types/firefox-webext-browser": "^120.0.3",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "minify": "^9.2.0",

@@ -408,7 +408,7 @@ window.addEventListener('pageshow', (event) => {
 
 /**
  * @description Force clean when this event is fired
- * @listens window#run
+ * @listens window#cookie-dialog-monster
  * @returns {void}
  */
 window.addEventListener(setupEventName, () => {
