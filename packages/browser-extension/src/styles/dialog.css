@@ -5,6 +5,7 @@
   --cookie-dialog-monster-color-tertiary: #6b7280;
   --cookie-dialog-monster-color-white: #ffffff;
 }
+
 #explanation {
   border: 1px solid black;
   border-radius: 8px;
@@ -16,6 +17,11 @@
   padding-left: 10px;
   resize: none;
   width: 100%;
+}
+
+#explanation::placeholder {
+  color: var(--cookie-dialog-monster-color-tertiary);
+  opacity: 0.5;
 }
 
 #report-dialog {
@@ -238,11 +244,4 @@ report-dialog-submit-view {
 
 report-dialog-submit-view[hidden] {
   display: none;
-}
-
-textarea::placeholder {
-  color: var(--cookie-dialog-monster-color-tertiary);
-  opacity: 0.5;
-  padding-top: 5px;
-  padding-left: 10px;
 }

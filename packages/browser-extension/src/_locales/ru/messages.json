@@ -70,5 +70,8 @@
   },
   "reportDialog_submitText": {
     "message": "Отчет отправлен!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Максимум 150 слов..."
   }
 }

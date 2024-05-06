@@ -6,7 +6,6 @@ if (typeof browser === 'undefined') {
  * @description API URL
  * @type {string}
  */
-
 const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v3';
 
 /**
@@ -69,7 +68,7 @@ const report = async (message, tab, callback) => {
     const reason = message.reason;
     const userAgent = message.userAgent;
     const version = browser.runtime.getManifest().version;
-    const body = JSON.stringify({ reason, url: tab.url, userAgent, version, explanation });
+    const body = JSON.stringify({ explanation, reason, url: tab.url, userAgent, version });
     const headers = { 'Content-type': 'application/json' };
     const url = `${apiUrl}/report/`;
 

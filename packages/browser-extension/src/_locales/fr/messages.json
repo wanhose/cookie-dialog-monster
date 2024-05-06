@@ -70,5 +70,8 @@
   },
   "reportDialog_submitText": {
     "message": "Rapport envoyé!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Maximum 150 mots..."
   }
 }

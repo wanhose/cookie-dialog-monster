@@ -70,5 +70,8 @@
   },
   "reportDialog_submitText": {
     "message": "Raport trimis!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Maximum 150 de cuvinte..."
   }
 }

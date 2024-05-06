@@ -48,7 +48,7 @@
     "message": "Por favor selecciona una opción"
   },
   "reportDialog_cannotClickOption": {
-    "message": "No se puede hacer clic"
+    "message": "No se puede hacer click"
   },
   "reportDialog_laggyPageOption": {
     "message": "La página tarda mucho en cargar"
@@ -70,5 +70,8 @@
   },
   "reportDialog_submitText": {
     "message": "¡Reporte enviado!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Máximo 150 palabras..."
   }
 }
