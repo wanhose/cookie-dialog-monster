@@ -62,8 +62,8 @@
   "reportDialog_popupShowUpOption": {
     "message": "È apparso il popup"
   },
-  "reportDialog_ScrollIssues": {
-    "message": "Problemi di scorrimento"
+  "reportDialog_cannotScrollOption": {
+    "message": "Impossibile fare lo scroll"
   },
   "reportDialog_submitExtraText": {
     "message": "Mentre stiamo lavorando su questo, puoi aggiungere questo sito web all'elenco di esclusione nelle impostazioni dell'estensione o semplicemente disabilitare l'estensione per questo sito web facendo clic sull'icona dell'estensione nella barra degli strumenti del tuo browser"

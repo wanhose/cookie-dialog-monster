@@ -62,7 +62,7 @@
   "reportDialog_popupShowUpOption": {
     "message": "La fenêtre contextuelle s'est affichée"
   },
-  "reportDialog_ScrollIssues": {
+  "reportDialog_cannotScrollOption": {
     "message": "Problèmes de défilement"
   },
   "reportDialog_submitExtraText": {
