@@ -62,6 +62,9 @@
   "reportDialog_popupShowUpOption": {
     "message": "La fenêtre contextuelle s'est affichée"
   },
+  "reportDialog_ScrollingIssues": {
+    "message": "Problèmes de défilement"
+  },
   "reportDialog_submitExtraText": {
     "message": "Pendant que nous travaillons sur cela, vous pouvez ajouter ce site Web à la liste d'exclusion dans les paramètres de l'extension ou simplement désactiver l'extension pour ce site Web en cliquant sur l'icône de l'extension dans la barre d'outils de votre navigateur"
   },

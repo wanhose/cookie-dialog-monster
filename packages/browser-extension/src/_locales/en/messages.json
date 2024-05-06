@@ -62,6 +62,9 @@
   "reportDialog_popupShowUpOption": {
     "message": "Popup showed up"
   },
+  "reportDialog_ScrollingIssues": {
+    "message": "Scrolling Issues"
+  },
   "reportDialog_submitExtraText": {
     "message": "While we are working on this, you can add this website to the exclusion list in the extension settings or just disable the extension for this website clicking on the extension icon in your browser toolbar"
   },

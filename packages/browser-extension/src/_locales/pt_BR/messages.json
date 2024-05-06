@@ -62,6 +62,9 @@
   "reportDialog_popupShowUpOption": {
     "message": "Apareceu um popup"
   },
+  "reportDialog_ScrollingIssues": {
+    "message": "Problemas de rolagem"
+  },
   "reportDialog_submitExtraText": {
     "message": "Enquanto estamos trabalhando nisso, você pode adicionar este site à lista de exclusão nas configurações da extensão ou simplesmente desativar a extensão para este site clicando no ícone da extensão na barra de ferramentas do seu navegador"
   },

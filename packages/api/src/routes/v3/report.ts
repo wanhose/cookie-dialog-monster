@@ -7,6 +7,7 @@ interface PostReportBody {
   readonly url: string;
   readonly userAgent?: string;
   readonly version: string;
+  readonly explanation?: string;
 }
 
 export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
@@ -28,6 +29,9 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             version: {
               type: 'string',
             },
+            explanation: {
+              type: 'string',
+            },
           },
           required: ['url', 'version'],
           type: 'object',
@@ -35,6 +39,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       },
     },
     async (request, reply) => {
+      console.log(request.body);
       const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
         owner: environment.github.owner,
         repo: environment.github.repo,
@@ -50,7 +55,6 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
         if (existingIssue) {
           throw new Error('Issue already exists');
         }
-
         const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
           assignees: [environment.github.owner],
           body: [
@@ -59,11 +63,13 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             `- <b>URL:</b> ${request.body.url}`,
             `- <b>User-Agent:</b> ${request.body.userAgent ?? '-'}`,
             `- <b>Version:</b> ${request.body.version}`,
+            `- <b>Explanation:</b> ${request.body.explanation ? request.body.explanation : '-'}`,
           ].join('\n'),
           labels: ['bug'],
           owner: environment.github.owner,
           repo: environment.github.repo,
           title: url,
+          explanation: `${request.body.explanation}`,
         });
 
         reply.send({

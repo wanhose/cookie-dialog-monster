@@ -62,6 +62,9 @@
   "reportDialog_popupShowUpOption": {
     "message": "Ha aparecido un diálogo"
   },
+  "reportDialog_ScrollingIssues": {
+    "message": "Problemas con el scroll"
+  },
   "reportDialog_submitExtraText": {
     "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador"
   },

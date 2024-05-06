@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 if (typeof browser === 'undefined') {
   browser = chrome;
 }
@@ -13,6 +14,7 @@ const reasons = [
   'Page is laggy',
   'Page is not responding',
   'Popup showed up',
+  'Scroll Issues',
 ];
 
 /**
@@ -90,7 +92,18 @@ const reportDialogHtml = `
               tabindex="0">
               ${browser.i18n.getMessage('reportDialog_popupShowUpOption')}
             </report-dialog-radio>
+            <report-dialog-radio 
+            aria-checked="false" 
+            data-value="6" 
+            role="radio" 
+            tabindex="0">
+            ${browser.i18n.getMessage('reportDialog_ScrollingIssues')}
+          </report-dialog-radio>
+          <textarea-report-dialog>
+          <textarea id="explanation" maxlength="150" placeholder="Maximum 150 words..." ></textarea>
+          </textarea-report-dialog>
           </report-dialog-radio-group>
+      </report-dialog-radio-group>
           <report-dialog-submit-button aria-disabled="true" role="button" tabindex="0">
             ${browser.i18n.getMessage('contextMenu_reportOption')?.replace('...', '')}
           </report-dialog-submit-button>
@@ -205,9 +218,14 @@ async function submitButtonClickHandler(event) {
   const reason = Number.isNaN(reasonIndex) ? 'Unknown' : reasons[reasonIndex];
   const submitView = dialog?.getElementsByTagName('report-dialog-submit-view')[0];
   const userAgent = window.navigator.userAgent;
-
-  const issueUrl = await dispatch({ userAgent, reason, type: 'REPORT' });
-
+  const textareaValue = dialog?.querySelector('#explanation').value;
+  console.log('Textarea value:', textareaValue);
+  const issueUrl = await dispatch({
+    userAgent,
+    reason,
+    type: 'REPORT',
+    explanation: textareaValue,
+  });
   formView?.setAttribute('hidden', 'true');
   issueButton?.addEventListener('click', () => window.open(issueUrl, '_blank'));
   submitView?.removeAttribute('hidden');

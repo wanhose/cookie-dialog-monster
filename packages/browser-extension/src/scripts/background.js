@@ -6,7 +6,9 @@ if (typeof browser === 'undefined') {
  * @description API URL
  * @type {string}
  */
-const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v3';
+
+//const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v3';
+const apiUrl = 'http://localhost:8080/rest/v3';
 
 /**
  * @description Context menu identifier
@@ -67,7 +69,8 @@ const report = async (message, tab, callback) => {
     const reason = message.reason;
     const userAgent = message.userAgent;
     const version = browser.runtime.getManifest().version;
-    const body = JSON.stringify({ reason, url: tab.url, userAgent, version });
+    const explanation = message.explanation;
+    const body = JSON.stringify({ reason, url: tab.url, userAgent, version, explanation });
     const headers = { 'Content-type': 'application/json' };
     const url = `${apiUrl}/report/`;
 

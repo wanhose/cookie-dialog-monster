@@ -227,3 +227,28 @@ report-dialog-submit-view {
 report-dialog-submit-view[hidden] {
   display: none;
 }
+
+textarea-report-dialog {
+  display: flex;
+  width: auto;
+}
+
+textarea::placeholder {
+  color: var(--cookie-dialog-monster-color-tertiary);
+  padding-top: 5px;
+  padding-left: 10px;
+  opacity: 0.5;
+}
+
+#explanation {
+  font-family: inherit !important;
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: var(--cookie-dialog-monster-color-white);
+  color: var(--cookie-dialog-monster-color-tertiary);
+  height: 85px;
+  padding-top: 5px;
+  padding-left: 10px;
+  resize: none;
+  width: 100%;
+}

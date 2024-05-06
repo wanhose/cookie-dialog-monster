@@ -62,6 +62,9 @@
   "reportDialog_popupShowUpOption": {
     "message": "A apărut o fereastră pop-up"
   },
+  "reportDialog_ScrollingIssues": {
+    "message": "Probleme de defilare"
+  },
   "reportDialog_submitExtraText": {
     "message": "În timp ce lucrăm la acest lucru, puteți adăuga acest site web la lista de excludere în setările extensiei sau pur și simplu dezactivați extensia pentru acest site web făcând clic pe iconița extensiei din bara de instrumente a browserului dvs"
   },
