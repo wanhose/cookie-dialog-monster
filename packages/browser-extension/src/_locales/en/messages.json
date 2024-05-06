@@ -62,7 +62,7 @@
   "reportDialog_popupShowUpOption": {
     "message": "Popup showed up"
   },
-  "reportDialog_ScrollingIssues": {
+  "reportDialog_ScrollIssues": {
     "message": "Scrolling Issues"
   },
   "reportDialog_submitExtraText": {

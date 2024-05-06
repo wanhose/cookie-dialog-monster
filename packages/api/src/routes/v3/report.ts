@@ -3,11 +3,11 @@ import environment from 'services/environment';
 import { octokit } from 'services/octokit';
 
 interface PostReportBody {
+  readonly explanation?: string;
   readonly reason?: string;
   readonly url: string;
   readonly userAgent?: string;
   readonly version: string;
-  readonly explanation?: string;
 }
 
 export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
@@ -17,6 +17,9 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       schema: {
         body: {
           properties: {
+            explanation: {
+              type: 'string',
+            },
             reason: {
               type: 'string',
             },
@@ -29,9 +32,6 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             version: {
               type: 'string',
             },
-            explanation: {
-              type: 'string',
-            },
           },
           required: ['url', 'version'],
           type: 'object',
@@ -39,7 +39,6 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       },
     },
     async (request, reply) => {
-      console.log(request.body);
       const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
         owner: environment.github.owner,
         repo: environment.github.repo,
@@ -55,6 +54,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
         if (existingIssue) {
           throw new Error('Issue already exists');
         }
+
         const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
           assignees: [environment.github.owner],
           body: [
@@ -69,7 +69,6 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
           owner: environment.github.owner,
           repo: environment.github.repo,
           title: url,
-          explanation: `${request.body.explanation}`,
         });
 
         reply.send({

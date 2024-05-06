@@ -62,7 +62,7 @@
   "reportDialog_popupShowUpOption": {
     "message": "Появилось всплывающее окно"
   },
-  "reportDialog_ScrollingIssues": {
+  "reportDialog_ScrollIssues": {
     "message": "Проблемы с прокруткой"
   },
   "reportDialog_submitExtraText": {

@@ -62,7 +62,7 @@
   "reportDialog_popupShowUpOption": {
     "message": "Ha aparecido un diálogo"
   },
-  "reportDialog_ScrollingIssues": {
+  "reportDialog_ScrollIssues": {
     "message": "Problemas con el scroll"
   },
   "reportDialog_submitExtraText": {

@@ -97,11 +97,9 @@ const reportDialogHtml = `
             data-value="6" 
             role="radio" 
             tabindex="0">
-            ${browser.i18n.getMessage('reportDialog_ScrollingIssues')}
+            ${browser.i18n.getMessage('reportDialog_ScrollIssues')}
           </report-dialog-radio>
-          <textarea-report-dialog>
           <textarea id="explanation" maxlength="150" placeholder="Maximum 150 words..." ></textarea>
-          </textarea-report-dialog>
           </report-dialog-radio-group>
       </report-dialog-radio-group>
           <report-dialog-submit-button aria-disabled="true" role="button" tabindex="0">
