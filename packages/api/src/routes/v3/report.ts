@@ -63,7 +63,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             `- <b>URL:</b> ${request.body.url}`,
             `- <b>User-Agent:</b> ${request.body.userAgent ?? '-'}`,
             `- <b>Version:</b> ${request.body.version}`,
-            `- <b>Explanation:</b> ${request.body.explanation ? request.body.explanation : '-'}`,
+            `- <b>Explanation:</b> ${request.body.explanation || '-'}`,
           ].join('\n'),
           labels: ['bug'],
           owner: environment.github.owner,
