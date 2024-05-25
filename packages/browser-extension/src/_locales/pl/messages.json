@@ -1,15 +1,15 @@
 {
   "appDesc": {
-    "message": "Czy ktoś powiedział coś o okienkach pytających o ciasteczka? 😋"
+    "message": "Czy ktoś wspomniał o okienkach ze zgodą na ciasteczka? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Zobacz zgłoszenie na GitHubie"
+    "message": "Śledź to zgłoszenie na GitHubie"
   },
   "contextMenu_reportOption": {
     "message": "Zgłoś tę stronę"
   },
   "contextMenu_settingsOption": {
-    "message": "Zarządzanie listą wyjątków"
+    "message": "Zarządzaj listą wyjątków"
   },
   "options_addButton": {
     "message": "Dodaj wyjątek"
