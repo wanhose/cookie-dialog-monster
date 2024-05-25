@@ -8,6 +8,7 @@ consent.google##[aria-label="Reject all"]##click
 consent.yahoo###consent-page button[type="submit"]##click
 consent.youtube##[aria-label="Reject all"]##click
 dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##click
+dealabs.com##[data-t="continueWithoutAccepting"]##click
 fiberplane.dev##button[aria-label="Close Banner"]##click
 foto-erhardt.de##[class="modal show"]##click
 gettr.com##button.bold##click
