@@ -19,6 +19,7 @@ google##form[action*="consent.google"] button##click
 hagglezon.com##[data-test="cookie-submit"]##click
 instagram.com##[role="dialog"] > [style="display: flex; flex-direction: column; height: 100%; max-width: 100%;"] > button##click
 motorolasound.com###cookie-btn-denied##click
+mydealz.de##[data-t="continueWithoutAccepting"]##click
 myprivacy.dpgmedia##.pg-accept-button##click
 play.google##body > div##reset##z-index
 popeyes.es##.cookie-buttons > .cookie-buttons-column > div:last-child##click
