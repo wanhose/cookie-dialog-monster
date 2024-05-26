@@ -1,0 +1,71 @@
+{
+  "appDesc": {
+    "message": "Czy ktoś wspomniał o okienkach ze zgodą na ciasteczka? 😋"
+  },
+  "contextMenu_issueOption": {
+    "message": "Śledź to zgłoszenie na GitHubie"
+  },
+  "contextMenu_reportOption": {
+    "message": "Zgłoś tę stronę"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Zarządzaj listą wyjątków"
+  },
+  "options_addButton": {
+    "message": "Dodaj wyjątek"
+  },
+  "options_addPrompt": {
+    "message": "Wprowadź domenę"
+  },
+  "options_clearButton": {
+    "message": "Wyczyść listę"
+  },
+  "options_exclusionListTitle": {
+    "message": "Lista wyjątków"
+  },
+  "options_exportButton": {
+    "message": "Wyeksportuj listę"
+  },
+  "options_filterPlaceholder": {
+    "message": "Po wpisaniu naciśnij ENTER, aby filtrować"
+  },
+  "options_importButton": {
+    "message": "Zaimportuj listę"
+  },
+  "popup_contributeOption": {
+    "message": "Weź udział w rozwoju projektu"
+  },
+  "popup_helpOption": {
+    "message": "Potrzebujesz pomocy lub masz problem?"
+  },
+  "popup_rateOption": {
+    "message": "Oceń to rozszerzenie"
+  },
+  "reportDialog_blankPageOption": {
+    "message": "Strona jest pusta"
+  },
+  "reportDialog_bodyText": {
+    "message": "Wybierz rodzaj poniżej"
+  },
+  "reportDialog_cannotClickOption": {
+    "message": "Nie da się nic kliknąć"
+  },
+  "reportDialog_laggyPageOption": {
+    "message": "Strona działa wolno"
+  },
+  "reportDialog_pageNotRespondingOption": {
+    "message": "Strona nie odpowiada"
+  },
+  "reportDialog_pageVisualGlitchOption": {
+    "message": "Strona zawiera błędy w wyglądzie"
+  },
+  "reportDialog_popupShowUpOption": {
+    "message": "Pojawiło się okienko"
+  },
+  "reportDialog_submitExtraText": {
+    "message": "Podczas gdy pracujemy nad rozwiązaniem problemu, możesz dodać tę witrynę do listy wyjątków w ustawieniach rozszerzenia, albo po prostu wyłączyć rozszerzenie dla tej witryny klikając ikonę rozszerzenia na pasku narzędzi przeglądarki."
+  },
+  "reportDialog_submitText": {
+    "message": "Zgłoszenie zostało wysłane!"
+  }
+}
