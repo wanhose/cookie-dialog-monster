@@ -1,8 +1,9 @@
+_metadata/
+!.yarn/plugins
+!.yarn/releases
 .DS_Store
+.env
 .pnp.*
 .yarn/*
-!.yarn/releases
-!.yarn/plugins
-build
-node_modules
-.env
+build/
+node_modules/
