@@ -324,6 +324,10 @@ async function setup(skipReadyStateHack) {
     skips = data?.skips;
     tokens = data?.tokens;
 
+    if (count > 0) {
+      dispatch({ type: 'SET_BADGE', value: `${count}` });
+    }
+
     // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
     if (document.readyState === 'complete' && !skipReadyStateHack) {
       window.dispatchEvent(new Event(setupEventName));
@@ -402,6 +406,7 @@ window.addEventListener('load', () => {
  */
 window.addEventListener('pageshow', (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
+    setup(true);
     window.dispatchEvent(new Event(setupEventName));
   }
 });
