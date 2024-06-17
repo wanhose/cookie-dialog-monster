@@ -12,6 +12,7 @@ dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##c
 dealabs.com##[data-t="continueWithoutAccepting"]##click
 fiberplane.dev##button[aria-label="Close Banner"]##click
 foto-erhardt.de##[class="modal show"]##click
+gamestar.de###content##reset##filter
 gettr.com##button.bold##click
 gmx.com###onetrust-accept-btn-handler##click
 gmx.net##[data-section="accept"]##click
