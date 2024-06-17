@@ -62,10 +62,16 @@
   "reportDialog_popupShowUpOption": {
     "message": "A apărut o fereastră pop-up"
   },
+  "reportDialog_cannotScrollOption": {
+    "message": "Nu se poate face scroll"
+  },
   "reportDialog_submitExtraText": {
     "message": "În timp ce lucrăm la acest lucru, puteți adăuga acest site web la lista de excludere în setările extensiei sau pur și simplu dezactivați extensia pentru acest site web făcând clic pe iconița extensiei din bara de instrumente a browserului dvs"
   },
   "reportDialog_submitText": {
     "message": "Raport trimis!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Maximum 150 de cuvinte..."
   }
 }

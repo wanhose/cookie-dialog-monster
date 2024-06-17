@@ -64,10 +64,11 @@ const refreshData = (callback) => {
  */
 const report = async (message, tab, callback) => {
   try {
+    const explanation = message.explanation;
     const reason = message.reason;
     const userAgent = message.userAgent;
     const version = browser.runtime.getManifest().version;
-    const body = JSON.stringify({ reason, url: tab.url, userAgent, version });
+    const body = JSON.stringify({ explanation, reason, url: tab.url, userAgent, version });
     const headers = { 'Content-type': 'application/json' };
     const url = `${apiUrl}/report/`;
 

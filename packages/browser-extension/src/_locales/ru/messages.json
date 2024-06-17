@@ -62,10 +62,16 @@
   "reportDialog_popupShowUpOption": {
     "message": "Появилось всплывающее окно"
   },
+  "reportDialog_cannotScrollOption": {
+    "message": "Невозможно прокручивать"
+  },
   "reportDialog_submitExtraText": {
     "message": "Пока мы над этим работаем, вы можете добавить этот сайт в список исключений в настройках расширения или просто отключить расширение для этого сайта, щелкнув по иконке расширения на панели инструментов вашего браузера)"
   },
   "reportDialog_submitText": {
     "message": "Отчет отправлен!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Максимум 150 слов..."
   }
 }

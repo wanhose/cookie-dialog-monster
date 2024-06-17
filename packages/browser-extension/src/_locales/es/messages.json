@@ -62,10 +62,16 @@
   "reportDialog_popupShowUpOption": {
     "message": "Ha aparecido un diálogo"
   },
+  "reportDialog_cannotScrollOption": {
+    "message": "No se puede hacer scroll"
+  },
   "reportDialog_submitExtraText": {
     "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador"
   },
   "reportDialog_submitText": {
     "message": "¡Reporte enviado!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Máximo 150 palabras..."
   }
 }

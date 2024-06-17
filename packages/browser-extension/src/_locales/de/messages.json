@@ -62,10 +62,16 @@
   "reportDialog_popupShowUpOption": {
     "message": "Popup ist aufgetaucht"
   },
+  "reportDialog_cannotScrollOption": {
+    "message": "Scrollen ist nicht möglich"
+  },
   "reportDialog_submitExtraText": {
     "message": "Während wir daran arbeiten, können Sie diese Website zur Ausschlussliste in den Erweiterungseinstellungen hinzufügen oder die Erweiterung für diese Website einfach deaktivieren, indem Sie auf das Erweiterungssymbol in Ihrer Browser-Symbolleiste klicken"
   },
   "reportDialog_submitText": {
     "message": "Bericht gesendet!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Maximal 150 Wörter..."
   }
 }
