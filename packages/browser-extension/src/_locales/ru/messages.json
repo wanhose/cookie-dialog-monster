@@ -72,6 +72,6 @@
     "message": "Отчет отправлен!"
   },
   "reportDialog_explanationPlaceholder": {
-    "message": "Максимум 150 слов..."
+    "message": "Если это необходимо, пожалуйста, предоставьте больше деталей"
   }
 }

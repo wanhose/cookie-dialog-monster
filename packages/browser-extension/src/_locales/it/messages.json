@@ -72,6 +72,6 @@
     "message": "Rapporto inviato!"
   },
   "reportDialog_explanationPlaceholder": {
-    "message": "Massimo 150 parole..."
+    "message": "Se necessario, fornisci ulteriori dettagli"
   }
 }

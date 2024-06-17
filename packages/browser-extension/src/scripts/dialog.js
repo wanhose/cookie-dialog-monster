@@ -104,6 +104,7 @@ const reportDialogHtml = `
             aria-multiline="true" 
             aria-placeholder="${browser.i18n.getMessage('reportDialog_explanationPlaceholder')}"
             contenteditable="true" 
+            data-empty="true" 
             id="explanation" 
             role="textbox">
           </report-dialog-text-area>
@@ -186,11 +187,13 @@ function showReportDialog() {
   const closeButton = dialog.getElementsByTagName('report-dialog-close-button')[0];
   const link = document.createElement('link');
   const radios = dialog.getElementsByTagName('report-dialog-radio');
+  const textArea = dialog.getElementsByTagName('report-dialog-text-area')[0];
 
   closeButton.addEventListener('click', closeButtonClickHandler);
   link.setAttribute('href', 'https://fonts.googleapis.com/css?family=Inter');
   link.setAttribute('id', 'report-dialog-font');
   link.setAttribute('rel', 'stylesheet');
+  textArea.addEventListener('input', textAreaInputHandler);
 
   for (const radio of radios) {
     radio.addEventListener('click', radioClickHandler);
@@ -219,7 +222,8 @@ async function submitButtonClickHandler(event) {
   const reasonIndex = option?.dataset.value;
   const reason = Number.isNaN(reasonIndex) ? 'Unknown' : reasons[reasonIndex];
   const submitView = dialog?.getElementsByTagName('report-dialog-submit-view')[0];
-  const textAreaValue = dialog?.getElementsByTagName('report-dialog-text-area')[0];
+  const textArea = dialog?.getElementsByTagName('report-dialog-text-area')[0];
+  const textAreaValue = textArea?.textContent.trim();
   const userAgent = window.navigator.userAgent;
 
   const issueUrl = await dispatch({
@@ -232,6 +236,18 @@ async function submitButtonClickHandler(event) {
   formView?.setAttribute('hidden', 'true');
   issueButton?.addEventListener('click', () => window.open(issueUrl, '_blank'));
   submitView?.removeAttribute('hidden');
+}
+
+/**
+ * @description Dialog text area input handler
+ * @param {MouseEvent} event
+ */
+function textAreaInputHandler(event) {
+  if (event.currentTarget.textContent.trim().length) {
+    event.currentTarget.setAttribute('data-empty', 'false');
+  } else {
+    event.currentTarget.setAttribute('data-empty', 'true');
+  }
 }
 
 /**

@@ -6,24 +6,6 @@
   --cookie-dialog-monster-color-white: #ffffff;
 }
 
-#explanation {
-  border: 1px solid black;
-  border-radius: 8px;
-  background-color: var(--cookie-dialog-monster-color-white);
-  color: var(--cookie-dialog-monster-color-tertiary);
-  font-family: inherit !important;
-  height: 85px;
-  padding-top: 5px;
-  padding-left: 10px;
-  resize: none;
-  width: 100%;
-}
-
-#explanation::placeholder {
-  color: var(--cookie-dialog-monster-color-tertiary);
-  opacity: 0.5;
-}
-
 #report-dialog {
   background-color: var(--cookie-dialog-monster-color-white);
   border: none;
@@ -91,13 +73,13 @@ report-dialog-close-button:hover {
 report-dialog-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 report-dialog-form-view {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 report-dialog-form-view[hidden] {
@@ -244,4 +226,25 @@ report-dialog-submit-view {
 
 report-dialog-submit-view[hidden] {
   display: none;
+}
+
+report-dialog-text-area {
+  border: 1px solid var(--cookie-dialog-monster-color-secondary);
+  background-color: var(--cookie-dialog-monster-color-white);
+  border-radius: 4px;
+  color: var(--cookie-dialog-monster-color-secondary);
+  cursor: text;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  height: 64px;
+  outline: none !important;
+  overflow-y: auto;
+  padding: 8px;
+  width: 100%;
+}
+
+report-dialog-text-area[data-empty='true']::before {
+  color: var(--cookie-dialog-monster-color-tertiary);
+  content: attr(aria-placeholder);
+  opacity: 0.5;
 }

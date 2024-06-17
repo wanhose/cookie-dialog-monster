@@ -72,6 +72,6 @@
     "message": "Bericht gesendet!"
   },
   "reportDialog_explanationPlaceholder": {
-    "message": "Maximal 150 Wörter..."
+    "message": "Falls nötig, geben Sie bitte weitere Details an"
   }
 }
