@@ -4,6 +4,7 @@ import { octokit } from 'services/octokit';
 import { UAParser } from 'ua-parser-js';
 
 interface PostReportBody {
+  readonly explanation?: string;
   readonly reason?: string;
   readonly url: string;
   readonly userAgent?: string;
@@ -17,6 +18,9 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       schema: {
         body: {
           properties: {
+            explanation: {
+              type: 'string',
+            },
             reason: {
               type: 'string',
             },
@@ -65,6 +69,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
               : []),
             '#### Reason',
             request.body.reason ?? '-',
+            ...(request.body.explanation ? ['#### Explanation', request.body.explanation] : []),
             '#### URL',
             request.body.url,
             '#### Version',

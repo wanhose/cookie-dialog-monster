@@ -67,5 +67,8 @@
   },
   "reportDialog_submitText": {
     "message": "Zgłoszenie zostało wysłane!"
+  },
+  "reportDialog_explanationPlaceholder": {
+    "message": "Jeśli to konieczne, podaj więcej szczegółów"
   }
 }
