@@ -2,6 +2,8 @@ action.com###CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll##click
 amazon.de###sp-cc-rejectall-link##click
 automobielmanagement.nl##body > *##resetAll##filter
 bilbaomuseoa.eus##.alert_message .btn-confirm##click
+breitbart.com##.twitter-tweet##resetAll##display
+breitbart.com##.twitter-tweet##resetAll##visibility
 buscotelefonosgratis.es###cookie_action_close_header_reject##click
 chollometro.com##[data-t="continueWithoutAccepting"]##click
 compact-online.de##[id*="bnnr-body-rightSide-"] div + div > span##click
