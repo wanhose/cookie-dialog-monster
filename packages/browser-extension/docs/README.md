@@ -8,12 +8,10 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
 - [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii)
-- ~~[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/cookie-dialog-monster/)~~ ¹ ²
-- Advanced users or non-listed browsers ²
+- [Mozilla Firefox (.xpi)](https://www.cookie-dialog-monster.com/releases/latest.xpi)
+- Advanced users or non-listed browsers ¹
 
-¹ Due to technical issues with the Firefox Team, our extension's support on Mozilla Add-ons has ended with version 5.5.5. However, you can still run a development copy of the last version of the extension. Steps for this are available in our GitHub repository. We appreciate your understanding and patience.
-
-² Scroll down to [this section](#installation-for-mozilla-firefox-and-non-listed-browser-users) and follow the instructions to install the latest version of this extension in your browser.
+¹ Scroll down to [this section](#installation-for-advanced-users-and-non-listed-browser-users) and follow the instructions to install the latest version of this extension in your browser.
 
 ## Compatibility
 
@@ -22,7 +20,20 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 - Microsoft Edge 88+
 - Mozilla Firefox 85+
 
-## Installation (for Mozilla Firefox and non-listed browser users)
+## Installation (for Mozilla Firefox users)
+
+1. Start by downloading the latest `.xpi` file [from here](https://www.cookie-dialog-monster.com/releases/latest.xpi).
+2. Open your Firefox browser.
+3. Navigate to [about:addons](about:addons) to open the Add-ons Manager.
+4. Click on the gear icon (⚙️) to open the menu.
+5. Select **Install Add-on From File...** from the menu.
+6. A file dialog will open. Navigate to and select the downloaded `.xpi` file.
+7. A confirmation dialog will appear asking if you wish to install the add-on. Click **Add** to proceed.
+8. Congratulations! You've successfully installed the latest build of this extension in Firefox.
+
+Optionally, if you wish to allow the extension to run in private browsing mode, find the extension in the list, click on the **Details** button, and then enable the **Allow in Private Browsing** checkbox.
+
+## Installation (for advanced and non-listed browser users)
 
 1. Start by downloading the latest zip file [from here](https://www.cookie-dialog-monster.com/releases/latest.zip).
 2. Extract the downloaded zip file to a location on your local machine.
