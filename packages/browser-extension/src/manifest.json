@@ -19,6 +19,12 @@
     "scripts": ["scripts/background.js"],
     "service_worker": "scripts/background.js"
   },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{77e2c00b-e173-4604-863d-01645d8d2826}",
+      "strict_min_version": "101.0"
+    }
+  },
   "content_scripts": [
     {
       "all_frames": true,
