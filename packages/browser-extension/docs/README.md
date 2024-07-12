@@ -23,8 +23,8 @@ Please note that the `data/fixes.txt` file should be regularly updated to reflec
 ## Installation (for Mozilla Firefox users)
 
 1. Start by downloading the latest `.xpi` file [from here](https://www.cookie-dialog-monster.com/releases/latest.xpi).
-2. Open your Firefox browser.
-3. Navigate to [about:addons](about:addons) to open the Add-ons Manager.
+2. Open your Firefox browser. Depending on your browser settings, Firefox may prompt you to install the add-on automatically upon download completion. If the installation prompt appears, you can proceed with the installation directly from the prompt by clicking **Add** and skip to step 8.
+3. If the automatic prompt does not appear, navigate to [about:addons](about:addons) to open the Add-ons Manager.
 4. Click on the gear icon (⚙️) to open the menu.
 5. Select **Install Add-on From File...** from the menu.
 6. A file dialog will open. Navigate to and select the downloaded `.xpi` file.
