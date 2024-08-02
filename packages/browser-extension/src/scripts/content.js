@@ -1,19 +1,14 @@
+/**
+ * @typedef {Object} ExtensionData
+ * @property {string[] | undefined} commonWords
+ * @property {string[] | undefined} fixes
+ * @property {{ domains: string[] | undefined, tags: string[] | undefined } | undefined} skips
+ * @property {{ classes: string[] | undefined, selectors: string[] | undefined } | undefined} tokens
+ */
+
 if (typeof browser === 'undefined') {
   browser = chrome;
 }
-
-/**
- * @typedef {Object} ExtensionData
- * @property {string[]} commonWords
- * @property {string[]} fixes
- * @property {{ domains: string[], tags: string[] }} skips
- * @property {{ classes: string[], selectors: string[] }} tokens
- */
-
-/**
- * @description Attribute name
- */
-const dataAttributeName = 'data-cookie-dialog-monster';
 
 /**
  * @description Matched elements count
@@ -28,14 +23,14 @@ let count = 0;
 let { commonWords, fixes = [], skips, tokens } = {};
 
 /**
+ * @description Attribute name
+ */
+const dataAttributeName = 'data-cookie-dialog-monster';
+
+/**
  * @description Shortcut to send messages to background script
  */
 const dispatch = browser.runtime.sendMessage;
-
-/**
- * @description Event name
- */
-const setupEventName = 'cookie-dialog-monster';
 
 /**
  * @description Current hostname
@@ -44,10 +39,10 @@ const setupEventName = 'cookie-dialog-monster';
 const hostname = getHostname();
 
 /**
- * @description Elements that were already matched and are removable
- * @type {HTMLElement[]}
+ * @description Initial visibility state
+ * @type {boolean}
  */
-const removables = [];
+let initiallyVisible = document.visibilityState === 'visible';
 
 /**
  * @description Options provided to observer
@@ -61,6 +56,12 @@ const options = { childList: true, subtree: true };
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
 
 /**
+ * @description Elements that were already matched and are removable
+ * @type {HTMLElement[]}
+ */
+const removables = [];
+
+/**
  * @description Elements that were already seen
  * @type {HTMLElement[]}
  */
@@ -71,6 +72,11 @@ const seen = [];
  * @type {{ enabled: boolean }}
  */
 let state = { enabled: true };
+
+/**
+ * @description Event name to trigger the cleaning process
+ */
+const triggerEventName = 'cookie-dialog-monster';
 
 /**
  * @description Clean DOM
@@ -108,8 +114,10 @@ function clean(elements, skipMatch) {
 function forceClean(element) {
   const elements = [...element.querySelectorAll(tokens.selectors)];
 
-  fix();
-  if (elements.length && !preview) clean(elements, true);
+  if (elements.length) {
+    fix();
+    clean(elements, true);
+  }
 }
 
 /**
@@ -169,7 +177,12 @@ function isInViewport(element) {
  * @returns {boolean}
  */
 function match(element, skipMatch) {
-  if (!tokens?.classes.length || !tokens?.selectors.length) {
+  if (
+    !commonWords.length ||
+    !tokens?.classes?.length ||
+    !tokens?.selectors?.length ||
+    !skips?.tags?.length
+  ) {
     return false;
   }
 
@@ -215,7 +228,7 @@ function match(element, skipMatch) {
 }
 
 /**
- * @description Fix data, consent page and scroll issues
+ * @description Fix data, middle consent page and scroll issues
  * @returns {void}
  */
 function fix() {
@@ -310,9 +323,8 @@ function restoreDOM() {
 /**
  * @async
  * @description Set up everything
- * @param {boolean} skipReadyStateHack
  */
-async function setup(skipReadyStateHack) {
+async function setup() {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -326,11 +338,6 @@ async function setup(skipReadyStateHack) {
 
     if (count > 0) {
       dispatch({ type: 'SET_BADGE', value: `${count}` });
-    }
-
-    // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
-    if (document.readyState === 'complete' && !skipReadyStateHack) {
-      window.dispatchEvent(new Event(setupEventName));
     }
 
     dispatch({ type: 'ENABLE_ICON' });
@@ -352,15 +359,14 @@ const observer = new MutationObserver((mutations) => {
 
   const elements = mutations.flatMap((mutation) => Array.from(mutation.addedNodes));
 
-  fix();
-  clean(elements);
+  window.dispatchEvent(new Event(triggerEventName, { detail: { elements } }));
 });
 
 /**
  * @description Listen to messages from any other scripts
  * @listens browser.runtime#onMessage
  */
-browser.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
     case 'RESTORE': {
       restoreDOM();
@@ -372,7 +378,55 @@ browser.runtime.onMessage.addListener((message) => {
     }
   }
 
-  setup();
+  fix();
+  await setup();
+});
+
+/**
+ * @async
+ * @description Fix still existing elements when page loads
+ * @listens window#DOMContentLoaded
+ * @returns {void}
+ */
+window.addEventListener('DOMContentLoaded', async () => {
+  if (document.visibilityState === 'visible') {
+    await setup();
+    window.dispatchEvent(new Event(triggerEventName));
+  }
+});
+
+/**
+ * @description Fix bfcache issues
+ * @listens window#pageshow
+ * @returns {void}
+ */
+window.addEventListener('pageshow', async (event) => {
+  if (document.visibilityState === 'visible' && event.persisted) {
+    await setup();
+    window.dispatchEvent(new Event(triggerEventName));
+  }
+});
+
+/**
+ * @description Force clean when this event is fired
+ * @listens window#cookie-dialog-monster
+ * @returns {void}
+ */
+window.addEventListener(triggerEventName, (event) => {
+  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
+    fix();
+
+    if (event.detail?.elements) {
+      clean(event.detail.elements);
+    } else {
+      if (readingTime() < 4) {
+        forceClean(document.body);
+      } else {
+        // 2023-06-13: look into the first level of the document body, there are dialogs there very often
+        clean([...document.body.children]);
+      }
+    }
+  }
 });
 
 /**
@@ -382,51 +436,9 @@ browser.runtime.onMessage.addListener((message) => {
  * @returns {void}
  */
 window.addEventListener('visibilitychange', async () => {
-  if (document.body?.children.length && !tokens) {
-    await setup(true);
-    clean([...document.body.children]);
+  if (document.visibilityState === 'visible' && !initiallyVisible) {
+    initiallyVisible = true;
+    await setup();
+    window.dispatchEvent(new Event(triggerEventName));
   }
 });
-
-/**
- * @description Fix still existing elements when page fully load
- * @listens window#load
- * @returns {void}
- */
-window.addEventListener('load', () => {
-  if (document.visibilityState === 'visible') {
-    window.dispatchEvent(new Event(setupEventName));
-  }
-});
-
-/**
- * @description Fix bfcache issues
- * @listens window#pageshow
- * @returns {void}
- */
-window.addEventListener('pageshow', (event) => {
-  if (document.visibilityState === 'visible' && event.persisted) {
-    setup(true);
-    window.dispatchEvent(new Event(setupEventName));
-  }
-});
-
-/**
- * @description Force clean when this event is fired
- * @listens window#cookie-dialog-monster
- * @returns {void}
- */
-window.addEventListener(setupEventName, () => {
-  if (document.body?.children.length && state.enabled && tokens?.selectors.length && !preview) {
-    if (readingTime() < 4) {
-      forceClean(document.body);
-    } else {
-      // 2023-06-13: look into the first level of the document body, there are dialogs there very often
-      clean([...document.body.children]);
-    }
-  }
-});
-
-if (document.visibilityState === 'visible') {
-  setup();
-}
