@@ -205,7 +205,7 @@ function match(element, skipMatch) {
   }
 
   if (element.hasAttributes()) {
-    // 2023-06-10: twitch.tv temporary fix
+    // 2023-06-10: fix twitch.tv temporarily
     if (element.classList.contains('chat-line__message')) {
       return false;
     }
@@ -242,6 +242,9 @@ function fix() {
       dispatch({ type: 'SET_BADGE', value: `${count}` });
     }
   }
+
+  // 2024-08-02: fix #644 temporarily
+  document.getElementsByTagName('ion-router-outlet')[0]?.removeAttribute('inert');
 
   for (const fix of fixes) {
     const [match, selector, action, property] = fix.split('##');
