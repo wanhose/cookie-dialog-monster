@@ -91,7 +91,9 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
 
   switch (info.menuItemId) {
     case reportMenuItemId:
-      if (tabId) browser.tabs.sendMessage(tabId, { type: 'SHOW_REPORT_DIALOG' }, suppressLastError);
+      if (tabId !== undefined) {
+        browser.tabs.sendMessage(tabId, { type: 'SHOW_REPORT_DIALOG' }, suppressLastError);
+      }
       break;
     case settingsMenuItemId:
       browser.runtime.openOptionsPage();
@@ -111,18 +113,18 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
 
   switch (message.type) {
     case 'DISABLE_ICON':
-      if (isPage && tabId) {
+      if (isPage && tabId !== undefined) {
         browser.action.setIcon({ path: '/assets/icons/disabled.png', tabId }, suppressLastError);
         browser.action.setBadgeText({ tabId, text: '' });
       }
       break;
     case 'ENABLE_ICON':
-      if (isPage && tabId) {
+      if (isPage && tabId !== undefined) {
         browser.action.setIcon({ path: '/assets/icons/enabled.png', tabId }, suppressLastError);
       }
       break;
     case 'ENABLE_POPUP':
-      if (isPage && tabId) {
+      if (isPage && tabId !== undefined) {
         browser.action.setPopup({ popup: '/popup.html', tabId }, suppressLastError);
       }
       break;
@@ -137,8 +139,8 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       return true;
     case 'GET_EXCLUSION_LIST':
       storage.get(null, (exclusions) => {
-        const exclusionList = Object.entries(exclusions || {}).flatMap((x) =>
-          x[0] !== 'data' && !x[1]?.enabled ? [x[0]] : []
+        const exclusionList = Object.entries(exclusions || {}).flatMap((exclusion) =>
+          exclusion[0] !== 'data' && !exclusion[1]?.enabled ? [exclusion[0]] : []
         );
         callback(exclusionList);
       });
@@ -157,27 +159,29 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       });
       return true;
     case 'INSERT_DIALOG_CSS':
-      if (isPage && tabId) {
+      if (isPage && tabId !== undefined) {
         script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       }
       break;
     case 'REPORT':
-      if (tabId) {
+      if (tabId !== undefined) {
         report(message, sender.tab, callback);
         return true;
       }
       break;
     case 'SET_BADGE':
-      if (tabId) {
+      if (tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
         browser.action.setBadgeText({ tabId, text: message.value });
       }
       break;
     case 'SET_HOSTNAME_STATE':
-      if (hostname && message.state.enabled === false) {
-        storage.set({ [hostname]: message.state });
-      } else if (hostname) {
-        storage.remove(hostname);
+      if (hostname) {
+        if (message.state.enabled === false) {
+          storage.set({ [hostname]: message.state });
+        } else {
+          storage.remove(hostname);
+        }
       }
       break;
     default:
