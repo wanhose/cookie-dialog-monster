@@ -429,8 +429,7 @@ browser.runtime.onMessage.addListener(async (message) => {
     }
   }
 
-  fix();
-  await run({ skipTriggerEvent: true });
+  await run({ skipTriggerEvent: message.type === 'RESTORE' });
 });
 
 /**
