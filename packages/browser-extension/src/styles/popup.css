@@ -85,7 +85,9 @@ popup-button {
 
 popup-button:focus,
 popup-button:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 popup-button > span {
@@ -94,6 +96,25 @@ popup-button > span {
 
 popup-button > svg {
   align-self: flex-end;
+}
+
+popup-data {
+  align-items: center;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  outline: none;
+}
+
+popup-data:not(:first-child) {
+  margin-top: 4px;
+}
+
+popup-data-container {
+  font-size: 12px;
+  grid-column: 1 / -1;
+  justify-self: center;
+  text-align: center;
 }
 
 strong {

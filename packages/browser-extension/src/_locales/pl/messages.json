@@ -35,6 +35,12 @@
   "popup_contributeOption": {
     "message": "Weź udział w rozwoju projektu"
   },
+  "popup_databaseVersion": {
+    "message": "Wersja bazy danych"
+  },
+  "popup_extensionVersion": {
+    "message": "Wersja rozszerzenia"
+  },
   "popup_helpOption": {
     "message": "Potrzebujesz pomocy lub masz problem?"
   },

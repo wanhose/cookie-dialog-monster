@@ -6,7 +6,7 @@ if (typeof browser === 'undefined') {
  * @description API URL
  * @type {string}
  */
-const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v3';
+const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v4';
 
 /**
  * @description Context menu identifier
@@ -163,6 +163,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
         script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       }
       break;
+    case 'REFRESH_DATA':
+      refreshData(callback);
+      return true;
     case 'REPORT':
       if (tabId !== undefined) {
         report(message, sender.tab, callback);

@@ -63,6 +63,7 @@ async function handleContentLoaded() {
     ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
     : undefined;
 
+  const data = await browser.runtime.sendMessage({ hostname, type: 'GET_DATA' });
   const next = await browser.runtime.sendMessage({ hostname, type: 'GET_HOSTNAME_STATE' });
   state = { ...(next ?? state), tabId: tab?.id };
 
@@ -71,6 +72,13 @@ async function handleContentLoaded() {
 
   const contributeButtonElement = document.getElementById('contribute-option');
   contributeButtonElement?.addEventListener('click', handleLinkRedirect);
+
+  const databaseVersionElement = document.getElementById('database-version');
+  if (data.version) databaseVersionElement.innerText = data.version;
+  else databaseVersionElement.style.setProperty('display', 'none');
+
+  const extensionVersionElement = document.getElementById('extension-version');
+  extensionVersionElement.innerText = browser.runtime.getManifest().version;
 
   const helpButtonElement = document.getElementById('help-option');
   helpButtonElement?.addEventListener('click', handleLinkRedirect);
