@@ -1,0 +1,59 @@
+action.com###CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll##click
+amazon.de###sp-cc-rejectall-link##click
+automobielmanagement.nl##body > *##resetAll##filter
+bilbaomuseoa.eus##.alert_message .btn-confirm##click
+breitbart.com##.twitter-tweet##resetAll##display
+breitbart.com##.twitter-tweet##resetAll##visibility
+buscotelefonosgratis.es###cookie_action_close_header_reject##click
+chollometro.com##[data-t="continueWithoutAccepting"]##click
+classicube.net###acceptcookies##click
+compact-online.de##[id*="bnnr-body-rightSide-"] div + div > span##click
+consent.google##[aria-label="Reject all"]##click
+consent.yahoo##.reject-all##click
+consent.youtube##[aria-label="Reject all"]##click
+dailymotion.com##[class*="TCF2Popup__containerButtons"] > button:nth-child(2)##click
+dealabs.com##[data-t="continueWithoutAccepting"]##click
+fiberplane.dev##button[aria-label="Close Banner"]##click
+foto-erhardt.de##[class="modal show"]##click
+gamestar.de###content##reset##filter
+gettr.com##button.bold##click
+gmx.com###onetrust-accept-btn-handler##click
+gmx.net##[data-section="accept"]##click
+golem.de##[title="Zustimmen und weiter"]##click
+google##[aria-label*="Google"][role="dialog"] button:not([aria-label]):not([tabindex]):first-child##click
+google##[aria-label="Alle ablehnen"]##click
+google##[aria-label="Odrzuć wszystko"]##click
+google##[aria-label="Rechazar todo"]##click
+google##[aria-label="Recusar tudo"]##click
+google##[aria-label="Reject all"]##click
+google##[aria-label="Rejeitar tudo"]##click
+google##[aria-label="Respinge tot"]##click
+google##[aria-label="Rifiuta tutto"]##click
+google##[aria-label="Tout refuser"]##click
+google##[aria-label="Отклонить все"]##click
+hagglezon.com##[data-test="cookie-submit"]##click
+instagram.com##[role="dialog"] > [style="display: flex; flex-direction: column; height: 100%; max-width: 100%;"] > button##click
+motorolasound.com###cookie-btn-denied##click
+mydealz.de##[data-t="continueWithoutAccepting"]##click
+myprivacy.dpgmedia##.pg-accept-button##click
+play.google##body > div##reset##z-index
+popeyes.es##.cookie-buttons > .cookie-buttons-column > div:last-child##click
+producthunt.com##[data-test="dismiss-CookiePopup"] button##click
+resonanz-labor.de###wrapwrap##reset##overflow
+staylibere.com##[class*="LayoutCookieBanner_buttons"] > button:last-child##click
+twitch.tv##[data-a-target="consent-banner-accept"]##click
+usnews.com###gdpr-modal-agree##click
+web.de###reminder##click
+web.dev##a[href*="cookies"] + button##click
+youtube##[aria-label="Alle ablehnen"]##click
+youtube##[aria-label="Odrzuć wszystko"]##click
+youtube##[aria-label="Rechazar todo"]##click
+youtube##[aria-label="Recusar tudo"]##click
+youtube##[aria-label="Reject all"]##click
+youtube##[aria-label="Rejeitar tudo"]##click
+youtube##[aria-label="Respinge tot"]##click
+youtube##[aria-label="Rifiuta tutto"]##click
+youtube##[aria-label="Tout refuser"]##click
+youtube##[aria-label="Отклонить все"]##click
+zdf.de###aria-dialog-cmp-error-dialog > .dialog-close##click
+zeit.de##[title="ACCEPT AND CONTINUE"]##click
