@@ -291,6 +291,11 @@
     },
     {
       "action": "click",
+      "domain": "classicube.net",
+      "selector": "#acceptcookies"
+    },
+    {
+      "action": "click",
       "domain": "compact-online.de",
       "selector": "[id*=\"bnnr-body-rightSide-\"] div + div > span"
     },
@@ -358,7 +363,57 @@
     {
       "action": "click",
       "domain": "google",
-      "selector": "form[action*=\"consent.google\"] button"
+      "selector": "[aria-label*=\"Google\"][role=\"dialog\"] button:not([aria-label]):not([tabindex]):first-child"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Alle ablehnen\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Odrzuć wszystko\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Rechazar todo\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Recusar tudo\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Reject all\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Rejeitar tudo\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Respinge tot\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Rifiuta tutto\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Tout refuser\"]"
+    },
+    {
+      "action": "click",
+      "domain": "google",
+      "selector": "[aria-label=\"Отклонить все\"]"
     },
     {
       "action": "click",
@@ -402,6 +457,12 @@
       "selector": "[data-test=\"dismiss-CookiePopup\"] button"
     },
     {
+      "action": "reset",
+      "domain": "resonanz-labor.de",
+      "property": "overflow",
+      "selector": "#wrapwrap"
+    },
+    {
       "action": "click",
       "domain": "staylibere.com",
       "selector": "[class*=\"LayoutCookieBanner_buttons\"] > button:last-child"
@@ -429,7 +490,52 @@
     {
       "action": "click",
       "domain": "youtube",
-      "selector": "div.buttons.ytd-consent-bump-v2-lightbox ytd-button-renderer:last-child tp-yt-paper-button"
+      "selector": "[aria-label=\"Alle ablehnen\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Odrzuć wszystko\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Rechazar todo\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Recusar tudo\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Reject all\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Rejeitar tudo\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Respinge tot\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Rifiuta tutto\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Tout refuser\"]"
+    },
+    {
+      "action": "click",
+      "domain": "youtube",
+      "selector": "[aria-label=\"Отклонить все\"]"
     },
     {
       "action": "click",
@@ -474,6 +580,7 @@
       "sucuri.net",
       "tesla.com",
       "visualstudio.com",
+      "xkcd.com",
       "yandex.ru",
       "youtube.com"
     ],
@@ -544,7 +651,6 @@
       "KBD",
       "LABEL",
       "LEGEND",
-      "LI",
       "LINEARGRADIENT",
       "LINK",
       "MAIN",
@@ -964,6 +1070,7 @@
       ".andcookie",
       ".animate-cookie-message",
       ".annotation.type-alert.type-permanent.lspace.m-reset-position.closableContainer",
+      ".announce-cookie",
       ".announcement-cookies",
       ".announcement-eu-cookie",
       ".announcement[class*=\"cookies\"]",
@@ -1446,6 +1553,7 @@
       ".cc-dialog[aria-label=\"cookie-consent\"]",
       ".cc-fixed-bottom",
       ".cc-floating",
+      ".cc-gdpr-modal",
       ".cc-grower",
       ".cc-individual-cookie-settings-overlay",
       ".cc-individual-cookie-settings",
@@ -1568,7 +1676,7 @@
       ".cmp-modal",
       ".cmp-popup-cookies",
       ".cmp-root-container",
-      ".cmp",
+      ".cmp:not(article)",
       ".cmpboxrecall",
       ".cmpContainer",
       ".cmpstyleroot",
@@ -4011,6 +4119,7 @@
       ".fixed-msg--cookies",
       ".fixed.bottom-sm.left-sm.right-sm.z-50.max-w-md.rounded-lg.border.p-md.shadow-sm.md\\:left-auto.border-borderMain\\/50.ring-borderMain\\/50.divide-borderMain\\/50.dark\\:divide-borderMainDark\\/50.dark\\:ring-borderMainDark\\/50.dark\\:border-borderMainDark\\/50.bg-background.dark\\:bg-backgroundDark",
       ".fixed.md\\:flex.items-center.justify-between.p-2.md\\:py-4.md\\:px-6.bottom-0.left-0.right-0.bg-midnight-lighter.text-white",
+      ".fixed.right-2.bottom-2.z-\\[60\\].max-h-\\[calc\\(100vh-1rem\\)\\].max-w-\\[calc\\(100vw-1rem\\)\\].sm\\:max-w-md.rounded-3xl.font-styrene.bg-bg-500.p-4.sm\\:p-8.overflow-auto",
       ".fixedCookieOverlay",
       ".fixedCookiePolicy",
       ".fl-cookie-notice--container",
@@ -5710,6 +5819,7 @@
       ".responsive-app__cookies",
       ".resultCookie",
       ".retail-cookie-layer",
+      ".reveal__overlay:has(#js_reveal_cookie_content)",
       ".reveal-modal-bg-cookie",
       ".reveal-modal-cookie",
       ".reveal-modal[id*=\"cookie\"]",
@@ -6267,6 +6377,7 @@
       ".welcome-privacy",
       ".weUseCookies",
       ".WeUseCookiesNotice",
+      ".wf-cookie-consent",
       ".wf-museosans-n3-active.wf-museosans-i3-active.wf-museosans-n7-active.wf-museosans-i7-active.wf-museoslab-n3-active.wf-museoslab-i3-active.wf-museoslab-n7-active.wf-museoslab-i7-active.wf-museoslab-n8-active.wf-museoslab-i8-active.wf-active.js.flexbox.canvas.canvastext.webgl.no-touch.geolocation.postmessage.websqldatabase.indexeddb.hashchange.history.draganddrop.websockets.rgba.hsla.multiplebgs.backgroundsize.borderimage.borderradius.boxshadow.textshadow.opacity.cssanimations.csscolumns.cssgradients.cssreflections.csstransforms.csstransforms3d.csstransitions.fontface.generatedcontent.video.audio.localstorage.sessionstorage.webworkers.no-applicationcache.svg.inlinesvg.smil.svgclippaths .modal-backdrop",
       ".wgt-cookies",
       ".widget_cookieconsentwidget",
@@ -6276,6 +6387,7 @@
       ".widget--enable-cookies-box",
       ".widget-consent-dialog",
       ".widget-consent",
+      ".widget-cookie-banner",
       ".widget-cookie-notification",
       ".widget-cookie",
       ".widget-gdpr-banner",
@@ -6393,6 +6505,7 @@
       "[aria-describedby=\"cookieconsent:desc\"]",
       "[aria-describedby=\"cookieConsentDesc\"]",
       "[aria-describedby=\"cookieprivacy\"]",
+      "[aria-describedby=\"cookies-description\"]",
       "[aria-describedby=\"cookies-policy-message\"]",
       "[aria-describedby=\"dialog-eu-cookie-law\"]",
       "[aria-label*=\"cookieconsent\"]",
@@ -6401,6 +6514,7 @@
       "[aria-label=\"Cookie consent\"]",
       "[aria-label=\"cookieconsent\"]",
       "[aria-label=\"cookies\"]",
+      "[aria-label=\"Cookies\"]",
       "[aria-label=\"open cookies\"]",
       "[aria-label=\"Wähle deine Cookies aus\"]",
       "[aria-labelledby=\"cookie_banner_title\"]",
@@ -6457,6 +6571,7 @@
       "[class*=\"sd-cmp-\"]",
       "[class*=\"StyledCookieLayer\"]",
       "[class*=\"Warnings__cookieBar\"]",
+      "[class*=\"zweiwegen-model-dialog_consentDialog\"]",
       "[class^=\"__alertCookie\"]",
       "[class^=\"__cookie-banner\"]",
       "[class^=\"_cookieBanner-\"]",
@@ -6529,6 +6644,8 @@
       "[data-component=\"global/PopUpFromCookie\"]",
       "[data-components=\"pdr-ws1lib-header\"]",
       "[data-container-acceptcookies]",
+      "[data-controller=\"cookie-bar\"]",
+      "[data-cookie-bar-target=\"modal\"]",
       "[data-cookie-consent-overlay]",
       "[data-cookie-id]",
       "[data-cookie-law-banner-selector]",
@@ -6572,8 +6689,10 @@
       "[data-pov-accept-cookies-message]",
       "[data-privacy-consent]",
       "[data-project=\"mol-fe-cmp\"]",
+      "[data-qa=\"cookie-notification\"]",
       "[data-qa=\"cookies-policy-informer\"]",
       "[data-qa=\"txtGdprCookiePopup\"]",
+      "[data-reach-dialog-overlay]:has(#cookie-consent-form)",
       "[data-react-class=\"CookieNotice\"]",
       "[data-react-class=\"EUCookieBanner\"]",
       "[data-role=\"cookie-policy-banner\"]",
@@ -6607,6 +6726,7 @@
       "[data-testid=\"cookie-policy-manage-dialog\"]",
       "[data-testid=\"cookie-wall-modal\"]",
       "[data-testid=\"cookienotice-container\"]",
+      "[data-testid=\"cookies-dialog\"]",
       "[data-testid=\"dl-cookieBanner\"]",
       "[data-testid=\"gateway-container\"][aria-hidden=\"true\"]",
       "[data-testid=\"main-cookies-banner-container\"]",
@@ -6620,6 +6740,7 @@
       "[data-veci=\"cookies-policy\"]",
       "[data-veloute=\"cookie-disclaimer\"]",
       "[data-view=\"cookiePolicy\"]",
+      "[data-widget-host=\"https://www.nic.ru\"] + #inform-notification",
       "[data-widget=\"cookie-bar\"]",
       "[data-widget=\"cookieBubble\"]",
       "[data-wzb=\"CookieNotification\"]",
@@ -6635,6 +6756,7 @@
       "[id^=\"mod-privacy-policy\"]",
       "[id^=\"n-cookies\"]",
       "[id=\"cm:cookieWrapper\"]",
+      "[is=\"tracking-consent\"]",
       "[js-cookies]",
       "[ld-scope=\"cookie-consent\"]",
       "[mat-host=\"cadenaser.com\"] > div[data-nosnippet=\"data-nosnippet\"]",
@@ -6758,6 +6880,7 @@
       "#aboutCookieFooter",
       "#aboutcookies",
       "#aboutCookieUsageBox",
+      "#abw_consentbanner",
       "#ac_cookiesvalidation",
       "#ac87d9815-4775-43d1-bc7d-88f4f6d7e0c7",
       "#acb-banner",
@@ -8819,6 +8942,7 @@
       "#cookiebar-1",
       "#cookiebar-container",
       "#cookiebar-cookiepolicy",
+      "#cookiebar-outer",
       "#cookiebar-perm",
       "#cookiebar-wrap",
       "#cookiebar-wrapper",
@@ -12862,6 +12986,7 @@
       "#shopify-privacy-banner",
       "#shopify-section-fixed-message",
       "#shopillaxcookielaw-wrapper",
+      "#shopui-cookie-popup-container",
       "#shorthand-gdpr-container",
       "#shortpixel-cookies",
       "#show_banner_cookies",
@@ -13356,6 +13481,7 @@
       "#webarx-cookie-notice",
       "#webdevCookiesAlertContainer",
       "#webLianderCookieBanner",
+      "#website_cookies_bar",
       "#website-cookies-prompt",
       "#website-cookies",
       "#websiteIsUsingCookie",
@@ -13523,5 +13649,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722679512109"
+  "version": "1722686968225"
 }
