@@ -39,6 +39,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
         owner: environment.github.owner,
         repo: environment.github.repo,
+        state: 'all',
       });
       const ua = new UAParser(request.body.userAgent ?? '').getResult();
       const url = new URL(request.body.url).hostname
@@ -49,8 +50,19 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       const existingIssue = issues.data.find((issue) => issue.title.includes(url));
 
       try {
-        if (existingIssue) {
-          throw new Error('Issue already exists');
+        if (existingIssue?.state === 'closed') {
+          await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
+            owner: environment.github.owner,
+            repo: environment.github.repo,
+            issue_number: existingIssue.number,
+            state: 'open',
+          });
+
+          reply.send({
+            data: existingIssue.html_url,
+            success: true,
+          });
+          return;
         }
 
         const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
@@ -82,7 +94,6 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
         });
       } catch (error) {
         reply.send({
-          data: existingIssue?.html_url,
           errors: [error.message],
           success: false,
         });
