@@ -85,25 +85,43 @@ const triggerEventName = 'cookie-dialog-monster';
  * @returns {void}
  */
 function clean(elements, skipMatch) {
-  for (const element of elements) {
-    if (match(element, skipMatch)) {
-      const observer = new MutationObserver(forceElementStyles);
-      const options = { attributes: true, attributeFilter: [dataAttributeName, 'class', 'style'] };
+  let index = 0;
+  const size = 50;
 
-      element.setAttribute(dataAttributeName, 'true');
-      element.style.setProperty('display', 'none', 'important');
-      observer.observe(element, options);
+  function chunk() {
+    const end = Math.min(index + size, elements.length);
 
-      count += 1;
-      dispatch({ type: 'SET_BADGE', value: `${count}` });
+    for (; index < end; index++) {
+      const element = elements[index];
 
-      if (!removables.includes(element)) {
-        removables.push(element);
+      if (match(element, skipMatch)) {
+        const observer = new MutationObserver(forceElementStyles);
+
+        element.setAttribute(dataAttributeName, 'true');
+        element.style.setProperty('display', 'none', 'important');
+
+        observer.observe(element, {
+          attributes: true,
+          attributeFilter: [dataAttributeName, 'class', 'style'],
+        });
+
+        count += 1;
+        dispatch({ type: 'SET_BADGE', value: `${count}` });
+
+        if (!removables.includes(element)) {
+          removables.push(element);
+        }
       }
+
+      seen.push(element);
     }
 
-    seen.push(element);
+    if (index < elements.length) {
+      requestAnimationFrame(chunk);
+    }
   }
+
+  requestAnimationFrame(chunk);
 }
 
 /**
@@ -362,7 +380,7 @@ const observer = new MutationObserver((mutations) => {
 
   const elements = mutations.flatMap((mutation) => Array.from(mutation.addedNodes));
 
-  window.dispatchEvent(new Event(triggerEventName, { detail: { elements } }));
+  window.dispatchEvent(new CustomEvent(triggerEventName, { detail: { elements } }));
 });
 
 /**
@@ -394,7 +412,7 @@ browser.runtime.onMessage.addListener(async (message) => {
 window.addEventListener('DOMContentLoaded', async () => {
   if (document.visibilityState === 'visible') {
     await setup();
-    window.dispatchEvent(new Event(triggerEventName));
+    window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
 
@@ -406,7 +424,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
     await setup();
-    window.dispatchEvent(new Event(triggerEventName));
+    window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
 
@@ -442,6 +460,6 @@ window.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible' && !initiallyVisible) {
     initiallyVisible = true;
     await setup();
-    window.dispatchEvent(new Event(triggerEventName));
+    window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
