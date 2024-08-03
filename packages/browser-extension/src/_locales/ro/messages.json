@@ -35,6 +35,12 @@
   "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
   },
+  "popup_databaseVersion": {
+    "message": "Versiunea bazei de date"
+  },
+  "popup_extensionVersion": {
+    "message": "Versiunea extensiei"
+  },
   "popup_helpOption": {
     "message": "Ajutor sau probleme?"
   },

@@ -1,32 +1,22 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import fetch from 'node-fetch';
+import { parseNewFix } from 'services/compatibility';
 
 export default (server: FastifyInstance, options: RouteShorthandOptions, done: () => void) => {
   server.get('/data/', async (request, reply) => {
     try {
-      const dataUrl = 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/data';
-      const commonWordsUrl = `${dataUrl}/common-words.json`;
-      const fixesUrl = `${dataUrl}/fixes.txt`;
-      const skipsUrl = `${dataUrl}/skips.json`;
-      const tokensUrl = `${dataUrl}/tokens.json`;
-
-      const results = await Promise.all([
-        fetch(commonWordsUrl),
-        fetch(fixesUrl),
-        fetch(skipsUrl),
-        fetch(tokensUrl),
-      ]);
-      const skips = await results[2].json();
-      const tokens = await results[3].json();
+      const databaseUrl =
+        'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main/database.json';
+      const result = await (await fetch(databaseUrl)).json();
 
       reply.send({
         data: {
-          classes: tokens.classes,
-          commonWords: await results[0].json(),
-          elements: tokens.selectors,
-          fixes: (await results[1].text()).split('\n').filter((x) => !!x),
-          skips: skips.domains,
-          tags: skips.tags,
+          classes: result.tokens.classes,
+          commonWords: result.commonWords,
+          elements: result.tokens.selectors,
+          fixes: result.fixes.map(parseNewFix),
+          skips: result.skips.domains,
+          tags: result.skips.tags,
         },
         success: true,
       });

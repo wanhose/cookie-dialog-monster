@@ -35,6 +35,12 @@
   "popup_contributeOption": {
     "message": "Внести свой вклад в этот проект"
   },
+  "popup_databaseVersion": {
+    "message": "Версия базы данных"
+  },
+  "popup_extensionVersion": {
+    "message": "Версия расширения"
+  },
   "popup_helpOption": {
     "message": "Помощь или проблемы?"
   },

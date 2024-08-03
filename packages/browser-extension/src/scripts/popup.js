@@ -72,6 +72,12 @@ async function handleContentLoaded() {
   const contributeButtonElement = document.getElementById('contribute-option');
   contributeButtonElement?.addEventListener('click', handleLinkRedirect);
 
+  const databaseRefreshButtonElement = document.getElementById('refresh-database-button');
+  databaseRefreshButtonElement?.addEventListener('click', handleDatabaseRefresh);
+
+  const extensionVersionElement = document.getElementById('extension-version');
+  extensionVersionElement.innerText = browser.runtime.getManifest().version;
+
   const helpButtonElement = document.getElementById('help-option');
   helpButtonElement?.addEventListener('click', handleLinkRedirect);
 
@@ -90,6 +96,39 @@ async function handleContentLoaded() {
   settingsButtonElement.addEventListener('click', handleSettingsClick);
 
   translate();
+  updateDatabaseVersion();
+}
+
+/**
+ * @async
+ * @description Refresh the database
+ * @param {MouseEvent} event
+ */
+async function handleDatabaseRefresh(event) {
+  const target = event.currentTarget;
+
+  if (target.getAttribute('aria-disabled') === 'true') {
+    return;
+  }
+
+  const checkIcon = target.querySelector('#refresh-database-check');
+  const spinnerIcon = target.querySelector('#refresh-database-spinner');
+
+  target.setAttribute('data-refreshing', 'true');
+  target.setAttribute('aria-disabled', 'true');
+  await browser.runtime.sendMessage({ type: 'REFRESH_DATA' });
+  checkIcon.style.setProperty('display', 'block');
+  spinnerIcon.style.setProperty('display', 'none');
+  target.removeAttribute('data-animation');
+  target.removeAttribute('data-refreshing');
+  updateDatabaseVersion();
+
+  window.setTimeout(() => {
+    checkIcon.style.setProperty('display', 'none');
+    spinnerIcon.style.setProperty('display', 'block');
+    target.removeAttribute('aria-disabled');
+    target.setAttribute('data-animation', 'flip');
+  }, 5000);
 }
 
 /**
@@ -113,13 +152,13 @@ async function handleLinkRedirect(event) {
  * @returns {Promise<void>}
  */
 async function handlePowerToggle(event) {
-  const element = event.currentTarget;
+  const target = event.currentTarget;
   const next = { enabled: !state.enabled };
 
   browser.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
   browser.tabs.sendMessage(state.tabId, { type: next.enabled ? 'RUN' : 'RESTORE' });
-  element.setAttribute('disabled', 'true');
-  element.setAttribute('data-value', next.enabled ? 'on' : 'off');
+  target.setAttribute('aria-disabled', 'true');
+  target.setAttribute('data-value', next.enabled ? 'on' : 'off');
   window.close();
 }
 
@@ -150,6 +189,19 @@ function translate() {
       node.setAttribute('placeholder', browser.i18n.getMessage(i18nPlaceholder));
     }
   }
+}
+
+/**
+ * @async
+ * @description Update the database version element
+ * @returns {Promise<void>}
+ */
+async function updateDatabaseVersion() {
+  const data = await browser.runtime.sendMessage({ hostname, type: 'GET_DATA' });
+  const databaseVersionElement = document.getElementById('database-version');
+
+  if (data.version) databaseVersionElement.innerText = data.version;
+  else databaseVersionElement.style.setProperty('display', 'none');
 }
 
 /**

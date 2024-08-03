@@ -1,19 +1,27 @@
+/**
+ * @typedef {Object} ExtensionData
+ * @property {string[] | undefined} commonWords
+ * @property {Fix[] | undefined} fixes
+ * @property {{ domains: string[] | undefined, tags: string[] | undefined } | undefined} skips
+ * @property {{ classes: string[] | undefined, selectors: string[] | undefined } | undefined} tokens
+ */
+
+/**
+ * @typedef {Object} Fix
+ * @property {string} action
+ * @property {string} domain
+ * @property {string | undefined} property
+ * @property {string} selector
+ */
+
+/**
+ * @typedef {Object} RunParams
+ * @property {boolean | undefined} skipTriggerEvent
+ */
+
 if (typeof browser === 'undefined') {
   browser = chrome;
 }
-
-/**
- * @typedef {Object} ExtensionData
- * @property {string[]} commonWords
- * @property {string[]} fixes
- * @property {{ domains: string[], tags: string[] }} skips
- * @property {{ classes: string[], selectors: string[] }} tokens
- */
-
-/**
- * @description Attribute name
- */
-const dataAttributeName = 'data-cookie-dialog-monster';
 
 /**
  * @description Matched elements count
@@ -28,14 +36,14 @@ let count = 0;
 let { commonWords, fixes = [], skips, tokens } = {};
 
 /**
+ * @description Attribute name
+ */
+const dataAttributeName = 'data-cookie-dialog-monster';
+
+/**
  * @description Shortcut to send messages to background script
  */
 const dispatch = browser.runtime.sendMessage;
-
-/**
- * @description Event name
- */
-const setupEventName = 'cookie-dialog-monster';
 
 /**
  * @description Current hostname
@@ -44,10 +52,10 @@ const setupEventName = 'cookie-dialog-monster';
 const hostname = getHostname();
 
 /**
- * @description Elements that were already matched and are removable
- * @type {HTMLElement[]}
+ * @description Initial visibility state
+ * @type {boolean}
  */
-const removables = [];
+let initiallyVisible = document.visibilityState === 'visible';
 
 /**
  * @description Options provided to observer
@@ -59,6 +67,12 @@ const options = { childList: true, subtree: true };
  * @description Is consent preview page?
  */
 const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
+
+/**
+ * @description Elements that were already matched and are removable
+ * @type {HTMLElement[]}
+ */
+const removables = [];
 
 /**
  * @description Elements that were already seen
@@ -73,31 +87,54 @@ const seen = [];
 let state = { enabled: true };
 
 /**
+ * @description Event name to trigger the cleaning process
+ */
+const triggerEventName = 'cookie-dialog-monster';
+
+/**
  * @description Clean DOM
  * @param {Element[]} elements
  * @param {boolean?} skipMatch
  * @returns {void}
  */
 function clean(elements, skipMatch) {
-  for (const element of elements) {
-    if (match(element, skipMatch)) {
-      const observer = new MutationObserver(forceElementStyles);
-      const options = { attributes: true, attributeFilter: [dataAttributeName, 'class', 'style'] };
+  let index = 0;
+  const size = 50;
 
-      element.setAttribute(dataAttributeName, 'true');
-      element.style.setProperty('display', 'none', 'important');
-      observer.observe(element, options);
+  function chunk() {
+    const end = Math.min(index + size, elements.length);
 
-      count += 1;
-      dispatch({ type: 'SET_BADGE', value: `${count}` });
+    for (; index < end; index++) {
+      const element = elements[index];
 
-      if (!removables.includes(element)) {
-        removables.push(element);
+      if (match(element, skipMatch)) {
+        const observer = new MutationObserver(forceElementStyles);
+
+        element.setAttribute(dataAttributeName, 'true');
+        element.style.setProperty('display', 'none', 'important');
+
+        observer.observe(element, {
+          attributes: true,
+          attributeFilter: [dataAttributeName, 'class', 'style'],
+        });
+
+        count += 1;
+        dispatch({ type: 'SET_BADGE', value: `${count}` });
+
+        if (!removables.includes(element)) {
+          removables.push(element);
+        }
       }
+
+      seen.push(element);
     }
 
-    seen.push(element);
+    if (index < elements.length) {
+      requestAnimationFrame(chunk);
+    }
   }
+
+  requestAnimationFrame(chunk);
 }
 
 /**
@@ -108,8 +145,10 @@ function clean(elements, skipMatch) {
 function forceClean(element) {
   const elements = [...element.querySelectorAll(tokens.selectors)];
 
-  fix();
-  if (elements.length && !preview) clean(elements, true);
+  if (elements.length) {
+    fix();
+    clean(elements, true);
+  }
 }
 
 /**
@@ -169,7 +208,12 @@ function isInViewport(element) {
  * @returns {boolean}
  */
 function match(element, skipMatch) {
-  if (!tokens?.classes.length || !tokens?.selectors.length) {
+  if (
+    !commonWords.length ||
+    !tokens?.classes?.length ||
+    !tokens?.selectors?.length ||
+    !skips?.tags?.length
+  ) {
     return false;
   }
 
@@ -192,8 +236,13 @@ function match(element, skipMatch) {
   }
 
   if (element.hasAttributes()) {
-    // 2023-06-10: twitch.tv temporary fix
+    // 2023-06-10: fix #113 temporarily
     if (element.classList.contains('chat-line__message')) {
+      return false;
+    }
+
+    // 2024-08-03: fix #701 temporarily
+    if (element.classList.contains('sellos')) {
       return false;
     }
 
@@ -215,7 +264,7 @@ function match(element, skipMatch) {
 }
 
 /**
- * @description Fix data, consent page and scroll issues
+ * @description Fix data, middle consent page and scroll issues
  * @returns {void}
  */
 function fix() {
@@ -230,10 +279,13 @@ function fix() {
     }
   }
 
-  for (const fix of fixes) {
-    const [match, selector, action, property] = fix.split('##');
+  // 2024-08-02: fix #644 temporarily
+  document.getElementsByTagName('ion-router-outlet')[0]?.removeAttribute('inert');
 
-    if (hostname.includes(match)) {
+  for (const fix of fixes) {
+    const { action, domain, property, selector } = fix;
+
+    if (hostname.includes(domain)) {
       switch (action) {
         case 'click': {
           const element = document.querySelector(selector);
@@ -309,10 +361,10 @@ function restoreDOM() {
 
 /**
  * @async
- * @description Set up everything
- * @param {boolean} skipReadyStateHack
+ * @description Run the extension
+ * @param {RunParams | undefined} params
  */
-async function setup(skipReadyStateHack) {
+async function run(params) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -328,13 +380,12 @@ async function setup(skipReadyStateHack) {
       dispatch({ type: 'SET_BADGE', value: `${count}` });
     }
 
-    // 2023-06-13: hack to force clean when data request takes too long and there are no changes later
-    if (document.readyState === 'complete' && !skipReadyStateHack) {
-      window.dispatchEvent(new Event(setupEventName));
-    }
-
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
+
+    if (!params?.skipTriggerEvent) {
+      window.dispatchEvent(new CustomEvent(triggerEventName));
+    }
   } else {
     dispatch({ type: 'DISABLE_ICON' });
     observer.disconnect();
@@ -352,50 +403,44 @@ const observer = new MutationObserver((mutations) => {
 
   const elements = mutations.flatMap((mutation) => Array.from(mutation.addedNodes));
 
-  fix();
-  clean(elements);
+  window.dispatchEvent(new CustomEvent(triggerEventName, { detail: { elements } }));
 });
 
 /**
  * @description Listen to messages from any other scripts
  * @listens browser.runtime#onMessage
  */
-browser.runtime.onMessage.addListener((message) => {
+browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
     case 'RESTORE': {
       restoreDOM();
       break;
     }
     case 'RUN': {
-      if (removables.length) clean(removables, true);
+      if (removables.length) {
+        window.dispatchEvent(new CustomEvent(triggerEventName), {
+          detail: {
+            elements: removables,
+            skipMatch: true,
+          },
+        });
+      }
       break;
     }
   }
 
-  setup();
+  await run({ skipTriggerEvent: message.type === 'RESTORE' });
 });
 
 /**
  * @async
- * @description Run setup if the page wasn't visible yet
- * @listens window#visibilitychange
+ * @description Fix still existing elements when page loads
+ * @listens window#DOMContentLoaded
  * @returns {void}
  */
-window.addEventListener('visibilitychange', async () => {
-  if (document.body?.children.length && !tokens) {
-    await setup(true);
-    clean([...document.body.children]);
-  }
-});
-
-/**
- * @description Fix still existing elements when page fully load
- * @listens window#load
- * @returns {void}
- */
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   if (document.visibilityState === 'visible') {
-    window.dispatchEvent(new Event(setupEventName));
+    await run();
   }
 });
 
@@ -404,10 +449,10 @@ window.addEventListener('load', () => {
  * @listens window#pageshow
  * @returns {void}
  */
-window.addEventListener('pageshow', (event) => {
+window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
-    setup(true);
-    window.dispatchEvent(new Event(setupEventName));
+    await run();
+    window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
 
@@ -416,17 +461,33 @@ window.addEventListener('pageshow', (event) => {
  * @listens window#cookie-dialog-monster
  * @returns {void}
  */
-window.addEventListener(setupEventName, () => {
-  if (document.body?.children.length && state.enabled && tokens?.selectors.length && !preview) {
-    if (readingTime() < 4) {
-      forceClean(document.body);
+window.addEventListener(triggerEventName, (event) => {
+  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
+    fix();
+
+    if (event.detail?.elements) {
+      clean(event.detail.elements, event.detail.skipMatch);
     } else {
-      // 2023-06-13: look into the first level of the document body, there are dialogs there very often
-      clean([...document.body.children]);
+      if (readingTime() < 4) {
+        forceClean(document.body);
+      } else {
+        // 2023-06-13: look into the first level of the document body, there are dialogs there very often
+        clean([...document.body.children]);
+      }
     }
   }
 });
 
-if (document.visibilityState === 'visible') {
-  setup();
-}
+/**
+ * @async
+ * @description Run run if the page wasn't visible yet
+ * @listens window#visibilitychange
+ * @returns {void}
+ */
+window.addEventListener('visibilitychange', async () => {
+  if (document.visibilityState === 'visible' && !initiallyVisible) {
+    initiallyVisible = true;
+    await run();
+    window.dispatchEvent(new CustomEvent(triggerEventName));
+  }
+});

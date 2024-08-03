@@ -35,6 +35,12 @@
   "popup_contributeOption": {
     "message": "Tragen Sie zu diesem Projekt bei"
   },
+  "popup_databaseVersion": {
+    "message": "Datenbankversion"
+  },
+  "popup_extensionVersion": {
+    "message": "Erweiterungsversion"
+  },
   "popup_helpOption": {
     "message": "Hilfe oder Probleme?"
   },
