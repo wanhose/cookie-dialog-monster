@@ -110,6 +110,31 @@ popup-data:not(:first-child) {
   margin-top: 4px;
 }
 
+popup-data-button {
+  cursor: pointer;
+  outline: none;
+  transition: 0.4s;
+}
+
+popup-data-button:disabled {
+  cursor: not-allowed;
+}
+
+popup-data-button[data-animation='flip']:focus,
+popup-data-button[data-animation='flip']:hover {
+  transform: rotate(-180deg);
+}
+
+popup-data-button[data-refreshing='true'] {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 popup-data-container {
   font-size: 12px;
   grid-column: 1 / -1;
@@ -119,6 +144,10 @@ popup-data-container {
 
 strong {
   font-weight: bold;
+}
+
+#refresh-database-check {
+  display: none;
 }
 
 #power-option {

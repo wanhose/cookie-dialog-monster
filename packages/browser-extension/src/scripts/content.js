@@ -1,9 +1,17 @@
 /**
  * @typedef {Object} ExtensionData
  * @property {string[] | undefined} commonWords
- * @property {string[] | undefined} fixes
+ * @property {Fix[] | undefined} fixes
  * @property {{ domains: string[] | undefined, tags: string[] | undefined } | undefined} skips
  * @property {{ classes: string[] | undefined, selectors: string[] | undefined } | undefined} tokens
+ */
+
+/**
+ * @typedef {Object} Fix
+ * @property {string} action
+ * @property {string} domain
+ * @property {string | undefined} property
+ * @property {string} selector
  */
 
 /**
@@ -275,9 +283,9 @@ function fix() {
   document.getElementsByTagName('ion-router-outlet')[0]?.removeAttribute('inert');
 
   for (const fix of fixes) {
-    const [match, selector, action, property] = fix.split('##');
+    const { action, domain, property, selector } = fix;
 
-    if (hostname.includes(match)) {
+    if (hostname.includes(domain)) {
       switch (action) {
         case 'click': {
           const element = document.querySelector(selector);

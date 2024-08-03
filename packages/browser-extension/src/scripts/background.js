@@ -68,7 +68,7 @@ const report = async (message, tab, callback) => {
     const userAgent = message.userAgent;
     const version = browser.runtime.getManifest().version;
     const body = JSON.stringify({ reason, url: tab.url, userAgent, version });
-    const headers = { 'Content-type': 'application/json' };
+    const headers = { 'Cache-Control': 'no-cache', 'Content-type': 'application/json' };
     const url = `${apiUrl}/report/`;
 
     const response = await fetch(url, { body, headers, method: 'POST' });

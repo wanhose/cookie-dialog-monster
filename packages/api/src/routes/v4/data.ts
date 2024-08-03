@@ -13,7 +13,10 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
       reply.send({ data: result, success: true });
     } catch (error) {
-      reply.send({ success: false });
+      reply.send({
+        errors: [error.message],
+        success: false,
+      });
     }
   });
 

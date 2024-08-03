@@ -17,7 +17,10 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
         success: true,
       });
     } catch (error) {
-      reply.send({ success: false });
+      reply.send({
+        errors: [error.message],
+        success: false,
+      });
     }
   });
 
