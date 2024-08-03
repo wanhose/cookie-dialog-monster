@@ -22,6 +22,7 @@ gmx.net##[data-section="accept"]##click
 golem.de##[title="Zustimmen und weiter"]##click
 google##[aria-label*="Google"][role="dialog"] button:not([aria-label]):not([tabindex]):first-child##click
 google##[aria-label="Alle ablehnen"]##click
+google##[aria-label="Odrzuć wszystko"]##click
 google##[aria-label="Rechazar todo"]##click
 google##[aria-label="Recusar tudo"]##click
 google##[aria-label="Reject all"]##click
@@ -44,6 +45,15 @@ twitch.tv##[data-a-target="consent-banner-accept"]##click
 usnews.com###gdpr-modal-agree##click
 web.de###reminder##click
 web.dev##a[href*="cookies"] + button##click
-youtube##div.buttons.ytd-consent-bump-v2-lightbox ytd-button-renderer:last-child tp-yt-paper-button##click
+youtube##[aria-label="Alle ablehnen"]##click
+youtube##[aria-label="Odrzuć wszystko"]##click
+youtube##[aria-label="Rechazar todo"]##click
+youtube##[aria-label="Recusar tudo"]##click
+youtube##[aria-label="Reject all"]##click
+youtube##[aria-label="Rejeitar tudo"]##click
+youtube##[aria-label="Respinge tot"]##click
+youtube##[aria-label="Rifiuta tutto"]##click
+youtube##[aria-label="Tout refuser"]##click
+youtube##[aria-label="Отклонить все"]##click
 zdf.de###aria-dialog-cmp-error-dialog > .dialog-close##click
 zeit.de##[title="ACCEPT AND CONTINUE"]##click
