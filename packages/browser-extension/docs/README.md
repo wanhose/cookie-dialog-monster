@@ -1,9 +1,5 @@
 # Cookie Monster Dialog Browser Extension
 
-This browser extension was designed to remove cookie consent dialogs that appear on websites without setting your preferences. Only in a few cases, it operates based on predefined rules specified in the file `data/fixes.txt` from where the extension will automatically decline or accept the cookie consent dialogs.
-
-Please note that the `data/fixes.txt` file should be regularly updated to reflect changes in websites' cookie consent practices and to ensure accurate handling of the dialogs by the extension.
-
 ## Downloads
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
