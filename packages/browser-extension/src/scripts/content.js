@@ -6,6 +6,11 @@
  * @property {{ classes: string[] | undefined, selectors: string[] | undefined } | undefined} tokens
  */
 
+/**
+ * @typedef {Object} RunParams
+ * @property {boolean | undefined} skipTriggerEvent
+ */
+
 if (typeof browser === 'undefined') {
   browser = chrome;
 }
@@ -348,9 +353,10 @@ function restoreDOM() {
 
 /**
  * @async
- * @description Set up everything
+ * @description Run the extension
+ * @param {RunParams | undefined} params
  */
-async function setup() {
+async function run(params) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -368,6 +374,10 @@ async function setup() {
 
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
+
+    if (!params?.skipTriggerEvent) {
+      window.dispatchEvent(new CustomEvent(triggerEventName));
+    }
   } else {
     dispatch({ type: 'DISABLE_ICON' });
     observer.disconnect();
@@ -399,13 +409,20 @@ browser.runtime.onMessage.addListener(async (message) => {
       break;
     }
     case 'RUN': {
-      if (removables.length) clean(removables, true);
+      if (removables.length) {
+        window.dispatchEvent(new CustomEvent(triggerEventName), {
+          detail: {
+            elements: removables,
+            skipMatch: true,
+          },
+        });
+      }
       break;
     }
   }
 
   fix();
-  await setup();
+  await run({ skipTriggerEvent: true });
 });
 
 /**
@@ -416,8 +433,7 @@ browser.runtime.onMessage.addListener(async (message) => {
  */
 window.addEventListener('DOMContentLoaded', async () => {
   if (document.visibilityState === 'visible') {
-    await setup();
-    window.dispatchEvent(new CustomEvent(triggerEventName));
+    await run();
   }
 });
 
@@ -428,7 +444,7 @@ window.addEventListener('DOMContentLoaded', async () => {
  */
 window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
-    await setup();
+    await run();
     window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
@@ -443,7 +459,7 @@ window.addEventListener(triggerEventName, (event) => {
     fix();
 
     if (event.detail?.elements) {
-      clean(event.detail.elements);
+      clean(event.detail.elements, event.detail.skipMatch);
     } else {
       if (readingTime() < 4) {
         forceClean(document.body);
@@ -457,14 +473,14 @@ window.addEventListener(triggerEventName, (event) => {
 
 /**
  * @async
- * @description Run setup if the page wasn't visible yet
+ * @description Run run if the page wasn't visible yet
  * @listens window#visibilitychange
  * @returns {void}
  */
 window.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible' && !initiallyVisible) {
     initiallyVisible = true;
-    await setup();
+    await run();
     window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
