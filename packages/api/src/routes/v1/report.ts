@@ -1,31 +1,15 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 
-type PostReportBody = {
-  html?: string;
-  subject: string;
-  text?: string;
-  to: string;
-};
-
+/**
+ * @deprecated This API route is no longer supported. Please use a newer version
+ */
 export default (server: FastifyInstance, options: RouteShorthandOptions, done: () => void) => {
-  server.post<{ Body: PostReportBody }>(
-    '/report/',
-    {
-      schema: {
-        body: {
-          properties: {},
-          required: [],
-          type: 'object',
-        },
-      },
-    },
-    async (_request, reply) => {
-      reply.status(500).send({
-        success: false,
-        errors: ['This API route is no longer supported. Please upgrade to the latest version'],
-      });
-    }
-  );
+  server.post('/report/', {}, async (_request, reply) => {
+    reply.send({
+      success: false,
+      errors: ['This API route is no longer supported. Please use a newer version'],
+    });
+  });
 
   done();
 };
