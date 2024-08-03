@@ -195,7 +195,14 @@ function showReportDialog() {
  * @param {MouseEvent} event
  */
 async function submitButtonClickHandler(event) {
+  const target = event.currentTarget;
+
+  if (target.getAttribute('aria-disabled') === 'true') {
+    return;
+  }
+
   event.preventDefault();
+  target.setAttribute('aria-disabled', 'true');
 
   const dialog = document.getElementById(reportDialogId);
   const formView = dialog?.getElementsByTagName('report-dialog-form-view')[0];

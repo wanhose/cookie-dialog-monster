@@ -106,11 +106,16 @@ async function handleContentLoaded() {
  */
 async function handleDatabaseRefresh(event) {
   const target = event.currentTarget;
+
+  if (target.getAttribute('aria-disabled') === 'true') {
+    return;
+  }
+
   const checkIcon = target.querySelector('#refresh-database-check');
   const spinnerIcon = target.querySelector('#refresh-database-spinner');
 
   target.setAttribute('data-refreshing', 'true');
-  target.setAttribute('disabled', 'true');
+  target.setAttribute('aria-disabled', 'true');
   await browser.runtime.sendMessage({ type: 'REFRESH_DATA' });
   checkIcon.style.setProperty('display', 'block');
   spinnerIcon.style.setProperty('display', 'none');
@@ -121,7 +126,7 @@ async function handleDatabaseRefresh(event) {
   window.setTimeout(() => {
     checkIcon.style.setProperty('display', 'none');
     spinnerIcon.style.setProperty('display', 'block');
-    target.removeAttribute('disabled');
+    target.removeAttribute('aria-disabled');
     target.setAttribute('data-animation', 'flip');
   }, 5000);
 }
@@ -147,13 +152,13 @@ async function handleLinkRedirect(event) {
  * @returns {Promise<void>}
  */
 async function handlePowerToggle(event) {
-  const element = event.currentTarget;
+  const target = event.currentTarget;
   const next = { enabled: !state.enabled };
 
   browser.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
   browser.tabs.sendMessage(state.tabId, { type: next.enabled ? 'RUN' : 'RESTORE' });
-  element.setAttribute('disabled', 'true');
-  element.setAttribute('data-value', next.enabled ? 'on' : 'off');
+  target.setAttribute('aria-disabled', 'true');
+  target.setAttribute('data-value', next.enabled ? 'on' : 'off');
   window.close();
 }
 

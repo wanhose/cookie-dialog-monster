@@ -116,7 +116,7 @@ popup-data-button {
   transition: 0.4s;
 }
 
-popup-data-button:disabled {
+popup-data-button[aria-disabled='true'] {
   cursor: not-allowed;
 }
 
