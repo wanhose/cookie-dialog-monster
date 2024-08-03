@@ -82,9 +82,9 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
         });
       } catch (error) {
         reply.send({
+          data: existingIssue?.html_url,
           errors: [error.message],
           success: false,
-          data: existingIssue?.html_url,
         });
       }
     }
