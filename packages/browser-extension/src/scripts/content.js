@@ -223,8 +223,13 @@ function match(element, skipMatch) {
   }
 
   if (element.hasAttributes()) {
-    // 2023-06-10: fix twitch.tv temporarily
+    // 2023-06-10: fix #113 temporarily
     if (element.classList.contains('chat-line__message')) {
+      return false;
+    }
+
+    // 2024-08-03: fix #701 temporarily
+    if (element.classList.contains('sellos')) {
       return false;
     }
 
