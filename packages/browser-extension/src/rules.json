@@ -110,7 +110,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||optanon.blob.core.windows.net^"
+      "urlFilter": "||eu.fastcmp.com^"
     }
   },
   {
@@ -129,7 +129,64 @@
         "stylesheet",
         "xmlhttprequest"
       ],
+      "urlFilter": "||optanon.blob.core.windows.net^"
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||static.fastcmp.com^"
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||wcpstatic.microsoft.com^"
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "https://www.lensois.com/wp-admin/admin-ajax.php"
     }
   }
 ]

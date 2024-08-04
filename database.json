@@ -2038,6 +2038,7 @@
       ".cookie_policy_message",
       ".cookie_policy_outer",
       ".cookie_policy_pop",
+      ".cookie_policy_popup",
       ".cookie_policy",
       ".cookie_politics",
       ".cookie_popup_wrapper",
@@ -13671,5 +13672,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722786792198"
+  "version": "1722789126290"
 }
