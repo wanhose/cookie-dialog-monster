@@ -191,13 +191,16 @@ function getHostname() {
  * @returns {boolean}
  */
 function isInViewport(element) {
+  const styles = window.getComputedStyle(element);
   const height = window.innerHeight || document.documentElement.clientHeight;
   const position = element.getBoundingClientRect();
   const scroll = window.scrollY;
+  const transitioning = styles.transitionDuration !== '0s';
 
   return (
     position.bottom === position.top ||
-    (scroll + position.top <= scroll + height && scroll + position.bottom >= scroll)
+    (scroll + position.top <= scroll + height && scroll + position.bottom >= scroll) ||
+    transitioning
   );
 }
 
