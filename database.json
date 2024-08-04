@@ -5403,6 +5403,7 @@
       ".oddcookie",
       ".oe-cookies-law",
       ".off-canvas-wrap > .inner-wrap > .main-content > .container > .full-width.pull-left.hidden-print.cookie-warning-container.alert-info.alert",
+      ".offcanvas-cogi-cookie-modal",
       ".oh_cookie_notice_wrapper",
       ".okCookiePanel",
       ".okookie",
@@ -13663,5 +13664,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722770914117"
+  "version": "1722771064084"
 }
