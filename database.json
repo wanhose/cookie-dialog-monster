@@ -2856,6 +2856,7 @@
       ".CookieComplianceContainer",
       ".cookieCon",
       ".cookieConcent",
+      ".cookieConfirm",
       ".cookieConfirmation",
       ".cookieConfirmationMessage",
       ".cookieConfirmOverlay",
@@ -13653,5 +13654,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722768156525"
+  "version": "1722768379754"
 }
