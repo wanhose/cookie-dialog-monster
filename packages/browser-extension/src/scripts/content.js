@@ -270,7 +270,7 @@ function match(element, skipMatch) {
  * @returns {void}
  */
 function fix() {
-  const backdrops = document.getElementsByClassName('modal-backdrop');
+  const backdrops = document.querySelectorAll('.modal-backdrop, .overlay');
   const domains = (skips?.domains ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   for (const backdrop of backdrops) {
