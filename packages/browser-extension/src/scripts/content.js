@@ -321,19 +321,6 @@ function fix() {
 }
 
 /**
- * @description Calculate reading time for the current page to avoid lags in large pages
- * @returns {number}
- */
-function readingTime() {
-  const text = document.body.innerText;
-  const wpm = 225;
-  const words = text.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wpm);
-
-  return time;
-}
-
-/**
  * @description Restore DOM to its previous state
  * @returns {void}
  */
@@ -468,12 +455,18 @@ window.addEventListener(triggerEventName, (event) => {
     if (event.detail?.elements) {
       clean(event.detail.elements, event.detail.skipMatch);
     } else {
-      if (readingTime() < 4) {
-        forceClean(document.body);
-      } else {
-        // 2023-06-13: look into the first level of the document body, there are dialogs there very often
-        clean([...document.body.children]);
-      }
+      // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
+      clean([
+        ...document.body.children,
+        ...Array.from(document.getElementsByClassName('container')[0]?.children ?? []),
+        ...Array.from(document.getElementsByClassName('layout')[0]?.children ?? []),
+        ...Array.from(document.getElementsByClassName('page')[0]?.children ?? []),
+        ...Array.from(document.getElementsByClassName('wrapper')[0]?.children ?? []),
+        ...Array.from(document.getElementById('__next')?.children ?? []),
+        ...Array.from(document.getElementById('app')?.children ?? []),
+        ...Array.from(document.getElementById('main')?.children ?? []),
+        ...Array.from(document.getElementById('root')?.children ?? []),
+      ]);
     }
   }
 });
