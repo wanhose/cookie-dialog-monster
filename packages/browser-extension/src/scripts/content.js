@@ -235,7 +235,9 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (element.hasAttributes()) {
+  const hasAttributes = !!element.getAttributeNames().filter((x) => x !== 'data-nosnippet').length;
+
+  if (hasAttributes) {
     // 2023-06-10: fix #113 temporarily
     if (element.classList.contains('chat-line__message')) {
       return false;
