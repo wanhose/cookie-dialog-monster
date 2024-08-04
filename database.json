@@ -6801,6 +6801,7 @@
       "[title=\"Cookie Settings\"]",
       "[title=\"TrustArc Cookie Consent Manager\"]",
       "[type=\"cookie-notification\"]",
+      "[wire\\:snapshot*=\"consentModal\"]",
       "#___gatsby ~ div[class*=\"consent-banner\"]",
       "#___gatsby div[class*=\"cookieBox\"]",
       "#___gatsby div[class*=\"CookieBox\"]",
@@ -13652,5 +13653,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722763712079"
+  "version": "1722768156525"
 }
