@@ -55,6 +55,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             owner: environment.github.owner,
             repo: environment.github.repo,
             issue_number: existingIssue.number,
+            labels: ['bug'],
             state: 'open',
           });
 
