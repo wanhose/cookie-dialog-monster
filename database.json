@@ -347,6 +347,11 @@
     },
     {
       "action": "click",
+      "domain": "gib-uns-deinen-gebrauchten.de",
+      "selector": "#cookie-banner-accept-selected-button"
+    },
+    {
+      "action": "click",
       "domain": "gmx.com",
       "selector": "#onetrust-accept-btn-handler"
     },
@@ -13657,5 +13662,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722769004578"
+  "version": "1722770643847"
 }
