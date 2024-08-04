@@ -20,5 +20,16 @@
       "urlFilter": "||cmp.inmobi.com^",
       "resourceTypes": ["script"]
     }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||consent.trustarc.com^",
+      "resourceTypes": ["script"]
+    }
   }
 ]
