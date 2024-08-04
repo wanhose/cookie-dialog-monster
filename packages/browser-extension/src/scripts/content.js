@@ -483,6 +483,5 @@ window.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible' && !initiallyVisible) {
     initiallyVisible = true;
     await run();
-    window.dispatchEvent(new CustomEvent(triggerEventName));
   }
 });
