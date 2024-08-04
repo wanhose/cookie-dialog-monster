@@ -6,8 +6,8 @@
       "type": "block"
     },
     "condition": {
-      "urlFilter": "||cdn.cookielaw.org^",
-      "resourceTypes": ["script"]
+      "resourceTypes": ["script"],
+      "urlFilter": "||app.usercentrics.eu^"
     }
   },
   {
@@ -17,8 +17,8 @@
       "type": "block"
     },
     "condition": {
-      "urlFilter": "||cmp.inmobi.com^",
-      "resourceTypes": ["script"]
+      "resourceTypes": ["script"],
+      "urlFilter": "||cdn.cookielaw.org^"
     }
   },
   {
@@ -28,8 +28,8 @@
       "type": "block"
     },
     "condition": {
-      "urlFilter": "||consent.trustarc.com^",
-      "resourceTypes": ["script"]
+      "resourceTypes": ["script"],
+      "urlFilter": "||cmp.inmobi.com^"
     }
   },
   {
@@ -39,8 +39,19 @@
       "type": "block"
     },
     "condition": {
-      "urlFilter": "||wcpstatic.microsoft.com^",
-      "resourceTypes": ["script"]
+      "resourceTypes": ["script"],
+      "urlFilter": "||consent.trustarc.com^"
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": ["script"],
+      "urlFilter": "||wcpstatic.microsoft.com^"
     }
   }
 ]
