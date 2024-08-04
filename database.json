@@ -447,6 +447,12 @@
     },
     {
       "action": "reset",
+      "domain": "orcd.co",
+      "property": "opacity",
+      "selector": ".player-container.box-shadow"
+    },
+    {
+      "action": "reset",
       "domain": "play.google",
       "property": "z-index",
       "selector": "body > div"
@@ -13664,5 +13670,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722771064084"
+  "version": "1722773102602"
 }
