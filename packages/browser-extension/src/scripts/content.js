@@ -66,7 +66,10 @@ const options = { childList: true, subtree: true };
 /**
  * @description Is consent preview page?
  */
-const preview = hostname.startsWith('consent.') || hostname.startsWith('myprivacy.');
+const preview =
+  (hostname.startsWith('consent.') &&
+    !(hostname.startsWith('consent.google') || hostname.startsWith('consent.youtube'))) ||
+  hostname.startsWith('myprivacy.');
 
 /**
  * @description Elements that were already matched and are removable
