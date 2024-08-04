@@ -18,7 +18,7 @@
     },
     "condition": {
       "resourceTypes": ["script"],
-      "urlFilter": "||cdn.cookielaw.org^"
+      "urlFilter": "||c.evidon.com^"
     }
   },
   {
@@ -29,7 +29,7 @@
     },
     "condition": {
       "resourceTypes": ["script"],
-      "urlFilter": "||cmp.inmobi.com^"
+      "urlFilter": "||cdn.cookielaw.org^"
     }
   },
   {
@@ -40,11 +40,22 @@
     },
     "condition": {
       "resourceTypes": ["script"],
-      "urlFilter": "||consent.trustarc.com^"
+      "urlFilter": "||cmp.inmobi.com^"
     }
   },
   {
     "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": ["script"],
+      "urlFilter": "||consent.trustarc.com^"
+    }
+  },
+  {
+    "id": 6,
     "priority": 1,
     "action": {
       "type": "block"
