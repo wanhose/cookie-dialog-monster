@@ -2198,6 +2198,7 @@
       ".cookie-check",
       ".cookie-choice",
       ".cookie-choices--info",
+      ".cookie-clip",
       ".cookie-cnf-banner--background",
       ".cookie-cnf-banner",
       ".cookie-cnil",
@@ -13651,5 +13652,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722761725558"
+  "version": "1722763712079"
 }
