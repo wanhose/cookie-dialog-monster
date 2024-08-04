@@ -6,7 +6,15 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||app.usercentrics.eu^"
     }
   },
@@ -17,7 +25,15 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||c.evidon.com^"
     }
   },
@@ -28,7 +44,15 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||cdn.cookielaw.org^"
     }
   },
@@ -39,7 +63,15 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||cmp.inmobi.com^"
     }
   },
@@ -50,7 +82,15 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||consent.trustarc.com^"
     }
   },
@@ -61,7 +101,34 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||optanon.blob.core.windows.net^"
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||wcpstatic.microsoft.com^"
     }
   }
