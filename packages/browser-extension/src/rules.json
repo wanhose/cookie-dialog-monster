@@ -6,8 +6,130 @@
       "type": "block"
     },
     "condition": {
-      "urlFilter": "||cmp.inmobi.com^",
-      "resourceTypes": ["script"]
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||app.usercentrics.eu^"
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||c.evidon.com^"
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||cdn.cookielaw.org^"
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||cmp.inmobi.com^"
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||consent.trustarc.com^"
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||optanon.blob.core.windows.net^"
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||wcpstatic.microsoft.com^"
     }
   }
 ]
