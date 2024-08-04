@@ -6,6 +6,17 @@
       "type": "block"
     },
     "condition": {
+      "urlFilter": "||cdn.cookielaw.org^",
+      "resourceTypes": ["script"]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
       "urlFilter": "||cmp.inmobi.com^",
       "resourceTypes": ["script"]
     }
