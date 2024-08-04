@@ -31,5 +31,16 @@
       "urlFilter": "||consent.trustarc.com^",
       "resourceTypes": ["script"]
     }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||wcpstatic.microsoft.com^",
+      "resourceTypes": ["script"]
+    }
   }
 ]
