@@ -1581,6 +1581,7 @@
       ".ccm-banner-small",
       ".ccm-bottom-slide",
       ".ccm-modal",
+      ".ccm-root",
       ".ccm-widget",
       ".ccmcss_oic",
       ".cconsent-nb-interstitial-overlay",
@@ -7571,6 +7572,7 @@
       "#ccm-banner-wrap",
       "#ccm-control-panel",
       "#ccm-cookiesDisclosure",
+      "#ccm-focus-helper--top",
       "#ccm-root",
       "#ccm-settings-summoner",
       "#ccm-widget",
@@ -13649,5 +13651,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722686968225"
+  "version": "1722761725558"
 }
