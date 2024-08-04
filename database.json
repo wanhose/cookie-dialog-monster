@@ -4933,6 +4933,7 @@
       ".lia-cookie-banner-alert",
       ".liCookiePol",
       ".lightbox--cookie-consent",
+      ".lightbox-backdrop-cc-dialog",
       ".lilayout-header-cookiebar",
       ".lite-cookie-consent",
       ".lms-notice-wrapper",
@@ -13662,5 +13663,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722770643847"
+  "version": "1722770914117"
 }
