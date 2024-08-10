@@ -326,6 +326,11 @@
     },
     {
       "action": "click",
+      "domain": "derstandard",
+      "selector": "[aria-label=\"Einverstanden\"]"
+    },
+    {
+      "action": "click",
       "domain": "fiberplane.dev",
       "selector": "button[aria-label=\"Close Banner\"]"
     },
@@ -13687,5 +13692,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723281789579"
+  "version": "1723283464522"
 }
