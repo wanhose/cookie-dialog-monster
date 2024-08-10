@@ -11840,6 +11840,7 @@
       "#js-tar_cookiesBar",
       "#js-TosPrivacy",
       "#js-user-cookie-jar",
+      "#modal:has([aria-describedby=\"consentbar\"])",
       "#jsalert-cookiesaccept",
       "#jsCookieConsent",
       "#JScookieInfo",
@@ -13676,5 +13677,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723276862596"
+  "version": "1723277260470"
 }
