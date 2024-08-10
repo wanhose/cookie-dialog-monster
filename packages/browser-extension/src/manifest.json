@@ -36,6 +36,7 @@
         "*://*.messenger.com/*",
         "*://*.office365.com/*",
         "*://*.officeapps.live.com/*",
+        "*://*.olympics.com/*",
         "*://*.sharepoint.com/*",
         "*://*.suite.office.com/*",
         "*://*.youtube-nocookie.com/embed/*",
