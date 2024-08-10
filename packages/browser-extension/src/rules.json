@@ -72,7 +72,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||cmp.inmobi.com^"
+      "urlFilter": "||cdn.optable.co^"
     }
   },
   {
@@ -91,7 +91,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||consent.trustarc.com^"
+      "urlFilter": "||cdntranscend.eventbrite.com^"
     }
   },
   {
@@ -110,7 +110,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||optanon.blob.core.windows.net^"
+      "urlFilter": "||cmp.inmobi.com^"
     }
   },
   {
@@ -129,7 +129,197 @@
         "stylesheet",
         "xmlhttprequest"
       ],
+      "urlFilter": "||consent.trustarc.com^"
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||consent.cookiebot.com^"
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||consentcdn.cookiebot.com^"
+    }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||cp.as.com^"
+    }
+  },
+  {
+    "id": 12,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||eu.fastcmp.com^"
+    }
+  },
+  {
+    "id": 13,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||optanon.blob.core.windows.net^"
+    }
+  },
+  {
+    "id": 15,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||redditstatic.com/onetrust.*.js"
+    }
+  },
+  {
+    "id": 16,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||static.fastcmp.com^"
+    }
+  },
+  {
+    "id": 17,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
       "urlFilter": "||wcpstatic.microsoft.com^"
+    }
+  },
+  {
+    "id": 18,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
     }
   }
 ]

@@ -16,7 +16,13 @@
 
 /**
  * @typedef {Object} RunParams
- * @property {boolean | undefined} skipTriggerEvent
+ * @property {HTMLElement[] | undefined} elements
+ * @property {boolean | undefined} skipMatch
+ */
+
+/**
+ * @typedef {Object} SetUpParams
+ * @property {boolean | undefined} skipRunFn
  */
 
 if (typeof browser === 'undefined') {
@@ -90,11 +96,6 @@ const seen = [];
 let state = { enabled: true };
 
 /**
- * @description Event name to trigger the cleaning process
- */
-const triggerEventName = 'cookie-dialog-monster';
-
-/**
  * @description Clean DOM
  * @param {Element[]} elements
  * @param {boolean?} skipMatch
@@ -141,12 +142,21 @@ function clean(elements, skipMatch) {
 }
 
 /**
+ * @description Check if element contains a common word
+ * @param {HTMLElement} element
+ */
+function containsCommonWord(element) {
+  return !!element.outerHTML.match(new RegExp(commonWords.join('|')));
+}
+
+/**
  * @description Force a DOM clean in the specific element
  * @param {HTMLElement} element
  * @returns {void}
  */
 function forceClean(element) {
-  const elements = [...element.querySelectorAll(tokens.selectors)];
+  const nodes = [...element.querySelectorAll(tokens.selectors)];
+  const elements = nodes.flatMap((node) => filterMapEarly(node));
 
   if (elements.length) {
     fix();
@@ -262,13 +272,27 @@ function match(element, skipMatch) {
       (skipMatch || element.matches(tokens.selectors))
     );
   } else {
-    // 2023-06-10: fix edge case force cleaning on children if no attributes
-    if (commonWords && element.outerHTML.match(new RegExp(commonWords.join('|')))) {
-      forceClean(element);
-    }
+    forceClean(element);
   }
 
   return false;
+}
+
+/**
+ * @description Filter early nodes
+ * @param {Node} node
+ * @param {boolean} stopRecursion
+ */
+function filterMapEarly(node, stopRecursion) {
+  if (node.nodeType !== Node.ELEMENT_NODE || !(node instanceof HTMLElement)) {
+    return [];
+  }
+
+  if (commonWords && containsCommonWord(node) && !stopRecursion) {
+    return [node, ...[...node.children].flatMap((node) => filterMapEarly(node, true))];
+  }
+
+  return [node];
 }
 
 /**
@@ -359,11 +383,43 @@ function restoreDOM() {
 }
 
 /**
- * @async
- * @description Run the extension
- * @param {RunParams | undefined} params
+ * @description Clean DOM when this function is called
+ * @param {RunParams} params
+ * @returns {void}
  */
-async function run(params) {
+function run(params = {}) {
+  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
+    fix();
+
+    if (params.elements?.length) {
+      clean(params.elements, params.skipMatch);
+    }
+
+    if (params.elements === undefined) {
+      // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
+      clean(
+        [
+          ...document.body.children,
+          ...[...(document.getElementsByClassName('container')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('layout')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('page')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('wrapper')[0]?.children ?? [])],
+          ...[...(document.getElementById('__next')?.children ?? [])],
+          ...[...(document.getElementById('app')?.children ?? [])],
+          ...[...(document.getElementById('main')?.children ?? [])],
+          ...[...(document.getElementById('root')?.children ?? [])],
+        ].flatMap((node) => filterMapEarly(node))
+      );
+    }
+  }
+}
+
+/**
+ * @async
+ * @description Set up the extension
+ * @param {SetUpParams | undefined} params
+ */
+async function setUp(params) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -382,8 +438,8 @@ async function run(params) {
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
 
-    if (!params?.skipTriggerEvent) {
-      window.dispatchEvent(new CustomEvent(triggerEventName));
+    if (!params?.skipRunFn) {
+      run();
     }
   } else {
     dispatch({ type: 'DISABLE_ICON' });
@@ -400,9 +456,10 @@ const observer = new MutationObserver((mutations) => {
     return;
   }
 
-  const elements = mutations.flatMap((mutation) => Array.from(mutation.addedNodes));
+  const nodes = mutations.flatMap((mutation) => [...mutation.addedNodes]);
+  const elements = nodes.flatMap((node) => filterMapEarly(node));
 
-  window.dispatchEvent(new CustomEvent(triggerEventName, { detail: { elements } }));
+  run({ elements });
 });
 
 /**
@@ -413,22 +470,17 @@ browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
     case 'RESTORE': {
       restoreDOM();
+      await setUp({ skipRunFn: true });
       break;
     }
     case 'RUN': {
       if (removables.length) {
-        window.dispatchEvent(new CustomEvent(triggerEventName), {
-          detail: {
-            elements: removables,
-            skipMatch: true,
-          },
-        });
+        await setUp({ skipRunFn: true });
+        run({ elements: removables, skipMatch: true });
       }
       break;
     }
   }
-
-  await run({ skipTriggerEvent: message.type === 'RESTORE' });
 });
 
 /**
@@ -439,7 +491,7 @@ browser.runtime.onMessage.addListener(async (message) => {
  */
 window.addEventListener('DOMContentLoaded', async () => {
   if (document.visibilityState === 'visible') {
-    await run();
+    await setUp();
   }
 });
 
@@ -450,36 +502,8 @@ window.addEventListener('DOMContentLoaded', async () => {
  */
 window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
-    await run();
-    window.dispatchEvent(new CustomEvent(triggerEventName));
-  }
-});
-
-/**
- * @description Force clean when this event is fired
- * @listens window#cookie-dialog-monster
- * @returns {void}
- */
-window.addEventListener(triggerEventName, (event) => {
-  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
-    fix();
-
-    if (event.detail?.elements) {
-      clean(event.detail.elements, event.detail.skipMatch);
-    } else {
-      // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
-      clean([
-        ...document.body.children,
-        ...Array.from(document.getElementsByClassName('container')[0]?.children ?? []),
-        ...Array.from(document.getElementsByClassName('layout')[0]?.children ?? []),
-        ...Array.from(document.getElementsByClassName('page')[0]?.children ?? []),
-        ...Array.from(document.getElementsByClassName('wrapper')[0]?.children ?? []),
-        ...Array.from(document.getElementById('__next')?.children ?? []),
-        ...Array.from(document.getElementById('app')?.children ?? []),
-        ...Array.from(document.getElementById('main')?.children ?? []),
-        ...Array.from(document.getElementById('root')?.children ?? []),
-      ]);
-    }
+    await setUp();
+    run();
   }
 });
 
@@ -492,6 +516,6 @@ window.addEventListener(triggerEventName, (event) => {
 window.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible' && !initiallyVisible) {
     initiallyVisible = true;
-    await run();
+    await setUp();
   }
 });
