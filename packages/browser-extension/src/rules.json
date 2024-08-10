@@ -72,7 +72,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||cmp.inmobi.com^"
+      "urlFilter": "||cdntranscend.eventbrite.com^"
     }
   },
   {
@@ -91,7 +91,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||consent.trustarc.com^"
+      "urlFilter": "||cmp.inmobi.com^"
     }
   },
   {
@@ -110,7 +110,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||eu.fastcmp.com^"
+      "urlFilter": "||consent.trustarc.com^"
     }
   },
   {
@@ -129,7 +129,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||optanon.blob.core.windows.net^"
+      "urlFilter": "||eu.fastcmp.com^"
     }
   },
   {
@@ -148,7 +148,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||static.fastcmp.com^"
+      "urlFilter": "||optanon.blob.core.windows.net^"
     }
   },
   {
@@ -167,11 +167,30 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||wcpstatic.microsoft.com^"
+      "urlFilter": "||static.fastcmp.com^"
     }
   },
   {
     "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||wcpstatic.microsoft.com^"
+    }
+  },
+  {
+    "id": 11,
     "priority": 1,
     "action": {
       "type": "block"
