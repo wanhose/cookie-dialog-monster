@@ -953,6 +953,7 @@
       ".acepta_cookies",
       ".aceptar_cookies",
       ".acris-cookie-consent:not(.is--modal)",
+      ".acris-cookie-consent",
       ".active-cookie-menu",
       ".active-cookie",
       ".activebar-container",
@@ -6640,6 +6641,7 @@
       "[consent-skip-blocker][data-bg]",
       "[cookie-unique-name]",
       "[css-main-site] #policy-div",
+      "[data-acris-cookie-consent=\"true\"]",
       "[data-action=\"Sites-CashConvertersSpain-Site\"] ~ .modal-backdrop.fade.show",
       "[data-analytics-category=\"Cookies Consent\"]",
       "[data-assembly-source=\"cookie/banner\"]",
@@ -13672,5 +13674,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1722789126290"
+  "version": "1723270835595"
 }
