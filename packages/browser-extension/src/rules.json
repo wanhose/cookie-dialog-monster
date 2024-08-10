@@ -234,6 +234,17 @@
       "type": "block"
     },
     "condition": {
+      "resourceTypes": ["script"],
+      "urlFilter": "||www.redditstatic.com/onetrust.*.js"
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
       "resourceTypes": [
         "font",
         "image",
