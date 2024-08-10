@@ -457,6 +457,12 @@
       "selector": ".player-container.box-shadow"
     },
     {
+      "action": "resetAll",
+      "domain": ".pl",
+      "property": "filter",
+      "selector": "body:has(.advertisement.contentAds.ads.adsbygoogle.top-banners.adbanner.bannerAd.ad-google.AdSense:first-child) > *"
+    },
+    {
       "action": "reset",
       "domain": "play.google",
       "property": "z-index",
@@ -13663,6 +13669,8 @@
       "app-cookies-bar",
       "app-cookies",
       "awsui-alert[dismiss*=\"CookieBanner\"]",
+      "body:not([data-bd-content]) > .advertisement.contentAds.ads.adsbygoogle.top-banners.adbanner.bannerAd.ad-google.AdSense:first-child + div + div[class]:has(button)",
+      "body[data-bd-content] > .advertisement.contentAds.ads.adsbygoogle.top-banners.adbanner.bannerAd.ad-google.AdSense:first-child + div[class]:has(button)",
       "ck-user-cookie-consent-modal",
       "cloudflare-app[app=\"cookiless\"]",
       "cloudflare-app[app=\"tibrr-cookie-consent\"]",
@@ -13692,5 +13700,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723283464522"
+  "version": "1723294022516"
 }
