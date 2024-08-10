@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "7.1.2",
+  "version": "7.1.3",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -36,6 +36,7 @@
         "*://*.messenger.com/*",
         "*://*.office365.com/*",
         "*://*.officeapps.live.com/*",
+        "*://*.olympics.com/*",
         "*://*.sharepoint.com/*",
         "*://*.suite.office.com/*",
         "*://*.youtube-nocookie.com/embed/*",

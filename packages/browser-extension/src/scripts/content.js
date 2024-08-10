@@ -474,10 +474,8 @@ browser.runtime.onMessage.addListener(async (message) => {
       break;
     }
     case 'RUN': {
-      if (removables.length) {
-        await setUp({ skipRunFn: true });
-        run({ elements: removables, skipMatch: true });
-      }
+      await setUp({ skipRunFn: true });
+      run(removables.length ? { elements: removables, skipMatch: true } : {});
       break;
     }
   }
