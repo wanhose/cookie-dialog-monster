@@ -141,12 +141,21 @@ function clean(elements, skipMatch) {
 }
 
 /**
+ * @description Check if element contains a common word
+ * @param {HTMLElement} element
+ */
+function containsCommonWord(element) {
+  return !!element.outerHTML.match(new RegExp(commonWords.join('|')));
+}
+
+/**
  * @description Force a DOM clean in the specific element
  * @param {HTMLElement} element
  * @returns {void}
  */
 function forceClean(element) {
-  const elements = [...element.querySelectorAll(tokens.selectors)];
+  const nodes = [...element.querySelectorAll(tokens.selectors)];
+  const elements = nodes.flatMap((node) => filterMapEarly(node));
 
   if (elements.length) {
     fix();
@@ -262,13 +271,27 @@ function match(element, skipMatch) {
       (skipMatch || element.matches(tokens.selectors))
     );
   } else {
-    // 2023-06-10: fix edge case force cleaning on children if no attributes
-    if (commonWords && element.outerHTML.match(new RegExp(commonWords.join('|')))) {
-      forceClean(element);
-    }
+    forceClean(element);
   }
 
   return false;
+}
+
+/**
+ * @description Filter early nodes
+ * @param {Node} node
+ * @param {boolean} stopRecursion
+ */
+function filterMapEarly(node, stopRecursion) {
+  if (node.nodeType !== Node.ELEMENT_NODE || !(node instanceof HTMLElement)) {
+    return [];
+  }
+
+  if (commonWords && containsCommonWord(node) && !stopRecursion) {
+    return [node, ...[...node.children].flatMap((node) => filterMapEarly(node, true))];
+  }
+
+  return [node];
 }
 
 /**
@@ -400,7 +423,8 @@ const observer = new MutationObserver((mutations) => {
     return;
   }
 
-  const elements = mutations.flatMap((mutation) => Array.from(mutation.addedNodes));
+  const nodes = mutations.flatMap((mutation) => [...mutation.addedNodes]);
+  const elements = nodes.flatMap((node) => filterMapEarly(node));
 
   window.dispatchEvent(new CustomEvent(triggerEventName, { detail: { elements } }));
 });
@@ -456,7 +480,7 @@ window.addEventListener('pageshow', async (event) => {
 });
 
 /**
- * @description Force clean when this event is fired
+ * @description Clean DOM when this event is fired
  * @listens window#cookie-dialog-monster
  * @returns {void}
  */
@@ -468,17 +492,19 @@ window.addEventListener(triggerEventName, (event) => {
       clean(event.detail.elements, event.detail.skipMatch);
     } else {
       // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
-      clean([
-        ...document.body.children,
-        ...Array.from(document.getElementsByClassName('container')[0]?.children ?? []),
-        ...Array.from(document.getElementsByClassName('layout')[0]?.children ?? []),
-        ...Array.from(document.getElementsByClassName('page')[0]?.children ?? []),
-        ...Array.from(document.getElementsByClassName('wrapper')[0]?.children ?? []),
-        ...Array.from(document.getElementById('__next')?.children ?? []),
-        ...Array.from(document.getElementById('app')?.children ?? []),
-        ...Array.from(document.getElementById('main')?.children ?? []),
-        ...Array.from(document.getElementById('root')?.children ?? []),
-      ]);
+      clean(
+        [
+          ...document.body.children,
+          ...[...(document.getElementsByClassName('container')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('layout')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('page')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('wrapper')[0]?.children ?? [])],
+          ...[...(document.getElementById('__next')?.children ?? [])],
+          ...[...(document.getElementById('app')?.children ?? [])],
+          ...[...(document.getElementById('main')?.children ?? [])],
+          ...[...(document.getElementById('root')?.children ?? [])],
+        ].flatMap((node) => filterMapEarly(node))
+      );
     }
   }
 });
