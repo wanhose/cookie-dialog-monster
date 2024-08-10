@@ -16,7 +16,13 @@
 
 /**
  * @typedef {Object} RunParams
- * @property {boolean | undefined} skipTriggerEvent
+ * @property {HTMLElement[] | undefined} elements
+ * @property {boolean | undefined} skipMatch
+ */
+
+/**
+ * @typedef {Object} SetUpParams
+ * @property {boolean | undefined} skipRunFn
  */
 
 if (typeof browser === 'undefined') {
@@ -88,11 +94,6 @@ const seen = [];
  * @type {{ enabled: boolean }}
  */
 let state = { enabled: true };
-
-/**
- * @description Event name to trigger the cleaning process
- */
-const triggerEventName = 'cookie-dialog-monster';
 
 /**
  * @description Clean DOM
@@ -382,11 +383,43 @@ function restoreDOM() {
 }
 
 /**
- * @async
- * @description Run the extension
- * @param {RunParams | undefined} params
+ * @description Clean DOM when this function is called
+ * @param {RunParams} params
+ * @returns {void}
  */
-async function run(params) {
+function run(params = {}) {
+  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
+    fix();
+
+    if (params.elements?.length) {
+      clean(params.elements, params.skipMatch);
+    }
+
+    if (params.elements === undefined) {
+      // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
+      clean(
+        [
+          ...document.body.children,
+          ...[...(document.getElementsByClassName('container')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('layout')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('page')[0]?.children ?? [])],
+          ...[...(document.getElementsByClassName('wrapper')[0]?.children ?? [])],
+          ...[...(document.getElementById('__next')?.children ?? [])],
+          ...[...(document.getElementById('app')?.children ?? [])],
+          ...[...(document.getElementById('main')?.children ?? [])],
+          ...[...(document.getElementById('root')?.children ?? [])],
+        ].flatMap((node) => filterMapEarly(node))
+      );
+    }
+  }
+}
+
+/**
+ * @async
+ * @description Set up the extension
+ * @param {SetUpParams | undefined} params
+ */
+async function setUp(params) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
@@ -405,8 +438,8 @@ async function run(params) {
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
 
-    if (!params?.skipTriggerEvent) {
-      window.dispatchEvent(new CustomEvent(triggerEventName));
+    if (!params?.skipRunFn) {
+      run();
     }
   } else {
     dispatch({ type: 'DISABLE_ICON' });
@@ -426,7 +459,7 @@ const observer = new MutationObserver((mutations) => {
   const nodes = mutations.flatMap((mutation) => [...mutation.addedNodes]);
   const elements = nodes.flatMap((node) => filterMapEarly(node));
 
-  window.dispatchEvent(new CustomEvent(triggerEventName, { detail: { elements } }));
+  run({ elements });
 });
 
 /**
@@ -437,22 +470,17 @@ browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
     case 'RESTORE': {
       restoreDOM();
+      await setUp({ skipRunFn: true });
       break;
     }
     case 'RUN': {
       if (removables.length) {
-        window.dispatchEvent(new CustomEvent(triggerEventName), {
-          detail: {
-            elements: removables,
-            skipMatch: true,
-          },
-        });
+        await setUp({ skipRunFn: true });
+        run({ elements: removables, skipMatch: true });
       }
       break;
     }
   }
-
-  await run({ skipTriggerEvent: message.type === 'RESTORE' });
 });
 
 /**
@@ -463,7 +491,7 @@ browser.runtime.onMessage.addListener(async (message) => {
  */
 window.addEventListener('DOMContentLoaded', async () => {
   if (document.visibilityState === 'visible') {
-    await run();
+    await setUp();
   }
 });
 
@@ -474,38 +502,8 @@ window.addEventListener('DOMContentLoaded', async () => {
  */
 window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
-    await run();
-    window.dispatchEvent(new CustomEvent(triggerEventName));
-  }
-});
-
-/**
- * @description Clean DOM when this event is fired
- * @listens window#cookie-dialog-monster
- * @returns {void}
- */
-window.addEventListener(triggerEventName, (event) => {
-  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
-    fix();
-
-    if (event.detail?.elements) {
-      clean(event.detail.elements, event.detail.skipMatch);
-    } else {
-      // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
-      clean(
-        [
-          ...document.body.children,
-          ...[...(document.getElementsByClassName('container')[0]?.children ?? [])],
-          ...[...(document.getElementsByClassName('layout')[0]?.children ?? [])],
-          ...[...(document.getElementsByClassName('page')[0]?.children ?? [])],
-          ...[...(document.getElementsByClassName('wrapper')[0]?.children ?? [])],
-          ...[...(document.getElementById('__next')?.children ?? [])],
-          ...[...(document.getElementById('app')?.children ?? [])],
-          ...[...(document.getElementById('main')?.children ?? [])],
-          ...[...(document.getElementById('root')?.children ?? [])],
-        ].flatMap((node) => filterMapEarly(node))
-      );
-    }
+    await setUp();
+    run();
   }
 });
 
@@ -518,6 +516,6 @@ window.addEventListener(triggerEventName, (event) => {
 window.addEventListener('visibilitychange', async () => {
   if (document.visibilityState === 'visible' && !initiallyVisible) {
     initiallyVisible = true;
-    await run();
+    await setUp();
   }
 });
