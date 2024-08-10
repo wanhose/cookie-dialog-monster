@@ -4494,6 +4494,7 @@
       ".gt-ui-cookie-bar",
       ".gtec-popup-datenschutz",
       ".guj-cb",
+      ".haas-cookie-dialog",
       ".has-cookie-message",
       ".hbcom-cookiepanel",
       ".hc-cookie-consent-bar",
@@ -11455,6 +11456,7 @@
       "#h_popup",
       "#h-cookie-policy",
       "#h24-CookieBar",
+      "#haas-cookie-dialog",
       "#hamon-alert-cookie",
       "#hamon-banner",
       "#han-cookie-bar",
@@ -11846,7 +11848,6 @@
       "#js-tar_cookiesBar",
       "#js-TosPrivacy",
       "#js-user-cookie-jar",
-      "#modal:has([aria-describedby=\"consentbar\"])",
       "#jsalert-cookiesaccept",
       "#jsCookieConsent",
       "#JScookieInfo",
@@ -12154,6 +12155,7 @@
       "#modal-ley-cookies",
       "#modal-rodo-info",
       "#modal-root .RgpdPopup",
+      "#modal:has([aria-describedby=\"consentbar\"])",
       "#modalAceptCookies",
       "#modalbakgdpr",
       "#modalCook.mostrar-modal",
@@ -13683,5 +13685,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723279727276"
+  "version": "1723280744349"
 }
