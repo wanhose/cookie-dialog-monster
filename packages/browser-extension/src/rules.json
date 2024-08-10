@@ -110,7 +110,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||cmp.inmobi.com^"
+      "urlFilter": "||chollometro.com/assets/js/CookiesMessage*.js^"
     }
   },
   {
@@ -129,11 +129,30 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||consent.trustarc.com^"
+      "urlFilter": "||cmp.inmobi.com^"
     }
   },
   {
     "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||consent.trustarc.com^"
+    }
+  },
+  {
+    "id": 9,
     "priority": 1,
     "action": {
       "type": "block"
@@ -281,7 +300,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||static.fastcmp.com^"
+      "urlFilter": "||sdk.privacy-center.org^"
     }
   },
   {
@@ -300,7 +319,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||wcpstatic.microsoft.com^"
+      "urlFilter": "||static.fastcmp.com^"
     }
   },
   {
@@ -319,7 +338,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+      "urlFilter": "||wcpstatic.microsoft.com^"
     }
   },
   {
@@ -338,7 +357,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||sdk.privacy-center.org^"
+      "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
     }
   }
 ]
