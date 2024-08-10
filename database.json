@@ -6718,6 +6718,7 @@
       "[data-privacy-consent]",
       "[data-project=\"mol-fe-cmp\"]",
       "[data-qa=\"cookie-notification\"]",
+      "[data-qa=\"cookie-region\"]",
       "[data-qa=\"cookies-policy-informer\"]",
       "[data-qa=\"txtGdprCookiePopup\"]",
       "[data-reach-dialog-overlay]:has(#cookie-consent-form)",
@@ -13685,5 +13686,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723280744349"
+  "version": "1723281196406"
 }
