@@ -321,5 +321,24 @@
       ],
       "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
     }
+  },
+  {
+    "id": 19,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||sdk.privacy-center.org^"
+    }
   }
 ]
