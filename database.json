@@ -834,6 +834,7 @@
     ]
   },
   "tokens": {
+    "backdrops": [".modal-backdrop", ".offcanvas-backdrop", ".overlay"],
     "classes": [
       "appconsent_noscroll",
       "b-modal-banner--disabled",
