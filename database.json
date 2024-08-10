@@ -468,6 +468,11 @@
       "selector": "[data-test=\"dismiss-CookiePopup\"] button"
     },
     {
+      "action": "click",
+      "domain": "reddit.com",
+      "selector": "#SHORTCUT_FOCUSABLE_DIV [style*=\"--Toaster\"] section:last-child section:last-child button"
+    },
+    {
       "action": "reset",
       "domain": "resonanz-labor.de",
       "property": "overflow",
@@ -13677,5 +13682,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723277260470"
+  "version": "1723279428728"
 }
