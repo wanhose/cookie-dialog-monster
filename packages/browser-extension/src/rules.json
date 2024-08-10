@@ -224,7 +224,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||optanon.blob.core.windows.net^"
+      "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
     }
   },
   {
@@ -243,7 +243,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||static.fastcmp.com^"
+      "urlFilter": "||optanon.blob.core.windows.net^"
     }
   },
   {
@@ -262,7 +262,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||wcpstatic.microsoft.com^"
+      "urlFilter": "||redditstatic.com/onetrust.*.js"
     }
   },
   {
@@ -281,7 +281,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+      "urlFilter": "||static.fastcmp.com^"
     }
   },
   {
@@ -291,8 +291,16 @@
       "type": "block"
     },
     "condition": {
-      "resourceTypes": ["script"],
-      "urlFilter": "||www.redditstatic.com/onetrust.*.js"
+      "resourceTypes": [
+        "font",
+        "image",
+        "media",
+        "object",
+        "script",
+        "stylesheet",
+        "xmlhttprequest"
+      ],
+      "urlFilter": "||wcpstatic.microsoft.com^"
     }
   },
   {
@@ -311,7 +319,7 @@
         "stylesheet",
         "xmlhttprequest"
       ],
-      "urlFilter": "https://www.lensois.com/wp-admin/admin-ajax.php"
+      "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
     }
   }
 ]
