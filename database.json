@@ -6974,6 +6974,7 @@
       "[class*=\"PrivacyPolicy\"]",
       "[class*=\"sd-cmp-\"]",
       "[class*=\"StyledCookieLayer\"]",
+      "[class*=\"styles__Container\"]:has([data-callback=\"accounts/hide-banner/CookiesBanner\"])",
       "[class*=\"Warnings__cookieBar\"]",
       "[class*=\"zweiwegen-model-dialog_consentDialog\"]",
       "[class^=\"__alertCookie\"]",
@@ -14067,5 +14068,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723367177480"
+  "version": "1723371025373"
 }
