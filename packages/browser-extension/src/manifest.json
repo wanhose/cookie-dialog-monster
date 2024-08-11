@@ -59,15 +59,6 @@
       "run_at": "document_start"
     }
   ],
-  "declarative_net_request": {
-    "rule_resources": [
-      {
-        "enabled": true,
-        "id": "ruleset",
-        "path": "rules.json"
-      }
-    ]
-  },
   "host_permissions": ["http://*/*", "https://*/*"],
   "permissions": ["contextMenus", "declarativeNetRequest", "scripting", "storage"],
   "web_accessible_resources": [
