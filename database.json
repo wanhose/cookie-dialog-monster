@@ -5645,7 +5645,6 @@
       ".popup-rodo",
       ".popup[data-popup=\"popup-cookie\"]",
       ".popupBarraCookie",
-      ".popupContainer",
       ".popupCookie",
       ".portlet_cookie_policy",
       ".PortletGestionDesCookiesCNIL",
@@ -13701,5 +13700,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723358890100"
+  "version": "1723359134504"
 }
