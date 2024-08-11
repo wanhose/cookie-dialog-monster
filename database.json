@@ -1217,6 +1217,7 @@
       "cookies",
       "cu_k_cookie_consent_modal_open",
       "didomi-popup-open",
+      "disclaimer-opened",
       "gcdc-locked",
       "gdpr-infobar-visible",
       "gdprbanner_consent_gdpr_consent",
@@ -1224,6 +1225,7 @@
       "hasCookieBanner",
       "ibeugdpr-disabled",
       "idxrcookies-block-user-nav",
+      "img-blured",
       "modal--is-open",
       "modal-open",
       "no_scroll",
@@ -14047,6 +14049,7 @@
       "efilli-layout-default",
       "epaas-consent-drawer-shell",
       "form:has(#cookieUstaw)",
+      "html.xv-responsive #disclaimer_background",
       "marfeel-cmp",
       "module-rgpd-component",
       "ofi-cookie-box-widget",
@@ -14064,5 +14067,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723360939225"
+  "version": "1723367177480"
 }
