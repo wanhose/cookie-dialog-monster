@@ -6601,6 +6601,7 @@
       "[class*=\"GDPRConsentForm\"]",
       "[class*=\"GdprParentWrapper\"]",
       "[class*=\"GdprPopup\"]",
+      "[class*=\"Layout--\"][opacity=\"1\"]:has([data-role=\"cookies-modal-content\"])",
       "[class*=\"mxp-CookiePanel-cookie-panel-\"]",
       "[class*=\"mxp-CookiePanel-cookie-panel-overlay-\"]",
       "[class*=\"privacy-notification\"]",
@@ -13700,5 +13701,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723294022516"
+  "version": "1723358890100"
 }
