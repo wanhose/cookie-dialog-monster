@@ -36,7 +36,7 @@ if (typeof browser === 'undefined') {
 let count = 0;
 
 /**
- * @description Data properties
+ * @description Data object with all the necessary information
  * @type {ExtensionData}
  */
 let { commonWords, fixes, skips, tokens } = {
@@ -158,7 +158,7 @@ function clean(elements, skipMatch) {
  * @param {HTMLElement} element
  */
 function containsCommonWord(element) {
-  return !!element.outerHTML.match(new RegExp(commonWords.join('|')));
+  return !!commonWords.length && !!element.outerHTML.match(new RegExp(commonWords.join('|')));
 }
 
 /**
@@ -429,7 +429,12 @@ async function setUp(params = {}) {
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (state.enabled) {
-    data = await dispatch({ hostname, type: 'GET_DATA' });
+    const data = await dispatch({ hostname, type: 'GET_DATA' });
+
+    commonWords = data.commonWords ?? commonWords;
+    fixes = data.fixes ?? fixes;
+    skips = data.skips ?? skips;
+    tokens = data.tokens ?? tokens;
 
     if (count > 0) {
       dispatch({ type: 'SET_BADGE', value: `${count}` });
