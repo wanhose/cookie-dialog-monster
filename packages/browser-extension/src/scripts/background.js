@@ -233,3 +233,43 @@ browser.runtime.onInstalled.addListener(() => {
 browser.runtime.onStartup.addListener(() => {
   refreshData();
 });
+
+/**
+ * @description Listen to the moment before a request is made to apply the rules
+ */
+browser.webRequest.onBeforeRequest.addListener(
+  async (details) => {
+    const { tabId, type, url } = details;
+
+    if (tabId > -1 && type === 'main_frame') {
+      const manifest = browser.runtime.getManifest();
+      const excludeMatches = manifest.content_scripts[0].exclude_matches;
+      const excludePatterns = excludeMatches.map(
+        (match) => `^${match.replaceAll('*.', '*(.)?').replaceAll('*', '.*')}$`
+      );
+
+      if (excludePatterns.some((pattern) => new RegExp(pattern).test(url))) {
+        return;
+      }
+
+      const hostname = url.split('.').slice(-3).join('.').replace('www.', '');
+      const store = await storage.get(hostname);
+      const state = store[hostname] ?? { enabled: true };
+
+      if (state.enabled) {
+        const { data } = await storage.get('data');
+
+        if (data?.rules?.length) {
+          browser.declarativeNetRequest.updateSessionRules({
+            addRules: data.rules.map((rule) => ({
+              ...rule,
+              condition: { ...rule.condition, tabIds: [tabId] },
+            })),
+            removeRuleIds: data.rules.map((rule) => rule.id),
+          });
+        }
+      }
+    }
+  },
+  { urls: ['<all_urls>'] }
+);

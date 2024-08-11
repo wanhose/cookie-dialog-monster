@@ -575,6 +575,369 @@
       "selector": "[title=\"ACCEPT AND CONTINUE\"]"
     }
   ],
+  "rules": [
+    {
+      "id": 1,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||app.usercentrics.eu^"
+      }
+    },
+    {
+      "id": 2,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||c.evidon.com^"
+      }
+    },
+    {
+      "id": 3,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||cdn.cookielaw.org^"
+      }
+    },
+    {
+      "id": 4,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||cdn.optable.co^"
+      }
+    },
+    {
+      "id": 5,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||cdntranscend.eventbrite.com^"
+      }
+    },
+    {
+      "id": 6,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||chollometro.com/assets/js/CookiesMessage*.js^"
+      }
+    },
+    {
+      "id": 7,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||cmp.inmobi.com^"
+      }
+    },
+    {
+      "id": 8,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||consent.trustarc.com^"
+      }
+    },
+    {
+      "id": 9,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||consent.cookiebot.com^"
+      }
+    },
+    {
+      "id": 10,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||consentcdn.cookiebot.com^"
+      }
+    },
+    {
+      "id": 11,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||cp.as.com^"
+      }
+    },
+    {
+      "id": 12,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||eu.fastcmp.com^"
+      }
+    },
+    {
+      "id": 13,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
+      }
+    },
+    {
+      "id": 14,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||optanon.blob.core.windows.net^"
+      }
+    },
+    {
+      "id": 15,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||redditstatic.com/onetrust.*.js"
+      }
+    },
+    {
+      "id": 16,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||sdk.privacy-center.org^"
+      }
+    },
+    {
+      "id": 17,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||static.fastcmp.com^"
+      }
+    },
+    {
+      "id": 18,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||wcpstatic.microsoft.com^"
+      }
+    },
+    {
+      "id": 19,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+      }
+    }
+  ],
   "skips": {
     "domains": [
       "app.diagrams.net",
@@ -834,6 +1197,7 @@
     ]
   },
   "tokens": {
+    "backdrops": [".modal-backdrop", ".offcanvas-backdrop", ".overlay"],
     "classes": [
       "appconsent_noscroll",
       "b-modal-banner--disabled",
@@ -13700,5 +14064,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723359332975"
+  "version": "1723360939225"
 }

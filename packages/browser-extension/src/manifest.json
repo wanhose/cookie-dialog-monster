@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "7.1.3",
+  "version": "7.1.4",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -59,17 +59,8 @@
       "run_at": "document_start"
     }
   ],
-  "declarative_net_request": {
-    "rule_resources": [
-      {
-        "enabled": true,
-        "id": "ruleset",
-        "path": "rules.json"
-      }
-    ]
-  },
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["contextMenus", "declarativeNetRequest", "scripting", "storage"],
+  "permissions": ["contextMenus", "declarativeNetRequest", "scripting", "storage", "webRequest"],
   "web_accessible_resources": [
     {
       "matches": ["http://*/*", "https://*/*"],

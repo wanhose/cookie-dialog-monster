@@ -1,28 +1,28 @@
 /**
  * @typedef {Object} ExtensionData
- * @property {string[] | undefined} commonWords
- * @property {Fix[] | undefined} fixes
- * @property {{ domains: string[] | undefined, tags: string[] | undefined } | undefined} skips
- * @property {{ classes: string[] | undefined, selectors: string[] | undefined } | undefined} tokens
+ * @property {string[]} commonWords
+ * @property {Fix[]} fixes
+ * @property {{ domains: string[], tags: string[] }} skips
+ * @property {{ backdrops: string[], classes: string[], selectors: string[] }} tokens
  */
 
 /**
  * @typedef {Object} Fix
  * @property {string} action
  * @property {string} domain
- * @property {string | undefined} property
+ * @property {string} [property]
  * @property {string} selector
  */
 
 /**
  * @typedef {Object} RunParams
- * @property {HTMLElement[] | undefined} elements
- * @property {boolean | undefined} skipMatch
+ * @property {HTMLElement[]} [elements]
+ * @property {boolean} [skipMatch]
  */
 
 /**
  * @typedef {Object} SetUpParams
- * @property {boolean | undefined} skipRunFn
+ * @property {boolean} [skipRunFn]
  */
 
 if (typeof browser === 'undefined') {
@@ -36,10 +36,22 @@ if (typeof browser === 'undefined') {
 let count = 0;
 
 /**
- * @description Data properties
+ * @description Data object with all the necessary information
  * @type {ExtensionData}
  */
-let { commonWords, fixes = [], skips, tokens } = {};
+let { commonWords, fixes, skips, tokens } = {
+  commonWords: [],
+  fixes: [],
+  skips: {
+    domains: [],
+    tags: [],
+  },
+  tokens: {
+    backdrops: [],
+    classes: [],
+    selectors: [],
+  },
+};
 
 /**
  * @description Attribute name
@@ -98,7 +110,7 @@ let state = { enabled: true };
 /**
  * @description Clean DOM
  * @param {Element[]} elements
- * @param {boolean?} skipMatch
+ * @param {boolean} [skipMatch]
  * @returns {void}
  */
 function clean(elements, skipMatch) {
@@ -146,7 +158,7 @@ function clean(elements, skipMatch) {
  * @param {HTMLElement} element
  */
 function containsCommonWord(element) {
-  return !!element.outerHTML.match(new RegExp(commonWords.join('|')));
+  return !!commonWords.length && !!element.outerHTML.match(new RegExp(commonWords.join('|')));
 }
 
 /**
@@ -156,7 +168,7 @@ function containsCommonWord(element) {
  */
 function forceClean(element) {
   const nodes = [...element.querySelectorAll(tokens.selectors)];
-  const elements = nodes.flatMap((node) => filterMapEarly(node));
+  const elements = nodes.flatMap((node) => filterNodeEarly(node));
 
   if (elements.length) {
     fix();
@@ -220,16 +232,11 @@ function isInViewport(element) {
 /**
  * @description Check if element element is removable
  * @param {Element} element
- * @param {boolean?} skipMatch
+ * @param {boolean} [skipMatch]
  * @returns {boolean}
  */
 function match(element, skipMatch) {
-  if (
-    !commonWords.length ||
-    !tokens?.classes?.length ||
-    !tokens?.selectors?.length ||
-    !skips?.tags?.length
-  ) {
+  if (!tokens.selectors.length || !skips.tags.length) {
     return false;
   }
 
@@ -245,7 +252,7 @@ function match(element, skipMatch) {
     return false;
   }
 
-  const tagName = element.tagName?.toUpperCase?.();
+  const tagName = element.tagName.toUpperCase();
 
   if (skips.tags.includes(tagName)) {
     return false;
@@ -283,13 +290,13 @@ function match(element, skipMatch) {
  * @param {Node} node
  * @param {boolean} stopRecursion
  */
-function filterMapEarly(node, stopRecursion) {
+function filterNodeEarly(node, stopRecursion) {
   if (node.nodeType !== Node.ELEMENT_NODE || !(node instanceof HTMLElement)) {
     return [];
   }
 
   if (commonWords && containsCommonWord(node) && !stopRecursion) {
-    return [node, ...[...node.children].flatMap((node) => filterMapEarly(node, true))];
+    return [node, ...[...node.children].flatMap((node) => filterNodeEarly(node, true))];
   }
 
   return [node];
@@ -300,12 +307,10 @@ function filterMapEarly(node, stopRecursion) {
  * @returns {void}
  */
 function fix() {
-  const backdrops = document.querySelectorAll([
-    '.modal-backdrop',
-    '.offcanvas-backdrop',
-    '.overlay',
-  ]);
-  const domains = (skips?.domains ?? []).map((x) => (x.split('.').length < 3 ? `*${x}` : x));
+  const backdrops = tokens.backdrops?.length
+    ? [...document.querySelectorAll(tokens.backdrops)]
+    : [];
+  const domains = skips.domains.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   for (const backdrop of backdrops) {
     if (backdrop.children.length === 0 && backdrop.style.display !== 'none') {
@@ -349,7 +354,7 @@ function fix() {
 
   if (domains.every((x) => !hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
     for (const element of [document.body, document.documentElement]) {
-      element?.classList.remove(...(tokens?.classes ?? []));
+      element?.classList.remove(...(tokens.classes ?? []));
       element?.style.setProperty('position', 'initial', 'important');
       element?.style.setProperty('overflow-y', 'initial', 'important');
     }
@@ -361,10 +366,14 @@ function fix() {
  * @returns {void}
  */
 function restoreDOM() {
-  const backdrop = document.getElementsByClassName('modal-backdrop')[0];
+  const backdrops = tokens.backdrops?.length
+    ? [...document.querySelectorAll(tokens.backdrops)]
+    : [];
 
-  if (backdrop?.children.length === 0) {
-    backdrop.style.removeProperty('display');
+  for (const backdrop of backdrops) {
+    if (backdrop.children.length === 0 && backdrop.hasAttribute(dataAttributeName)) {
+      backdrop.style.removeProperty('display');
+    }
   }
 
   const elements = [...document.querySelectorAll(`[${dataAttributeName}]`)];
@@ -384,11 +393,11 @@ function restoreDOM() {
 
 /**
  * @description Clean DOM when this function is called
- * @param {RunParams} params
+ * @param {RunParams} [params]
  * @returns {void}
  */
 function run(params = {}) {
-  if (document.body?.children.length && !preview && state.enabled && tokens?.selectors?.length) {
+  if (document.body?.children.length && !preview && state.enabled && tokens.selectors.length) {
     fix();
 
     if (params.elements?.length) {
@@ -408,7 +417,7 @@ function run(params = {}) {
           ...[...(document.getElementById('app')?.children ?? [])],
           ...[...(document.getElementById('main')?.children ?? [])],
           ...[...(document.getElementById('root')?.children ?? [])],
-        ].flatMap((node) => filterMapEarly(node))
+        ].flatMap((node) => filterNodeEarly(node))
       );
     }
   }
@@ -417,19 +426,19 @@ function run(params = {}) {
 /**
  * @async
  * @description Set up the extension
- * @param {SetUpParams | undefined} params
+ * @param {SetUpParams} [params]
  */
-async function setUp(params) {
+async function setUp(params = {}) {
   state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (state.enabled) {
     const data = await dispatch({ hostname, type: 'GET_DATA' });
 
-    commonWords = data?.commonWords;
-    fixes = data?.fixes;
-    skips = data?.skips;
-    tokens = data?.tokens;
+    commonWords = data?.commonWords ?? commonWords;
+    fixes = data?.fixes ?? fixes;
+    skips = data?.skips ?? skips;
+    tokens = data?.tokens ?? tokens;
 
     if (count > 0) {
       dispatch({ type: 'SET_BADGE', value: `${count}` });
@@ -438,7 +447,7 @@ async function setUp(params) {
     dispatch({ type: 'ENABLE_ICON' });
     observer.observe(document.body ?? document.documentElement, options);
 
-    if (!params?.skipRunFn) {
+    if (!params.skipRunFn) {
       run();
     }
   } else {
@@ -452,12 +461,12 @@ async function setUp(params) {
  * @type {MutationObserver}
  */
 const observer = new MutationObserver((mutations) => {
-  if (preview || !state.enabled || !tokens?.selectors.length) {
+  if (preview || !state.enabled || !tokens.selectors.length) {
     return;
   }
 
   const nodes = mutations.flatMap((mutation) => [...mutation.addedNodes]);
-  const elements = nodes.flatMap((node) => filterMapEarly(node));
+  const elements = nodes.flatMap((node) => filterNodeEarly(node));
 
   run({ elements });
 });
