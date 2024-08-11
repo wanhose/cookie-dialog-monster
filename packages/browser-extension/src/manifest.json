@@ -60,7 +60,7 @@
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["contextMenus", "declarativeNetRequest", "scripting", "storage"],
+  "permissions": ["contextMenus", "declarativeNetRequest", "scripting", "storage", "webRequest"],
   "web_accessible_resources": [
     {
       "matches": ["http://*/*", "https://*/*"],

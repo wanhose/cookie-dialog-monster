@@ -307,7 +307,9 @@ function filterNodeEarly(node, stopRecursion) {
  * @returns {void}
  */
 function fix() {
-  const backdrops = tokens.backdrops.length ? [...document.querySelectorAll(tokens.backdrops)] : [];
+  const backdrops = tokens.backdrops?.length
+    ? [...document.querySelectorAll(tokens.backdrops)]
+    : [];
   const domains = skips.domains.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   for (const backdrop of backdrops) {
@@ -364,7 +366,9 @@ function fix() {
  * @returns {void}
  */
 function restoreDOM() {
-  const backdrops = tokens.backdrops.length ? [...document.querySelectorAll(tokens.backdrops)] : [];
+  const backdrops = tokens.backdrops?.length
+    ? [...document.querySelectorAll(tokens.backdrops)]
+    : [];
 
   for (const backdrop of backdrops) {
     if (backdrop.children.length === 0 && backdrop.hasAttribute(dataAttributeName)) {
@@ -431,10 +435,10 @@ async function setUp(params = {}) {
   if (state.enabled) {
     const data = await dispatch({ hostname, type: 'GET_DATA' });
 
-    commonWords = data.commonWords ?? commonWords;
-    fixes = data.fixes ?? fixes;
-    skips = data.skips ?? skips;
-    tokens = data.tokens ?? tokens;
+    commonWords = data?.commonWords ?? commonWords;
+    fixes = data?.fixes ?? fixes;
+    skips = data?.skips ?? skips;
+    tokens = data?.tokens ?? tokens;
 
     if (count > 0) {
       dispatch({ type: 'SET_BADGE', value: `${count}` });
