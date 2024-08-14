@@ -3378,6 +3378,10 @@
       ".cookieFooterbg",
       ".cookieFooterDiv",
       ".cookieForm",
+      ".cookiefox--modal",
+      ".cookiefox--notice",
+      ".cookiefox--simple",
+      ".cookiefox",
       ".cookieframe",
       ".cookieHandler",
       ".cookieheader",
@@ -14119,5 +14123,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723668894477"
+  "version": "1723669023475"
 }
