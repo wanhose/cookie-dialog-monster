@@ -9795,6 +9795,7 @@
       "#cookielista",
       "#cookieLoad",
       "#cookieLY",
+      "#cookieman-modal",
       "#cookieManagement",
       "#cookiemanager_cookiebar",
       "#CookieManagerDialog",
@@ -14118,5 +14119,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723668829653"
+  "version": "1723668894477"
 }
