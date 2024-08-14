@@ -1216,7 +1216,12 @@
     ]
   },
   "tokens": {
-    "backdrops": [".modal-backdrop", ".offcanvas-backdrop", ".overlay"],
+    "backdrops": [
+      ".js--overlay.theme--dark.is--open",
+      ".modal-backdrop",
+      ".offcanvas-backdrop",
+      ".overlay"
+    ],
     "classes": [
       "appconsent_noscroll",
       "b-modal-banner--disabled",
@@ -5501,6 +5506,7 @@
       ".mms-cookielayer",
       ".mmui-cookie-disclaimer",
       ".mmw-cookie-banner",
+      ".mnd-cookie-modal",
       ".mnd-cookies",
       ".mo-sitePriv",
       ".moc-cookie-container",
@@ -14088,5 +14094,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723667544867"
+  "version": "1723667865877"
 }
