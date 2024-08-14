@@ -820,7 +820,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
+        "urlFilter": "||js.vxcdn.com/usercentrics-sdk/*^"
       }
     },
     {
@@ -839,7 +839,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||optanon.blob.core.windows.net^"
+        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
       }
     },
     {
@@ -858,7 +858,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||redditstatic.com/onetrust.*.js"
+        "urlFilter": "||optanon.blob.core.windows.net^"
       }
     },
     {
@@ -877,7 +877,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||sdk.privacy-center.org^"
+        "urlFilter": "||redditstatic.com/onetrust.*.js"
       }
     },
     {
@@ -896,7 +896,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||static.fastcmp.com^"
+        "urlFilter": "||sdk.privacy-center.org^"
       }
     },
     {
@@ -915,11 +915,30 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||wcpstatic.microsoft.com^"
+        "urlFilter": "||static.fastcmp.com^"
       }
     },
     {
       "id": 19,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||wcpstatic.microsoft.com^"
+      }
+    },
+    {
+      "id": 20,
       "priority": 1,
       "action": {
         "type": "block"
@@ -14068,5 +14087,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723371025373"
+  "version": "1723667123502"
 }
