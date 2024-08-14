@@ -11128,6 +11128,7 @@
       "#DivCookiesInfoPanel",
       "#divCookiesMessage",
       "#DivCookiesMessage",
+      "#DivCookiesMessageNew",
       "#divCookiesMsg",
       "#divCookiesPolicy",
       "#DIVcookieswelcome",
@@ -14094,5 +14095,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723667865877"
+  "version": "1723668026833"
 }
