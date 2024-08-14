@@ -6677,6 +6677,7 @@
       ".type-cookieacceptpage",
       ".type-cookieLaw",
       ".typify-cookie-popup",
+      ".u-bottomFixer.js-bottomFixTarget:has(.notice--cookieAdvanced)",
       ".u-cookies-consent",
       ".u12-data-protection-notice",
       ".ubg-cookies-banner",
@@ -14117,5 +14118,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723668632892"
+  "version": "1723668829653"
 }
