@@ -2034,7 +2034,6 @@
       ".ccwrap",
       ".cczcook_banner-wrapper",
       ".cd__cookie",
-      ".cdk-overlay-container:not(:has(.search-header))",
       ".cdp-cookies-alerta",
       ".ce_rsce_tao_fixed_note",
       ".ce_rsce_vision_fixed_note",
@@ -14128,5 +14127,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723671895378"
+  "version": "1723672590884"
 }
