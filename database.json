@@ -11988,6 +11988,7 @@
       "#i-cookie-cnil",
       "#i-cookies-bar",
       "#ia-cookie-choices",
+      "#iai_cookie",
       "#ib-global-cookie-notice",
       "#IBTCookiePolicy",
       "#ibu-online-use-cookie-container",
@@ -14124,5 +14125,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723669464648"
+  "version": "1723669695317"
 }
