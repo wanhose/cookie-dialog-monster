@@ -14094,6 +14094,7 @@
       "dile-cookies-consent",
       "efilli-layout-default",
       "epaas-consent-drawer-shell",
+      "evd-cookie-info",
       "form:has(#cookieUstaw)",
       "html.xv-responsive #disclaimer_background",
       "marfeel-cmp",
@@ -14114,5 +14115,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723668274455"
+  "version": "1723668425508"
 }
