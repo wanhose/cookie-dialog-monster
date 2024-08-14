@@ -14081,6 +14081,7 @@
       "app-cookies-bar",
       "app-cookies",
       "awsui-alert[dismiss*=\"CookieBanner\"]",
+      "bahf-cookie-disclaimer-dpl3",
       "body:not([data-bd-content]) > .advertisement.contentAds.ads.adsbygoogle.top-banners.adbanner.bannerAd.ad-google.AdSense:first-child + div + div[class]:has(button)",
       "body[data-bd-content] > .advertisement.contentAds.ads.adsbygoogle.top-banners.adbanner.bannerAd.ad-google.AdSense:first-child + div[class]:has(button)",
       "ck-user-cookie-consent-modal",
@@ -14115,5 +14116,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723668425508"
+  "version": "1723668553208"
 }
