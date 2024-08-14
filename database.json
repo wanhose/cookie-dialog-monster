@@ -12572,6 +12572,7 @@
       "#modal-cookie-law",
       "#modal-cookie-setting",
       "#modal-cookie",
+      "#modal-cookiedisclaimer",
       "#modal-cookies-policy",
       "#modal-cookies",
       "#modal-gdpr",
@@ -14116,5 +14117,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723668553208"
+  "version": "1723668632892"
 }
