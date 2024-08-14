@@ -2007,7 +2007,7 @@
       ".ccwrap",
       ".cczcook_banner-wrapper",
       ".cd__cookie",
-      ".cdk-overlay-container",
+      ".cdk-overlay-container:not(:has(.search-header))",
       ".cdp-cookies-alerta",
       ".ce_rsce_tao_fixed_note",
       ".ce_rsce_vision_fixed_note",
@@ -14079,6 +14079,7 @@
       "sibbo-cmp-layout",
       "solvia-cookies-policy",
       "tiktok-cookie-banner",
+      "tm-terms-consent",
       "tp-yt-iron-overlay-backdrop",
       "tsl-required-user-kind-modal",
       "web-component-ilsa-cookies-manager",
@@ -14087,5 +14088,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723667123502"
+  "version": "1723667544867"
 }
