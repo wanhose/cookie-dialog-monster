@@ -6383,6 +6383,7 @@
       ".sb-cookies-alert",
       ".sb-ncookies-alert",
       ".sc-cookies",
+      ".sc-correos-cdk-cookies-module",
       ".sc-privacy-banner",
       ".SCK_Banner",
       ".scmp-popin",
@@ -14159,5 +14160,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724436133679"
+  "version": "1724436337627"
 }
