@@ -3307,6 +3307,7 @@
       ".CookieBanner",
       ".CookieBanner2",
       ".cookieBannerActive",
+      ".cookiebannerbox",
       ".cookieBannerContainer",
       ".cookieBannerDisclaimerWrap",
       ".CookieBannerDiv",
@@ -14205,5 +14206,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724437873989"
+  "version": "1724437981374"
 }
