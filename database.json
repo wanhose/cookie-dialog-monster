@@ -4589,6 +4589,7 @@
       ".filCookiesCnil",
       ".fingerprint-wrapper[onclick*=\"cookieman\"]",
       ".fit-cookieWall-overlay",
+      ".fixed-block__cookies",
       ".fixed-bottom[class*=\"gdpr\"]",
       ".fixed-cookie-prl",
       ".fixed-cookie",
@@ -14156,5 +14157,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724435233200"
+  "version": "1724435358959"
 }
