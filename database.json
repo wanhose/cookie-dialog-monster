@@ -1318,6 +1318,7 @@
       "ccm-blocked",
       "cli-barmodal-open",
       "cmp-open",
+      "consent-dialog-open",
       "consent-modal-open",
       "consent-modal-overflow",
       "cookie_consent",
@@ -14202,5 +14203,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724437619469"
+  "version": "1724437770880"
 }
