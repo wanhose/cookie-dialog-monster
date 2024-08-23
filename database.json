@@ -2309,6 +2309,7 @@
       ".ConsentCookie",
       ".consentement_cookie",
       ".consentement_cookies",
+      ".ConsentHint",
       ".consently-bar",
       ".ConsentPanel",
       ".consentr-notification",
@@ -14212,5 +14213,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724438999390"
+  "version": "1724439192806"
 }
