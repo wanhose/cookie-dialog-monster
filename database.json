@@ -11783,6 +11783,7 @@
       "#gdpr-banner",
       "#gdpr-bar",
       "#gdpr-block",
+      "#gdpr-blocking-page-overlay",
       "#gdpr-bottom-banner-container",
       "#gdpr-bottom-banner",
       "#gdpr-bottom",
@@ -14208,5 +14209,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724438309363"
+  "version": "1724438420585"
 }
