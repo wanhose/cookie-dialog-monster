@@ -368,7 +368,7 @@
     {
       "action": "click",
       "domain": "gmx.net",
-      "selector": "[data-section=\"accept\"]"
+      "selector": "[data-id=\"save-all-pur\"]"
     },
     {
       "action": "click",
@@ -14158,5 +14158,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724435530289"
+  "version": "1724435953990"
 }
