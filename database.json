@@ -14190,6 +14190,7 @@
       "script + [class*=\"desktop-\"][class*=\"wrapper-\"]",
       "sibbo-cmp-layout",
       "solvia-cookies-policy",
+      "tealium-consent",
       "tiktok-cookie-banner",
       "tm-terms-consent",
       "tp-yt-iron-overlay-backdrop",
@@ -14200,5 +14201,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724437199899"
+  "version": "1724437352935"
 }
