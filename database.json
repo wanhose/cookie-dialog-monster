@@ -7742,6 +7742,7 @@
       "#babaorum-bar",
       "#backcolorcookies",
       "#backPopupCookie",
+      "#bahf-cookie-disclaimer-modal",
       "#ban-cookie",
       "#ban-mentions-legales",
       "#band-cookies",
@@ -14210,5 +14211,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724438605454"
+  "version": "1724438762338"
 }
