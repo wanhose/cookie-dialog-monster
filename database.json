@@ -6684,6 +6684,7 @@
       ".type-cookieacceptpage",
       ".type-cookieLaw",
       ".typify-cookie-popup",
+      ".u-bottomFixer.js-bottomFixTarget:has(.notice--cookie)",
       ".u-bottomFixer.js-bottomFixTarget:has(.notice--cookieAdvanced)",
       ".u-cookies-consent",
       ".u12-data-protection-notice",
@@ -14128,5 +14129,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724432828694"
+  "version": "1724432987573"
 }
