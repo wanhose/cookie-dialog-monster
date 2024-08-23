@@ -977,11 +977,30 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||wcpstatic.microsoft.com^"
+        "urlFilter": "||transcend-cdn.com^"
       }
     },
     {
       "id": 22,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||wcpstatic.microsoft.com^"
+      }
+    },
+    {
+      "id": 23,
       "priority": 1,
       "action": {
         "type": "block"
@@ -14162,5 +14181,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724436778129"
+  "version": "1724436932549"
 }
