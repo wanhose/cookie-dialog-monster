@@ -1407,6 +1407,7 @@
       ".accord_cookies",
       ".acepta_cookies",
       ".aceptar_cookies",
+      ".acquisition-footer-row-wrap:has(.acquisition-terms)",
       ".acris-cookie-consent:not(.is--modal)",
       ".acris-cookie-consent",
       ".active-cookie-menu",
@@ -14158,5 +14159,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724435953990"
+  "version": "1724436133679"
 }
