@@ -11365,6 +11365,7 @@
       "#ePrivacyDisclaimer",
       "#eps_cookie_info",
       "#erw-privacy-info",
+      "#es_cookie_solution",
       "#escookie-box",
       "#esi_cookie_banner",
       "#esites-cookie-info",
@@ -14148,5 +14149,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724433626166"
+  "version": "1724434141265"
 }
