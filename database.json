@@ -4322,6 +4322,8 @@
       ".digimadi-cc-wrapper",
       ".dina-cookiebanner",
       ".direttiva2009_136_CE",
+      ".disc-cp-modal__modal",
+      ".disc-cp",
       ".disclaimer_cookies",
       ".disclaimer_wrapper",
       ".disclaimer-cookie",
@@ -14206,5 +14208,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724437981374"
+  "version": "1724438309363"
 }
