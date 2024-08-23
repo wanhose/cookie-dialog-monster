@@ -9891,6 +9891,7 @@
       "#cookiemessage",
       "#cookieMessage",
       "#CookieMessage",
+      "#cookieMessageAccept",
       "#cookieMessageBanner",
       "#cookiemessagebar",
       "#cookieMessageBar",
@@ -14201,5 +14202,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724437352935"
+  "version": "1724437619469"
 }
