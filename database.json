@@ -7973,6 +7973,7 @@
       "#c-cookies",
       "#c-info-box",
       "#c-warning-container",
+      "#c22overlay:has(.consent)",
       "#c2g_cookie_dialog",
       "#ca_banner",
       "#ca_info_plus",
@@ -14154,5 +14155,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724434874215"
+  "version": "1724435125312"
 }
