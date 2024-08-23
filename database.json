@@ -7202,6 +7202,7 @@
       "[data-test-sell-cookie-banner]",
       "[data-test*=\"Cookie-Banner\"]",
       "[data-test=\"cookie-banner\"]",
+      "[data-test=\"cookie-consent-notification\"]",
       "[data-test=\"cookie-overlay\"]",
       "[data-test=\"cookie-policy-banner\"]",
       "[data-test=\"cookie-policy-sheet\"]",
@@ -14160,5 +14161,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724436337627"
+  "version": "1724436693944"
 }
