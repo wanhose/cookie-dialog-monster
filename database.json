@@ -264,6 +264,11 @@
     },
     {
       "action": "click",
+      "domain": "bbc.com",
+      "selector": "[aria-label=\"I do not agree\"]"
+    },
+    {
+      "action": "click",
       "domain": "bilbaomuseoa.eus",
       "selector": ".alert_message .btn-confirm"
     },
@@ -14149,5 +14154,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724434141265"
+  "version": "1724434874215"
 }
