@@ -7834,6 +7834,7 @@
       "#bim-studio-cookie-holder",
       "#BIPCookies",
       "#bipo_avisocookies",
+      "#biscuit-approval",
       "#biscuitFormDiv",
       "#bitbay-cookies",
       "#bJS_cookieBanner",
@@ -14161,5 +14162,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724436693944"
+  "version": "1724436778129"
 }
