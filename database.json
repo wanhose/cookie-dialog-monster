@@ -7047,6 +7047,7 @@
       "[aria-label=\"Wähle deine Cookies aus\"]",
       "[aria-labelledby=\"cookie_banner_title\"]",
       "[aria-labelledby=\"cookieConsentTitle\"]",
+      "[aria-labelledby=\"cookiesTrackingNoticeLink\"]",
       "[aria-labelledby=\"hu-cookies-notice-message\"]",
       "[aria-labelledby=\"ui-dialog-title-cookiebox\"]",
       "[bundlename=\"reddit_cookie_banner\"]",
@@ -14211,5 +14212,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724438762338"
+  "version": "1724438999390"
 }
