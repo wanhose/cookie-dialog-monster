@@ -1241,7 +1241,8 @@
       ".js--overlay.theme--dark.is--open",
       ".modal-backdrop",
       ".offcanvas-backdrop",
-      ".overlay"
+      ".overlay",
+      ".ui-widget-overlay"
     ],
     "classes": [
       "appconsent_noscroll",
@@ -14127,5 +14128,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1723672590884"
+  "version": "1724432828694"
 }
