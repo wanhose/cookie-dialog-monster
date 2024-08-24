@@ -49,14 +49,16 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       const existingIssue = existingIssues.data.items[0];
 
       try {
-        if (existingIssue?.state === 'closed') {
-          await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
-            owner: environment.github.owner,
-            repo: environment.github.repo,
-            issue_number: existingIssue.number,
-            labels: ['bug'],
-            state: 'open',
-          });
+        if (existingIssue) {
+          if (existingIssue.state === 'closed') {
+            await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
+              owner: environment.github.owner,
+              repo: environment.github.repo,
+              issue_number: existingIssue.number,
+              labels: ['bug'],
+              state: 'open',
+            });
+          }
 
           await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
             owner: environment.github.owner,
