@@ -25,102 +25,115 @@ const reportDialogId = 'report-dialog';
  */
 const reportDialogHtml = `
   <dialog id="${reportDialogId}" tabindex="0">
-    <report-dialog-header>
-      <report-dialog-header-title>Cookie Dialog Monster</report-dialog-header-title>
-      <report-dialog-close-button role="button" tabindex="0">
+    <div class="report-dialog-header">
+      <div class="report-dialog-header-title">Cookie Dialog Monster</div>
+      <div class="report-dialog-close-button" role="button" tabindex="0">
         <svg 
-          viewBox="0 0 24 24" 
-          width="20" 
-          height="20" 
-          stroke-width="2" 
           fill="none" 
+          height="20" 
           stroke-linecap="round" 
           stroke-linejoin="round"
+          stroke-width="2" 
+          viewBox="0 0 24 24" 
+          width="20" 
         >
           <line x1="18" y1="6" x2="6" y2="18" />
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
-      </report-dialog-close-button>
-    </report-dialog-header>
-    <report-dialog-body>
-      <report-dialog-form-view>
-        <report-dialog-body-text>
+      </div>
+    </div>
+    <div class="report-dialog-body">
+      <div class="report-dialog-form-view">
+        <div class="report-dialog-body-text">
           ${browser.i18n.getMessage('reportDialog_bodyText')}
-        </report-dialog-body-text>
-        <report-dialog-form>
-          <report-dialog-radio-group>
-            <report-dialog-radio 
-              aria-checked="false" 
-              data-value="0" role="radio" 
-              tabindex="0">
+        </div>
+        <div class="report-dialog-form">
+          <div class="report-dialog-radio-group">
+            <div
+              aria-checked="false"
+              class="report-dialog-radio"
+              data-value="0"
+              role="radio"
+              tabindex="0"
+            >
               ${browser.i18n.getMessage('reportDialog_cannotClickOption')}
-            </report-dialog-radio>
-            <report-dialog-radio 
-              aria-checked="false" 
-              data-value="1" 
-              role="radio" 
-              tabindex="0">
+            </div>
+            <div
+              aria-checked="false"
+              class="report-dialog-radio"
+              data-value="1"
+              role="radio"
+              tabindex="0"
+            >
               ${browser.i18n.getMessage('reportDialog_pageVisualGlitchOption')}
-            </report-dialog-radio>
-            <report-dialog-radio 
-              aria-checked="false" 
-              data-value="2" 
-              role="radio" 
-              tabindex="0">
+            </div>
+            <div
+              aria-checked="false"
+              class="report-dialog-radio"
+              data-value="2"
+              role="radio"
+              tabindex="0"
+            >
               ${browser.i18n.getMessage('reportDialog_blankPageOption')}
-            </report-dialog-radio>
-            <report-dialog-radio 
-              aria-checked="false" 
-              data-value="3" 
-              role="radio" 
-              tabindex="0">
+            </div>
+            <div
+              aria-checked="false"
+              class="report-dialog-radio"
+              data-value="3"
+              role="radio"
+              tabindex="0"
+            >
               ${browser.i18n.getMessage('reportDialog_laggyPageOption')}
-            </report-dialog-radio>
-            <report-dialog-radio 
-              aria-checked="false" 
-              data-value="4" 
-              role="radio" 
-              tabindex="0">
+            </div>
+            <div
+              aria-checked="false"
+              class="report-dialog-radio"
+              data-value="4"
+              role="radio"
+              tabindex="0"
+            >
               ${browser.i18n.getMessage('reportDialog_pageNotRespondingOption')}
-            </report-dialog-radio>
-            <report-dialog-radio 
-              aria-checked="false" 
-              data-value="5" 
-              role="radio" 
-              tabindex="0">
+            </div>
+            <div
+              aria-checked="false"
+              class="report-dialog-radio"
+              data-value="5"
+              role="radio"
+              tabindex="0"
+            >
               ${browser.i18n.getMessage('reportDialog_popupShowUpOption')}
-            </report-dialog-radio>
-          </report-dialog-radio-group>
-          <report-dialog-submit-button aria-disabled="true" role="button" tabindex="0">
+            </div>
+          </div>
+          <div aria-disabled="true" class="report-dialog-submit-button" role="button" tabindex="0">
             ${browser.i18n.getMessage('contextMenu_reportOption')?.replace('...', '')}
-          </report-dialog-submit-button>
-        </report-dialog-form>
-      </report-dialog-form-view>
-      <report-dialog-submit-view hidden>
+          </div>
+        </div>
+      </div>
+      <div class="report-dialog-submit-view" hidden>
         <svg 
-          viewBox="0 0 24 24" 
-          width="48" 
-          height="48" 
-          stroke="var(--cookie-dialog-monster-color-success)" 
-          stroke-width="2" 
           fill="none" 
+          height="48" 
           stroke-linecap="round" 
           stroke-linejoin="round"
+          stroke-width="2" 
+          stroke="var(--cookie-dialog-monster-color-success)" 
+          viewBox="0 0 24 24" 
+          width="48" 
         >
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
           <polyline points="22 4 12 14.01 9 11.01" />
         </svg>
-        <report-dialog-submit-text>
+        <div class="report-dialog-submit-text">
           ${browser.i18n.getMessage('reportDialog_submitText')}
-        </report-dialog-submit-text>
-        <report-dialog-submit-extra-text>
+        </div>
+        <div class="report-dialog-submit-extra-text">
           ${browser.i18n.getMessage('reportDialog_submitExtraText')}
-        </report-dialog-submit-extra-text>
-        <report-dialog-issue-button role="button" tabindex="0">
-            ${browser.i18n.getMessage('contextMenu_issueOption')}
-        </report-dialog-issue-button>
-      </report-dialog-submit-view>
-    </report-dialog-body>
+        </div>
+        <div class="report-dialog-issue-button" role="button" tabindex="0">
+          ${browser.i18n.getMessage('contextMenu_issueOption')}
+        </div>
+      </div>
+    </div>
   </dialog>
 `;
 
@@ -148,8 +161,8 @@ function hideReportDialog() {
  */
 function radioClickHandler(event) {
   const dialog = document.getElementById(reportDialogId);
-  const radios = dialog.getElementsByTagName('report-dialog-radio');
-  const submitButton = dialog?.getElementsByTagName('report-dialog-submit-button')[0];
+  const radios = dialog.getElementsByClassName('report-dialog-radio');
+  const submitButton = dialog?.getElementsByClassName('report-dialog-submit-button')[0];
 
   for (const radio of radios) {
     radio.setAttribute('aria-checked', 'false');
@@ -165,12 +178,19 @@ function radioClickHandler(event) {
  * @description Show report dialog
  */
 function showReportDialog() {
+  const existingDialog = document.getElementById(reportDialogId);
+
+  if (existingDialog) {
+    existingDialog.showModal();
+    return;
+  }
+
   const parser = new DOMParser();
   const result = parser.parseFromString(reportDialogHtml, 'text/html');
   const dialog = result.body.firstElementChild;
-  const closeButton = dialog.getElementsByTagName('report-dialog-close-button')[0];
+  const closeButton = dialog.getElementsByClassName('report-dialog-close-button')[0];
   const link = document.createElement('link');
-  const radios = dialog.getElementsByTagName('report-dialog-radio');
+  const radios = dialog.getElementsByClassName('report-dialog-radio');
 
   closeButton.addEventListener('click', closeButtonClickHandler);
   link.setAttribute('href', 'https://fonts.googleapis.com/css?family=Inter');
@@ -183,11 +203,8 @@ function showReportDialog() {
 
   dispatch({ type: 'INSERT_DIALOG_CSS' });
   document.body.appendChild(dialog);
+  document.head.appendChild(link);
   dialog.showModal();
-
-  if (!document.getElementById('report-dialog-font')) {
-    document.head.appendChild(link);
-  }
 }
 
 /**
@@ -205,12 +222,12 @@ async function submitButtonClickHandler(event) {
   target.setAttribute('aria-disabled', 'true');
 
   const dialog = document.getElementById(reportDialogId);
-  const formView = dialog?.getElementsByTagName('report-dialog-form-view')[0];
-  const issueButton = dialog?.getElementsByTagName('report-dialog-issue-button')[0];
+  const formView = dialog?.getElementsByClassName('report-dialog-form-view')[0];
+  const issueButton = dialog?.getElementsByClassName('report-dialog-issue-button')[0];
   const option = dialog?.querySelector('report-dialog-radio[aria-checked="true"]');
   const reasonIndex = option?.dataset.value;
   const reason = Number.isNaN(reasonIndex) ? 'Unknown' : reasons[reasonIndex];
-  const submitView = dialog?.getElementsByTagName('report-dialog-submit-view')[0];
+  const submitView = dialog?.getElementsByClassName('report-dialog-submit-view')[0];
   const userAgent = window.navigator.userAgent;
 
   const issueUrl = await dispatch({ userAgent, reason, type: 'REPORT' });
