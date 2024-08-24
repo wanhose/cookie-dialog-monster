@@ -13,9 +13,10 @@
   box-sizing: border-box;
   color: var(--cookie-dialog-monster-color-secondary);
   font-size: 100%;
-  margin: auto !important;
-  padding: 0px !important;
-  text-align: left !important;
+  letter-spacing: normal;
+  margin: auto;
+  padding: 0px;
+  text-align: left;
   width: 320px;
 }
 
@@ -25,24 +26,23 @@
 
 #report-dialog * {
   box-sizing: border-box;
-  visibility: visible !important;
+  visibility: visible;
 }
-
-report-dialog-body {
+.report-dialog-body {
   display: block;
   font-size: 14px;
   line-height: 14px;
   padding: 16px;
 }
 
-report-dialog-body-text {
+.report-dialog-body-text {
   display: block;
   font-family: Inter, Arial, Helvetica, sans-serif;
   margin: 0px;
   padding: 0px;
 }
 
-report-dialog-close-button {
+.report-dialog-close-button {
   align-items: center;
   background-color: transparent;
   border: none;
@@ -51,42 +51,45 @@ report-dialog-close-button {
   display: inline-flex;
   justify-content: center;
   margin: 0px;
-  outline: none !important;
+  outline: none;
   padding: 0px;
   transition: 0.4s;
 }
 
-report-dialog-close-button {
+.report-dialog-close-button {
   stroke: var(--cookie-dialog-monster-color-white);
 }
 
-report-dialog-close-button:focus,
-report-dialog-close-button:hover > svg {
+.report-dialog-close-button:focus,
+.report-dialog-close-button:hover > svg {
   stroke: var(--cookie-dialog-monster-color-secondary);
 }
 
-report-dialog-close-button:focus,
-report-dialog-close-button:hover {
+.report-dialog-close-button:focus-visible {
+  box-shadow: initial;
+  transition: initial;
+}
+
+.report-dialog-close-button:focus,
+.report-dialog-close-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
 }
-
-report-dialog-form {
+.report-dialog-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-report-dialog-form-view {
+.report-dialog-form-view {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-report-dialog-form-view[hidden] {
+.report-dialog-form-view[hidden] {
   display: none;
 }
-
-report-dialog-header {
+.report-dialog-header {
   align-items: center;
   background-color: var(--cookie-dialog-monster-color-secondary);
   display: flex;
@@ -97,28 +100,27 @@ report-dialog-header {
   padding: 16px;
 }
 
-report-dialog-header-title {
+.report-dialog-header-title {
   color: var(--cookie-dialog-monster-color-white);
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
-
-report-dialog-radio {
+.report-dialog-radio {
   color: var(--cookie-dialog-monster-color-tertiary);
   cursor: pointer;
   display: block;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  outline: none !important;
+  outline: none;
   padding-left: 24px;
   position: relative;
 }
 
-report-dialog-radio[aria-checked='true']:after {
+.report-dialog-radio[aria-checked='true']:after {
   opacity: 1;
   transform: scale(1, 1);
 }
 
-report-dialog-radio:after {
+.report-dialog-radio:after {
   background-color: var(--cookie-dialog-monster-color-primary);
   border-radius: 50%;
   box-sizing: border-box;
@@ -134,14 +136,14 @@ report-dialog-radio:after {
   width: 8px;
 }
 
-report-dialog-radio:focus:not([aria-checked='true']):after,
-report-dialog-radio:hover:not([aria-checked='true']):after {
+.report-dialog-radio:focus:not([aria-checked='true']):after,
+.report-dialog-radio:hover:not([aria-checked='true']):after {
   background: var(--cookie-dialog-monster-color-tertiary);
   opacity: 1;
   transform: scale(1, 1);
 }
 
-report-dialog-radio:before {
+.report-dialog-radio:before {
   background: var(--cookie-dialog-monster-color-white);
   border: 1px solid var(--cookie-dialog-monster-color-tertiary);
   border-radius: 50%;
@@ -156,14 +158,14 @@ report-dialog-radio:before {
   width: 14px;
 }
 
-report-dialog-radio-group {
+.report-dialog-radio-group {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-report-dialog-issue-button,
-report-dialog-submit-button {
+.report-dialog-issue-button,
+.report-dialog-submit-button {
   align-items: center;
   background-color: var(--cookie-dialog-monster-color-secondary);
   border: 1px solid var(--cookie-dialog-monster-color-secondary);
@@ -175,46 +177,52 @@ report-dialog-submit-button {
   font-size: 14px;
   height: 39px;
   justify-content: center;
-  outline: none !important;
+  outline: none;
   padding: 8px 16px;
   text-align: center;
   transition: 0.4s;
   width: 100%;
 }
 
-report-dialog-issue-button:focus,
-report-dialog-issue-button:hover,
-report-dialog-submit-button:focus,
-report-dialog-submit-button:hover {
+.report-dialog-issue-button:focus,
+.report-dialog-issue-button:hover,
+.report-dialog-submit-button:focus,
+.report-dialog-submit-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
   color: var(--cookie-dialog-monster-color-secondary);
 }
 
-report-dialog-issue-button[aria-disabled='true'],
-report-dialog-submit-button[aria-disabled='true'] {
+.report-dialog-issue-button:focus-visible,
+.report-dialog-submit-button:focus-visible {
+  box-shadow: initial;
+  transition: initial;
+}
+
+.report-dialog-issue-button[aria-disabled='true'],
+.report-dialog-submit-button[aria-disabled='true'] {
   background-color: var(--cookie-dialog-monster-color-tertiary);
   border: 1px solid var(--cookie-dialog-monster-color-tertiary);
   color: var(--cookie-dialog-monster-color-white);
   cursor: not-allowed;
 }
 
-report-dialog-submit-extra-text {
-  font-family: inherit !important;
+.report-dialog-submit-extra-text {
+  font-family: inherit;
   font-size: 14px;
   line-height: 16px;
   margin: 0px;
   text-align: justify;
 }
 
-report-dialog-submit-text {
-  font-family: inherit !important;
+.report-dialog-submit-text {
+  font-family: inherit;
   font-size: 18px;
   line-height: 20px;
   margin: 0px;
   text-align: center;
 }
 
-report-dialog-submit-view {
+.report-dialog-submit-view {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -224,6 +232,6 @@ report-dialog-submit-view {
   margin-top: 16px;
 }
 
-report-dialog-submit-view[hidden] {
+.report-dialog-submit-view[hidden] {
   display: none;
 }

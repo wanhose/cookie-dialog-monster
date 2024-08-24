@@ -260,29 +260,27 @@ function match(element, skipMatch) {
 
   const hasAttributes = !!element.getAttributeNames().filter((x) => x !== 'data-nosnippet').length;
 
-  if (hasAttributes) {
-    // 2023-06-10: fix #113 temporarily
-    if (element.classList.contains('chat-line__message')) {
-      return false;
-    }
-
-    // 2024-08-03: fix #701 temporarily
-    if (element.classList.contains('sellos')) {
-      return false;
-    }
-
-    const isDialog = tagName === 'DIALOG' && element.getAttribute('open') === 'true';
-    const isFakeDialog = tagName === 'DIV' && element.className.includes('cmp');
-
-    return (
-      (isDialog || isFakeDialog || isInViewport(element)) &&
-      (skipMatch || element.matches(tokens.selectors))
-    );
-  } else {
+  if (!hasAttributes && !tagName.includes('-')) {
     forceClean(element);
   }
 
-  return false;
+  // 2023-06-10: fix #113 temporarily
+  if (element.classList.contains('chat-line__message')) {
+    return false;
+  }
+
+  // 2024-08-03: fix #701 temporarily
+  if (element.classList.contains('sellos')) {
+    return false;
+  }
+
+  const isDialog = tagName === 'DIALOG' && element.getAttribute('open') === 'true';
+  const isFakeDialog = tagName === 'DIV' && element.className.includes('cmp');
+
+  return (
+    (isDialog || isFakeDialog || isInViewport(element)) &&
+    (skipMatch || element.matches(tokens.selectors))
+  );
 }
 
 /**
