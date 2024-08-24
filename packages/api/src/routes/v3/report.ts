@@ -36,18 +36,17 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       },
     },
     async (request, reply) => {
-      const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
-        owner: environment.github.owner,
-        repo: environment.github.repo,
-        state: 'all',
-      });
       const ua = new UAParser(request.body.userAgent ?? '').getResult();
       const url = new URL(request.body.url).hostname
         .split('.')
         .slice(-3)
         .join('.')
         .replace('www.', '');
-      const existingIssue = issues.data.find((issue) => issue.title.includes(url));
+      const existingIssues = await octokit.request('GET /search/issues', {
+        per_page: 1,
+        q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${url}`,
+      });
+      const existingIssue = existingIssues.data.items[0];
 
       try {
         if (existingIssue?.state === 'closed') {
