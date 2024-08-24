@@ -13,6 +13,7 @@
   box-sizing: border-box;
   color: var(--cookie-dialog-monster-color-secondary);
   font-size: 100%;
+  letter-spacing: normal;
   margin: auto;
   padding: 0px;
   text-align: left;
