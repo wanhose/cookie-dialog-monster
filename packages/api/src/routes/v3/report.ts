@@ -58,6 +58,13 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             state: 'open',
           });
 
+          await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
+            owner: environment.github.owner,
+            repo: environment.github.repo,
+            issue_number: existingIssue.number,
+            body: generateText(request.body, ua),
+          });
+
           reply.send({
             data: existingIssue.html_url,
             success: true,
@@ -67,21 +74,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
         const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
           assignees: [environment.github.owner],
-          body: [
-            '## Specifications',
-            ...(ua.browser.name && ua.browser.version
-              ? ['#### Browser', `${ua.browser.name} (${ua.browser.version})`]
-              : []),
-            ...(ua.device.type && ua.device.vendor
-              ? ['#### Device', `${ua.device.vendor} (${ua.device.type})`]
-              : []),
-            '#### Reason',
-            request.body.reason ?? '-',
-            '#### URL',
-            request.body.url,
-            '#### Version',
-            request.body.version,
-          ].join('\n'),
+          body: generateText(request.body, ua),
           labels: ['bug'],
           owner: environment.github.owner,
           repo: environment.github.repo,
@@ -103,3 +96,21 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
   done();
 };
+
+function generateText(body: PostReportBody, ua: UAParser.IResult): string {
+  return [
+    '## Issue information',
+    ...(ua.browser.name && ua.browser.version
+      ? ['#### 🖥️ Browser', `${ua.browser.name} (${ua.browser.version})`]
+      : []),
+    ...(ua.device.type && ua.device.vendor
+      ? ['#### 📱 Device', `${ua.device.vendor} (${ua.device.type})`]
+      : []),
+    '#### 📝 Reason',
+    body.reason ?? '-',
+    '#### 🔗 URL',
+    body.url,
+    '#### 🏷️ Version',
+    body.version,
+  ].join('\n');
+}
