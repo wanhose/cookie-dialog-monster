@@ -5,27 +5,25 @@ import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
 import * as yup from 'yup';
 
-interface PostReportBody {
-  readonly reason?: string;
-  readonly url: string;
-  readonly userAgent?: string;
-  readonly version: string;
-}
+const PostBodyReportSchema = yup.object().shape({
+  reason: yup.string().min(10).max(1000).required(),
+  url: yup.string().max(1000).url().required(),
+  userAgent: yup.string().max(1000).optional(),
+  version: yup
+    .string()
+    .max(10)
+    .matches(/^\d+(\.\d+){0,3}$/)
+    .required(),
+});
+
+type PostReportBody = yup.InferType<typeof PostBodyReportSchema>;
 
 export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {
       schema: {
-        body: yup.object().shape({
-          reason: yup.string().min(10).required(),
-          url: yup.string().url().required(),
-          userAgent: yup.string(),
-          version: yup
-            .string()
-            .matches(/^\d+(\.\d+){0,3}$/)
-            .required(),
-        }),
+        body: PostBodyReportSchema,
       },
       validatorCompiler,
     },
