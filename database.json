@@ -6755,7 +6755,6 @@
       ".sv-cookie-notification",
       ".sw-cookie-container",
       ".sw-cookies-banner",
-      ".swal2-container",
       ".swnza_banner",
       ".sx-cookie-consent",
       ".sx-cookie-notice",
@@ -14363,5 +14362,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724486081485"
+  "version": "1724592836220"
 }
