@@ -1036,6 +1036,25 @@
         ],
         "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
       }
+    },
+    {
+      "id": 25,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||cdn-cookieyes.com^"
+      }
     }
   ],
   "skips": {
@@ -14362,5 +14381,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724592836220"
+  "version": "1724593251217"
 }
