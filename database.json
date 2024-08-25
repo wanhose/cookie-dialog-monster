@@ -1502,6 +1502,18 @@
       "xh-scroll-disabled",
       "xh-thumb-disabled"
     ],
+    "containers": [
+      ".container",
+      ".layout",
+      ".page",
+      ".wrapper",
+      "#__next",
+      "#a-page",
+      "#app",
+      "#main",
+      "#root",
+      "body > *"
+    ],
     "selectors": [
       ".___eucookiePopup",
       ".__cookie_policy",

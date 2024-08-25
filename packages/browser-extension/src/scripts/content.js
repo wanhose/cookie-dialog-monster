@@ -3,7 +3,7 @@
  * @property {string[]} commonWords
  * @property {Fix[]} fixes
  * @property {{ domains: string[], tags: string[] }} skips
- * @property {{ backdrops: string[], classes: string[], selectors: string[] }} tokens
+ * @property {{ backdrops: string[], classes: string[], containers: string[], selectors: string[] }} tokens
  */
 
 /**
@@ -16,6 +16,7 @@
 
 /**
  * @typedef {Object} RunParams
+ * @property {HTMLElement[]} [containers]
  * @property {HTMLElement[]} [elements]
  * @property {boolean} [skipMatch]
  */
@@ -402,20 +403,11 @@ function run(params = {}) {
       clean(params.elements, params.skipMatch);
     }
 
-    if (params.elements === undefined) {
-      // 2024-08-03: look into the first level of important nodes, there are dialogs there very often
+    if (params.elements === undefined && params.containers?.length) {
       clean(
-        [
-          ...document.body.children,
-          ...[...(document.getElementsByClassName('container')[0]?.children ?? [])],
-          ...[...(document.getElementsByClassName('layout')[0]?.children ?? [])],
-          ...[...(document.getElementsByClassName('page')[0]?.children ?? [])],
-          ...[...(document.getElementsByClassName('wrapper')[0]?.children ?? [])],
-          ...[...(document.getElementById('__next')?.children ?? [])],
-          ...[...(document.getElementById('app')?.children ?? [])],
-          ...[...(document.getElementById('main')?.children ?? [])],
-          ...[...(document.getElementById('root')?.children ?? [])],
-        ].flatMap((node) => filterNodeEarly(node))
+        params.containers
+          .flatMap((container) => document.querySelector(container).children)
+          .flatMap((node) => filterNodeEarly(node))
       );
     }
   }
@@ -446,7 +438,7 @@ async function setUp(params = {}) {
     observer.observe(document.body ?? document.documentElement, options);
 
     if (!params.skipRunFn) {
-      run();
+      run({ containers: tokens.containers });
     }
   } else {
     dispatch({ type: 'DISABLE_ICON' });
@@ -482,7 +474,11 @@ browser.runtime.onMessage.addListener(async (message) => {
     }
     case 'RUN': {
       await setUp({ skipRunFn: true });
-      run(removables.length ? { elements: removables, skipMatch: true } : {});
+      run(
+        removables.length
+          ? { elements: removables, skipMatch: true }
+          : { containers: tokens.containers }
+      );
       break;
     }
   }
@@ -508,7 +504,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
     await setUp();
-    run();
+    run({ containers: tokens.containers });
   }
 });
 
