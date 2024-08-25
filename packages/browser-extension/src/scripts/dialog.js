@@ -224,7 +224,7 @@ async function submitButtonClickHandler(event) {
   const dialog = document.getElementById(reportDialogId);
   const formView = dialog?.getElementsByClassName('report-dialog-form-view')[0];
   const issueButton = dialog?.getElementsByClassName('report-dialog-issue-button')[0];
-  const option = dialog?.querySelector('report-dialog-radio[aria-checked="true"]');
+  const option = dialog?.querySelector('.report-dialog-radio[aria-checked="true"]');
   const reasonIndex = option?.dataset.value;
   const reason = Number.isNaN(reasonIndex) ? 'Unknown' : reasons[reasonIndex];
   const submitView = dialog?.getElementsByClassName('report-dialog-submit-view')[0];
