@@ -13,7 +13,8 @@
     "fastify": "^4.26.2",
     "node-fetch": "^2.7.0",
     "octokit": "^3.2.1",
-    "ua-parser-js": "^1.0.37"
+    "ua-parser-js": "^1.0.37",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",

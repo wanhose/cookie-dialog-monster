@@ -1,39 +1,33 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import environment from 'services/environment';
 import { octokit } from 'services/octokit';
+import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
+import * as yup from 'yup';
 
-type PostReportBody = {
-  reason?: string;
-  url: string;
-  userAgent?: string;
-  version: string;
-};
+interface PostReportBody {
+  readonly reason?: string;
+  readonly url: string;
+  readonly userAgent?: string;
+  readonly version: string;
+}
 
 export default (server: FastifyInstance, options: RouteShorthandOptions, done: () => void) => {
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {
       schema: {
-        body: {
-          properties: {
-            reason: {
-              type: 'string',
-            },
-            url: {
-              type: 'string',
-            },
-            userAgent: {
-              type: 'string',
-            },
-            version: {
-              type: 'string',
-            },
-          },
-          required: ['url', 'version'],
-          type: 'object',
-        },
+        body: yup.object().shape({
+          reason: yup.string().min(10).required(),
+          url: yup.string().url().required(),
+          userAgent: yup.string(),
+          version: yup
+            .string()
+            .matches(/^\d+(\.\d+){0,3}$/)
+            .required(),
+        }),
       },
+      validatorCompiler,
     },
     async (request, reply) => {
       try {

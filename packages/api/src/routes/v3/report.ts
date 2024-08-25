@@ -1,7 +1,9 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import environment from 'services/environment';
 import { octokit } from 'services/octokit';
+import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
+import * as yup from 'yup';
 
 interface PostReportBody {
   readonly reason?: string;
@@ -15,25 +17,17 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     '/report/',
     {
       schema: {
-        body: {
-          properties: {
-            reason: {
-              type: 'string',
-            },
-            url: {
-              type: 'string',
-            },
-            userAgent: {
-              type: 'string',
-            },
-            version: {
-              type: 'string',
-            },
-          },
-          required: ['reason', 'url', 'version'],
-          type: 'object',
-        },
+        body: yup.object().shape({
+          reason: yup.string().min(10).required(),
+          url: yup.string().url().required(),
+          userAgent: yup.string(),
+          version: yup
+            .string()
+            .matches(/^\d+(\.\d+){0,3}$/)
+            .required(),
+        }),
       },
+      validatorCompiler,
     },
     async (request, reply) => {
       const ua = new UAParser(request.body.userAgent ?? '').getResult();
@@ -109,7 +103,7 @@ function generateText(body: PostReportBody, ua: UAParser.IResult): string {
       ? ['#### 📱 Device', `${ua.device.vendor} (${ua.device.type})`]
       : []),
     '#### 📝 Reason',
-    body.reason ?? '-',
+    body.reason,
     '#### 🔗 URL',
     body.url,
     '#### 🏷️ Version',
