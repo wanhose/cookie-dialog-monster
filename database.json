@@ -635,7 +635,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn.consentmanager.net^"
+        "urlFilter": "||cdn-cookieyes.com^"
       }
     },
     {
@@ -654,7 +654,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn.cookielaw.org^"
+        "urlFilter": "||cdn.consentmanager.net^"
       }
     },
     {
@@ -673,7 +673,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn.optable.co^"
+        "urlFilter": "||cdn.cookielaw.org^"
       }
     },
     {
@@ -692,7 +692,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdntranscend.eventbrite.com^"
+        "urlFilter": "||cdn.optable.co^"
       }
     },
     {
@@ -711,7 +711,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||chollometro.com/assets/js/CookiesMessage*.js^"
+        "urlFilter": "||cdntranscend.eventbrite.com^"
       }
     },
     {
@@ -730,7 +730,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cmp.inmobi.com^"
+        "urlFilter": "||chollometro.com/assets/js/CookiesMessage*.js^"
       }
     },
     {
@@ -749,7 +749,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||consent.trustarc.com^"
+        "urlFilter": "||cmp.inmobi.com^"
       }
     },
     {
@@ -768,7 +768,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||consent.cookiebot.com^"
+        "urlFilter": "||consent.trustarc.com^"
       }
     },
     {
@@ -787,7 +787,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||consentcdn.cookiebot.com^"
+        "urlFilter": "||consent.cookiebot.com^"
       }
     },
     {
@@ -806,7 +806,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cp.as.com^"
+        "urlFilter": "||consentcdn.cookiebot.com^"
       }
     },
     {
@@ -825,7 +825,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||emp.bbci.co.uk^"
+        "urlFilter": "||cp.as.com^"
       }
     },
     {
@@ -844,7 +844,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||eu.fastcmp.com^"
+        "urlFilter": "||emp.bbci.co.uk^"
       }
     },
     {
@@ -863,7 +863,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||forum.vorondesign.com/js/xf/notice.min.js^"
+        "urlFilter": "||eu.fastcmp.com^"
       }
     },
     {
@@ -882,7 +882,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||js.vxcdn.com/usercentrics-sdk^"
+        "urlFilter": "||forum.vorondesign.com/js/xf/notice.min.js^"
       }
     },
     {
@@ -901,7 +901,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
+        "urlFilter": "||js.vxcdn.com/usercentrics-sdk^"
       }
     },
     {
@@ -920,7 +920,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||optanon.blob.core.windows.net^"
+        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
       }
     },
     {
@@ -939,7 +939,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||redditstatic.com/onetrust.*.js"
+        "urlFilter": "||optanon.blob.core.windows.net^"
       }
     },
     {
@@ -958,7 +958,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||sdk.privacy-center.org^"
+        "urlFilter": "||redditstatic.com/onetrust.*.js"
       }
     },
     {
@@ -977,7 +977,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||static.fastcmp.com^"
+        "urlFilter": "||sdk.privacy-center.org^"
       }
     },
     {
@@ -996,7 +996,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||transcend-cdn.com^"
+        "urlFilter": "||static.fastcmp.com^"
       }
     },
     {
@@ -1015,7 +1015,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||wcpstatic.microsoft.com^"
+        "urlFilter": "||transcend-cdn.com^"
       }
     },
     {
@@ -1034,11 +1034,30 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+        "urlFilter": "||wcpstatic.microsoft.com^"
       }
     },
     {
       "id": 25,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+      }
+    },
+    {
+      "id": 26,
       "priority": 1,
       "action": {
         "type": "block"
@@ -6786,7 +6805,6 @@
       ".sv-cookie-notification",
       ".sw-cookie-container",
       ".sw-cookies-banner",
-      ".swal2-container",
       ".swnza_banner",
       ".sx-cookie-consent",
       ".sx-cookie-notice",
@@ -14394,5 +14412,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724486081485"
+  "version": "1724667758858"
 }
