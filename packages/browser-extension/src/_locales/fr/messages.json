@@ -1,9 +1,9 @@
 {
   "appDesc": {
-    "message": "Quelqu'un a-t-il dit boîtes de dialogue de consentement aux cookies? 😋"
+    "message": "Quelqu'un a parlé de boîtes de dialogue de consentement aux cookies ? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Suivez ce problème sur GitHub"
+    "message": "Suivre ce problème sur GitHub"
   },
   "contextMenu_reportOption": {
     "message": "Signaler ce site web"
@@ -18,7 +18,7 @@
     "message": "Entrez le domaine"
   },
   "options_clearButton": {
-    "message": "Effacer la liste"
+    "message": "Vider la liste"
   },
   "options_exclusionListTitle": {
     "message": "Liste d'exclusion"
@@ -27,13 +27,13 @@
     "message": "Exporter la liste"
   },
   "options_filterPlaceholder": {
-    "message": "Appuyez sur ENTRÉE pour filtrer après avoir tapé"
+    "message": "Appuyez sur ENTRER pour filtrer après la saisie"
   },
   "options_importButton": {
     "message": "Importer la liste"
   },
   "popup_contributeOption": {
-    "message": "Contribuez à ce projet"
+    "message": "Contribuer à ce projet"
   },
   "popup_databaseVersion": {
     "message": "Version de la base de données"
@@ -42,36 +42,33 @@
     "message": "Version de l'extension"
   },
   "popup_helpOption": {
-    "message": "Aide ou problèmes?"
+    "message": "Besoin d'aide ou des problèmes?"
   },
   "popup_rateOption": {
-    "message": "Évaluez cette extension"
-  },
-  "reportDialog_blankPageOption": {
-    "message": "La page est vide"
+    "message": "Évaluer cette extension"
   },
   "reportDialog_bodyText": {
-    "message": "Veuillez sélectionner une option ci-dessous"
+    "message": "Veuillez ne pas partager d'informations personnelles dans ce rapport. Si vous souhaitez ajouter plus de détails, ouvrez le problème GitHub à l'étape suivante et ajoutez un commentaire."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Impossible de cliquer"
+  "reportDialog_reasonInputError": {
+    "message": "Veuillez entrer une raison d'au moins 10 caractères et de pas plus de 1000 caractères"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "La page est lente"
+  "reportDialog_reasonInputLabel": {
+    "message": "Raison"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "La page ne répond pas"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "La page contient des problèmes visuels"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "La fenêtre contextuelle s'est affichée"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "Le popup est apparu"
   },
   "reportDialog_submitExtraText": {
-    "message": "Pendant que nous travaillons sur cela, vous pouvez ajouter ce site Web à la liste d'exclusion dans les paramètres de l'extension ou simplement désactiver l'extension pour ce site Web en cliquant sur l'icône de l'extension dans la barre d'outils de votre navigateur"
+    "message": "Pendant que nous travaillons sur ce point, vous pouvez ajouter ce site web à la liste d'exclusion dans les paramètres de l'extension ou simplement désactiver l'extension pour ce site web en cliquant sur l'icône de l'extension dans la barre d'outils de votre navigateur."
   },
   "reportDialog_submitText": {
     "message": "Rapport envoyé!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Veuillez entrer une URL valide de pas plus de 1000 caractères"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }

@@ -1,15 +1,15 @@
 {
   "appDesc": {
-    "message": "Hat jemand Dialoge zur Cookie-Zustimmung gesagt? 😋"
+    "message": "Hat jemand Cookie-Einwilligungsdialoge gesagt? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Folgen Sie diesem Problem in GitHub"
+    "message": "Folgen Sie diesem Problem auf GitHub"
   },
   "contextMenu_reportOption": {
     "message": "Diese Website melden"
   },
   "contextMenu_settingsOption": {
-    "message": "Ausnahmeliste verwalten"
+    "message": "Ausschlussliste verwalten"
   },
   "options_addButton": {
     "message": "Ausschluss hinzufügen"
@@ -27,13 +27,13 @@
     "message": "Liste exportieren"
   },
   "options_filterPlaceholder": {
-    "message": "Nach dem Eintippen ENTER drücken, um zu filtern"
+    "message": "Drücken Sie ENTER, um nach dem Tippen zu filtern"
   },
   "options_importButton": {
     "message": "Liste importieren"
   },
   "popup_contributeOption": {
-    "message": "Tragen Sie zu diesem Projekt bei"
+    "message": "Zu diesem Projekt beitragen"
   },
   "popup_databaseVersion": {
     "message": "Datenbankversion"
@@ -45,33 +45,30 @@
     "message": "Hilfe oder Probleme?"
   },
   "popup_rateOption": {
-    "message": "Diese Erweiterung bewerten"
-  },
-  "reportDialog_blankPageOption": {
-    "message": "Seite ist leer"
+    "message": "Bewerten Sie diese Erweiterung"
   },
   "reportDialog_bodyText": {
-    "message": "Bitte wählen Sie unten eine Option aus"
+    "message": "Bitte geben Sie in diesem Bericht keine persönlichen Informationen weiter. Wenn Sie weitere Details hinzufügen möchten, öffnen Sie das GitHub-Problem im nächsten Schritt und fügen Sie einen Kommentar hinzu."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Kann nicht klicken"
+  "reportDialog_reasonInputError": {
+    "message": "Bitte geben Sie einen Grund mit mindestens 10 und höchstens 1000 Zeichen ein"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "Seite ist verzögert"
+  "reportDialog_reasonInputLabel": {
+    "message": "Grund"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "Seite antwortet nicht"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "Seite enthält visuelle Störungen"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "Popup ist aufgetaucht"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "Popup ist erschienen"
   },
   "reportDialog_submitExtraText": {
-    "message": "Während wir daran arbeiten, können Sie diese Website zur Ausschlussliste in den Erweiterungseinstellungen hinzufügen oder die Erweiterung für diese Website einfach deaktivieren, indem Sie auf das Erweiterungssymbol in Ihrer Browser-Symbolleiste klicken"
+    "message": "Während wir daran arbeiten, können Sie diese Website zur Ausschlussliste in den Erweiterungseinstellungen hinzufügen oder einfach die Erweiterung für diese Website deaktivieren, indem Sie auf das Erweiterungssymbol in Ihrer Browser-Symbolleiste klicken."
   },
   "reportDialog_submitText": {
     "message": "Bericht gesendet!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Bitte geben Sie eine gültige URL mit höchstens 1000 Zeichen ein"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }

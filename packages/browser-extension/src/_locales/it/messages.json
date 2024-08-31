@@ -1,6 +1,6 @@
 {
   "appDesc": {
-    "message": "Qualcuno ha detto finestre di dialogo per il consenso ai cookie? 😋"
+    "message": "Qualcuno ha parlato di dialoghi di consenso sui cookie? 😋"
   },
   "contextMenu_issueOption": {
     "message": "Segui questo problema su GitHub"
@@ -9,28 +9,28 @@
     "message": "Segnala questo sito web"
   },
   "contextMenu_settingsOption": {
-    "message": "Gestisci elenco di esclusione"
+    "message": "Gestisci la lista di esclusione"
   },
   "options_addButton": {
     "message": "Aggiungi esclusione"
   },
   "options_addPrompt": {
-    "message": "Inserisci il dominio"
+    "message": "Inserisci dominio"
   },
   "options_clearButton": {
-    "message": "Cancella elenco"
+    "message": "Cancella lista"
   },
   "options_exclusionListTitle": {
-    "message": "Elenco di esclusione"
+    "message": "Lista di esclusione"
   },
   "options_exportButton": {
-    "message": "Esporta elenco"
+    "message": "Esporta lista"
   },
   "options_filterPlaceholder": {
     "message": "Premi INVIO per filtrare dopo aver digitato"
   },
   "options_importButton": {
-    "message": "Importa elenco"
+    "message": "Importa lista"
   },
   "popup_contributeOption": {
     "message": "Contribuisci a questo progetto"
@@ -45,33 +45,30 @@
     "message": "Aiuto o problemi?"
   },
   "popup_rateOption": {
-    "message": "Vota questa estensione"
-  },
-  "reportDialog_blankPageOption": {
-    "message": "La pagina è vuota"
+    "message": "Valuta questa estensione"
   },
   "reportDialog_bodyText": {
-    "message": "Seleziona un'opzione qui sotto"
+    "message": "Per favore, non condividere informazioni personali in questo rapporto. Se vuoi aggiungere più dettagli, apri il problema su GitHub nel passaggio successivo e aggiungi un commento."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Non è possibile cliccare"
+  "reportDialog_reasonInputError": {
+    "message": "Inserisci una motivazione con almeno 10 caratteri e non più di 1000 caratteri"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "La pagina è in ritardo"
+  "reportDialog_reasonInputLabel": {
+    "message": "Motivo"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "La pagina non risponde"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "La pagina contiene difetti visivi"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "È apparso il popup"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "Popup apparso"
   },
   "reportDialog_submitExtraText": {
-    "message": "Mentre stiamo lavorando su questo, puoi aggiungere questo sito web all'elenco di esclusione nelle impostazioni dell'estensione o semplicemente disabilitare l'estensione per questo sito web facendo clic sull'icona dell'estensione nella barra degli strumenti del tuo browser"
+    "message": "Mentre lavoriamo su questo, puoi aggiungere questo sito web alla lista di esclusione nelle impostazioni dell'estensione o semplicemente disattivare l'estensione per questo sito web cliccando sull'icona dell'estensione nella barra degli strumenti del browser."
   },
   "reportDialog_submitText": {
     "message": "Rapporto inviato!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Inserisci un URL valido con non più di 1000 caratteri"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }

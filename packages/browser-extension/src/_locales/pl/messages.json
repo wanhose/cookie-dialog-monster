@@ -1,39 +1,39 @@
 {
   "appDesc": {
-    "message": "Czy ktoś wspomniał o okienkach ze zgodą na ciasteczka? 😋"
+    "message": "Czy ktoś wspomniał o dialogach zgody na pliki cookie? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Śledź to zgłoszenie na GitHubie"
+    "message": "Śledź ten problem na GitHub"
   },
   "contextMenu_reportOption": {
     "message": "Zgłoś tę stronę"
   },
   "contextMenu_settingsOption": {
-    "message": "Zarządzaj listą wyjątków"
+    "message": "Zarządzaj listą wykluczeń"
   },
   "options_addButton": {
-    "message": "Dodaj wyjątek"
+    "message": "Dodaj wykluczenie"
   },
   "options_addPrompt": {
-    "message": "Wprowadź domenę"
+    "message": "Wpisz domenę"
   },
   "options_clearButton": {
     "message": "Wyczyść listę"
   },
   "options_exclusionListTitle": {
-    "message": "Lista wyjątków"
+    "message": "Lista wykluczeń"
   },
   "options_exportButton": {
-    "message": "Wyeksportuj listę"
+    "message": "Eksportuj listę"
   },
   "options_filterPlaceholder": {
-    "message": "Po wpisaniu naciśnij ENTER, aby filtrować"
+    "message": "Naciśnij ENTER, aby filtrować po wpisaniu"
   },
   "options_importButton": {
-    "message": "Zaimportuj listę"
+    "message": "Importuj listę"
   },
   "popup_contributeOption": {
-    "message": "Weź udział w rozwoju projektu"
+    "message": "Wesprzyj ten projekt"
   },
   "popup_databaseVersion": {
     "message": "Wersja bazy danych"
@@ -42,36 +42,33 @@
     "message": "Wersja rozszerzenia"
   },
   "popup_helpOption": {
-    "message": "Potrzebujesz pomocy lub masz problem?"
+    "message": "Pomoc lub problemy?"
   },
   "popup_rateOption": {
     "message": "Oceń to rozszerzenie"
   },
-  "reportDialog_blankPageOption": {
-    "message": "Strona jest pusta"
-  },
   "reportDialog_bodyText": {
-    "message": "Wybierz rodzaj poniżej"
+    "message": "Prosimy, nie udostępniaj żadnych danych osobowych w tym raporcie. Jeśli chcesz dodać więcej szczegółów, otwórz zgłoszenie na GitHub w następnym kroku i dodaj komentarz."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Nie da się nic kliknąć"
+  "reportDialog_reasonInputError": {
+    "message": "Proszę podać powód zawierający co najmniej 10 znaków i nie więcej niż 1000 znaków"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "Strona działa wolno"
+  "reportDialog_reasonInputLabel": {
+    "message": "Powód"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "Strona nie odpowiada"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "Strona zawiera błędy w wyglądzie"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "Pojawiło się okienko"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "Pojawił się popup"
   },
   "reportDialog_submitExtraText": {
-    "message": "Podczas gdy pracujemy nad rozwiązaniem problemu, możesz dodać tę witrynę do listy wyjątków w ustawieniach rozszerzenia, albo po prostu wyłączyć rozszerzenie dla tej witryny klikając ikonę rozszerzenia na pasku narzędzi przeglądarki."
+    "message": "Podczas gdy nad tym pracujemy, możesz dodać tę stronę do listy wykluczeń w ustawieniach rozszerzenia lub po prostu wyłączyć rozszerzenie dla tej strony, klikając ikonę rozszerzenia na pasku narzędzi przeglądarki."
   },
   "reportDialog_submitText": {
-    "message": "Zgłoszenie zostało wysłane!"
+    "message": "Zgłoszenie wysłane!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Proszę wprowadzić prawidłowy URL zawierający nie więcej niż 1000 znaków"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }

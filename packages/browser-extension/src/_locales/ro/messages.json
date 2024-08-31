@@ -1,36 +1,36 @@
 {
   "appDesc": {
-    "message": "A spus cineva dialoguri de consimțământ pentru cookie? 😋"
+    "message": "A menționat cineva dialogurile de consimțământ pentru cookie-uri? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Urmați această problemă pe GitHub"
+    "message": "Urmărește această problemă pe GitHub"
   },
   "contextMenu_reportOption": {
-    "message": "Raportați acest site web"
+    "message": "Raportează acest site web"
   },
   "contextMenu_settingsOption": {
-    "message": "Gestionați lista de excludere"
+    "message": "Gestionează lista de excludere"
   },
   "options_addButton": {
-    "message": "Adăugați excludere"
+    "message": "Adaugă excludere"
   },
   "options_addPrompt": {
-    "message": "Introduceți domeniul"
+    "message": "Introdu domeniul"
   },
   "options_clearButton": {
-    "message": "Ștergeți lista"
+    "message": "Golește lista"
   },
   "options_exclusionListTitle": {
-    "message": "Listă de excludere"
+    "message": "Lista de excludere"
   },
   "options_exportButton": {
-    "message": "Exportați lista"
+    "message": "Exportă lista"
   },
   "options_filterPlaceholder": {
-    "message": "Apăsați ENTER pentru a filtra după ce ați tastat"
+    "message": "Apasă ENTER pentru a filtra după tastare"
   },
   "options_importButton": {
-    "message": "Importați lista"
+    "message": "Importă lista"
   },
   "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
@@ -45,33 +45,30 @@
     "message": "Ajutor sau probleme?"
   },
   "popup_rateOption": {
-    "message": "Evaluați această extensie"
-  },
-  "reportDialog_blankPageOption": {
-    "message": "Pagina este goală"
+    "message": "Evaluează această extensie"
   },
   "reportDialog_bodyText": {
-    "message": "Vă rugăm să selectați o opțiune de mai jos"
+    "message": "Te rugăm să nu împărtășești informații personale în acest raport. Dacă dorești să adaugi mai multe detalii, deschide problema GitHub în pasul următor și adaugă un comentariu."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Nu se poate face clic"
+  "reportDialog_reasonInputError": {
+    "message": "Vă rugăm să introduceți un motiv cu cel puțin 10 caractere și maximum 1000 de caractere"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "Pagina este întârziată"
+  "reportDialog_reasonInputLabel": {
+    "message": "Motiv"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "Pagina nu răspunde"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "Pagina conține erori vizuale"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "A apărut o fereastră pop-up"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "A apărut un popup"
   },
   "reportDialog_submitExtraText": {
-    "message": "În timp ce lucrăm la acest lucru, puteți adăuga acest site web la lista de excludere în setările extensiei sau pur și simplu dezactivați extensia pentru acest site web făcând clic pe iconița extensiei din bara de instrumente a browserului dvs"
+    "message": "În timp ce lucrăm la acest aspect, poți adăuga acest site web la lista de excludere din setările extensiei sau poți dezactiva extensia pentru acest site web făcând clic pe pictograma extensiei din bara de instrumente a browserului."
   },
   "reportDialog_submitText": {
     "message": "Raport trimis!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Vă rugăm să introduceți o adresă URL validă cu maximum 1000 de caractere"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }
