@@ -14419,6 +14419,7 @@
       "evd-cookie-info",
       "form:has(#cookieUstaw)",
       "html.xv-responsive #disclaimer_background",
+      "kuma-cookie-bar",
       "marfeel-cmp",
       "module-rgpd-component",
       "ofi-cookie-box-widget",
@@ -14438,5 +14439,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725096726670"
+  "version": "1725096897065"
 }
