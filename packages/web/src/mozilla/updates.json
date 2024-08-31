@@ -1,0 +1,40 @@
+{
+  "addons": {
+    "{77e2c00b-e173-4604-863d-01645d8d2826}": {
+      "updates": [
+        {
+          "version": "7.0.4",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.0.4.xpi"
+        },
+        {
+          "version": "7.1.0",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.1.0.xpi"
+        },
+        {
+          "version": "7.1.1",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.1.1.xpi"
+        },
+        {
+          "version": "7.1.2",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.1.2.xpi"
+        },
+        {
+          "version": "7.1.3",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.1.3.xpi"
+        },
+        {
+          "version": "7.1.4",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.1.4.xpi"
+        },
+        {
+          "version": "7.1.5",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.1.5.xpi"
+        },
+        {
+          "version": "7.2.0",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.2.0.xpi"
+        }
+      ]
+    }
+  }
+}
