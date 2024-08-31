@@ -22,6 +22,12 @@
  */
 
 /**
+ * @typedef {Object} GetElementsParams
+ * @property {boolean} [filterEarly]
+ * @property {HTMLElement} [from]
+ */
+
+/**
  * @typedef {Object} SetUpParams
  * @property {boolean} [skipRunFn]
  */
@@ -164,12 +170,11 @@ function containsCommonWord(element) {
 
 /**
  * @description Force a DOM clean in the specific element
- * @param {HTMLElement} element
+ * @param {HTMLElement} from
  * @returns {void}
  */
-function forceClean(element) {
-  const nodes = [...element.querySelectorAll(tokens.selectors)];
-  const elements = nodes.flatMap((node) => filterNodeEarly(node));
+function forceClean(from) {
+  const elements = getElements(tokens.selectors, { filterEarly: true, from });
 
   if (elements.length) {
     fix();
@@ -194,6 +199,37 @@ function forceElementStyles(mutations, observer) {
       element.style.setProperty('display', 'none', 'important');
     }
   }
+}
+
+/**
+ * Get all elements that match the selector
+ * @param {string | string[]} [selector]
+ * @param {GetElementsParams} [params]
+ * @returns {HTMLElement[]}
+ */
+function getElements(selector, params = {}) {
+  const { filterEarly, from } = params;
+  let result = [];
+
+  if (selector?.length) {
+    result = [...(from ?? document).querySelectorAll(selector)];
+
+    if (filterEarly) {
+      result = result.flatMap((node) => filterNodeEarly(node));
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Get all elements with their children that match the selector
+ * @param {string | string[]} selector
+ * @param {GetElementsParams} [params]
+ * @returns {HTMLElement[]}
+ */
+function getElementsWithChildren(selector, params) {
+  return getElements(selector, params).flatMap((element) => [element, ...element.children]);
 }
 
 /**
@@ -288,6 +324,7 @@ function match(element, skipMatch) {
  * @description Filter early nodes
  * @param {Node} node
  * @param {boolean} stopRecursion
+ * @returns {HTMLElement[]}
  */
 function filterNodeEarly(node, stopRecursion) {
   if (node.nodeType !== Node.ELEMENT_NODE || !(node instanceof HTMLElement)) {
@@ -306,9 +343,7 @@ function filterNodeEarly(node, stopRecursion) {
  * @returns {void}
  */
 function fix() {
-  const backdrops = tokens.backdrops?.length
-    ? [...document.querySelectorAll(tokens.backdrops)]
-    : [];
+  const backdrops = getElements(tokens.backdrops);
   const domains = skips.domains.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   for (const backdrop of backdrops) {
@@ -343,7 +378,7 @@ function fix() {
           break;
         }
         case 'resetAll': {
-          const elements = document.querySelectorAll(selector);
+          const elements = getElements(selector);
           elements.forEach((e) => e?.style?.setProperty(property, 'initial', 'important'));
           break;
         }
@@ -365,9 +400,7 @@ function fix() {
  * @returns {void}
  */
 function restoreDOM() {
-  const backdrops = tokens.backdrops?.length
-    ? [...document.querySelectorAll(tokens.backdrops)]
-    : [];
+  const backdrops = getElements(tokens.backdrops);
 
   for (const backdrop of backdrops) {
     if (backdrop.children.length === 0 && backdrop.hasAttribute(dataAttributeName)) {
@@ -375,7 +408,7 @@ function restoreDOM() {
     }
   }
 
-  const elements = [...document.querySelectorAll(`[${dataAttributeName}]`)];
+  const elements = getElements(`[${dataAttributeName}]`);
 
   for (const element of elements) {
     element.removeAttribute(dataAttributeName);
@@ -396,19 +429,17 @@ function restoreDOM() {
  * @returns {void}
  */
 function run(params = {}) {
+  const { containers, elements, skipMatch } = params;
+
   if (document.body?.children.length && !preview && state.enabled && tokens.selectors.length) {
     fix();
 
-    if (params.elements?.length) {
-      clean(params.elements, params.skipMatch);
+    if (elements?.length) {
+      clean(elements, skipMatch);
     }
 
-    if (params.elements === undefined && params.containers?.length) {
-      clean(
-        params.containers
-          .flatMap((container) => document.querySelector(container)?.children ?? [])
-          .flatMap((node) => filterNodeEarly(node))
-      );
+    if (elements === undefined && containers?.length) {
+      clean(containers.flatMap((x) => getElementsWithChildren(x, { filterEarly: true })));
     }
   }
 }
