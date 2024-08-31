@@ -920,7 +920,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
+        "urlFilter": "||itkadmin.de/_javascripts/cookiesolution/es_cookie_solution_sources_v2.js^"
       }
     },
     {
@@ -939,7 +939,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||optanon.blob.core.windows.net^"
+        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
       }
     },
     {
@@ -958,7 +958,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||redditstatic.com/onetrust.*.js"
+        "urlFilter": "||optanon.blob.core.windows.net^"
       }
     },
     {
@@ -977,7 +977,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||sdk.privacy-center.org^"
+        "urlFilter": "||redditstatic.com/onetrust.*.js"
       }
     },
     {
@@ -996,7 +996,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||static.fastcmp.com^"
+        "urlFilter": "||sdk.privacy-center.org^"
       }
     },
     {
@@ -1015,7 +1015,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||transcend-cdn.com^"
+        "urlFilter": "||static.fastcmp.com^"
       }
     },
     {
@@ -1034,7 +1034,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||wcpstatic.microsoft.com^"
+        "urlFilter": "||transcend-cdn.com^"
       }
     },
     {
@@ -1053,11 +1053,30 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+        "urlFilter": "||wcpstatic.microsoft.com^"
       }
     },
     {
       "id": 26,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+      }
+    },
+    {
+      "id": 27,
       "priority": 1,
       "action": {
         "type": "block"
@@ -14395,5 +14414,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724667758858"
+  "version": "1725094016565"
 }
