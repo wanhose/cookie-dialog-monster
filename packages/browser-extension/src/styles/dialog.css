@@ -1,4 +1,5 @@
 :root {
+  --cookie-dialog-monster-color-error: #cc0000;
   --cookie-dialog-monster-color-primary: #3dd9eb;
   --cookie-dialog-monster-color-secondary: #34495e;
   --cookie-dialog-monster-color-success: #5cb85c;
@@ -26,23 +27,41 @@
 
 #report-dialog * {
   box-sizing: border-box;
-  visibility: visible;
 }
-.report-dialog-body {
+
+#report-dialog div {
+  all: unset;
+  display: block;
+  box-sizing: border-box;
+}
+
+#report-dialog *::-moz-selection {
+  color: var(--cookie-dialog-monster-color-white);
+  background: var(--cookie-dialog-monster-color-tertiary);
+}
+
+#report-dialog *::selection {
+  color: var(--cookie-dialog-monster-color-white);
+  background: var(--cookie-dialog-monster-color-tertiary);
+}
+
+#report-dialog .report-dialog-body {
   display: block;
   font-size: 14px;
-  line-height: 14px;
+  line-height: 1.2;
   padding: 16px;
 }
 
-.report-dialog-body-text {
+#report-dialog .report-dialog-body-text {
   display: block;
   font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
   margin: 0px;
   padding: 0px;
 }
 
-.report-dialog-close-button {
+#report-dialog .report-dialog-close-button {
   align-items: center;
   background-color: transparent;
   border: none;
@@ -53,119 +72,138 @@
   margin: 0px;
   outline: none;
   padding: 0px;
-  transition: 0.4s;
 }
 
-.report-dialog-close-button {
+#report-dialog .report-dialog-close-button {
   stroke: var(--cookie-dialog-monster-color-white);
 }
 
-.report-dialog-close-button:focus,
-.report-dialog-close-button:hover > svg {
+#report-dialog .report-dialog-close-button:focus,
+#report-dialog .report-dialog-close-button:hover > svg {
   stroke: var(--cookie-dialog-monster-color-secondary);
 }
 
-.report-dialog-close-button:focus-visible {
+#report-dialog .report-dialog-close-button:focus-visible {
   box-shadow: initial;
   transition: initial;
 }
 
-.report-dialog-close-button:focus,
-.report-dialog-close-button:hover {
+#report-dialog .report-dialog-close-button:focus,
+#report-dialog .report-dialog-close-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
 }
-.report-dialog-form {
+
+#report-dialog .report-dialog-form {
+  display: grid;
+  gap: 10px;
+}
+
+#report-dialog .report-dialog-form-view {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.report-dialog-form-view {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.report-dialog-form-view[hidden] {
+#report-dialog .report-dialog-form-view[hidden] {
   display: none;
 }
-.report-dialog-header {
+
+#report-dialog .report-dialog-header {
   align-items: center;
   background-color: var(--cookie-dialog-monster-color-secondary);
   display: flex;
   font-size: 16px;
   height: 54px;
   justify-content: space-between;
-  line-height: 16px;
+  line-height: 1.2;
   padding: 16px;
 }
 
-.report-dialog-header-title {
+#report-dialog .report-dialog-header-title {
   color: var(--cookie-dialog-monster-color-white);
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-weight: 500;
 }
-.report-dialog-radio {
-  color: var(--cookie-dialog-monster-color-tertiary);
-  cursor: pointer;
-  display: block;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  outline: none;
-  padding-left: 24px;
-  position: relative;
-}
 
-.report-dialog-radio[aria-checked='true']:after {
-  opacity: 1;
-  transform: scale(1, 1);
-}
-
-.report-dialog-radio:after {
-  background-color: var(--cookie-dialog-monster-color-primary);
-  border-radius: 50%;
-  box-sizing: border-box;
-  content: '';
-  display: block;
-  height: 8px;
-  left: 3px;
-  opacity: 0;
-  position: absolute;
-  top: 3px;
-  transform: scale(0, 0);
-  transition: all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
-  width: 8px;
-}
-
-.report-dialog-radio:focus:not([aria-checked='true']):after,
-.report-dialog-radio:hover:not([aria-checked='true']):after {
-  background: var(--cookie-dialog-monster-color-tertiary);
-  opacity: 1;
-  transform: scale(1, 1);
-}
-
-.report-dialog-radio:before {
-  background: var(--cookie-dialog-monster-color-white);
+#report-dialog .report-dialog-input {
   border: 1px solid var(--cookie-dialog-monster-color-tertiary);
-  border-radius: 50%;
-  box-sizing: border-box;
-  content: '';
-  display: block;
-  height: 14px;
-  left: 0px;
-  margin-right: 5px;
-  position: absolute;
-  top: 0px;
-  width: 14px;
+  border-radius: 4px;
+  color: var(--cookie-dialog-monster-color-secondary);
+  cursor: text;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  outline: none;
+  padding: 12px 8px;
 }
 
-.report-dialog-radio-group {
+#report-dialog .report-dialog-input:hover {
+  border-color: var(--cookie-dialog-monster-color-secondary);
+}
+
+#report-dialog .report-dialog-input:focus {
+  border-color: var(--cookie-dialog-monster-color-primary);
+}
+
+#report-dialog .report-dialog-input:focus-visible {
+  box-shadow: initial;
+  transition: initial;
+}
+
+#report-dialog .report-dialog-input::-webkit-scrollbar {
+  display: none;
+}
+
+#report-dialog .report-dialog-input[aria-invalid='true'] {
+  border-color: var(--cookie-dialog-monster-color-error);
+}
+
+#report-dialog .report-dialog-input[aria-invalid='true'] + .report-dialog-input-error {
+  visibility: visible;
+}
+
+#report-dialog .report-dialog-input[aria-multiline='false'] {
+  -ms-overflow-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 18px;
+  height: 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  text-wrap: nowrap;
 }
 
-.report-dialog-issue-button,
-.report-dialog-submit-button {
+#report-dialog .report-dialog-input[aria-multiline='true'] {
+  -ms-overflow-style: none;
+  height: 120px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#report-dialog .report-dialog-input-error {
+  color: var(--cookie-dialog-monster-color-error);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  line-height: 1.2;
+  visibility: hidden;
+}
+
+#report-dialog .report-dialog-input-group {
+  display: grid;
+  gap: 4px;
+}
+
+#report-dialog .report-dialog-input-label {
+  color: var(--cookie-dialog-monster-color-secondary);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+#report-dialog .report-dialog-input-label-required {
+  color: var(--cookie-dialog-monster-color-error);
+}
+
+#report-dialog .report-dialog-issue-button,
+#report-dialog .report-dialog-submit-button {
   align-items: center;
   background-color: var(--cookie-dialog-monster-color-secondary);
   border: 1px solid var(--cookie-dialog-monster-color-secondary);
@@ -177,52 +215,52 @@
   font-size: 14px;
   height: 39px;
   justify-content: center;
+  line-height: 1.2;
   outline: none;
   padding: 8px 16px;
   text-align: center;
-  transition: 0.4s;
   width: 100%;
 }
 
-.report-dialog-issue-button:focus,
-.report-dialog-issue-button:hover,
-.report-dialog-submit-button:focus,
-.report-dialog-submit-button:hover {
+#report-dialog .report-dialog-issue-button:focus,
+#report-dialog .report-dialog-issue-button:hover,
+#report-dialog .report-dialog-submit-button:focus,
+#report-dialog .report-dialog-submit-button:hover {
   background-color: var(--cookie-dialog-monster-color-white);
   color: var(--cookie-dialog-monster-color-secondary);
 }
 
-.report-dialog-issue-button:focus-visible,
-.report-dialog-submit-button:focus-visible {
+#report-dialog .report-dialog-issue-button:focus-visible,
+#report-dialog .report-dialog-submit-button:focus-visible {
   box-shadow: initial;
   transition: initial;
 }
 
-.report-dialog-issue-button[aria-disabled='true'],
-.report-dialog-submit-button[aria-disabled='true'] {
+#report-dialog .report-dialog-issue-button[aria-disabled='true'],
+#report-dialog .report-dialog-submit-button[aria-disabled='true'] {
   background-color: var(--cookie-dialog-monster-color-tertiary);
   border: 1px solid var(--cookie-dialog-monster-color-tertiary);
   color: var(--cookie-dialog-monster-color-white);
   cursor: not-allowed;
 }
 
-.report-dialog-submit-extra-text {
+#report-dialog .report-dialog-submit-extra-text {
   font-family: inherit;
   font-size: 14px;
-  line-height: 16px;
+  line-height: 1.2;
   margin: 0px;
   text-align: justify;
 }
 
-.report-dialog-submit-text {
+#report-dialog .report-dialog-submit-text {
   font-family: inherit;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 1.2;
   margin: 0px;
   text-align: center;
 }
 
-.report-dialog-submit-view {
+#report-dialog .report-dialog-submit-view {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -232,6 +270,6 @@
   margin-top: 16px;
 }
 
-.report-dialog-submit-view[hidden] {
+#report-dialog .report-dialog-submit-view[hidden] {
   display: none;
 }

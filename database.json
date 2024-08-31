@@ -635,7 +635,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn.consentmanager.net^"
+        "urlFilter": "||cdn-cookieyes.com^"
       }
     },
     {
@@ -654,7 +654,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn.cookielaw.org^"
+        "urlFilter": "||cdn.consentmanager.net^"
       }
     },
     {
@@ -673,7 +673,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn.optable.co^"
+        "urlFilter": "||cdn.cookielaw.org^"
       }
     },
     {
@@ -692,7 +692,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdntranscend.eventbrite.com^"
+        "urlFilter": "||cdn.optable.co^"
       }
     },
     {
@@ -711,7 +711,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||chollometro.com/assets/js/CookiesMessage*.js^"
+        "urlFilter": "||cdntranscend.eventbrite.com^"
       }
     },
     {
@@ -730,7 +730,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cmp.inmobi.com^"
+        "urlFilter": "||chollometro.com/assets/js/CookiesMessage*.js^"
       }
     },
     {
@@ -749,7 +749,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||consent.trustarc.com^"
+        "urlFilter": "||cmp.inmobi.com^"
       }
     },
     {
@@ -768,7 +768,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||consent.cookiebot.com^"
+        "urlFilter": "||consent.trustarc.com^"
       }
     },
     {
@@ -787,7 +787,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||consentcdn.cookiebot.com^"
+        "urlFilter": "||consent.cookiebot.com^"
       }
     },
     {
@@ -806,7 +806,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cp.as.com^"
+        "urlFilter": "||consentcdn.cookiebot.com^"
       }
     },
     {
@@ -825,7 +825,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||emp.bbci.co.uk^"
+        "urlFilter": "||cp.as.com^"
       }
     },
     {
@@ -844,7 +844,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||eu.fastcmp.com^"
+        "urlFilter": "||emp.bbci.co.uk^"
       }
     },
     {
@@ -863,7 +863,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||forum.vorondesign.com/js/xf/notice.min.js^"
+        "urlFilter": "||eu.fastcmp.com^"
       }
     },
     {
@@ -882,7 +882,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||js.vxcdn.com/usercentrics-sdk^"
+        "urlFilter": "||forum.vorondesign.com/js/xf/notice.min.js^"
       }
     },
     {
@@ -901,7 +901,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
+        "urlFilter": "||js.vxcdn.com/usercentrics-sdk^"
       }
     },
     {
@@ -920,7 +920,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||optanon.blob.core.windows.net^"
+        "urlFilter": "||lensois.com/wp-admin/admin-ajax.php"
       }
     },
     {
@@ -939,7 +939,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||redditstatic.com/onetrust.*.js"
+        "urlFilter": "||optanon.blob.core.windows.net^"
       }
     },
     {
@@ -958,7 +958,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||sdk.privacy-center.org^"
+        "urlFilter": "||redditstatic.com/onetrust.*.js"
       }
     },
     {
@@ -977,7 +977,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||static.fastcmp.com^"
+        "urlFilter": "||sdk.privacy-center.org^"
       }
     },
     {
@@ -996,7 +996,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||transcend-cdn.com^"
+        "urlFilter": "||static.fastcmp.com^"
       }
     },
     {
@@ -1015,7 +1015,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||wcpstatic.microsoft.com^"
+        "urlFilter": "||transcend-cdn.com^"
       }
     },
     {
@@ -1034,7 +1034,7 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+        "urlFilter": "||wcpstatic.microsoft.com^"
       }
     },
     {
@@ -1053,7 +1053,26 @@
           "stylesheet",
           "xmlhttprequest"
         ],
-        "urlFilter": "||cdn-cookieyes.com^"
+        "urlFilter": "||webtools.europa.eu/js/webtools.cck.js^"
+      }
+    },
+    {
+      "id": 26,
+      "priority": 1,
+      "action": {
+        "type": "block"
+      },
+      "condition": {
+        "resourceTypes": [
+          "font",
+          "image",
+          "media",
+          "object",
+          "script",
+          "stylesheet",
+          "xmlhttprequest"
+        ],
+        "urlFilter": "||widgets.marketcat.net^"
       }
     }
   ],
@@ -1520,6 +1539,18 @@
       "wt-cli-geoip-on",
       "xh-scroll-disabled",
       "xh-thumb-disabled"
+    ],
+    "containers": [
+      ".container",
+      ".layout",
+      ".page",
+      ".wrapper",
+      "#__next",
+      "#a-page",
+      "#app",
+      "#main",
+      "#root",
+      "body > *"
     ],
     "selectors": [
       ".___eucookiePopup",
@@ -7479,23 +7510,6 @@
       "[src=\"https://www.tumblr.com/dashboard/iframe/consent\"]",
       "[style*=\"bg_cookies.jpg\"]",
       "[style*=\"cookie-consent-zindex\"]",
-      "[style*=\"opacity: 1; x: 1px; y: 0px; transform: translateY(0px) scale(1, 1); --Toaster-indicatorColor:#\"]",
-      "[style^=\"border: 10px solid rgb(138, 138, 138);\"]",
-      "[style^=\"bottom: 0px; height: 1px; left: 0px;\"]",
-      "[style^=\"position: fixed; bottom: 0px; z-index: 10000;\"]",
-      "[style^=\"position: fixed; left:0; right:0; bottom:0;\"]",
-      "[style^=\"position: fixed; left:0; right:0; bottom:0\"]",
-      "[style=\"background: rgba(0, 0, 0, 0.38); backdrop-filter: blur(2px); position: fixed; inset: 0px; z-index: 999999; pointer-events: all; display: block; filter: none; max-width: 100vw; max-height: 100vh;\"]",
-      "[style=\"background:#2A2A2A; color: #fff; left:0px; bottom:0px; right:0px; position: fixed; z-index: 1000;\"]",
-      "[style=\"background:#eed;padding:10px;margin:0;text-align:center;border-bottom:1px solid #446\"]",
-      "[style=\"bottom: 0px;\"]",
-      "[style=\"bottom: 24px; position: fixed; left: 0px; width: 100%; display: flex; z-index: 1000000; opacity: 1;\"]",
-      "[style=\"opacity: 1; x: 1px; y: 0px; transform: translateY(0px) scale(1, 1); --Toaster-indicatorColor:#24A0ED;\"]",
-      "[style=\"overflow: hidden; position: absolute; top: 0px; width: 379px; z-index: 991; height: 180px; margin-top: 70px; right: 0px; margin-right: 25px;\"]",
-      "[style=\"position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 999; background-color: rgba(0, 0, 0, 0.3);\"]",
-      "[style=\"position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0, 0, 0, 0.3);\"]",
-      "[style=\"position: fixed; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 2147483647; top: 0px; left: 0px;\"]",
-      "[style=\"position: fixed; z-index: 9999; width: 100%; height: 100%; inset: 0px; background-color: rgba(0, 0, 0, 0.5);\"]",
       "[tile-id=\"gdpr-banner\"]",
       "[title*=\"Antes de\"][aria-modal=\"true\"][role=\"dialog\"]",
       "[title*=\"Avant d'accéder\"][aria-modal=\"true\"][role=\"dialog\"]",
@@ -14381,5 +14395,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1724593251217"
+  "version": "1724667758858"
 }

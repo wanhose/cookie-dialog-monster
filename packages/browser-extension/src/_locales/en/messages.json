@@ -47,25 +47,16 @@
   "popup_rateOption": {
     "message": "Rate this extension"
   },
-  "reportDialog_blankPageOption": {
-    "message": "Page is blank"
-  },
   "reportDialog_bodyText": {
-    "message": "Please select an option below"
+    "message": "Please, do not share any personal information in this report. If you want to add more details, open the GitHub issue in the next step and add a comment."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Cannot click"
+  "reportDialog_reasonInputError": {
+    "message": "Please enter a reason with at least 10 characters and no more than 1000 characters"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "Page is laggy"
+  "reportDialog_reasonInputLabel": {
+    "message": "Reason"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "Page is not responding"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "Page contains visual glitches"
-  },
-  "reportDialog_popupShowUpOption": {
+  "reportDialog_reasonInputPlaceholder": {
     "message": "Popup showed up"
   },
   "reportDialog_submitExtraText": {
@@ -73,5 +64,11 @@
   },
   "reportDialog_submitText": {
     "message": "Report sent!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Please enter a valid URL with no more than 1000 characters"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }

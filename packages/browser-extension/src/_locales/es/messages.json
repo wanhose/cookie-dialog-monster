@@ -1,6 +1,6 @@
 {
   "appDesc": {
-    "message": "¿Alguien dijo diálogos de consentimiento de cookies? 😋"
+    "message": "¿Alguien mencionó los diálogos de consentimiento de cookies? 😋"
   },
   "contextMenu_issueOption": {
     "message": "Sigue este problema en GitHub"
@@ -15,7 +15,7 @@
     "message": "Agregar exclusión"
   },
   "options_addPrompt": {
-    "message": "Ingrese el dominio"
+    "message": "Ingrese dominio"
   },
   "options_clearButton": {
     "message": "Borrar lista"
@@ -33,7 +33,7 @@
     "message": "Importar lista"
   },
   "popup_contributeOption": {
-    "message": "Contribuye a este proyecto"
+    "message": "Contribuir a este proyecto"
   },
   "popup_databaseVersion": {
     "message": "Versión de la base de datos"
@@ -47,31 +47,28 @@
   "popup_rateOption": {
     "message": "Califica esta extensión"
   },
-  "reportDialog_blankPageOption": {
-    "message": "La página está en blanco"
-  },
   "reportDialog_bodyText": {
-    "message": "Por favor selecciona una opción"
+    "message": "Por favor, no compartas ninguna información personal en este informe. Si deseas agregar más detalles, abre el problema de GitHub en el siguiente paso y agrega un comentario."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "No se puede hacer clic"
+  "reportDialog_reasonInputError": {
+    "message": "Por favor, ingrese una razón con al menos 10 caracteres y no más de 1000 caracteres"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "La página tarda mucho en cargar"
+  "reportDialog_reasonInputLabel": {
+    "message": "Razón"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "La página no responde"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "La página está mal visualmente"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "Ha aparecido un diálogo"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "Apareció un popup"
   },
   "reportDialog_submitExtraText": {
-    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador"
+    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador."
   },
   "reportDialog_submitText": {
-    "message": "¡Reporte enviado!"
+    "message": "¡Informe enviado!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Por favor, ingrese una URL válida con no más de 1000 caracteres"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }

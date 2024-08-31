@@ -3,19 +3,6 @@ if (typeof browser === 'undefined') {
 }
 
 /**
- * @description Report reasons
- * @type {string[]}
- */
-const reasons = [
-  'Cannot click',
-  'Page contains visual glitches',
-  'Page is blank',
-  'Page is laggy',
-  'Page is not responding',
-  'Popup showed up',
-];
-
-/**
  * @description Report dialog ID
  */
 const reportDialogId = 'report-dialog';
@@ -48,63 +35,48 @@ const reportDialogHtml = `
           ${browser.i18n.getMessage('reportDialog_bodyText')}
         </div>
         <div class="report-dialog-form">
-          <div class="report-dialog-radio-group">
-            <div
-              aria-checked="false"
-              class="report-dialog-radio"
-              data-value="0"
-              role="radio"
-              tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_cannotClickOption')}
+          <div class="report-dialog-input-group">
+            <div class="report-dialog-input-label" id="report-dialog-label-url">
+              ${browser.i18n.getMessage('reportDialog_urlInputLabel')}
+              <span class="report-dialog-input-label-required">*</span>
             </div>
             <div
-              aria-checked="false"
-              class="report-dialog-radio"
-              data-value="1"
-              role="radio"
+              aria-labelledby="report-dialog-label-url"
+              aria-multiline="false"
+              aria-required="true"
+              class="report-dialog-input"
+              contenteditable="true"
+              id="report-dialog-input-url"
+              role="textbox"
               tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_pageVisualGlitchOption')}
-            </div>
-            <div
-              aria-checked="false"
-              class="report-dialog-radio"
-              data-value="2"
-              role="radio"
-              tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_blankPageOption')}
-            </div>
-            <div
-              aria-checked="false"
-              class="report-dialog-radio"
-              data-value="3"
-              role="radio"
-              tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_laggyPageOption')}
-            </div>
-            <div
-              aria-checked="false"
-              class="report-dialog-radio"
-              data-value="4"
-              role="radio"
-              tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_pageNotRespondingOption')}
-            </div>
-            <div
-              aria-checked="false"
-              class="report-dialog-radio"
-              data-value="5"
-              role="radio"
-              tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_popupShowUpOption')}
+            ></div>
+            <div class="report-dialog-input-error" id="report-dialog-input-url-error">
+              ${browser.i18n.getMessage('reportDialog_urlInputError')}
             </div>
           </div>
-          <div aria-disabled="true" class="report-dialog-submit-button" role="button" tabindex="0">
+          <div class="report-dialog-input-group">
+            <div class="report-dialog-input-label" id="report-dialog-label-reason">
+              ${browser.i18n.getMessage('reportDialog_reasonInputLabel')}
+              <span class="report-dialog-input-label-required">*</span>
+            </div>
+            <div
+              aria-labelledby="report-dialog-label-reason"
+              aria-multiline="true"
+              aria-placeholder="${browser.i18n.getMessage('reportDialog_reasonInputLabel')}"
+              aria-required="true"
+              class="report-dialog-input"
+              contenteditable="true"
+              id="report-dialog-input-reason"
+              role="textbox"
+              tabindex="0"
+            >
+              ${browser.i18n.getMessage('reportDialog_reasonInputPlaceholder')}
+            </div>
+            <div class="report-dialog-input-error" id="report-dialog-input-reason-error">
+              ${browser.i18n.getMessage('reportDialog_reasonInputError')}
+            </div>
+          </div>
+          <div class="report-dialog-submit-button" role="button" tabindex="0">
             ${browser.i18n.getMessage('contextMenu_reportOption')?.replace('...', '')}
           </div>
         </div>
@@ -156,22 +128,38 @@ function hideReportDialog() {
 }
 
 /**
- * @description Dialog radio input click handler
- * @param {MouseEvent} event
+ * @description Input change handler
+ * @param {InputEvent} event
  */
-function radioClickHandler(event) {
-  const dialog = document.getElementById(reportDialogId);
-  const radios = dialog.getElementsByClassName('report-dialog-radio');
-  const submitButton = dialog?.getElementsByClassName('report-dialog-submit-button')[0];
+function inputChangeHandler(event) {
+  event.currentTarget.removeAttribute('aria-invalid');
+}
 
-  for (const radio of radios) {
-    radio.setAttribute('aria-checked', 'false');
+/**
+ * @description Input key down handler
+ * @param {KeyboardEvent} event
+ */
+function inputKeyDownHandler(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    event.currentTarget.blur();
   }
+}
 
+/**
+ * @description Input paste handler
+ * @param {ClipboardEvent} event
+ */
+function inputPasteHandler(event) {
   event.preventDefault();
-  event.currentTarget.setAttribute('aria-checked', 'true');
-  submitButton.setAttribute('aria-disabled', 'false');
-  submitButton.addEventListener('click', submitButtonClickHandler);
+  const text = event.clipboardData?.getData('text').replace(/\r?\n|\r/g, ' ');
+
+  const selection = window.getSelection();
+
+  if (selection.rangeCount) {
+    selection.deleteFromDocument();
+    selection.getRangeAt(0).insertNode(document.createTextNode(text));
+  }
 }
 
 /**
@@ -181,7 +169,12 @@ function showReportDialog() {
   const existingDialog = document.getElementById(reportDialogId);
 
   if (existingDialog) {
+    const submitButton = existingDialog.getElementsByClassName('report-dialog-submit-button')[0];
+    const urlInput = existingDialog.querySelector('#report-dialog-input-url');
+
     existingDialog.showModal();
+    submitButton.setAttribute('aria-disabled', 'false');
+    urlInput.textContent = window.location.origin + window.location.pathname;
     return;
   }
 
@@ -190,16 +183,23 @@ function showReportDialog() {
   const dialog = result.body.firstElementChild;
   const closeButton = dialog.getElementsByClassName('report-dialog-close-button')[0];
   const link = document.createElement('link');
-  const radios = dialog.getElementsByClassName('report-dialog-radio');
+  const reasonInput = dialog?.querySelector('#report-dialog-input-reason');
+  const submitButton = dialog?.getElementsByClassName('report-dialog-submit-button')[0];
+  const urlInput = dialog?.querySelector('#report-dialog-input-url');
 
   closeButton.addEventListener('click', closeButtonClickHandler);
+  dialog.querySelector('#report-dialog-input-url').textContent =
+    window.location.origin + window.location.pathname;
   link.setAttribute('href', 'https://fonts.googleapis.com/css?family=Inter');
   link.setAttribute('id', 'report-dialog-font');
   link.setAttribute('rel', 'stylesheet');
-
-  for (const radio of radios) {
-    radio.addEventListener('click', radioClickHandler);
-  }
+  reasonInput.addEventListener('input', inputChangeHandler);
+  reasonInput.addEventListener('keydown', inputKeyDownHandler);
+  reasonInput.addEventListener('paste', inputPasteHandler);
+  submitButton.addEventListener('click', submitButtonClickHandler);
+  urlInput.addEventListener('input', inputChangeHandler);
+  urlInput.addEventListener('keydown', inputKeyDownHandler);
+  urlInput.addEventListener('paste', inputPasteHandler);
 
   dispatch({ type: 'INSERT_DIALOG_CSS' });
   document.body.appendChild(dialog);
@@ -212,29 +212,75 @@ function showReportDialog() {
  * @param {MouseEvent} event
  */
 async function submitButtonClickHandler(event) {
-  const target = event.currentTarget;
+  event.preventDefault();
 
-  if (target.getAttribute('aria-disabled') === 'true') {
+  if (event.currentTarget.getAttribute('aria-disabled') === 'true') {
     return;
   }
 
-  event.preventDefault();
-  target.setAttribute('aria-disabled', 'true');
+  event.currentTarget.setAttribute('aria-disabled', 'true');
 
   const dialog = document.getElementById(reportDialogId);
+  const reasonInput = dialog?.querySelector('#report-dialog-input-reason');
+  const reasonText = reasonInput?.textContent.trim();
+  const urlInput = dialog?.querySelector('#report-dialog-input-url');
+  const urlText = urlInput?.textContent.trim();
+
+  const errors = validateForm({ reason: reasonText, url: urlText });
+
+  if (errors) {
+    if (errors.reason) {
+      reasonInput?.setAttribute('aria-invalid', 'true');
+      reasonInput?.setAttribute('aria-errormessage', 'report-dialog-input-reason-error');
+    }
+
+    if (errors.url) {
+      urlInput?.setAttribute('aria-invalid', 'true');
+      urlInput?.setAttribute('aria-errormessage', 'report-dialog-input-url-error');
+    }
+
+    event.currentTarget.setAttribute('aria-disabled', 'false');
+    return;
+  }
+
   const formView = dialog?.getElementsByClassName('report-dialog-form-view')[0];
   const issueButton = dialog?.getElementsByClassName('report-dialog-issue-button')[0];
-  const option = dialog?.querySelector('.report-dialog-radio[aria-checked="true"]');
-  const reasonIndex = option?.dataset.value;
-  const reason = Number.isNaN(reasonIndex) ? 'Unknown' : reasons[reasonIndex];
   const submitView = dialog?.getElementsByClassName('report-dialog-submit-view')[0];
   const userAgent = window.navigator.userAgent;
 
-  const issueUrl = await dispatch({ userAgent, reason, type: 'REPORT' });
+  const issueUrl = await dispatch({ userAgent, reason: reasonText, url: urlText, type: 'REPORT' });
 
   formView?.setAttribute('hidden', 'true');
   issueButton?.addEventListener('click', () => window.open(issueUrl, '_blank'));
   submitView?.removeAttribute('hidden');
+}
+
+/**
+ * @description Validate form
+ * @param {{ reason: string | undefined | undefined, url: string | undefined }} params
+ * @returns {{ reason: string | undefined, url: string | undefined } | undefined}
+ */
+function validateForm(params) {
+  const { reason, url } = params;
+  let errors = undefined;
+
+  if (!reason || reason.length < 10 || reason.length > 1000) {
+    errors = {
+      ...(errors ?? {}),
+      reason: browser.i18n.getMessage('reportDialog_reasonInputError'),
+    };
+  }
+
+  try {
+    new URL(url);
+  } catch {
+    errors = {
+      ...(errors ?? {}),
+      url: browser.i18n.getMessage('reportDialog_urlInputError'),
+    };
+  }
+
+  return errors;
 }
 
 /**

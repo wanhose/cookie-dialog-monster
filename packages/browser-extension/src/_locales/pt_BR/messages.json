@@ -1,9 +1,9 @@
 {
   "appDesc": {
-    "message": "Alguém disse diálogos de consentimento de cookies? 😋"
+    "message": "Alguém falou sobre diálogos de consentimento de cookies? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Siga esta questão no GitHub"
+    "message": "Siga este problema no GitHub"
   },
   "contextMenu_reportOption": {
     "message": "Denunciar este site"
@@ -15,7 +15,7 @@
     "message": "Adicionar exclusão"
   },
   "options_addPrompt": {
-    "message": "Digite o domínio"
+    "message": "Insira o domínio"
   },
   "options_clearButton": {
     "message": "Limpar lista"
@@ -33,7 +33,7 @@
     "message": "Importar lista"
   },
   "popup_contributeOption": {
-    "message": "Contribua para este projeto"
+    "message": "Contribuir para este projeto"
   },
   "popup_databaseVersion": {
     "message": "Versão do banco de dados"
@@ -47,31 +47,28 @@
   "popup_rateOption": {
     "message": "Avalie esta extensão"
   },
-  "reportDialog_blankPageOption": {
-    "message": "A página está em branco"
-  },
   "reportDialog_bodyText": {
-    "message": "Por favor selecione uma opção abaixo"
+    "message": "Por favor, não compartilhe nenhuma informação pessoal neste relatório. Se você quiser adicionar mais detalhes, abra o problema no GitHub na próxima etapa e adicione um comentário."
   },
-  "reportDialog_cannotClickOption": {
-    "message": "Não é possível clicar"
+  "reportDialog_reasonInputError": {
+    "message": "Por favor, insira um motivo com pelo menos 10 caracteres e no máximo 1000 caracteres"
   },
-  "reportDialog_laggyPageOption": {
-    "message": "A página está com lag"
+  "reportDialog_reasonInputLabel": {
+    "message": "Motivo"
   },
-  "reportDialog_pageNotRespondingOption": {
-    "message": "A página não está respondendo"
-  },
-  "reportDialog_pageVisualGlitchOption": {
-    "message": "A página contém falhas visuais"
-  },
-  "reportDialog_popupShowUpOption": {
-    "message": "Apareceu um popup"
+  "reportDialog_reasonInputPlaceholder": {
+    "message": "Popup apareceu"
   },
   "reportDialog_submitExtraText": {
-    "message": "Enquanto estamos trabalhando nisso, você pode adicionar este site à lista de exclusão nas configurações da extensão ou simplesmente desativar a extensão para este site clicando no ícone da extensão na barra de ferramentas do seu navegador"
+    "message": "Enquanto estamos trabalhando nisso, você pode adicionar este site à lista de exclusão nas configurações da extensão ou simplesmente desativar a extensão para este site clicando no ícone da extensão na barra de ferramentas do navegador."
   },
   "reportDialog_submitText": {
     "message": "Relatório enviado!"
+  },
+  "reportDialog_urlInputError": {
+    "message": "Por favor, insira uma URL válida com no máximo 1000 caracteres"
+  },
+  "reportDialog_urlInputLabel": {
+    "message": "URL"
   }
 }
