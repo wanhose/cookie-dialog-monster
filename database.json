@@ -11609,6 +11609,7 @@
       "#ecranCookieAlert",
       "#ECScookiepanel",
       "#edcCookiesPolicyBanner",
+      "#editconsent",
       "#edp_Cookies_Disclaimer_Banner",
       "#edunetCookies",
       "#ee-cookies-message",
@@ -14458,5 +14459,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725097130500"
+  "version": "1725097253528"
 }
