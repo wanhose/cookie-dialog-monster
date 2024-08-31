@@ -406,7 +406,7 @@ function run(params = {}) {
     if (params.elements === undefined && params.containers?.length) {
       clean(
         params.containers
-          .flatMap((container) => document.querySelector(container).children)
+          .flatMap((container) => document.querySelector(container)?.children ?? [])
           .flatMap((node) => filterNodeEarly(node))
       );
     }

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
