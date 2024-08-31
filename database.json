@@ -14419,6 +14419,7 @@
       "amp-consent",
       "app-banner[arialabel*=\"Cookies\"]",
       "app-cookie-acceptance",
+      "app-cookie-consent",
       "app-cookies-bar",
       "app-cookies",
       "awsui-alert[dismiss*=\"CookieBanner\"]",
@@ -14460,5 +14461,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725102642139"
+  "version": "1725102718001"
 }
