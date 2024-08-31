@@ -456,6 +456,11 @@
       "selector": ".pg-accept-button"
     },
     {
+      "action": "click",
+      "domain": "myprivacy.dpgmedia.be",
+      "selector": "#pg-accept-btn"
+    },
+    {
       "action": "reset",
       "domain": "orcd.co",
       "property": "opacity",
@@ -14433,5 +14438,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725096618866"
+  "version": "1725096726670"
 }
