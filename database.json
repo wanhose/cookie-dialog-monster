@@ -1613,7 +1613,7 @@
       "#app",
       "#main",
       "#root",
-      "wrapperDivisions",
+      "#wrapperDivisions",
       "body > *"
     ],
     "selectors": [
@@ -14464,5 +14464,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725175182585"
+  "version": "1725175443584"
 }
