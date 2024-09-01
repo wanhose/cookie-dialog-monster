@@ -473,11 +473,13 @@
           </a>
         </div>
         <p class="mt-16 text-gray-500 text-left">
-          Due to technical issues with the Firefox Team, our extension's support on Mozilla Add-ons
-          has ended with version 5.5.5. However, you can still run the latest version following
+          <sup>1</sup> Due to technical issues with the Firefox Team, our extension's support on
+          Mozilla Add-ons has ended with version 5.5.5. However, you can still run the latest
+          version following
           <a
             class="underline"
             href="https://github.com/wanhose/cookie-dialog-monster/tree/main/packages/browser-extension#installation-for-mozilla-firefox-users"
+            id="firefox-guide-link"
             target="_blank"
           >
             this guide</a
@@ -486,8 +488,8 @@
         <p class="mt-8 text-gray-500 text-left">
           <sup>2</sup> This version is not recommended for regular users. It is intended for
           advanced users who want to test the latest features before they are released to the
-          public, or for Mozilla (or other non-listed browsers) users who want to run a copy of the
-          latest version of the extension. We recommend you to follow
+          public, or other non-listed browser users who want to run a copy of the latest version of
+          the extension. We recommend you to follow
           <a
             class="underline"
             href="https://github.com/wanhose/cookie-dialog-monster/tree/main/packages/browser-extension#installation-for-advanced-and-non-listed-browser-users"
@@ -508,10 +510,13 @@
     </footer>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
+        const firefoxGuideLink = document.getElementById('firefox-guide-link');
         const firefoxLink = document.getElementById('firefox-link');
         const isMobile = /Android|Mobi/i.test(navigator.userAgent);
 
         if (isMobile) {
+          firefoxGuideLink.href =
+            'https://github.com/wanhose/cookie-dialog-monster/tree/main/packages/browser-extension#installation-for-mozilla-firefox-mobile-users';
           firefoxLink.href = '/releases/latest-mozilla-mobile.xpi';
         }
       });
