@@ -29,6 +29,18 @@
 
 Optionally, if you wish to allow the extension to run in private browsing mode, find the extension in the list, click on the **Details** button, and then enable the **Allow in Private Browsing** checkbox.
 
+## Installation (for Mozilla Firefox Mobile users)
+
+1. Start by downloading the latest `.xpi` file [from here](https://www.cookie-dialog-monster.com/releases/latest-mozilla-mobile.xpi).
+2. Open your Firefox browser, then tap the three-dot menu icon in the bottom-right corner of the browser and click on the **Settings** option.
+3. If you haven't already enabled debug mode, go to the About Firefox option and tap the Firefox logo 5 times. If you have already enabled it, skip to step 4.
+4. Go back and you will see a new option **Install extension from file**, click on it.
+5. A file dialog will open. Navigate to and select the downloaded `.xpi` file.
+6. A confirmation dialog will appear asking if you wish to install the add-on. Click **Add** to proceed.
+7. Congratulations! You've successfully installed the latest build of this extension in Firefox.
+
+Optionally, if you wish to allow the extension to run in private browsing mode, find the extension in the list, click on the **Details** button, and then enable the **Allow in Private Browsing** checkbox.
+
 ## Installation (for advanced and non-listed browser users)
 
 1. Start by downloading the latest zip file [from here](https://www.cookie-dialog-monster.com/releases/latest.zip).
