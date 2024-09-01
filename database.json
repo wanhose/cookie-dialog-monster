@@ -4393,6 +4393,7 @@
       ".cookiesWarning",
       ".CookiesWarning",
       ".cookiesWarningContainer",
+      "[role=\"banner\"]:has([href*=\"cookie-notice\"])",
       ".cookiesWindow",
       ".cookiesWr",
       ".cookiesWrap",
@@ -14469,5 +14470,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725176382717"
+  "version": "1725176862250"
 }
