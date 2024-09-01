@@ -4393,7 +4393,6 @@
       ".cookiesWarning",
       ".CookiesWarning",
       ".cookiesWarningContainer",
-      "[role=\"banner\"]:has([href*=\"cookie-notice\"])",
       ".cookiesWindow",
       ".cookiesWr",
       ".cookiesWrap",
@@ -7474,6 +7473,7 @@
       "[data-hook=\"consent-banner-root\"]",
       "[data-id=\"cookie_dialog\"]",
       "[data-id=\"dummy-modal\"]",
+      "[data-id=\"jsAdConsentDialog\"]",
       "[data-is-cookieinfo]",
       "[data-js=\"cookie-disclaimer\"]",
       "[data-key=\"cookies-warning\"]",
@@ -7574,6 +7574,7 @@
       "[namecookie=\"correosCookies\"]",
       "[ng-click=\"self.setCookieDisclaimer()\"]",
       "[ng-show^=\"cookiePolicyCtrl\"]",
+      "[role=\"banner\"]:has([href*=\"cookie-notice\"])",
       "[spec=\"cookie-disclaimer\"]",
       "[src*=\"cmp.autoweek.nl\"]",
       "[src=\"/legal/acuerdo_cookies.html\"]",
@@ -14470,5 +14471,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725176862250"
+  "version": "1725177007356"
 }
