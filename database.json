@@ -1553,7 +1553,8 @@
       ".modal-backdrop",
       ".offcanvas-backdrop",
       ".overlay",
-      ".ui-widget-overlay"
+      ".ui-widget-overlay",
+      ".usercentrics-bg"
     ],
     "classes": [
       "appconsent_noscroll",
@@ -2443,6 +2444,7 @@
       ".cmnstr-activated",
       ".cmp_cookies_usage_wr",
       ".cmp-app_gdpr",
+      ".cmp-container",
       ".cmp-cookie-stmt",
       ".cmp-cookie",
       ".cmp-desktop",
@@ -14467,5 +14469,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725175693155"
+  "version": "1725176382717"
 }
