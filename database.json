@@ -14281,6 +14281,7 @@
       "#web_cookielaw_popup",
       "#webarx-cookie-notice",
       "#webdevCookiesAlertContainer",
+      "#webflow-component-lib-root:has([href*=\"nomad-privacy-policy\"])",
       "#webLianderCookieBanner",
       "#website_cookies_bar",
       "#website-cookies-prompt",
@@ -14461,5 +14462,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725102718001"
+  "version": "1725174384452"
 }
