@@ -14437,7 +14437,7 @@
       "correos-cdk-cookies-module",
       "dialog.consent.js-consent",
       "dile-cookies-consent",
-      "div[jsmodel]:has([data-cookie-path])",
+      "div[jsmodel]:not([jscontroller]):has([data-cookie-path])",
       "div[role=\"dialog\"]:has([aria-describedby=\"consentbar\"])",
       "efilli-layout-default",
       "epaas-consent-drawer-shell",
@@ -14464,5 +14464,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725174901256"
+  "version": "1725175182585"
 }
