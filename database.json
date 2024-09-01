@@ -1613,6 +1613,7 @@
       "#__next",
       "#a-page",
       "#app",
+      "#content",
       "#main",
       "#root",
       "#wrapperDivisions",
@@ -4588,6 +4589,7 @@
       ".dialog[aria-label=\"cookieconsent\"]",
       ".dialogBanner__inner[data-qa=\"cookie-banner\"]",
       ".dialogMask",
+      ".dialogOverlay:has([data-id=\"jsAdConsentDialog\"])",
       ".digimadi-cc-wrapper",
       ".dina-cookiebanner",
       ".direttiva2009_136_CE",
@@ -7473,7 +7475,6 @@
       "[data-hook=\"consent-banner-root\"]",
       "[data-id=\"cookie_dialog\"]",
       "[data-id=\"dummy-modal\"]",
-      "[data-id=\"jsAdConsentDialog\"]",
       "[data-is-cookieinfo]",
       "[data-js=\"cookie-disclaimer\"]",
       "[data-key=\"cookies-warning\"]",
@@ -14471,5 +14472,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725177007356"
+  "version": "1725177498323"
 }
