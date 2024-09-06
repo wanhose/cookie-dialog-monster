@@ -8841,6 +8841,7 @@
       "#cookie_consent_box",
       "#cookie_consent_container",
       "#cookie_consent_cookiebar",
+      "#cookie_consent_dialog",
       "#cookie_consent_div",
       "#cookie_consent_header",
       "#cookie_consent_layer",
@@ -14491,5 +14492,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725637944858"
+  "version": "1725638478709"
 }
