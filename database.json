@@ -13879,6 +13879,7 @@
       "#sizzle-gdpr",
       "#sk-cookies",
       "#skcookies",
+      "#skv-cookie-banner",
       "#sky-cookie-bar",
       "#skycom-cookie-wrapper",
       "#sl_cookie_info",
@@ -14487,6 +14488,7 @@
       "s4s-privacy-module",
       "script + [class*=\"desktop-\"][class*=\"wrapper-\"]",
       "sibbo-cmp-layout",
+      "skv-cookie-banner",
       "solvia-cookies-policy",
       "tealium-consent",
       "tiktok-cookie-banner",
@@ -14499,5 +14501,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725640425791"
+  "version": "1725641486254"
 }
