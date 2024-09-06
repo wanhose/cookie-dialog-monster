@@ -2882,6 +2882,7 @@
       ".cookie--polityka",
       ".cookie--popup",
       ".cookie--top",
+      ".cookie--v2",
       ".cookie--visible",
       ".cookie--wrap__on",
       ".cookie--wrap",
@@ -7241,6 +7242,7 @@
       ".wphack-cookie-wrapper",
       ".wpmaster-cookie-content",
       ".wpmaster-cookie-wrapper",
+      ".wrap__cookie",
       ".wrap_cookie_policy",
       ".wrap_cookie_site",
       ".wrap_cookies",
@@ -7508,6 +7510,7 @@
       "[data-ng-controller=\"AcceptCookiesController\"]",
       "[data-notification=\"CookiePolicyAgreement\"]",
       "[data-notificationid=\"cookie\"]",
+      "[data-plugin=\"cookie\"]",
       "[data-pnp-mi-id=\"mi-cookies\"]",
       "[data-popup-cookies]",
       "[data-pov-accept-cookies-message]",
@@ -14494,5 +14497,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725638651365"
+  "version": "1725639174878"
 }
