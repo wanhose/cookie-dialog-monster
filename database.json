@@ -2465,7 +2465,7 @@
       ".cmnstr-activated",
       ".cmp_cookies_usage_wr",
       ".cmp-app_gdpr",
-      ".cmp-container",
+      ".cmp-container:not([data-component=\"cmp-container\"])",
       ".cmp-cookie-stmt",
       ".cmp-cookie",
       ".cmp-desktop",
@@ -14498,5 +14498,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725639953503"
+  "version": "1725640316540"
 }
