@@ -3052,6 +3052,7 @@
       ".cookie-consent-panel-message",
       ".cookie-consent-pnl",
       ".cookie-consent-popup",
+      ".cookie-consent-prompt",
       ".cookie-consent-request",
       ".cookie-consent-show",
       ".cookie-consent-splash",
@@ -9240,6 +9241,7 @@
       "#cookie-consent-outer",
       "#cookie-consent-overlay",
       "#cookie-consent-popup",
+      "#cookie-consent-prompt",
       "#cookie-consent-root",
       "#cookie-consent-warning",
       "#cookie-consent-window",
@@ -14492,5 +14494,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725638478709"
+  "version": "1725638651365"
 }
