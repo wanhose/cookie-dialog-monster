@@ -1577,7 +1577,8 @@
       ".offcanvas-backdrop",
       ".overlay",
       ".ui-widget-overlay",
-      ".usercentrics-bg"
+      ".usercentrics-bg",
+      "overlay-block"
     ],
     "classes": [
       "appconsent_noscroll",
@@ -14503,5 +14504,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725642124567"
+  "version": "1725642464901"
 }
