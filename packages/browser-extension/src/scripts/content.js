@@ -500,7 +500,7 @@ browser.runtime.onMessage.addListener(async (message) => {
       break;
     }
     case 'RUN': {
-      await setUp({ skipRunFn: true });
+      await setUp({ skipRunFn: !!removables.length });
       run({ elements: removables, skipMatch: true });
       break;
     }
