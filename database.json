@@ -1093,6 +1093,7 @@
       ".container",
       ".layout",
       ".page",
+      ".row",
       ".rp-container",
       ".sv-portlet > .rs_preserve",
       ".wrapper",
@@ -13207,6 +13208,7 @@
       "#rodoWrapper",
       "#rolloverBanner",
       "#root-cookie-notice",
+      "#row-cookie",
       "#Row1_Column1_Cell1_CookieSettings_CookieSettings",
       "#rqif_info_banner",
       "#rsseo-cookie-accept",
@@ -13970,5 +13972,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725692348295"
+  "version": "1725692532133"
 }
