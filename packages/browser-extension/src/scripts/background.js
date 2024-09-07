@@ -65,13 +65,13 @@ const refreshData = (callback) => {
 const report = async (message, tab, callback) => {
   try {
     const reason = message.reason;
+    const url = message.url;
     const userAgent = message.userAgent;
     const version = browser.runtime.getManifest().version;
-    const body = JSON.stringify({ reason, url: tab.url, userAgent, version });
+    const body = JSON.stringify({ reason, url, userAgent, version });
     const headers = { 'Cache-Control': 'no-cache', 'Content-type': 'application/json' };
-    const url = `${apiUrl}/report/`;
 
-    const response = await fetch(url, { body, headers, method: 'POST' });
+    const response = await fetch(`${apiUrl}/report/`, { body, headers, method: 'POST' });
     callback?.((await response.json()).data);
   } catch {
     console.error("Can't send report");
