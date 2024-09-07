@@ -7051,6 +7051,7 @@
       "[id*=\"CoockieInformation\"]",
       "[id*=\"cookie_info_bar\"]",
       "[id*=\"nx_gdpr_modal\"]",
+      "[id*=\"ppms_cm_consent_popup\"]",
       "[id*=\"sp_message_container_\"]",
       "[id^=\"ccpa-notification-banner\"]",
       "[id^=\"CookieMessage_\"]",
@@ -13969,5 +13970,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725692198501"
+  "version": "1725692348295"
 }
