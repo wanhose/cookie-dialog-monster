@@ -608,6 +608,7 @@
     "||itkadmin.de/_javascripts/cookiesolution/es_cookie_solution_sources_v2.js^",
     "||js.vxcdn.com/usercentrics-sdk^",
     "||lensois.com/wp-admin/admin-ajax.php",
+    "||myprivacy-static.dpgmedia.net/consent.js^",
     "||optanon.blob.core.windows.net^",
     "||prod.widgets.burgerprofiel.vlaanderen.be/*/js.cookie.js^",
     "||redditstatic.com/onetrust.*.js",
@@ -13977,5 +13978,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725693653844"
+  "version": "1725693800068"
 }
