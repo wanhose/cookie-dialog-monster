@@ -6620,6 +6620,7 @@
       ".voc-cookie-message",
       ".vp-cookie-consent",
       ".vs-info-cookies-modal",
+      ".vue-notification-group:has(#cookie-title)",
       ".vw_js_cookie_eu_policy",
       ".vw_system_notification_opt_in",
       ".vw-cookie-alert",
@@ -13974,5 +13975,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725692978584"
+  "version": "1725693328978"
 }
