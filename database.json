@@ -1095,6 +1095,7 @@
       ".page",
       ".row",
       ".rp-container",
+      ".sp-module-content",
       ".sv-portlet > .rs_preserve",
       ".wrapper",
       "#__next",
@@ -13972,5 +13973,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725692532133"
+  "version": "1725692764385"
 }
