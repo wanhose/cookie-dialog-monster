@@ -13945,6 +13945,7 @@
       "efilli-layout-default",
       "epaas-consent-drawer-shell",
       "evd-cookie-info",
+      "footer + div:has(.gdpr-window)",
       "form:has(#cookieUstaw)",
       "html.xv-responsive #disclaimer_background",
       "kuma-cookie-bar",
@@ -13968,5 +13969,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725691561027"
+  "version": "1725692198501"
 }
