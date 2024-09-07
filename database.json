@@ -451,14 +451,8 @@
       "selector": "[data-t=\"continueWithoutAccepting\"]"
     },
     {
-      "action": "click",
-      "domain": "myprivacy.dpgmedia",
-      "selector": ".pg-accept-button"
-    },
-    {
-      "action": "click",
-      "domain": "myprivacy.dpgmedia.be",
-      "selector": "#pg-accept-btn"
+      "action": "reload",
+      "domain": "myprivacy.dpgmedia"
     },
     {
       "action": "reset",
@@ -609,6 +603,7 @@
     "||js.vxcdn.com/usercentrics-sdk^",
     "||lensois.com/wp-admin/admin-ajax.php",
     "||myprivacy-static.dpgmedia.net/consent.js^",
+    "||myprivacy.dpgmedia.*/consent^",
     "||optanon.blob.core.windows.net^",
     "||prod.widgets.burgerprofiel.vlaanderen.be/*/js.cookie.js^",
     "||redditstatic.com/onetrust.*.js",
@@ -13979,5 +13974,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725695466635"
+  "version": "1725696000532"
 }
