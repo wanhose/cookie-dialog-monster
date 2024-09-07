@@ -13941,6 +13941,7 @@
       "cmm-cookie-banner",
       "consent.ng-isolate-scope",
       "cookie-solution-banner",
+      "cookiebanner",
       "correos-cdk-cookies-module",
       "dialog.consent.js-consent",
       "dile-cookies-consent",
@@ -13973,5 +13974,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725692764385"
+  "version": "1725692978584"
 }
