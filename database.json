@@ -1105,7 +1105,8 @@
       "#main",
       "#root",
       "#wrapperDivisions",
-      "body > *"
+      "body > *",
+      "div:has(#main)"
     ],
     "selectors": [
       ".___eucookiePopup",
@@ -6700,6 +6701,7 @@
       ".wp_privacy_cookie_wall-prompt-dialog-box",
       ".wp-gdpr-cookie-notice-wrap",
       ".wp-privacy-prompt-dialog-box",
+      ".wp-pt-cookie-consent",
       ".wp-statistics-opt-out",
       ".wpc-cookie-warning",
       ".wpcc-bottom",
@@ -13975,5 +13977,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725693328978"
+  "version": "1725693653844"
 }
