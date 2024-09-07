@@ -3648,6 +3648,7 @@
       ".cookies-info",
       ".cookies-information",
       ".cookies-informer-section",
+      ".cookies-informer",
       ".cookies-infos",
       ".cookies-inner",
       ".cookies-inUse-alert",
@@ -4750,6 +4751,7 @@
       ".gt-cookies-warning",
       ".gt-ui-cookie-bar",
       ".gtec-popup-datenschutz",
+      ".gtm-cookies-informer",
       ".guj-cb",
       ".haas-cookie-dialog",
       ".has-cookie-message",
@@ -13965,5 +13967,5 @@
       "ytd-consent-bump-v2-lightbox"
     ]
   },
-  "version": "1725643469691"
+  "version": "1725690732034"
 }
