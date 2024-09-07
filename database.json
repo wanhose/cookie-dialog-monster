@@ -252,20 +252,10 @@
       "selector": "#CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll"
     },
     {
-      "action": "click",
-      "domain": "amazon.de",
-      "selector": "#sp-cc-rejectall-link"
-    },
-    {
       "action": "resetAll",
       "domain": "automobielmanagement.nl",
       "property": "filter",
       "selector": "body > *"
-    },
-    {
-      "action": "click",
-      "domain": "bbc.com",
-      "selector": "[aria-label=\"I do not agree\"]"
     },
     {
       "action": "click",
@@ -306,8 +296,8 @@
     },
     {
       "action": "click",
-      "domain": "consent.google",
-      "selector": "[aria-label=\"Reject all\"]"
+      "domain": "consent.google.com",
+      "selector": "[aria-label=\"Alle ablehnen\"], [aria-label=\"Odrzuć wszystko\"], [aria-label=\"Rechazar todo\"], [aria-label=\"Recusar tudo\"], [aria-label=\"Reject all\"], [aria-label=\"Rejeitar tudo\"], [aria-label=\"Respinge tot\"], [aria-label=\"Rifiuta tutto\"], [aria-label=\"Tout refuser\"], [aria-label=\"Отклонить все\"]"
     },
     {
       "action": "click",
@@ -316,8 +306,8 @@
     },
     {
       "action": "click",
-      "domain": "consent.youtube",
-      "selector": "[aria-label=\"Reject all\"]"
+      "domain": "consent.youtube.com",
+      "selector": "[aria-label=\"Alle ablehnen\"], [aria-label=\"Odrzuć wszystko\"], [aria-label=\"Rechazar todo\"], [aria-label=\"Recusar tudo\"], [aria-label=\"Reject all\"], [aria-label=\"Rejeitar tudo\"], [aria-label=\"Respinge tot\"], [aria-label=\"Rifiuta tutto\"], [aria-label=\"Tout refuser\"], [aria-label=\"Отклонить все\"]"
     },
     {
       "action": "click",
@@ -374,61 +364,6 @@
       "action": "click",
       "domain": "golem.de",
       "selector": "[title=\"Zustimmen und weiter\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label*=\"Google\"][role=\"dialog\"] button:not([aria-label]):not([tabindex]):first-child"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Alle ablehnen\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Odrzuć wszystko\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Rechazar todo\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Recusar tudo\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Reject all\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Rejeitar tudo\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Respinge tot\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Rifiuta tutto\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Tout refuser\"]"
-    },
-    {
-      "action": "click",
-      "domain": "google",
-      "selector": "[aria-label=\"Отклонить все\"]"
     },
     {
       "action": "click",
@@ -520,53 +455,8 @@
     },
     {
       "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Alle ablehnen\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Odrzuć wszystko\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Rechazar todo\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Recusar tudo\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Reject all\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Rejeitar tudo\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Respinge tot\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Rifiuta tutto\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Tout refuser\"]"
-    },
-    {
-      "action": "click",
-      "domain": "youtube",
-      "selector": "[aria-label=\"Отклонить все\"]"
+      "domain": "youtube.com",
+      "selector": "[aria-label*=\"ablehnen\"], [aria-label*=\"Reject\"], [aria-label*=\"Rechazar\"], [aria-label*=\"refuser\"], [aria-label*=\"Rifiuta\"], [aria-label*=\"Nie wyrażaj zgody\"], [aria-label*=\"Rejeitar\"], [aria-label*=\"Recusar\"], [aria-label*=\"Resping\"], [aria-label*=\"Запретить\"]"
     },
     {
       "action": "click",
@@ -656,8 +546,7 @@
       "visualstudio.com",
       "wirtschaftscompass.at",
       "xkcd.com",
-      "yandex.ru",
-      "youtube.com"
+      "yandex.ru"
     ],
     "tags": [
       "__SLOT-EL",
@@ -2030,6 +1919,7 @@
       ".consent-banner__content--gdpr-v2",
       ".consent-banner",
       ".consent-bar",
+      ".consent-bump-v2-lightbox",
       ".consent-confirmation-banner",
       ".consent-container--banner",
       ".consent-container",
@@ -13971,8 +13861,9 @@
       "web-component-ilsa-cookies-manager",
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
-      "ytd-consent-bump-v2-lightbox"
+      "ytd-consent-bump-v2-lightbox",
+      "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725696000532"
+  "version": "1725700173038"
 }
