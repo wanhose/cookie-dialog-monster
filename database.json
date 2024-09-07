@@ -525,15 +525,19 @@
       "ircan.org",
       "jobs.lever.co",
       "key-shortcut.com",
+      "live.com",
       "login.microsoftonline.com",
       "mantisbt.org",
       "mein.stadtmobil.de",
       "mossgreen.github.io",
       "musicmeter.nl",
+      "office.com",
+      "office365.com",
       "personio.com",
       "restaurantguru.com",
       "retroachievements.org",
       "seeklogo.com",
+      "sharepoint.com",
       "shuttledirect.com",
       "sis.redsys.es",
       "socialdeal.be",
@@ -13865,5 +13869,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725700173038"
+  "version": "1725705123996"
 }
