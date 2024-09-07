@@ -89,14 +89,6 @@ let initiallyVisible = document.visibilityState === 'visible';
 const options = { childList: true, subtree: true };
 
 /**
- * @description Is consent preview page?
- */
-const preview =
-  (hostname.startsWith('consent.') &&
-    !(hostname.startsWith('consent.google') || hostname.startsWith('consent.youtube'))) ||
-  hostname.startsWith('myprivacy.');
-
-/**
  * @description Elements that were already matched and are removable
  * @type {HTMLElement[]}
  */
@@ -372,6 +364,10 @@ function fix() {
           element?.style?.removeProperty(property);
           break;
         }
+        case 'reload': {
+          window.location.reload();
+          break;
+        }
         case 'reset': {
           const element = document.querySelector(selector);
           element?.style?.setProperty(property, 'initial', 'important');
@@ -431,7 +427,7 @@ function restoreDOM() {
 function run(params = {}) {
   const { containers, elements, skipMatch } = params;
 
-  if (document.body?.children.length && !preview && state.enabled && tokens.selectors.length) {
+  if (document.body?.children.length && state.enabled && tokens.selectors.length) {
     fix();
 
     if (elements?.length) {
@@ -482,7 +478,7 @@ async function setUp(params = {}) {
  * @type {MutationObserver}
  */
 const observer = new MutationObserver((mutations) => {
-  if (preview || !state.enabled || !tokens.selectors.length) {
+  if (!state.enabled || !tokens.selectors.length) {
     return;
   }
 
@@ -505,11 +501,7 @@ browser.runtime.onMessage.addListener(async (message) => {
     }
     case 'RUN': {
       await setUp({ skipRunFn: true });
-      run(
-        removables.length
-          ? { elements: removables, skipMatch: true }
-          : { containers: tokens.containers }
-      );
+      run({ elements: removables, skipMatch: true });
       break;
     }
   }
@@ -521,7 +513,7 @@ browser.runtime.onMessage.addListener(async (message) => {
  * @listens window#DOMContentLoaded
  * @returns {void}
  */
-window.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   if (document.visibilityState === 'visible') {
     await setUp();
   }
@@ -535,7 +527,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 window.addEventListener('pageshow', async (event) => {
   if (document.visibilityState === 'visible' && event.persisted) {
     await setUp();
-    run({ containers: tokens.containers });
   }
 });
 
