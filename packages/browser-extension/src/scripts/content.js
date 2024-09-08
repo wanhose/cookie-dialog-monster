@@ -291,8 +291,6 @@ function match(element, skipMatch) {
 
   const hasAttributes = !!element.getAttributeNames().filter((x) => x !== 'data-nosnippet').length;
 
-  console.log(element);
-
   if (!hasAttributes && !tagName.includes('-')) {
     forceClean(element);
   }
