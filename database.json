@@ -5307,6 +5307,7 @@
       ".modal-ley-cookies",
       ".modal-mask-class",
       ".modal-strip[data-cookie]",
+      ".modal[aria-live=\"assertive\"]:has(.cookie-button)",
       ".modalcooky",
       ".modCookieBar",
       ".modCookiesConsent",
@@ -6808,8 +6809,8 @@
       "[class$=\"BandeauCookies\"]",
       "[class$=\"UpdatePanelCookie\"]",
       "[cnn-cookie-policy]",
-      "[consent-skip-blocker][data-bg]",
       "[consent-skip-blocker][data-bg] > dialog",
+      "[consent-skip-blocker][data-bg]",
       "[cookie-unique-name]",
       "[css-main-site] #policy-div",
       "[data-acris-cookie-consent=\"true\"]",
@@ -13870,5 +13871,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725776505494"
+  "version": "1725776921695"
 }
