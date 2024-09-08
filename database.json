@@ -481,6 +481,7 @@
     "||chollometro.com/assets/js/CookiesMessage*.js^",
     "||cmp.inmobi.com^",
     "||consent.cookiebot.com^",
+    "||consent.cookiefirst.com^",
     "||consent.trustarc.com^",
     "||consentcdn.cookiebot.com^",
     "||cookiehub.net^",
@@ -13871,5 +13872,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725776921695"
+  "version": "1725777170641"
 }
