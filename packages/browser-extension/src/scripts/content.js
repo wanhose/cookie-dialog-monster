@@ -125,8 +125,12 @@ function clean(elements, skipMatch) {
       if (match(element, skipMatch)) {
         const observer = new MutationObserver(forceElementStyles);
 
-        element.setAttribute(dataAttributeName, 'true');
-        element.style.setProperty('display', 'none', 'important');
+        if (element instanceof HTMLDialogElement) {
+          element.close();
+        } else {
+          element.setAttribute(dataAttributeName, 'true');
+          element.style.setProperty('display', 'none', 'important');
+        }
 
         observer.observe(element, {
           attributes: true,
@@ -185,8 +189,6 @@ function forceElementStyles(mutations, observer) {
 
     if (value === null) {
       observer.disconnect();
-      element.removeAttribute(dataAttributeName);
-      element.style.removeProperty('display');
     } else {
       element.style.setProperty('display', 'none', 'important');
     }
@@ -288,6 +290,8 @@ function match(element, skipMatch) {
   }
 
   const hasAttributes = !!element.getAttributeNames().filter((x) => x !== 'data-nosnippet').length;
+
+  console.log(element);
 
   if (!hasAttributes && !tagName.includes('-')) {
     forceClean(element);
@@ -404,10 +408,13 @@ function restoreDOM() {
     }
   }
 
-  const elements = getElements(`[${dataAttributeName}]`);
-
-  for (const element of elements) {
+  for (const element of removables) {
     element.removeAttribute(dataAttributeName);
+    element.style.removeProperty('display');
+
+    if (element instanceof HTMLDialogElement) {
+      element.showModal();
+    }
   }
 
   for (const element of [document.body, document.documentElement]) {
