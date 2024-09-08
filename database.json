@@ -296,7 +296,7 @@
     },
     {
       "action": "click",
-      "domain": "consent.google.com",
+      "domain": "consent.google",
       "selector": "[aria-label=\"Alle ablehnen\"], [aria-label=\"Odrzuć wszystko\"], [aria-label=\"Rechazar todo\"], [aria-label=\"Recusar tudo\"], [aria-label=\"Reject all\"], [aria-label=\"Rejeitar tudo\"], [aria-label=\"Respinge tot\"], [aria-label=\"Rifiuta tutto\"], [aria-label=\"Tout refuser\"], [aria-label=\"Отклонить все\"]"
     },
     {
@@ -306,7 +306,7 @@
     },
     {
       "action": "click",
-      "domain": "consent.youtube.com",
+      "domain": "consent.youtube",
       "selector": "[aria-label=\"Alle ablehnen\"], [aria-label=\"Odrzuć wszystko\"], [aria-label=\"Rechazar todo\"], [aria-label=\"Recusar tudo\"], [aria-label=\"Reject all\"], [aria-label=\"Rejeitar tudo\"], [aria-label=\"Respinge tot\"], [aria-label=\"Rifiuta tutto\"], [aria-label=\"Tout refuser\"], [aria-label=\"Отклонить все\"]"
     },
     {
