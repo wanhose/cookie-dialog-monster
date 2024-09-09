@@ -5228,7 +5228,6 @@
       ".messaggio_cookies",
       ".mf-cookie-banner",
       ".mf-cookie-model",
-      ".mfp-ready",
       ".mgv-cookies-banner",
       ".mgxCookieConsent",
       ".mh5_CookieNotice",
@@ -13872,5 +13871,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725777170641"
+  "version": "1725917999552"
 }
