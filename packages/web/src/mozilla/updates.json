@@ -41,6 +41,10 @@
         {
           "version": "7.2.3",
           "update_link": "https://www.cookie-dialog-monster.com/releases/7.2.3.xpi"
+        },
+        {
+          "version": "7.2.4",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.2.4.xpi"
         }
       ]
     }

@@ -247,7 +247,6 @@ async function submitButtonClickHandler(event) {
   const issueButton = dialog?.getElementsByClassName('report-dialog-issue-button')[0];
   const submitView = dialog?.getElementsByClassName('report-dialog-submit-view')[0];
   const userAgent = window.navigator.userAgent;
-
   const issueUrl = await dispatch({ userAgent, reason: reasonText, url: urlText, type: 'REPORT' });
 
   formView?.setAttribute('hidden', 'true');

@@ -296,7 +296,7 @@
     },
     {
       "action": "click",
-      "domain": "consent.google.com",
+      "domain": "consent.google",
       "selector": "[aria-label=\"Alle ablehnen\"], [aria-label=\"Odrzuć wszystko\"], [aria-label=\"Rechazar todo\"], [aria-label=\"Recusar tudo\"], [aria-label=\"Reject all\"], [aria-label=\"Rejeitar tudo\"], [aria-label=\"Respinge tot\"], [aria-label=\"Rifiuta tutto\"], [aria-label=\"Tout refuser\"], [aria-label=\"Отклонить все\"]"
     },
     {
@@ -306,7 +306,7 @@
     },
     {
       "action": "click",
-      "domain": "consent.youtube.com",
+      "domain": "consent.youtube",
       "selector": "[aria-label=\"Alle ablehnen\"], [aria-label=\"Odrzuć wszystko\"], [aria-label=\"Rechazar todo\"], [aria-label=\"Recusar tudo\"], [aria-label=\"Reject all\"], [aria-label=\"Rejeitar tudo\"], [aria-label=\"Respinge tot\"], [aria-label=\"Rifiuta tutto\"], [aria-label=\"Tout refuser\"], [aria-label=\"Отклонить все\"]"
     },
     {
@@ -481,6 +481,7 @@
     "||chollometro.com/assets/js/CookiesMessage*.js^",
     "||cmp.inmobi.com^",
     "||consent.cookiebot.com^",
+    "||consent.cookiefirst.com^",
     "||consent.trustarc.com^",
     "||consentcdn.cookiebot.com^",
     "||cookiehub.net^",
@@ -525,15 +526,19 @@
       "ircan.org",
       "jobs.lever.co",
       "key-shortcut.com",
+      "live.com",
       "login.microsoftonline.com",
       "mantisbt.org",
       "mein.stadtmobil.de",
       "mossgreen.github.io",
       "musicmeter.nl",
+      "office.com",
+      "office365.com",
       "personio.com",
       "restaurantguru.com",
       "retroachievements.org",
       "seeklogo.com",
+      "sharepoint.com",
       "shuttledirect.com",
       "sis.redsys.es",
       "socialdeal.be",
@@ -5303,6 +5308,7 @@
       ".modal-ley-cookies",
       ".modal-mask-class",
       ".modal-strip[data-cookie]",
+      ".modal[aria-live=\"assertive\"]:has(.cookie-button)",
       ".modalcooky",
       ".modCookieBar",
       ".modCookiesConsent",
@@ -6804,6 +6810,7 @@
       "[class$=\"BandeauCookies\"]",
       "[class$=\"UpdatePanelCookie\"]",
       "[cnn-cookie-policy]",
+      "[consent-skip-blocker][data-bg] > dialog",
       "[consent-skip-blocker][data-bg]",
       "[cookie-unique-name]",
       "[css-main-site] #policy-div",
@@ -13865,5 +13872,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725700173038"
+  "version": "1725777170641"
 }

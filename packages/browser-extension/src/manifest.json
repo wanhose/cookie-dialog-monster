@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "7.2.3",
+  "version": "7.2.4",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -22,7 +22,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{77e2c00b-e173-4604-863d-01645d8d2826}",
-      "strict_min_version": "109.0",
+      "strict_min_version": "113.0",
       "update_url": "https://www.cookie-dialog-monster.com/mozilla/updates.json"
     }
   },
@@ -34,12 +34,7 @@
         "*://*.codesandbox.io/*",
         "*://*.facebook.com/*",
         "*://*.googleapis.com/embed/*",
-        "*://*.messenger.com/*",
-        "*://*.office365.com/*",
-        "*://*.officeapps.live.com/*",
         "*://*.olympics.com/*",
-        "*://*.sharepoint.com/*",
-        "*://*.suite.office.com/*",
         "*://*.youtube-nocookie.com/embed/*",
         "*://*.youtube.com/embed/*",
         "*://translate.google.ca/*",
