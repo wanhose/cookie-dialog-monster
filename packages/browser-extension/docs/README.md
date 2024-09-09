@@ -14,7 +14,7 @@
 - All browsers based on Chromium 88+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
 - Google Chrome 109+
 - Microsoft Edge 109+
-- Mozilla Firefox 109+
+- Mozilla Firefox 113+
 - Mozilla Firefox Mobile 126+
 
 ## Installation (for Mozilla Firefox users)
