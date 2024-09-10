@@ -992,6 +992,7 @@
       "#a-page",
       "#app",
       "#content",
+      "#layout > [data-fetch-key]",
       "#main",
       "#root",
       "#wrapperDivisions",
@@ -4329,7 +4330,6 @@
       ".footer__cookie-info",
       ".footer__cookie",
       ".footer__cookiebar",
-      ".footer__cookies",
       ".footer__eu-cookie",
       ".footer__gdrp",
       ".footer_cnil",
@@ -13871,5 +13871,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725917999552"
+  "version": "1725991071722"
 }
