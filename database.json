@@ -972,6 +972,7 @@
       "popin-gdpr-no-scroll",
       "shopee-no-scroll",
       "show-cookie-policy-info",
+      "snoop-modal-open",
       "sp-message-open",
       "start-cookies",
       "ta-cc-modal-open",
@@ -13870,8 +13871,9 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
+      ".snoop-cc",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725991367249"
+  "version": "1725991877853"
 }
