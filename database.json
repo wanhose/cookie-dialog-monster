@@ -479,7 +479,9 @@
     "||cdn.optable.co^",
     "||cdntranscend.eventbrite.com^",
     "||chollometro.com/assets/js/CookiesMessage*.js^",
+    "||cmp.huffingtonpost.fr^",
     "||cmp.inmobi.com^",
+    "||cmp.prisa.com^",
     "||consent.cookiebot.com^",
     "||consent.cookiefirst.com^",
     "||consent.trustarc.com^",
@@ -13871,5 +13873,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725991071722"
+  "version": "1725991367249"
 }
