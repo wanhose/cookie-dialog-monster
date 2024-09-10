@@ -931,6 +931,7 @@
       ".overlay",
       ".ui-widget-overlay",
       ".usercentrics-bg",
+      "#overlay",
       "overlay-block"
     ],
     "classes": [
@@ -13877,5 +13878,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725992569329"
+  "version": "1725992780552"
 }
