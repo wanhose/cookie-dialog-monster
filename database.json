@@ -1000,6 +1000,7 @@
       "#main",
       "#root",
       "#wrapperDivisions",
+      "#wt-modal-container",
       "body > *",
       "div:has(#main)",
       "html > *"
@@ -13879,5 +13880,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725992950866"
+  "version": "1725998053444"
 }
