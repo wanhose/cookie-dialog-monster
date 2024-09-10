@@ -13852,6 +13852,8 @@
       "correos-cdk-cookies-module",
       "dialog.consent.js-consent",
       "dile-cookies-consent",
+      "div:has(+ * a[href=\"https://www.viagogo.com/help/cookies\"])",
+      "div:not(#app):has([href=\"https://www.viagogo.com/help/cookies\"])",
       "div[jsmodel]:not([jscontroller]):has([data-cookie-path])",
       "div[role=\"dialog\"]:has([aria-describedby=\"consentbar\"])",
       "efilli-layout-default",
@@ -13882,5 +13884,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725999814910"
+  "version": "1726001029121"
 }
