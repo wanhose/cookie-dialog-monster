@@ -2711,6 +2711,7 @@
       ".cookie-permission--backdrop",
       ".cookie-permission-banner",
       ".cookie-permission-container-big",
+      ".cookie-permission-container",
       ".cookie-permission-prompt",
       ".cookie-permission",
       ".cookie-plugin",
@@ -6852,6 +6853,7 @@
       "[data-cookie-name=\"header_cookie_policy\"]",
       "[data-cookie-notification]",
       "[data-cookie-path]",
+      "[data-cookie-permission=\"true\"]",
       "[data-cookie-policy-modal]",
       "[data-cookie-validity-days]",
       "[data-cookie-warning]",
@@ -13880,5 +13882,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725998053444"
+  "version": "1725999814910"
 }
