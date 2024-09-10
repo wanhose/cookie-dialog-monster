@@ -1001,7 +1001,8 @@
       "#root",
       "#wrapperDivisions",
       "body > *",
-      "div:has(#main)"
+      "div:has(#main)",
+      "html > *"
     ],
     "selectors": [
       ".___eucookiePopup",
@@ -13878,5 +13879,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1725992780552"
+  "version": "1725992950866"
 }
