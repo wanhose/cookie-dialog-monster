@@ -22,7 +22,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{77e2c00b-e173-4604-863d-01645d8d2826}",
-      "strict_min_version": "113.0",
+      "strict_min_version": "126.0",
       "update_url": "https://www.cookie-dialog-monster.com/mozilla/updates.json"
     }
   },
