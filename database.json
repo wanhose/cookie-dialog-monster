@@ -312,7 +312,7 @@
     {
       "action": "click",
       "domain": "dailymotion.com",
-      "selector": "[class*=\"TCF2Popup__containerButtons\"] > button:nth-child(2)"
+      "selector": "[aria-label=\"Continue without accepting\"]"
     },
     {
       "action": "click",
@@ -13887,5 +13887,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726003478163"
+  "version": "1726171735029"
 }
