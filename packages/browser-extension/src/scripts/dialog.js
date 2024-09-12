@@ -137,22 +137,6 @@ function inputKeyDownHandler(event) {
 }
 
 /**
- * @description Input paste handler
- * @param {ClipboardEvent} event
- */
-function inputPasteHandler(event) {
-  event.preventDefault();
-
-  const text = event.clipboardData?.getData('text').replace(/\r?\n|\r/g, ' ');
-  const selection = window.getSelection();
-
-  if (selection.rangeCount) {
-    selection.deleteFromDocument();
-    selection.getRangeAt(0).insertNode(document.createTextNode(text));
-  }
-}
-
-/**
  * @description Show report dialog
  */
 function showReportDialog() {
@@ -184,11 +168,9 @@ function showReportDialog() {
   link.setAttribute('rel', 'stylesheet');
   reasonInput.addEventListener('input', inputChangeHandler);
   reasonInput.addEventListener('keydown', inputKeyDownHandler);
-  reasonInput.addEventListener('paste', inputPasteHandler);
   submitButton.addEventListener('click', submitButtonClickHandler);
   urlInput.addEventListener('input', inputChangeHandler);
   urlInput.addEventListener('keydown', inputKeyDownHandler);
-  urlInput.addEventListener('paste', inputPasteHandler);
 
   dispatch({ type: 'INSERT_DIALOG_CSS' });
   document.body.appendChild(dialog);
