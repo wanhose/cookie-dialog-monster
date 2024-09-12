@@ -8063,6 +8063,7 @@
       "#consentManagerContent",
       "#consentManagerOverlay",
       "#consentModal",
+      "#consentpanel",
       "#consentPopup",
       "#consentUI",
       "#consentWrapper",
@@ -13891,5 +13892,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726172961839"
+  "version": "1726173556653"
 }
