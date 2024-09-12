@@ -373,6 +373,14 @@ function fix() {
     ionRouterOutlet.removeAttribute('inert');
   }
 
+  const t4Wrapper = document.getElementsByClassName('t4-wrapper')[0];
+
+  if (t4Wrapper) {
+    actions.add('t4-wrapper');
+    // 2024-09-12: fix #945 temporarily
+    t4Wrapper.removeAttribute('inert');
+  }
+
   dispatch({ type: 'SET_BADGE', value: actions.size });
 }
 
