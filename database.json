@@ -6312,6 +6312,7 @@
       ".terms-conditions-bottom-line",
       ".terms-policy-bar",
       ".tesco-cookie",
+      ".test-cookie-consent",
       ".test-cookie-notification",
       ".testoCookiePolicy",
       ".text-cookie",
@@ -6848,6 +6849,7 @@
       "[data-components=\"pdr-ws1lib-header\"]",
       "[data-container-acceptcookies]",
       "[data-controller=\"cookie-bar\"]",
+      "[data-controller=\"cookie-consent\"]",
       "[data-cookie-bar-target=\"modal\"]",
       "[data-cookie-consent-overlay]",
       "[data-cookie-id]",
@@ -13889,5 +13891,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726172701336"
+  "version": "1726172961839"
 }
