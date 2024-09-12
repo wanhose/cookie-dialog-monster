@@ -489,6 +489,7 @@
     "||consentcdn.cookiebot.com^",
     "||cookiehub.net^",
     "||cp.as.com^",
+    "||download.amd.com/OneTrust^",
     "||emp.bbci.co.uk^",
     "||eu.fastcmp.com^",
     "||forum.vorondesign.com/js/xf/notice.min.js^",
@@ -1833,7 +1834,6 @@
       ".cmnstr-activated",
       ".cmp_cookies_usage_wr",
       ".cmp-app_gdpr",
-      ".cmp-container:not([data-component=\"cmp-container\"])",
       ".cmp-cookie-stmt",
       ".cmp-cookie",
       ".cmp-desktop",
@@ -13888,5 +13888,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726171878937"
+  "version": "1726172508025"
 }
