@@ -932,10 +932,10 @@
       ".js--overlay",
       ".modal-backdrop",
       ".offcanvas-backdrop",
-      ".overlay",
+      ".overlay:not([class*=\"ytd\"])",
       ".ui-widget-overlay",
       ".usercentrics-bg",
-      "#overlay",
+      "#overlay:not([class*=\"ytd\"])",
       "overlay-block"
     ],
     "classes": [
@@ -6681,8 +6681,6 @@
       ".xs4all-cookieWall",
       ".xsCookieConsent",
       ".yd-jig-cookielaw",
-      ".ytd-consent-bump-v2-lightbox",
-      ".ytd-consent-bump-v2-renderer",
       ".z-banner-cookie",
       ".z-cookieBar_text",
       ".z-cookieBar_wrapper",
@@ -13894,5 +13892,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726176061602"
+  "version": "1726177329894"
 }
