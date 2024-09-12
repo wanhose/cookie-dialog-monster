@@ -472,6 +472,7 @@
   "rules": [
     "||app.usercentrics.eu^",
     "||b2brouter.net/de/wp-content/plugins/cookies-and-content-security-policy^",
+    "||benno-gymnasium.de/plugins/system/gdpr^",
     "||c.evidon.com^",
     "||cdn-cookieyes.com^",
     "||cdn.consentmanager.net^",
@@ -13888,5 +13889,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726172508025"
+  "version": "1726172701336"
 }
