@@ -4050,6 +4050,7 @@
       ".dr-cookie-info-box",
       ".dr-infobox",
       ".dr-message-cookie",
+      ".drawer-component + .fixed.bottom-6.inset-x-6.flex.justify-center.z-50",
       ".drawer-cookies",
       ".drc-cookie-policy",
       ".dri-ncookies-alert",
@@ -13893,5 +13894,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726174160976"
+  "version": "1726176061602"
 }
