@@ -40,16 +40,12 @@ const reportDialogHtml = `
               ${browser.i18n.getMessage('reportDialog_urlInputLabel')}
               <span class="report-dialog-input-label-required">*</span>
             </div>
-            <div
+            <input
               aria-labelledby="report-dialog-label-url"
-              aria-multiline="false"
               aria-required="true"
               class="report-dialog-input"
-              contenteditable="true"
               id="report-dialog-input-url"
-              role="textbox"
-              tabindex="0"
-            ></div>
+            />
             <div class="report-dialog-input-error" id="report-dialog-input-url-error">
               ${browser.i18n.getMessage('reportDialog_urlInputError')}
             </div>
@@ -59,19 +55,13 @@ const reportDialogHtml = `
               ${browser.i18n.getMessage('reportDialog_reasonInputLabel')}
               <span class="report-dialog-input-label-required">*</span>
             </div>
-            <div
+            <textarea
               aria-labelledby="report-dialog-label-reason"
-              aria-multiline="true"
-              aria-placeholder="${browser.i18n.getMessage('reportDialog_reasonInputLabel')}"
               aria-required="true"
               class="report-dialog-input"
-              contenteditable="true"
               id="report-dialog-input-reason"
-              role="textbox"
-              tabindex="0"
-            >
-              ${browser.i18n.getMessage('reportDialog_reasonInputPlaceholder')}
-            </div>
+              rows="4"
+            >${browser.i18n.getMessage('reportDialog_reasonInputPlaceholder')}</textarea>
             <div class="report-dialog-input-error" id="report-dialog-input-reason-error">
               ${browser.i18n.getMessage('reportDialog_reasonInputError')}
             </div>
@@ -152,8 +142,8 @@ function inputKeyDownHandler(event) {
  */
 function inputPasteHandler(event) {
   event.preventDefault();
-  const text = event.clipboardData?.getData('text').replace(/\r?\n|\r/g, ' ');
 
+  const text = event.clipboardData?.getData('text').replace(/\r?\n|\r/g, ' ');
   const selection = window.getSelection();
 
   if (selection.rangeCount) {
@@ -174,7 +164,7 @@ function showReportDialog() {
 
     existingDialog.showModal();
     submitButton.setAttribute('aria-disabled', 'false');
-    urlInput.textContent = window.location.origin + window.location.pathname;
+    urlInput.setAttribute('value', window.location.origin + window.location.pathname);
     return;
   }
 
@@ -188,8 +178,7 @@ function showReportDialog() {
   const urlInput = dialog?.querySelector('#report-dialog-input-url');
 
   closeButton.addEventListener('click', closeButtonClickHandler);
-  dialog.querySelector('#report-dialog-input-url').textContent =
-    window.location.origin + window.location.pathname;
+  urlInput.setAttribute('value', window.location.origin + window.location.pathname);
   link.setAttribute('href', 'https://fonts.googleapis.com/css?family=Inter');
   link.setAttribute('id', 'report-dialog-font');
   link.setAttribute('rel', 'stylesheet');
@@ -222,9 +211,9 @@ async function submitButtonClickHandler(event) {
 
   const dialog = document.getElementById(reportDialogId);
   const reasonInput = dialog?.querySelector('#report-dialog-input-reason');
-  const reasonText = reasonInput?.textContent.trim();
+  const reasonText = reasonInput?.value.trim();
   const urlInput = dialog?.querySelector('#report-dialog-input-url');
-  const urlText = urlInput?.textContent.trim();
+  const urlText = urlInput?.value.trim();
 
   const errors = validateForm({ reason: reasonText, url: urlText });
 
