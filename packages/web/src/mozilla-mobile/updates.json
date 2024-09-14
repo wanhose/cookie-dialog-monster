@@ -13,6 +13,10 @@
         {
           "version": "7.2.4",
           "update_link": "https://www.cookie-dialog-monster.com/releases/7.2.4-mozilla-mobile.xpi"
+        },
+        {
+          "version": "7.3.0",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/7.3.0-mozilla-mobile.xpi"
         }
       ]
     }

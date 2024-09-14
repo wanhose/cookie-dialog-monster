@@ -126,6 +126,7 @@
 }
 
 #report-dialog .report-dialog-input {
+  all: unset;
   border: 1px solid var(--cookie-dialog-monster-color-tertiary);
   border-radius: 4px;
   color: var(--cookie-dialog-monster-color-secondary);
@@ -213,7 +214,7 @@
   display: flex;
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  height: 39px;
+  height: 42px;
   justify-content: center;
   line-height: 1.2;
   outline: none;

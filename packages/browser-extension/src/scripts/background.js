@@ -115,7 +115,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
     case 'DISABLE_ICON':
       if (isPage && tabId !== undefined) {
         browser.action.setIcon({ path: '/assets/icons/disabled.png', tabId }, suppressLastError);
-        browser.action.setBadgeText({ tabId, text: '' });
       }
       break;
     case 'ENABLE_ICON':
@@ -130,11 +129,8 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       break;
     case 'GET_DATA':
       storage.get('data', ({ data }) => {
-        if (data) {
-          callback(data);
-        } else {
-          refreshData(callback);
-        }
+        if (data) callback(data);
+        else refreshData(callback);
       });
       return true;
     case 'GET_EXCLUSION_LIST':
@@ -163,9 +159,19 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
         script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       }
       break;
+    case 'INSERT_EXTENSION_CSS':
+      if (isPage && tabId !== undefined) {
+        script.insertCSS({ files: ['styles/extension.css'], target: { tabId } });
+      }
+      break;
     case 'REFRESH_DATA':
       refreshData(callback);
       return true;
+    case 'RELOAD_TAB':
+      if (tabId !== undefined) {
+        browser.tabs.reload(tabId, { bypassCache: true });
+      }
+      break;
     case 'REPORT':
       if (tabId !== undefined) {
         report(message, sender.tab, callback);
@@ -173,18 +179,15 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'SET_BADGE':
-      if (tabId !== undefined) {
+      if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
-        browser.action.setBadgeText({ tabId, text: message.value });
+        browser.action.setBadgeText({ tabId, text: message.value ? `${message.value}` : null });
       }
       break;
     case 'SET_HOSTNAME_STATE':
       if (hostname) {
-        if (message.state.enabled === false) {
-          storage.set({ [hostname]: message.state });
-        } else {
-          storage.remove(hostname);
-        }
+        if (message.state.enabled === false) storage.set({ [hostname]: message.state });
+        else storage.remove(hostname);
       }
       break;
     default:
@@ -252,22 +255,20 @@ browser.webRequest.onBeforeRequest.addListener(
         return;
       }
 
-      const hostname = url.split('.').slice(-3).join('.').replace('www.', '');
-      const store = await storage.get(hostname);
+      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+      const { data, ...store } = await storage.get(['data', hostname]);
       const state = store[hostname] ?? { enabled: true };
 
-      if (state.enabled) {
-        const { data } = await storage.get('data');
-
-        if (data?.rules?.length) {
-          browser.declarativeNetRequest.updateSessionRules({
-            addRules: data.rules.map((rule) => ({
-              ...rule,
-              condition: { ...rule.condition, tabIds: [tabId] },
-            })),
-            removeRuleIds: data.rules.map((rule) => rule.id),
-          });
-        }
+      if (data?.rules?.length) {
+        browser.declarativeNetRequest.updateSessionRules({
+          addRules: state.enabled
+            ? data.rules.map((rule) => ({
+                ...rule,
+                condition: { ...rule.condition, tabIds: [tabId] },
+              }))
+            : undefined,
+          removeRuleIds: data.rules.map((rule) => rule.id),
+        });
       }
     }
   },

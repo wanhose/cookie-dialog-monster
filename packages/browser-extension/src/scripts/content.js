@@ -37,10 +37,10 @@ if (typeof browser === 'undefined') {
 }
 
 /**
- * @description Matched elements count
- * @type {number}
+ * @description Actions done by the extension
+ * @type {Set<string>}
  */
-let count = 0;
+let actions = new Set();
 
 /**
  * @description Data object with all the necessary information
@@ -90,9 +90,9 @@ const options = { childList: true, subtree: true };
 
 /**
  * @description Elements that were already matched and are removable
- * @type {HTMLElement[]}
+ * @type {Set<HTMLElement>}
  */
-const removables = [];
+const removables = new Set();
 
 /**
  * @description Elements that were already seen
@@ -123,26 +123,12 @@ function clean(elements, skipMatch) {
       const element = elements[index];
 
       if (match(element, skipMatch)) {
-        const observer = new MutationObserver(forceElementStyles);
+        if (element instanceof HTMLDialogElement) element.close();
+        else element.setAttribute(dataAttributeName, 'true');
 
-        if (element instanceof HTMLDialogElement) {
-          element.close();
-        } else {
-          element.setAttribute(dataAttributeName, 'true');
-          element.style.setProperty('display', 'none', 'important');
-        }
-
-        observer.observe(element, {
-          attributes: true,
-          attributeFilter: [dataAttributeName, 'class', 'style'],
-        });
-
-        count += 1;
-        dispatch({ type: 'SET_BADGE', value: `${count}` });
-
-        if (!removables.includes(element)) {
-          removables.push(element);
-        }
+        actions.add(new Date().getTime().toString());
+        dispatch({ type: 'SET_BADGE', value: actions.size });
+        removables.add(element);
       }
 
       seen.push(element);
@@ -175,23 +161,6 @@ function forceClean(from) {
   if (elements.length) {
     fix();
     clean(elements, true);
-  }
-}
-
-/**
- * @description Force element to have these styles
- * @type {MutationCallback}
- */
-function forceElementStyles(mutations, observer) {
-  for (const mutation of mutations) {
-    const element = mutation.target;
-    const value = element.getAttribute(dataAttributeName);
-
-    if (value === null) {
-      observer.disconnect();
-    } else {
-      element.style.setProperty('display', 'none', 'important');
-    }
   }
 }
 
@@ -341,46 +310,9 @@ function fix() {
   const domains = skips.domains.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   for (const backdrop of backdrops) {
-    if (backdrop.children.length === 0 && backdrop.style.display !== 'none') {
-      backdrop.style.setProperty('display', 'none');
-      count += 1;
-      dispatch({ type: 'SET_BADGE', value: `${count}` });
-    }
-  }
-
-  // 2024-08-02: fix #644 temporarily
-  document.getElementsByTagName('ion-router-outlet')[0]?.removeAttribute('inert');
-
-  for (const fix of fixes) {
-    const { action, domain, property, selector } = fix;
-
-    if (hostname.includes(domain)) {
-      switch (action) {
-        case 'click': {
-          const element = document.querySelector(selector);
-          element?.click();
-          break;
-        }
-        case 'remove': {
-          const element = document.querySelector(selector);
-          element?.style?.removeProperty(property);
-          break;
-        }
-        case 'reload': {
-          window.location.reload();
-          break;
-        }
-        case 'reset': {
-          const element = document.querySelector(selector);
-          element?.style?.setProperty(property, 'initial', 'important');
-          break;
-        }
-        case 'resetAll': {
-          const elements = getElements(selector);
-          elements.forEach((e) => e?.style?.setProperty(property, 'initial', 'important'));
-          break;
-        }
-      }
+    if (backdrop.children.length === 0 && !backdrop.hasAttribute(dataAttributeName)) {
+      actions.add(new Date().getTime().toString());
+      backdrop.setAttribute(dataAttributeName, 'true');
     }
   }
 
@@ -391,37 +323,65 @@ function fix() {
       element?.style.setProperty('overflow-y', 'initial', 'important');
     }
   }
-}
 
-/**
- * @description Restore DOM to its previous state
- * @returns {void}
- */
-function restoreDOM() {
-  const backdrops = getElements(tokens.backdrops);
+  for (const fix of fixes) {
+    const { action, domain, property, selector } = fix;
 
-  for (const backdrop of backdrops) {
-    if (backdrop.children.length === 0 && backdrop.hasAttribute(dataAttributeName)) {
-      backdrop.style.removeProperty('display');
+    if (hostname.includes(domain)) {
+      switch (action) {
+        case 'click': {
+          const element = document.querySelector(selector);
+
+          actions.add('click');
+          element?.click();
+          break;
+        }
+        case 'remove': {
+          const element = document.querySelector(selector);
+
+          actions.add('remove');
+          element?.style?.removeProperty(property);
+          break;
+        }
+        case 'reload': {
+          window.location.reload();
+          break;
+        }
+        case 'reset': {
+          const element = document.querySelector(selector);
+
+          actions.add('reset');
+          element?.style?.setProperty(property, 'initial', 'important');
+          break;
+        }
+        case 'resetAll': {
+          const elements = getElements(selector);
+
+          actions.add('resetAll');
+          elements.forEach((e) => e?.style?.setProperty(property, 'initial', 'important'));
+          break;
+        }
+      }
     }
   }
 
-  for (const element of removables) {
-    element.removeAttribute(dataAttributeName);
-    element.style.removeProperty('display');
+  const ionRouterOutlet = document.getElementsByTagName('ion-router-outlet')[0];
 
-    if (element instanceof HTMLDialogElement) {
-      element.showModal();
-    }
+  if (ionRouterOutlet) {
+    actions.add('ion-router-outlet');
+    // 2024-08-02: fix #644 temporarily
+    ionRouterOutlet.removeAttribute('inert');
   }
 
-  for (const element of [document.body, document.documentElement]) {
-    element?.style.removeProperty('position');
-    element?.style.removeProperty('overflow-y');
+  const t4Wrapper = document.getElementsByClassName('t4-wrapper')[0];
+
+  if (t4Wrapper) {
+    actions.add('t4-wrapper');
+    // 2024-09-12: fix #945 temporarily
+    t4Wrapper.removeAttribute('inert');
   }
 
-  count = 0;
-  seen.splice(0, seen.length);
+  dispatch({ type: 'SET_BADGE', value: actions.size });
 }
 
 /**
@@ -462,18 +422,14 @@ async function setUp(params = {}) {
     skips = data?.skips ?? skips;
     tokens = data?.tokens ?? tokens;
 
-    if (count > 0) {
-      dispatch({ type: 'SET_BADGE', value: `${count}` });
-    }
-
     dispatch({ type: 'ENABLE_ICON' });
+    dispatch({ type: 'INSERT_EXTENSION_CSS' });
+    dispatch({ type: 'SET_BADGE', value: actions.size });
     observer.observe(document.body ?? document.documentElement, options);
-
-    if (!params.skipRunFn) {
-      run({ containers: tokens.containers });
-    }
+    if (!params.skipRunFn) run({ containers: tokens.containers });
   } else {
     dispatch({ type: 'DISABLE_ICON' });
+    dispatch({ type: 'SET_BADGE', value: actions.size });
     observer.disconnect();
   }
 }
@@ -500,13 +456,12 @@ const observer = new MutationObserver((mutations) => {
 browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
     case 'RESTORE': {
-      restoreDOM();
-      await setUp({ skipRunFn: true });
+      await dispatch({ type: 'RELOAD_TAB' });
       break;
     }
     case 'RUN': {
-      await setUp({ skipRunFn: !!removables.length });
-      run({ elements: removables, skipMatch: true });
+      await setUp({ skipRunFn: !!removables.size });
+      run({ elements: [...removables], skipMatch: true });
       break;
     }
   }
