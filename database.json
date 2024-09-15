@@ -367,6 +367,11 @@
     },
     {
       "action": "click",
+      "domain": "google.com",
+      "selector": "[aria-modal=\"true\"][role=\"dialog\"]:has([href*=\"policies.google.com/technologies/cookies\"]) button:not([aria-label]):not([role=\"link\"])"
+    },
+    {
+      "action": "click",
       "domain": "hagglezon.com",
       "selector": "[data-test=\"cookie-submit\"]"
     },
@@ -6727,6 +6732,7 @@
       "[aria-labelledby=\"cookiesTrackingNoticeLink\"]",
       "[aria-labelledby=\"hu-cookies-notice-message\"]",
       "[aria-labelledby=\"ui-dialog-title-cookiebox\"]",
+      "[aria-modal=\"true\"][role=\"dialog\"]:has([href*=\"policies.google.com/technologies/cookies\"])",
       "[bundlename=\"reddit_cookie_banner\"]",
       "[c_data=\"c_cookie_main\"]",
       "[class*=\"_CookieBanner_\"]",
@@ -13902,5 +13908,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726391861653"
+  "version": "1726393090525"
 }
