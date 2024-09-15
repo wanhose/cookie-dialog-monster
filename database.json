@@ -367,7 +367,7 @@
     },
     {
       "action": "click",
-      "domain": "google.com",
+      "domain": "google",
       "selector": "[aria-modal=\"true\"][role=\"dialog\"]:has([href*=\"policies.google.com/technologies/cookies\"]) button:not([aria-label]):not([role=\"link\"])"
     },
     {
@@ -6462,6 +6462,7 @@
       ".ui-cookies-banner",
       ".ui-cookies",
       ".ui-dialog-cookies",
+      ".ui-modal:has([data-test=\"consent-accept-all\"])",
       ".UICookieBanner",
       ".uiCookiesHint",
       ".uitk-gdpr-banner",
@@ -13905,9 +13906,8 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
-      ".ui-modal:has([data-test=\"consent-accept-all\"])",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726393512674"
+  "version": "1726393651312"
 }
