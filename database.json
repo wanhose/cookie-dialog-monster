@@ -6879,6 +6879,7 @@
       "[data-dmid*=\"cookiebar\"]",
       "[data-etsy-promo-cookie-expires]",
       "[data-gdpr-consent-prompt]",
+      "[data-headlessui-portal]:has([alt=\"cookie\"])",
       "[data-headlessui-portal]:has([aria-label=\"Cookie Policy\"])",
       "[data-hook=\"consent-banner-root\"]",
       "[data-id=\"cookie_dialog\"]",
@@ -13899,5 +13900,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726391133078"
+  "version": "1726391330030"
 }
