@@ -487,6 +487,7 @@
     "||consent.cookiebot.com^",
     "||consent.cookiefirst.com^",
     "||consent.trustarc.com^",
+    "||consent.up.welt.de^",
     "||consentbar.interencheres.com^",
     "||consentcdn.cookiebot.com^",
     "||cookiehub.net^",
@@ -13896,5 +13897,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726386412759"
+  "version": "1726390688992"
 }
