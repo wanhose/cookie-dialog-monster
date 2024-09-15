@@ -938,6 +938,7 @@
       ".overlay:not([class*=\"ytd\"])",
       ".ui-widget-overlay",
       ".usercentrics-bg",
+      "[data-aria-hidden=\"true\"][data-state=\"open\"][style=\"pointer-events: auto;\"]",
       "#overlay:not([class*=\"ytd\"])",
       "overlay-block"
     ],
@@ -6985,6 +6986,7 @@
       "[ng-click=\"self.setCookieDisclaimer()\"]",
       "[ng-show^=\"cookiePolicyCtrl\"]",
       "[role=\"banner\"]:has([href*=\"cookie-notice\"])",
+      "[role=\"dialog\"][style=\"pointer-events: auto;\"]:has([href*=\"/tc/privacybeleid\"])",
       "[spec=\"cookie-disclaimer\"]",
       "[src*=\"cmp.autoweek.nl\"]",
       "[src=\"/legal/acuerdo_cookies.html\"]",
@@ -13897,5 +13899,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726390688992"
+  "version": "1726391133078"
 }
