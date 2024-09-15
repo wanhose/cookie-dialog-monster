@@ -5593,6 +5593,7 @@
       ".oe-cookies-law",
       ".off-canvas-wrap > .inner-wrap > .main-content > .container > .full-width.pull-left.hidden-print.cookie-warning-container.alert-info.alert",
       ".offcanvas-cogi-cookie-modal",
+      ".offcanvas-content-container:has(.offcanvas-cookie)",
       ".offcanvas:has(.offcanvas-cookie)",
       ".oh_cookie_notice_wrapper",
       ".okCookiePanel",
@@ -13901,5 +13902,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726391694038"
+  "version": "1726391861653"
 }
