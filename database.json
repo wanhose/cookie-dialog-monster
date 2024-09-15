@@ -8512,7 +8512,7 @@
       "#cookie-accept-panel",
       "#cookie-accept-popup",
       "#cookie-accept-window",
-      "#cookie-accept",
+      "#cookie-accept:not(:has(#name-ga-cookie-accept-bar))",
       "#cookie-acceptance-banner",
       "#cookie-acceptance-wrapper",
       "#cookie-acceptance",
@@ -12451,6 +12451,7 @@
       "#mz-cookies-policy",
       "#n2g_box_cookie_alerte_message",
       "#nafets_imprint-cookie",
+      "#name-ga-cookie-accept-bar",
       "#nav_cookie",
       "#nav-cookie",
       "#navbar-cookie",
@@ -13909,5 +13910,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726394569113"
+  "version": "1726394978957"
 }
