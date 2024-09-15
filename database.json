@@ -937,7 +937,7 @@
   },
   "tokens": {
     "backdrops": [
-      ".cdk-overlay-backdrop",
+      ".cdk-overlay-backdrop:has(+ .cdk-global-overlay-wrapper)",
       ".js--overlay",
       ".modal-backdrop",
       ".offcanvas-backdrop",
@@ -1765,8 +1765,8 @@
       ".ccwrap",
       ".cczcook_banner-wrapper",
       ".cd__cookie",
-      ".cdk-global-overlay-wrapper:has(cookie-law)",
-      ".cdk-global-overlay-wrapper:has(tm-terms-consent)",
+      ".cdk-overlay-pane:has(cookie-law)",
+      ".cdk-overlay-pane:has(tm-terms-consent)",
       ".cdp-cookies-alerta",
       ".ce_rsce_tao_fixed_note",
       ".ce_rsce_vision_fixed_note",
@@ -13909,5 +13909,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726393651312"
+  "version": "1726394569113"
 }
