@@ -395,6 +395,11 @@
       "domain": "myprivacy.dpgmedia"
     },
     {
+      "action": "click",
+      "domain": "off-campers.com",
+      "selector": "[form=\"cookie-consent-form\"][value=\"deny\"]"
+    },
+    {
       "action": "reset",
       "domain": "orcd.co",
       "property": "opacity",
@@ -13910,5 +13915,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726394978957"
+  "version": "1726395866253"
 }
