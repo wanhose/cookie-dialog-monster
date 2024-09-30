@@ -4310,7 +4310,6 @@
       ".F6-cookies_w_js-entrypoint",
       ".fa-cookie",
       ".fadeInUp.animated.js-cookies.v-cookie-message",
-      ".fancybox-overlay",
       ".fasciaCookie",
       ".fb-cookie-law",
       ".fbar-cookie-policy",
@@ -13934,5 +13933,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727697214040"
+  "version": "1727697489834"
 }
