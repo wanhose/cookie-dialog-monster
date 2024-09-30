@@ -953,6 +953,7 @@
   },
   "tokens": {
     "backdrops": [
+      ".cc-policy-overlay",
       ".cdk-overlay-backdrop:has(+ .cdk-global-overlay-wrapper)",
       ".js--overlay",
       ".modal-backdrop",
@@ -13950,5 +13951,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727703698869"
+  "version": "1727704139249"
 }
