@@ -4148,7 +4148,9 @@
       ".ensNotifyBanner",
       ".ensNotifyBannerWrapper",
       ".ensureCookie",
+      ".enzuzo-cookie-modal",
       ".enzuzo-cookiebanner-container",
+      ".enzuzo-modal-wrapper",
       ".enzuzo-notification-text",
       ".eocookie",
       ".ep_cookies",
@@ -4287,6 +4289,7 @@
       ".extreme-cookie",
       ".eyg-cookie-policy-msg",
       ".ez_banner",
+      ".ez-consent",
       ".ez-main-cmp-wrapper",
       ".ez-twentytwentytwo",
       ".f_cookie",
@@ -7044,7 +7047,6 @@
       "#__layout div[class*=\"cookie-popup\"]",
       "#__loadCookie",
       "#__ndcc_cookieImpliedConsent",
-      "#__next > div:has([href=\"/privacy\"])",
       "#__ntk_banner_cookie",
       "#__nuxt > #__layout > .site-wrap > .site-wrap__inner > .popup-wrapper",
       "#__nuxt > div > div.w-full.bg-white.z-50.p-4.px-8.flex.flex-col.fixed.left-0.bottom-0.overflow-scroll[style=\"box-shadow: rgba(0, 0, 0, 0.2) 0px -5px 5px; z-index: 100;\"]",
@@ -11096,6 +11098,7 @@
       "#ensModalWrapper",
       "#ensNotifyBanner",
       "#entryCookie",
+      "#enzuzo-modal-wrap",
       "#eocookie",
       "#ep_cookies_overlay",
       "#EP_cookiesPopup",
@@ -11289,6 +11292,7 @@
       "#ez-cmpv2-container",
       "#ez-cookie-dialog-wrapper",
       "#ez-cookie-dialog",
+      "#ez-cookie-notification",
       "#ez-cookies-wrap",
       "#f_cookie",
       "#f-cookie-policy",
@@ -13915,5 +13919,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1726395866253"
+  "version": "1727690050265"
 }
