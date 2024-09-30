@@ -488,6 +488,7 @@
     "||cdn.consentmanager.net^",
     "||cdn.cookielaw.org^",
     "||cdn.optable.co^",
+    "||cdn.trustcommander.net/privacy^",
     "||cdntranscend.eventbrite.com^",
     "||chollometro.com/assets/js/CookiesMessage*.js^",
     "||city-bahn.de/wp-content/plugins/borlabs-cookie^",
@@ -13928,5 +13929,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727695964989"
+  "version": "1727696116740"
 }
