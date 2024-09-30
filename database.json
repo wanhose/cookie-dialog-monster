@@ -515,6 +515,7 @@
     "||itkadmin.de/_javascripts/cookiesolution/es_cookie_solution_sources_v2.js^",
     "||js.vxcdn.com/usercentrics-sdk^",
     "||lensois.com/wp-admin/admin-ajax.php",
+    "||media.bzcompany.cz/scookies^",
     "||myprivacy-static.dpgmedia.net/consent.js^",
     "||myprivacy.dpgmedia.*/consent^",
     "||optanon.blob.core.windows.net^",
@@ -13934,5 +13935,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727697786744"
+  "version": "1727699290718"
 }
