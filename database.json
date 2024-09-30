@@ -983,6 +983,7 @@
       "ibeugdpr-disabled",
       "idxrcookies-block-user-nav",
       "img-blured",
+      "lock-cookies",
       "modal--is-open",
       "modal-open",
       "no_scroll",
@@ -13919,5 +13920,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727690050265"
+  "version": "1727691671951"
 }
