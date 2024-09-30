@@ -4094,7 +4094,7 @@
       ".dv-responsive div[data-bind*=\"CookiesInfo\"]",
       ".dvcookies-banner-container",
       ".dvscookies-banner-container",
-      ".DVWebNode-conditional-site-wide-wrapper > [data-testid=\"critical-notification\"]",
+      ".DVWebNode-conditional-site-wide-wrapper:has([href*=\"/privacyprefs/primevideo\"])",
       ".DVWebNode-cookie-banner-wrapper",
       ".DVWebNode-cookie-compliance-notification-wrapper",
       ".dwa-embed-cookie-consent-container",
@@ -13921,5 +13921,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727692170771"
+  "version": "1727692814021"
 }
