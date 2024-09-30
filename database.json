@@ -490,6 +490,7 @@
     "||cdn.optable.co^",
     "||cdntranscend.eventbrite.com^",
     "||chollometro.com/assets/js/CookiesMessage*.js^",
+    "||city-bahn.de/wp-content/plugins/borlabs-cookie^",
     "||cmp.huffingtonpost.fr^",
     "||cmp.inmobi.com^",
     "||cmp.prisa.com^",
@@ -13923,5 +13924,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727693172133"
+  "version": "1727693860303"
 }
