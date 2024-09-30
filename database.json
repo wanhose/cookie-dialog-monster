@@ -13889,6 +13889,7 @@
       "app-cookie-consent",
       "app-cookies-bar",
       "app-cookies",
+      "aside:has(.so-cookie-banner)",
       "awsui-alert[dismiss*=\"CookieBanner\"]",
       "bahf-cookie-disclaimer-dpl3",
       "body:not([data-bd-content]) > .advertisement.contentAds.ads.adsbygoogle.top-banners.adbanner.bannerAd.ad-google.AdSense:first-child + div + div[class]:has(button)",
@@ -13935,5 +13936,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727699290718"
+  "version": "1727701733222"
 }
