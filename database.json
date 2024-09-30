@@ -978,6 +978,11 @@
       "cli-barmodal-open",
       "cmp-open",
       "consent-dialog-open",
+      "consent-feature_analytics-false",
+      "consent-feature_maps-false",
+      "consent-feature_marketing_analytics-false",
+      "consent-feature_multivarianztesting-false",
+      "consent-feature_personalisierung-false",
       "consent-modal-open",
       "consent-modal-overflow",
       "cookie_consent",
@@ -995,6 +1000,7 @@
       "ibeugdpr-disabled",
       "idxrcookies-block-user-nav",
       "img-blured",
+      "is-display-consentmanager",
       "lock-cookies",
       "modal--is-open",
       "modal-open",
@@ -4431,6 +4437,7 @@
       ".fz-use-cookies",
       ".g-alert-cookie",
       ".g-consent-manager-banner",
+      ".g-consentmanager",
       ".g-cookie-bar",
       ".g-cookie",
       ".g-cookiebar",
@@ -6884,6 +6891,7 @@
       "[data-component=\"gdpr-banner\"]",
       "[data-component=\"global/PopUpFromCookie\"]",
       "[data-components=\"pdr-ws1lib-header\"]",
+      "[data-consentsettingssavedcookiename=\"tkConsentSettingsSaved\"]",
       "[data-container-acceptcookies]",
       "[data-controller=\"cookie-bar\"]",
       "[data-controller=\"cookie-consent\"]",
@@ -6910,6 +6918,7 @@
       "[data-csa-c-func-deps=\"aui-da-sp-cc\"]",
       "[data-cy=\"Popup cookies\"]",
       "[data-dmid*=\"cookiebar\"]",
+      "[data-entity=\"g-consentmanager\"]",
       "[data-etsy-promo-cookie-expires]",
       "[data-gdpr-consent-prompt]",
       "[data-headlessui-portal]:has([alt=\"cookie\"])",
@@ -6984,6 +6993,7 @@
       "[data-testid=\"main-cookies-banner-container\"]",
       "[data-testid=\"uc-default-banner\"]",
       "[data-testid=\"wa_cookies_banner_modal\"]",
+      "[data-tk-teaser-entity=\"g-consentmanager\"]",
       "[data-tms-id=\"TMS_COOKIE_MESSAGE\"]",
       "[data-token=\"gdpr_cookie_notice\"]",
       "[data-tracking-opt-in-overlay=\"true\"][style=\"z-index: 9999999;\"]",
@@ -13940,5 +13950,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727703143009"
+  "version": "1727703698869"
 }
