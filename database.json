@@ -5426,6 +5426,7 @@
       ".mu-cookie-box",
       ".mui-cookie-banner",
       ".mui-js-cookie-banner",
+      ".muse-ccbanner-outer",
       ".must_show_cookie",
       ".mw_cookie_info_bar",
       ".mw-cookiewarning-container",
@@ -12471,6 +12472,7 @@
       "#mtcookieconsent",
       "#mtv-cookie-notification",
       "#mtv-cookies",
+      "#muse-ccbanner",
       "#mvo-cookie-message",
       "#mw-cookie-policy",
       "#mw-mf-viewport #article_courses_banner",
@@ -13951,5 +13953,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727704139249"
+  "version": "1727704327128"
 }
