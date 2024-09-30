@@ -13918,6 +13918,7 @@
       "consent.ng-isolate-scope",
       "cookie-solution-banner",
       "cookiebanner",
+      ".consent-intro",
       "correos-cdk-cookies-module",
       "dialog.consent.js-consent",
       "dile-cookies-consent",
@@ -13953,5 +13954,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727704327128"
+  "version": "1727705346878"
 }
