@@ -1012,6 +1012,7 @@
     ],
     "containers": [
       ".container",
+      ".dw-content",
       ".footer",
       ".layout",
       ".page",
@@ -13929,5 +13930,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727696116740"
+  "version": "1727696504233"
 }
