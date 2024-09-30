@@ -6549,6 +6549,7 @@
       ".vibrant-app_gdpr",
       ".view-gdpr",
       ".viewport > .page > .cookie-agreement",
+      ".viewportBottom:has(.cookies-wrapper)",
       ".viia-cookie",
       ".visible-cookies",
       ".visitorcookie",
@@ -11317,6 +11318,7 @@
       "#f6-cp-cookiebanner",
       "#facerig-cookies",
       "#faldon-cookies",
+      "#fancybox-wrap:has(.gdpr-modal)",
       "#farmacja_cookie_alert",
       "#fascia-cookie",
       "#fascia-ue-popup",
@@ -13935,9 +13937,8 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
-      "#fancybox-wrap:has(.gdpr-modal)",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727702990803"
+  "version": "1727703143009"
 }
