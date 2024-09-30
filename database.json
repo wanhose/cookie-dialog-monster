@@ -11229,6 +11229,7 @@
       "#eucookiebar",
       "#euCookieBar",
       "#EUCookieBar",
+      "#euCookieBlock",
       "#EuCookieBlock",
       "#eucookiebox",
       "#eucookieconsent",
@@ -13924,5 +13925,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727694994364"
+  "version": "1727695307027"
 }
