@@ -496,6 +496,7 @@
     "||cmp.uniconsent.com^",
     "||consent.cookiebot.com^",
     "||consent.cookiefirst.com^",
+    "||consent.pdf24.org^",
     "||consent.trustarc.com^",
     "||consent.up.welt.de^",
     "||consentbar.interencheres.com^",
@@ -13920,5 +13921,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727691671951"
+  "version": "1727692170771"
 }
