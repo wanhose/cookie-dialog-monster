@@ -6755,7 +6755,7 @@
       "[class*=\"_gdpr-cookie-popup_\"]",
       "[class*=\"-CookiesBar-\"]",
       "[class*=\"AnalyticsFooter-module--container\"]",
-      "[class*=\"consent-banner\"]",
+      "[class*=\"consent-banner\"]:not(#page)",
       "[class*=\"consent-manager\"]",
       "[class*=\"ConsentBanner\"]",
       "[class*=\"cookie-consent-CookieConsent-bottomSheet\"]",
@@ -13924,5 +13924,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727693860303"
+  "version": "1727694994364"
 }
