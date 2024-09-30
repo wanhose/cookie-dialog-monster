@@ -1,3 +1,8 @@
 *[data-cookie-dialog-monster='true'] {
   clip-path: circle(0px) !important;
+  display: none !important;
+  height: 0px !important;
+  overflow: hidden !important;
+  transform: scale(0) !important;
+  visibility: hidden !important;
 }
