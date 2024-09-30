@@ -8803,6 +8803,7 @@
       "#cookie-line",
       "#cookie-list",
       "#cookie-manager-dialog",
+      "#cookie-manager-window",
       "#cookie-manager-wrapper",
       "#cookie-manager",
       "#cookie-mask",
@@ -13925,5 +13926,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727695307027"
+  "version": "1727695793338"
 }
