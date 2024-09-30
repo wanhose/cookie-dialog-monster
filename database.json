@@ -1173,6 +1173,8 @@
       ".ak-cookies-banner",
       ".akf__cookie",
       ".akismet_comment_form_privacy_notice",
+      ".alcacookiealert",
+      ".alcacookieposcenter",
       ".alert__cookie",
       ".alert_cookie",
       ".alert_cookies",
@@ -7245,6 +7247,7 @@
       "#ajaxStyleJamCookiesMessage",
       "#akceptacja",
       "#akceptcookie",
+      "#alcacookiealert",
       "#aldi-nord-cookiehint",
       "#alert_cookie_msg",
       "#alert_cookie_optin",
@@ -13930,5 +13933,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727696504233"
+  "version": "1727697113492"
 }
