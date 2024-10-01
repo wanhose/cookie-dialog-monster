@@ -6147,6 +6147,7 @@
       ".sco-cookie-confirm",
       ".scommerce-gdpr-cookienotice",
       ".scp-cookie-consent-outer-wrap",
+      ".scrim:has([href=\"https://arena.net/legal/privacy-policy\"])",
       ".script_cookie_banner",
       ".scw-cookie",
       ".sd_cookiespolicy",
@@ -13957,5 +13958,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727774787943"
+  "version": "1727775156668"
 }
