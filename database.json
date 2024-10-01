@@ -13948,6 +13948,7 @@
       "tm-terms-consent",
       "tp-yt-iron-overlay-backdrop",
       "tsl-required-user-kind-modal",
+      "vt-stateful-disclaimer",
       "web-component-ilsa-cookies-manager",
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
@@ -13955,5 +13956,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727774019290"
+  "version": "1727774617019"
 }
