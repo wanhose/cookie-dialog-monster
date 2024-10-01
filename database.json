@@ -8187,6 +8187,8 @@
       "#cook-cont",
       "#cookalert-holder",
       "#cookAlert",
+      "#cookboxback",
+      "#cookboxwrap",
       "#cookcont",
       "#cookdiv",
       "#cookeControl_UpdatePanelCookie",
@@ -13958,5 +13960,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727775156668"
+  "version": "1727775808454"
 }
