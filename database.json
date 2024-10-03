@@ -7059,6 +7059,7 @@
       "[src=\"https://www.tumblr.com/dashboard/iframe/consent\"]",
       "[style*=\"bg_cookies.jpg\"]",
       "[style*=\"cookie-consent-zindex\"]",
+      "[style=\"inset: 0px; width: 100%; height: 100%; box-sizing: border-box; position: fixed; touch-action: none; padding: 20px; z-index: 10; display: flex; flex-direction: row; gap: 20px; justify-content: center; pointer-events: none;\"]:has([href=\"/privacy-policy\"])",
       "[style=\"opacity: 1; display: flex;\"]:has(#ac)",
       "[style=\"z-index: 4;\"]:has([role=\"dialog\"] [data-anchor-id=\"cookie-policy\"])",
       "[tile-id=\"gdpr-banner\"]",
@@ -13494,6 +13495,7 @@
       "#termsAndPrivacyFloater",
       "#termsContainer",
       "#termscookie",
+      "#termsfeed-com---nb",
       "#termsNotice",
       "#tesco_cookie_widget",
       "#tesco_policy_widget1",
@@ -13976,9 +13978,8 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
-      "#termsfeed-com---nb",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727955774124"
+  "version": "1727956130693"
 }
