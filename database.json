@@ -6822,6 +6822,7 @@
       "[class*=\"CookieWarning\"]",
       "[class*=\"CookieWidget\"]",
       "[class*=\"CookieWrapper\"]",
+      "[class*=\"gdpr__GdprContainer\"]",
       "[class*=\"GdprBanner\"]",
       "[class*=\"GDPRConsentForm\"]",
       "[class*=\"GdprParentWrapper\"]",
@@ -13981,5 +13982,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727956130693"
+  "version": "1727956352995"
 }
