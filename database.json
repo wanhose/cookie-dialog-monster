@@ -7033,6 +7033,7 @@
       "[id*=\"CoockieInformation\"]",
       "[id*=\"cookie_info_bar\"]",
       "[id*=\"nx_gdpr_modal\"]",
+      "[id*=\"portal\"]:has([class*=\"CookieConsent\"])",
       "[id*=\"ppms_cm_consent_popup\"]",
       "[id*=\"sp_message_container_\"]",
       "[id^=\"ccpa-notification-banner\"]",
@@ -13978,5 +13979,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727955012372"
+  "version": "1727955543415"
 }
