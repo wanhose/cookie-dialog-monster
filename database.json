@@ -3961,7 +3961,6 @@
       ".cs-row__cookie-bar",
       ".csi-cookie-banner-container",
       ".cspx-cookies-bar",
-      ".css-1dbjc4n r-1awozwy r-1m3jxhj r-qo02w8 r-18u37iz r-1d7fvdj r-d9fdf6 r-tvv088 r-13qz1uu",
       ".ct-cookie-consent-pop",
       ".ct-drawer-canvas",
       ".cta-cookie",
@@ -6830,7 +6829,6 @@
       "[class*=\"mxp-CookiePanel-cookie-panel-overlay-\"]",
       "[class*=\"privacy-notification\"]",
       "[class*=\"PrivacyNotification\"]",
-      "[class*=\"PrivacyPolicy\"]",
       "[class*=\"sd-cmp-\"]",
       "[class*=\"StyledCookieLayer\"]",
       "[class*=\"styles__Container\"]:has([data-callback=\"accounts/hide-banner/CookiesBanner\"])",
@@ -13978,5 +13976,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727949972826"
+  "version": "1727953259227"
 }
