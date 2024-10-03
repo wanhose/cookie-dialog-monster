@@ -3510,6 +3510,7 @@
       ".cookies-acceptance",
       ".cookies-accepted",
       ".cookies-adv",
+      ".cookies-advanced-notification-container",
       ".cookies-advert",
       ".cookies-advice-bar",
       ".cookies-advice",
@@ -3631,6 +3632,8 @@
       ".cookies-notice-msg",
       ".cookies-notice",
       ".cookies-notification-bar",
+      ".cookies-notification-container",
+      ".cookies-notification-parent-container",
       ".cookies-notification-portlet",
       ".cookies-notification-wrapper",
       ".cookies-notification",
@@ -13965,5 +13968,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727944938653"
+  "version": "1727945396766"
 }
