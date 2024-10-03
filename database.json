@@ -6926,12 +6926,14 @@
       "[data-dmid*=\"cookiebar\"]",
       "[data-entity=\"g-consentmanager\"]",
       "[data-etsy-promo-cookie-expires]",
+      "[data-feature=\"Web.Core.Feature.PrivacyCategory.Dialog\"]",
       "[data-gdpr-consent-prompt]",
       "[data-headlessui-portal]:has([alt=\"cookie\"])",
       "[data-headlessui-portal]:has([aria-label=\"Cookie Policy\"])",
       "[data-hook=\"consent-banner-root\"]",
       "[data-id=\"cookie_dialog\"]",
       "[data-id=\"dummy-modal\"]",
+      "[data-id=\"PrivacyCategoryModal\"]",
       "[data-is-cookieinfo]",
       "[data-js=\"cookie-disclaimer\"]",
       "[data-key=\"cookies-warning\"]",
@@ -13041,6 +13043,7 @@
       "#privacybar",
       "#privacyBar",
       "#privacyBox",
+      "#PrivacyCategoryAlert",
       "#privacycookie-div-supertop",
       "#privacycookie",
       "#privacyCookie",
@@ -13961,5 +13964,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727944396184"
+  "version": "1727944611540"
 }
