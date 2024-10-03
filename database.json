@@ -973,6 +973,7 @@
       "backdrop-no-scroll",
       "bb-con-loaded",
       "blocked",
+      "blur-background",
       "bodyBlocked",
       "c24-cc-visible",
       "cbar",
