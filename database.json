@@ -967,6 +967,7 @@
       ".usercentrics-bg",
       "[data-aria-hidden=\"true\"][data-state=\"open\"][style=\"pointer-events: auto;\"]",
       "#fancybox-overlay",
+      "#gdprMask",
       "#overlay:not([class*=\"ytd\"])",
       "overlay-block"
     ],
@@ -13976,5 +13977,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727953259227"
+  "version": "1727954177335"
 }
