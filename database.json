@@ -2404,6 +2404,7 @@
       ".cookie-box-en",
       ".cookie-box-wrapper",
       ".cookie-box",
+      ".cookie-btm",
       ".cookie-btn",
       ".cookie-bubble",
       ".cookie-card_popup_fixed",
@@ -3561,6 +3562,7 @@
       ".cookies-concent-dialog",
       ".cookies-conf",
       ".cookies-confirm-block",
+      ".cookies-cons",
       ".cookies-consent-banner-component",
       ".cookies-consent-panel",
       ".cookies-consent-popup",
@@ -13970,5 +13972,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727946048164"
+  "version": "1727946349180"
 }
