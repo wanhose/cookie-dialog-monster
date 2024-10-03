@@ -37,6 +37,7 @@
         "*://*.olympics.com/*",
         "*://*.youtube-nocookie.com/embed/*",
         "*://*.youtube.com/embed/*",
+        "*://www.youtube.com/*",
         "*://translate.google.ca/*",
         "*://translate.google.co.in/*",
         "*://translate.google.co.jp/*",
