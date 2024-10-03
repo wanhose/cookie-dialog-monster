@@ -6965,6 +6965,7 @@
       "[data-react-class=\"CookieNotice\"]",
       "[data-react-class=\"EUCookieBanner\"]",
       "[data-role=\"cookie-policy-banner\"]",
+      "[data-role=\"cwall\"]",
       "[data-role=\"gdpr-cookie-container\"]",
       "[data-section-type=\"CookiesBanner\"]",
       "[data-selector=\"container@cookiebar\"]",
@@ -10772,6 +10773,7 @@
       "#custom-header-cookie",
       "#customCookieLoadingBackground",
       "#cw-cookieInfo",
+      "#cwall",
       "#cwarn-box",
       "#cWarn.cookies",
       "#CWCookie",
@@ -13968,5 +13970,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727945396766"
+  "version": "1727946048164"
 }
