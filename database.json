@@ -4909,6 +4909,7 @@
       ".js_header-cookie-bar",
       ".js--cookie-consent",
       ".js--cookiecontrol",
+      ".js--modal:has(.cookie-removal--container)",
       ".js-accept-cookie-container",
       ".js-accept-cookies-banner",
       ".js-acceptCookieDiv",
@@ -13960,5 +13961,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727775808454"
+  "version": "1727944396184"
 }
