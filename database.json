@@ -13976,8 +13976,9 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
+      "#termsfeed-com---nb",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727955543415"
+  "version": "1727955774124"
 }
