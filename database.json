@@ -958,6 +958,7 @@
       ".cdk-overlay-backdrop:has(+ .cdk-global-overlay-wrapper)",
       ".js--overlay",
       ".modal-backdrop",
+      ".modals-overlay",
       ".offcanvas-backdrop",
       ".overlay:not([class*=\"ytd\"])",
       ".ui-widget-overlay",
@@ -13973,5 +13974,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727946349180"
+  "version": "1727946733065"
 }
