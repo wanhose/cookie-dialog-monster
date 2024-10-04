@@ -6962,6 +6962,7 @@
       "[data-ng-controller=\"AcceptCookiesController\"]",
       "[data-notification=\"CookiePolicyAgreement\"]",
       "[data-notificationid=\"cookie\"]",
+      "[data-overlay=\"true\"]:has([href*=\"notion.so/Cookie-Notice\"])",
       "[data-plugin=\"cookie\"]",
       "[data-pnp-mi-id=\"mi-cookies\"]",
       "[data-popup-cookies]",
@@ -13987,5 +13988,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728035142706"
+  "version": "1728035398000"
 }
