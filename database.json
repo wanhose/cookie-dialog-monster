@@ -2535,6 +2535,7 @@
       ".cookie-eu",
       ".cookie-event-block",
       ".cookie-fade",
+      ".cookie-finom",
       ".cookie-fixed-hint",
       ".cookie-flash",
       ".cookie-footer--wrapper",
@@ -6993,6 +6994,7 @@
       "[data-test*=\"Cookie-Banner\"]",
       "[data-test=\"cookie-banner\"]",
       "[data-test=\"cookie-consent-notification\"]",
+      "[data-test=\"cookie-finom\"]",
       "[data-test=\"cookie-message-container\"]",
       "[data-test=\"cookie-overlay\"]",
       "[data-test=\"cookie-policy-banner\"]",
@@ -13983,5 +13985,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1727956592921"
+  "version": "1728034946718"
 }
