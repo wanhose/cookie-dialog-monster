@@ -9391,6 +9391,7 @@
       "#cookieCorner",
       "#cookiecrap",
       "#cookieCta",
+      "#cookieDataLayer",
       "#cookieDataProtection",
       "#cookiedeclaration",
       "#cookieDeclarationWrapper",
@@ -13986,5 +13987,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728035075130"
+  "version": "1728035142706"
 }
