@@ -6913,6 +6913,7 @@
       "[data-components=\"pdr-ws1lib-header\"]",
       "[data-consentsettingssavedcookiename=\"tkConsentSettingsSaved\"]",
       "[data-container-acceptcookies]",
+      "[data-controller=\"common--cookies--alert\"]",
       "[data-controller=\"cookie-bar\"]",
       "[data-controller=\"cookie-consent\"]",
       "[data-cookie-bar-target=\"modal\"]",
@@ -13985,5 +13986,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728034946718"
+  "version": "1728035075130"
 }
