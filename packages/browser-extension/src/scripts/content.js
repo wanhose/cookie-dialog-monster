@@ -92,13 +92,7 @@ const options = { childList: true, subtree: true };
  * @description Elements that were already matched and are removable
  * @type {Set<HTMLElement>}
  */
-const removables = new Set();
-
-/**
- * @description Elements that were already seen
- * @type {HTMLElement[]}
- */
-const seen = [];
+const seen = new Set();
 
 /**
  * @description Extension state
@@ -124,14 +118,13 @@ function clean(elements, skipMatch) {
 
       if (match(element, skipMatch)) {
         if (element instanceof HTMLDialogElement) element.close();
-        else element.setAttribute(dataAttributeName, 'true');
+        hide(element);
 
         actions.add(new Date().getTime().toString());
         dispatch({ type: 'SET_BADGE', value: actions.size });
-        removables.add(element);
       }
 
-      seen.push(element);
+      seen.add(element);
     }
 
     if (index < elements.length) {
@@ -220,12 +213,12 @@ function isInViewport(element) {
   const height = window.innerHeight || document.documentElement.clientHeight;
   const position = element.getBoundingClientRect();
   const scroll = window.scrollY;
-  const transitioning = styles.transitionDuration !== '0s';
 
   return (
     position.bottom === position.top ||
     (scroll + position.top <= scroll + height && scroll + position.bottom >= scroll) ||
-    transitioning
+    styles.animationDuration !== '0s' ||
+    styles.transitionDuration !== '0s'
   );
 }
 
@@ -248,7 +241,7 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (seen.includes(element)) {
+  if (seen.has(element)) {
     return false;
   }
 
@@ -385,6 +378,19 @@ function fix() {
 }
 
 /**
+ * @description Hide DOM element
+ * @param {HTMLElement} element
+ * @returns {void}
+ */
+function hide(element) {
+  element.style.setProperty('clip-path', 'circle(0px)', 'important');
+  element.style.setProperty('display', 'none', 'important');
+  element.style.setProperty('height', '0px', 'important');
+  element.style.setProperty('overflow', 'hidden', 'important');
+  element.style.setProperty('transform', 'scale(0)', 'important');
+}
+
+/**
  * @description Clean DOM when this function is called
  * @param {RunParams} [params]
  * @returns {void}
@@ -423,7 +429,6 @@ async function setUp(params = {}) {
     tokens = data?.tokens ?? tokens;
 
     dispatch({ type: 'ENABLE_ICON' });
-    dispatch({ type: 'INSERT_EXTENSION_CSS' });
     dispatch({ type: 'SET_BADGE', value: actions.size });
     observer.observe(document.body ?? document.documentElement, options);
     if (!params.skipRunFn) run({ containers: tokens.containers });
@@ -455,13 +460,8 @@ const observer = new MutationObserver((mutations) => {
  */
 browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
-    case 'RESTORE': {
-      await dispatch({ type: 'RELOAD_TAB' });
-      break;
-    }
-    case 'RUN': {
-      await setUp({ skipRunFn: !!removables.size });
-      run({ elements: [...removables], skipMatch: true });
+    case 'INCREASE_ACTIONS_COUNT': {
+      actions.add(new Date().getTime().toString());
       break;
     }
   }
