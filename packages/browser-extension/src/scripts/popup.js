@@ -146,28 +146,24 @@ async function handleLinkRedirect(event) {
 }
 
 /**
- * @async
  * @description Disable or enable extension on current page
- * @param {MouseEvent} event
- * @returns {Promise<void>}
+ * @returns {void}
  */
-async function handlePowerToggle(event) {
-  const target = event.currentTarget;
+function handlePowerToggle() {
   const next = { enabled: !state.enabled };
 
   browser.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
-  browser.tabs.sendMessage(state.tabId, { type: next.enabled ? 'RUN' : 'RESTORE' });
-  target.setAttribute('aria-disabled', 'true');
-  target.setAttribute('data-value', next.enabled ? 'on' : 'off');
+  browser.tabs.reload(state.tabId, { bypassCache: true });
   window.close();
 }
 
 /**
+ * @async
  * @description Open options page
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function handleSettingsClick() {
-  browser.runtime.openOptionsPage();
+async function handleSettingsClick() {
+  await browser.runtime.openOptionsPage();
 }
 
 /**

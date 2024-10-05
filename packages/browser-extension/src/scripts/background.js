@@ -39,10 +39,25 @@ const script = browser.scripting;
 const storage = browser.storage.local;
 
 /**
+ * @description Supress `browser.runtime.lastError`
+ */
+const suppressLastError = () => void browser.runtime.lastError;
+
+/**
+ * @description Map match to pattern format
+ * @param {string} match
+ * @returns {string}
+ */
+function matchToPattern(match) {
+  return `^${match.replaceAll('*.', '*(.)?').replaceAll('*', '.*')}$`;
+}
+
+/**
  * @description Refresh data
  * @param {void?} callback
+ * @returns {void}
  */
-const refreshData = (callback) => {
+function refreshData(callback) {
   try {
     fetch(`${apiUrl}/data/`).then((result) => {
       result.json().then(({ data }) => {
@@ -53,7 +68,7 @@ const refreshData = (callback) => {
   } catch {
     refreshData(callback);
   }
-};
+}
 
 /**
  * @async
@@ -61,8 +76,9 @@ const refreshData = (callback) => {
  * @param {any} message
  * @param {browser.tabs.Tab} tab
  * @param {void?} callback
+ * @returns {void}
  */
-const report = async (message, tab, callback) => {
+async function report(message, tab, callback) {
   try {
     const reason = message.reason;
     const url = message.url;
@@ -76,12 +92,7 @@ const report = async (message, tab, callback) => {
   } catch {
     console.error("Can't send report");
   }
-};
-
-/**
- * @description Supress `browser.runtime.lastError`
- */
-const suppressLastError = () => void browser.runtime.lastError;
+}
 
 /**
  * @description Listen to context menus clicked
@@ -159,19 +170,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
         script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
       }
       break;
-    case 'INSERT_EXTENSION_CSS':
-      if (isPage && tabId !== undefined) {
-        script.insertCSS({ files: ['styles/extension.css'], target: { tabId } });
-      }
-      break;
     case 'REFRESH_DATA':
       refreshData(callback);
       return true;
-    case 'RELOAD_TAB':
-      if (tabId !== undefined) {
-        browser.tabs.reload(tabId, { bypassCache: true });
-      }
-      break;
     case 'REPORT':
       if (tabId !== undefined) {
         report(message, sender.tab, callback);
@@ -199,10 +200,12 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
  * @description Listens to extension installed
  */
 browser.runtime.onInstalled.addListener(() => {
+  const documentUrlPatterns = browser.runtime.getManifest().content_scripts[0].matches;
+
   browser.contextMenus.create(
     {
       contexts: ['all'],
-      documentUrlPatterns: browser.runtime.getManifest().content_scripts[0].matches,
+      documentUrlPatterns,
       id: extensionMenuItemId,
       title: 'Cookie Dialog Monster',
     },
@@ -211,7 +214,7 @@ browser.runtime.onInstalled.addListener(() => {
   browser.contextMenus.create(
     {
       contexts: ['all'],
-      documentUrlPatterns: browser.runtime.getManifest().content_scripts[0].matches,
+      documentUrlPatterns,
       id: settingsMenuItemId,
       parentId: extensionMenuItemId,
       title: browser.i18n.getMessage('contextMenu_settingsOption'),
@@ -221,7 +224,7 @@ browser.runtime.onInstalled.addListener(() => {
   browser.contextMenus.create(
     {
       contexts: ['all'],
-      documentUrlPatterns: browser.runtime.getManifest().content_scripts[0].matches,
+      documentUrlPatterns,
       id: reportMenuItemId,
       parentId: extensionMenuItemId,
       title: browser.i18n.getMessage('contextMenu_reportOption'),
@@ -239,6 +242,7 @@ browser.runtime.onStartup.addListener(() => {
 
 /**
  * @description Listen to the moment before a request is made to apply the rules
+ * @returns {Promise<void>}
  */
 browser.webRequest.onBeforeRequest.addListener(
   async (details) => {
@@ -247,9 +251,7 @@ browser.webRequest.onBeforeRequest.addListener(
     if (tabId > -1 && type === 'main_frame') {
       const manifest = browser.runtime.getManifest();
       const excludeMatches = manifest.content_scripts[0].exclude_matches;
-      const excludePatterns = excludeMatches.map(
-        (match) => `^${match.replaceAll('*.', '*(.)?').replaceAll('*', '.*')}$`
-      );
+      const excludePatterns = excludeMatches.map(matchToPattern);
 
       if (excludePatterns.some((pattern) => new RegExp(pattern).test(url))) {
         return;
@@ -260,15 +262,39 @@ browser.webRequest.onBeforeRequest.addListener(
       const state = store[hostname] ?? { enabled: true };
 
       if (data?.rules?.length) {
-        browser.declarativeNetRequest.updateSessionRules({
-          addRules: state.enabled
-            ? data.rules.map((rule) => ({
-                ...rule,
-                condition: { ...rule.condition, tabIds: [tabId] },
-              }))
-            : undefined,
+        const rules = data.rules.map((rule) => ({
+          ...rule,
+          condition: { ...rule.condition, tabIds: [tabId] },
+        }));
+
+        await browser.declarativeNetRequest.updateSessionRules({
+          addRules: state.enabled ? rules : undefined,
           removeRuleIds: data.rules.map((rule) => rule.id),
         });
+      }
+    }
+  },
+  { urls: ['<all_urls>'] }
+);
+
+/**
+ * @description Listen for errors on network requests
+ */
+browser.webRequest.onErrorOccurred.addListener(
+  async (details) => {
+    const { error, tabId, url } = details;
+
+    if (tabId > -1) {
+      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+      const { data, ...store } = await storage.get(['data', hostname]);
+      const state = store[hostname] ?? { enabled: true };
+
+      if (error === 'net::ERR_BLOCKED_BY_CLIENT' && state.enabled) {
+        const sessionRules = await browser.declarativeNetRequest.getSessionRules();
+
+        if (sessionRules.some((rule) => new RegExp(rule.condition.urlFilter).test(url))) {
+          await browser.tabs.sendMessage(tabId, { type: 'INCREASE_ACTIONS_COUNT' });
+        }
       }
     }
   },
