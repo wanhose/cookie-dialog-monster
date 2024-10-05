@@ -40,7 +40,7 @@ if (typeof browser === 'undefined') {
  * @description Actions done by the extension
  * @type {Set<string>}
  */
-let actions = new Set();
+const actions = new Set();
 
 /**
  * @description Data object with all the necessary information
@@ -237,10 +237,6 @@ function match(element, skipMatch) {
     return false;
   }
 
-  if (element.getAttribute(dataAttributeName)) {
-    return false;
-  }
-
   if (seen.has(element)) {
     return false;
   }
@@ -303,9 +299,10 @@ function fix() {
   const domains = skips.domains.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
 
   for (const backdrop of backdrops) {
-    if (backdrop.children.length === 0 && !backdrop.hasAttribute(dataAttributeName)) {
+    if (backdrop.children.length === 0 && !seen.has(backdrop)) {
       actions.add(new Date().getTime().toString());
-      backdrop.setAttribute(dataAttributeName, 'true');
+      seen.add(backdrop);
+      hide(backdrop);
     }
   }
 
@@ -440,6 +437,19 @@ async function setUp(params = {}) {
 }
 
 /**
+ * @description Wait for the body to exist
+ * @param {void} callback
+ * @returns {void}
+ */
+async function setUpAfterWaitForBody() {
+  if (document.body) {
+    await setUp();
+  } else {
+    setTimeout(setUpAfterWaitForBody, 50);
+  }
+}
+
+/**
  * @description Mutation Observer instance
  * @type {MutationObserver}
  */
@@ -468,18 +478,6 @@ browser.runtime.onMessage.addListener(async (message) => {
 });
 
 /**
- * @async
- * @description Fix still existing elements when page loads
- * @listens window#DOMContentLoaded
- * @returns {void}
- */
-document.addEventListener('DOMContentLoaded', async () => {
-  if (document.visibilityState === 'visible') {
-    await setUp();
-  }
-});
-
-/**
  * @description Fix bfcache issues
  * @listens window#pageshow
  * @returns {void}
@@ -492,7 +490,7 @@ window.addEventListener('pageshow', async (event) => {
 
 /**
  * @async
- * @description Run run if the page wasn't visible yet
+ * @description Run if the page wasn't visited yet
  * @listens window#visibilitychange
  * @returns {void}
  */
@@ -502,3 +500,10 @@ window.addEventListener('visibilitychange', async () => {
     await setUp();
   }
 });
+
+/**
+ * @description Run as soon as possible, if the user is in front of the page
+ */
+if (document.visibilityState === 'visible') {
+  setUpAfterWaitForBody();
+}
