@@ -32,6 +32,12 @@
   "options_importButton": {
     "message": "Importa lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "È stato segnalato un problema per questa pagina. L'estensione potrebbe non funzionare temporaneamente come previsto. Segui il problema o aggiungi ulteriori informazioni."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "È stato segnalato un problema per questa pagina, ma non verrà risolto. Si prega di notare che l'estensione potrebbe non funzionare come previsto su questa pagina. Si consiglia vivamente di disattivare l'estensione utilizzando il pulsante qui sotto."
+  },
   "popup_contributeOption": {
     "message": "Contribuisci a questo progetto"
   },

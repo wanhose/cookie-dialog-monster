@@ -32,6 +32,12 @@
   "options_importButton": {
     "message": "Importar lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Se ha informado de un problema en esta página. La extensión puede no funcionar como se espera temporalmente. Siga el problema o agregue más información."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Se ha informado de un problema en esta página, pero no se solucionará. Tenga en cuenta que la extensión puede no funcionar como se espera en esta página. Recomendamos encarecidamente desactivar la extensión utilizando el botón a continuación."
+  },
   "popup_contributeOption": {
     "message": "Contribuir a este proyecto"
   },
