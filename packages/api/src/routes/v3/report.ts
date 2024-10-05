@@ -5,7 +5,7 @@ import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
 import * as yup from 'yup';
 
-const PostBodyReportSchema = yup.object().shape({
+const PostReportBodySchema = yup.object().shape({
   reason: yup.string().min(10).max(1000).required(),
   url: yup.string().max(1000).url().required(),
   userAgent: yup.string().max(1000).optional(),
@@ -16,27 +16,24 @@ const PostBodyReportSchema = yup.object().shape({
     .required(),
 });
 
-type PostReportBody = yup.InferType<typeof PostBodyReportSchema>;
+type PostReportBody = yup.InferType<typeof PostReportBodySchema>;
 
 export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {
       schema: {
-        body: PostBodyReportSchema,
+        body: PostReportBodySchema,
       },
       validatorCompiler,
     },
     async (request, reply) => {
-      const ua = new UAParser(request.body.userAgent ?? '').getResult();
-      const url = new URL(request.body.url).hostname
-        .split('.')
-        .slice(-3)
-        .join('.')
-        .replace('www.', '');
+      const { url, userAgent } = request.body;
+      const ua = new UAParser(userAgent ?? '').getResult();
+      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
       const existingIssues = await octokit.request('GET /search/issues', {
         per_page: 1,
-        q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${url}`,
+        q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
       });
       const existingIssue = existingIssues.data.items[0];
 
