@@ -1,3 +1,15 @@
+/**
+ * @typedef {Object} ExtensionState
+ * @property {boolean} on
+ * @property {ExtensionIssue} [issue]
+ */
+
+/**
+ * @typedef {Object} PopupState
+ * @extends {ExtensionState}
+ * @property {number} [tabId]
+ */
+
 if (typeof browser === 'undefined') {
   browser = chrome;
 }
@@ -46,10 +58,10 @@ const isEdge = navigator.userAgent.indexOf('Edg') !== -1;
 const isFirefox = navigator.userAgent.indexOf('Firefox') !== -1;
 
 /**
- * @description Extension state
- * @type {{ enabled: boolean, tabId: number | undefined }}
+ * @description Popup state
+ * @type {PopupState}
  */
-let state = { enabled: true, tabId: undefined };
+let state = { on: true };
 
 /**
  * @async
@@ -63,8 +75,21 @@ async function handleContentLoaded() {
     ? new URL(tab.url).hostname.split('.').slice(-3).join('.').replace('www.', '')
     : undefined;
 
-  const next = await browser.runtime.sendMessage({ hostname, type: 'GET_HOSTNAME_STATE' });
+  const next = await browser.runtime.sendMessage({ hostname, type: 'GET_STATE' });
   state = { ...(next ?? state), tabId: tab?.id };
+
+  if (state.issue?.url) {
+    const issueBanner = document.getElementById('issue-banner');
+    issueBanner.removeAttribute('aria-hidden');
+
+    const issueBannerText = document.getElementById('issue-banner-text');
+    if (state.issue.flags.includes('wontfix'))
+      issueBannerText.innerText = browser.i18n.getMessage('popup_bannerIssueWontFix');
+    else issueBannerText.innerText = browser.i18n.getMessage('popup_bannerIssueOpen');
+
+    const issueBannerUrl = document.getElementById('issue-banner-url');
+    issueBannerUrl.setAttribute('href', state.issue.url);
+  }
 
   const hostTextElement = document.getElementById('host');
   hostTextElement.innerText = hostname ?? 'unknown';
@@ -83,7 +108,7 @@ async function handleContentLoaded() {
 
   const powerButtonElement = document.getElementById('power-option');
   powerButtonElement?.addEventListener('click', handlePowerToggle);
-  if (state.enabled) powerButtonElement?.setAttribute('data-value', 'on');
+  if (state.on) powerButtonElement?.setAttribute('data-value', 'on');
   else powerButtonElement?.setAttribute('data-value', 'off');
 
   const rateButtonElement = document.getElementById('rate-option');
@@ -150,9 +175,9 @@ async function handleLinkRedirect(event) {
  * @returns {void}
  */
 function handlePowerToggle() {
-  const next = { enabled: !state.enabled };
+  const next = { on: !state.on };
 
-  browser.runtime.sendMessage({ hostname, state: next, type: 'SET_HOSTNAME_STATE' });
+  browser.runtime.sendMessage({ hostname, state: next, type: 'UPDATE_STORE' });
   browser.tabs.reload(state.tabId, { bypassCache: true });
   window.close();
 }

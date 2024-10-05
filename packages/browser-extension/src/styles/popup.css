@@ -59,7 +59,24 @@ header {
   padding: 0 16px;
 }
 
-main {
+main > .banner {
+  background-color: #f39c12;
+  color: #c0392b;
+  margin: 0px;
+  padding: 16px;
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  & #issue-banner-url {
+    color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+main > .content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
