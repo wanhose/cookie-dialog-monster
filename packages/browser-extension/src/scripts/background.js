@@ -44,7 +44,35 @@ const storage = browser.storage.local;
 const suppressLastError = () => void browser.runtime.lastError;
 
 /**
- * @description Map match to pattern format
+ * @description Calculate current hostname
+ * @param {string} url
+ * @returns {string}
+ */
+function getHostname(url) {
+  return new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+}
+
+/**
+ * @description Format number to avoid errors
+ * @param {number} [value]
+ * @returns {string | null}
+ */
+function formatNumber(value) {
+  if (value) {
+    if (value >= 1e6) {
+      return `${Math.floor(value / 1e6)}M`;
+    } else if (value >= 1e3) {
+      return `${Math.floor(value / 1e3)}K`;
+    } else {
+      return value.toString();
+    }
+  }
+
+  return null;
+}
+
+/**
+ * @description Convert match string to pattern string
  * @param {string} match
  * @returns {string}
  */
@@ -182,7 +210,7 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
     case 'SET_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
-        browser.action.setBadgeText({ tabId, text: message.value ? `${message.value}` : null });
+        browser.action.setBadgeText({ tabId, text: formatNumber(message.value) });
       }
       break;
     case 'SET_HOSTNAME_STATE':
@@ -257,9 +285,8 @@ browser.webRequest.onBeforeRequest.addListener(
         return;
       }
 
-      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
-      const { data, ...store } = await storage.get(['data', hostname]);
-      const state = store[hostname] ?? { enabled: true };
+      const hostname = getHostname(url);
+      const { data, [hostname]: state = { enabled: true } } = await storage.get(['data', hostname]);
 
       if (data?.rules?.length) {
         const rules = data.rules.map((rule) => ({
@@ -284,17 +311,12 @@ browser.webRequest.onErrorOccurred.addListener(
   async (details) => {
     const { error, tabId, url } = details;
 
-    if (tabId > -1) {
-      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
-      const { data, ...store } = await storage.get(['data', hostname]);
-      const state = store[hostname] ?? { enabled: true };
+    if (error === 'net::ERR_BLOCKED_BY_CLIENT' && tabId > -1) {
+      const hostname = getHostname(url);
+      const { [hostname]: state = { enabled: true } } = await storage.get(hostname);
 
-      if (error === 'net::ERR_BLOCKED_BY_CLIENT' && state.enabled) {
-        const sessionRules = await browser.declarativeNetRequest.getSessionRules();
-
-        if (sessionRules.some((rule) => new RegExp(rule.condition.urlFilter).test(url))) {
-          await browser.tabs.sendMessage(tabId, { type: 'INCREASE_ACTIONS_COUNT' });
-        }
+      if (state.enabled) {
+        await browser.tabs.sendMessage(tabId, { type: 'INCREASE_ACTIONS_COUNT' });
       }
     }
   },
