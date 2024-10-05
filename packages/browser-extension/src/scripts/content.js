@@ -7,9 +7,8 @@
  */
 
 /**
- * @typedef {Object} ExtensionState
+ * @typedef {Object} ContentState
  * @property {boolean} on
- * @property {ExtensionIssue} [issue]
  */
 
 /**
@@ -97,7 +96,7 @@ const seen = new Set();
 
 /**
  * @description Extension state
- * @type {ExtensionState}
+ * @type {ContentState}
  */
 let state = { on: true };
 
@@ -415,7 +414,7 @@ function run(params = {}) {
  * @param {SetUpParams} [params]
  */
 async function setUp(params = {}) {
-  state = (await dispatch({ hostname, type: 'GET_STATE' })) ?? state;
+  state = await dispatch({ hostname, type: 'GET_STATE' });
   dispatch({ type: 'ENABLE_POPUP' });
 
   if (state.on) {

@@ -7,7 +7,7 @@
 
 /**
  * @typedef {Object} ExtensionState
- * @property {ExtensionIssue} issue
+ * @property {ExtensionIssue} [issue]
  * @property {boolean} on
  */
 
@@ -146,7 +146,7 @@ async function getState(hostname) {
     state.issue = await refreshIssue(hostname);
   }
 
-  return state;
+  return { ...stateByDefault, ...state };
 }
 
 /**
