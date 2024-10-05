@@ -61,11 +61,6 @@ let { commonWords, fixes, skips, tokens } = {
 };
 
 /**
- * @description Attribute name
- */
-const dataAttributeName = 'data-cookie-dialog-monster';
-
-/**
  * @description Shortcut to send messages to background script
  */
 const dispatch = browser.runtime.sendMessage;
