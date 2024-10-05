@@ -69,7 +69,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
           labels: ['bug'],
           owner: environment.github.owner,
           repo: environment.github.repo,
-          title: url,
+          title: hostname,
         });
 
         reply.send({
