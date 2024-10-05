@@ -62,8 +62,8 @@ async function handleAddClick() {
 
   if (exclusionValue?.trim() && (domainRx.test(exclusionValue) || exclusionValue === 'localhost')) {
     const filterInputElement = document.getElementById('filter-input');
-    const state = { enabled: false };
-    await dispatch({ hostname: exclusionValue, state, type: 'SET_HOSTNAME_STATE' });
+    const state = { on: false };
+    await dispatch({ hostname: exclusionValue, state, type: 'UPDATE_STORE' });
 
     exclusionList = [...new Set([...exclusionList, exclusionValue])].sort();
     createList();
@@ -80,8 +80,8 @@ async function handleClearClick() {
   const filterInputElement = document.getElementById('filter-input');
 
   for (const exclusionValue of exclusionList) {
-    const state = { enabled: true };
-    await dispatch({ hostname: exclusionValue, state, type: 'SET_HOSTNAME_STATE' });
+    const state = { on: true };
+    await dispatch({ hostname: exclusionValue, state, type: 'UPDATE_STORE' });
   }
 
   exclusionList = [];
@@ -128,9 +128,9 @@ async function handleDeleteClick(event) {
   const filterInputElement = document.getElementById('filter-input');
   const { value } = event.currentTarget.parentElement.dataset;
   const itemElement = document.querySelector(`[data-value="${value}"]`);
-  const state = { enabled: true };
+  const state = { on: true };
 
-  await dispatch({ hostname: value, state, type: 'SET_HOSTNAME_STATE' });
+  await dispatch({ hostname: value, state, type: 'UPDATE_STORE' });
   exclusionList = exclusionList.filter((exclusionValue) => exclusionValue !== value);
   itemElement?.remove();
   updateList(filterInputElement.value.trim());
@@ -172,8 +172,8 @@ function handleFileChange(event) {
     const newExclusionList = event.currentTarget.result.split('\n').filter((x) => x.trim());
 
     for (const exclusionValue of newExclusionList) {
-      const state = { enabled: false };
-      await dispatch({ hostname: exclusionValue, state, type: 'SET_HOSTNAME_STATE' });
+      const state = { on: false };
+      await dispatch({ hostname: exclusionValue, state, type: 'UPDATE_STORE' });
     }
 
     if (newExclusionList.length) {

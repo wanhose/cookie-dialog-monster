@@ -1,5 +1,47 @@
+/**
+ * @typedef {Object} ExtensionIssue
+ * @property {number} [expiresIn]
+ * @property {string[]} [flags]
+ * @property {string} [url]
+ */
+
+/**
+ * @typedef {Object} ExtensionState
+ * @property {ExtensionIssue} issue
+ * @property {boolean} on
+ */
+
 if (typeof browser === 'undefined') {
   browser = chrome;
+}
+
+/**
+ * @description Class for request batching
+ */
+class RequestManager {
+  constructor() {
+    this.requests = new Map(); // Store ongoing requests
+  }
+
+  /**
+   * @description Fetch wrapper to play with the request map
+   * @param {string} input
+   * @param {RequestInit} [init]
+   * @returns {Promise<any>}
+   */
+  fetchData(input, init) {
+    if (this.requests.has(input)) {
+      return this.requests.get(input);
+    }
+
+    const promise = fetch(input, init)
+      .then((response) => response.json())
+      .finally(() => this.requests.delete(input));
+
+    this.requests.set(input, promise);
+
+    return promise;
+  }
 }
 
 /**
@@ -21,6 +63,11 @@ const extensionMenuItemId = 'CDM-MENU';
 const reportMenuItemId = 'CDM-REPORT';
 
 /**
+ * @description Request manager instance
+ */
+const requestManager = new RequestManager();
+
+/**
  * @description Context menu identifier
  * @type {string}
  */
@@ -31,6 +78,12 @@ const settingsMenuItemId = 'CDM-SETTINGS';
  * @type {browser.scripting}
  */
 const script = browser.scripting;
+
+/**
+ * @description Default value for extension state
+ * @type {ExtensionState}
+ */
+const stateByDefault = { issue: { expiresIn: 0 }, on: true };
 
 /**
  * @description The storage to use
@@ -44,12 +97,56 @@ const storage = browser.storage.local;
 const suppressLastError = () => void browser.runtime.lastError;
 
 /**
+ * @async
+ * @description Enable extension icon
+ * @param {number} tabId
+ * @returns {Promise<void>}
+ */
+async function enableIcon(hostname, tabId) {
+  const state = await getState(hostname);
+  const path = state.issue.url ? '/assets/icons/warn.png' : '/assets/icons/on.png';
+
+  await browser.action.setIcon({ path, tabId }, suppressLastError);
+}
+
+/**
+ * @async
+ * @description Get database
+ * @returns {Promise<Object>}
+ */
+async function getData() {
+  const { data } = await storage.get('data');
+
+  if (!data) {
+    return await refreshData();
+  }
+
+  return data;
+}
+
+/**
  * @description Calculate current hostname
  * @param {string} url
  * @returns {string}
  */
 function getHostname(url) {
   return new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+}
+
+/**
+ * @async
+ * @description Get state for the given hostname
+ * @param {string} hostname
+ * @returns {Promise<ExtensionState>}
+ */
+async function getState(hostname) {
+  const { [hostname]: state = stateByDefault } = await storage.get(hostname);
+
+  if ((state.issue && Date.now() > state.issue.expiresIn) || !state.issue?.expiresIn) {
+    state.issue = await refreshIssue(hostname);
+  }
+
+  return state;
 }
 
 /**
@@ -81,20 +178,45 @@ function matchToPattern(match) {
 }
 
 /**
+ * @async
  * @description Refresh data
- * @param {void?} callback
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function refreshData(callback) {
+async function refreshData() {
   try {
-    fetch(`${apiUrl}/data/`).then((result) => {
-      result.json().then(({ data }) => {
-        storage.set({ data }, suppressLastError);
-        callback?.(data);
-      });
-    });
+    const { data } = await requestManager.fetchData(`${apiUrl}/data/`);
+
+    await triggerStoreUpdate('data', data);
+
+    return data;
   } catch {
-    refreshData(callback);
+    return await refreshData();
+  }
+}
+
+/**
+ * @async
+ * @description Refresh issues for the given hostname
+ * @param {string} hostname
+ * @returns {Promise<ExtensionIssue | undefined>}
+ */
+async function refreshIssue(hostname) {
+  try {
+    const { data } = await requestManager.fetchData(`${apiUrl}/issues/${hostname}`);
+
+    if (Object.keys(data).length === 0) {
+      await triggerStoreUpdate(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
+
+      return undefined;
+    }
+
+    const issue = { expiresIn: Date.now() + 4 * 60 * 60 * 1000, flags: data.flags, url: data.url };
+
+    await triggerStoreUpdate(hostname, { issue });
+
+    return data;
+  } catch {
+    return await refreshData();
   }
 }
 
@@ -104,9 +226,9 @@ function refreshData(callback) {
  * @param {any} message
  * @param {browser.tabs.Tab} tab
  * @param {void?} callback
- * @returns {void}
+ * @returns {Promise<void>}
  */
-async function report(message, tab, callback) {
+async function report(message) {
   try {
     const reason = message.reason;
     const url = message.url;
@@ -114,11 +236,26 @@ async function report(message, tab, callback) {
     const version = browser.runtime.getManifest().version;
     const body = JSON.stringify({ reason, url, userAgent, version });
     const headers = { 'Cache-Control': 'no-cache', 'Content-type': 'application/json' };
+    const requestInit = { body, headers, method: 'POST' };
 
-    const response = await fetch(`${apiUrl}/report/`, { body, headers, method: 'POST' });
-    callback?.((await response.json()).data);
+    return (await requestManager.fetchData(`${apiUrl}/report/`, requestInit)).data;
   } catch {
     console.error("Can't send report");
+  }
+}
+
+/**
+ * @async
+ * @description Update extension store for a given key
+ * @param {string} [key]
+ * @param {Object} value
+ * @returns {Promise<void>}
+ */
+async function triggerStoreUpdate(key, value) {
+  if (key) {
+    const { [key]: prev } = await storage.get(key);
+
+    await storage.set({ [key]: { ...prev, ...value } }, suppressLastError);
   }
 }
 
@@ -153,13 +290,11 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
   switch (message.type) {
     case 'DISABLE_ICON':
       if (isPage && tabId !== undefined) {
-        browser.action.setIcon({ path: '/assets/icons/disabled.png', tabId }, suppressLastError);
+        browser.action.setIcon({ path: '/assets/icons/off.png', tabId }, suppressLastError);
       }
       break;
     case 'ENABLE_ICON':
-      if (isPage && tabId !== undefined) {
-        browser.action.setIcon({ path: '/assets/icons/enabled.png', tabId }, suppressLastError);
-      }
+      if (isPage && tabId !== undefined) enableIcon(hostname, tabId);
       break;
     case 'ENABLE_POPUP':
       if (isPage && tabId !== undefined) {
@@ -167,24 +302,19 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'GET_DATA':
-      storage.get('data', ({ data }) => {
-        if (data) callback(data);
-        else refreshData(callback);
-      });
+      getData().then(callback);
       return true;
     case 'GET_EXCLUSION_LIST':
       storage.get(null, (exclusions) => {
         const exclusionList = Object.entries(exclusions || {}).flatMap((exclusion) =>
-          exclusion[0] !== 'data' && !exclusion[1]?.enabled ? [exclusion[0]] : []
+          exclusion[0] !== 'data' && !exclusion[1]?.on ? [exclusion[0]] : []
         );
         callback(exclusionList);
       });
       return true;
-    case 'GET_HOSTNAME_STATE':
+    case 'GET_STATE':
       if (hostname) {
-        storage.get(hostname, (state) => {
-          callback(state[hostname] ?? { enabled: true });
-        });
+        getState(hostname).then(callback);
         return true;
       }
       break;
@@ -199,25 +329,22 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'REFRESH_DATA':
-      refreshData(callback);
+      refreshData().then(callback);
       return true;
     case 'REPORT':
       if (tabId !== undefined) {
-        report(message, sender.tab, callback);
+        report(message).then(callback);
         return true;
       }
       break;
-    case 'SET_BADGE':
+    case 'UPDATE_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
         browser.action.setBadgeText({ tabId, text: formatNumber(message.value) });
       }
       break;
-    case 'SET_HOSTNAME_STATE':
-      if (hostname) {
-        if (message.state.enabled === false) storage.set({ [hostname]: message.state });
-        else storage.remove(hostname);
-      }
+    case 'UPDATE_STORE':
+      triggerStoreUpdate(hostname, message.state);
       break;
     default:
       break;
@@ -285,8 +412,9 @@ browser.webRequest.onBeforeRequest.addListener(
         return;
       }
 
+      const data = await getData();
       const hostname = getHostname(url);
-      const { data, [hostname]: state = { enabled: true } } = await storage.get(['data', hostname]);
+      const state = await getState(hostname);
 
       if (data?.rules?.length) {
         const rules = data.rules.map((rule) => ({
@@ -295,7 +423,7 @@ browser.webRequest.onBeforeRequest.addListener(
         }));
 
         await browser.declarativeNetRequest.updateSessionRules({
-          addRules: state.enabled ? rules : undefined,
+          addRules: state.on ? rules : undefined,
           removeRuleIds: data.rules.map((rule) => rule.id),
         });
       }
@@ -313,9 +441,9 @@ browser.webRequest.onErrorOccurred.addListener(
 
     if (error === 'net::ERR_BLOCKED_BY_CLIENT' && tabId > -1) {
       const hostname = getHostname(url);
-      const { [hostname]: state = { enabled: true } } = await storage.get(hostname);
+      const state = await getState(hostname);
 
-      if (state.enabled) {
+      if (state.on) {
         await browser.tabs.sendMessage(tabId, { type: 'INCREASE_ACTIONS_COUNT' });
       }
     }
