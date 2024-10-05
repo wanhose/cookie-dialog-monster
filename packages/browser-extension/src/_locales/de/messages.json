@@ -32,6 +32,12 @@
   "options_importButton": {
     "message": "Liste importieren"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Ein Problem wurde für diese Seite gemeldet. Die Erweiterung funktioniert möglicherweise vorübergehend nicht wie erwartet. Verfolgen Sie das Problem oder fügen Sie weitere Informationen hinzu."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Ein Problem wurde für diese Seite gemeldet, wird jedoch nicht behoben. Bitte beachten Sie, dass die Erweiterung auf dieser Seite möglicherweise nicht wie erwartet funktioniert. Wir empfehlen dringend, die Erweiterung über die Schaltfläche unten zu deaktivieren."
+  },
   "popup_contributeOption": {
     "message": "Zu diesem Projekt beitragen"
   },

@@ -32,6 +32,12 @@
   "options_importButton": {
     "message": "Importuj listę"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Zgłoszono problem z tą stroną. Rozszerzenie może tymczasowo nie działać zgodnie z oczekiwaniami. Śledź problem lub dodaj więcej informacji."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Zgłoszono problem z tą stroną, ale nie zostanie on naprawiony. Należy pamiętać, że rozszerzenie może nie działać zgodnie z oczekiwaniami na tej stronie. Zdecydowanie zalecamy wyłączenie rozszerzenia za pomocą poniższego przycisku."
+  },
   "popup_contributeOption": {
     "message": "Wesprzyj ten projekt"
   },

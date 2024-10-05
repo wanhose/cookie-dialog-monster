@@ -32,6 +32,12 @@
   "options_importButton": {
     "message": "Import list"
   },
+  "popup_bannerIssueOpen": {
+    "message": "An issue has been reported for this page. The extension may not work as expected temporarily. Follow the issue, or add more information"
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "An issue has been reported for this page, but it won't be fixed. Please be aware that the extension may not function as expected on this page. We highly recommend turning off the extension using the button below"
+  },
   "popup_contributeOption": {
     "message": "Contribute to this project"
   },

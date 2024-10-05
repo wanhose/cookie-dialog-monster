@@ -32,6 +32,12 @@
   "options_importButton": {
     "message": "Importă lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "A fost raportată o problemă pentru această pagină. Extensia poate să nu funcționeze temporar conform așteptărilor. Urmăriți problema sau adăugați mai multe informații."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "A fost raportată o problemă pentru această pagină, dar nu va fi rezolvată. Rețineți că extensia poate să nu funcționeze conform așteptărilor pe această pagină. Vă recomandăm cu insistență să dezactivați extensia folosind butonul de mai jos."
+  },
   "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
   },
