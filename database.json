@@ -496,6 +496,7 @@
     "||cmp.inmobi.com^",
     "||cmp.prisa.com^",
     "||cmp.uniconsent.com^",
+    "||cms.static-bahn.de/cms/consent-layer^",
     "||consent.cookiebot.com^",
     "||consent.cookiefirst.com^",
     "||consent.pdf24.org^",
@@ -13988,5 +13989,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728035398000"
+  "version": "1728228200092"
 }
