@@ -32,10 +32,10 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       const ua = new UAParser(userAgent ?? '').getResult();
       const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
       const existingIssues = await octokit.request('GET /search/issues', {
-        per_page: 1,
+        per_page: 50,
         q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
       });
-      const existingIssue = existingIssues.data.items[0];
+      const existingIssue = existingIssues.data.items.find((issue) => hostname === issue.title);
 
       try {
         if (existingIssue) {
