@@ -444,6 +444,12 @@
       "selector": "[class*=\"LayoutCookieBanner_buttons\"] > button:last-child"
     },
     {
+      "action": "reset",
+      "domain": "thetvdb.com",
+      "property": "overflow",
+      "selector": "body"
+    },
+    {
       "action": "click",
       "domain": "twitch.tv",
       "selector": "[data-a-target=\"consent-banner-accept\"]"
@@ -13990,5 +13996,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728295948141"
+  "version": "1728296484406"
 }
