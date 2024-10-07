@@ -519,6 +519,7 @@
     "||eu.fastcmp.com^",
     "||forum.vorondesign.com/js/xf/notice.min.js^",
     "||gdpr-tcfv2.sp-prod.net^",
+    "||get.optad360.io/sf/*/plugin.min.js",
     "||ilims.de/typo3conf/ext/nb_cookie_banner^",
     "||itkadmin.de/_javascripts/cookiesolution/es_cookie_solution_sources_v2.js^",
     "||js.vxcdn.com/usercentrics-sdk^",
@@ -13996,5 +13997,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728296484406"
+  "version": "1728300083309"
 }
