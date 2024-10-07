@@ -294,7 +294,10 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'ENABLE_ICON':
-      if (isPage && tabId !== undefined) enableIcon(hostname, tabId);
+      if (isPage && tabId !== undefined) {
+        enableIcon(hostname, tabId).then(callback);
+        return true;
+      }
       break;
     case 'ENABLE_POPUP':
       if (isPage && tabId !== undefined) {
@@ -344,8 +347,8 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'UPDATE_STORE':
-      triggerStoreUpdate(hostname, message.state);
-      break;
+      triggerStoreUpdate(hostname, message.state).then(callback);
+      return true;
     default:
       break;
   }
