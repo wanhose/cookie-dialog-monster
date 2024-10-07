@@ -11,9 +11,9 @@
 
 ## Compatibility
 
-- All browsers based on Chromium 88+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
-- Google Chrome 109+
-- Microsoft Edge 109+
+- All browsers based on Chromium 124+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
+- Google Chrome 124+
+- Microsoft Edge 124+
 - Mozilla Firefox 126+
 - Mozilla Firefox Mobile 126+
 
