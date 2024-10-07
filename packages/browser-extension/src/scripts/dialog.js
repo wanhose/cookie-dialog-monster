@@ -219,7 +219,10 @@ async function submitButtonClickHandler(event) {
   const submitView = dialog?.getElementsByClassName('report-dialog-submit-view')[0];
   const userAgent = window.navigator.userAgent;
   const issueUrl = await dispatch({ userAgent, reason: reasonText, url: urlText, type: 'REPORT' });
+  const issue = { expiresIn: Date.now() + 8 * 60 * 60 * 1000, flags: ['bug'], url: issueUrl };
 
+  await dispatch({ hostname, state: { issue }, type: 'UPDATE_STORE' });
+  await dispatch({ hostname, type: 'ENABLE_ICON' });
   formView?.setAttribute('hidden', 'true');
   issueButton?.addEventListener('click', () => window.open(issueUrl, '_blank'));
   submitView?.removeAttribute('hidden');
