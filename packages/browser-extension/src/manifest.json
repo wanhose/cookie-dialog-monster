@@ -51,7 +51,7 @@
         "*://translate.google.it/*",
         "*://www.cookie-dialog-monster.com/*"
       ],
-      "js": ["scripts/content.js", "scripts/dialog.js"],
+      "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"
     }
