@@ -32,28 +32,33 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       const ua = new UAParser(userAgent ?? '').getResult();
       const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
       const existingIssues = await octokit.request('GET /search/issues', {
-        per_page: 1,
+        per_page: 50,
         q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
       });
-      const existingIssue = existingIssues.data.items[0];
+      const existingIssue = existingIssues.data.items.find(
+        (issue) =>
+          hostname === issue.title &&
+          (issue.state === 'open' ||
+            (issue.state === 'closed' && issue.labels.some((label) => label.name === 'wontfix')))
+      );
 
       try {
         if (existingIssue) {
           if (existingIssue.state === 'closed') {
             await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
-              owner: environment.github.owner,
-              repo: environment.github.repo,
               issue_number: existingIssue.number,
               labels: ['bug'],
+              owner: environment.github.owner,
+              repo: environment.github.repo,
               state: 'open',
             });
           }
 
           await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
+            body: generateText(request.body, ua),
+            issue_number: existingIssue.number,
             owner: environment.github.owner,
             repo: environment.github.repo,
-            issue_number: existingIssue.number,
-            body: generateText(request.body, ua),
           });
 
           reply.send({
@@ -69,7 +74,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
           labels: ['bug'],
           owner: environment.github.owner,
           repo: environment.github.repo,
-          title: url,
+          title: hostname,
         });
 
         reply.send({

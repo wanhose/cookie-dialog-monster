@@ -444,6 +444,12 @@
       "selector": "[class*=\"LayoutCookieBanner_buttons\"] > button:last-child"
     },
     {
+      "action": "reset",
+      "domain": "thetvdb.com",
+      "property": "overflow",
+      "selector": "body"
+    },
+    {
       "action": "click",
       "domain": "twitch.tv",
       "selector": "[data-a-target=\"consent-banner-accept\"]"
@@ -496,6 +502,7 @@
     "||cmp.inmobi.com^",
     "||cmp.prisa.com^",
     "||cmp.uniconsent.com^",
+    "||cms.static-bahn.de/cms/consent-layer^",
     "||consent.cookiebot.com^",
     "||consent.cookiefirst.com^",
     "||consent.pdf24.org^",
@@ -507,10 +514,12 @@
     "||cp.as.com^",
     "||cp.inside-digital.de^",
     "||download.amd.com/OneTrust^",
+    "||driftingchef.com/static/*/Sticky2,ConsentManager",
     "||emp.bbci.co.uk^",
     "||eu.fastcmp.com^",
     "||forum.vorondesign.com/js/xf/notice.min.js^",
     "||gdpr-tcfv2.sp-prod.net^",
+    "||get.optad360.io/sf/*/plugin.min.js",
     "||ilims.de/typo3conf/ext/nb_cookie_banner^",
     "||itkadmin.de/_javascripts/cookiesolution/es_cookie_solution_sources_v2.js^",
     "||js.vxcdn.com/usercentrics-sdk^",
@@ -13988,5 +13997,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1728035398000"
+  "version": "1728300083309"
 }

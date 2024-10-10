@@ -23,17 +23,17 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       try {
         const { hostname } = request.params;
         const existingIssues = await octokit.request('GET /search/issues', {
-          per_page: 1,
+          per_page: 50,
           q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
         });
-        const existingIssue = existingIssues.data.items[0];
+        const existingIssue = existingIssues.data.items.find(
+          (issue) =>
+            hostname === issue.title &&
+            (issue.state === 'open' ||
+              (issue.state === 'closed' && issue.labels.some((label) => label.name === 'wontfix')))
+        );
 
-        if (
-          existingIssue &&
-          (existingIssue.state === 'open' ||
-            (existingIssue.state === 'closed' &&
-              existingIssue.labels.some((label) => label.name === 'wontfix')))
-        ) {
+        if (existingIssue) {
           reply.send({
             data: {
               flags: existingIssue.labels.map((label) => label.name),
