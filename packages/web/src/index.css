@@ -35,6 +35,6 @@
   }
 
   .image {
-    @apply self-center max-w-sm md:self-start rounded-lg shadow-2xl shrink-0 w-full;
+    @apply max-w-sm rounded-lg shadow-2xl shrink-0 w-full;
   }
 }
