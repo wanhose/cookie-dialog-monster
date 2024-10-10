@@ -48,7 +48,7 @@ class RequestManager {
  * @description API URL
  * @type {string}
  */
-const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v4';
+const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v5';
 
 /**
  * @description Context menu identifier
