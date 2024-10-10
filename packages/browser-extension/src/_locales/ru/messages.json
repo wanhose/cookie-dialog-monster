@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "Появилось всплывающее окно"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Похоже, что уже существует открытая проблема или она помечена как 'не будет исправлено'. Пожалуйста, войдите в проблему, чтобы добавить больше информации, используя следующую кнопку."
+  },
+  "report_submitErrorText": {
+    "message": "Отчет не отправлен?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Пока мы работаем над этим, вы можете добавить этот сайт в список исключений в настройках расширения или просто отключить расширение для этого сайта, нажав на значок расширения на панели инструментов вашего браузера."
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Отчет отправлен!"
   },
   "report_urlInputError": {

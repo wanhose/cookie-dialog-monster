@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "A apărut un popup"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Se pare că există deja o problemă deschisă sau marcată ca 'nu va fi rezolvată'. Vă rugăm să intrați în problemă pentru a adăuga mai multe informații folosind butonul de mai jos."
+  },
+  "report_submitErrorText": {
+    "message": "Raportul nu a fost trimis?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "În timp ce lucrăm la acest aspect, poți adăuga acest site web la lista de excludere din setările extensiei sau poți dezactiva extensia pentru acest site web făcând clic pe pictograma extensiei din bara de instrumente a browserului."
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Raport trimis!"
   },
   "report_urlInputError": {

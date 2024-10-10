@@ -87,7 +87,7 @@ const stateByDefault = { issue: { expiresIn: 0 }, on: true };
 
 /**
  * @description The storage to use
- * @type {browser.storage.LocalStorageArea}
+ * @type {browser.storage.StorageArea}
  */
 const storage = browser.storage.local;
 
@@ -238,7 +238,7 @@ async function report(message) {
     const headers = { 'Cache-Control': 'no-cache', 'Content-type': 'application/json' };
     const requestInit = { body, headers, method: 'POST' };
 
-    return (await requestManager.fetchData(`${apiUrl}/report/`, requestInit)).data;
+    return await requestManager.fetchData(`${apiUrl}/report/`, requestInit);
   } catch {
     console.error("Can't send report");
   }
@@ -345,7 +345,7 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
 /**
  * @description Listens to extension installed
  */
-browser.runtime.onInstalled.addListener(() => {
+browser.runtime.onInstalled.addListener((details) => {
   const documentUrlPatterns = browser.runtime.getManifest().content_scripts[0].matches;
 
   browser.contextMenus.create(
@@ -377,6 +377,17 @@ browser.runtime.onInstalled.addListener(() => {
     },
     suppressLastError
   );
+
+  if (details.reason === 'update') {
+    storage.remove('updateAvailable');
+  }
+});
+
+/**
+ * @description Listen to available updates
+ */
+browser.runtime.onUpdateAvailable.addListener((details) => {
+  storage.set({ updateAvailable: details.version }, suppressLastError);
 });
 
 /**

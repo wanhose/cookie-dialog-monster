@@ -360,7 +360,8 @@ popup-data-container {
     text-align: center;
   }
 
-  & .report-submit-view {
+  & .report-submit-error-view,
+  & .report-submit-success-view {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -370,7 +371,8 @@ popup-data-container {
     margin-top: 16px;
   }
 
-  & .report-submit-view[hidden] {
+  & .report-submit-error-view[hidden],
+  & .report-submit-success-view[hidden] {
     display: none;
   }
 }

@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "Popup apparso"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Sembra che ci sia già un problema aperto o contrassegnato come 'non risolvibile'. Per favore, entra nel problema per aggiungere ulteriori informazioni usando il pulsante seguente."
+  },
+  "report_submitErrorText": {
+    "message": "Segnalazione non inviata?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Mentre lavoriamo su questo, puoi aggiungere questo sito web alla lista di esclusione nelle impostazioni dell'estensione o semplicemente disattivare l'estensione per questo sito web cliccando sull'icona dell'estensione nella barra degli strumenti del browser."
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Rapporto inviato!"
   },
   "report_urlInputError": {

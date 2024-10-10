@@ -280,7 +280,6 @@ async function handleSubmitButtonClick(event) {
   const reasonText = reasonInput?.value.trim();
   const urlInput = document.getElementById('report-input-url');
   const urlText = urlInput?.value.trim();
-
   const errors = validateForm({ reason: reasonText, url: urlText });
 
   if (errors) {
@@ -298,18 +297,39 @@ async function handleSubmitButtonClick(event) {
     return;
   }
 
+  const issueButtons = document.getElementsByClassName('report-issue-button');
   const formView = document.getElementsByClassName('report-form-view')[0];
-  const issueButton = document.getElementsByClassName('report-issue-button')[0];
-  const submitView = document.getElementsByClassName('report-submit-view')[0];
   const userAgent = window.navigator.userAgent;
-  const issueUrl = await dispatch({ userAgent, reason: reasonText, url: urlText, type: 'REPORT' });
-  const issue = { expiresIn: Date.now() + 8 * 60 * 60 * 1000, flags: ['bug'], url: issueUrl };
+  const response = await dispatch({ userAgent, reason: reasonText, url: urlText, type: 'REPORT' });
+  const hostname = new URL(urlText).hostname.split('.').slice(-3).join('.').replace('www.', '');
+  const issue = { expiresIn: Date.now() + 8 * 60 * 60 * 1000, flags: ['bug'], url: response.data };
 
-  await dispatch({ hostname, state: { issue }, type: 'UPDATE_STORE' });
-  await dispatch({ hostname, type: 'ENABLE_ICON' });
-  formView?.setAttribute('hidden', 'true');
-  issueButton?.addEventListener('click', () => window.open(issueUrl, '_blank'));
-  submitView?.removeAttribute('hidden');
+  if (response.success) {
+    const successView = document.getElementsByClassName('report-submit-success-view')[0];
+
+    await dispatch({ hostname, state: { issue }, type: 'UPDATE_STORE' });
+    await dispatch({ hostname, type: 'ENABLE_ICON' });
+    formView?.setAttribute('hidden', 'true');
+    issueButtons[1]?.addEventListener('click', () => window.open(response.data, '_blank'));
+    successView?.removeAttribute('hidden');
+    return;
+  }
+
+  if (response.data) {
+    const errorView = document.getElementsByClassName('report-submit-error-view')[0];
+
+    if (response.errors?.some((error) => error.includes('wontfix'))) {
+      issue.flags.push('wontfix');
+    }
+
+    await dispatch({ hostname, state: { issue }, type: 'UPDATE_STORE' });
+    errorView?.removeAttribute('hidden');
+    formView?.setAttribute('hidden', 'true');
+    issueButtons[0]?.addEventListener('click', () => window.open(response.data, '_blank'));
+    return;
+  }
+
+  window.close();
 }
 
 /**

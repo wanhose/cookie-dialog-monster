@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "Pojawił się popup"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Wygląda na to, że istnieje już otwarte zgłoszenie lub zostało oznaczone jako 'nie do rozwiązania'. Wprowadź zgłoszenie, aby dodać więcej informacji, używając poniższego przycisku."
+  },
+  "report_submitErrorText": {
+    "message": "Raport nie został wysłany?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Podczas gdy nad tym pracujemy, możesz dodać tę stronę do listy wykluczeń w ustawieniach rozszerzenia lub po prostu wyłączyć rozszerzenie dla tej strony, klikając ikonę rozszerzenia na pasku narzędzi przeglądarki."
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Zgłoszenie wysłane!"
   },
   "report_urlInputError": {
