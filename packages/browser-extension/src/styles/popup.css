@@ -15,7 +15,7 @@ body {
   width: 320px;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-device-width: 768px) {
   body {
     width: auto;
   }
@@ -80,7 +80,7 @@ header {
   }
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-device-width: 768px) {
   main {
     margin: 0 auto;
     max-width: 320px;
