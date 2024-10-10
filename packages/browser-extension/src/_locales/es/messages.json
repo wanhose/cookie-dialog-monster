@@ -68,11 +68,17 @@
   "report_reasonInputPlaceholder": {
     "message": "Apareció un popup"
   },
-  "report_submitExtraText": {
-    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador."
+  "report_submitErrorExtraText": {
+    "message": "Reporte no enviado?"
   },
-  "report_submitText": {
-    "message": "¡Informe enviado!"
+  "report_submitErrorText": {
+    "message": "Parece que ya hay un problema abierto o está marcado como 'no se solucionará'. Por favor, ingrese al problema para agregar más información usando el siguiente botón."
+  },
+  "report_submitSuccessExtraText": {
+    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusiones en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el icono de la extensión en la barra de herramientas de tu navegador."
+  },
+  "report_submitSuccessText": {
+    "message": "Reporte enviado!"
   },
   "report_urlInputError": {
     "message": "Por favor, ingrese una URL válida con no más de 1000 caracteres"

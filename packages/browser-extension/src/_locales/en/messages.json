@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "Popup showed up"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "It seems that there's an issue open already, or it is marked as wontfix. Please enter the issue if you want to add more information using the following button."
+  },
+  "report_submitErrorText": {
+    "message": "Report not sent?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "While we are working on this, you can add this website to the exclusion list in the extension settings or just disable the extension for this website clicking on the extension icon in your browser toolbar"
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Report sent!"
   },
   "report_urlInputError": {

@@ -244,7 +244,31 @@
             </div>
           </div>
         </div>
-        <div class="report-submit-view" hidden>
+        <div class="report-submit-error-view" hidden>
+          <svg
+            fill="none"
+            height="48"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            stroke="var(--color-error)"
+            viewBox="0 0 24 24"
+            width="48"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <div class="report-submit-text" data-i18n="report_submitErrorText"></div>
+          <div class="report-submit-extra-text" data-i18n="report_submitErrorExtraText"></div>
+          <div
+            class="report-issue-button"
+            data-i18n="contextMenu_issueOption"
+            role="button"
+            tabindex="0"
+          ></div>
+        </div>
+        <div class="report-submit-success-view" hidden>
           <svg
             fill="none"
             height="48"
@@ -258,8 +282,8 @@
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
             <polyline points="22 4 12 14.01 9 11.01" />
           </svg>
-          <div class="report-submit-text" data-i18n="report_submitText"></div>
-          <div class="report-submit-extra-text" data-i18n="report_submitExtraText"></div>
+          <div class="report-submit-text" data-i18n="report_submitSuccessText"></div>
+          <div class="report-submit-extra-text" data-i18n="report_submitSuccessExtraText"></div>
           <div
             class="report-issue-button"
             data-i18n="contextMenu_issueOption"

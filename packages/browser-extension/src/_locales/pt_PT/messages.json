@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "Popup apareceu"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Parece que já existe um problema aberto ou marcado como 'não corrigido'. Por favor, aceda ao problema para adicionar mais informações usando o botão seguinte."
+  },
+  "report_submitErrorText": {
+    "message": "Relatório não enviado?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Enquanto trabalhamos nisso, pode adicionar este site à lista de exclusão nas definições da extensão ou simplesmente desativar a extensão para este site clicando no ícone da extensão na barra de ferramentas do navegador."
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Relatório enviado!"
   },
   "report_urlInputError": {

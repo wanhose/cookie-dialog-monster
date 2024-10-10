@@ -68,10 +68,16 @@
   "report_reasonInputPlaceholder": {
     "message": "Popup ist erschienen"
   },
-  "report_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Es scheint, dass bereits ein Problem geöffnet ist oder als 'wontfix' markiert wurde. Bitte öffnen Sie das Problem und fügen Sie gegebenenfalls weitere Informationen hinzu, indem Sie den folgenden Button verwenden."
+  },
+  "report_submitErrorText": {
+    "message": "Bericht nicht gesendet?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Während wir daran arbeiten, können Sie diese Website zur Ausschlussliste in den Erweiterungseinstellungen hinzufügen oder einfach die Erweiterung für diese Website deaktivieren, indem Sie auf das Erweiterungssymbol in Ihrer Browser-Symbolleiste klicken."
   },
-  "report_submitText": {
+  "report_submitSuccessText": {
     "message": "Bericht gesendet!"
   },
   "report_urlInputError": {
