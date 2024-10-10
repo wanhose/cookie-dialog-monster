@@ -18,7 +18,7 @@ const PostReportBodySchema = yup.object().shape({
 
 type PostReportBody = yup.InferType<typeof PostReportBodySchema>;
 
-export default (server: FastifyInstance, options: RouteShorthandOptions, done: () => void) => {
+export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {

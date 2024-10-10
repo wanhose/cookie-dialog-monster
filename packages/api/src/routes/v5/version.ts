@@ -1,18 +1,17 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import fetch from 'node-fetch';
-import { parseNewFix } from 'services/compatibility';
 import environment from 'services/environment';
 
 export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
-  server.get('/data/', async (_request, reply) => {
+  server.get('/version/', async (_request, reply) => {
     try {
-      const url = `${environment.github.files}/database.json`;
-      const result = await (await fetch(url)).json();
+      const options = { headers: { 'Cache-Control': 'no-cache' } };
+      const url = `${environment.github.files}/packages/browser-extension/src/manifest.json`;
+      const { version } = await (await fetch(url, options)).json();
 
       reply.send({
         data: {
-          ...result,
-          fixes: result.fixes.map(parseNewFix),
+          version,
         },
         success: true,
       });

@@ -28,37 +28,43 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
       validatorCompiler,
     },
     async (request, reply) => {
-      const { url, userAgent } = request.body;
+      const { reason, url, userAgent, version } = request.body;
       const ua = new UAParser(userAgent ?? '').getResult();
       const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
       const existingIssues = await octokit.request('GET /search/issues', {
         per_page: 50,
         q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
       });
-      const existingIssue = existingIssues.data.items.find(
-        (issue) =>
-          hostname === issue.title &&
-          (issue.state === 'open' ||
-            (issue.state === 'closed' && issue.labels.some((label) => label.name === 'wontfix')))
-      );
+      const existingIssue = existingIssues.data.items.find((issue) => hostname === issue.title);
 
       try {
         if (existingIssue) {
-          if (existingIssue.state === 'closed') {
-            await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
-              issue_number: existingIssue.number,
-              labels: ['bug'],
-              owner: environment.github.owner,
-              repo: environment.github.repo,
-              state: 'open',
+          if (existingIssue.labels.some((label) => label.name === 'wontfix')) {
+            reply.send({
+              data: existingIssue.html_url,
+              errors: ['This issue has been marked as "wontfix" and will not be addressed.'],
+              success: false,
             });
+            return;
           }
 
-          await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
-            body: generateText(request.body, ua),
+          if (existingIssue.state === 'open') {
+            reply.send({
+              data: existingIssue.html_url,
+              errors: [
+                'This issue already exists. Please refer to the existing issue for updates.',
+              ],
+              success: false,
+            });
+            return;
+          }
+
+          await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
             issue_number: existingIssue.number,
+            labels: ['bug'],
             owner: environment.github.owner,
             repo: environment.github.repo,
+            state: 'open',
           });
 
           reply.send({
@@ -70,7 +76,21 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
         const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
           assignees: [environment.github.owner],
-          body: generateText(request.body, ua),
+          body: [
+            '## Issue information',
+            ...(ua.browser.name && ua.browser.version
+              ? ['#### 🖥️ Browser', `${ua.browser.name} (${ua.browser.version})`]
+              : []),
+            ...(ua.device.type && ua.device.vendor
+              ? ['#### 📱 Device', `${ua.device.vendor} (${ua.device.type})`]
+              : []),
+            '#### 📝 Reason',
+            reason,
+            '#### 🔗 URL',
+            url,
+            '#### 🏷️ Version',
+            version,
+          ].join('\n'),
           labels: ['bug'],
           owner: environment.github.owner,
           repo: environment.github.repo,
@@ -92,21 +112,3 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
   done();
 };
-
-function generateText(body: PostReportBody, ua: UAParser.IResult): string {
-  return [
-    '## Issue information',
-    ...(ua.browser.name && ua.browser.version
-      ? ['#### 🖥️ Browser', `${ua.browser.name} (${ua.browser.version})`]
-      : []),
-    ...(ua.device.type && ua.device.vendor
-      ? ['#### 📱 Device', `${ua.device.vendor} (${ua.device.type})`]
-      : []),
-    '#### 📝 Reason',
-    body.reason,
-    '#### 🔗 URL',
-    body.url,
-    '#### 🏷️ Version',
-    body.version,
-  ].join('\n');
-}
