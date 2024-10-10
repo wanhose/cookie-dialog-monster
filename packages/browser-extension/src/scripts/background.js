@@ -125,12 +125,32 @@ async function getData() {
 }
 
 /**
- * @description Calculate current hostname
+ * @async
+ * @description Disable report context menu option
+ * @returns {Promise<void>}
+ */
+async function disableReport() {
+  return browser.contextMenus.update(reportMenuItemId, { enabled: false });
+}
+
+/**
+ * @description Get current hostname
  * @param {string} url
  * @returns {string}
  */
 function getHostname(url) {
   return new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+}
+
+/**
+ * @async
+ * @description Get current active tab
+ * @returns {Promise<browser.tabs.Tab>}
+ */
+async function getTab() {
+  const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+
+  return tabs[0];
 }
 
 /**
@@ -222,7 +242,7 @@ async function refreshIssue(hostname) {
 
 /**
  * @async
- * @description Report active tab URL
+ * @description Report given page
  * @param {any} message
  * @param {browser.tabs.Tab} tab
  * @param {void?} callback
@@ -284,6 +304,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
   const tabId = sender.tab?.id;
 
   switch (message.type) {
+    case 'DISABLE_REPORT':
+      if (isPage && tabId !== undefined) disableReport();
+      break;
     case 'DISABLE_ICON':
       if (isPage && tabId !== undefined) {
         browser.action.setIcon({ path: '/assets/icons/off.png', tabId }, suppressLastError);
@@ -298,6 +321,11 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
     case 'ENABLE_POPUP':
       if (isPage && tabId !== undefined) {
         browser.action.setPopup({ popup: '/popup.html', tabId }, suppressLastError);
+      }
+      break;
+    case 'ENABLE_REPORT':
+      if (isPage && tabId !== undefined) {
+        browser.contextMenus.update(reportMenuItemId, { enabled: true });
       }
       break;
     case 'GET_DATA':
@@ -318,9 +346,7 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'GET_TAB':
-      browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        callback(tabs[0]);
-      });
+      getTab().then(callback);
       return true;
     case 'REFRESH_DATA':
       refreshData().then(callback);
@@ -328,6 +354,7 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
     case 'REPORT':
       report(message).then(callback);
       return true;
+
     case 'UPDATE_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
@@ -371,6 +398,7 @@ browser.runtime.onInstalled.addListener((details) => {
     {
       contexts: ['all'],
       documentUrlPatterns,
+      enabled: false,
       id: reportMenuItemId,
       parentId: extensionMenuItemId,
       title: browser.i18n.getMessage('contextMenu_reportOption'),
@@ -395,6 +423,13 @@ browser.runtime.onUpdateAvailable.addListener((details) => {
  */
 browser.runtime.onStartup.addListener(() => {
   refreshData();
+});
+
+/**
+ * @description Listen to tab changes
+ */
+browser.tabs.onActivated.addListener(() => {
+  disableReport();
 });
 
 /**

@@ -425,11 +425,13 @@ async function setUp(params = {}) {
     skips = data?.skips ?? skips;
     tokens = data?.tokens ?? tokens;
 
+    dispatch({ type: 'ENABLE_REPORT' });
     dispatch({ hostname, type: 'ENABLE_ICON' });
     dispatch({ type: 'UPDATE_BADGE', value: actions.size });
     observer.observe(document.body ?? document.documentElement, options);
     if (!params.skipRunFn) run({ containers: tokens.containers });
   } else {
+    dispatch({ type: 'DISABLE_REPORT' });
     dispatch({ type: 'DISABLE_ICON' });
     dispatch({ type: 'UPDATE_BADGE', value: actions.size });
     observer.disconnect();
@@ -495,9 +497,13 @@ window.addEventListener('pageshow', async (event) => {
  * @returns {void}
  */
 window.addEventListener('visibilitychange', async () => {
-  if (document.visibilityState === 'visible' && !initiallyVisible) {
-    initiallyVisible = true;
-    await setUp();
+  if (document.visibilityState === 'visible') {
+    if (!initiallyVisible) {
+      initiallyVisible = true;
+      await setUp();
+    }
+
+    dispatch({ type: state.on ? 'ENABLE_REPORT' : 'DISABLE_REPORT' });
   }
 });
 
