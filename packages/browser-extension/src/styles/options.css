@@ -40,6 +40,12 @@ button[data-variant='large'] {
   padding: 8px;
 }
 
+@media (max-width: 768px) {
+  button[data-variant='large'] {
+    justify-content: flex-end;
+  }
+}
+
 button:focus,
 button:hover {
   background-color: var(--color-secondary);
@@ -104,9 +110,16 @@ main {
 
 .button-group {
   display: flex;
-  justify-content: flex-end;
   gap: 4px;
+  justify-content: flex-end;
   margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .button-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
 }
 
 #exclusion-list {
