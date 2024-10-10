@@ -294,20 +294,19 @@ popup-data-container {
   & .report-cancel-button {
     align-items: center;
     background-color: var(--color-white);
-    border: 1px solid var(--color-white);
-    border-radius: 4px;
     color: var(--color-secondary);
     cursor: pointer;
     display: flex;
     font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 14px;
-    height: 34px;
     justify-content: center;
     line-height: 1.2;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
     outline: none;
-    padding: 8px 16px 0px 16px;
+    padding: 0px;
     text-align: center;
-    width: 100%;
   }
 
   & .report-cancel-button:focus,
