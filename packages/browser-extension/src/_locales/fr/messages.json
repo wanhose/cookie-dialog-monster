@@ -53,28 +53,31 @@
   "popup_rateOption": {
     "message": "Évaluer cette extension"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Veuillez ne pas partager d'informations personnelles dans ce rapport. Si vous souhaitez ajouter plus de détails, ouvrez le problème GitHub à l'étape suivante et ajoutez un commentaire."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Annuler"
+  },
+  "report_reasonInputError": {
     "message": "Veuillez entrer une raison d'au moins 10 caractères et de pas plus de 1000 caractères"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Raison"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Le popup est apparu"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitExtraText": {
     "message": "Pendant que nous travaillons sur ce point, vous pouvez ajouter ce site web à la liste d'exclusion dans les paramètres de l'extension ou simplement désactiver l'extension pour ce site web en cliquant sur l'icône de l'extension dans la barre d'outils de votre navigateur."
   },
-  "reportDialog_submitText": {
+  "report_submitText": {
     "message": "Rapport envoyé!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Veuillez entrer une URL valide de pas plus de 1000 caractères"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

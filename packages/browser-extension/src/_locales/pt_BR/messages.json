@@ -53,28 +53,31 @@
   "popup_rateOption": {
     "message": "Avalie esta extensão"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Por favor, não compartilhe nenhuma informação pessoal neste relatório. Se você quiser adicionar mais detalhes, abra o problema no GitHub na próxima etapa e adicione um comentário."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Cancelar"
+  },
+  "report_reasonInputError": {
     "message": "Por favor, insira um motivo com pelo menos 10 caracteres e no máximo 1000 caracteres"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Motivo"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Popup apareceu"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitExtraText": {
     "message": "Enquanto estamos trabalhando nisso, você pode adicionar este site à lista de exclusão nas configurações da extensão ou simplesmente desativar a extensão para este site clicando no ícone da extensão na barra de ferramentas do navegador."
   },
-  "reportDialog_submitText": {
+  "report_submitText": {
     "message": "Relatório enviado!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Por favor, insira uma URL válida com no máximo 1000 caracteres"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }
