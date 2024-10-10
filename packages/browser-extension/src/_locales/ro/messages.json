@@ -53,28 +53,31 @@
   "popup_rateOption": {
     "message": "Evaluează această extensie"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Te rugăm să nu împărtășești informații personale în acest raport. Dacă dorești să adaugi mai multe detalii, deschide problema GitHub în pasul următor și adaugă un comentariu."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Anulează"
+  },
+  "report_reasonInputError": {
     "message": "Vă rugăm să introduceți un motiv cu cel puțin 10 caractere și maximum 1000 de caractere"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Motiv"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "A apărut un popup"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitExtraText": {
     "message": "În timp ce lucrăm la acest aspect, poți adăuga acest site web la lista de excludere din setările extensiei sau poți dezactiva extensia pentru acest site web făcând clic pe pictograma extensiei din bara de instrumente a browserului."
   },
-  "reportDialog_submitText": {
+  "report_submitText": {
     "message": "Raport trimis!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Vă rugăm să introduceți o adresă URL validă cu maximum 1000 de caractere"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

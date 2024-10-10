@@ -53,28 +53,31 @@
   "popup_rateOption": {
     "message": "Valuta questa estensione"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Per favore, non condividere informazioni personali in questo rapporto. Se vuoi aggiungere più dettagli, apri il problema su GitHub nel passaggio successivo e aggiungi un commento."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Annulla"
+  },
+  "report_reasonInputError": {
     "message": "Inserisci una motivazione con almeno 10 caratteri e non più di 1000 caratteri"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Motivo"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Popup apparso"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitExtraText": {
     "message": "Mentre lavoriamo su questo, puoi aggiungere questo sito web alla lista di esclusione nelle impostazioni dell'estensione o semplicemente disattivare l'estensione per questo sito web cliccando sull'icona dell'estensione nella barra degli strumenti del browser."
   },
-  "reportDialog_submitText": {
+  "report_submitText": {
     "message": "Rapporto inviato!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Inserisci un URL valido con non più di 1000 caratteri"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

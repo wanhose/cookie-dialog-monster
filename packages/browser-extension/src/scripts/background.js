@@ -186,7 +186,7 @@ async function refreshData() {
   try {
     const { data } = await requestManager.fetchData(`${apiUrl}/data/`);
 
-    await triggerStoreUpdate('data', data);
+    await updateStore('data', data);
 
     return data;
   } catch {
@@ -205,14 +205,14 @@ async function refreshIssue(hostname) {
     const { data } = await requestManager.fetchData(`${apiUrl}/issues/${hostname}`);
 
     if (Object.keys(data).length === 0) {
-      await triggerStoreUpdate(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
+      await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
 
       return undefined;
     }
 
     const issue = { expiresIn: Date.now() + 4 * 60 * 60 * 1000, flags: data.flags, url: data.url };
 
-    await triggerStoreUpdate(hostname, { issue });
+    await updateStore(hostname, { issue });
 
     return data;
   } catch {
@@ -251,7 +251,7 @@ async function report(message) {
  * @param {Object} value
  * @returns {Promise<void>}
  */
-async function triggerStoreUpdate(key, value) {
+async function updateStore(key, value) {
   if (key) {
     const { [key]: prev } = await storage.get(key);
 
@@ -262,14 +262,10 @@ async function triggerStoreUpdate(key, value) {
 /**
  * @description Listen to context menus clicked
  */
-browser.contextMenus.onClicked.addListener((info, tab) => {
-  const tabId = tab?.id;
-
+browser.contextMenus.onClicked.addListener((info) => {
   switch (info.menuItemId) {
     case reportMenuItemId:
-      if (tabId !== undefined) {
-        browser.tabs.sendMessage(tabId, { type: 'SHOW_REPORT_DIALOG' }, suppressLastError);
-      }
+      browser.action.openPopup();
       break;
     case settingsMenuItemId:
       browser.runtime.openOptionsPage();
@@ -309,9 +305,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       return true;
     case 'GET_EXCLUSION_LIST':
       storage.get(null, (exclusions) => {
-        const exclusionList = Object.entries(exclusions || {}).flatMap((exclusion) =>
-          exclusion[0] !== 'data' && !exclusion[1]?.on ? [exclusion[0]] : []
-        );
+        const exclusionList = Object.entries(exclusions || {}).flatMap((exclusion) => {
+          return exclusion[0] !== 'data' && exclusion[1].on === false ? [exclusion[0]] : [];
+        });
         callback(exclusionList);
       });
       return true;
@@ -326,20 +322,12 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
         callback(tabs[0]);
       });
       return true;
-    case 'INSERT_DIALOG_CSS':
-      if (isPage && tabId !== undefined) {
-        script.insertCSS({ files: ['styles/dialog.css'], target: { tabId } });
-      }
-      break;
     case 'REFRESH_DATA':
       refreshData().then(callback);
       return true;
     case 'REPORT':
-      if (tabId !== undefined) {
-        report(message).then(callback);
-        return true;
-      }
-      break;
+      report(message).then(callback);
+      return true;
     case 'UPDATE_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
@@ -347,7 +335,7 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       }
       break;
     case 'UPDATE_STORE':
-      triggerStoreUpdate(hostname, message.state).then(callback);
+      updateStore(hostname, message.state).then(callback);
       return true;
     default:
       break;

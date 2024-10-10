@@ -53,28 +53,31 @@
   "popup_rateOption": {
     "message": "Oceń to rozszerzenie"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Prosimy, nie udostępniaj żadnych danych osobowych w tym raporcie. Jeśli chcesz dodać więcej szczegółów, otwórz zgłoszenie na GitHub w następnym kroku i dodaj komentarz."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Anuluj"
+  },
+  "report_reasonInputError": {
     "message": "Proszę podać powód zawierający co najmniej 10 znaków i nie więcej niż 1000 znaków"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Powód"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Pojawił się popup"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitExtraText": {
     "message": "Podczas gdy nad tym pracujemy, możesz dodać tę stronę do listy wykluczeń w ustawieniach rozszerzenia lub po prostu wyłączyć rozszerzenie dla tej strony, klikając ikonę rozszerzenia na pasku narzędzi przeglądarki."
   },
-  "reportDialog_submitText": {
+  "report_submitText": {
     "message": "Zgłoszenie wysłane!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Proszę wprowadzić prawidłowy URL zawierający nie więcej niż 1000 znaków"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }
