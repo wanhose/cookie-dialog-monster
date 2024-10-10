@@ -69,7 +69,7 @@
     "message": "Popup showed up"
   },
   "report_submitErrorExtraText": {
-    "message": "It seems that there's an issue open already, or it is marked as wontfix. Please enter the issue if you want to add more information using the following button."
+    "message": "It seems that there's an issue open already, or it is marked as 'wontfix'. Please enter the issue if you want to add more information using the following button."
   },
   "report_submitErrorText": {
     "message": "Report not sent?"
