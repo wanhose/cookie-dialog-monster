@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -9,24 +10,41 @@
   <body>
     <header>
       <h1 class="header-title">Cookie Dialog Monster</h1>
-      <button id="settings-button">
-        <svg
-          aria-hidden="true"
-          fill="none"
-          height="18"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          width="18"
-        >
-          <circle cx="12" cy="12" r="3"></circle>
-          <path
-            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-          />
-        </svg>
-      </button>
+      <div class="header-actions">
+        <button disabled id="report-button">
+          <svg
+            fill="none"
+            height="18"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            width="18"
+          >
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+            <line x1="4" y1="22" x2="4" y2="15"></line>
+          </svg>
+        </button>
+        <button id="settings-button">
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="18"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            width="18"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+            />
+          </svg>
+        </button>
+      </div>
     </header>
     <main>
       <p aria-hidden="true" class="banner" id="issue-banner" role="alert">
@@ -179,6 +197,76 @@
             <span id="extension-version"></span>
           </popup-data>
         </popup-data-container>
+      </div>
+      <div class="report" style="display: none">
+        <div class="report-form-view">
+          <div class="report-body-text" data-i18n="report_bodyText"></div>
+          <div class="report-form">
+            <div class="report-input-group">
+              <div class="report-input-label" id="report-label-url">
+                <span data-i18n="report_urlInputLabel"></span>
+                <span class="report-input-label-required">*</span>
+              </div>
+              <input
+                aria-labelledby="report-label-url"
+                aria-required="true"
+                class="report-input"
+                id="report-input-url"
+              />
+              <div
+                class="report-input-error"
+                data-i18n="report_urlInputError"
+                id="report-input-url-error"
+              ></div>
+            </div>
+            <div class="report-input-group">
+              <div class="report-input-label" id="report-label-reason">
+                <span data-i18n="report_reasonInputLabel"></span>
+                <span class="report-input-label-required">*</span>
+              </div>
+              <textarea
+                aria-labelledby="report-label-reason"
+                aria-required="true"
+                class="report-input"
+                data-i18n="report_reasonInputPlaceholder"
+                id="report-input-reason"
+                rows="4"
+              ></textarea>
+              <div
+                class="report-input-error"
+                data-i18n="report_reasonInputError"
+                id="report-input-reason-error"
+              ></div>
+            </div>
+            <div class="report-buttons">
+              <button class="report-submit-button" data-i18n="contextMenu_reportOption"></button>
+              <button class="report-cancel-button" data-i18n="report_cancelButtonText"></button>
+            </div>
+          </div>
+        </div>
+        <div class="report-submit-view" hidden>
+          <svg
+            fill="none"
+            height="48"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            stroke="var(--color-success)"
+            viewBox="0 0 24 24"
+            width="48"
+          >
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />
+          </svg>
+          <div class="report-submit-text" data-i18n="report_submitText"></div>
+          <div class="report-submit-extra-text" data-i18n="report_submitExtraText"></div>
+          <div
+            class="report-issue-button"
+            data-i18n="contextMenu_issueOption"
+            role="button"
+            tabindex="0"
+          ></div>
+        </div>
       </div>
     </main>
     <footer></footer>
