@@ -104,7 +104,7 @@ const suppressLastError = () => void browser.runtime.lastError;
  */
 async function enableIcon(hostname, tabId) {
   const state = await getState(hostname);
-  const path = state.issue.url ? '/assets/icons/warn.png' : '/assets/icons/on.png';
+  const path = state.issue?.url ? '/assets/icons/warn.png' : '/assets/icons/on.png';
 
   await browser.action.setIcon({ path, tabId }, suppressLastError);
 }
