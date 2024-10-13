@@ -1,6 +1,6 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
-import environment from 'services/environment';
-import { octokit } from 'services/octokit';
+import { getIssue } from 'services/git';
+import { RATE_LIMIT_10_PER_MIN } from 'services/rateLimit';
 import { validatorCompiler } from 'services/validation';
 import * as yup from 'yup';
 
@@ -14,6 +14,9 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
   server.get<{ Params: GetIssuesParams }>(
     '/issues/:hostname',
     {
+      config: {
+        rateLimit: RATE_LIMIT_10_PER_MIN,
+      },
       schema: {
         params: GetIssuesParamsSchema,
       },
@@ -22,30 +25,22 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     async (request, reply) => {
       try {
         const { hostname } = request.params;
-        const existingIssues = await octokit.request('GET /search/issues', {
-          per_page: 50,
-          q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
-        });
-        const existingIssue = existingIssues.data.items.find(
-          (issue) =>
-            hostname === issue.title &&
-            (issue.state === 'open' ||
-              (issue.state === 'closed' && issue.labels.some((label) => label.name === 'wontfix')))
-        );
+        const issue = await getIssue({ title: hostname });
 
-        if (existingIssue) {
+        if (
+          issue &&
+          ((issue.state === 'closed' && issue.labels.some((label) => label.name === 'wontfix')) ||
+            issue.state === 'open')
+        ) {
           reply.send({
             data: {
-              flags: existingIssue.labels.map((label) => label.name),
-              url: existingIssue.html_url,
+              flags: issue.labels.map((label) => label.name),
+              url: issue.html_url,
             },
             success: true,
           });
         } else {
-          reply.send({
-            data: {},
-            success: true,
-          });
+          throw new Error('Failed to find issue');
         }
       } catch (error) {
         reply.send({

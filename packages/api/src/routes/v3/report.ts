@@ -1,6 +1,7 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
-import environment from 'services/environment';
-import { octokit } from 'services/octokit';
+import { formatMessage } from 'services/format';
+import { createIssue, createIssueComment, getIssue, updateIssue } from 'services/git';
+import { RATE_LIMIT_1_PER_MIN } from 'services/rateLimit';
 import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
 import * as yup from 'yup';
@@ -22,63 +23,50 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {
+      config: {
+        rateLimit: RATE_LIMIT_1_PER_MIN,
+      },
       schema: {
         body: PostReportBodySchema,
       },
       validatorCompiler,
     },
     async (request, reply) => {
-      const { url, userAgent } = request.body;
-      const ua = new UAParser(userAgent ?? '').getResult();
-      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
-      const existingIssues = await octokit.request('GET /search/issues', {
-        per_page: 50,
-        q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
-      });
-      const existingIssue = existingIssues.data.items.find(
-        (issue) =>
-          hostname === issue.title &&
-          (issue.state === 'open' ||
-            (issue.state === 'closed' && issue.labels.some((label) => label.name === 'wontfix')))
-      );
-
       try {
-        if (existingIssue) {
-          if (existingIssue.state === 'closed') {
-            await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
-              issue_number: existingIssue.number,
+        const { reason, url, userAgent, version } = request.body;
+        const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+        const issue = await getIssue({ title: hostname });
+        const ua = new UAParser(userAgent ?? '').getResult();
+
+        if (issue) {
+          if (issue.state === 'closed') {
+            await updateIssue({
+              id: issue.id,
               labels: ['bug'],
-              owner: environment.github.owner,
-              repo: environment.github.repo,
               state: 'open',
             });
           }
 
-          await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
-            body: generateText(request.body, ua),
-            issue_number: existingIssue.number,
-            owner: environment.github.owner,
-            repo: environment.github.repo,
+          await createIssueComment({
+            description: formatMessage({ reason, ua, url, version }),
+            id: issue.id,
           });
 
           reply.send({
-            data: existingIssue.html_url,
+            data: issue.html_url,
             success: true,
           });
           return;
         }
 
-        const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
-          assignees: [environment.github.owner],
-          body: generateText(request.body, ua),
+        const newIssue = await createIssue({
+          description: formatMessage({ reason, ua, url, version }),
           labels: ['bug'],
-          owner: environment.github.owner,
-          repo: environment.github.repo,
           title: hostname,
         });
 
         reply.send({
-          data: response.data.html_url,
+          data: newIssue.html_url,
           success: true,
         });
       } catch (error) {
@@ -92,21 +80,3 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
   done();
 };
-
-function generateText(body: PostReportBody, ua: UAParser.IResult): string {
-  return [
-    '## Issue information',
-    ...(ua.browser.name && ua.browser.version
-      ? ['#### 🖥️ Browser', `${ua.browser.name} (${ua.browser.version})`]
-      : []),
-    ...(ua.device.type && ua.device.vendor
-      ? ['#### 📱 Device', `${ua.device.vendor} (${ua.device.type})`]
-      : []),
-    '#### 📝 Reason',
-    body.reason,
-    '#### 🔗 URL',
-    body.url,
-    '#### 🏷️ Version',
-    body.version,
-  ].join('\n');
-}

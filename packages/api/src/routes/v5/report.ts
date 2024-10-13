@@ -1,6 +1,7 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
-import environment from 'services/environment';
-import { octokit } from 'services/octokit';
+import { formatMessage } from 'services/format';
+import { createIssue, getIssue, updateIssue } from 'services/git';
+import { RATE_LIMIT_1_PER_MIN } from 'services/rateLimit';
 import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
 import * as yup from 'yup';
@@ -22,35 +23,34 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {
+      config: {
+        rateLimit: RATE_LIMIT_1_PER_MIN,
+      },
       schema: {
         body: PostReportBodySchema,
       },
       validatorCompiler,
     },
     async (request, reply) => {
-      const { reason, url, userAgent, version } = request.body;
-      const ua = new UAParser(userAgent ?? '').getResult();
-      const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
-      const existingIssues = await octokit.request('GET /search/issues', {
-        per_page: 50,
-        q: `in:title+is:issue+repo:${environment.github.owner}/${environment.github.repo}+${hostname}`,
-      });
-      const existingIssue = existingIssues.data.items.find((issue) => hostname === issue.title);
-
       try {
-        if (existingIssue) {
-          if (existingIssue.labels.some((label) => label.name === 'wontfix')) {
+        const { reason, url, userAgent, version } = request.body;
+        const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+        const issue = await getIssue({ title: hostname });
+        const ua = new UAParser(userAgent ?? '').getResult();
+
+        if (issue) {
+          if (issue.labels.some((label) => label.name === 'wontfix')) {
             reply.send({
-              data: existingIssue.html_url,
+              data: issue.html_url,
               errors: ['This issue has been marked as "wontfix" and will not be addressed.'],
               success: false,
             });
             return;
           }
 
-          if (existingIssue.state === 'open') {
+          if (issue.state === 'open') {
             reply.send({
-              data: existingIssue.html_url,
+              data: issue.html_url,
               errors: [
                 'This issue already exists. Please refer to the existing issue for updates.',
               ],
@@ -59,46 +59,27 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
             return;
           }
 
-          await octokit.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
-            issue_number: existingIssue.number,
+          await updateIssue({
+            id: issue.id,
             labels: ['bug'],
-            owner: environment.github.owner,
-            repo: environment.github.repo,
             state: 'open',
           });
 
           reply.send({
-            data: existingIssue.html_url,
+            data: issue.html_url,
             success: true,
           });
           return;
         }
 
-        const response = await octokit.request('POST /repos/{owner}/{repo}/issues', {
-          assignees: [environment.github.owner],
-          body: [
-            '## Issue information',
-            ...(ua.browser.name && ua.browser.version
-              ? ['#### 🖥️ Browser', `${ua.browser.name} (${ua.browser.version})`]
-              : []),
-            ...(ua.device.type && ua.device.vendor
-              ? ['#### 📱 Device', `${ua.device.vendor} (${ua.device.type})`]
-              : []),
-            '#### 📝 Reason',
-            reason,
-            '#### 🔗 URL',
-            url,
-            '#### 🏷️ Version',
-            version,
-          ].join('\n'),
+        const newIssue = await createIssue({
+          description: formatMessage({ reason, ua, url, version }),
           labels: ['bug'],
-          owner: environment.github.owner,
-          repo: environment.github.repo,
           title: hostname,
         });
 
         reply.send({
-          data: response.data.html_url,
+          data: newIssue.html_url,
           success: true,
         });
       } catch (error) {

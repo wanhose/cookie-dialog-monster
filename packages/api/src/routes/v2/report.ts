@@ -1,6 +1,7 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
-import environment from 'services/environment';
-import { octokit } from 'services/octokit';
+import { formatMessage } from 'services/format';
+import { createIssue, createIssueComment, getIssue, updateIssue } from 'services/git';
+import { RATE_LIMIT_1_PER_MIN } from 'services/rateLimit';
 import { validatorCompiler } from 'services/validation';
 import { UAParser } from 'ua-parser-js';
 import * as yup from 'yup';
@@ -22,6 +23,9 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
   server.post<{ Body: PostReportBody }>(
     '/report/',
     {
+      config: {
+        rateLimit: RATE_LIMIT_1_PER_MIN,
+      },
       schema: {
         body: PostReportBodySchema,
       },
@@ -29,45 +33,45 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     },
     async (request, reply) => {
       try {
-        const issues = await octokit.request('GET /repos/{owner}/{repo}/issues', {
-          owner: environment.github.owner,
-          repo: environment.github.repo,
-        });
-        const ua = new UAParser(request.body.userAgent ?? '').getResult();
-        const url = new URL(request.body.url).hostname
-          .split('.')
-          .slice(-3)
-          .join('.')
-          .replace('www.', '');
+        const { reason, url, userAgent, version } = request.body;
+        const hostname = new URL(url).hostname.split('.').slice(-3).join('.').replace('www.', '');
+        const issue = await getIssue({ title: hostname });
+        const ua = new UAParser(userAgent ?? '').getResult();
 
-        if (issues.data.some((issue) => issue.title.includes(url))) {
-          throw new Error();
+        if (issue) {
+          if (issue.state === 'closed') {
+            await updateIssue({
+              id: issue.id,
+              labels: ['bug'],
+              state: 'open',
+            });
+          }
+
+          await createIssueComment({
+            description: formatMessage({ reason, ua, url, version }),
+            id: issue.id,
+          });
+
+          reply.send({
+            success: true,
+          });
+          return;
         }
 
-        await octokit.request('POST /repos/{owner}/{repo}/issues', {
-          assignees: [environment.github.owner],
-          body: [
-            '## Specifications',
-            '#### Browser',
-            `${ua.browser.name ? `${ua.browser.name} ${ua.browser.version || ''}` : '-'}`,
-            '#### Device',
-            `${ua.device.type && ua.device.vendor ? `${ua.device.vendor} (${ua.device.type})` : '-'}`,
-            '#### Reason',
-            request.body.reason ?? '-',
-            '#### URL',
-            request.body.url,
-            '#### Version',
-            request.body.version,
-          ].join('\n'),
+        await createIssue({
+          description: formatMessage({ reason, ua, url, version }),
           labels: ['bug'],
-          owner: environment.github.owner,
-          repo: environment.github.repo,
-          title: url,
+          title: hostname,
         });
 
-        reply.send({ success: true });
+        reply.send({
+          success: true,
+        });
       } catch (error) {
-        reply.send({ errors: [error.message], success: false });
+        reply.send({
+          errors: [error.message],
+          success: false,
+        });
       }
     }
   );

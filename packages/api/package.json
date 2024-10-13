@@ -12,7 +12,6 @@
     "@fastify/rate-limit": "^9.1.0",
     "fastify": "^4.26.2",
     "node-fetch": "^2.7.0",
-    "octokit": "^3.2.1",
     "ua-parser-js": "^1.0.37",
     "yup": "^1.4.0"
   },

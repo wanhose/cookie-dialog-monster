@@ -1,9 +1,7 @@
 export default {
-  github: {
-    files: 'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/main',
-    owner: 'wanhose',
-    repo: 'cookie-dialog-monster',
-    token: process.env.GITHUB_TOKEN ?? '',
+  gitea: {
+    raw: process.env.GITEA_RAW ?? '',
+    token: process.env.GITEA_TOKEN ?? '',
   },
   port: (process.env.PORT ? Number(process.env.PORT) : undefined) ?? 8080,
 };

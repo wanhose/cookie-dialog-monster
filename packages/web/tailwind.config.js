@@ -23,6 +23,7 @@ module.exports = {
         'firefox-3': '#fee545',
         primary: '#3dd9eb',
         secondary: '#34495e',
+        tertiary: '#6b7280',
       },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],

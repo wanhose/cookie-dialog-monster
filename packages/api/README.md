@@ -1,4 +1,4 @@
-# Cookie Monster Dialog API
+# Cookie Dialog Monster API
 
 ## Installation
 

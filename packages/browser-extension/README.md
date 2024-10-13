@@ -1,4 +1,4 @@
-# Cookie Monster Dialog Browser Extension
+# Cookie Dialog Monster Browser Extension
 
 ## Downloads
 
@@ -11,9 +11,9 @@
 
 ## Compatibility
 
-- All browsers based on Chromium 124+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
-- Google Chrome 124+
-- Microsoft Edge 124+
+- All browsers based on Chromium 127+ (Blisk, Brave, Colibri, Epic Browser, Iron Browser, Vivaldi and many more)
+- Google Chrome 127+
+- Microsoft Edge 127+
 - Mozilla Firefox 126+
 - Mozilla Firefox Mobile 126+
 
