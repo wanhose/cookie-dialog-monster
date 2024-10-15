@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Importuj listę"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Zgłoszono problem z tą stroną. Rozszerzenie może tymczasowo nie działać zgodnie z oczekiwaniami. Śledź problem lub dodaj więcej informacji."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Zgłoszono problem z tą stroną, ale nie zostanie on naprawiony. Należy pamiętać, że rozszerzenie może nie działać zgodnie z oczekiwaniami na tej stronie. Zdecydowanie zalecamy wyłączenie rozszerzenia za pomocą poniższego przycisku."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Dostępna aktualizacja. Zainstaluj najnowszą wersję, aby rozwiązać znane problemy przed zgłoszeniem nowych"
+  },
   "popup_contributeOption": {
     "message": "Wesprzyj ten projekt"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Oceń to rozszerzenie"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Prosimy, nie udostępniaj żadnych danych osobowych w tym raporcie. Jeśli chcesz dodać więcej szczegółów, otwórz zgłoszenie na GitHub w następnym kroku i dodaj komentarz."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Anuluj"
+  },
+  "report_reasonInputError": {
     "message": "Proszę podać powód zawierający co najmniej 10 znaków i nie więcej niż 1000 znaków"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Powód"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Pojawił się popup"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Wygląda na to, że istnieje już otwarte zgłoszenie lub zostało oznaczone jako 'nie do rozwiązania'. Wprowadź zgłoszenie, aby dodać więcej informacji, używając poniższego przycisku."
+  },
+  "report_submitErrorText": {
+    "message": "Raport nie został wysłany?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Podczas gdy nad tym pracujemy, możesz dodać tę stronę do listy wykluczeń w ustawieniach rozszerzenia lub po prostu wyłączyć rozszerzenie dla tej strony, klikając ikonę rozszerzenia na pasku narzędzi przeglądarki."
   },
-  "reportDialog_submitText": {
+  "report_submitSuccessText": {
     "message": "Zgłoszenie wysłane!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Proszę wprowadzić prawidłowy URL zawierający nie więcej niż 1000 znaków"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

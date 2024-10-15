@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Importar lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Se ha informado de un problema en esta página. La extensión puede no funcionar como se espera temporalmente. Siga el problema o agregue más información."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Se ha informado de un problema en esta página, pero no se solucionará. Tenga en cuenta que la extensión puede no funcionar como se espera en esta página. Recomendamos encarecidamente desactivar la extensión utilizando el botón a continuación."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Actualización disponible. Por favor, instale la última versión para solucionar problemas conocidos antes de informar nuevos"
+  },
   "popup_contributeOption": {
     "message": "Contribuir a este proyecto"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Califica esta extensión"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Por favor, no compartas ninguna información personal en este informe. Si deseas agregar más detalles, abre el problema de GitHub en el siguiente paso y agrega un comentario."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Cancelar"
+  },
+  "report_reasonInputError": {
     "message": "Por favor, ingrese una razón con al menos 10 caracteres y no más de 1000 caracteres"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Razón"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Apareció un popup"
   },
-  "reportDialog_submitExtraText": {
-    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusión en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el ícono de la extensión en la barra de herramientas de tu navegador."
+  "report_submitErrorExtraText": {
+    "message": "Reporte no enviado?"
   },
-  "reportDialog_submitText": {
-    "message": "¡Informe enviado!"
+  "report_submitErrorText": {
+    "message": "Parece que ya hay un problema abierto o está marcado como 'no se solucionará'. Por favor, ingrese al problema para agregar más información usando el siguiente botón."
   },
-  "reportDialog_urlInputError": {
+  "report_submitSuccessExtraText": {
+    "message": "Mientras trabajamos en esto, puedes agregar este sitio web a la lista de exclusiones en la configuración de la extensión o simplemente deshabilitar la extensión para este sitio web haciendo clic en el icono de la extensión en la barra de herramientas de tu navegador."
+  },
+  "report_submitSuccessText": {
+    "message": "Reporte enviado!"
+  },
+  "report_urlInputError": {
     "message": "Por favor, ingrese una URL válida con no más de 1000 caracteres"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

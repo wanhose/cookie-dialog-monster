@@ -7,6 +7,11 @@
  */
 
 /**
+ * @typedef {Object} ContentState
+ * @property {boolean} on
+ */
+
+/**
  * @typedef {Object} Fix
  * @property {string} action
  * @property {string} domain
@@ -91,9 +96,9 @@ const seen = new Set();
 
 /**
  * @description Extension state
- * @type {{ enabled: boolean }}
+ * @type {ContentState}
  */
-let state = { enabled: true };
+let state = { on: true };
 
 /**
  * @description Clean DOM
@@ -115,8 +120,8 @@ function clean(elements, skipMatch) {
         if (element instanceof HTMLDialogElement) element.close();
         hide(element);
 
-        actions.add(new Date().getTime().toString());
-        dispatch({ type: 'SET_BADGE', value: actions.size });
+        actions.add(`${Date.now()}`);
+        dispatch({ type: 'UPDATE_BADGE', value: actions.size });
       }
 
       seen.add(element);
@@ -295,7 +300,7 @@ function fix() {
 
   for (const backdrop of backdrops) {
     if (backdrop.children.length === 0 && !seen.has(backdrop)) {
-      actions.add(new Date().getTime().toString());
+      actions.add(`${Date.now()}`);
       seen.add(backdrop);
       hide(backdrop);
     }
@@ -366,7 +371,7 @@ function fix() {
     t4Wrapper.removeAttribute('inert');
   }
 
-  dispatch({ type: 'SET_BADGE', value: actions.size });
+  dispatch({ type: 'UPDATE_BADGE', value: actions.size });
 }
 
 /**
@@ -390,7 +395,7 @@ function hide(element) {
 function run(params = {}) {
   const { containers, elements, skipMatch } = params;
 
-  if (document.body?.children.length && state.enabled && tokens.selectors.length) {
+  if (document.body?.children.length && state.on && tokens.selectors.length) {
     fix();
 
     if (elements?.length) {
@@ -409,10 +414,10 @@ function run(params = {}) {
  * @param {SetUpParams} [params]
  */
 async function setUp(params = {}) {
-  state = (await dispatch({ hostname, type: 'GET_HOSTNAME_STATE' })) ?? state;
+  state = await dispatch({ hostname, type: 'GET_STATE' });
   dispatch({ type: 'ENABLE_POPUP' });
 
-  if (state.enabled) {
+  if (state.on) {
     const data = await dispatch({ hostname, type: 'GET_DATA' });
 
     commonWords = data?.commonWords ?? commonWords;
@@ -420,13 +425,15 @@ async function setUp(params = {}) {
     skips = data?.skips ?? skips;
     tokens = data?.tokens ?? tokens;
 
-    dispatch({ type: 'ENABLE_ICON' });
-    dispatch({ type: 'SET_BADGE', value: actions.size });
+    dispatch({ type: 'ENABLE_REPORT' });
+    dispatch({ hostname, type: 'ENABLE_ICON' });
+    dispatch({ type: 'UPDATE_BADGE', value: actions.size });
     observer.observe(document.body ?? document.documentElement, options);
     if (!params.skipRunFn) run({ containers: tokens.containers });
   } else {
+    dispatch({ type: 'DISABLE_REPORT' });
     dispatch({ type: 'DISABLE_ICON' });
-    dispatch({ type: 'SET_BADGE', value: actions.size });
+    dispatch({ type: 'UPDATE_BADGE', value: actions.size });
     observer.disconnect();
   }
 }
@@ -449,7 +456,7 @@ async function setUpAfterWaitForBody() {
  * @type {MutationObserver}
  */
 const observer = new MutationObserver((mutations) => {
-  if (!state.enabled || !tokens.selectors.length) {
+  if (!state.on || !tokens.selectors.length) {
     return;
   }
 
@@ -466,7 +473,7 @@ const observer = new MutationObserver((mutations) => {
 browser.runtime.onMessage.addListener(async (message) => {
   switch (message.type) {
     case 'INCREASE_ACTIONS_COUNT': {
-      actions.add(new Date().getTime().toString());
+      actions.add(`${Date.now()}`);
       break;
     }
   }
@@ -490,9 +497,13 @@ window.addEventListener('pageshow', async (event) => {
  * @returns {void}
  */
 window.addEventListener('visibilitychange', async () => {
-  if (document.visibilityState === 'visible' && !initiallyVisible) {
-    initiallyVisible = true;
-    await setUp();
+  if (document.visibilityState === 'visible') {
+    if (!initiallyVisible) {
+      initiallyVisible = true;
+      await setUp();
+    }
+
+    dispatch({ type: state.on ? 'ENABLE_REPORT' : 'DISABLE_REPORT' });
   }
 });
 

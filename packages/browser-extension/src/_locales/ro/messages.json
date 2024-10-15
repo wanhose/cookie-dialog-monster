@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Importă lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "A fost raportată o problemă pentru această pagină. Extensia poate să nu funcționeze temporar conform așteptărilor. Urmăriți problema sau adăugați mai multe informații."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "A fost raportată o problemă pentru această pagină, dar nu va fi rezolvată. Rețineți că extensia poate să nu funcționeze conform așteptărilor pe această pagină. Vă recomandăm cu insistență să dezactivați extensia folosind butonul de mai jos."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Actualizare disponibilă. Vă rugăm să instalați cea mai recentă versiune pentru a rezolva problemele cunoscute înainte de a raporta altele noi."
+  },
   "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Evaluează această extensie"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Te rugăm să nu împărtășești informații personale în acest raport. Dacă dorești să adaugi mai multe detalii, deschide problema GitHub în pasul următor și adaugă un comentariu."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Anulează"
+  },
+  "report_reasonInputError": {
     "message": "Vă rugăm să introduceți un motiv cu cel puțin 10 caractere și maximum 1000 de caractere"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Motiv"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "A apărut un popup"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Se pare că există deja o problemă deschisă sau marcată ca 'nu va fi rezolvată'. Vă rugăm să intrați în problemă pentru a adăuga mai multe informații folosind butonul de mai jos."
+  },
+  "report_submitErrorText": {
+    "message": "Raportul nu a fost trimis?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "În timp ce lucrăm la acest aspect, poți adăuga acest site web la lista de excludere din setările extensiei sau poți dezactiva extensia pentru acest site web făcând clic pe pictograma extensiei din bara de instrumente a browserului."
   },
-  "reportDialog_submitText": {
+  "report_submitSuccessText": {
     "message": "Raport trimis!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Vă rugăm să introduceți o adresă URL validă cu maximum 1000 de caractere"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

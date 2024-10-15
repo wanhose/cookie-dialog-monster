@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "7.3.2",
+  "version": "8.0.0",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -10,7 +10,7 @@
     "128": "assets/icons/128.png"
   },
   "action": {
-    "default_icon": "assets/icons/disabled.png",
+    "default_icon": "assets/icons/off.png",
     "default_title": "Cookie Dialog Monster"
   },
   "options_page": "options.html",
@@ -51,7 +51,7 @@
         "*://translate.google.it/*",
         "*://www.cookie-dialog-monster.com/*"
       ],
-      "js": ["scripts/content.js", "scripts/dialog.js"],
+      "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"
     }

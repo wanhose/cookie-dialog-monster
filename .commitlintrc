@@ -20,7 +20,6 @@
         "database",
         "docs",
         "packages",
-        "rules",
         "web"
       ]
     ]

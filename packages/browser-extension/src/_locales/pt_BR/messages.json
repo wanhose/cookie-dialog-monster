@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Importar lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Um problema foi relatado para esta página. A extensão pode não funcionar conforme o esperado temporariamente. Acompanhe o problema ou adicione mais informações."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Um problema foi relatado para esta página, mas não será corrigido. Esteja ciente de que a extensão pode não funcionar conforme o esperado nesta página. Recomendamos desativar a extensão usando o botão abaixo."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Atualização disponível. Por favor, instale a versão mais recente para corrigir problemas conhecidos antes de relatar novos"
+  },
   "popup_contributeOption": {
     "message": "Contribuir para este projeto"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Avalie esta extensão"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Por favor, não compartilhe nenhuma informação pessoal neste relatório. Se você quiser adicionar mais detalhes, abra o problema no GitHub na próxima etapa e adicione um comentário."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Cancelar"
+  },
+  "report_reasonInputError": {
     "message": "Por favor, insira um motivo com pelo menos 10 caracteres e no máximo 1000 caracteres"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Motivo"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Popup apareceu"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Parece que já existe um problema aberto ou marcado como 'não corrigido'. Por favor, acesse o problema para adicionar mais informações usando o botão a seguir."
+  },
+  "report_submitErrorText": {
+    "message": "Relatório não enviado?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Enquanto estamos trabalhando nisso, você pode adicionar este site à lista de exclusão nas configurações da extensão ou simplesmente desativar a extensão para este site clicando no ícone da extensão na barra de ferramentas do navegador."
   },
-  "reportDialog_submitText": {
+  "report_submitSuccessText": {
     "message": "Relatório enviado!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Por favor, insira uma URL válida com no máximo 1000 caracteres"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

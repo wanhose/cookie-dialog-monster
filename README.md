@@ -28,9 +28,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Resources
 
-- [FAQs](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Welcome#faqs)
-- [Guides](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Welcome#guides)
+- [FAQs](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Help-or-issues%3F#faqs)
+- [Guides](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Help-or-issues%3F#guides)
 - [Issues](https://git.wanhose.dev/wanhose/cookie-dialog-monster/issues)
 - [Pull requests](https://git.wanhose.dev/wanhose/cookie-dialog-monster/pulls)
 - [Releases](https://git.wanhose.dev/wanhose/cookie-dialog-monster/releases)
-- [Wiki](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Welcome)
+- [Wiki](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Help-or-issues%3F)

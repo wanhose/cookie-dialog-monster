@@ -11,10 +11,14 @@
 body {
   box-sizing: border-box;
   color: var(--color-tertiary);
-  display: flex;
-  flex-direction: column;
   font-family: Inter, Arial, Helvetica, sans-serif;
   width: 320px;
+}
+
+@media only screen and (max-device-width: 768px) {
+  body {
+    width: auto;
+  }
 }
 
 body * {
@@ -32,16 +36,22 @@ button {
   outline: none;
   padding: 2px;
   transition: 0.4s;
-}
 
-button:focus,
-button:hover {
-  background-color: var(--color-white);
-  color: var(--color-secondary);
+  &:focus:not(:disabled),
+  &:hover:not(:disabled) {
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
 
 footer {
   background-color: var(--color-secondary);
+  flex-shrink: 0;
   font-size: 12px;
   height: 4px;
   margin-top: auto;
@@ -53,13 +63,58 @@ header {
   background-color: var(--color-secondary);
   color: var(--color-white);
   display: flex;
+  flex-shrink: 0;
   font-size: 16px !important;
   height: 48px;
   justify-content: space-between;
   padding: 0 16px;
+
+  & .header-actions {
+    display: flex;
+    gap: 8px;
+
+    & #report-button:focus:not(:disabled) > svg,
+    & #report-button:hover:not(:disabled) > svg {
+      color: var(--color-error);
+    }
+  }
 }
 
-main {
+@media only screen and (max-device-width: 768px) {
+  main {
+    margin: 0 auto;
+    max-width: 320px;
+    width: 100%;
+  }
+}
+
+main > .banner {
+  margin: 0px;
+  padding: 16px;
+
+  &[aria-hidden='true'] {
+    display: none;
+  }
+
+  &[data-variant='notice'] {
+    background-color: #2196f3;
+    color: var(--color-white);
+  }
+
+  &[data-variant='warning'] {
+    background-color: #f39c12;
+    color: #c0392b;
+  }
+
+  & #issue-banner-url,
+  & #update-banner-url {
+    color: inherit;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+main > .content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
@@ -140,6 +195,208 @@ popup-data-container {
   grid-column: 1 / -1;
   justify-self: center;
   text-align: center;
+}
+
+.report {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 16px;
+
+  & .report-buttons {
+    margin-top: auto;
+  }
+
+  & .report-form {
+    display: grid;
+    gap: 10px;
+  }
+
+  & .report-form-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  & .report-form-view[hidden] {
+    display: none;
+  }
+
+  & .report-input {
+    all: unset;
+    border: 1px solid var(--color-tertiary);
+    border-radius: 4px;
+    color: var(--color-secondary);
+    cursor: text;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    outline: none;
+    padding: 12px 8px;
+  }
+
+  & .report-input:hover {
+    border-color: var(--color-secondary);
+  }
+
+  & .report-input:focus {
+    border-color: var(--color-primary);
+  }
+
+  & .report-input:focus-visible {
+    box-shadow: initial;
+    transition: initial;
+  }
+
+  & .report-input::-webkit-scrollbar {
+    display: none;
+  }
+
+  & .report-input[aria-invalid='true'] {
+    border-color: var(--color-error);
+  }
+
+  & .report-input[aria-invalid='true'] + .report-input-error {
+    display: block;
+  }
+
+  & .report-input[aria-multiline='false'] {
+    -ms-overflow-style: none;
+    display: flex;
+    height: 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    text-wrap: nowrap;
+  }
+
+  & .report-input[aria-multiline='true'] {
+    -ms-overflow-style: none;
+    height: 120px;
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+
+  & .report-input-error {
+    color: var(--color-error);
+    display: none;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  & .report-input-group {
+    display: grid;
+    gap: 4px;
+  }
+
+  & .report-input-label {
+    color: var(--color-secondary);
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  & .report-input-label-required {
+    color: var(--color-error);
+  }
+
+  & .report-cancel-button {
+    align-items: center;
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    justify-content: center;
+    line-height: 1.2;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+    outline: none;
+    padding: 0px;
+    text-align: center;
+  }
+
+  & .report-cancel-button:focus,
+  & .report-cancel-button:hover {
+    color: var(--color-error);
+  }
+
+  & .report-issue-button,
+  & .report-submit-button {
+    align-items: center;
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+    border-radius: 4px;
+    color: var(--color-white);
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    height: 42px;
+    justify-content: center;
+    line-height: 1.2;
+    margin-top: 8px;
+    outline: none;
+    padding: 8px 16px;
+    text-align: center;
+    width: 100%;
+  }
+
+  & .report-issue-button:focus,
+  & .report-issue-button:hover,
+  & .report-submit-button:focus,
+  & .report-submit-button:hover {
+    background-color: var(--color-white);
+    color: var(--color-secondary);
+  }
+
+  & .report-issue-button:focus-visible,
+  & .report-submit-button:focus-visible {
+    box-shadow: initial;
+    transition: initial;
+  }
+
+  & .report-issue-button[aria-disabled='true'],
+  & .report-submit-button[aria-disabled='true'] {
+    background-color: var(--color-tertiary);
+    border: 1px solid var(--color-tertiary);
+    color: var(--color-white);
+    cursor: not-allowed;
+  }
+
+  & .report-submit-extra-text {
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.2;
+    margin: 0px;
+    text-align: justify;
+  }
+
+  & .report-submit-text {
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 0px;
+    text-align: center;
+  }
+
+  & .report-submit-error-view,
+  & .report-submit-success-view {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  & .report-submit-error-view[hidden],
+  & .report-submit-success-view[hidden] {
+    display: none;
+  }
 }
 
 strong {

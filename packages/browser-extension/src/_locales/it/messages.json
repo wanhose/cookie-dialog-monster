@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Importa lista"
   },
+  "popup_bannerIssueOpen": {
+    "message": "È stato segnalato un problema per questa pagina. L'estensione potrebbe non funzionare temporaneamente come previsto. Segui il problema o aggiungi ulteriori informazioni."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "È stato segnalato un problema per questa pagina, ma non verrà risolto. Si prega di notare che l'estensione potrebbe non funzionare come previsto su questa pagina. Si consiglia vivamente di disattivare l'estensione utilizzando il pulsante qui sotto."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Aggiornamento disponibile. Si prega di installare l'ultima versione per risolvere i problemi noti prima di segnalarne di nuovi"
+  },
   "popup_contributeOption": {
     "message": "Contribuisci a questo progetto"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Valuta questa estensione"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Per favore, non condividere informazioni personali in questo rapporto. Se vuoi aggiungere più dettagli, apri il problema su GitHub nel passaggio successivo e aggiungi un commento."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Annulla"
+  },
+  "report_reasonInputError": {
     "message": "Inserisci una motivazione con almeno 10 caratteri e non più di 1000 caratteri"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Motivo"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Popup apparso"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Sembra che ci sia già un problema aperto o contrassegnato come 'non risolvibile'. Per favore, entra nel problema per aggiungere ulteriori informazioni usando il pulsante seguente."
+  },
+  "report_submitErrorText": {
+    "message": "Segnalazione non inviata?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Mentre lavoriamo su questo, puoi aggiungere questo sito web alla lista di esclusione nelle impostazioni dell'estensione o semplicemente disattivare l'estensione per questo sito web cliccando sull'icona dell'estensione nella barra degli strumenti del browser."
   },
-  "reportDialog_submitText": {
+  "report_submitSuccessText": {
     "message": "Rapporto inviato!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Inserisci un URL valido con non più di 1000 caratteri"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

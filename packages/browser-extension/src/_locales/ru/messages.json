@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Импорт списка"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Для этой страницы было сообщено о проблеме. Расширение может временно не работать должным образом. Следите за проблемой или добавьте дополнительную информацию."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Для этой страницы было сообщено о проблеме, но она не будет исправлена. Обратите внимание, что расширение может работать некорректно на этой странице. Мы настоятельно рекомендуем отключить расширение, используя кнопку ниже."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Доступно обновление. Установите последнюю версию, чтобы устранить известные проблемы перед отправкой новых отчётов."
+  },
   "popup_contributeOption": {
     "message": "Содействовать этому проекту"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Оцените это расширение"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Пожалуйста, не делитесь личной информацией в этом отчете. Если вы хотите добавить больше деталей, откройте вопрос на GitHub на следующем шаге и добавьте комментарий."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Отмена"
+  },
+  "report_reasonInputError": {
     "message": "Пожалуйста, введите причину длиной не менее 10 и не более 1000 символов"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Причина"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Появилось всплывающее окно"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Похоже, что уже существует открытая проблема или она помечена как 'не будет исправлено'. Пожалуйста, войдите в проблему, чтобы добавить больше информации, используя следующую кнопку."
+  },
+  "report_submitErrorText": {
+    "message": "Отчет не отправлен?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Пока мы работаем над этим, вы можете добавить этот сайт в список исключений в настройках расширения или просто отключить расширение для этого сайта, нажав на значок расширения на панели инструментов вашего браузера."
   },
-  "reportDialog_submitText": {
+  "report_submitSuccessText": {
     "message": "Отчет отправлен!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Пожалуйста, введите корректный URL длиной не более 1000 символов"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }

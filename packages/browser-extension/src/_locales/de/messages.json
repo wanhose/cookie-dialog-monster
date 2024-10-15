@@ -32,6 +32,15 @@
   "options_importButton": {
     "message": "Liste importieren"
   },
+  "popup_bannerIssueOpen": {
+    "message": "Ein Problem wurde für diese Seite gemeldet. Die Erweiterung funktioniert möglicherweise vorübergehend nicht wie erwartet. Verfolgen Sie das Problem oder fügen Sie weitere Informationen hinzu."
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Ein Problem wurde für diese Seite gemeldet, wird jedoch nicht behoben. Bitte beachten Sie, dass die Erweiterung auf dieser Seite möglicherweise nicht wie erwartet funktioniert. Wir empfehlen dringend, die Erweiterung über die Schaltfläche unten zu deaktivieren."
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Update verfügbar. Bitte installieren Sie die neueste Version, um bekannte Probleme zu beheben, bevor Sie neue melden"
+  },
   "popup_contributeOption": {
     "message": "Zu diesem Projekt beitragen"
   },
@@ -47,28 +56,37 @@
   "popup_rateOption": {
     "message": "Bewerten Sie diese Erweiterung"
   },
-  "reportDialog_bodyText": {
+  "report_bodyText": {
     "message": "Bitte geben Sie in diesem Bericht keine persönlichen Informationen weiter. Wenn Sie weitere Details hinzufügen möchten, öffnen Sie das GitHub-Problem im nächsten Schritt und fügen Sie einen Kommentar hinzu."
   },
-  "reportDialog_reasonInputError": {
+  "report_cancelButtonText": {
+    "message": "Abbrechen"
+  },
+  "report_reasonInputError": {
     "message": "Bitte geben Sie einen Grund mit mindestens 10 und höchstens 1000 Zeichen ein"
   },
-  "reportDialog_reasonInputLabel": {
+  "report_reasonInputLabel": {
     "message": "Grund"
   },
-  "reportDialog_reasonInputPlaceholder": {
+  "report_reasonInputPlaceholder": {
     "message": "Popup ist erschienen"
   },
-  "reportDialog_submitExtraText": {
+  "report_submitErrorExtraText": {
+    "message": "Es scheint, dass bereits ein Problem geöffnet ist oder als 'wontfix' markiert wurde. Bitte öffnen Sie das Problem und fügen Sie gegebenenfalls weitere Informationen hinzu, indem Sie den folgenden Button verwenden."
+  },
+  "report_submitErrorText": {
+    "message": "Bericht nicht gesendet?"
+  },
+  "report_submitSuccessExtraText": {
     "message": "Während wir daran arbeiten, können Sie diese Website zur Ausschlussliste in den Erweiterungseinstellungen hinzufügen oder einfach die Erweiterung für diese Website deaktivieren, indem Sie auf das Erweiterungssymbol in Ihrer Browser-Symbolleiste klicken."
   },
-  "reportDialog_submitText": {
+  "report_submitSuccessText": {
     "message": "Bericht gesendet!"
   },
-  "reportDialog_urlInputError": {
+  "report_urlInputError": {
     "message": "Bitte geben Sie eine gültige URL mit höchstens 1000 Zeichen ein"
   },
-  "reportDialog_urlInputLabel": {
+  "report_urlInputLabel": {
     "message": "URL"
   }
 }
