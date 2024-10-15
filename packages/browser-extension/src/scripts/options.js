@@ -8,9 +8,9 @@ if (typeof browser === 'undefined') {
 const dispatch = browser.runtime.sendMessage;
 
 /**
- * @description Domain RegExp
+ * @description RegExp for matching domains
  */
-const domainRx = /^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/g;
+const domainRegExp = /^(?!-)[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z]{2,})+$/;
 
 /**
  * @description Exclusion list, URLs where the user prefers to disable the extension
@@ -58,14 +58,15 @@ function createList() {
  * @returns {Promise<void>}
  */
 async function handleAddClick() {
-  const exclusionValue = window.prompt(browser.i18n.getMessage('options_addPrompt'));
+  const message = browser.i18n.getMessage('options_addPrompt');
+  const value = window.prompt(message)?.trim().replace('www.', '');
 
-  if (exclusionValue?.trim() && (domainRx.test(exclusionValue) || exclusionValue === 'localhost')) {
+  if (value && (domainRegExp.test(value) || value === 'localhost')) {
     const filterInputElement = document.getElementById('filter-input');
     const state = { on: false };
-    await dispatch({ hostname: exclusionValue, state, type: 'UPDATE_STORE' });
+    await dispatch({ hostname: value, state, type: 'UPDATE_STORE' });
 
-    exclusionList = [...new Set([...exclusionList, exclusionValue])].sort();
+    exclusionList = [...new Set([...exclusionList, value])].sort();
     createList();
     updateList(filterInputElement.value.trim());
   }
@@ -169,18 +170,23 @@ function handleFileChange(event) {
   const reader = new FileReader();
 
   reader.addEventListener('load', async (event) => {
-    const newExclusionList = event.currentTarget.result.split('\n').filter((x) => x.trim());
+    const input = event.currentTarget.result.split('\n');
+    const exclusions = [];
 
-    for (const exclusionValue of newExclusionList) {
-      const state = { on: false };
-      await dispatch({ hostname: exclusionValue, state, type: 'UPDATE_STORE' });
+    for (let value of input) {
+      value = value.replace('www.', '');
+
+      if (value && (domainRegExp.test(value) || value === 'localhost')) {
+        const state = { on: false };
+
+        await dispatch({ hostname: value, state, type: 'UPDATE_STORE' });
+        exclusions.push(value);
+      }
     }
 
-    if (newExclusionList.length) {
-      exclusionList = [...new Set([...exclusionList, ...newExclusionList])].sort();
-      createList();
-      updateList(filterInputElement.value.trim());
-    }
+    exclusionList = [...new Set([...exclusionList, ...exclusions])].sort();
+    createList();
+    updateList(filterInputElement.value.trim());
   });
 
   event.currentTarget.value = '';
