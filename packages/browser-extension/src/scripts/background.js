@@ -202,17 +202,20 @@ function matchToPattern(match) {
 /**
  * @async
  * @description Refresh data
+ * @param {number} [attempt]
  * @returns {Promise<void>}
  */
-async function refreshData() {
-  try {
-    const { data } = await requestManager.fetch(`${apiUrl}/data/`);
+async function refreshData(attempt = 1) {
+  if (attempt <= 3) {
+    try {
+      const { data } = await requestManager.fetch(`${apiUrl}/data/`);
 
-    await updateStore('data', data);
+      await updateStore('data', data);
 
-    return data;
-  } catch {
-    return await refreshData();
+      return data;
+    } catch {
+      return await refreshData(attempt + 1);
+    }
   }
 }
 
@@ -220,25 +223,32 @@ async function refreshData() {
  * @async
  * @description Refresh issues for the given hostname
  * @param {string} hostname
+ * @param {number} [attempt]
  * @returns {Promise<ExtensionIssue | undefined>}
  */
-async function refreshIssue(hostname) {
-  try {
-    const { data } = await requestManager.fetch(`${apiUrl}/issues/${hostname}/`);
+async function refreshIssue(hostname, attempt = 1) {
+  if (attempt <= 3) {
+    try {
+      const { data } = await requestManager.fetch(`${apiUrl}/issues/${hostname}/`);
 
-    if (Object.keys(data).length === 0) {
-      await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
+      if (Object.keys(data).length === 0) {
+        await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
 
-      return undefined;
+        return undefined;
+      }
+
+      const issue = {
+        expiresIn: Date.now() + 4 * 60 * 60 * 1000,
+        flags: data.flags,
+        url: data.url,
+      };
+
+      await updateStore(hostname, { issue });
+
+      return data;
+    } catch {
+      return await refreshIssue(hostname, attempt + 1);
     }
-
-    const issue = { expiresIn: Date.now() + 4 * 60 * 60 * 1000, flags: data.flags, url: data.url };
-
-    await updateStore(hostname, { issue });
-
-    return data;
-  } catch {
-    return await refreshData();
   }
 }
 
