@@ -16,6 +16,5 @@
   "engines": {
     "node": "20.x"
   },
-  "packageManager": "yarn@4.1.0",
-  "license": "MIT"
+  "packageManager": "yarn@4.2.1"
 }
