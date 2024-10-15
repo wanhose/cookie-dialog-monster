@@ -17,3 +17,12 @@ Cookie Dialog Monster is a browser extension that hides cookie consent dialogs w
 - [API](/wanhose/cookie-dialog-monster/src/branch/main/packages/api)
 - [Browser extension](/wanhose/cookie-dialog-monster/src/branch/main/packages/browser-extension)
 - [Web](/wanhose/cookie-dialog-monster/src/branch/main/packages/web)
+
+## Resources
+
+- [FAQs](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Welcome#faqs)
+- [Guides](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Welcome#guides)
+- [Issues](https://git.wanhose.dev/wanhose/cookie-dialog-monster/issues)
+- [Pull requests](https://git.wanhose.dev/wanhose/cookie-dialog-monster/pulls)
+- [Releases](https://git.wanhose.dev/wanhose/cookie-dialog-monster/releases)
+- [Wiki](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Welcome)
