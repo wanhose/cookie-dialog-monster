@@ -21,7 +21,7 @@ if (typeof browser === 'undefined') {
  */
 class RequestManager {
   constructor() {
-    this.requests = new Map(); // Store ongoing requests
+    this.requests = new Map();
   }
 
   /**
@@ -30,7 +30,7 @@ class RequestManager {
    * @param {RequestInit} [init]
    * @returns {Promise<any>}
    */
-  fetchData(input, init) {
+  fetch(input, init) {
     if (this.requests.has(input)) {
       return this.requests.get(input);
     }
@@ -206,7 +206,7 @@ function matchToPattern(match) {
  */
 async function refreshData() {
   try {
-    const { data } = await requestManager.fetchData(`${apiUrl}/data/`);
+    const { data } = await requestManager.fetch(`${apiUrl}/data/`);
 
     await updateStore('data', data);
 
@@ -224,7 +224,7 @@ async function refreshData() {
  */
 async function refreshIssue(hostname) {
   try {
-    const { data } = await requestManager.fetchData(`${apiUrl}/issues/${hostname}/`);
+    const { data } = await requestManager.fetch(`${apiUrl}/issues/${hostname}/`);
 
     if (Object.keys(data).length === 0) {
       await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
@@ -260,7 +260,7 @@ async function report(message) {
     const headers = { 'Cache-Control': 'no-cache', 'Content-type': 'application/json' };
     const requestInit = { body, headers, method: 'POST' };
 
-    return await requestManager.fetchData(`${apiUrl}/report/`, requestInit);
+    return await requestManager.fetch(`${apiUrl}/report/`, requestInit);
   } catch {
     console.error("Can't send report");
   }
