@@ -229,7 +229,7 @@ async function refreshData(attempt = 1) {
 async function refreshIssue(hostname, attempt = 1) {
   if (attempt <= 3) {
     try {
-      const { data } = await requestManager.fetch(`${apiUrl}/issues/${hostname}/`);
+      const { data = {} } = await requestManager.fetch(`${apiUrl}/issues/${hostname}/`);
 
       if (Object.keys(data).length === 0) {
         await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
