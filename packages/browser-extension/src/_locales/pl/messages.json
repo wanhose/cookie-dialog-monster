@@ -38,6 +38,9 @@
   "popup_bannerIssueWontFix": {
     "message": "Zgłoszono problem z tą stroną, ale nie zostanie on naprawiony. Należy pamiętać, że rozszerzenie może nie działać zgodnie z oczekiwaniami na tej stronie. Zdecydowanie zalecamy wyłączenie rozszerzenia za pomocą poniższego przycisku."
   },
+  "popup_bannerUpdateAvailable": {
+    "message": "Dostępna aktualizacja. Zainstaluj najnowszą wersję, aby rozwiązać znane problemy przed zgłoszeniem nowych"
+  },
   "popup_contributeOption": {
     "message": "Wesprzyj ten projekt"
   },

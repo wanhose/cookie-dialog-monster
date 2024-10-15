@@ -38,6 +38,9 @@
   "popup_bannerIssueWontFix": {
     "message": "A fost raportată o problemă pentru această pagină, dar nu va fi rezolvată. Rețineți că extensia poate să nu funcționeze conform așteptărilor pe această pagină. Vă recomandăm cu insistență să dezactivați extensia folosind butonul de mai jos."
   },
+  "popup_bannerUpdateAvailable": {
+    "message": "Actualizare disponibilă. Vă rugăm să instalați cea mai recentă versiune pentru a rezolva problemele cunoscute înainte de a raporta altele noi."
+  },
   "popup_contributeOption": {
     "message": "Contribuie la acest proiect"
   },

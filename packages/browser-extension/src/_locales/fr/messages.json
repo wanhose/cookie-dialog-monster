@@ -38,6 +38,9 @@
   "popup_bannerIssueWontFix": {
     "message": "Un problème a été signalé pour cette page, mais il ne sera pas résolu. Veuillez noter que l'extension pourrait ne pas fonctionner comme prévu sur cette page. Nous vous recommandons vivement de désactiver l'extension en utilisant le bouton ci-dessous."
   },
+  "popup_bannerUpdateAvailable": {
+    "message": "Mise à jour disponible. Veuillez installer la dernière version pour résoudre les problèmes connus avant d'en signaler de nouveaux"
+  },
   "popup_contributeOption": {
     "message": "Contribuer à ce projet"
   },

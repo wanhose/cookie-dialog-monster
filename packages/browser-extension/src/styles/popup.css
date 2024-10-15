@@ -89,8 +89,6 @@ header {
 }
 
 main > .banner {
-  background-color: #f39c12;
-  color: #c0392b;
   margin: 0px;
   padding: 16px;
 
@@ -98,7 +96,18 @@ main > .banner {
     display: none;
   }
 
-  & #issue-banner-url {
+  &[data-variant='notice'] {
+    background-color: #2196f3;
+    color: var(--color-white);
+  }
+
+  &[data-variant='warning'] {
+    background-color: #f39c12;
+    color: #c0392b;
+  }
+
+  & #issue-banner-url,
+  & #update-banner-url {
     color: inherit;
     display: inline-block;
     vertical-align: middle;

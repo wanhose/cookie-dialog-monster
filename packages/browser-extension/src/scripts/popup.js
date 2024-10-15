@@ -1,7 +1,8 @@
 /**
  * @typedef {Object} ExtensionState
- * @property {boolean} on
  * @property {ExtensionIssue} [issue]
+ * @property {boolean} on
+ * @property {string} [updateAvailable]
  */
 
 /**
@@ -115,9 +116,11 @@ async function handleContentLoaded() {
     reasonInputElement?.addEventListener('input', handleInputChange);
     reasonInputElement?.addEventListener('keydown', handleInputKeyDown);
 
-    const reportButtonElement = document.getElementById('report-button');
-    reportButtonElement?.addEventListener('click', handleReportClick);
-    reportButtonElement?.removeAttribute('disabled');
+    if (!state.updateAvailable) {
+      const reportButtonElement = document.getElementById('report-button');
+      reportButtonElement?.addEventListener('click', handleReportClick);
+      reportButtonElement?.removeAttribute('disabled');
+    }
 
     const urlInputElement = document.getElementById('report-input-url');
     urlInputElement?.addEventListener('input', handleInputChange);
@@ -126,6 +129,14 @@ async function handleContentLoaded() {
 
     const submitButtonElement = document.getElementsByClassName('report-submit-button')[0];
     submitButtonElement?.addEventListener('click', handleSubmitButtonClick);
+  }
+
+  if (state.updateAvailable) {
+    const updateBanner = document.getElementById('update-banner');
+    updateBanner.removeAttribute('aria-hidden');
+
+    const updateBannerUrl = document.getElementById('update-banner-url');
+    updateBannerUrl.href += `/tag/${state.updateAvailable}`;
   }
 
   const hostTextElement = document.getElementById('host');

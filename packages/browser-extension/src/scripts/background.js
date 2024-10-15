@@ -9,6 +9,7 @@
  * @typedef {Object} ExtensionState
  * @property {ExtensionIssue} [issue]
  * @property {boolean} on
+ * @property {string} [updateAvailable]
  */
 
 if (typeof browser === 'undefined') {
@@ -160,13 +161,14 @@ async function getTab() {
  * @returns {Promise<ExtensionState>}
  */
 async function getState(hostname) {
-  const { [hostname]: state = stateByDefault } = await storage.get(hostname);
+  const keys = [hostname, 'updateAvailable'];
+  const { [hostname]: state = stateByDefault, updateAvailable } = await storage.get(keys);
 
   if ((state.issue && Date.now() > state.issue.expiresIn) || !state.issue?.expiresIn) {
     state.issue = await refreshIssue(hostname);
   }
 
-  return { ...stateByDefault, ...state };
+  return { ...stateByDefault, ...state, updateAvailable };
 }
 
 /**
@@ -222,7 +224,7 @@ async function refreshData() {
  */
 async function refreshIssue(hostname) {
   try {
-    const { data } = await requestManager.fetchData(`${apiUrl}/issues/${hostname}`);
+    const { data } = await requestManager.fetchData(`${apiUrl}/issues/${hostname}/`);
 
     if (Object.keys(data).length === 0) {
       await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
