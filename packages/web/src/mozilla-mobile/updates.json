@@ -25,6 +25,10 @@
         {
           "version": "7.3.2",
           "update_link": "https://www.cookie-dialog-monster.com/releases/7.3.2-mozilla-mobile.xpi"
+        },
+        {
+          "version": "8.0.1",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/8.0.1-mozilla-mobile.xpi"
         }
       ]
     }
