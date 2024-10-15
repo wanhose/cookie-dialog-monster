@@ -12,7 +12,7 @@ type GetIssuesParams = yup.InferType<typeof GetIssuesParamsSchema>;
 
 export default (server: FastifyInstance, _options: RouteShorthandOptions, done: () => void) => {
   server.get<{ Params: GetIssuesParams }>(
-    '/issues/:hostname',
+    '/issues/:hostname/',
     {
       config: {
         rateLimit: RATE_LIMIT_10_PER_MIN,
