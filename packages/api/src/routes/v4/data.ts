@@ -1,5 +1,6 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import fetch from 'node-fetch';
+import { parseActionName, toDeclarativeNetRequestRule } from 'services/compatibility';
 import environment from 'services/environment';
 import { RATE_LIMIT_3_PER_MIN } from 'services/rateLimit';
 
@@ -13,14 +14,18 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     },
     async (_request, reply) => {
       try {
+        const database = `${environment.gitea.raw}/database.json`;
         const options = { headers: { 'Cache-Control': 'no-cache' } };
-        const url = `${environment.gitea.raw}/database.json`;
-        const { rules, ...result } = await (await fetch(url, options)).json();
+        const response = await fetch(database, options);
+        const { actions, exclusions, keywords, rules, ...rest } = await response.json();
 
         reply.send({
           data: {
-            ...result,
+            ...rest,
+            actions: actions.map(parseActionName),
+            commonWords: keywords,
             rules: rules.map(toDeclarativeNetRequestRule),
+            skips: { domains: exclusions.overflows, tags: exclusions.tags },
           },
           success: true,
         });
@@ -35,17 +40,3 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
 
   done();
 };
-
-function toDeclarativeNetRequestRule(urlFilter: string, index: number) {
-  return {
-    action: {
-      type: 'block',
-    },
-    condition: {
-      resourceTypes: ['font', 'image', 'media', 'object', 'script', 'stylesheet', 'xmlhttprequest'],
-      urlFilter,
-    },
-    id: index + 1,
-    priority: 1,
-  };
-}

@@ -10,7 +10,7 @@
 
 # Cookie Dialog Monster
 
-Cookie Dialog Monster is a browser extension that hides cookie consent dialogs without changing user preferences. By default, we do NOT accept cookies (except in [a few cases](https://git.wanhose.dev/wanhose/cookie-dialog-monster/src/branch/main/database.json#L248) where the pages do not function without accepting them). You can report broken sites with a single click, which will create an issue in this repository to be fixed promptly.
+Cookie Dialog Monster is a browser extension that hides cookie consent dialogs without changing user preferences. By default, we do NOT accept cookies (except in [a few cases](https://git.wanhose.dev/wanhose/cookie-dialog-monster/src/branch/main/database.json) where the pages do not function without accepting them). You can report broken sites with a single click, which will create an issue in this repository to be fixed promptly.
 
 ## Contributing
 

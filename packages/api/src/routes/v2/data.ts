@@ -1,6 +1,6 @@
 import { FastifyInstance, RouteShorthandOptions } from 'fastify';
 import fetch from 'node-fetch';
-import { parseNewFix } from 'services/compatibility';
+import { parseAction } from 'services/compatibility';
 import environment from 'services/environment';
 import { RATE_LIMIT_10_PER_MIN } from 'services/rateLimit';
 
@@ -14,17 +14,18 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     },
     async (_request, reply) => {
       try {
-        const url = `${environment.gitea.raw}/database.json`;
-        const result = await (await fetch(url)).json();
+        const database = `${environment.gitea.raw}/database.json`;
+        const response = await fetch(database);
+        const { actions, exclusions, keywords, tokens } = await response.json();
 
         reply.send({
           data: {
-            classes: result.tokens.classes,
-            commonWords: result.commonWords,
-            elements: result.tokens.selectors,
-            fixes: result.fixes.map(parseNewFix),
-            skips: result.skips.domains,
-            tags: result.skips.tags,
+            classes: tokens.classes,
+            commonWords: keywords,
+            elements: tokens.selectors,
+            fixes: actions.map(parseAction),
+            skips: exclusions.overflows,
+            tags: exclusions.tags,
           },
           success: true,
         });
