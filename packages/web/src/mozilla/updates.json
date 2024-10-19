@@ -61,6 +61,10 @@
         {
           "version": "8.0.1",
           "update_link": "https://www.cookie-dialog-monster.com/releases/8.0.1.xpi"
+        },
+        {
+          "version": "8.0.2",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/8.0.2.xpi"
         }
       ]
     }
