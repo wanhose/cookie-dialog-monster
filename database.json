@@ -934,6 +934,7 @@
     "||chollometro.com/assets/js/CookiesMessage*.js^",
     "||city-bahn.de/wp-content/plugins/borlabs-cookie^",
     "||cmp.actiview.de^",
+    "||cmp.computerbild.de^",
     "||cmp.huffingtonpost.fr^",
     "||cmp.inmobi.com^",
     "||cmp.meteored.com^",
@@ -14010,5 +14011,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729326055910"
+  "version": "1729326157411"
 }
