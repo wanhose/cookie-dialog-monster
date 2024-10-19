@@ -1465,6 +1465,7 @@
       ".banner-message-cpopup",
       ".banner-notification",
       ".banner-policy-wrap",
+      ".banner-pop:has([href=\"/sp-confidentialite/\"])",
       ".banner[data-banner=\"cookies\"]",
       ".bannerCookie",
       ".bannerCookies",
@@ -6523,6 +6524,7 @@
       ".uc-cookie-block",
       ".uc-cookie",
       ".ucgCookieBar",
+      ".ucm-bl-mainwrap + #divAlert.alertPopup",
       ".ucn-block",
       ".ucp-cookiebanner-wrapper",
       ".ud-component--eu-cookie-message--app",
@@ -14013,9 +14015,8 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
-      ".banner-pop:has([href=\"/sp-confidentialite/\"])",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729327210670"
+  "version": "1729327695564"
 }
