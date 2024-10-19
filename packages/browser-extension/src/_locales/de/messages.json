@@ -3,7 +3,7 @@
     "message": "Hat jemand Cookie-Einwilligungsdialoge gesagt? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Folgen Sie diesem Problem auf GitHub"
+    "message": "Folgen Sie diesem Problem"
   },
   "contextMenu_reportOption": {
     "message": "Diese Website melden"
@@ -57,7 +57,7 @@
     "message": "Bewerten Sie diese Erweiterung"
   },
   "report_bodyText": {
-    "message": "Bitte geben Sie in diesem Bericht keine persönlichen Informationen weiter. Wenn Sie weitere Details hinzufügen möchten, öffnen Sie das GitHub-Problem im nächsten Schritt und fügen Sie einen Kommentar hinzu."
+    "message": "Bitte teilen Sie in diesem Bericht keine persönlichen Informationen. Wenn Sie weitere Details hinzufügen möchten, gehen Sie im nächsten Schritt zum Problem und fügen Sie einen Kommentar hinzu."
   },
   "report_cancelButtonText": {
     "message": "Abbrechen"

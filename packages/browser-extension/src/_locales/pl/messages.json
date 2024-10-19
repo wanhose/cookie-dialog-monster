@@ -3,7 +3,7 @@
     "message": "Czy ktoś wspomniał o dialogach zgody na pliki cookie? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Śledź ten problem na GitHub"
+    "message": "Śledź ten problem"
   },
   "contextMenu_reportOption": {
     "message": "Zgłoś tę stronę"
@@ -57,7 +57,7 @@
     "message": "Oceń to rozszerzenie"
   },
   "report_bodyText": {
-    "message": "Prosimy, nie udostępniaj żadnych danych osobowych w tym raporcie. Jeśli chcesz dodać więcej szczegółów, otwórz zgłoszenie na GitHub w następnym kroku i dodaj komentarz."
+    "message": "Proszę, nie udostępniaj żadnych danych osobowych w tym raporcie. Jeśli chcesz dodać więcej szczegółów, przejdź do zgłoszenia w kolejnym kroku i dodaj komentarz."
   },
   "report_cancelButtonText": {
     "message": "Anuluj"
