@@ -9077,6 +9077,7 @@
       "#cookie-settings-container",
       "#cookie-settings-dlg",
       "#cookie-settings-layer",
+      "#cookie-settings-popup",
       "#cookie-settings.cookie-settings",
       "#cookie-slide",
       "#cookie-slider",
@@ -14026,5 +14027,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729329868022"
+  "version": "1729329954105"
 }
