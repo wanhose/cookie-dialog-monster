@@ -7039,6 +7039,7 @@
       "[data-testid=\"dl-cookieBanner\"]",
       "[data-testid=\"gateway-container\"][aria-hidden=\"true\"]",
       "[data-testid=\"main-cookies-banner-container\"]",
+      "[data-testid=\"Modal\"]:has([class*=\"CookieBanner-\"])",
       "[data-testid=\"uc-default-banner\"]",
       "[data-testid=\"wa_cookies_banner_modal\"]",
       "[data-tk-teaser-entity=\"g-consentmanager\"]",
@@ -14008,5 +14009,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729325643364"
+  "version": "1729325918962"
 }
