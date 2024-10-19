@@ -6689,6 +6689,7 @@
       ".widget-gdpr-banner",
       ".widget-gdpr-cookie-banner",
       ".widget-GdprCookieBanner",
+      ".widget.HTML:has([href=\"https://policies.google.com/technologies/cookies\"])",
       ".widilo-cookie-rules",
       ".win_cookies",
       ".with-cookie",
@@ -14022,5 +14023,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729328887694"
+  "version": "1729329477505"
 }
