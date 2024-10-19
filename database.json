@@ -950,6 +950,7 @@
     "||consent.up.welt.de^",
     "||consentbar.interencheres.com^",
     "||consentcdn.cookiebot.com^",
+    "||cookie.porsche.com^",
     "||cookiehub.net^",
     "||cp.as.com^",
     "||cp.inside-digital.de^",
@@ -978,6 +979,7 @@
     "||sdk.privacy-center.org^",
     "||static.fastcmp.com^",
     "||transcend-cdn.com^",
+    "||uct.eu.usercentrics.eu^",
     "||wcpstatic.microsoft.com^",
     "||webtools.europa.eu/js/webtools.cck.js^",
     "||widgets.marketcat.net^"
@@ -14020,5 +14022,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729328104266"
+  "version": "1729328887694"
 }
