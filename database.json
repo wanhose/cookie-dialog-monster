@@ -925,6 +925,7 @@
     "||b2brouter.net/de/wp-content/plugins/cookies-and-content-security-policy^",
     "||benno-gymnasium.de/plugins/system/gdpr^",
     "||c.evidon.com^",
+    "||cache.consentframework.com^",
     "||cdn-cookieyes.com^",
     "||cdn.consentmanager.net^",
     "||cdn.cookielaw.org^",
@@ -14019,5 +14020,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729327961851"
+  "version": "1729328104266"
 }
