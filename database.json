@@ -7331,7 +7331,6 @@
       "#alert-cookies",
       "#alert-eu-cookies",
       "#alert-privacy-update",
-      "#alert",
       "#alerta_cookies",
       "#alerta-cookies",
       "#AlertaCookies",
@@ -7349,7 +7348,6 @@
       "#alertMentionCookiesMessage",
       "#alertpop-privacypolicy",
       "#alerts-policy",
-      "#alertTop",
       "#all4gn-cookie-policy-notification",
       "#all4nav-cookie-component",
       "#all4nav-cookie-policy-notification",
@@ -14009,5 +14007,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729325269973"
+  "version": "1729325512664"
 }
