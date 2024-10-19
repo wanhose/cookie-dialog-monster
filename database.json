@@ -1600,6 +1600,7 @@
       ".box_cookie",
       ".box_Cookie",
       ".box_cookies",
+      ".box_right_bottom:has(.allowed_ookie)",
       ".box--cookies",
       ".box-accept-cookies",
       ".box-alert-cookie-inside",
@@ -14013,5 +14014,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729326260247"
+  "version": "1729326428500"
 }
