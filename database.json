@@ -6932,6 +6932,7 @@
       "[data-analytics-category=\"Cookies Consent\"]",
       "[data-assembly-source=\"cookie/banner\"]",
       "[data-at-selector=\"cookie-banner\"]",
+      "[data-automation-id=\"legalNotice\"]",
       "[data-automation=\"cookies-banner\"]",
       "[data-automation=\"privacy-banner-wrapper\"]",
       "[data-banner=\"cookies\"]",
@@ -14025,5 +14026,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729329786828"
+  "version": "1729329868022"
 }
