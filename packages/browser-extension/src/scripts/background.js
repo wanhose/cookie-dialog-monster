@@ -338,7 +338,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
     case 'REPORT':
       report(message).then(callback);
       return true;
-
     case 'UPDATE_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
