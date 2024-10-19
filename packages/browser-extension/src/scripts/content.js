@@ -1,9 +1,9 @@
 /**
- * @typedef {Object} ExtensionData
- * @property {string[]} commonWords
- * @property {Fix[]} fixes
- * @property {{ domains: string[], tags: string[] }} skips
- * @property {{ backdrops: string[], classes: string[], containers: string[], selectors: string[] }} tokens
+ * @typedef {Object} Action
+ * @property {string} domain
+ * @property {string} name
+ * @property {string} [property]
+ * @property {string} selector
  */
 
 /**
@@ -12,11 +12,24 @@
  */
 
 /**
- * @typedef {Object} Fix
- * @property {string} action
- * @property {string} domain
- * @property {string} [property]
- * @property {string} selector
+ * @typedef {Object} ExclusionMap
+ * @property {string[]} domains
+ * @property {string[]} overflows
+ * @property {string[]} tags
+ */
+
+/**
+ * @typedef {Object} ExtensionData
+ * @property {Action[]} actions
+ * @property {ExclusionMap} exclusions
+ * @property {string[]} keywords
+ * @property {TokenMap} tokens
+ */
+
+/**
+ * @typedef {Object} GetElementsParams
+ * @property {boolean} [filterEarly]
+ * @property {HTMLElement} [from]
  */
 
 /**
@@ -27,9 +40,11 @@
  */
 
 /**
- * @typedef {Object} GetElementsParams
- * @property {boolean} [filterEarly]
- * @property {HTMLElement} [from]
+ * @typedef {Object} TokenMap
+ * @property {string[]} backdrops
+ * @property {string[]} classes
+ * @property {string[]} containers
+ * @property {string[]} selectors
  */
 
 /**
@@ -42,22 +57,31 @@ if (typeof browser === 'undefined') {
 }
 
 /**
- * @description Actions done by the extension
- * @type {Set<string>}
+ * @description Class for request batching
  */
-const actions = new Set();
+class NotifiableSet extends Set {
+  constructor(...args) {
+    super(...args);
+  }
+
+  add(value) {
+    super.add(value);
+    browser.runtime.sendMessage({ type: 'UPDATE_BADGE', value: super.size });
+  }
+}
 
 /**
  * @description Data object with all the necessary information
  * @type {ExtensionData}
  */
-let { commonWords, fixes, skips, tokens } = {
-  commonWords: [],
-  fixes: [],
-  skips: {
+let { actions, exclusions, keywords, tokens } = {
+  actions: [],
+  exclusions: {
     domains: [],
+    overflows: [],
     tags: [],
   },
+  keywords: [],
   tokens: {
     backdrops: [],
     classes: [],
@@ -80,7 +104,13 @@ const hostname = getHostname();
  * @description Initial visibility state
  * @type {boolean}
  */
-let initiallyVisible = document.visibilityState === 'visible';
+let initiallyVisible = false;
+
+/**
+ * @description Log of those steps done by the extension
+ * @type {NotifiableSet<string>}
+ */
+const log = new NotifiableSet();
 
 /**
  * @description Options provided to observer
@@ -96,9 +126,9 @@ const seen = new Set();
 
 /**
  * @description Extension state
- * @type {ContentState}
+ * @type {ContentState | undefined}
  */
-let state = { on: true };
+let state = undefined;
 
 /**
  * @description Clean DOM
@@ -120,8 +150,7 @@ function clean(elements, skipMatch) {
         if (element instanceof HTMLDialogElement) element.close();
         hide(element);
 
-        actions.add(`${Date.now()}`);
-        dispatch({ type: 'UPDATE_BADGE', value: actions.size });
+        log.add(`${Date.now()}`);
       }
 
       seen.add(element);
@@ -136,11 +165,11 @@ function clean(elements, skipMatch) {
 }
 
 /**
- * @description Check if element contains a common word
+ * @description Check if element contains a keyword
  * @param {HTMLElement} element
  */
-function containsCommonWord(element) {
-  return !!commonWords.length && !!element.outerHTML.match(new RegExp(commonWords.join('|')));
+function hasKeyword(element) {
+  return !!keywords?.length && !!element.outerHTML.match(new RegExp(keywords.join('|')));
 }
 
 /**
@@ -204,6 +233,21 @@ function getHostname() {
 }
 
 /**
+ * @async
+ * @description Run if the page wasn't visited yet
+ * @param {Object} message
+ * @returns {Promise<void>}
+ */
+function handleRuntimeMessage(message) {
+  switch (message.type) {
+    case 'INCREASE_ACTIONS_COUNT': {
+      log.add(message.value);
+      break;
+    }
+  }
+}
+
+/**
  * @description Check if an element is visible in the viewport
  * @param {HTMLElement} element
  * @returns {boolean}
@@ -229,7 +273,7 @@ function isInViewport(element) {
  * @returns {boolean}
  */
 function match(element, skipMatch) {
-  if (!tokens.selectors.length || !skips.tags.length) {
+  if (!exclusions.tags.length || !tokens.selectors.length) {
     return false;
   }
 
@@ -243,7 +287,7 @@ function match(element, skipMatch) {
 
   const tagName = element.tagName.toUpperCase();
 
-  if (skips.tags.includes(tagName)) {
+  if (exclusions.tags.includes(tagName)) {
     return false;
   }
 
@@ -283,7 +327,7 @@ function filterNodeEarly(node, stopRecursion) {
     return [];
   }
 
-  if (commonWords && containsCommonWord(node) && !stopRecursion) {
+  if (hasKeyword(node) && !stopRecursion) {
     return [node, ...[...node.children].flatMap((node) => filterNodeEarly(node, true))];
   }
 
@@ -291,46 +335,27 @@ function filterNodeEarly(node, stopRecursion) {
 }
 
 /**
- * @description Fix data, middle consent page and scroll issues
+ * @description Fix specific cases
  * @returns {void}
  */
 function fix() {
-  const backdrops = getElements(tokens.backdrops);
-  const domains = skips.domains.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
+  for (const action of actions) {
+    const { domain, name, property, selector } = action;
 
-  for (const backdrop of backdrops) {
-    if (backdrop.children.length === 0 && !seen.has(backdrop)) {
-      actions.add(`${Date.now()}`);
-      seen.add(backdrop);
-      hide(backdrop);
-    }
-  }
-
-  if (domains.every((x) => !hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
-    for (const element of [document.body, document.documentElement]) {
-      element?.classList.remove(...(tokens.classes ?? []));
-      element?.style.setProperty('position', 'initial', 'important');
-      element?.style.setProperty('overflow-y', 'initial', 'important');
-    }
-  }
-
-  for (const fix of fixes) {
-    const { action, domain, property, selector } = fix;
-
-    if (hostname.includes(domain)) {
-      switch (action) {
+    if (hostname.match(domain.replaceAll(/\*/g, '[^ ]*'))) {
+      switch (name) {
         case 'click': {
           const element = document.querySelector(selector);
 
-          actions.add('click');
           element?.click();
+          log.add(name);
           break;
         }
         case 'remove': {
           const element = document.querySelector(selector);
 
-          actions.add('remove');
           element?.style?.removeProperty(property);
+          log.add(name);
           break;
         }
         case 'reload': {
@@ -340,38 +365,56 @@ function fix() {
         case 'reset': {
           const element = document.querySelector(selector);
 
-          actions.add('reset');
           element?.style?.setProperty(property, 'initial', 'important');
+          log.add(name);
           break;
         }
         case 'resetAll': {
           const elements = getElements(selector);
 
-          actions.add('resetAll');
           elements.forEach((e) => e?.style?.setProperty(property, 'initial', 'important'));
+          log.add(name);
           break;
         }
       }
     }
   }
 
+  const backdrops = getElements(tokens.backdrops);
+
+  for (const backdrop of backdrops) {
+    if (backdrop.children.length === 0 && !seen.has(backdrop)) {
+      log.add(`${Date.now()}`);
+      seen.add(backdrop);
+      hide(backdrop);
+    }
+  }
+
+  const skips = exclusions.overflows.map((x) => (x.split('.').length < 3 ? `*${x}` : x));
+
+  if (!skips.some((x) => hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
+    for (const element of [document.body, document.documentElement]) {
+      element?.classList.remove(...(tokens.classes ?? []));
+      element?.style.setProperty('position', 'initial', 'important');
+      element?.style.setProperty('overflow-y', 'initial', 'important');
+    }
+  }
+
   const ionRouterOutlet = document.getElementsByTagName('ion-router-outlet')[0];
 
   if (ionRouterOutlet) {
-    actions.add('ion-router-outlet');
     // 2024-08-02: fix #644 temporarily
     ionRouterOutlet.removeAttribute('inert');
+    log.add('ion-router-outlet');
   }
 
   const t4Wrapper = document.getElementsByClassName('t4-wrapper')[0];
 
   if (t4Wrapper) {
-    actions.add('t4-wrapper');
+    log.add('t4-wrapper');
     // 2024-09-12: fix #945 temporarily
     t4Wrapper.removeAttribute('inert');
   }
-
-  dispatch({ type: 'UPDATE_BADGE', value: actions.size });
 }
 
 /**
@@ -412,41 +455,48 @@ function run(params = {}) {
  * @async
  * @description Set up the extension
  * @param {SetUpParams} [params]
+ * @returns {Promise<void>}
  */
 async function setUp(params = {}) {
+  const data = await dispatch({ hostname, type: 'GET_DATA' });
+
+  exclusions = data?.exclusions ?? exclusions;
+
+  if (exclusions.domains.some((x) => location.hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
+    dispatch({ type: 'DISABLE_ICON' });
+    observer.disconnect();
+    return;
+  }
+
   state = await dispatch({ hostname, type: 'GET_STATE' });
   dispatch({ type: 'ENABLE_POPUP' });
+  dispatch({ type: 'ENABLE_REPORT' });
 
   if (state.on) {
-    const data = await dispatch({ hostname, type: 'GET_DATA' });
+    browser.runtime.onMessage.addListener(handleRuntimeMessage);
+    dispatch({ hostname, type: 'ENABLE_ICON' });
 
-    commonWords = data?.commonWords ?? commonWords;
-    fixes = data?.fixes ?? fixes;
-    skips = data?.skips ?? skips;
+    actions = data?.actions ?? actions;
+    keywords = data?.keywords ?? keywords;
     tokens = data?.tokens ?? tokens;
 
-    dispatch({ type: 'ENABLE_REPORT' });
-    dispatch({ hostname, type: 'ENABLE_ICON' });
-    dispatch({ type: 'UPDATE_BADGE', value: actions.size });
     observer.observe(document.body ?? document.documentElement, options);
     if (!params.skipRunFn) run({ containers: tokens.containers });
-  } else {
-    dispatch({ type: 'DISABLE_REPORT' });
-    dispatch({ type: 'DISABLE_ICON' });
-    dispatch({ type: 'UPDATE_BADGE', value: actions.size });
-    observer.disconnect();
   }
 }
 
 /**
  * @description Wait for the body to exist
- * @param {void} callback
- * @returns {void}
+ * @returns {Promise<void>}
  */
 async function setUpAfterWaitForBody() {
-  if (document.body) {
-    await setUp();
-  } else {
+  if (document.visibilityState === 'visible' && !initiallyVisible) {
+    if (document.body) {
+      initiallyVisible = true;
+      await setUp();
+      return;
+    }
+
     setTimeout(setUpAfterWaitForBody, 50);
   }
 }
@@ -466,50 +516,6 @@ const observer = new MutationObserver((mutations) => {
   run({ elements });
 });
 
-/**
- * @description Listen to messages from any other scripts
- * @listens browser.runtime#onMessage
- */
-browser.runtime.onMessage.addListener(async (message) => {
-  switch (message.type) {
-    case 'INCREASE_ACTIONS_COUNT': {
-      actions.add(`${Date.now()}`);
-      break;
-    }
-  }
-});
-
-/**
- * @description Fix bfcache issues
- * @listens window#pageshow
- * @returns {void}
- */
-window.addEventListener('pageshow', async (event) => {
-  if (document.visibilityState === 'visible' && event.persisted) {
-    await setUp();
-  }
-});
-
-/**
- * @async
- * @description Run if the page wasn't visited yet
- * @listens window#visibilitychange
- * @returns {void}
- */
-window.addEventListener('visibilitychange', async () => {
-  if (document.visibilityState === 'visible') {
-    if (!initiallyVisible) {
-      initiallyVisible = true;
-      await setUp();
-    }
-
-    dispatch({ type: state.on ? 'ENABLE_REPORT' : 'DISABLE_REPORT' });
-  }
-});
-
-/**
- * @description Run as soon as possible, if the user is in front of the page
- */
-if (document.visibilityState === 'visible') {
-  setUpAfterWaitForBody();
-}
+document.addEventListener('visibilitychange', setUpAfterWaitForBody);
+window.addEventListener('pageshow', setUpAfterWaitForBody);
+setUpAfterWaitForBody();

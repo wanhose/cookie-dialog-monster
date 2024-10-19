@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "8.0.1",
+  "version": "8.0.2",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -29,28 +29,6 @@
   "content_scripts": [
     {
       "all_frames": true,
-      "exclude_matches": [
-        "*://*.bauhaus.cz/*",
-        "*://*.codesandbox.io/*",
-        "*://*.facebook.com/*",
-        "*://*.googleapis.com/embed/*",
-        "*://*.olympics.com/*",
-        "*://*.youtube-nocookie.com/embed/*",
-        "*://*.youtube.com/embed/*",
-        "*://www.youtube.com/*",
-        "*://translate.google.ca/*",
-        "*://translate.google.co.in/*",
-        "*://translate.google.co.jp/*",
-        "*://translate.google.co.uk/*",
-        "*://translate.google.com.au/*",
-        "*://translate.google.com.br/*",
-        "*://translate.google.com/*",
-        "*://translate.google.de/*",
-        "*://translate.google.es/*",
-        "*://translate.google.fr/*",
-        "*://translate.google.it/*",
-        "*://www.cookie-dialog-monster.com/*"
-      ],
       "js": ["scripts/content.js"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_start"

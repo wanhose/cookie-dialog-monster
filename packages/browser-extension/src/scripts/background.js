@@ -49,7 +49,7 @@ class RequestManager {
  * @description API URL
  * @type {string}
  */
-const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v5';
+const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v6';
 
 /**
  * @description Context menu identifier
@@ -169,34 +169,6 @@ async function getState(hostname) {
   }
 
   return { ...stateByDefault, ...state, updateAvailable };
-}
-
-/**
- * @description Format number to avoid errors
- * @param {number} [value]
- * @returns {string | null}
- */
-function formatNumber(value) {
-  if (value) {
-    if (value >= 1e6) {
-      return `${Math.floor(value / 1e6)}M`;
-    } else if (value >= 1e3) {
-      return `${Math.floor(value / 1e3)}K`;
-    } else {
-      return value.toString();
-    }
-  }
-
-  return null;
-}
-
-/**
- * @description Convert match string to pattern string
- * @param {string} match
- * @returns {string}
- */
-function matchToPattern(match) {
-  return `^${match.replaceAll('*.', '*(.)?').replaceAll('*', '.*')}$`;
 }
 
 /**
@@ -370,7 +342,7 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
     case 'UPDATE_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });
-        browser.action.setBadgeText({ tabId, text: formatNumber(message.value) });
+        browser.action.setBadgeText({ tabId, text: message.value ? `${message.value}` : null });
       }
       break;
     case 'UPDATE_STORE':
@@ -419,6 +391,7 @@ browser.runtime.onInstalled.addListener((details) => {
   );
 
   if (details.reason === 'update') {
+    refreshData();
     storage.remove('updateAvailable');
   }
 });
@@ -453,27 +426,24 @@ browser.webRequest.onBeforeRequest.addListener(
     const { tabId, type, url } = details;
 
     if (tabId > -1 && type === 'main_frame') {
-      const manifest = browser.runtime.getManifest();
-      const excludeMatches = manifest.content_scripts[0].exclude_matches;
-      const excludePatterns = excludeMatches.map(matchToPattern);
+      const { exclusions, rules } = await getData();
 
-      if (excludePatterns.some((pattern) => new RegExp(pattern).test(url))) {
+      if (exclusions.domains.some((x) => location.hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
         return;
       }
 
-      const data = await getData();
       const hostname = getHostname(url);
       const state = await getState(hostname);
 
-      if (data?.rules?.length) {
-        const rules = data.rules.map((rule) => ({
+      if (rules?.length) {
+        const rulesWithTabId = rules.map((rule) => ({
           ...rule,
           condition: { ...rule.condition, tabIds: [tabId] },
         }));
 
         await browser.declarativeNetRequest.updateSessionRules({
-          addRules: state.on ? rules : undefined,
-          removeRuleIds: data.rules.map((rule) => rule.id),
+          addRules: state.on ? rulesWithTabId : undefined,
+          removeRuleIds: rules.map((rule) => rule.id),
         });
       }
     }
@@ -486,15 +456,10 @@ browser.webRequest.onBeforeRequest.addListener(
  */
 browser.webRequest.onErrorOccurred.addListener(
   async (details) => {
-    const { error, tabId, url } = details;
+    const { error, tabId } = details;
 
     if (error === 'net::ERR_BLOCKED_BY_CLIENT' && tabId > -1) {
-      const hostname = getHostname(url);
-      const state = await getState(hostname);
-
-      if (state.on) {
-        await browser.tabs.sendMessage(tabId, { type: 'INCREASE_ACTIONS_COUNT' });
-      }
+      await browser.tabs.sendMessage(tabId, { type: 'INCREASE_ACTIONS_COUNT', value: error });
     }
   },
   { urls: ['<all_urls>'] }
