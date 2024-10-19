@@ -966,6 +966,7 @@
     "||media.bzcompany.cz/scookies^",
     "||myprivacy-static.dpgmedia.net/consent.js^",
     "||myprivacy.dpgmedia.*/consent^",
+    "||nojazz.eu/nl/cmp/consentui^",
     "||optanon.blob.core.windows.net^",
     "||privacy.wetransfer.com/fides.js^",
     "||prod.widgets.burgerprofiel.vlaanderen.be/*/js.cookie.js^",
@@ -14016,5 +14017,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729326627121"
+  "version": "1729327210670"
 }
