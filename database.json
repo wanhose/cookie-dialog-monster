@@ -14012,8 +14012,9 @@
       "wsp-modal-window[data-type=\"cookie-modal\"]",
       "ytd-app ~ iron-overlay-backdrop",
       "ytd-consent-bump-v2-lightbox",
+      ".banner-pop:has([href=\"/sp-confidentialite/\"])",
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729326525268"
+  "version": "1729326627121"
 }
