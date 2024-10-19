@@ -1069,6 +1069,7 @@
       "#content",
       "#layout > [data-fetch-key]",
       "#main",
+      "#modal-root",
       "#root",
       "#wrapperDivisions",
       "#wt-modal-container",
@@ -4055,6 +4056,7 @@
       ".dgp-consent",
       ".dgpr-drop-down",
       ".dhl-cgk",
+      ".dialog-content-wrapper:has([data-testid=\"cookie-dialog\"])",
       ".dialog-cookie-settings",
       ".dialog[aria-label=\"cookieconsent\"]",
       ".dialogBanner__inner[data-qa=\"cookie-banner\"]",
@@ -14011,5 +14013,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729326157411"
+  "version": "1729326260247"
 }
