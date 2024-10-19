@@ -6799,6 +6799,7 @@
       ".zone-cookies",
       ".zpconsentinfo",
       ".zpWinThemeCookie",
+      ".zsl-footer + #divAlert.alertPopup",
       "[aria-describedby=\"cookie-information\"]",
       "[aria-describedby=\"cookieconsent:desc\"]",
       "[aria-describedby=\"cookieConsentDesc\"]",
@@ -14023,5 +14024,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729329477505"
+  "version": "1729329658145"
 }
