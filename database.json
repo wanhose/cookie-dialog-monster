@@ -5723,6 +5723,7 @@
       ".otcn-modal",
       ".otcn",
       ".otCookiesNotification",
+      ".otPlaceholder",
       ".ou-cookies-bar",
       ".outer-privacy-top-navigationBar",
       ".outerCookieBar",
@@ -14036,5 +14037,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729501566439"
+  "version": "1729501814926"
 }
