@@ -13996,6 +13996,7 @@
       "correos-cdk-cookies-module",
       "dialog.consent.js-consent",
       "dile-cookies-consent",
+      "div:has([data-testid=\"close-button\"]):has([href*=\"policy.medium.com/medium-privacy-policy\"]):has([role=\"alert\"])",
       "div:has(+ * a[href=\"https://www.viagogo.com/help/cookies\"])",
       "div:not(#app):has([href=\"https://www.viagogo.com/help/cookies\"])",
       "div[jsmodel]:not([jscontroller]):has([data-cookie-path])",
@@ -14029,5 +14030,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729499982440"
+  "version": "1729500576241"
 }
