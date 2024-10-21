@@ -5823,6 +5823,7 @@
       ".pnl-cookie",
       ".pnlCookiemelding",
       ".pnotify-cookies",
+      ".pointer-events-auto.bottom-0.w-full.flex.justify-center.items-center.bg-background-primary.z-20.py-4.gap-3.px-5:has([href=\"https://changelly.com/privacy-policy\"])",
       ".polcookies",
       ".policy_footer",
       ".policy_notification",
@@ -14028,5 +14029,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729499464722"
+  "version": "1729499689286"
 }
