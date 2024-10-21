@@ -8667,6 +8667,7 @@
       "#cookie-banner--popup-wrapper",
       "#cookie-banner-bespoke",
       "#cookie-banner-container",
+      "#cookie-banner-host",
       "#cookie-banner-message",
       "#cookie-banner-panel",
       "#cookie-banner-root",
@@ -14030,5 +14031,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729500576241"
+  "version": "1729500690970"
 }
