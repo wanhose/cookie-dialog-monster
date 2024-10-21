@@ -6603,6 +6603,7 @@
       ".v-app-PortletCookiesLaw",
       ".v-cookie-bar",
       ".v-cookieconsent",
+      ".v-snack:has([href*=\"accounts.hunterco.com.br/privacy\"])",
       ".v-window-cookieDialogWindow",
       ".v2_cookies_container",
       ".v2-cookie-disclaimer",
@@ -14037,5 +14038,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729501814926"
+  "version": "1729502125285"
 }
