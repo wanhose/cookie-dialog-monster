@@ -7056,6 +7056,7 @@
       "[data-testid=\"cookie-policy-dialog\"]",
       "[data-testid=\"cookie-policy-manage-dialog\"]",
       "[data-testid=\"cookie-wall-modal\"]",
+      "[data-testid=\"cookie-widget\"]",
       "[data-testid=\"cookienotice-container\"]",
       "[data-testid=\"cookies-dialog\"]",
       "[data-testid=\"dl-cookieBanner\"]",
@@ -14035,5 +14036,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729501273683"
+  "version": "1729501424980"
 }
