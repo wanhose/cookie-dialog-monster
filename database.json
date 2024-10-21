@@ -956,7 +956,7 @@
     "||cp.inside-digital.de^",
     "||cp.winfuture.de^",
     "||download.amd.com/OneTrust^",
-    "||driftingchef.com/static/*/Sticky2,ConsentManager",
+    "||driftingchef.com^",
     "||emp.bbci.co.uk^",
     "||eu.fastcmp.com^",
     "||forum.vorondesign.com/js/xf/notice.min.js^",
@@ -14029,5 +14029,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729499689286"
+  "version": "1729499982440"
 }
