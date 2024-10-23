@@ -948,6 +948,7 @@
     "||cmp.meteored.com^",
     "||cmp.prisa.com^",
     "||cmp.uniconsent.com^",
+    "||cmp2.zdf.de^",
     "||cms.static-bahn.de/cms/consent-layer^",
     "||consent.cookiebot.com^",
     "||consent.cookiefirst.com^",
@@ -14061,5 +14062,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729677666558"
+  "version": "1729678116024"
 }
