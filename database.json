@@ -991,6 +991,8 @@
       ".cc-policy-overlay",
       ".cdk-overlay-backdrop:has(+ .cdk-global-overlay-wrapper)",
       ".js--overlay",
+      ".js-lcc-backdrop",
+      ".lcc-backdrop",
       ".modal-backdrop",
       ".modals-overlay",
       ".offcanvas-backdrop",
@@ -6970,6 +6972,7 @@
       "[data-cookie-bar-target=\"modal\"]",
       "[data-cookie-consent-overlay]",
       "[data-cookie-id]",
+      "[data-cookie-key=\"__cookie_consent\"][role=\"dialog\"]",
       "[data-cookie-law-banner-selector]",
       "[data-cookie-message]",
       "[data-cookie-name=\"header_cookie_policy\"]",
@@ -6978,6 +6981,10 @@
       "[data-cookie-permission=\"true\"]",
       "[data-cookie-policy-modal]",
       "[data-cookie-validity-days]",
+      "[data-cookie-value-analytics=\"2\"][role=\"dialog\"]",
+      "[data-cookie-value-both=\"true\"][role=\"dialog\"]",
+      "[data-cookie-value-marketing=\"3\"][role=\"dialog\"]",
+      "[data-cookie-value-none=\"false\"][role=\"dialog\"]",
       "[data-cookie-warning]",
       "[data-cookie]",
       "[data-cookie^=\"cookie.disclaimer\"]",
@@ -6994,6 +7001,7 @@
       "[data-etsy-promo-cookie-expires]",
       "[data-feature=\"Web.Core.Feature.PrivacyCategory.Dialog\"]",
       "[data-gdpr-consent-prompt]",
+      "[data-gtm-event=\"cookie_refresh\"][role=\"dialog\"]",
       "[data-headlessui-portal]:has([alt=\"cookie\"])",
       "[data-headlessui-portal]:has([aria-label=\"Cookie Policy\"])",
       "[data-hook=\"consent-banner-root\"]",
@@ -14044,5 +14052,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729676380833"
+  "version": "1729676786121"
 }
