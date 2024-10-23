@@ -10681,6 +10681,7 @@
       "#cookieWarningTable",
       "#cookieWarningWrapper",
       "#cookiewarnung",
+      "#cookieWarnung",
       "#cookiewet-balk",
       "#cookiewet-hoek",
       "#cookiewet",
@@ -14052,5 +14053,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729676786121"
+  "version": "1729677177395"
 }
