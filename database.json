@@ -5325,6 +5325,7 @@
       ".mensajecokies",
       ".mentionCookie",
       ".menu-con-cookies",
+      ".mercusys-cookie-eu",
       ".message_cookie",
       ".message--cnil",
       ".message--cookie-warning",
@@ -12420,6 +12421,7 @@
       "#mention_cookies",
       "#mention-cookies",
       "#mentions-cookies",
+      "#mercusys-cookie",
       "#message_cookie_info_accept",
       "#message_cookie",
       "#message_cookies",
@@ -14062,5 +14064,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729678116024"
+  "version": "1729678213416"
 }
