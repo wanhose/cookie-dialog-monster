@@ -6302,6 +6302,7 @@
       ".sm-cookie-consent",
       ".small_gdpr_popup_holder",
       ".smcc_bottom_cookieaccept_container",
+      ".smile-cookie-notification-container",
       ".sml_cookiepolicy",
       ".smoothie-consent",
       ".smrt-ncookies-alert",
@@ -14039,5 +14040,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729675401409"
+  "version": "1729675964064"
 }
