@@ -6,6 +6,12 @@
       "selector": "#CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll"
     },
     {
+      "domain": "ai.meta.com",
+      "name": "reset",
+      "property": "position",
+      "selector": "._31e"
+    },
+    {
       "domain": "automobielmanagement.nl",
       "name": "resetAll",
       "property": "filter",
@@ -14053,5 +14059,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729677177395"
+  "version": "1729677477901"
 }
