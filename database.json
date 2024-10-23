@@ -953,6 +953,7 @@
     "||cookie.porsche.com^",
     "||cookiehub.net^",
     "||cp.as.com^",
+    "||cp.elektroauto-news.net^",
     "||cp.inside-digital.de^",
     "||cp.winfuture.de^",
     "||download.amd.com/OneTrust^",
@@ -14038,5 +14039,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729502125285"
+  "version": "1729675401409"
 }
