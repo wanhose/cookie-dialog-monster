@@ -5830,6 +5830,8 @@
       ".pnlCookiemelding",
       ".pnotify-cookies",
       ".pointer-events-auto.bottom-0.w-full.flex.justify-center.items-center.bg-background-primary.z-20.py-4.gap-3.px-5:has([href=\"https://changelly.com/privacy-policy\"])",
+      ".polaris-consent-widget",
+      ".polaris-consent-widgets",
       ".polcookies",
       ".policy_footer",
       ".policy_notification",
@@ -12905,6 +12907,7 @@
       "#pol_cookies",
       "#pol-cookies",
       "#poland_cookie_cont",
+      "#polaris-consent-widgets",
       "#polCockie",
       "#polCookies",
       "#policiyAlert",
@@ -14040,5 +14043,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729675964064"
+  "version": "1729676129100"
 }
