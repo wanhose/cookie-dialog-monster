@@ -984,6 +984,7 @@
     "||release.jobylon.com/jbl-cookie-consent-js^",
     "||s.nitropay.com/gpp-*.min.js",
     "||s.p7s1.io/cmp^",
+    "||schumacher-elektro.de/typo3conf/ext/we_cookie_consent^",
     "||sdk.privacy-center.org^",
     "||static.fastcmp.com^",
     "||transcend-cdn.com^",
@@ -1017,6 +1018,7 @@
       "backdrop-no-scroll",
       "bb-con-loaded",
       "blocked",
+      "blur",
       "blur-background",
       "bodyBlocked",
       "c24-cc-visible",
@@ -14059,5 +14061,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729677477901"
+  "version": "1729677666558"
 }
