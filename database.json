@@ -7887,6 +7887,7 @@
       "#catapult-cookie-bar",
       "#cb_alert",
       "#cb_content",
+      "#cb-cookie_consent",
       "#cb-cookieoverlay",
       "#cbcookies-bottom",
       "#cbcookies-top",
@@ -14080,5 +14081,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729844907018"
+  "version": "1729845426253"
 }
