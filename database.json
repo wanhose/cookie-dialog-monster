@@ -141,6 +141,12 @@
       "selector": "[role=\"dialog\"] > [style=\"display: flex; flex-direction: column; height: 100%; max-width: 100%;\"] > button"
     },
     {
+      "domain": "larousse.fr",
+      "name": "reset",
+      "property": "filter",
+      "selector": ".wrapper"
+    },
+    {
       "domain": "motorolasound.com",
       "name": "click",
       "selector": "#cookie-btn-denied"
@@ -7026,6 +7032,7 @@
       "[data-js=\"cookie-disclaimer\"]",
       "[data-key=\"cookies-warning\"]",
       "[data-module=\"cookie_banner\"]",
+      "[data-module=\"cookie-manager-dialog\"]",
       "[data-module=\"cookie-notice\"]",
       "[data-module=\"cookies\"]",
       "[data-name=\"cookie-policy\"]",
@@ -12527,7 +12534,6 @@
       "#modalStaticAvisoCookies",
       "#modifyCookiesModal",
       "#modPrivacySettings",
-      "[data-module=\"cookie-manager-dialog\"]",
       "#modssgdpr_cookie_bar",
       "#module_cookies",
       "#module-about-cookies",
@@ -12992,6 +12998,7 @@
       "#PolitykaPrywatnosciCookie",
       "#politykaPrywatnosciHolder",
       "#poolcookiebadge",
+      "#poool-widget",
       "#pop_cookies",
       "#pop_site_cookie",
       "#pop-client",
@@ -14071,5 +14078,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729844313484"
+  "version": "1729844609145"
 }
