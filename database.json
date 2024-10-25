@@ -253,6 +253,7 @@
       "*.facebook.com",
       "*.googleapis.com",
       "*.olympics.com",
+      "azure.microsoft.com",
       "translate.google.*",
       "www.youtube-nocookie.com",
       "www.youtube.com"
@@ -14070,5 +14071,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729843861339"
+  "version": "1729844313484"
 }
