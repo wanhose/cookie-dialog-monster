@@ -12526,6 +12526,7 @@
       "#modalStaticAvisoCookies",
       "#modifyCookiesModal",
       "#modPrivacySettings",
+      "[data-module=\"cookie-manager-dialog\"]",
       "#modssgdpr_cookie_bar",
       "#module_cookies",
       "#module-about-cookies",
@@ -14069,5 +14070,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729843694789"
+  "version": "1729843861339"
 }
