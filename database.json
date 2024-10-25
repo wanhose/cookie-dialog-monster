@@ -12363,6 +12363,7 @@
       "#ma > .ckch",
       "#ma-cmp-container",
       "#mab-cookie-notice-wrap",
+      "#macaron_cookie_box",
       "#macchiato_cookies_wrapper",
       "#machete_cookie_container",
       "#macookie",
@@ -14066,5 +14067,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729843310063"
+  "version": "1729843369229"
 }
