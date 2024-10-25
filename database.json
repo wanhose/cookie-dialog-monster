@@ -4873,6 +4873,7 @@
       ".identity-noticebar",
       ".idgcp__section",
       ".idrPageRow[style^=\"min-height:0;height:auto;padding:0;position:relative;z-index:1;zoom:1;border:none;\"]",
+      ".if6_eprivacy",
       ".iframe_cookies",
       ".ilikecookies",
       ".ilsa-cookies-cta",
@@ -14079,5 +14080,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729844823511"
+  "version": "1729844907018"
 }
