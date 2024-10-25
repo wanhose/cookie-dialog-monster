@@ -3156,6 +3156,7 @@
       ".cookieConsentBar",
       ".cookieConsentBarContainer",
       ".CookieConsentContainer",
+      ".cookieconsentdialog",
       ".CookieConsentMemo",
       ".CookieConsentOverlay",
       ".cookieConsentPanel",
@@ -12514,6 +12515,7 @@
       "#modalCook.mostrar-modal",
       "#modalCookie",
       "#modalCookieComp",
+      "#modalCookieConsentDialogContainer",
       "#modalCookieContainer",
       "#modalcookies",
       "#modalCookies",
@@ -14067,5 +14069,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729843369229"
+  "version": "1729843694789"
 }
