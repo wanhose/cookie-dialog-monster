@@ -3,7 +3,7 @@
     "message": "Did someone say cookie consent dialogs? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Follow this issue in GitHub"
+    "message": "Follow this issue"
   },
   "contextMenu_reportOption": {
     "message": "Report this website"
@@ -57,7 +57,7 @@
     "message": "Rate this extension"
   },
   "report_bodyText": {
-    "message": "Please, do not share any personal information in this report. If you want to add more details, open the GitHub issue in the next step and add a comment."
+    "message": "Please, do not share any personal information in this report. If you want to add more details, go to the issue in the next step and add a comment."
   },
   "report_cancelButtonText": {
     "message": "Cancel"

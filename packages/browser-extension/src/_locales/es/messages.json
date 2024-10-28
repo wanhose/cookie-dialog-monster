@@ -3,7 +3,7 @@
     "message": "¿Alguien mencionó los diálogos de consentimiento de cookies? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Sigue este problema en GitHub"
+    "message": "Sigue este problema"
   },
   "contextMenu_reportOption": {
     "message": "Reportar este sitio web"
@@ -57,7 +57,7 @@
     "message": "Califica esta extensión"
   },
   "report_bodyText": {
-    "message": "Por favor, no compartas ninguna información personal en este informe. Si deseas agregar más detalles, abre el problema de GitHub en el siguiente paso y agrega un comentario."
+    "message": "Por favor, no compartas información personal en este informe. Si deseas agregar más detalles, ve al problema en el siguiente paso y añade un comentario."
   },
   "report_cancelButtonText": {
     "message": "Cancelar"

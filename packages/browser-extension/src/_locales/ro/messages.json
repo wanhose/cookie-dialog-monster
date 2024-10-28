@@ -3,7 +3,7 @@
     "message": "A menționat cineva dialogurile de consimțământ pentru cookie-uri? 😋"
   },
   "contextMenu_issueOption": {
-    "message": "Urmărește această problemă pe GitHub"
+    "message": "Urmărește această problemă"
   },
   "contextMenu_reportOption": {
     "message": "Raportează acest site web"
@@ -57,7 +57,7 @@
     "message": "Evaluează această extensie"
   },
   "report_bodyText": {
-    "message": "Te rugăm să nu împărtășești informații personale în acest raport. Dacă dorești să adaugi mai multe detalii, deschide problema GitHub în pasul următor și adaugă un comentariu."
+    "message": "Vă rugăm să nu împărtășiți informații personale în acest raport. Dacă doriți să adăugați mai multe detalii, accesați problema în pasul următor și adăugați un comentariu."
   },
   "report_cancelButtonText": {
     "message": "Anulează"

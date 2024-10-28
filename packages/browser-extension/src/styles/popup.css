@@ -23,6 +23,7 @@ body {
 
 body * {
   box-sizing: border-box;
+  font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 button {
@@ -89,6 +90,8 @@ header {
 }
 
 main > .banner {
+  font-size: 14px;
+  line-height: 18px;
   margin: 0px;
   padding: 16px;
 
@@ -126,6 +129,7 @@ popup-button {
   cursor: pointer;
   display: grid;
   font-size: 14px;
+  line-height: 18px;
   gap: 16px;
   grid-template-rows: repeat(2, 1fr);
   height: 136px;
@@ -167,6 +171,7 @@ popup-data:not(:first-child) {
 
 popup-data-button {
   cursor: pointer;
+  line-height: 0;
   outline: none;
   transition: 0.4s;
 }
@@ -194,13 +199,13 @@ popup-data-container {
   font-size: 12px;
   grid-column: 1 / -1;
   justify-self: center;
+  line-height: 16px;
   text-align: center;
 }
 
 .report {
-  font-family: inherit;
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 18px;
   padding: 16px;
 
   & .report-buttons {
@@ -228,7 +233,6 @@ popup-data-container {
     border-radius: 4px;
     color: var(--color-secondary);
     cursor: text;
-    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 14px;
     line-height: 1;
     outline: none;
@@ -279,9 +283,8 @@ popup-data-container {
   & .report-input-error {
     color: var(--color-error);
     display: none;
-    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 10px;
-    line-height: 1.2;
+    line-height: 14px;
   }
 
   & .report-input-group {
@@ -291,9 +294,8 @@ popup-data-container {
 
   & .report-input-label {
     color: var(--color-secondary);
-    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 16px;
   }
 
   & .report-input-label-required {
@@ -306,10 +308,9 @@ popup-data-container {
     color: var(--color-secondary);
     cursor: pointer;
     display: flex;
-    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 14px;
     justify-content: center;
-    line-height: 1.2;
+    line-height: 18px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 16px;
@@ -332,11 +333,10 @@ popup-data-container {
     color: var(--color-white);
     cursor: pointer;
     display: flex;
-    font-family: Inter, Arial, Helvetica, sans-serif;
     font-size: 14px;
     height: 42px;
     justify-content: center;
-    line-height: 1.2;
+    line-height: 18px;
     margin-top: 8px;
     outline: none;
     padding: 8px 16px;
@@ -367,17 +367,15 @@ popup-data-container {
   }
 
   & .report-submit-extra-text {
-    font-family: inherit;
     font-size: 14px;
-    line-height: 1.2;
+    line-height: 18px;
     margin: 0px;
     text-align: justify;
   }
 
   & .report-submit-text {
-    font-family: inherit;
     font-size: 18px;
-    line-height: 1.2;
+    line-height: 22px;
     margin: 0px;
     text-align: center;
   }
@@ -387,7 +385,6 @@ popup-data-container {
     align-items: center;
     display: flex;
     flex-direction: column;
-    font-family: Inter, Arial, Helvetica, sans-serif;
     gap: 24px;
     justify-content: center;
     margin-top: 16px;
@@ -399,7 +396,7 @@ popup-data-container {
   }
 }
 
-strong {
+b {
   font-weight: bold;
 }
 
