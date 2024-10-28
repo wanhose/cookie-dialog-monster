@@ -389,10 +389,8 @@ browser.runtime.onInstalled.addListener((details) => {
     suppressLastError
   );
 
-  if (details.reason === 'update') {
-    refreshData();
-    storage.remove('updateAvailable');
-  }
+  if (details.reason === 'update') refreshData();
+  storage.remove('updateAvailable');
 });
 
 /**
