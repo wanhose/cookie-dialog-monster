@@ -1086,6 +1086,7 @@
       ".dw-content",
       ".footer",
       ".layout",
+      ".lv-header",
       ".page",
       ".row",
       ".rp-container",
@@ -14081,5 +14082,5 @@
       "ytm-consent-bump-v2-renderer"
     ]
   },
-  "version": "1729845426253"
+  "version": "1730114957636"
 }
