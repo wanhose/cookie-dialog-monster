@@ -401,6 +401,7 @@ function validateForm(params) {
   }
 
   try {
+    if (/\s/.test(url)) throw new Error();
     new URL(url);
   } catch {
     errors = {
