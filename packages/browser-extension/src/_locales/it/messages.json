@@ -38,6 +38,9 @@
   "popup_bannerIssueWontFix": {
     "message": "È stato segnalato un problema per questa pagina, ma non verrà risolto. Si prega di notare che l'estensione potrebbe non funzionare come previsto su questa pagina. Si consiglia vivamente di disattivare l'estensione utilizzando il pulsante qui sotto."
   },
+  "popup_bannerSupport": {
+    "message": "Questo sito non è più supportato. Per ulteriori informazioni, continua a leggere qui"
+  },
   "popup_bannerUpdateAvailable": {
     "message": "Aggiornamento disponibile. Si prega di installare l'ultima versione per risolvere i problemi noti prima di segnalarne di nuovi"
   },
