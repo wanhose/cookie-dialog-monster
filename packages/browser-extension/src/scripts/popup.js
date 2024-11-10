@@ -90,54 +90,10 @@ function handleCancelClick() {
  */
 async function handleContentLoaded() {
   const tab = await dispatch({ type: 'GET_TAB' });
-  const tabUrl = tab?.url ? new URL(tab.url) : undefined;
+  const url = tab?.url ? new URL(tab.url) : undefined;
 
-  hostname = tabUrl?.hostname.split('.').slice(-3).join('.').replace('www.', '');
-
-  const next = await dispatch({ hostname, type: 'GET_STATE' });
-  state = { ...(next ?? state), tabId: tab?.id };
-
-  if (state.issue?.url) {
-    const issueBanner = document.getElementById('issue-banner');
-    issueBanner.removeAttribute('aria-hidden');
-
-    const issueBannerText = document.getElementById('issue-banner-text');
-    if (state.issue.flags.includes('wontfix'))
-      issueBannerText.innerText = browser.i18n.getMessage('popup_bannerIssueWontFix');
-    else issueBannerText.innerText = browser.i18n.getMessage('popup_bannerIssueOpen');
-
-    const issueBannerUrl = document.getElementById('issue-banner-url');
-    issueBannerUrl.setAttribute('href', state.issue.url);
-  } else {
-    const cancelButtonElement = document.getElementsByClassName('report-cancel-button')[0];
-    cancelButtonElement?.addEventListener('click', handleCancelClick);
-
-    const reasonInputElement = document.getElementById('report-input-reason');
-    reasonInputElement?.addEventListener('input', handleInputChange);
-    reasonInputElement?.addEventListener('keydown', handleInputKeyDown);
-
-    if (!state.updateAvailable) {
-      const reportButtonElement = document.getElementById('report-button');
-      reportButtonElement?.addEventListener('click', handleReportClick);
-      reportButtonElement?.removeAttribute('disabled');
-    }
-
-    const urlInputElement = document.getElementById('report-input-url');
-    urlInputElement?.addEventListener('input', handleInputChange);
-    urlInputElement?.addEventListener('keydown', handleInputKeyDown);
-    if (tabUrl) urlInputElement?.setAttribute('value', `${tabUrl.origin}${tabUrl.pathname}`);
-
-    const submitButtonElement = document.getElementsByClassName('report-submit-button')[0];
-    submitButtonElement?.addEventListener('click', handleSubmitButtonClick);
-  }
-
-  if (state.updateAvailable) {
-    const updateBanner = document.getElementById('update-banner');
-    updateBanner.removeAttribute('aria-hidden');
-
-    const updateBannerUrl = document.getElementById('update-banner-url');
-    updateBannerUrl.href += `/tag/${state.updateAvailable}`;
-  }
+  hostname = url?.hostname.split('.').slice(-3).join('.').replace('www.', '');
+  state = { ...((await dispatch({ hostname, type: 'GET_STATE' })) ?? state), tabId: tab?.id };
 
   const hostTextElement = document.getElementById('host');
   hostTextElement.innerText = hostname ?? 'unknown';
@@ -151,13 +107,8 @@ async function handleContentLoaded() {
   const extensionVersionElement = document.getElementById('extension-version');
   extensionVersionElement.innerText = browser.runtime.getManifest().version;
 
-  const helpButtonElement = document.getElementById('help-option');
+  const helpButtonElement = document.getElementById('help-button');
   helpButtonElement?.addEventListener('click', handleLinkRedirect);
-
-  const powerButtonElement = document.getElementById('power-option');
-  powerButtonElement?.addEventListener('click', handlePowerToggle);
-  if (state.on) powerButtonElement?.setAttribute('data-value', 'on');
-  else powerButtonElement?.setAttribute('data-value', 'off');
 
   const rateButtonElement = document.getElementById('rate-option');
   rateButtonElement?.addEventListener('click', handleLinkRedirect);
@@ -170,6 +121,62 @@ async function handleContentLoaded() {
 
   translate();
   await updateDatabaseVersion();
+
+  const { exclusions } = (await dispatch({ hostname, type: 'GET_DATA' })) ?? {};
+
+  if (exclusions?.domains.some((x) => url.hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
+    const supportBanner = document.getElementById('support-banner');
+    supportBanner.removeAttribute('aria-hidden');
+    return;
+  }
+
+  if (state.issue?.url) {
+    const issueBanner = document.getElementById('issue-banner');
+    issueBanner.removeAttribute('aria-hidden');
+
+    const issueBannerText = document.getElementById('issue-banner-text');
+    if (state.issue.flags.includes('wontfix'))
+      issueBannerText.innerText = browser.i18n.getMessage('popup_bannerIssueWontFix');
+    else issueBannerText.innerText = browser.i18n.getMessage('popup_bannerIssueOpen');
+
+    const issueBannerUrl = document.getElementById('issue-banner-url');
+    issueBannerUrl.setAttribute('href', state.issue.url);
+    return;
+  }
+
+  if (state.updateAvailable) {
+    const updateBanner = document.getElementById('update-banner');
+    updateBanner.removeAttribute('aria-hidden');
+
+    const updateBannerUrl = document.getElementById('update-banner-url');
+    updateBannerUrl.href += `/tag/${state.updateAvailable}`;
+    return;
+  }
+
+  const cancelButtonElement = document.getElementsByClassName('report-cancel-button')[0];
+  cancelButtonElement?.addEventListener('click', handleCancelClick);
+
+  const powerButtonElement = document.getElementById('power-option');
+  powerButtonElement?.addEventListener('click', handlePowerToggle);
+  powerButtonElement?.removeAttribute('disabled');
+  if (state.on) powerButtonElement?.setAttribute('data-value', 'on');
+  else powerButtonElement?.setAttribute('data-value', 'off');
+
+  const reasonInputElement = document.getElementById('report-input-reason');
+  reasonInputElement?.addEventListener('input', handleInputChange);
+  reasonInputElement?.addEventListener('keydown', handleInputKeyDown);
+
+  const reportButtonElement = document.getElementById('report-option');
+  reportButtonElement?.addEventListener('click', handleReportClick);
+  reportButtonElement?.removeAttribute('disabled');
+
+  const submitButtonElement = document.getElementsByClassName('report-submit-button')[0];
+  submitButtonElement?.addEventListener('click', handleSubmitButtonClick);
+
+  const urlInputElement = document.getElementById('report-input-url');
+  urlInputElement?.addEventListener('input', handleInputChange);
+  urlInputElement?.addEventListener('keydown', handleInputKeyDown);
+  if (url) urlInputElement?.setAttribute('value', `${url.origin}${url.pathname}`);
 }
 
 /**
