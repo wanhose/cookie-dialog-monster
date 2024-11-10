@@ -126,15 +126,6 @@ async function getData() {
 }
 
 /**
- * @async
- * @description Disable report context menu option
- * @returns {Promise<void>}
- */
-async function disableReport() {
-  return browser.contextMenus.update(reportMenuItemId, { enabled: false });
-}
-
-/**
  * @description Get current hostname
  * @param {string} url
  * @returns {string}
@@ -288,9 +279,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
   const tabId = sender.tab?.id;
 
   switch (message.type) {
-    case 'DISABLE_REPORT':
-      if (isPage && tabId !== undefined) disableReport();
-      break;
     case 'DISABLE_ICON':
       if (isPage && tabId !== undefined) {
         browser.action.setIcon({ path: '/assets/icons/off.png', tabId }, suppressLastError);
@@ -394,13 +382,6 @@ browser.runtime.onUpdateAvailable.addListener((details) => {
  */
 browser.runtime.onStartup.addListener(() => {
   refreshData();
-});
-
-/**
- * @description Listen to tab changes
- */
-browser.tabs.onActivated.addListener(() => {
-  disableReport();
 });
 
 /**
