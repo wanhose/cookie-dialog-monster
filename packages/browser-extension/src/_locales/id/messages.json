@@ -1,0 +1,95 @@
+{
+  "appDesc": {
+    "message": "Ada yang bilang dialog persetujuan cookie? 😋"
+  },
+  "contextMenu_issueOption": {
+    "message": "Ikuti masalah ini"
+  },
+  "contextMenu_reportOption": {
+    "message": "Laporkan situs ini"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Kelola daftar pengecualian"
+  },
+  "options_addButton": {
+    "message": "Tambahkan pengecualian"
+  },
+  "options_addPrompt": {
+    "message": "Masukkan domain"
+  },
+  "options_clearButton": {
+    "message": "Bersihkan daftar"
+  },
+  "options_exclusionListTitle": {
+    "message": "Daftar pengecualian"
+  },
+  "options_exportButton": {
+    "message": "Ekspor daftar"
+  },
+  "options_filterPlaceholder": {
+    "message": "Tekan ENTER untuk memfilter setelah mengetik"
+  },
+  "options_importButton": {
+    "message": "Impor daftar"
+  },
+  "popup_bannerIssueOpen": {
+    "message": "Ada masalah yang dilaporkan untuk halaman ini. Ekstensi mungkin tidak berfungsi seperti yang diharapkan untuk sementara. Ikuti masalahnya atau tambahkan informasi lainnya"
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Ada masalah yang dilaporkan untuk halaman ini, tetapi tidak akan diperbaiki. Harap diperhatikan bahwa ekstensi mungkin tidak berfungsi seperti yang diharapkan di halaman ini. Kami sangat menyarankan untuk mematikan ekstensi menggunakan tombol di bawah ini"
+  },
+  "popup_bannerSupport": {
+    "message": "Situs ini tidak lagi didukung. Untuk informasi lebih lanjut, silakan baca di sini"
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Pembaruan tersedia. Harap instal versi terbaru untuk menyelesaikan masalah yang diketahui sebelum melaporkan masalah baru"
+  },
+  "popup_contributeOption": {
+    "message": "Berkontribusi pada proyek ini"
+  },
+  "popup_databaseVersion": {
+    "message": "Versi basis data"
+  },
+  "popup_extensionVersion": {
+    "message": "Versi ekstensi"
+  },
+  "popup_helpOption": {
+    "message": "Butuh bantuan atau ada masalah?"
+  },
+  "popup_rateOption": {
+    "message": "Beri peringkat pada ekstensi ini"
+  },
+  "report_bodyText": {
+    "message": "Jangan membagikan informasi pribadi apa pun dalam laporan ini. Jika Anda ingin menambahkan lebih banyak detail, buka masalah pada langkah berikutnya dan tambahkan komentar."
+  },
+  "report_cancelButtonText": {
+    "message": "Batal"
+  },
+  "report_reasonInputError": {
+    "message": "Harap masukkan alasan yang terdiri dari minimal 10 karakter dan maksimal 1000 karakter"
+  },
+  "report_reasonInputLabel": {
+    "message": "Alasan"
+  },
+  "report_reasonInputPlaceholder": {
+    "message": "Muncul pop-up"
+  },
+  "report_submitErrorExtraText": {
+    "message": "Tampaknya sudah ada masalah yang terbuka atau ditandai sebagai 'tidak akan diperbaiki'. Silakan buka masalah menggunakan tombol di bawah ini untuk menambahkan lebih banyak informasi."
+  },
+  "report_submitErrorText": {
+    "message": "Laporan tidak terkirim?"
+  },
+  "report_submitSuccessExtraText": {
+    "message": "Sambil kami menangani masalah ini, Anda dapat menambahkan situs web ini ke daftar pengecualian di pengaturan ekstensi atau menonaktifkan ekstensi untuk situs ini dengan mengklik ikon ekstensi di bilah alat peramban Anda"
+  },
+  "report_submitSuccessText": {
+    "message": "Laporan terkirim!"
+  },
+  "report_urlInputError": {
+    "message": "Masukkan URL yang valid dengan maksimal 1000 karakter"
+  },
+  "report_urlInputLabel": {
+    "message": "URL"
+  }
+}
