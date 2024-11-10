@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -11,6 +11,7 @@
   },
   "action": {
     "default_icon": "assets/icons/off.png",
+    "default_popup": "popup.html",
     "default_title": "Cookie Dialog Monster"
   },
   "options_page": "options.html",

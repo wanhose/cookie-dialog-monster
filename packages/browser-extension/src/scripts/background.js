@@ -302,16 +302,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
         return true;
       }
       break;
-    case 'ENABLE_POPUP':
-      if (isPage && tabId !== undefined) {
-        browser.action.setPopup({ popup: '/popup.html', tabId }, suppressLastError);
-      }
-      break;
-    case 'ENABLE_REPORT':
-      if (isPage && tabId !== undefined) {
-        browser.contextMenus.update(reportMenuItemId, { enabled: true });
-      }
-      break;
     case 'GET_DATA':
       getData().then(callback);
       return true;
@@ -381,7 +371,6 @@ browser.runtime.onInstalled.addListener((details) => {
     {
       contexts: ['all'],
       documentUrlPatterns,
-      enabled: false,
       id: reportMenuItemId,
       parentId: extensionMenuItemId,
       title: browser.i18n.getMessage('contextMenu_reportOption'),

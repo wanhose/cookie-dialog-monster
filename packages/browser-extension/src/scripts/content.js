@@ -469,8 +469,6 @@ async function setUp(params = {}) {
   }
 
   state = await dispatch({ hostname, type: 'GET_STATE' });
-  dispatch({ type: 'ENABLE_POPUP' });
-  dispatch({ type: 'ENABLE_REPORT' });
 
   if (state.on) {
     browser.runtime.onMessage.addListener(handleRuntimeMessage);
