@@ -2,7 +2,6 @@
  * @typedef {Object} ExtensionState
  * @property {ExtensionIssue} [issue]
  * @property {boolean} on
- * @property {string} [updateAvailable]
  */
 
 /**
@@ -123,12 +122,29 @@ async function handleContentLoaded() {
   await updateDatabaseVersion();
 
   const { exclusions } = (await dispatch({ hostname, type: 'GET_DATA' })) ?? {};
+  const currentVersion = browser.runtime.getManifest().version;
+  const latestVersion = await dispatch({ type: 'GET_LATEST_VERSION' });
+  const updateAvailable = currentVersion !== latestVersion;
+
+  if (updateAvailable) {
+    const updateBanner = document.getElementById('update-banner');
+    updateBanner.removeAttribute('aria-hidden');
+
+    const updateBannerUrl = document.getElementById('update-banner-url');
+    updateBannerUrl.href += `/tag/${latestVersion}`;
+  }
 
   if (exclusions?.domains.some((x) => url.hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
     const supportBanner = document.getElementById('support-banner');
     supportBanner.removeAttribute('aria-hidden');
     return;
   }
+
+  const powerButtonElement = document.getElementById('power-option');
+  powerButtonElement?.addEventListener('click', handlePowerToggle);
+  powerButtonElement?.removeAttribute('disabled');
+  if (state.on) powerButtonElement?.setAttribute('data-value', 'on');
+  else powerButtonElement?.setAttribute('data-value', 'off');
 
   if (state.issue?.url) {
     const issueBanner = document.getElementById('issue-banner');
@@ -144,23 +160,8 @@ async function handleContentLoaded() {
     return;
   }
 
-  if (state.updateAvailable) {
-    const updateBanner = document.getElementById('update-banner');
-    updateBanner.removeAttribute('aria-hidden');
-
-    const updateBannerUrl = document.getElementById('update-banner-url');
-    updateBannerUrl.href += `/tag/${state.updateAvailable}`;
-    return;
-  }
-
   const cancelButtonElement = document.getElementsByClassName('report-cancel-button')[0];
   cancelButtonElement?.addEventListener('click', handleCancelClick);
-
-  const powerButtonElement = document.getElementById('power-option');
-  powerButtonElement?.addEventListener('click', handlePowerToggle);
-  powerButtonElement?.removeAttribute('disabled');
-  if (state.on) powerButtonElement?.setAttribute('data-value', 'on');
-  else powerButtonElement?.setAttribute('data-value', 'off');
 
   const reasonInputElement = document.getElementById('report-input-reason');
   reasonInputElement?.addEventListener('input', handleInputChange);
@@ -250,7 +251,7 @@ async function handleLinkRedirect(event) {
  * @returns {void}
  */
 async function handlePowerToggle() {
-  const next = { on: !state.on };
+  const next = { ...state, on: !state.on };
 
   await dispatch({ hostname, state: next, type: 'UPDATE_STORE' });
   await browser.tabs.reload(state.tabId, { bypassCache: true });
