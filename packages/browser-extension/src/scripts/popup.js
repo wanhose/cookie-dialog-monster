@@ -245,6 +245,7 @@ async function handleLinkRedirect(event) {
 
   if (href) {
     await browser.tabs.create({ url: href });
+    window.close();
   }
 }
 
