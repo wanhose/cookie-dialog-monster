@@ -73,12 +73,6 @@ const requestManager = new RequestManager();
 const settingsMenuItemId = 'CDM-SETTINGS';
 
 /**
- * @description A shortcut for browser.scripting
- * @type {browser.scripting}
- */
-const script = browser.scripting;
-
-/**
  * @description Default value for extension state
  * @type {ExtensionState}
  */

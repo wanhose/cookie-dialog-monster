@@ -36,7 +36,7 @@
     }
   ],
   "host_permissions": ["http://*/*", "https://*/*"],
-  "permissions": ["contextMenus", "declarativeNetRequest", "scripting", "storage", "webRequest"],
+  "permissions": ["contextMenus", "declarativeNetRequest", "storage", "webRequest"],
   "web_accessible_resources": [
     {
       "matches": ["http://*/*", "https://*/*"],
