@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cookie Dialog Monster",
-  "version": "8.0.4",
+  "version": "8.0.5",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "icons": {
@@ -24,7 +24,7 @@
     "gecko": {
       "id": "{77e2c00b-e173-4604-863d-01645d8d2826}",
       "strict_min_version": "126.0",
-      "update_url": "https://www.cookie-dialog-monster.com/mozilla/updates.json"
+      "update_url": "https://www.cookie-dialog-monster.com/releases/mozilla/updates.json"
     }
   },
   "content_scripts": [

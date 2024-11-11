@@ -12,7 +12,8 @@
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
 - [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii)
-- [Mozilla Firefox (.xpi)](https://www.cookie-dialog-monster.com/releases/latest.xpi)
+- [Mozilla Firefox](https://www.cookie-dialog-monster.com/releases/mozilla/latest.xpi)
+- [Mozilla Firefox Mobile](https://www.cookie-dialog-monster.com/releases/mozilla-mobile/latest.xpi)
 
 ## Installation
 
