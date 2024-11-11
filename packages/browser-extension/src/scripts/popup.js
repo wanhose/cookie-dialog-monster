@@ -134,6 +134,9 @@ async function handleContentLoaded() {
     updateBannerUrl.href += `/tag/${latestVersion}`;
   }
 
+  const loader = document.getElementById('loader');
+  loader.style.setProperty('display', 'none');
+
   if (exclusions?.domains.some((x) => url.hostname.match(x.replaceAll(/\*/g, '[^ ]*')))) {
     const supportBanner = document.getElementById('support-banner');
     supportBanner.removeAttribute('aria-hidden');
