@@ -1,6 +1,5 @@
 /**
  * @typedef {Object} ExtensionIssue
- * @property {number} [expiresIn]
  * @property {string[]} [flags]
  * @property {string} [url]
  */
@@ -9,7 +8,6 @@
  * @typedef {Object} ExtensionState
  * @property {ExtensionIssue} [issue]
  * @property {boolean} on
- * @property {string} [updateAvailable]
  */
 
 if (typeof browser === 'undefined') {
@@ -84,7 +82,7 @@ const script = browser.scripting;
  * @description Default value for extension state
  * @type {ExtensionState}
  */
-const stateByDefault = { issue: { expiresIn: 0 }, on: true };
+const stateByDefault = { issue: undefined, on: true };
 
 /**
  * @description The storage to use
@@ -126,15 +124,6 @@ async function getData() {
 }
 
 /**
- * @async
- * @description Disable report context menu option
- * @returns {Promise<void>}
- */
-async function disableReport() {
-  return browser.contextMenus.update(reportMenuItemId, { enabled: false });
-}
-
-/**
  * @description Get current hostname
  * @param {string} url
  * @returns {string}
@@ -161,14 +150,26 @@ async function getTab() {
  * @returns {Promise<ExtensionState>}
  */
 async function getState(hostname) {
-  const keys = [hostname, 'updateAvailable'];
-  const { [hostname]: state = stateByDefault, updateAvailable } = await storage.get(keys);
+  const { [hostname]: state = stateByDefault } = await storage.get(hostname);
 
-  if ((state.issue && Date.now() > state.issue.expiresIn) || !state.issue?.expiresIn) {
-    state.issue = await refreshIssue(hostname);
+  state.issue = await refreshIssue(hostname);
+
+  return { ...stateByDefault, ...state };
+}
+
+/**
+ * @async
+ * @description Get latest version available for this extension
+ * @returns {Promise<string>}
+ */
+async function getLatestVersion() {
+  try {
+    const { data } = await requestManager.fetch(`${apiUrl}/version/`);
+
+    return data;
+  } catch {
+    return '';
   }
-
-  return { ...stateByDefault, ...state, updateAvailable };
 }
 
 /**
@@ -202,20 +203,7 @@ async function refreshIssue(hostname, attempt = 1) {
   if (attempt <= 3) {
     try {
       const { data = {} } = await requestManager.fetch(`${apiUrl}/issues/${hostname}/`);
-
-      if (Object.keys(data).length === 0) {
-        await updateStore(hostname, { issue: { expiresIn: Date.now() + 8 * 60 * 60 * 1000 } });
-
-        return undefined;
-      }
-
-      const issue = {
-        expiresIn: Date.now() + 4 * 60 * 60 * 1000,
-        flags: data.flags,
-        url: data.url,
-      };
-
-      await updateStore(hostname, { issue });
+      await updateStore(hostname, { issue: { flags: data.flags, url: data.url } });
 
       return data;
     } catch {
@@ -288,9 +276,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
   const tabId = sender.tab?.id;
 
   switch (message.type) {
-    case 'DISABLE_REPORT':
-      if (isPage && tabId !== undefined) disableReport();
-      break;
     case 'DISABLE_ICON':
       if (isPage && tabId !== undefined) {
         browser.action.setIcon({ path: '/assets/icons/off.png', tabId }, suppressLastError);
@@ -300,16 +285,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       if (isPage && tabId !== undefined) {
         enableIcon(hostname, tabId).then(callback);
         return true;
-      }
-      break;
-    case 'ENABLE_POPUP':
-      if (isPage && tabId !== undefined) {
-        browser.action.setPopup({ popup: '/popup.html', tabId }, suppressLastError);
-      }
-      break;
-    case 'ENABLE_REPORT':
-      if (isPage && tabId !== undefined) {
-        browser.contextMenus.update(reportMenuItemId, { enabled: true });
       }
       break;
     case 'GET_DATA':
@@ -322,6 +297,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
         });
         callback(exclusionList);
       });
+      return true;
+    case 'GET_LATEST_VERSION':
+      getLatestVersion().then(callback);
       return true;
     case 'GET_STATE':
       if (hostname) {
@@ -381,7 +359,6 @@ browser.runtime.onInstalled.addListener((details) => {
     {
       contexts: ['all'],
       documentUrlPatterns,
-      enabled: false,
       id: reportMenuItemId,
       parentId: extensionMenuItemId,
       title: browser.i18n.getMessage('contextMenu_reportOption'),
@@ -389,15 +366,9 @@ browser.runtime.onInstalled.addListener((details) => {
     suppressLastError
   );
 
-  if (details.reason === 'update') refreshData();
-  storage.remove('updateAvailable');
-});
-
-/**
- * @description Listen to available updates
- */
-browser.runtime.onUpdateAvailable.addListener((details) => {
-  storage.set({ updateAvailable: details.version }, suppressLastError);
+  if (details.reason === 'update') {
+    refreshData();
+  }
 });
 
 /**
@@ -405,13 +376,6 @@ browser.runtime.onUpdateAvailable.addListener((details) => {
  */
 browser.runtime.onStartup.addListener(() => {
   refreshData();
-});
-
-/**
- * @description Listen to tab changes
- */
-browser.tabs.onActivated.addListener(() => {
-  disableReport();
 });
 
 /**

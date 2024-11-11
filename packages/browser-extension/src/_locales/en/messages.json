@@ -38,6 +38,9 @@
   "popup_bannerIssueWontFix": {
     "message": "An issue has been reported for this page, but it won't be fixed. Please be aware that the extension may not function as expected on this page. We highly recommend turning off the extension using the button below"
   },
+  "popup_bannerSupport": {
+    "message": "This site is no longer supported. For more information, please keep reading here"
+  },
   "popup_bannerUpdateAvailable": {
     "message": "Update available. Please install the latest version to address known issues before reporting new ones"
   },

@@ -1,0 +1,95 @@
+{
+  "appDesc": {
+    "message": "쿠키 동의 대화 상자를 말한 사람이 있나요? 😋"
+  },
+  "contextMenu_issueOption": {
+    "message": "이 문제를 팔로우하기"
+  },
+  "contextMenu_reportOption": {
+    "message": "이 웹사이트 신고하기"
+  },
+  "contextMenu_settingsOption": {
+    "message": "제외 목록 관리하기"
+  },
+  "options_addButton": {
+    "message": "제외 추가"
+  },
+  "options_addPrompt": {
+    "message": "도메인 입력"
+  },
+  "options_clearButton": {
+    "message": "목록 지우기"
+  },
+  "options_exclusionListTitle": {
+    "message": "제외 목록"
+  },
+  "options_exportButton": {
+    "message": "목록 내보내기"
+  },
+  "options_filterPlaceholder": {
+    "message": "입력 후 ENTER를 눌러 필터링"
+  },
+  "options_importButton": {
+    "message": "목록 가져오기"
+  },
+  "popup_bannerIssueOpen": {
+    "message": "이 페이지에 대한 문제가 보고되었습니다. 확장이 일시적으로 예상대로 작동하지 않을 수 있습니다. 문제를 팔로우하거나 추가 정보를 제공하십시오"
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "이 페이지에 대한 문제가 보고되었지만 수정되지 않습니다. 이 페이지에서 확장이 예상대로 작동하지 않을 수 있습니다. 아래 버튼을 사용하여 확장을 끄는 것이 좋습니다"
+  },
+  "popup_bannerSupport": {
+    "message": "이 사이트는 더 이상 지원되지 않습니다. 자세한 내용은 여기를 계속 읽어 주세요"
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "업데이트 가능. 새 문제를 보고하기 전에 알려진 문제를 해결하려면 최신 버전을 설치하십시오"
+  },
+  "popup_contributeOption": {
+    "message": "이 프로젝트에 기여하기"
+  },
+  "popup_databaseVersion": {
+    "message": "데이터베이스 버전"
+  },
+  "popup_extensionVersion": {
+    "message": "확장 버전"
+  },
+  "popup_helpOption": {
+    "message": "도움말 또는 문제?"
+  },
+  "popup_rateOption": {
+    "message": "이 확장 평가하기"
+  },
+  "report_bodyText": {
+    "message": "이 보고서에 개인 정보를 공유하지 마십시오. 더 자세한 내용을 추가하려면 다음 단계에서 문제로 이동하여 댓글을 추가하십시오."
+  },
+  "report_cancelButtonText": {
+    "message": "취소"
+  },
+  "report_reasonInputError": {
+    "message": "10자 이상, 1000자 이하의 이유를 입력하십시오"
+  },
+  "report_reasonInputLabel": {
+    "message": "이유"
+  },
+  "report_reasonInputPlaceholder": {
+    "message": "팝업이 나타났습니다"
+  },
+  "report_submitErrorExtraText": {
+    "message": "이미 열린 문제가 있거나 '수정하지 않음'으로 표시된 것 같습니다. 추가 정보를 추가하려면 다음 버튼을 사용하여 문제로 이동하십시오."
+  },
+  "report_submitErrorText": {
+    "message": "보고서가 전송되지 않았습니까?"
+  },
+  "report_submitSuccessExtraText": {
+    "message": "이 문제를 처리하는 동안 확장 설정에서 제외 목록에 이 웹사이트를 추가하거나 브라우저 툴바의 확장 아이콘을 클릭하여 이 웹사이트에서 확장을 비활성화할 수 있습니다"
+  },
+  "report_submitSuccessText": {
+    "message": "보고서가 전송되었습니다!"
+  },
+  "report_urlInputError": {
+    "message": "유효한 URL을 1000자 이하로 입력하십시오"
+  },
+  "report_urlInputLabel": {
+    "message": "URL"
+  }
+}

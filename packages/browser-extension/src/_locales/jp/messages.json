@@ -1,0 +1,95 @@
+{
+  "appDesc": {
+    "message": "クッキー同意ダイアログの話をしている？ 😋"
+  },
+  "contextMenu_issueOption": {
+    "message": "この問題をフォローする"
+  },
+  "contextMenu_reportOption": {
+    "message": "このウェブサイトを報告する"
+  },
+  "contextMenu_settingsOption": {
+    "message": "除外リストを管理する"
+  },
+  "options_addButton": {
+    "message": "除外を追加"
+  },
+  "options_addPrompt": {
+    "message": "ドメインを入力してください"
+  },
+  "options_clearButton": {
+    "message": "リストをクリア"
+  },
+  "options_exclusionListTitle": {
+    "message": "除外リスト"
+  },
+  "options_exportButton": {
+    "message": "リストをエクスポート"
+  },
+  "options_filterPlaceholder": {
+    "message": "入力後にENTERキーを押してフィルタリング"
+  },
+  "options_importButton": {
+    "message": "リストをインポート"
+  },
+  "popup_bannerIssueOpen": {
+    "message": "このページで問題が報告されました。拡張機能が一時的に正常に動作しない可能性があります。問題をフォローするか、追加情報を提供してください"
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "このページで問題が報告されましたが、修正されません。このページで拡張機能が期待通りに機能しない可能性があります。以下のボタンで拡張機能をオフにすることをお勧めします"
+  },
+  "popup_bannerSupport": {
+    "message": "このサイトはもうサポートされていません。詳しくは、ここをお読みください"
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "アップデートが利用可能です。新しい問題を報告する前に、既知の問題を解決するため最新バージョンをインストールしてください"
+  },
+  "popup_contributeOption": {
+    "message": "このプロジェクトに貢献する"
+  },
+  "popup_databaseVersion": {
+    "message": "データベースバージョン"
+  },
+  "popup_extensionVersion": {
+    "message": "拡張機能のバージョン"
+  },
+  "popup_helpOption": {
+    "message": "ヘルプまたは問題？"
+  },
+  "popup_rateOption": {
+    "message": "この拡張機能を評価する"
+  },
+  "report_bodyText": {
+    "message": "このレポートには個人情報を含めないでください。追加の詳細を提供する場合は、次のステップで問題に移動し、コメントを追加してください。"
+  },
+  "report_cancelButtonText": {
+    "message": "キャンセル"
+  },
+  "report_reasonInputError": {
+    "message": "10文字以上、1000文字以下の理由を入力してください"
+  },
+  "report_reasonInputLabel": {
+    "message": "理由"
+  },
+  "report_reasonInputPlaceholder": {
+    "message": "ポップアップが表示されました"
+  },
+  "report_submitErrorExtraText": {
+    "message": "既に問題が開かれているか、「修正しない」とマークされています。追加情報を提供する場合は、次のボタンから問題に移動してください。"
+  },
+  "report_submitErrorText": {
+    "message": "レポートが送信されませんでしたか？"
+  },
+  "report_submitSuccessExtraText": {
+    "message": "処理が完了するまでの間、このウェブサイトを拡張機能の設定で除外リストに追加するか、ブラウザツールバーの拡張アイコンをクリックしてこのウェブサイトで拡張機能を無効にしてください"
+  },
+  "report_submitSuccessText": {
+    "message": "レポートが送信されました！"
+  },
+  "report_urlInputError": {
+    "message": "1000文字以下の有効なURLを入力してください"
+  },
+  "report_urlInputLabel": {
+    "message": "URL"
+  }
+}

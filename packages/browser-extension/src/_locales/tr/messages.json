@@ -1,0 +1,95 @@
+{
+  "appDesc": {
+    "message": "Biri çerez onayı diyaloglarını mı söyledi? 😋"
+  },
+  "contextMenu_issueOption": {
+    "message": "Bu sorunu takip et"
+  },
+  "contextMenu_reportOption": {
+    "message": "Bu web sitesini bildir"
+  },
+  "contextMenu_settingsOption": {
+    "message": "Hariç tutma listesini yönet"
+  },
+  "options_addButton": {
+    "message": "Hariç tutma ekle"
+  },
+  "options_addPrompt": {
+    "message": "Alan adı girin"
+  },
+  "options_clearButton": {
+    "message": "Listeyi temizle"
+  },
+  "options_exclusionListTitle": {
+    "message": "Hariç tutma listesi"
+  },
+  "options_exportButton": {
+    "message": "Listeyi dışa aktar"
+  },
+  "options_filterPlaceholder": {
+    "message": "Yazdıktan sonra ENTER tuşuna basarak filtreleyin"
+  },
+  "options_importButton": {
+    "message": "Listeyi içe aktar"
+  },
+  "popup_bannerIssueOpen": {
+    "message": "Bu sayfa için bir sorun bildirildi. Uzantı geçici olarak beklenildiği gibi çalışmayabilir. Sorunu takip edin veya daha fazla bilgi ekleyin"
+  },
+  "popup_bannerIssueWontFix": {
+    "message": "Bu sayfa için bir sorun bildirildi ancak düzeltilmeyecek. Bu sayfada uzantının beklenildiği gibi çalışmayabileceğini unutmayın. Aşağıdaki düğmeyi kullanarak uzantıyı kapatmanızı öneririz"
+  },
+  "popup_bannerSupport": {
+    "message": "Bu site artık desteklenmiyor. Daha fazla bilgi için lütfen buradan okumaya devam edin"
+  },
+  "popup_bannerUpdateAvailable": {
+    "message": "Güncelleme mevcut. Yeni sorunları bildirmeden önce bilinen sorunları gidermek için lütfen en son sürümü yükleyin"
+  },
+  "popup_contributeOption": {
+    "message": "Bu projeye katkıda bulun"
+  },
+  "popup_databaseVersion": {
+    "message": "Veritabanı sürümü"
+  },
+  "popup_extensionVersion": {
+    "message": "Uzantı sürümü"
+  },
+  "popup_helpOption": {
+    "message": "Yardım veya sorunlar?"
+  },
+  "popup_rateOption": {
+    "message": "Bu uzantıyı değerlendir"
+  },
+  "report_bodyText": {
+    "message": "Bu raporda kişisel bilgi paylaşmayın. Daha fazla ayrıntı eklemek istiyorsanız, bir sonraki adımda soruna gidin ve yorum ekleyin."
+  },
+  "report_cancelButtonText": {
+    "message": "İptal"
+  },
+  "report_reasonInputError": {
+    "message": "Lütfen en az 10 ve en fazla 1000 karakterlik bir sebep girin"
+  },
+  "report_reasonInputLabel": {
+    "message": "Sebep"
+  },
+  "report_reasonInputPlaceholder": {
+    "message": "Açılır pencere göründü"
+  },
+  "report_submitErrorExtraText": {
+    "message": "Zaten açık bir sorun var gibi görünüyor veya 'düzeltmeyecek' olarak işaretlenmiş. Aşağıdaki düğmeyi kullanarak sorun sayfasına giderek daha fazla bilgi ekleyin."
+  },
+  "report_submitErrorText": {
+    "message": "Rapor gönderilmedi mi?"
+  },
+  "report_submitSuccessExtraText": {
+    "message": "Bu sorun üzerinde çalışırken, uzantı ayarlarında bu web sitesini hariç tutma listesine ekleyebilir veya tarayıcı araç çubuğundaki uzantı simgesine tıklayarak bu web sitesi için uzantıyı devre dışı bırakabilirsiniz"
+  },
+  "report_submitSuccessText": {
+    "message": "Rapor gönderildi!"
+  },
+  "report_urlInputError": {
+    "message": "Lütfen en fazla 1000 karakterle geçerli bir URL girin"
+  },
+  "report_urlInputLabel": {
+    "message": "URL"
+  }
+}

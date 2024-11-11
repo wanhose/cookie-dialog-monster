@@ -38,6 +38,9 @@
   "popup_bannerIssueWontFix": {
     "message": "Ein Problem wurde für diese Seite gemeldet, wird jedoch nicht behoben. Bitte beachten Sie, dass die Erweiterung auf dieser Seite möglicherweise nicht wie erwartet funktioniert. Wir empfehlen dringend, die Erweiterung über die Schaltfläche unten zu deaktivieren."
   },
+  "popup_bannerSupport": {
+    "message": "Diese Seite wird nicht mehr unterstützt. Für weitere Informationen lesen Sie bitte hier weiter"
+  },
   "popup_bannerUpdateAvailable": {
     "message": "Update verfügbar. Bitte installieren Sie die neueste Version, um bekannte Probleme zu beheben, bevor Sie neue melden"
   },
