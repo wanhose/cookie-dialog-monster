@@ -67,12 +67,8 @@
           "update_link": "https://www.cookie-dialog-monster.com/releases/mozilla/8.0.2.xpi"
         },
         {
-          "version": "8.0.3",
-          "update_link": "https://www.cookie-dialog-monster.com/releases/mozilla/8.0.3.xpi"
-        },
-        {
-          "version": "8.0.4",
-          "update_link": "https://www.cookie-dialog-monster.com/releases/mozilla/8.0.4.xpi"
+          "version": "8.0.5",
+          "update_link": "https://www.cookie-dialog-monster.com/releases/mozilla/8.0.5.xpi"
         }
       ]
     }
