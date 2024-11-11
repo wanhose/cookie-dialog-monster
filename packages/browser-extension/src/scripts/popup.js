@@ -124,7 +124,7 @@ async function handleContentLoaded() {
   const { exclusions } = (await dispatch({ hostname, type: 'GET_DATA' })) ?? {};
   const currentVersion = browser.runtime.getManifest().version;
   const latestVersion = await dispatch({ type: 'GET_LATEST_VERSION' });
-  const updateAvailable = currentVersion !== latestVersion;
+  const updateAvailable = latestVersion && currentVersion !== latestVersion;
 
   if (updateAvailable) {
     const updateBanner = document.getElementById('update-banner');
