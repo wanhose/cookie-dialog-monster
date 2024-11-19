@@ -17,6 +17,7 @@ import v6IssuesRoutes from 'routes/v6/issues';
 import v6ReportRoutes from 'routes/v6/report';
 import v6VersionRoutes from 'routes/v6/version';
 import environment from 'services/environment';
+import { keyGenerator } from 'services/rateLimit';
 
 const server = fastify({ logger: true });
 
@@ -30,6 +31,7 @@ server.register(cors, {
 
 server.register(rateLimit, {
   global: false,
+  keyGenerator,
 });
 
 server.register(v1EntriesRoutes, { prefix: '/rest/v1' });
