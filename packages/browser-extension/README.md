@@ -17,4 +17,4 @@
 
 ## Installation
 
-To install the extension, choose [the appropriate step-by-step guide](https://git.wanhose.dev/wanhose/cookie-dialog-monster/wiki/Help-or-issues%3F#guides) for your needs.
+To install the extension, choose [the appropriate step-by-step guide](https://github.com/wanhose/cookie-dialog-monster/wiki/Help-or-issues%3F#guides) for your needs.

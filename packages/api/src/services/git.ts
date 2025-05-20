@@ -1,6 +1,6 @@
 import environment from './environment';
 
-const API_URL = 'https://git.wanhose.dev/api/v1/repos/wanhose/cookie-dialog-monster';
+const API_URL = 'https://api.github.com/repos/wanhose/cookie-dialog-monster';
 
 export async function createIssue(params: CreateIssueParams): Promise<Issue> {
   const { description, title } = params;
@@ -11,7 +11,7 @@ export async function createIssue(params: CreateIssueParams): Promise<Issue> {
     title,
   };
   const headers = new Headers({
-    Authorization: `token ${environment.gitea.token}`,
+    Authorization: `token ${environment.github.token}`,
     'Content-Type': 'application/json',
   });
 
@@ -39,7 +39,7 @@ export async function createIssue(params: CreateIssueParams): Promise<Issue> {
 export async function createIssueComment(params: CreateIssueCommentParams): Promise<Issue | null> {
   const { description, id } = params;
   const headers = new Headers({
-    Authorization: `token ${environment.gitea.token}`,
+    Authorization: `token ${environment.github.token}`,
     'Content-Type': 'application/json',
   });
 
@@ -56,7 +56,7 @@ export async function createIssueComment(params: CreateIssueCommentParams): Prom
 export async function getIssue(params: GetIssueParams): Promise<Issue | null> {
   const { labels, state, title } = params;
   const headers = new Headers({
-    Authorization: `token ${environment.gitea.token}`,
+    Authorization: `token ${environment.github.token}`,
     'Content-Type': 'application/json',
   });
   const search = new URLSearchParams({
@@ -83,7 +83,7 @@ export async function updateIssue(params: UpdateIssueParams): Promise<Issue | nu
   const { id, labels, state } = params;
   const body: { [key: string]: string } = {};
   const headers = new Headers({
-    Authorization: `token ${environment.gitea.token}`,
+    Authorization: `token ${environment.github.token}`,
     'Content-Type': 'application/json',
   });
 

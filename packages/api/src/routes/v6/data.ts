@@ -14,7 +14,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     },
     async (_request, reply) => {
       try {
-        const database = `${environment.gitea.raw}/database.json`;
+        const database = `${environment.github.raw}/database.json`;
         const options = { headers: { 'Cache-Control': 'no-cache' } };
         const response = await fetch(database, options);
         const { rules, ...rest } = await response.json();

@@ -13,7 +13,7 @@ export default (server: FastifyInstance, _options: RouteShorthandOptions, done: 
     },
     async (_request, reply) => {
       try {
-        const manifest = `${environment.gitea.raw}/packages/browser-extension/src/manifest.json`;
+        const manifest = `${environment.github.raw}/packages/browser-extension/src/manifest.json`;
         const options = { headers: { 'Cache-Control': 'no-cache' } };
         const response = await fetch(manifest, options);
         const { version } = await response.json();
