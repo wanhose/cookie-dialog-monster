@@ -10,10 +10,9 @@
 
 ## Downloads
 
-- [Chrome Web Store](https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg)
-- [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii)
-- [Mozilla Firefox](https://www.cookie-dialog-monster.com/releases/mozilla/latest.xpi)
-- [Mozilla Firefox Mobile](https://www.cookie-dialog-monster.com/releases/mozilla-mobile/latest.xpi)
+- [Chromium](https://github.com/wanhose/cookie-dialog-monster/raw/refs/heads/main/packages/web/src/releases/chromium/latest.zip)
+- [Mozilla Firefox](https://github.com/wanhose/cookie-dialog-monster/raw/refs/heads/main/packages/web/src/releases/mozilla/latest.xpi)
+- [Mozilla Firefox Mobile](https://github.com/wanhose/cookie-dialog-monster/raw/refs/heads/main/packages/web/src/releases/mozilla-mobile/latest.xpi)
 
 ## Installation
 

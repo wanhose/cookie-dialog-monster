@@ -122,17 +122,17 @@ async function handleContentLoaded() {
   await updateDatabaseVersion();
 
   const { exclusions } = (await dispatch({ hostname, type: 'GET_DATA' })) ?? {};
-  const currentVersion = browser.runtime.getManifest().version;
-  const latestVersion = await dispatch({ type: 'GET_LATEST_VERSION' });
-  const updateAvailable = latestVersion && currentVersion !== latestVersion;
+  // const currentVersion = browser.runtime.getManifest().version;
+  // const latestVersion = await dispatch({ type: 'GET_LATEST_VERSION' });
+  // const updateAvailable = latestVersion && currentVersion !== latestVersion;
 
-  if (updateAvailable) {
-    const updateBanner = document.getElementById('update-banner');
-    updateBanner.removeAttribute('aria-hidden');
+  // if (updateAvailable) {
+  //   const updateBanner = document.getElementById('update-banner');
+  //   updateBanner.removeAttribute('aria-hidden');
 
-    const updateBannerUrl = document.getElementById('update-banner-url');
-    updateBannerUrl.href += `/tag/${latestVersion}`;
-  }
+  //   const updateBannerUrl = document.getElementById('update-banner-url');
+  //   updateBannerUrl.href += `/tag/${latestVersion}`;
+  // }
 
   const loader = document.getElementById('loader');
   loader.style.setProperty('display', 'none');
@@ -163,24 +163,24 @@ async function handleContentLoaded() {
     return;
   }
 
-  const cancelButtonElement = document.getElementsByClassName('report-cancel-button')[0];
-  cancelButtonElement?.addEventListener('click', handleCancelClick);
+  // const cancelButtonElement = document.getElementsByClassName('report-cancel-button')[0];
+  // cancelButtonElement?.addEventListener('click', handleCancelClick);
 
-  const reasonInputElement = document.getElementById('report-input-reason');
-  reasonInputElement?.addEventListener('input', handleInputChange);
-  reasonInputElement?.addEventListener('keydown', handleInputKeyDown);
+  // const reasonInputElement = document.getElementById('report-input-reason');
+  // reasonInputElement?.addEventListener('input', handleInputChange);
+  // reasonInputElement?.addEventListener('keydown', handleInputKeyDown);
 
-  const reportButtonElement = document.getElementById('report-option');
-  reportButtonElement?.addEventListener('click', handleReportClick);
-  reportButtonElement?.removeAttribute('disabled');
+  // const reportButtonElement = document.getElementById('report-option');
+  // reportButtonElement?.addEventListener('click', handleReportClick);
+  // reportButtonElement?.removeAttribute('disabled');
 
-  const submitButtonElement = document.getElementsByClassName('report-submit-button')[0];
-  submitButtonElement?.addEventListener('click', handleSubmitButtonClick);
+  // const submitButtonElement = document.getElementsByClassName('report-submit-button')[0];
+  // submitButtonElement?.addEventListener('click', handleSubmitButtonClick);
 
-  const urlInputElement = document.getElementById('report-input-url');
-  urlInputElement?.addEventListener('input', handleInputChange);
-  urlInputElement?.addEventListener('keydown', handleInputKeyDown);
-  if (url) urlInputElement?.setAttribute('value', `${url.origin}${url.pathname}`);
+  // const urlInputElement = document.getElementById('report-input-url');
+  // urlInputElement?.addEventListener('input', handleInputChange);
+  // urlInputElement?.addEventListener('keydown', handleInputKeyDown);
+  // if (url) urlInputElement?.setAttribute('value', `${url.origin}${url.pathname}`);
 }
 
 /**

@@ -146,7 +146,7 @@ async function getTab() {
 async function getState(hostname) {
   const { [hostname]: state = stateByDefault } = await storage.get(hostname);
 
-  state.issue = await refreshIssue(hostname);
+  // state.issue = await refreshIssue(hostname);
 
   return { ...stateByDefault, ...state };
 }
@@ -167,6 +167,26 @@ async function getLatestVersion() {
 }
 
 /**
+ * @description Normalize custom declarative request
+ * @param {string} urlFilter
+ * @param {index} number
+ * @returns {browser.declarativeNetRequest.Rule}
+ */
+function toDeclarativeNetRequestRule(urlFilter, index) {
+  return {
+    action: {
+      type: 'block',
+    },
+    condition: {
+      resourceTypes: ['font', 'image', 'media', 'object', 'script', 'stylesheet', 'xmlhttprequest'],
+      urlFilter,
+    },
+    id: index + 1,
+    priority: 1,
+  };
+}
+
+/**
  * @async
  * @description Refresh data
  * @param {number} [attempt]
@@ -175,7 +195,13 @@ async function getLatestVersion() {
 async function refreshData(attempt = 1) {
   if (attempt <= 3) {
     try {
-      const { data } = await requestManager.fetch(`${apiUrl}/data/`);
+      // const { data } = await requestManager.fetch(`${apiUrl}/data/`);
+      const database =
+        'https://raw.githubusercontent.com/wanhose/cookie-dialog-monster/refs/heads/main/database.json';
+      const options = { headers: { 'Cache-Control': 'no-cache' } };
+      const response = await fetch(database, options);
+      const { rules, ...rest } = await response.json();
+      const data = { ...rest, rules: rules.map(toDeclarativeNetRequestRule) };
 
       await updateStore('data', data);
 
@@ -293,8 +319,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       });
       return true;
     case 'GET_LATEST_VERSION':
-      getLatestVersion().then(callback);
-      return true;
+      // getLatestVersion().then(callback);
+      // return true;
+      break;
     case 'GET_STATE':
       if (hostname) {
         getState(hostname).then(callback);
@@ -308,8 +335,9 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
       refreshData().then(callback);
       return true;
     case 'REPORT':
-      report(message).then(callback);
-      return true;
+      // report(message).then(callback);
+      // return true;
+      break;
     case 'UPDATE_BADGE':
       if (isPage && tabId !== undefined) {
         browser.action.setBadgeBackgroundColor({ color: '#6b7280' });

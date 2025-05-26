@@ -449,12 +449,12 @@ header {
   }
 }
 
-#rate-option > svg {
+#rate-option:not(:disabled) > svg {
   transition: 0.4s;
 }
 
-#rate-option:focus > svg,
-#rate-option:hover > svg {
+#rate-option:focus:not(:disabled) > svg,
+#rate-option:hover:not(:disabled) > svg {
   color: var(--color-warning);
   fill: var(--color-warning);
 }
