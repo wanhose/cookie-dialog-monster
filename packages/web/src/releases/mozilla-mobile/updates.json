@@ -37,6 +37,10 @@
         {
           "version": "8.0.5",
           "update_link": "https://wanhose.github.io/cookie-dialog-monster/releases/mozilla-mobile/8.0.5.xpi"
+        },
+        {
+          "version": "9.0.0",
+          "update_link": "https://wanhose.github.io/cookie-dialog-monster/releases/mozilla-mobile/9.0.0.xpi"
         }
       ]
     }
