@@ -50,27 +50,9 @@ class RequestManager {
 const apiUrl = 'https://api.cookie-dialog-monster.com/rest/v6';
 
 /**
- * @description Context menu identifier
- * @type {string}
- */
-const extensionMenuItemId = 'CDM-MENU';
-
-/**
- * @description Context menu identifier
- * @type {string}
- */
-const reportMenuItemId = 'CDM-REPORT';
-
-/**
  * @description Request manager instance
  */
 const requestManager = new RequestManager();
-
-/**
- * @description Context menu identifier
- * @type {string}
- */
-const settingsMenuItemId = 'CDM-SETTINGS';
 
 /**
  * @description Default value for extension state
@@ -272,22 +254,6 @@ async function updateStore(key, value) {
 }
 
 /**
- * @description Listen to context menus clicked
- */
-browser.contextMenus.onClicked.addListener((info) => {
-  switch (info.menuItemId) {
-    case reportMenuItemId:
-      browser.action.openPopup();
-      break;
-    case settingsMenuItemId:
-      browser.runtime.openOptionsPage();
-      break;
-    default:
-      break;
-  }
-});
-
-/**
  * @description Listens to messages
  */
 browser.runtime.onMessage.addListener((message, sender, callback) => {
@@ -356,38 +322,6 @@ browser.runtime.onMessage.addListener((message, sender, callback) => {
  * @description Listens to extension installed
  */
 browser.runtime.onInstalled.addListener((details) => {
-  const documentUrlPatterns = browser.runtime.getManifest().content_scripts[0].matches;
-
-  browser.contextMenus.create(
-    {
-      contexts: ['all'],
-      documentUrlPatterns,
-      id: extensionMenuItemId,
-      title: 'Cookie Dialog Monster',
-    },
-    suppressLastError
-  );
-  browser.contextMenus.create(
-    {
-      contexts: ['all'],
-      documentUrlPatterns,
-      id: settingsMenuItemId,
-      parentId: extensionMenuItemId,
-      title: browser.i18n.getMessage('contextMenu_settingsOption'),
-    },
-    suppressLastError
-  );
-  browser.contextMenus.create(
-    {
-      contexts: ['all'],
-      documentUrlPatterns,
-      id: reportMenuItemId,
-      parentId: extensionMenuItemId,
-      title: browser.i18n.getMessage('contextMenu_reportOption'),
-    },
-    suppressLastError
-  );
-
   if (details.reason === 'update') {
     refreshData();
   }
