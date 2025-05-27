@@ -43,6 +43,16 @@
   </head>
   <body>
     <header>
+      <div class="bg-gray-300 text-secondary" role="banner">
+        <div class="max-w-5xl mx-auto p-4 text-justify">
+          <p class="font-semibold">END OF SUPPORT ON MAY 31, 2025</p>
+          <p class="mt-2">
+            We want to extend our heartfelt thanks to everyone who contributed, supported, and
+            believed in this project over the years. Your feedback, ideas, and encouragement made it
+            all possible. Thank you for being part of this journey.
+          </p>
+        </div>
+      </div>
       <nav class="bg-secondary text-white">
         <div class="flex items-center max-w-5xl mx-auto p-4">
           <svg
@@ -537,19 +547,9 @@
     </footer>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const bannerButton = document.getElementById('banner-button');
         const firefoxGuideLink = document.getElementById('firefox-guide-link');
         const firefoxLink = document.getElementById('firefox-link');
         const isMobile = /Android|Mobi/i.test(navigator.userAgent);
-
-        bannerButton.addEventListener('click', () => {
-          const bannerContentFull = document.getElementById('banner-content-full');
-          const bannerContentPreview = document.getElementById('banner-content-preview');
-
-          bannerButton.classList.add('hidden');
-          bannerContentFull.classList.remove('hidden');
-          bannerContentPreview.classList.add('hidden');
-        });
 
         if (isMobile) {
           firefoxGuideLink.href =
