@@ -425,32 +425,11 @@
         <div class="grid gap-4 grid-cols-1 justify-center md:gap-8 md:grid-cols-4 mt-16">
           <a
             class="bg-gradient-to-r button from-chrome-1 md:hover:animate-gradient to-chrome-3 via-chrome-2"
-            href="https://chrome.google.com/webstore/detail/djcbfpkdhdkaflcigibkbpboflaplabg"
+            href="releases/chromium/latest.zip"
             target="_blank"
           >
             <img aria-hidden="true" class="icon" src="images/chrome.svg" />
-            Chrome Web Store
-            <svg
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon md:hidden"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-          <a
-            class="bg-gradient-to-r button from-edge-1 md:hover:animate-gradient to-edge-3 via-edge-2"
-            href="https://microsoftedge.microsoft.com/addons/detail/hbogodfciblakeneadpcolhmfckmjcii"
-            target="_blank"
-          >
-            <img aria-hidden="true" class="icon" src="images/edge.svg" />
-            Edge Add-ons
+            Chromium <sup>1</sup>
             <svg
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -472,7 +451,7 @@
             target="_blank"
           >
             <img aria-hidden="true" class="icon" src="images/firefox.svg" />
-            Mozilla Firefox <sup>1</sup>
+            Mozilla Firefox <sup>2</sup>
             <svg
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -488,12 +467,13 @@
             </svg>
           </a>
           <a
-            class="bg-gradient-to-r button from-yellow-400 via-brown-500 to-yellow-600 md:hover:animate-gradient"
-            href="releases/chromium/latest.zip"
+            class="bg-gradient-to-r button from-firefox-1 md:hover:animate-gradient to-firefox-3 via-firefox-2"
+            href="releases/mozilla-mobile/latest.xpi"
+            id="firefox-link"
             target="_blank"
           >
-            <span aria-hidden="true" class="icon" role="img">📦</span>
-            Packed version <sup>2</sup>
+            <img aria-hidden="true" class="icon" src="images/firefox.svg" />
+            Mozilla Firefox for Android <sup>3</sup>
             <svg
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
@@ -509,30 +489,34 @@
             </svg>
           </a>
         </div>
+        <p class="mt-8 text-gray-500 text-left">
+          <sup>1</sup> Please, follow
+          <a
+            class="underline"
+            href="https://github.com/wanhose/cookie-dialog-monster/wiki/Step%E2%80%90by%E2%80%90step-installation-guide-for-Chromium%E2%80%90based-browsers"
+            target="_blank"
+          >
+            this installation guide</a
+          >.
+        </p>
         <p class="mt-16 text-gray-500 text-left">
-          <sup>1</sup> Due to technical issues with the Firefox Team, our extension's support on
-          Mozilla Add-ons has ended with version 5.5.5. However, you can still run the latest
-          version following
+          <sup>2</sup> Please, follow
           <a
             class="underline"
             href="https://github.com/wanhose/cookie-dialog-monster/wiki/Step%E2%80%90by%E2%80%90step-installation-guide-for-Mozilla-Firefox"
-            id="firefox-guide-link"
             target="_blank"
           >
-            this guide</a
+            this installation guide</a
           >.
         </p>
-        <p class="mt-8 text-gray-500 text-left">
-          <sup>2</sup> This version is not recommended for regular users. It is intended for
-          advanced users who want to test the latest features before they are released to the
-          public, or other non-listed browser users who want to run a copy of the latest version of
-          the extension. We recommend you to follow
+        <p class="mt-16 text-gray-500 text-left">
+          <sup>3</sup> Please, follow
           <a
             class="underline"
-            href="https://github.com/wanhose/cookie-dialog-monster/wiki/Step%E2%80%90by%E2%80%90step-installation-guide-for-advanced-users-and-non%E2%80%90listed-browsers"
+            href="https://github.com/wanhose/cookie-dialog-monster/wiki/Step%E2%80%90by%E2%80%90step-installation-guide-for-Mozilla-Firefox-Mobile"
             target="_blank"
           >
-            this guide</a
+            this installation guide</a
           >.
         </p>
       </div>
@@ -545,18 +529,5 @@
         </p>
       </div>
     </footer>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const firefoxGuideLink = document.getElementById('firefox-guide-link');
-        const firefoxLink = document.getElementById('firefox-link');
-        const isMobile = /Android|Mobi/i.test(navigator.userAgent);
-
-        if (isMobile) {
-          firefoxGuideLink.href =
-            'https://github.com/wanhose/cookie-dialog-monster/wiki/Step%E2%80%90by%E2%80%90step-installation-guide-for-Mozilla-Firefox-Mobile';
-          firefoxLink.href = '/releases/mozilla-mobile/latest.xpi';
-        }
-      });
-    </script>
   </body>
 </html>
